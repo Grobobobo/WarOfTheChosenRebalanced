@@ -2,9 +2,9 @@ This is a small patch release for 1.0 beta 3 to fix some issues. It also add som
 
 The most important change is that Lost World no longer applies to every mission while it's active! 1.0 beta 3 had a bug which meant that you faced the Lost far too often during this dark event.
 
-**[Download the full release from here](https://www.dropbox.com/s/znwjhmdrwzds3k9/LongWarOfTheChosen-1.0-beta-3.1.zip?dl=0)**
+**[Download the full release from here](https://www.dropbox.com/s/znwjhmdrwzds3k9/WarOfTheChosenRebalanced-1.0-beta-3.1.zip?dl=0)**
 
-**[Download the beta 3 -> 3.1 patch from here](https://www.dropbox.com/s/ydycnzza1ddedjk/LongWarOfTheChosen-1.0-beta-3.1-patch.zip?dl=0)**
+**[Download the beta 3 -> 3.1 patch from here](https://www.dropbox.com/s/ydycnzza1ddedjk/WarOfTheChosenRebalanced-1.0-beta-3.1-patch.zip?dl=0)**
 
 To install the patch, simply unpack it into the *steamapps/common/XCOM 2/XCom2-WarOfTheChosen/XComGame/Mods* directory, overwriting all existing files. Note that beta 3.1 comes with highlander changes!
 

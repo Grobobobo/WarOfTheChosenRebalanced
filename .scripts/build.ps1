@@ -10,7 +10,7 @@ $common = Join-Path -Path $ScriptDirectory "X2ModBuildCommon\build_common.ps1"
 Write-Host "Sourcing $common"
 . ($common)
 
-$builder = [BuildProject]::new("LongWarOfTheChosen", $srcDirectory, $sdkPath, $gamePath)
+$builder = [BuildProject]::new("WarOfTheChosenRebalanced", $srcDirectory, $sdkPath, $gamePath)
 
 switch ($config)
 {

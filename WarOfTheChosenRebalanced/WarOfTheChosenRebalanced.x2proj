@@ -2,11 +2,11 @@
 <Project ToolsVersion="12.0" DefaultTargets="Default" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Guid>7a03fe19-6291-4b95-ba1c-3ec505fa8c0b</Guid>
-    <Name>Long War of the Chosen</Name>
-    <Description>Long War overhaul mod for War of the Chosen (based on Long War 2)</Description>
+    <Name>War Of the Chosen Rebalance</Name>
+    <Description></Description>
     <SteamPublishID>0</SteamPublishID>
-    <AssemblyName>lwotc</AssemblyName>
-    <RootNamespace>lwotc</RootNamespace>
+    <AssemblyName>WarOfTheChosenRebalanced</AssemblyName>
+    <RootNamespace>WarOfTheChosenRebalanced</RootNamespace>
     <ProjectGuid>{c6d96315-2f7d-4066-a9c7-6b9d4264751d}</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup>
@@ -629,7 +629,7 @@
     <Content Include="Src\LW_Overhaul\Classes\X2Condition_Sedate.uc" />
     <Content Include="Src\LW_Overhaul\Classes\X2Condition_Soldier.uc" />
     <Content Include="Src\LW_Overhaul\Classes\X2Condition_UnitDoesNotHaveItem.uc" />
-    <Content Include="Src\LW_Overhaul\Classes\X2DownloadableContentInfo_LongWarOfTheChosen.uc" />
+    <Content Include="Src\LW_Overhaul\Classes\X2DownloadableContentInfo_WarOfTheChosenRebalanced.uc" />
     <Content Include="Src\LW_Overhaul\Classes\X2Effect_AddAmmo.uc" />
     <Content Include="Src\LW_Overhaul\Classes\X2Effect_ApplyAltWeaponDamage.uc" />
     <Content Include="Src\LW_Overhaul\Classes\X2Effect_ApplyExplosiveFalloffWeaponDamage.uc" />

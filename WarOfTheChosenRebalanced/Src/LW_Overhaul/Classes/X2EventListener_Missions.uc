@@ -157,7 +157,7 @@ static function EventListenerReturn OnOverrideObjectiveSpawnCount(Object EventDa
 // work here apparently does the job.
 static function EventListenerReturn OverrideObjectiveDestructibleHealths(Object EventData, Object EventSource, XComGameState NewGameState, Name InEventID, Object CallbackData)
 {
-	class'X2DownloadableContentInfo_LongWarOfTheChosen'.static.OverrideDestructibleHealths(NewGameState);
+	class'X2DownloadableContentInfo_WarOfTheChosenRebalanced'.static.OverrideDestructibleHealths(NewGameState);
 	return ELR_NoInterrupt;
 }
 

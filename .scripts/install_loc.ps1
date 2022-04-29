@@ -6,7 +6,7 @@ Param(
 
 Set-StrictMode -Version 3.0
 
-$modNameCanonical = "LongWarOfTheChosen"
+$modNameCanonical = "WarOfTheChosenRebalanced"
 $modSrcLocRoot = "$srcDirectory\$modNameCanonical\Localization"
 $stagingPath = "$sdkPath\XComGame\Mods\$modNameCanonical\Localization"
 $installPath = "$gamePath\XComGame\Mods\$modNameCanonical\Localization"

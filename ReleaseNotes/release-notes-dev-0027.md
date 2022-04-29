@@ -20,11 +20,11 @@ Headline changes:
  * DLC2CommunityHighlander
  * X2WOTCCommunityPromotionScreen (*unless you are using RPGO*)
 
-To install dev build 27.3, just delete your existing LongWarOfTheChosen and X2WOTCCommunityHighlander folders from the *Mods* directory and unpack the following zip there:
+To install dev build 27.3, just delete your existing WarOfTheChosenRebalanced and X2WOTCCommunityHighlander folders from the *Mods* directory and unpack the following zip there:
 
 ||  **[Download the full release from Nexus Mods](https://www.nexusmods.com/xcom2/mods/757?tab=files)** ||
 
-**Upgrading from dev build 27** The above link also contains an update package you can use to upgrade dev build 27.x to 27.3. If you use this, *make sure you delete the XComGame/Mods/LongWarOfTheChosen/CookedPCConsole foldier (if it exists) before running the game!*
+**Upgrading from dev build 27** The above link also contains an update package you can use to upgrade dev build 27.x to 27.3. If you use this, *make sure you delete the XComGame/Mods/WarOfTheChosenRebalanced/CookedPCConsole foldier (if it exists) before running the game!*
 
 # New warning dialogs
 

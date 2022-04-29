@@ -13,7 +13,7 @@ Here are some of the headline changes you may be interested in:
 * Resistance orders are disabled by default, but can be enabled via a second wave option
 * Will loss and recovery has changed significantly, for example, Will no longer recovers during infiltration
 
-||  **[Download the release from here](https://www.dropbox.com/s/joysj8r5n6j8bnm/LongWarOfTheChosen-1.0-beta-3.zip?dl=0)** ||
+||  **[Download the release from here](https://www.dropbox.com/s/joysj8r5n6j8bnm/WarOfTheChosenRebalanced-1.0-beta-3.zip?dl=0)** ||
 
 More details on all the balance changes and bug fixes below.
 

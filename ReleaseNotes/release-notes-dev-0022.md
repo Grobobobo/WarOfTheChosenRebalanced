@@ -16,7 +16,7 @@ This is intended to be the precursor build to beta 4, with some notable balance 
 
 **Important** If you want to upgrade mid campaign and want to test the Reaper tree changes, be sure to use the `RespecSelectedSoldier` console command, although be aware that this will change the XCOM-row abilities too.
 
-To install dev build 22, just delete your existing LongWarOfTheChosen and X2WOTCCommunityHighlander folders from the *Mods* directory and unpack the following zip there:
+To install dev build 22, just delete your existing WarOfTheChosenRebalanced and X2WOTCCommunityHighlander folders from the *Mods* directory and unpack the following zip there:
 
 ||  **[Download the full release from Nexus Mods](https://www.nexusmods.com/xcom2/mods/757?tab=files)** ||
 

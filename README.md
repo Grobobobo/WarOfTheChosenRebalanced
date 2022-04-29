@@ -864,7 +864,7 @@ set some things up:
     or whatever is the equivalent with the git client tool you are using.
 
  4. Obtain the LWOTC-R media assets (video, graphics and sound) from [this Dropbox link](https://www.dropbox.com/s/209rybpdl3khb26/lwotc-content.zip?dl=0)
-    and unpack the resulting zip file into this project's *LongWarOfTheChosen* directory.  The link is not up to date with assets added in LWOTC-R, so you will also need to copy over the *LongWarOfTheChosen/Content* directory from one of the released alpha builds.
+    and unpack the resulting zip file into this project's *WarOfTheChosenRebalanced* directory.  The link is not up to date with assets added in LWOTC-R, so you will also need to copy over the *WarOfTheChosenRebalanced/Content* directory from one of the released alpha builds.
 
  5. Set up the following environment variables:
     * `XCOM2SDKPATH` — typically &lt;path to Steam&gt;\steamapps\common\XCOM 2 War Of The Chosen SDK

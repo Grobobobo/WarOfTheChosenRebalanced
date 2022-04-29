@@ -1,6 +1,6 @@
 class X2EventListener_Debug extends X2EventListener config(LW_Overhaul);
 
-// var X2DownloadableContentInfo_LongWarOfTheChosen LWDLCInfo;
+// var X2DownloadableContentInfo_WarOfTheChosenRebalanced LWDLCInfo;
 
 static function array<X2DataTemplate> CreateTemplates()
 {
@@ -31,7 +31,7 @@ static function EventListenerReturn OnDrawDebugLabels(Object EventData, Object E
 {
 	local array<X2DownloadableContentInfo> DLCInfos;
 	local X2DownloadableContentInfo DLCInfo;
-	local X2DownloadableContentInfo_LongWarOfTheChosen LWDLCInfo;
+	local X2DownloadableContentInfo_WarOfTheChosenRebalanced LWDLCInfo;
 	local Canvas kCanvas;
 	
 	kCanvas = Canvas(EventData);
@@ -45,9 +45,9 @@ static function EventListenerReturn OnDrawDebugLabels(Object EventData, Object E
 		DLCInfos = `ONLINEEVENTMGR.GetDLCInfos(false);
 		foreach DLCInfos(DLCInfo)
 		{
-			if (DLCInfo.DLCIdentifier == "LongWarOfTheChosen")
+			if (DLCInfo.DLCIdentifier == "WarOfTheChosenRebalanced")
 			{
-				LWDLCInfo = X2DownloadableContentInfo_LongWarOfTheChosen(DLCInfo);
+				LWDLCInfo = X2DownloadableContentInfo_WarOfTheChosenRebalanced(DLCInfo);
 				break;
 			}
 		}

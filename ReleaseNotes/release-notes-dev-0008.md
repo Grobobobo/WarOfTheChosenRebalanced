@@ -16,7 +16,7 @@ Here are some of the headline changes you may be interested in:
 * The Sabotage Transmitter mission has been added to the Guerrilla Op pool
 * Soldiers will start with lower Will and a narrower range of Wills
 
-**[Download the release from here](https://www.dropbox.com/s/lj9iui1q1om0jf1/LongWarOfTheChosen-1.0-beta-2.zip?dl=0)**
+**[Download the release from here](https://www.dropbox.com/s/lj9iui1q1om0jf1/WarOfTheChosenRebalanced-1.0-beta-2.zip?dl=0)**
 
 # Changelog
 

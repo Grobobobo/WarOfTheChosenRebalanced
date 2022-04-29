@@ -20,8 +20,8 @@ event OnInit(UIScreen Screen)
 	if(!bDoneOncePerSessionUpdates)
 	{
 		bDoneOncePerSessionUpdates = true;
-		class'X2DownloadableContentInfo_LongWarOfTheChosen'.static.UpdateStorage();
-		class'X2DownloadableContentInfo_LongWarOfTheChosen'.static.UpdateTechs();
+		class'X2DownloadableContentInfo_WarOfTheChosenRebalanced'.static.UpdateStorage();
+		class'X2DownloadableContentInfo_WarOfTheChosenRebalanced'.static.UpdateTechs();
 	}
 }
 

@@ -10,7 +10,7 @@ The last dev build was supposed to be the basis for beta 4, but one of the recen
 
 **UPDATE** Dev build 23.1 is now available! The patch notes for this version can be found just below.
 
-To install dev build 23, just delete your existing LongWarOfTheChosen and X2WOTCCommunityHighlander folders from the *Mods* directory and unpack the following zip there:
+To install dev build 23, just delete your existing WarOfTheChosenRebalanced and X2WOTCCommunityHighlander folders from the *Mods* directory and unpack the following zip there:
 
 ||  **[Download the full release and/or the patch from Nexus Mods](https://www.nexusmods.com/xcom2/mods/757?tab=files)** ||
 

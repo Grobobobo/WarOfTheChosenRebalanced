@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------------------
-//  FILE:   XComDownloadableContentInfo_LongWarOfTheChosen.uc
+//  FILE:   XComDownloadableContentInfo_WarOfTheChosenRebalanced.uc
 //           
 //	Use the X2DownloadableContentInfo class to specify unique mod behavior when the 
 //  player creates a new campaign or loads a saved game.
@@ -8,7 +8,7 @@
 //  Copyright (c) 2016 Firaxis Games, Inc. All rights reserved.
 //---------------------------------------------------------------------------------------
 
-class X2DownloadableContentInfo_LongWarOfTheChosen extends X2DownloadableContentInfo config(LW_Overhaul);
+class X2DownloadableContentInfo_WarOfTheChosenRebalanced extends X2DownloadableContentInfo config(LW_Overhaul);
 
 // Conditional MCOs depending on whether another mod has overridden
 // the base class or not.

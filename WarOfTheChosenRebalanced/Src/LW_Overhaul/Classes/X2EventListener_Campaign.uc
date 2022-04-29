@@ -28,6 +28,6 @@ static function EventListenerReturn SaveSecondWaveOptions(
 	Name InEventID,
 	Object CallbackData)
 {
-	class'X2DownloadableContentInfo_LongWarOfTheChosen'.static.SaveSecondWaveOptions();
+	class'X2DownloadableContentInfo_WarOfTheChosenRebalanced'.static.SaveSecondWaveOptions();
 	return ELR_NoInterrupt;
 }

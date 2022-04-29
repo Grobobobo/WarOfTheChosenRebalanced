@@ -9,7 +9,7 @@ Here are some of the headline changes you may be interested in:
 * Reapers, Skirmishers and SPARKs now have laser and coilgun variants of their primary weapons (we would really appreciate new models and skins for these!)
 * You will now face the correct Chosen on the Stronghold assault
 
-**[Download the release from here](https://www.dropbox.com/s/lj9iui1q1om0jf1/LongWarOfTheChosen-1.0-beta-2.zip?dl=0)**
+**[Download the release from here](https://www.dropbox.com/s/lj9iui1q1om0jf1/WarOfTheChosenRebalanced-1.0-beta-2.zip?dl=0)**
 
 More details on all the balance changes and bug fixes below.
 

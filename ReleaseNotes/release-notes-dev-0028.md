@@ -9,7 +9,7 @@ Headline changes:
  * Chain Lightning actually chains now and has no aim penalty, but it can't hit as many enemies as before
  * The Community Promotion Screen is no longer part of the LWOTC package: you will have to subscribe to it on Steam Workshop
 
-To install dev build 28.2, just delete your existing LongWarOfTheChosen, X2WOTCCommunityHighlander, etc. folders from the *Mods* directory and unpack the following zip there:
+To install dev build 28.2, just delete your existing WarOfTheChosenRebalanced, X2WOTCCommunityHighlander, etc. folders from the *Mods* directory and unpack the following zip there:
 
 ||  **[Download the full release from Nexus Mods](https://www.nexusmods.com/xcom2/mods/757?tab=files)** ||
 

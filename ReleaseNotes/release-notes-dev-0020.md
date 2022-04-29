@@ -12,7 +12,7 @@ A lot has changed since dev build 17, so it's probably worth starting a new camp
  * The Reaper's Tracking ability now works as before with the visual effect rather than a flyover
 **End update**
 
-To install dev build 20.1, just delete your existing LongWarOfTheChosen and X2WOTCCommunityHighlander folders from the *Mods* directory and unpack the following zip there:
+To install dev build 20.1, just delete your existing WarOfTheChosenRebalanced and X2WOTCCommunityHighlander folders from the *Mods* directory and unpack the following zip there:
 
 ||  **[Download the release from here](https://drive.google.com/file/d/1BQCSA1_auP-_O8lHPZ-c-V5AeFIynWJ2/view?usp=sharing)** ||
 

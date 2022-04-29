@@ -16,7 +16,7 @@ For installation instructions, look at the starter guide in the zip file or foll
    - [WotC: robojumper's Squad Select](https://steamcommunity.com/sharedfiles/filedetails/?id=1122974240)
    - [Better Second Wave Mod Support](https://steamcommunity.com/sharedfiles/filedetails/?id=1149493976)
    - [[WOTC] Revert Overwatch Rules Change](https://steamcommunity.com/sharedfiles/filedetails/?id=1127539414)
- * Remove the old LongWarOfTheChosen and X2WOTCCommunityHighlander mod directories and replace them with the new ones.
+ * Remove the old WarOfTheChosenRebalanced and X2WOTCCommunityHighlander mod directories and replace them with the new ones.
  * After starting the game, load from your strategy save.
  * **If you had the Chosen enabled** be sure to open up the Change Difficulty menu on the Avenger, select Advanced Options and then make sure the Enable Chosen second wave option is checked. Once you've done that, save your game again.
  * If you want to get the latest perk trees for the faction soldiers, subscribe to the [Additional Soldier Console Commands](https://steamcommunity.com/sharedfiles/filedetails/?id=1370543410) mod and use the `RebuildSelectedSoldierClasses` console command when you have the soldier you want to respec open in any of the Armory screens.

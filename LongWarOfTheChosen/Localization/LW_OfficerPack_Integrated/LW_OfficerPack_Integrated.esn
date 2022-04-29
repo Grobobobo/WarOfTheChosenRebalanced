@@ -1,0 +1,93 @@
+[UIArmory_LWOfficerPromotion]
+strLeadershipButton="Ver historial de liderazgo"
+strLeadershipDialogueTitle="Misiones a las órdenes de este oficial"
+strLeadershipDialogueData="<XGParam:StrValue0/>: <XGParam:IntValue0/>"
+
+[UIScreenListener_Armory_Promotion_LWOfficerPack]
+strOfficerMenuOption="Habilidades de oficial"
+
+[UIScreenListener_Armory_MainMenu_LWOfficerPack]
+strOfficerMenuOption="Habilidades de oficial"
+OfficerListItemDescription="Mira las habilidades de oficial ya entrenadas."
+
+[UIScreenListener_Facility_Academy_LWOfficerPack]
+strOfficerTrainButton="Entrenar oficial"
+
+[UIScreenListener_SquadSelect_LWOfficerPack]
+strAutoFillLabel="AUTOCOMPLETAR PELOTÓN"
+strAutoFillTooltip="Completa tu pelotón al máximo de capacidad automáticamente."
+
+
+[UITacticalHUD_MouseControls_LWOfficerPack]
+strCommandRangeToggleTooltip="Haz clic para mostrar/ocultar la distancia de mando."
+
+[X2StrategyElement_LW_OTS_OfficerStaffSlot]
+;strOTSLocationDisplayString=<XGParam:StrValue0/> Training
+
+;[UIArmory_LWOfficerMenu]
+;m_strSelectAbility=SELECT Officer ABILITY:
+;m_strAbilityHeader=Officer ABILITIES:
+;m_strConfirmAbilityTitle=CONFIRM ABILITY SELECTION
+;m_strConfirmAbilityText=You can't remove or change abilities. Are you sure you want to learn <XGParam:StrValue0/>?
+;m_strAbilityLockedTitle=LOCKED
+;m_strAbilityLockedDescription=Get more combat experience to learn new abilities.
+
+[UIArmory_LWOfficerPromotion]
+m_strSelectAbility="SELECCIONAR HABILIDAD:"
+m_strAbilityHeader="HABILIDADES:"
+m_strConfirmAbilityTitle="CONFIRMAR SELECCIÓN DE HABILIDAD"
+m_strConfirmAbilityText="No puedes quitar ni cambiar habilidades. ¿Seguro que quieres aprender <XGParam:StrValue0/>?"
+m_strAbilityLockedTitle="BLOQUEADO"
+m_strAbilityLockedDescription="Gana más experiencia en combate para aprender nuevas habilidades."
+
+[LWOfficerUtilities]
+LWOfficerRankNames[0]="Suboficial"
+LWOfficerRankNames[1]="Teniente segundo"
+LWOfficerRankNames[2]="Teniente primero"
+LWOfficerRankNames[3]="Capitán"
+LWOfficerRankNames[4]="Mayor"
+LWOfficerRankNames[5]="Teniente coronel"
+LWOfficerRankNames[6]="Coronel"
+LWOfficerRankNames[7]="Comandante de campo"
+
+LWOfficerShortNames[0]="Suboficial"
+LWOfficerShortNames[1]="Tte. 2º"
+LWOfficerShortNames[2]="Tte. 1º"
+LWOfficerShortNames[3]="Cap."
+LWOfficerShortNames[4]="Myr."
+LWOfficerShortNames[5]="Tte. Cor."
+LWOfficerShortNames[6]="Cor."
+LWOfficerShortNames[7]="Com. Cam."
+
+
+[UIFacility_LWOfficerSlot]
+m_strTrainOfficerDialogTitle="ENTRENAR OFICIAL"
+m_strTrainOfficerDialogText="Los soldados con rango suficiente pueden someterse a un entrenamiento especializado en la escuela de tácticas de guerrilla y estudiar para convertirse en líderes. Dejarán de estar disponibles para el combate durante el proceso de entrenamiento.\n\nIMPORTANTE: solo el oficial de rango más alto de un pelotón puede usar sus habilidades en una misión, así que elige bien a quién asciendes.\n\n¿Quieres continuar?"
+m_strStopTrainOfficerDialogTitle="¿INTERRUMPIR ENTRENAMIENTO DE OFICIAL?"
+m_strStopTrainOfficerDialogText="¿Quieres interrumpir el entrenamiento de %UNITNAME?\n\nATENCIÓN: se perderán todos los progresos del entrenamiento de oficial."
+
+[UIAlert_LWOfficerTrainingComplete]
+m_strTrainingCompleteLabel="ENTRENAMIENTO DE OFICIAL COMPLETADO"
+m_strTrainingComplete="<XGParam:StrValue0/> ha completado su entrenamiento. Se pueden examinar y asignar nuevas habilidades viendo al soldado en el arsenal."
+m_strViewSoldier="VER SOLDADO"
+m_strNewAbilityLabel="NUEVA HABILIDAD"
+
+[UIPersonnel_ListItem_SquadSelect_LWOfficerPack]
+strOfficerAlreadySelectedStatus="Atención: oficial ya seleccionado"
+
+[UIStrategyScreenListener_LWOfficerPack]
+strCommandingOfficerTooltipTitle="Oficial al mando"
+strCommandingOfficerTooltip="Puede usar todas las habilidades de oficial."
+strSubordinateOfficerTooltipTitle="Oficial subordinado"
+strSubordinateOfficerTooltip="No puede usar sus habilidades de oficial en la misión."
+
+[X2Ability_OfficerAbilitySet]
+strIntervention_WorldMessage="Intervención: -<XGPARAM:IntValue0> datos"
+strCollector_WorldMessage="Coleccionista: +1 de datos"
+FocussedFriendlyName="Fuego concentrado"
+FocussedFriendlyDesc="Los objetivos que estén bajo Fuego concentrado son más fáciles de acertar y dañar por parte de sus enemigos."
+
+[X2Effect_Scavenger]
+;the string shown in world message for scavenged items
+m_strScavengerLoot="Has recuperado: (<XGParam:IntValue0/>) <XGParam:StrValue0/!ItemName/>."
+

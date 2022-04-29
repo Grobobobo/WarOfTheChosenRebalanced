@@ -1,0 +1,63 @@
+[UIOptionsPCScreen_LW]
+m_strResetCurrentModOption="MOD ZURÜCKSETZEN"
+
+[XComGameState_LWToolboxOptions]
+ToolboxTabName="KAMPAGNE"
+
+HelpButtonLabel="Nützliche Info"
+HelpButtonLabelText="Hilfe"
+HelpButtonLabelTooltip="Zeigt Informationen über die LW Toolbox."
+
+SetCameraRotation="Kamera-Rotation (in Grad) festlegen"
+SetCameraRotationTooltip="Wähle den Rotationswinkel der Kamera in taktischen Einsätzen."
+
+SelectSquadSize="Standard-Truppgröße"
+SelectSquadSizeTooltip="Erhöht die Standard-Truppgröße (vor etwaigen Boni durch die Guerillataktik-Schule)."
+
+EnableRandomizedDamageMod="Schadensroulette"
+EnableRandomizedDamageModTooltip="Waffenschäden für XCOM und den Feind unterscheiden sich vom Basisschaden um den gewählten Wert."
+
+EnableRandomizedInitialStatsMod="Die Welt ist ungerecht"
+EnableRandomizedInitialStatsModTooltip="Die Basiswerte der Soldaten werden zufällig um einen Basiswert ermittelt. Bei Abwahl der Option wird der Standardwert benutzt. Diese Option kann in der Avenger an/aus gestellt werden oder während der ersten Runde taktischer Missionen, und auch nur dann, wenn niemand verwundet wurde."
+sCantChangeWithWoundedSoldiers="'Die Welt ist ungerecht' kann nicht aktiviert oder deaktiviert werden, wenn ein Soldat verwundet ist oder die erste Runde eines taktischen Einsatzes bereits beendet wurde."
+NormalDamage="Aus"
+MaxDamage="MAX"
+
+EnableRandomizedLevelupStatsMod="Verborgenes Potenzial"
+EnableRandomizedLevelupStatsModTooltip="Die Soldaten bekommen zufällig bessere Werte beim Levelaufstieg."
+
+RandomizedLevelupStrength="Zufallsfaktor: <XGParam:IntValue0> %"
+RandomizedLevelupStrengthTooltip="Bestimmt die Höhe des Zufallsfaktors, der zur Anwendung kommt, wenn 'Verborgenes Potenzial' aktiv ist. Je höher der Wert, desto größer die Bandbreite der Werteerhöhungen beim Rangaufstieg."
+
+EnableRedFogMod="Roter Nebel"
+EnableRedFogModTooltip="Verletzte Einheiten erleiden Strafen auf die Werte Zielen, Wille, Mobilität und Hacken."
+EnableRedFogLinearPenaltiesMod="Lineare Roter-Nebel-Abzüge verwenden (anstelle von quadratischen)"
+EnableRedFogModLinearPenaltiesTooltip="Die Einheiten erleiden größere Strafen bei leichten Verletzungen."
+RedFogOptions[0]="Aus"
+RedFogOptions[1]="Nur XCOM"
+RedFogOptions[2]="Nur Aliens"
+RedFogOptions[3]="Alle"
+
+EnableSimCombatMod="Automatische Kampfentscheidung zulassen"
+EnableSimCombatModTooltip="Aktiviert eine Option in der Truppauswahl, um Kampfeinsätze mit dem gewählten Trupp automatisch entscheiden zu lassen. Da diese Option nicht mit allen offiziellen DLCs kompatibel ist, kann sie nur über die Debug-Konsole mit dem Befehl \"LWSetAutoResolveEnabled true\" aktiviert werden. Es wird empfohlen, dass diese Option nur von Moddern als Debugging-Werkzeug benutzt wird."
+
+[X2Effect_RedFog_LW]
+RedFogEffectName="Roter Nebel"
+RedFogEffectDesc="Reduziert die Werte in Abhängigkeit von den erlittenen Verletzungen."
+
+[UISquadSelect_LW]
+m_strStripWeapons="WAFFEN FREIGEBEN"
+m_strStripWeaponsConfirm="FREIGABE VON WAFFEN BESTÄTIGEN"
+
+m_strStripWeaponsConfirmDesc="Bitte bestätige das Ablegen sämtlicher Waffen von allen Soldaten, die NICHT für den aktuellen Einsatz ausgewählt sind. Diese Waffen stehen allen Soldaten sofort zur freien Verfügung."
+m_strTooltipStripWeapons="Alle Waffen von allen Soldaten entfernen, die nicht für die aktuelle Mission gewählt sind."
+
+m_strTooltipNeedsFrontRowSoldier=""
+m_strClearSquad="TRUPP LÖSCHEN"
+m_strTooltipClearSquad="Entfernt alle Soldaten aus dem Trupp."
+
+m_strAutofillSquad="TRUPP AUTOM. FÜLLEN"
+m_strTooltipAutofillSquad="Leere Trupp-Plätze automatisch füllen."
+
+m_strSimCombat="AUTOENTSCHEIDUNG"
+m_strTooltipSimCombat="Schlacht automatisch entscheiden."

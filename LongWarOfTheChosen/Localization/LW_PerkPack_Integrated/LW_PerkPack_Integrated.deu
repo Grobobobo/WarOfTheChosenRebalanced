@@ -1,0 +1,45 @@
+[XComGameState_LWPerkPackOptions]
+PerkPackTabName="FÄHIGKEITEN"
+
+ViewLockedPerksMod="Gesperrte Fähigkeiten anzeigen"
+ViewLockedPerksModTooltip="Aktivieren, um die Anzeige von gesperrten Fähigkeiten zu erlauben (zeigt nicht den Baum von Psi-Soldaten)."
+
+BaseGamePerkUIMod="Zweispaltige Fähigkeiten-UI des Basisspiels benutzen"
+BaseGamePerkUIModTooltip="Aktivieren zum Verwenden der ursprünglichen zweispaltigen Fähigkeiten-Auswahloberfläche für den Rangaufstieg (oder zum Verwenden der Fähigkeiten-UI eines anderen Mods)"
+
+DefaultTacticalAbilityContainerMod="Taktisches Fähigkeiten-HUD des Basisspiels benutzen"
+DefaultTacticalAbilityContainerModTooltip="Dieser Mod ermöglicht den Soldaten die Nutzung von mehr als 15 aktiven Fähigkeiten durch Einrichtung mehrerer Seiten von Fähigkeitensymbolen, durch die der Spieler im Laufe des Einsatzes durchblättern kann. Wähle diese Option zum Deaktivieren dieser Funktion (z. B. zur Verwendung eines anderen Mods)."
+
+NumDisplayedAbilitiesMod="Fähigkeiten pro Seite in taktischer Oberfläche"
+NumDisplayedAbilitiesModTooltip="Anzahl der pro Seite angezeigten Fähigkeiten in der taktischen Oberfläche. Diese Option bleibt wirkungslos, wenn die Option \"Taktisches Fähigkeiten-HUD des Basisspiels benutzen\" aktiviert ist."
+
+[UIScreenListener_Armory_MainMenu_LWExpandedPerkTree]
+strExpandedMenuOption="Fähigkeiten"
+strExpandedTooltip="Erweiterter Fähigkeitenbaum"
+ExpandedListItemDescription="Test-Schaltfläche für erweiterten Fähigkeitenbaum"
+
+[UIScreenListener_Armory_MainMenu_LW_LWExpandedPerkTree]
+strExpandedMenuOption="Fähigkeiten"
+strExpandedTooltip="Erweiterter Fähigkeitenbaum"
+ExpandedListItemDescription="Test-Schaltfläche für erweiterten Fähigkeitenbaum"
+
+[UITacticalHUD_AbilityContainer_LWExtended]
+strChangePageTitle="Zusätzliche Fähigkeiten"
+strChangePageDesc="Zusätzliche Fähigkeiten, welche aktiviert werden können, ansehen. Du kannst auch die 'x'-Taste verwenden, um zusätzliche Fähigkeiten anzusehen."
+
+[UIArmory_MainMenu_LW]
+m_strNoWeaponUpgradesTooltip="KEINE WAFFENVERBESSERUNGEN VERFÜGBAR"
+
+[X2Ability_PerkPackAbilitySet2]
+TrojanVirus="Trojaner"
+TrojanVirusTriggered="<XGParam:StrValue0/!UnitName/> hat Trojaner ausgelöst."
+
+[X2Effect_Savior]
+strSavior_WorldMessage="Erretter: Hat zusätzliche <XGParam:IntValue0/> Trefferpunkte geheilt."
+
+[X2Item_DenseSmokeGrenade]
+DenseSmokeGrenadeEffectDisplayName="Dichter Rauch"
+DenseSmokeGrenadeEffectDisplayDesc="Der dichte Rauch gewährt dieser Einheit einen zusätzlichen Verteidigungsbonus."
+
+[X2Ability_PerkPackAbilitySet]
+LocCoveringFire="Deckungsfeuer"

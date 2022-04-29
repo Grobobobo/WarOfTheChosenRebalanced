@@ -1,0 +1,9 @@
+
+[X2Ability_LWAlienAbilities]
+strBayonetChargePenalty="Centurion suffers <XGParam:IntValue1/> Defense for <XGParam:IntValue0/> turns."
+HunterMarkAdventEffectName="Marked For Death"
+HunterMarkAdventEffectDesc="This unit is Marked by the Advent Hunter."
+
+[X2Effect_WarCry]
+strWarCryFriendlyDesc=Receiving boost to Aim, Mobility and Will.
+

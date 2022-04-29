@@ -1,0 +1,67 @@
+[XComGameState_LWPerkPackOptions]
+PerkPackTabName="ABILITIES"
+
+ViewLockedPerksMod="View Locked Perks"
+ViewLockedPerksModTooltip="Toggle to allow locked perks to be viewed (does not reveal Psi soldier tree)."
+
+BaseGamePerkUIMod="Use Base-Game Two-Column Perk UI"
+BaseGamePerkUIModTooltip="Toggle to use the original two-column perk selection UI when levelling up (or use another mod's perk UI instead)"
+
+DefaultTacticalAbilityContainerMod="Use Base-Game Tactical Ability HUD"
+DefaultTacticalAbilityContainerModTooltip="This mod allows for soldiers to have more than 15 active abilities by creating multiple pages of ability icons that players can sort through during missions. Select this option to turn off the functionality (presumably to use another mod)."
+
+NumDisplayedAbilitiesMod="Abilities Per Page in Tactical HUD"
+NumDisplayedAbilitiesModTooltip="Number of abilities to show per page in the Tactical HUD. This option does nothing if Use Base-Game Tactical Ability HUD option is set.""
+
+[UIScreenListener_Armory_MainMenu_LWExpandedPerkTree]
+strExpandedMenuOption=Abilities
+strExpandedTooltip=Expanded Perk Tree
+ExpandedListItemDescription=Expanded Perk Tree test button
+
+[UIScreenListener_Armory_MainMenu_LW_LWExpandedPerkTree]
+strExpandedMenuOption=Abilities
+strExpandedTooltip=Expanded Perk Tree
+ExpandedListItemDescription=Expanded Perk Tree test button
+
+[UITacticalHUD_AbilityContainer_LWExtended]
+strChangePageTitle="Additional Abilities"
+strChangePageDesc="View additional abilities you may activate. You may also use the 'x' key to see additional abilities."
+
+[UIArmory_MainMenu_LW]
+m_strNoWeaponUpgradesTooltip=NO WEAPON UPGRADES AVAILABLE
+
+[X2Ability_PerkPackAbilitySet2]
+TrojanVirus="Trojan Virus"
+TrojanVirusTriggered="<XGParam:StrValue0/!UnitName/> triggered Trojan Virus."
+
+[X2Effect_Savior]
+strSavior_WorldMessage="Savior: Healed extra <XGParam:IntValue0/> Health."
+
+[X2Effect_LWHolotarget]
+HoloTargetEffectName="Holotargeted"
+
+[X2Item_DenseSmokeGrenade]
+DenseSmokeGrenadeEffectDisplayName="Dense Smoke"
+DenseSmokeGrenadeEffectDisplayDesc="The dense smoke grants this unit a additional defensive bonus."
+
+[X2Ability_PerkPackAbilitySet]
+LocCoveringFire="Covering Fire"
+LocCoveringFireMalus="This unit has been targeted by an overwatching unit with the Covering Fire ability, conferring -10 to aim for the rest of the turn."
+; LWOTC Needs Translation
+LocSoulStealBuff="Soul Steal Ablative"
+LocSoulStealBuffHelpText="Soul Steal grants ablative hit points when it over heals"
+LocPinnedDebuff = "Pinned"
+LocPinnedDebuffHelpText = "Suppression has removed 1 action point from this unit."
+; End Translation
+
+; LWOTC Needs Translation
+[X2Effect_RegenerationPCT]
+HealedMessage="+<Heal/> HP Regenerated"
+
+[X2StatusEffects_LW]
+MaimedFriendlyName="Maimed"
+MaimedFriendlyDesc="Unit's mobility is reduced to zero and so they cannot move. They can still shoot and perform other non-movement abilities."
+; End Translation
+
+[X2Ability_PerkPackAbilitySet2]
+PhantomExpiredFlyover = "Phantom Expired"

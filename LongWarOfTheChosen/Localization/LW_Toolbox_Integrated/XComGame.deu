@@ -1,0 +1,14 @@
+[RedFog_LW X2AbilityTemplate]
+LocFriendlyName="Roter Nebel"
+LocLongDescription="Die Werte von verletzten Einheiten werden reduziert."
+LocHelpText="Die Werte von verletzten Einheiten werden reduziert."
+LocFlyOverText="Roter Nebel"
+LocPromotionPopupText="REDFOGLOCPROMOTIONPOPUPTEXT"
+
+[XComGame.UIShellDifficulty]
+[UIShellDifficulty]
+m_arrDifficultyDescStrings[0]="Für Spieler, die mit Taktikspielen oder XCOM noch keine Erfahrung haben.<br/><br/>Die Long War-Optionen können nach Start der Kampagne im Optionsmenü eingestellt werden."
+m_arrDifficultyDescStrings[1]="Eine angemessene Herausforderung für Spieler, die bereits mit XCOM vertraut sind.<br/><br/>Die Long War-Optionen können nach Start der Kampagne im Optionsmenü eingestellt werden."
+m_arrDifficultyDescStrings[2]="Eine extreme Herausforderung für erfahrene Long War-Spieler.<br/><br/>Die Long War-Optionen können nach Start der Kampagne im Optionsmenü eingestellt werden."
+m_arrDifficultyDescStrings[3]="Eine brutale und unnachgiebige Kampagne.<br/><br/>Long War-Optionen können nach Beginn der Kampagne über ein Optionsmenü eingestellt werden."
+m_strTutorialOnImpossible="In Long War ist das Tutorial deaktiviert.<br><br/><font color='#9acbcb'>Die Long War-Optionen können nach Start der Kampagne im Optionsmenü eingestellt werden.</font>"

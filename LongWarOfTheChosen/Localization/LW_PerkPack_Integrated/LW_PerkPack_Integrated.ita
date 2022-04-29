@@ -1,0 +1,45 @@
+[XComGameState_LWPerkPackOptions]
+PerkPackTabName="ABILITÀ:"
+
+ViewLockedPerksMod="Visualizza abilità bloccate"
+ViewLockedPerksModTooltip="Attiva per consentire la visualizzazione delle abilità bloccate (non rivela l'albero di abilità dei soldati psionici)."
+
+BaseGamePerkUIMod="Usa interfaccia abilità a due colonne del gioco base"
+BaseGamePerkUIModTooltip="Attiva per usare l'interfaccia originale a due colonne per le abilità quando i soldati salgono di livello (o per usare l'interfaccia di un altro mod)"
+
+DefaultTacticalAbilityContainerMod="Usa interfaccia tattica del gioco base"
+DefaultTacticalAbilityContainerModTooltip="Questo mod permette ai soldati di avere più di 15 abilità attive, creando più pagine di abilità che i giocatori possono passare in rassegna durante le missioni. Seleziona questa opzione per disattivare la funzionalità (presumibilmente per usare un altro mod)."
+
+NumDisplayedAbilitiesMod="Abilità per pagina nell'interfaccia tattica"
+NumDisplayedAbilitiesModTooltip="Il numero di abilità per pagina da mostrare nell'interfaccia tattica. Questa opzione non ha effetto se è attiva l'opzione \"Usa interfaccia tattica del gioco base.\""
+
+[UIScreenListener_Armory_MainMenu_LWExpandedPerkTree]
+strExpandedMenuOption="Abilità:"
+strExpandedTooltip="Albero abilità espanso"
+ExpandedListItemDescription="Pulsante di test albero abilità espanso"
+
+[UIScreenListener_Armory_MainMenu_LW_LWExpandedPerkTree]
+strExpandedMenuOption="Abilità:"
+strExpandedTooltip="Albero abilità espanso"
+ExpandedListItemDescription="Pulsante di test albero abilità espanso"
+
+[UITacticalHUD_AbilityContainer_LWExtended]
+strChangePageTitle="Abilità aggiuntive"
+strChangePageDesc="Visualizza le abilità aggiuntive che è possibile attivare. Si può anche usare il tasto 'x' per visualizzare le abilità aggiuntive."
+
+[UIArmory_MainMenu_LW]
+m_strNoWeaponUpgradesTooltip="NESSUN POTENZIAMENTO DISPONIBILE"
+
+[X2Ability_PerkPackAbilitySet2]
+TrojanVirus="Virus Trojan"
+TrojanVirusTriggered="<XGParam:StrValue0/!UnitName/> ha attivato un virus Trojan."
+
+[X2Effect_Savior]
+strSavior_WorldMessage="Salvatore: ha curato <XGParam:IntValue0/> punti salute in più."
+
+[X2Item_DenseSmokeGrenade]
+DenseSmokeGrenadeEffectDisplayName="Fumo impenetrabile"
+DenseSmokeGrenadeEffectDisplayDesc="Il fumo denso conferisce un ulteriore bonus difensivo a questa unità."
+
+[X2Ability_PerkPackAbilitySet]
+LocCoveringFire="Fuoco di copertura"

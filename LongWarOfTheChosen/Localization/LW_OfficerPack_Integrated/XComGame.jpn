@@ -1,0 +1,219 @@
+
+;---- BEGIN ABILITIES
+
+;displayed both for officer and soldiers receiving effect
+[GetSome X2AbilityTemplate]
+LocFriendlyName="やってやる"
+LocLongDescription="行動値1を消費し、指揮範囲内にいる味方全員のクリティカルヒット確率に+20のボーナスを与える。効果はターン終了まで継続する。使用回数は各ミッションにつき2回。"
+LocHelpText="オフィサーの近くにいる兵士のクリティカルヒット確率が上がる。"
+LocFlyOverText="やってやる"
+LocPromotionPopupText="<Bullet/>行動値1を消費し、指揮範囲内にいる味方全員のクリティカルヒット確率に+20のボーナスを与える。効果はターン終了まで継続する。<br/><Bullet/>使用回数は各ミッションにつき2回。<br/><Bullet/>指揮範囲はオフィサーのレベルが上がると広がる。"
+
+[Collector X2AbilityTemplate]
+LocFriendlyName="収集家"
+LocLongDescription="部隊が非ヒューマノイド型の敵を倒すと、33%の確率で1情報ポイントを得る。ただし、オフィサーが無傷でいることが条件。"
+LocHelpText="部隊が敵を倒すと追加の情報を得る。"
+LocFlyOverText="収集家"
+; displayed for officer in OfficerAbility UI
+LocPromotionPopupText="<Bullet/>部隊が生きている非ヒューマノイド型の敵を倒すと、33%の確率で1情報ポイントを得る。ただし、オフィサーが無傷でいることが条件。"
+
+;displayed on officer in tactical container
+[CollectorPassive X2AbilityTemplate]
+LocFriendlyName="収集家"
+LocLongDescription="部隊が非ヒューマノイド型の敵を倒すと、33%の確率で1情報ポイントを得る。ただし、オフィサーが無傷でいることが条件。"
+LocHelpText="部隊が敵を倒すと追加の情報を得る。"
+LocFlyOverText="収集家"
+LocPromotionPopupText="<Bullet/>部隊が生きている非ヒューマノイド型の敵を倒すと、33%の確率で1情報ポイントを得る。ただし、オフィサーが無傷でいることが条件。"
+
+;displayed on other soldier that receive the effect
+[Defilade X2AbilityTemplate]
+LocFriendlyName="遮へい陣形"
+LocLongDescription="オフィサーの指揮範囲内にいる兵士が対象。遮へいによる防御力+5。"
+LocHelpText="オフィサーの近くにいる兵士が遮へいによる防御力にボーナスを得る。"
+LocFlyOverText="遮へい陣形"
+;displayed for officer in Officer Ability UI
+LocPromotionPopupText="<Bullet/>オフィサーの指揮範囲内にいる兵士が対象。遮へいによる防御力+5。<br/><Bullet/>指揮範囲はオフィサーのレベルが上がると広がる。"
+
+;Displayed on officer in tactical container
+[DefiladePassive X2AbilityTemplate]
+LocFriendlyName="遮へい陣形"
+LocLongDescription="オフィサーの指揮範囲内にいる兵士が対象。遮へいによる防御力+5。"
+LocHelpText="オフィサーの近くにいる兵士が遮へいによる防御力にボーナスを得る。"
+LocFlyOverText="遮へい陣形"
+LocPromotionPopupText="<Bullet/>オフィサーの指揮範囲内にいる兵士が対象。遮へいによる防御力+5。<br/><Bullet/>指揮範囲はオフィサーのレベルが上がると広がる。"
+
+;displayed both on officer and in debuff on target
+[FocusFire X2AbilityTemplate]
+LocFriendlyName="集中攻撃"
+LocLongDescription="行動値1を消費してターゲットを指示すると、味方はそのターゲットに対し、命中率ボーナス（累積）と装甲貫通+1を得る。効果はターン終了まで継続する。"
+LocHelpText="ターゲットを指示すると、分隊員がそのターゲットに対する命中率と装甲貫通ボーナスを得る。"
+LocFlyOverText="集中攻撃"
+LocPromotionPopupText="<Bullet/>行動値1を消費してターゲットを指示すると、味方はそのターゲットに対し、命中率ボーナス（累積）と装甲貫通+1を得る。効果はターン終了まで継続する。<br/><Bullet/>同じターンに直接攻撃が連続して当たるたびに命中率ボーナス+<ABILITY:FOCUS_FIRE_AIM_BONUS/>。<br/><Bullet/>クールダウン：3ターン。<br/>"
+
+;displayed both on officer and on soldiers receiving effect
+[FallBack X2AbilityTemplate]
+LocFriendlyName="退却！"
+LocLongDescription="行動を全て完了させた視認可能な味方1人について、防御アクションを実行する。この防御アクションは行動値を消費しないが、プレイヤーによる操作はできない。"
+LocHelpText="視認できる味方1人について、防御アクションの実行を可能にする。この防御アクションは行動値を消費しないが、プレイヤーによる操作はできない。"
+LocFlyOverText="退却！"
+LocPromotionPopupText="<Bullet/>行動を全て完了させた視認可能な味方1人について、防御アクションを実行する。この防御アクションは行動値を消費しないが、プレイヤーによる操作はできない。通常、対象となった味方は安全な位置を探すか、その場にかがむ。<br/><Bullet/>監視中または他のターゲットを抑圧中のユニットには使用できない。<br/><Bullet/>行動値は消費しない。"
+
+[Scavenger X2AbilityTemplate]
+LocFriendlyName="スカベンジャー"
+LocLongDescription="ミッションの成功報酬として得られる補給物資、エイリアンの合金、エレリウムが30%増える。部隊員はエイリアンから奪えるエイリアンの合金やエレリウムがさらに増える可能性もある。"
+LocHelpText="補給物資、エイリアンの合金、エレリウムが通常より多く手に入る。"
+LocFlyOverText="スカベンジャー"
+LocPromotionPopupText="<Bullet/>ミッション終了時にオフィサーが戦死しておらず、意識もある場合、ミッションの成功報酬として得られる補給物資、エイリアンの合金、エレリウムが30%増える。<br/><Bullet>部隊はエイリアンの亡骸からエイリアンの合金やエレリウムを回収できる場合がある。<br/>"
+
+;Displayed on officer in tactical container
+[ScavengerPassive X2AbilityTemplate]
+LocFriendlyName="スカベンジャー"
+LocLongDescription="ミッションの成功報酬として得られる補給物資、エイリアンの合金、エレリウムが30%増える。エイリアンから合金やエレリウムを入手できる可能性もある。"
+LocHelpText="補給物資、エイリアンの合金、エレリウムが通常より多く手に入る。"
+LocFlyOverText="スカベンジャー"
+LocPromotionPopupText="<Bullet/>ミッション終了時にオフィサーが戦死しておらず、意識もある場合、ミッションの成功報酬として得られる補給物資、エイリアンの合金、エレリウムが30%増える。<br/><Bullet>部隊がエイリアンの亡骸からエイリアンの合金やエレリウムを回収できる場合がある。<br/>"
+
+;displayed on other soldier that receive the effect
+[FireDiscipline X2AbilityTemplate]
+LocFriendlyName="射撃規律"
+LocLongDescription="オフィサーの指揮範囲内にいる味方全員が対象。反応射撃時の命中率+10%。"
+LocHelpText="オフィサーの近くにいるすべての味方が反応射撃ボーナスを得る。"
+LocFlyOverText="射撃規律"
+;displayed for officer in Officer Ability UI
+LocPromotionPopupText="<Bullet/>オフィサーの指揮範囲内にいる味方全員が対象。反応射撃時の命中率+10%。<br/><Bullet/>指揮範囲はオフィサーのレベルが上がると広がる。"
+
+;Displayed on officer in tactical container
+[FireDisciplinePassive X2AbilityTemplate]
+LocFriendlyName="射撃規律"
+LocLongDescription="オフィサーの指揮範囲内にいる味方全員が対象。反応射撃時の命中率+10%。"
+LocHelpText="オフィサーの近くにいるすべての味方が反応射撃ボーナスを得る。"
+LocFlyOverText="射撃規律"
+LocPromotionPopupText="<Bullet/>オフィサーの指揮範囲内にいる味方全員が対象。反応射撃時の命中率+10%。<br/><Bullet/>指揮範囲はオフィサーのレベルが上がると広がる。"
+
+;displayed both on officer and on soldiers receiving effect
+[OscarMike X2AbilityTemplate]
+LocFriendlyName="オスカー・マイク"
+LocLongDescription="行動値1を消費して、指揮範囲内にいる味方全員の機動力に+5のボーナスを与える。効果はターン終了まで継続する。使用回数は各ミッションにつき1回。"
+LocHelpText="使用するとオフィサーの近くにいる味方が機動力にボーナスを得る。"
+LocFlyOverText="オスカー・マイク"
+LocPromotionPopupText="<Bullet/>行動値1を消費して、指揮範囲内にいる味方全員の機動力に+5のボーナスを与える。効果はターン終了まで継続する。<br/><Bullet/>使用回数は各ミッションにつき1回。<br/><Bullet/>指揮範囲はオフィサーのレベルが上がると広がる。"
+
+;displayed on other soldier that receive the effect
+[LeadByExample X2AbilityTemplate]
+LocFriendlyName="良き手本"
+LocLongDescription="オフィサーの指揮範囲内にいる味方は、命中率、意志力、ハッキングにボーナスを得る。兵士とオフィサーの各能力値の差の半分がボーナスとなる。"
+LocHelpText="オフィサーの近くにいる味方は、命中率、意志力、ハッキングにボーナスを得る。"
+LocFlyOverText="良き手本"
+;displayed for officer in Officer Ability UI
+LocPromotionPopupText="<Bullet/>オフィサーの命中率、意志力、ハッキングの能力値が、指揮範囲内にいる味方兵士よりも高い場合、各兵士は能力値の差の半分をボーナスとして得る。<br/><Bullet/>指揮範囲はオフィサーのレベルが上がると広がる。"
+
+;Displayed on officer in tactical container
+[LeadByExamplePassive X2AbilityTemplate]
+LocFriendlyName="良き手本"
+LocLongDescription="オフィサーの指揮範囲内にいる味方は、命中率、意志力、ハッキングにボーナスを得る。兵士とオフィサーの各能力値の差の半分がボーナスとなる。"
+LocHelpText="オフィサーの近くにいる味方は、命中率、意志力、ハッキングにボーナスを得る。"
+LocFlyOverText="良き手本"
+LocPromotionPopupText="<Bullet/>オフィサーの命中率、意志力、ハッキングの能力値が、指揮範囲内にいる味方兵士よりも高い場合、各兵士は能力値の差の半分をボーナスとして得る。<br/><Bullet/>指揮範囲はオフィサーのレベルが上がると広がる。"
+
+;this may not be displayed -- needs testing
+[LeadByExampleLeader X2AbilityTemplate]
+LocFriendlyName="良き手本"
+LocLongDescription="オフィサーの指揮範囲内にいる味方は、命中率、意志力、ハッキングにボーナスを得る。兵士とオフィサーの各能力値の差の半分がボーナスとなる。"
+LocHelpText="オフィサーの近くにいる味方は、命中率、意志力、ハッキングにボーナスを得る。"
+LocFlyOverText="良き手本"
+LocPromotionPopupText="<Bullet/>オフィサーの命中率、意志力、ハッキングの能力値が、指揮範囲内にいる味方兵士よりも高い場合、各兵士は能力値の差の半分をボーナスとして得る。<br/><Bullet/>指揮範囲はオフィサーのレベルが上がると広がる。"
+
+;displayed on other soldier that receive the effect
+[CombinedArms X2AbilityTemplate]
+LocFriendlyName="諸兵科連合"
+LocLongDescription="オフィサーの指揮範囲内にいる味方全員が対象。攻撃命中時に1ダメージが追加される。"
+LocHelpText="オフィサーの近くにいる味方がダメージにボーナスを得る。"
+LocFlyOverText="諸兵科連合"
+LocPromotionPopupText="<Bullet/>オフィサーの指揮範囲内にいる味方全員が対象。攻撃命中時に1ダメージが追加される。<br/><Bullet/>指揮範囲はオフィサーのレベルが上がると広がる。"
+
+;Displayed on officer in tactical container
+[CombinedArmsPassive X2AbilityTemplate]
+LocFriendlyName="諸兵科連合"
+LocLongDescription="オフィサーの指揮範囲内にいる味方全員が対象。攻撃命中時に1ダメージが追加される。"
+LocHelpText="オフィサーの近くにいる味方がダメージにボーナスを得る。"
+LocFlyOverText="諸兵科連合"
+LocPromotionPopupText="<Bullet/>オフィサーの指揮範囲内にいる味方全員が対象。攻撃命中時に1ダメージが追加される。<br/><Bullet/>指揮範囲はオフィサーのレベルが上がると広がる。"
+
+[Command X2AbilityTemplate]
+LocFriendlyName="コマンド"
+LocLongDescription="視界内に存在する隊員全員の行動値を1増加させる。使用後はターン終了。使用可能な回数はオフィサーの階級によって異なる。"
+LocHelpText="味方の行動値にボーナスが得られる。"
+LocFlyOverText="コマンド"
+LocPromotionPopupText="<Bullet/>行動値1を消費し、使用者のターンは終了する。<br/><Bullet/>各ミッションに使用可能な回数は、少尉および中尉は1回、大尉および少佐は2回、中佐および大佐は3回、大隊長は4回。<br/><Bullet/>監視中またはほかのターゲットを抑圧中のユニットには使用できない。"
+
+[Infiltrator X2AbilityTemplate]
+LocFriendlyName="インフィルテイター"
+LocLongDescription="オフィサーの所属部隊の潜入時間が短縮される。"
+LocHelpText="オフィサーの所属部隊の潜入時間が短縮される。"
+LocFlyOverText="インフィルテイター"
+LocPromotionPopupText="<Bullet/>このパークを習得済みのオフィサーが所属する部隊は潜入時間が大幅に短縮される。<br/>"
+
+[AirController X2AbilityTemplate]
+LocFriendlyName="航空管制"
+LocLongDescription="撤収時にスカイレンジャーが<Ability:AIR_CONTROLLER_EVAC_TURN_REDUCTION/>ターン早く到着するようになる。"
+LocHelpText="撤収時にスカイレンジャーが2ターン早く到着するようになる。"
+LocFlyOverText="航空管制"
+LocPromotionPopupText="<Bullet/>オフィサーは味方の航空部隊の誘導に長けているため、撤収要請からスカイレンジャーが到着するまでの時間が2ターン短くなる。<br/><Bullet/>ボーナスの有無にかかわらず、スカイレンジャーが到着するまでには一定のターン数が必要。"
+
+[Jammer X2AbilityTemplate]
+LocFriendlyName="増援妨害"
+LocLongDescription="敵の増援の到着を1ターン遅らせる。各ミッションに1回のみ使用可能。"
+LocHelpText="敵の増援の到着を1ターン遅らせる。"
+LocFlyOverText="増援妨害"
+LocPromotionPopupText="<Bullet/>このアビリティを発動させると、敵の増援の到着を1ターン遅らせる。<br/><Bullet/>接近中の増援が確認されていない場合でも、次に接近してくる増援の到着を遅らせることができる。"
+
+[Incoming X2AbilityTemplate]
+LocFriendlyName="インカミング！"
+LocLongDescription="このアビリティを発動させると、次のエイリアン側のターン終了時まで、指揮範囲内の味方全員（士官自身も含む）の対爆発ダメージ耐性+4。"
+LocHelpText="オフィサーおよび周辺の味方の対爆発ダメージ耐性+4。"
+LocFlyOverText="インカミング！"
+LocPromotionPopupText="<Bullet/>このアビリティを発動させると、次のエイリアン側のターン終了時まで、指揮範囲内の味方全員の対爆発ダメージ耐性+4。<br/><Bullet/>行動値は消費しない。<br/><Bullet/>クールダウン：5ターン。<br/><Bullet/>指揮範囲はオフィサーのレベルが上がると広がる。<br/><Bullet/>パニック状態または他のターゲットを抑圧中の味方には効果がない。<br/>"
+
+[Intervention X2AbilityTemplate]
+LocFriendlyName="インターベンション"
+LocLongDescription="このアビリティを発動させると、情報10を消費して、進行中のミッションの制限時間を2ターン延長する。使用時に情報10を消費。使用可能な回数はオフィサーの階級によって異なる。"
+LocHelpText="情報を消費し、ミッションの制限時間を2ターン延長する。"
+LocFlyOverText="インターベンション"
+LocPromotionPopUpText="<Bullet/>このアビリティを発動させると、情報10を消費して、進行中のミッションの制限時間を2ターン延長する。<br/><Bullet/>行動値1を消費。<br/><Bullet/>使用可能な回数はオフィサーの階級によって異なる。<br/><Bullet/>制限時間が存在しないミッションでは効果なし。<br/><Bullet/>情報のコストはイベントによって左右され、情報の現在値が10未満の場合はアビリティ使用不可能。<br/>"
+
+[TrialByFire X2AbilityTemplate]
+LocFriendlyName="厳正なる試練"
+LocLongDescription="このオフィサーと共にミッションに成功した軍曹以下の階級の兵士はミッション後に自動的に昇進する。"
+LocHelpText="このオフィサーと共にミッションに成功した軍曹以下の階級の兵士はミッション後に自動的に昇進する。"
+LocPromotionPopUpText="<Bullet/> この効果は指揮を取るオフィサーがこのアビリティを持っているときにのみ発揮される。ミッションに参加した別のオフィサーに対しては効果を発揮しない。"
+
+;---- END ABILITIES
+
+;---- BEGIN OTS / STAFFSLOT
+
+[OfficerTrainingUnlock X2SoldierUnlockTemplate]
+DisplayName="オフィサー訓練"
+Summary="兵士スロットがアンロックされ、オフィサー訓練を受けられるようになる。"
+
+[OTSOfficerSlot X2StaffSlotTemplate]
+EmptyText="空き：兵士が必要"
+BonusEmptyText="オフィサーのアビリティを訓練する。"
+BonusText="%SKILL訓練"
+FilledText="%UNITNAMEは今、%SKILLの訓練プログラムに参加している！"
+LockedText="ロック中：アップグレードを購入する"
+
+[OTS_LWOfficerTrainingUpgrade X2FacilityUpgradeTemplate]
+DisplayName="士官訓練所"
+FacilityName="士官訓練学校"
+Summary="伍長以上の階級の兵士が特別なリーダーシップ・アビリティを学ぶための施設が増設されます。\n注意：同じ部隊に複数のオフィサーがいる場合、アビリティは最も階級の高いオフィサーしか使用できないため、昇進させる兵士を決める際は注意が必要です。"
+
+[OTS_LWOfficerTrainingUpgrade_SecondSlot X2FacilityUpgradeTemplate]
+DisplayName="士官訓練所"
+FacilityName="士官訓練学校"
+Summary="伍長以上の階級の兵士が特別なリーダーシップ・アビリティを学ぶための施設が増設されます。\n注意：同じ部隊に複数のオフィサーがいる場合、アビリティは最も階級の高いオフィサーしか使用できないため、昇進させる兵士を決める際は注意が必要です。"
+
+[UIPersonnel_LWOfficer]
+m_strTitle="オフィサーとして訓練する兵士"
+EmptyListMessage="候補生なし"
+
+;---- END OTS / STAFFSLOT

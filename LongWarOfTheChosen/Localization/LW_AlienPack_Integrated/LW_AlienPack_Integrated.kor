@@ -1,0 +1,7 @@
+
+[X2Ability_LWAlienAbilities]
+strBayonetChargePenalty="센추리온이 <XGParam:IntValue0/>턴 동안 <XGParam:IntValue1/> 방어 페널티를 받습니다."
+
+[X2Effect_WarCry]
+strWarCryFriendlyDesc="조준과 기동력, 의지 보너스를 받습니다."
+

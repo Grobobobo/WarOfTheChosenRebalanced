@@ -1,0 +1,23 @@
+[XCom_Perfect_Information_X2Action_ApplyWeaponDamageToUnit]
+HIT_CHANCE_MSG ="TRAFIENIE:";
+CRIT_CHANCE_MSG ="TRAF. KRYTYCZNE:";
+DODGE_CHANCE_MSG ="UNIK:";
+MISS_CHANCE_MSG ="PUDŁO:";
+
+GUARANTEED_HIT_MSG ="- GWARANTOWANE TRAFIENIE";
+GUARANTEED_MISS_MSG ="- GWARANTOWANE PUDŁO";
+
+REPEATER_KILL_MSG ="- Automat:";
+
+[XCom_Perfect_Information_UITacticalHUD_ShotWings]
+LOWER_DIFFICULTY_MSG = "NISKI POZ. TRUDNOŚCI";
+MISS_STREAK_MSG = "SERIA CHYBIEŃ";
+SOLDIER_LOST_BONUS = "BONUS ZA UTRATĘ ŻOŁNIERZA";
+
+[XCom_Perfect_Information_UITacticalHUD_SoldierInfoTooltip]
+KILLS_LABEL = "Zabójstwa";
+ASSIST_LABEL = "Asysta";
+FLANKING_CRIT_LABEL = "Traf. kryt. z flanki";
+
+[XCom_Perfect_Information_UIEffectListItem]
+TURNS_REMAINING = "POZOSTAŁO TUR"

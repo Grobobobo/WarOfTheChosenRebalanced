@@ -1,0 +1,33 @@
+[T_Guerilla_Ops_Recover_Item_Central_01 SoundNodeWave]
+SpokenText="I sistemi di ricognizione indicano la presenza di un archivio della ADVENT, contenente file cruciali per la loro ultima operazione. È stato trafugato dalla Resistenza, ma ripreso con forza letale dagli alieni. Abbiamo un'occasione unica per sabotare il loro progetto. Recuperate i dati."
+
+[T_Guerilla_Ops_Recover_Item_Central_02 SoundNodeWave]
+SpokenText="Le forze della Resistenza di questa zona hanno sottratto un archivio della ADVENT, contenente dei file legati all'operazione aliena sulla quale stiamo indagando. Gli alieni hanno contrattaccato, riconquistandolo, riprendendosi i dati e uccidendo tutti i combattenti. Non ci fermeranno. Recuperate i dati."
+
+[T_Guerilla_Ops_Recover_Item_Central_03 SoundNodeWave]
+SpokenText="Una squadra delle Resistenza attiva fuori dall'area ha teso un'imboscata a delle forze ADVENT di passaggio, imbattendosi in un archivio di dati importanti per le operazioni degli alieni. Purtroppo i rinforzi nemici hanno riconquistato la posizione e non abbiamo più notizie dei combattenti. Dobbiamo prendere il controllo dell'area e trovare i dati!"
+
+[T_Guerilla_Ops_Recover_Item_Central_04 SoundNodeWave]
+SpokenText="Un gruppo di combattenti della Resistenza di questa zona ha teso un'imboscata a una pattuglia della ADVENT, scoprendo l'archivio dati che stava trasportando. Contiene informazioni per un progetto alieno sul quale stiamo indagando. Purtroppo, i rinforzi alieni sono arrivati di gran carriera e non abbiamo più notizie della Resistenza. Dobbiamo riprendere il controllo dell'area e recuperare i dati."
+
+[AssaultAlienBase_TacIntro SoundNodeWave]
+SpokenText="Menace 1-5: infiltrarsi e indagare. Aspettatevi resistenza pesante. Neutralizzate tutti i contatti nemici."
+
+[T_AssaultNetworkTower_Central_01 SoundNodeWave]
+SpokenText="Comandante, sarà un attacco su due fronti. Cominceremo dal cuore della torre ADVENT, sabotando la loro rete, ma dovremo muoverci in fretta. Se riusciamo a prendere il controllo dei dati, Shen ha preparato una sorpresina che dovrebbe attirare la loro attenzione. Bloccate tutto, conquistate la zona circostante e rimuovete le forze di sicurezza che proteggono il bersaglio. Se tutto va bene non se ne accorgeranno neanche."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_01 SoundNodeWave]
+SpokenText="Le ricognizioni remote indicano un archivio dati vulnerabile, in una della strutture ADVENT della zona. Da quel che abbiamo capito, contiene dati chiave per l'ultima operazione degli alieni, quindi lo prenderemo con la forza. Prendetene il controllo a tutti i costi."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_02 SoundNodeWave]
+SpokenText="Il dottor Tygan ha seguito i movimenti di un archivio della ADVENT, contenente dati importantissimi per l'ultimo progetto degli alieni. Finalmente è riuscito a localizzarlo in una delle strutture dell'area. Secondo Tygan possiamo recuperarne i contenuti, se eliminiamo le forze che lo proteggono."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_03 SoundNodeWave]
+SpokenText="Abbiamo tracciato la posizione di un archivio ADVENT, in una struttura situata in questa regione. Sembra contenere dati critici per l'ultima operazione degli alieni. Vogliamo mettere le mani su queste informazioni, ma le forze di sicurezza ci renderanno la vita difficile."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_04 SoundNodeWave]
+SpokenText="Uno dei nostri contatti nella Resistenza ci ha segnalato una pattuglia ADVENT con un archivio di dati cruciali per l'ultima operazione degli alieni. Non possiamo rinunciare all'occasione di fermare i loro progressi, quindi dobbiamo conquistare l'archivio."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_05 SoundNodeWave]
+SpokenText="La Resistenza ci segnala che uno dei suoi combattenti ha individuato in zona un archivio ADVENT contenente informazioni importanti per l'ultima operazione degli alieni. Vogliamo ottenerlo e arginare i loro progressi prima che sia troppo tardi."
+

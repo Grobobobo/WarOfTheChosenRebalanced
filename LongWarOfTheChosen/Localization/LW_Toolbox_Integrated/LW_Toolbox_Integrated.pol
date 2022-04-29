@@ -1,0 +1,63 @@
+[UIOptionsPCScreen_LW]
+m_strResetCurrentModOption="RESETUJ AKTUALNY MOD"
+
+[XComGameState_LWToolboxOptions]
+ToolboxTabName="KAMPANIA"
+
+HelpButtonLabel="Przydatne informacje"
+HelpButtonLabelText="Pomoc"
+HelpButtonLabelTooltip="Pokaż informacje o LW Toolbox"
+
+SetCameraRotation="Ustalenie obrotu kamery (w stopniach)"
+SetCameraRotationTooltip="Wybór kąta obrotu kamery w misjach taktycznych."
+
+SelectSquadSize="Domyślny rozmiar drużyny"
+SelectSquadSizeTooltip="Zwiększa domyślny rozmiar drużyny (przed zastosowaniem premii szkoły działań partyzanckich)."
+
+EnableRandomizedDamageMod="Ruletka obrażeń"
+EnableRandomizedDamageModTooltip="Obrażenia zadawane przez broń żołnierzom XCOM i wrogowi będą różnić się od podstawowych obrażeń o wybraną liczbę."
+
+EnableRandomizedInitialStatsMod="Nie wszyscy są równi"
+EnableRandomizedInitialStatsModTooltip="Żołnierze będą mieć losowo dobrane statystyki podstawowe, bliskie wyznaczonemu poziomowi. Po wyłączeniu tej opcji wrócą do wartości domyślnych. Tę opcję można włączyć w Avengerze albo podczas pierwszej tury misji taktycznych, ale tylko jeżeli nikt nie został ranny."
+sCantChangeWithWoundedSoldiers="Nie można zmienić stanu opcji \"nie wszyscy są równi\", jeśli któryś z żołnierzy XCOM odniósł rany lub dobiegła końca pierwsza tura misji taktycznej."
+NormalDamage="Wył."
+MaxDamage="MAKS."
+
+EnableRandomizedLevelupStatsMod="Ukryty potencjał"
+EnableRandomizedLevelupStatsModTooltip="Po awansowaniu na kolejne poziomy statystyki żołnierzy będą rosnąć losowo."
+
+RandomizedLevelupStrength="Losowość: <XGParam:IntValue0>%"
+RandomizedLevelupStrengthTooltip="Poziom losowości po uruchomieniu opcji ukrytego potencjału. Wyższa wartość oznacza, że po awansie żołnierze będą mieć szerszy zakres wzrostu statystyk."
+
+EnableRedFogMod="Czerwona mgła"
+EnableRedFogModTooltip="Ranne jednostki otrzymają kary do celności, woli, mobilności i umiejętności hakowania."
+EnableRedFogLinearPenaltiesMod="Zastosowanie liniowych kar za czerwoną mgłę (zamiast kwadratowych)"
+EnableRedFogModLinearPenaltiesTooltip="Lekko ranne jednostki będą mieć większe kary do statystyk."
+RedFogOptions[0]="Wył."
+RedFogOptions[1]="Tylko XCOM"
+RedFogOptions[2]="Tylko obcy"
+RedFogOptions[3]="Wszyscy"
+
+EnableSimCombatMod="Zgoda na automatyczne rozstrzygnięcie walki"
+EnableSimCombatModTooltip="Włącza w menu wyboru drużyny opcję automatycznego rozstrzygania walk aktualnie wybranej drużyny. Nie jest ona kompatybilna z częścią oficjalnej zawartości do pobrania, dlatego wymaga włączenia konsoli usuwania błędów (debug) i użycia komendy \"LWSetAutoResolveEnabled true\". Zaleca się, aby tylko moderzy używali tego narzędzia."
+
+[X2Effect_RedFog_LW]
+RedFogEffectName="Czerwona mgła"
+RedFogEffectDesc="Zmniejsza statystyki w zależności od odniesionych ran."
+
+[UISquadSelect_LW]
+m_strStripWeapons="UDOSTĘPNIJ BROŃ"
+m_strStripWeaponsConfirm="POTWIERDŹ UDOSTĘPNIENIE BRONI"
+
+m_strStripWeaponsConfirmDesc="Zatwierdź usunięcie broni wszystkich żołnierzy, których nie wybrano do aktualnej misji. Ten sprzęt natychmiast stanie się dostępny dla każdego żołnierza."
+m_strTooltipStripWeapons="Usuń całe uzbrojenie każdego żołnierza, którego nie wybrano do aktualnej misji."
+
+m_strTooltipNeedsFrontRowSoldier=""
+m_strClearSquad="WYCZYŚĆ DRUŻYNĘ"
+m_strTooltipClearSquad="Usunięcie wszystkich żołnierzy z drużyny."
+
+m_strAutofillSquad="UZUPEŁNIENIE DRUŻYNY"
+m_strTooltipAutofillSquad="Automatyczne uzupełnienie pustych miejsc w drużynie."
+
+m_strSimCombat="AUTOROZSTRZYGNIĘCIE"
+m_strTooltipSimCombat="Automatyczne rozstrzygnięcie bitwy."

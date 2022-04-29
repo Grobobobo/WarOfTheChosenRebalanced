@@ -1,0 +1,36 @@
+[AssaultRifle_LS X2WeaponTemplate]
+FriendlyName="Fusil laser"
+FriendlyNamePlural="Fusils laser"
+BriefSummary="Le fusil laser émet des jets de lumière qui détruisent les liaisons chimiques des cibles en quelques microsecondes."
+TacticalText="<Bullet/> Sans entraînement spécial préalable, un tir avec son arme principale met toujours fin au tour d'un soldat.\n<Bullet/> Utilisez les améliorations récupérées sur les ennemis d'ADVENT pour augmenter l'efficacité tactique du fusil laser.\n<Bullet/> Si ces armes produisent autant d'énergie, c'est parce que nous avons su intégrer une technologie extraterrestre à des armes laser datant d'avant la guerre.\n<Bullet/> Les armes laser disposent d'un bonus de visée."
+AbilityDescName="fusil d'assaut"
+
+[SMG_LS X2WeaponTemplate]
+FriendlyName="Pistolet-mitrailleur laser"
+FriendlyNamePlural="Pistolets-mitrailleurs laser"
+BriefSummary="Une version plus légère du fusil laser, qui remplit un rôle proche de celui du pistolet-mitrailleur troquant la puissance, les munitions et la précision à distance contre un camouflage et une mobilité accrus pour son porteur."
+; LWOTC translated
+TacticalText="<Bullet/> Un tir avec son arme principale met toujours fin au tour d'un soldat. \n<Bullet/> Utilisez les améliorations récupérées sur les ennemis d'ADVENT pour augmenter l'efficacité tactique du pistolet-mitrailleur. \n<Bullet/> Les armes semblables au pistolet-mitrailleur offrent plus de mobilité, de précision en combat rapproché et de camouflage par rapport aux fusils d'assaut, mais font moins de dégâts et sont moins précises à longue portée.\n<Bullet/> Les armes laser disposent d'un bonus de visée."
+; LWOTC translated
+AbilityDescName="Mitraillette"
+
+[Cannon_LS X2WeaponTemplate]
+FriendlyName="Canon laser"
+FriendlyNamePlural="Canons laser"
+BriefSummary="La technologie des armes laser, combinée à un meilleur système de refroidissement, nous permettra de déployer un canon disposant d'une cadence de tir élevée, pour des tirs plus rapides et bien plus redoutables."
+TacticalText="<Bullet/> Le canon laser est une version bien plus puissante mais tout aussi déployable du canon conventionnel.\n<Bullet/> Utilisez les améliorations récupérées sur les ennemis pour augmenter l'efficacité tactique du canon laser.\n<Bullet/> Les armes laser disposent d'un bonus de visée."
+AbilityDescName="canon"
+
+[Shotgun_LS X2WeaponTemplate]
+FriendlyName="Laser à dispersion"
+FriendlyNamePlural="Laser à dispersion"
+BriefSummary="Le laser à dispersion est une application de notre technologie laser imitant l'effet d'un fusil à pompe. Il est plus efficace à courte portée à cause de la diffusion du rayon."
+TacticalText="<Bullet/> Les fusils à pompe sont très efficaces à courte portée, mais leur précision diminue considérablement avec l'éloignement.\n<Bullet/> Utilisez les améliorations récupérées sur les ennemis pour augmenter l'efficacité tactique du laser à dispersion.\n<Bullet/> Les armes laser disposent d'un bonus de visée."
+AbilityDescName="fusil à pompe"
+
+[SniperRifle_LS X2WeaponTemplate]
+FriendlyName="Lance laser"
+FriendlyNamePlural="Lances laser"
+BriefSummary="Version allongée du fusil laser, la lance laser intègre des condensateurs énergétiques supérieurs, ce qui en fait une arme laser très précise à longue portée."
+TacticalText="Tirer au fusil de précision consommera toujours deux actions.\n<Bullet/> Le fusil de précision est moins précis à courte portée, mais redoutable à distance.\n<Bullet/> Utilisez les améliorations récupérées sur les ennemis pour augmenter l'efficacité tactique de la lance à laser.\n<Bullet/> Les armes laser disposent d'un bonus de visée."
+AbilityDescName="fusil de précision"

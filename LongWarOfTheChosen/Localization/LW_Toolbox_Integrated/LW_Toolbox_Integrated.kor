@@ -1,0 +1,63 @@
+[UIOptionsPCScreen_LW]
+m_strResetCurrentModOption="기본 모드 설정으로 되돌리기"
+
+[XComGameState_LWToolboxOptions]
+ToolboxTabName="캠페인"
+
+HelpButtonLabel="Toolbox 정보"
+HelpButtonLabelText="도움말"
+HelpButtonLabelTooltip="Toolbox에 관한 세부 정보를 확인할 수 있습니다."
+
+SetCameraRotation="카메라 회전 설정 (각도)"
+SetCameraRotationTooltip="전술 임무 중 카메라의 회전 각도를 설정합니다."
+
+SelectSquadSize="기본 분대 규모"
+SelectSquadSizeTooltip="기본 분대 규모를 증가시킵니다. (게릴라 전술 학교 보너스를 얻기 전)"
+
+EnableRandomizedDamageMod="대미지 룰렛"
+EnableRandomizedDamageModTooltip="XCOM과 적의 무기 대미지 변동 폭이 선택한 양만큼 늘어납니다."
+
+EnableRandomizedInitialStatsMod="개성 중시"
+EnableRandomizedInitialStatsModTooltip="병사들은 기준치를 기반으로 변동하는 무작위 기본 능력치를 부여받습니다. 이 옵션을 비활성화하면 능력치는 기본값으로 재설정됩니다. 이 옵션은 어벤져 내에서, 혹은 전술 임무의 첫 번째 턴(부상자가 발생하지 않은 경우만 해당)에서만 활성화 또는 비활성화할 수 있습니다."
+sCantChangeWithWoundedSoldiers="XCOM 병사가 부상을 당하거나 전술 임무의 첫번째 턴이 끝난 후에는 개성 중시옵션을 켜고 끌수 없습니다."
+NormalDamage="끄기"
+MaxDamage="최대"
+
+EnableRandomizedLevelupStatsMod="잠재력"
+EnableRandomizedLevelupStatsModTooltip="병사들이 진급할 때 능력치가 무작위로 증가합니다."
+
+RandomizedLevelupStrength="무작위: <XGParam:IntValue0>%"
+RandomizedLevelupStrengthTooltip="잠재력 옵션 활성화 시 적용되는 무작위의 정도입니다. 수치가 높을수록 병사 레벨업 시 능력치 증가 폭이 큽니다."
+
+EnableRedFogMod="피바람"
+EnableRedFogModTooltip="부상한 유닛은 조준, 의지, 기동력 그리고 해킹 능력에 페널티를 받습니다."
+EnableRedFogLinearPenaltiesMod="직선형 피바람 페널티 사용하기 (곡선형 패널티 대신)"
+EnableRedFogModLinearPenaltiesTooltip="유닛은 가벼운 부상에도 더 큰 능력치 페널티를 받게 됩니다."
+RedFogOptions[0]="끄기"
+RedFogOptions[1]="XCOM만"
+RedFogOptions[2]="외계인만"
+RedFogOptions[3]="모두"
+
+EnableSimCombatMod="자동 미션 수행 사용"
+EnableSimCombatModTooltip="현재 선택된 분대가 자동으로 전투 임무를 수행할 수 있는 옵션이 분대 선택 화면에 추가됩니다. 여타 공식 DLC판들과는 다르게 사용 가능한 디버그 콘솔 보유가 요구되며, 메뉴 옵션을 활성화시키기 위하여 콘솔 명령어 LWSetAutoResolveEnabled를 트루 값으로 사용하여야 합니다. 모드 고급사용자에 한해서 이 디버깅 툴을 사용하시기를 권장합니다."
+
+[X2Effect_RedFog_LW]
+RedFogEffectName="피바람"
+RedFogEffectDesc="입은 부상에 비례해 능력치가 감소합니다."
+
+[UISquadSelect_LW]
+m_strStripWeapons="무기 해제"
+m_strStripWeaponsConfirm="무기 해제 확인"
+
+m_strStripWeaponsConfirmDesc="현재 임무 수행에 선택되지 않은 모든 병사의 무기 해제를 수락합니다. 해당 장비들은 즉시 다른 병사가 착용 가능한 상태가 됩니다."
+m_strTooltipStripWeapons="현재 임무 수행에 선택되지 않은 모든 병사의 모든 무기를 모두 제거합니다."
+
+m_strTooltipNeedsFrontRowSoldier=""
+m_strClearSquad="분대 비우기"
+m_strTooltipClearSquad="분대의 모든 병사를 제거합니다."
+
+m_strAutofillSquad="분대 자동 선발"
+m_strTooltipAutofillSquad="분대의 빈자리를 자동으로 채웁니다."
+
+m_strSimCombat="자동 미션 수행"
+m_strTooltipSimCombat="자동으로 미션을 수행합니다."

@@ -1,0 +1,428 @@
+[XComMultiplayerTacticalUI]
+MutonM2_LW="<Bullet/> Il Muton Centurion fa tutto quello che fanno i Muton, ma ha anche un grido di battaglia che migliora le abilità di alcuni alleati e carica con la sua baionetta i nemici a portata di scatto.\n<Bullet/> A differenza dei Muton dell'era dell'invasione, questi nuovi Muton ibridi sono molto efficaci nel combattimento ravvicinato\n<Bullet/> L'abilità Contrattacco permette di eseguire un attacco di ritorno a chiunque li attacchi in mischia\n<Bullet/> Possono anche usare Esecuzione sui nemici tramortiti; non lasciare mai che un Muton nemico si avvicini alle tue unità stordite\n<Bullet/> Possono anche usare Soppressione con i fucili e la loro armatura da battaglia fornisce una protezione affidabile"
+MutonM3_LW="<Bullet/>"
+
+DroneM1="<Bullet/>Il drone guardiano è un'unità di ricognizione economica, progettata principalmente per il controllo dei civili."
+
+[CorpseDrone X2ItemTemplate]
+FriendlyName="Rottame di drone"
+FriendlyNamePlural="Rottami di drone"
+BriefSummary="Il rottame di questo hovercraft di sicurezza leggero e autonomo svela una macchina progettata principalmente per il monitoraggio dei civili e il controllo delle folle."
+
+[CorpseMutonElite X2ItemTemplate]
+FriendlyName="Cadavere di Muton d'élite"
+FriendlyNamePlural="Cadaveri di Muton d'élite"
+BriefSummary="Questi alieni siedono in cima alla gerarchia interna dei Muton. Diversamente dai Centurion, hanno ricevuto importanti modifiche genetiche in confronto ai Muton standard che abbiamo incontrato."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; NEW ABILITIES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[WarCry X2AbilityTemplate]
+LocFriendlyName="Grido di battaglia"
+LocLongDescription="Conferisci un bonus ingente a Mira, Volontà e Mobilità degli altri Muton e bonus minori agli altri alieni senzienti e alle unità ADVENT. 6 turni di ricarica."
+LocHelpText="Conferisce bonus agli altri Muton e ad alcuni altri alieni."
+LocFlyOverText="Grido di battaglia"
+LocPromotionPopupText="<Bullet/> Conferisci un bonus ingente a Mira, Volontà e Mobilità degli altri Muton e bonus minori agli altri alieni senzienti e alle unità ADVENT.<br/><Bullet/>6 turni di ricarica.<br/>"
+
+[BayonetCharge X2AbilityTemplate]
+LocFriendlyName="Carica con baionetta"
+LocLongDescription="Permette un attacco in mischia in un qualunque punto a portata di scatto. Quattro turni di ricarica."
+LocHelpText="Permette un attacco in mischia in un qualunque punto a portata di scatto."
+LocFlyOverText="Carica con baionetta"
+LocPromotionPopupText="<Bullet/> Permette un attacco in mischia in un qualunque punto a portata di scatto.<br/><Bullet/> 4 turni di ricarica.<br/>"
+
+[Beastmaster_LW X2AbilityTemplate]
+LocFriendlyName="Domatore"
+LocLongDescription="Immune ai danni delle Berserker."
+LocHelpText="Immune ai danni delle Berserker."
+LocFlyOverText="Domatore"
+LocPromotionPopupText="<Bullet/> Immune ai danni dei Berserker.<br/>"
+
+[MassMindSpin X2AbilityTemplate]
+LocFriendlyName="Roulette mentale di massa"
+LocFlyOverText="Roulette mentale di massa"
+LocLongDescription="Esegue un attacco Roulette mentale su più bersagli all'interno di un cono."
+LocHelpText="Lancia un attacco psionico debilitante a più bersagli, in grado di infliggere varie condizioni negative, tra cui il controllo mentale."
+LocPromotionPopupText="<Bullet/> Lancia un attacco psionico debilitante a più bersagli, in grado di infliggere varie condizioni negative, tra cui il controllo mentale."
+LocMissMessage="Roulette mentale respinta!"
+
+[LWDroneShock X2AbilityTemplate]
+LocFriendlyName="Drone d'assalto"
+LocLongDescription="Progettata per sedare i civili, questo effetto arma infligge danni minimi, limitandosi a disorientare."
+LocHelpText="Quest'arma infligge danni minimi e indebolisce il bersaglio."
+LocFlyOverText="Drone d'assalto"
+LocPromotionPopupText="<Bullet/> Progettata per sedare i civili, questo effetto arma infligge danni minimi, limitandosi a disorientare il bersaglio. <br/>"
+
+[LWDroneRepair X2AbilityTemplate]
+LocFriendlyName="Ripara"
+LocFlyOverText="Ripara"
+LocHelpText="Ripara un'unità meccanica nelle vicinanze."
+LocLongDescription="Ripara un'unità meccanica nelle vicinanze."
+LocPromotionPopupText="<Bullet/> Ripara un'unità meccanica nelle vicinanze."
+
+[LWDroneMeleeStun X2AbilityTemplate]
+LocFriendlyName="Stordente"
+LocFlyOverText="Stordente"
+LocHelpText="Tenta di stordire un nemico a portata di mischia."
+LocLongDescription="Tenta di stordire un nemico a portata di mischia."
+LocPromotionPopupText="<Bullet/> Tenta di stordire un nemico a portata di mischia."
+LocMissMessage="Mancato!"
+
+[PersonalShield X2AbilityTemplate]
+LocFriendlyName="Scudo personale"
+LocFlyOverText="Scudo personale"
+LocHelpText="Conferisce 5 punti di armatura ablativa. 5 turni di ricarica."
+LocLongDescription="Conferisce 5 punti di armatura ablativa. 5 turni di ricarica."
+LocPromotionPopupText="<Bullet/> Conferisce 5 punti di armatura ablativa.<br/><Bullet/> 5 turni di ricarica.<br/><Bullet/> Usa un'azione. Non conclude il turno.<br/>"
+
+[MassReanimation_LW X2AbilityTemplate]
+LocFriendlyName="Rianimazione di massa"
+LocFlyOverText="Rianimazione di massa"
+LocHelpText="Rianima tutte le creature organiche morte nelle vicinanze, trasformandole in zombi."
+LocLongDescription="Rianima tutte le creature organiche morte nelle vicinanze, trasformandole in zombi."
+LocPromotionPopupText="<Bullet/> Rianima tutte le creature organiche morte nelle vicinanze, trasformandole in zombi."
+
+[ReadyForAnything X2AbilityTemplate]
+LocFriendlyName="Pronto a tutto"
+LocFlyOverText="Guardia: Pronto a tutto"
+LocHelpText="Entra in Guardia dopo aver sparato un Colpo normale con l'arma primaria."
+LocLongDescription="Entra in Guardia dopo aver sparato un Colpo normale con l'arma primaria."
+LocPromotionPopupText="<Bullet/> Entra in Guardia dopo aver sparato un Colpo normale con l'arma primaria."
+
+[ReadyForAnythingFlyover X2AbilityTemplate]
+LocFriendlyName="Pronto a tutto"
+LocFlyOverText="Guardia: Pronto a tutto"
+LocHelpText="Entra in Guardia dopo aver sparato un Colpo normale con l'arma primaria."
+LocLongDescription="Entra in Guardia dopo aver sparato un Colpo normale con l'arma primaria."
+LocPromotionPopupText="<Bullet/> Entra in Guardia dopo aver sparato un Colpo normale con l'arma primaria."
+
+[RepairServos X2AbilityTemplate]
+LocFriendlyName="Controllo dei danni"
+LocFlyOverText="Controllo dei danni"
+LocLongDescription="Dopo aver subito danni, ottieni due punti di armatura fino alla fine del prossimo turno."
+LocHelpText="Dopo aver subito danni, ottieni due punti di armatura fino alla fine del prossimo turno."
+LocPromotionPopupText="<Bullet/> La tua armatura si indurisce momentaneamente dopo un impatto. Dopo aver subito danni, ottieni due punti di armatura fino alla fine del prossimo turno.<br/><Bullet/> Subire colpi multipli nei turni successivi estende il timer.<br/>"
+
+[RepairServosPassive X2AbilityTemplate]
+LocFriendlyName="Controllo dei danni"
+LocFlyOverText="Controllo dei danni"
+LocLongDescription="Dopo aver subito danni, ottieni due punti di armatura fino alla fine del prossimo turno."
+LocHelpText="Dopo aver subito danni, ottieni due punti di armatura fino alla fine del prossimo turno."
+LocPromotionPopupText="<Bullet/> Dopo aver subito danni, ottieni due punti di armatura fino alla fine del prossimo turno.<br/><Bullet/> Subire colpi multipli nei turni successivi estende il timer.<br/>"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; MutonM2_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[X2Ability_MutonM2_Abilities]
+strBayonetChargePenalty="Il Centurion soffre di <XGParam:IntValue1/> Difesa per <XGParam:IntValue0/> turni."
+
+[MutonM2_LW X2CharacterTemplate]
+strCharacterName="Muton Centurion"
+
+[MutonM2_LW_Wpn X2WeaponTemplate]
+FriendlyName="Fucile Centurion"
+BriefSummary="Gli XCOM sono riusciti a recuperare una serie di armi da fanteria. Parliamo delle più comuni, simili ai fucili usati vent'anni fa. Pur essendo nettamente inferiori alle tecnologie magnetiche della ADVENT, le armi possono essere potenziate con pezzi di recupero aggiuntivi, una volta capito l'approccio tecnico."
+TacticalText="<Bullet/> Sparare con l'arma primaria conclude sempre il turno del soldato.\n<Bullet/> Se il soldato spara con entrambe le azioni disponibili, verranno sparati tre colpi, con precisione ridotta ma con l'efficacia globale aumentata.\n<Bullet/> Usa i potenziamenti recuperati dai nemici per migliorare l'efficacia tattica del fucile d'assalto."
+
+[MutonM2_LWGrenade X2GrenadeTemplate]
+FriendlyName="Granata aliena"
+FriendlyNamePlural="Granate aliene"
+BriefSummary="Ogni Muton Centurion ha una granata al plasma ad alti danni."
+TacticalText="<Bullet/> Una singola granata ad alti danni."
+ThrownAbilityName="Lancia granata aliena"
+ThrownAbilityHelpText="Lancia una granata aliena nell'area bersaglio."
+LaunchedAbilityName="Spara granata aliena"
+LaunchedAbilityHelpText="Spara una granata aliena nell'area bersaglio. Riduce l'armatura."
+
+[MutonM2_LW_MeleeAttack X2WeaponTemplate]
+FriendlyName="Baionetta"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; MutonM3_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[MutonM3_LW X2CharacterTemplate]
+strCharacterName="Muton d'élite"
+
+[MutonM3_LW_Wpn X2WeaponTemplate]
+FriendlyName="Cannone al plasma d'élite"
+
+[MutonM3_LWGrenade X2GrenadeTemplate]
+FriendlyName="Granata aliena"
+FriendlyNamePlural="Granate aliene"
+BriefSummary="Ogni Muton d'élite ha una granata al plasma ad alti danni."
+TacticalText="<Bullet/> Una singola granata ad alti danni."
+ThrownAbilityName="Lancia granata aliena"
+ThrownAbilityHelpText="Lancia una granata aliena nell'area bersaglio."
+LaunchedAbilityName="Spara granata aliena"
+LaunchedAbilityHelpText="Spara una granata aliena nell'area bersaglio. Riduce l'armatura."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Naja ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[NajaM1 X2CharacterTemplate]
+strCharacterName="Naja"
+
+[NajaM2 X2CharacterTemplate]
+strCharacterName="Serpens Naja"
+
+[NajaM3 X2CharacterTemplate]
+strCharacterName="Naja d'élite"
+
+[NajaM1_WPN X2WeaponTemplate]
+FriendlyName="Fucile di precisione Naja"
+
+[NajaM2_WPN X2WeaponTemplate]
+FriendlyName="Fucile di precisione Naja"
+
+[NajaM3_WPN X2WeaponTemplate]
+FriendlyName="Fucile di precisione Naja"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Sidewinder ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[SidewinderM1 X2CharacterTemplate]
+strCharacterName="Sidewinder"
+
+[SidewinderM2 X2CharacterTemplate]
+strCharacterName="Sidewinder Serpens"
+
+[SidewinderM3 X2CharacterTemplate]
+strCharacterName="Sidewinder d'élite"
+
+[SidewinderM1_WPN X2WeaponTemplate]
+FriendlyName="Scramgun Sidewinder"
+
+[SidewinderM2_WPN X2WeaponTemplate]
+FriendlyName="Scramgun Sidewinder"
+
+[SidewinderM3_WPN X2WeaponTemplate]
+FriendlyName="Scramgun Sidewinder"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Viper ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ViperM2_LW X2CharacterTemplate]
+strCharacterName="Serpens Vipera"
+
+[ViperM3_LW X2CharacterTemplate]
+strCharacterName="Vipera d'élite"
+
+[ViperM2_LW_WPN X2WeaponTemplate]
+FriendlyName="Fucile energetico"
+
+[ViperM3_LW_WPN X2WeaponTemplate]
+FriendlyName="Fucile energetico"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; ArchonM2_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ArchonM2_LW X2CharacterTemplate]
+strCharacterName="Archon superiore"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; SectoidM2_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[SectoidM2_LW X2CharacterTemplate]
+strCharacterName="Sectoide comandante"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvGunnerM1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvGunnerM1 X2CharacterTemplate]
+strCharacterName="Mitragliere ADVENT"
+
+[AdvGunnerM1_WPN X2WeaponTemplate]
+FriendlyName="Fucile automatico magnetico"
+
+[AdvGunnerM2 X2CharacterTemplate]
+strCharacterName="Mitragliere pesante ADVENT"
+
+[AdvGunnerM2_WPN X2WeaponTemplate]
+FriendlyName="Fucile automatico magnetico"
+
+[AdvGunnerM3 X2CharacterTemplate]
+strCharacterName="Mitragliere d'élite ADVENT"
+
+[AdvGunnerM3_WPN X2WeaponTemplate]
+FriendlyName="Fucile automatico magnetico"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvSentryM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvSentryM1 X2CharacterTemplate]
+strCharacterName="Guardia ADVENT"
+
+[AdvSentryM1_WPN X2WeaponTemplate]
+FriendlyName="Fucile magnetico ADVENT"
+
+[AdvSentryM2 X2CharacterTemplate]
+strCharacterName="Guardiano ADVENT"
+
+[AdvSentryM2_WPN X2WeaponTemplate]
+FriendlyName="Fucile magnetico ADVENT"
+
+[AdvSentryM3 X2CharacterTemplate]
+strCharacterName="Sentinella ADVENT"
+
+[AdvSentryM3_WPN X2WeaponTemplate]
+FriendlyName="Fucile magnetico ADVENT"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvGrenadierM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvGrenadierM1 X2CharacterTemplate]
+strCharacterName="Ingegnere ADVENT"
+
+[AdvGrenadierM1_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="Lanciagranate ADVENT"
+
+[AdvGrenadierM2 X2CharacterTemplate]
+strCharacterName="Granatiere ADVENT"
+
+[AdvGrenadierM2_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="Lanciagranate ADVENT"
+
+[AdvGrenadierM3 X2CharacterTemplate]
+strCharacterName="Granatiere pesante ADVENT"
+
+[AdvGrenadierM3_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="Lanciagranate ADVENT"
+
+[AdvGrenadierFlashbangGrenade X2GrenadeTemplate]
+FriendlyName="Granata flashbang"
+FriendlyNamePlural="Granate flashbang"
+BriefSummary="La granata flashbang sabota e disorienta i nemici in un raggio molto ampio, infliggendo pesanti penalità offensive."
+TacticalText="<Bullet/> Le granate flashbang non infliggono danni, ma disorientano e sabotano i nemici in un ampio raggio.<br><Bullet/> I compagni di squadra alleati non subiscono l'effetto."
+ThrownAbilityName="Lancia granata flashbang"
+ThrownAbilityHelpText="Disorienta tutti i bersagli nemici nell'area colpita."
+LaunchedAbilityname="Spara granata flashbang"
+LaunchedAbilityHelpText="Disorienta tutti i bersagli nemici nell'area colpita."
+
+[AdvGrenadierFireGrenade X2GrenadeTemplate]
+FriendlyName="Granata incendiaria"
+FriendlyNamePlural="Granate incendiarie"
+BriefSummary="La granata incendiaria rappresenta un avanzamento tecnico rispetto alle armi incendiarie costruite dalla Resistenza in questi anni. Dopo lo scoppio iniziale, buona parte dei bersagli prende fuoco e subisce danni persistenti da ustione."
+TacticalText="<Bullet/> Le granate incendiarie danneggiano tutte le unità a portata, applicando l'effetto \"In fiamme\" alle unità vulnerabili alle fiamme.\n<Bullet/> Le granate incendiarie infliggono più danni da scoppio delle altre granate.\n<Bullet/> Alcuni nemici, in particolar modo quelli metallici, sono immuni al fuoco e non subiscono l'effetto \"In fiamme\"."
+ThrownAbilityName="Lancia granata incendiaria"
+ThrownAbilityHelpText="Dà fuoco all'area bersaglio e alle unità colpite."
+LaunchedAbilityname="Spara granata incendiaria"
+LaunchedAbilityHelpText="Dà fuoco all'area bersaglio e alle unità colpite."
+
+[AdvGrenadierAcidGrenade X2GrenadeTemplate]
+FriendlyName="Granata acida"
+FriendlyNamePlural="Granate acide"
+BriefSummary="L'aggiunta di un agente chimico corrosivo alle nostre granate standard le trasforma in agenti esplosivi, molto efficaci per rimuovere le armature nemiche. I bersagli continueranno a subire danni persistenti, perché l'acido attacca e continua a corrodere tutte le superfici che tocca."
+TacticalText="<Bullet/> Le granate acide danneggiano le armature più delle granate standard.<br><Bullet/> I nemici bruciati dall'acido subiscono danni aggiuntivi nell'arco di più turni."
+ThrownAbilityName="Lancia granata acida"
+ThrownAbilityHelpText="Crea pozze di acido che danneggiano le unità."
+LaunchedAbilityname="Spara granata acida"
+LaunchedAbilityHelpText="Crea pozze di acido che danneggiano le unità."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvRocketeerM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvRocketeerM1 X2CharacterTemplate]
+strCharacterName="Artigliere ADVENT"
+
+[AdvRocketeerM2 X2CharacterTemplate]
+strCharacterName="Artigliere pesante ADVENT"
+
+[AdvRocketeerM3 X2CharacterTemplate]
+strCharacterName="Artigliere d'élite ADVENT"
+
+[AdvRocketeerM1_RocketLauncher X2WeaponTemplate]
+FriendlyName="Lanciarazzi ADVENT"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecM3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMec_M3_LW X2CharacterTemplate]
+strCharacterName="MEC super pesante"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; DroneM1-2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[LWDroneM1 X2CharacterTemplate]
+strCharacterName="Drone di sorveglianza ADVENT"
+
+[LWDroneM2 X2CharacterTemplate]
+strCharacterName="Drone da caccia ADVENT"
+
+[LWDroneM1_WPN X2WeaponTemplate]
+FriendlyName="Drone d'assalto"
+
+[LWDroneM2_WPN X2WeaponTemplate]
+FriendlyName="Drone elettroshock"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecArcherM1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMECArcherM1 X2CharacterTemplate]
+strCharacterName="MEC Arciere"
+
+[AdvMECArcher_WPN X2WeaponTemplate]
+FriendlyName="MiniMag MEC"
+
+[AdvMECArcher_Shoulder_WPN X2WeaponTemplate]
+FriendlyName="Artiglieria con razzi"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecArcherM2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMECArcherM2 X2CharacterTemplate]
+strCharacterName="MEC balestriere"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Chryssalid Soldier ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ChryssalidSoldier X2CharacterTemplate]
+strCharacterName="Crisalide guerriera"
+
+[ChryssalidSoldierSlash X2AbilityTemplate]
+LocFriendlyName="Fendente soldato Crisalide"
+LocLongDescription="I tuoi attacchi Fendente infliggono molti danni."
+LocHelpText="I tuoi attacchi Fendente infliggono molti danni."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Hive Queen ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[HiveQueen X2CharacterTemplate]
+strCharacterName="Regina dell'alveare"
+
+[HiveQueenSlash X2AbilityTemplate]
+LocFriendlyName="Fendente potente Crisalide"
+LocLongDescription="I tuoi attacchi Fendente infliggono molti danni."
+LocHelpText="I tuoi attacchi Fendente infliggono molti danni."
+
+;;;;;;;;;;;;;;;;;;;;;;;;; Additional ADVENT Trooper types ;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvSergeantM1 X2CharacterTemplate]
+strCharacterName="Sergente ADVENT"
+
+[AdvSergeantM1_WPN X2WeaponTemplate]
+FriendlyName="Fucile magnetico ADVENT"
+
+[AdvSergeantM2 X2CharacterTemplate]
+strCharacterName="Primo sergente ADVENT"
+
+[AdvSergeantM2_WPN X2WeaponTemplate]
+FriendlyName="Fucile magnetico ADVENT"
+
+[AdvShockTroop X2CharacterTemplate]
+strCharacterName="Soldato d'assalto ADVENT"
+
+[AdvShockTroop_WPN X2WeaponTemplate]
+FriendlyName="Fucile magnetico ADVENT"
+
+[AdvCommando X2CharacterTemplate]
+strCharacterName="Commando ADVENT"
+
+[AdvCommando_WPN X2WeaponTemplate]
+FriendlyName="Fucile magnetico ADVENT"
+
+[AdvVanguard X2CharacterTemplate]
+strCharacterName="Avanguardia ADVENT"
+
+[AdvVanguard_WPN X2WeaponTemplate]
+FriendlyName="Fucile magnetico ADVENT"
+
+[AdvScout X2CharacterTemplate]
+strCharacterName="Esploratore ADVENT"
+
+[AdvScout_WPN X2WeaponTemplate]
+FriendlyName="Fucile magnetico ADVENT"
+
+[AdvGeneralM1_LW X2CharacterTemplate]
+strCharacterName="Generale ADVENT"
+
+[AdvGeneralM1_LW_WPN X2WeaponTemplate]
+FriendlyName="Fucile magnetico ADVENT"
+
+[AdvGeneralM2_LW X2CharacterTemplate]
+strCharacterName="Generale ADVENT"
+
+[AdvGeneralM2_LW_WPN X2WeaponTemplate]
+FriendlyName="Fucile magnetico ADVENT"

@@ -1,0 +1,428 @@
+[XComMultiplayerTacticalUI]
+MutonM2_LW="<Bullet/>ミュートン・センチュリオンは通常のミュートンと同じことができるのはもちろん、ウォークライによって近くの味方の能力を強化したり、ダッシュ距離内の敵に銃剣で突撃したりすることができる。\n<Bullet/>侵略戦争時のミュートンとは異なり、この新たな強化型ミュートンは接近戦を得意としている。\n<Bullet/>カウンター攻撃アビリティにより、近接攻撃を仕掛けてきた相手に反撃することも可能。\n<Bullet/>近くにいる行動不能の敵を'処刑'することもできるので、このミュートンをスタン状態のユニットに近寄らせてはならない。\n<Bullet/>ミュートン・センチュリオンは、ライフルを使って敵を制圧することもできる。また、着用しているバトルアーマーによってその防御力は常に高められている。"
+MutonM3_LW="<Bullet/>"
+
+DroneM1="<Bullet/>ガーディアン・ドローンは安価な偵察用ユニットであり、主として民間人の群衆をコントロールするために用いられる。"
+
+[CorpseDrone X2ItemTemplate]
+FriendlyName="ドローンの残骸"
+FriendlyNamePlural="ドローンの残骸"
+BriefSummary="自律型セキュリティホバークラフトの残骸。軽量級モデルのものであり、主に民間人の監視や群衆の制御のために使われていたと思われる。"
+
+[CorpseMutonElite X2ItemTemplate]
+FriendlyName="ミュートン・エリートの亡骸"
+FriendlyNamePlural="ミュートン・エリートの亡骸"
+BriefSummary="このエイリアンたちは、ミュートンの指揮系統内部においてトップに君臨する。センチュリオンとは異なり、彼らは我々が遭遇した標準的なミュートンと比べると、より重要な遺伝子組み替えを受けている。"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; NEW ABILITIES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[WarCry X2AbilityTemplate]
+LocFriendlyName="ウォークライ"
+LocLongDescription="他のミュートンの命中率、意志力、機動力を大きく向上させる。また、知性のある他のエイリアンとアドヴェントに多少のボーナスをもたらす。クールダウン：6ターン。"
+LocHelpText="他のミュートンや他のエイリアン数体にボーナスをもたらす。"
+LocFlyOverText="ウォークライ"
+LocPromotionPopupText="<Bullet/>他のミュートンの命中率、意志力、機動力を大きく向上させる。また、知性のある他の多くのエイリアンとアドヴェントに多少のボーナスをもたらす。<br/><Bullet/>クールダウン：6ターン。<br/>"
+
+[BayonetCharge X2AbilityTemplate]
+LocFriendlyName="銃剣突撃"
+LocLongDescription="ダッシュ距離内であればどこからでも近接攻撃が行える。クールダウン：4ターン。"
+LocHelpText="ダッシュ距離内であればどこからでも近接攻撃が行える。"
+LocFlyOverText="銃剣突撃"
+LocPromotionPopupText="<Bullet/>ダッシュ距離内であればどこからでも近接攻撃が行える。<br/><Bullet/> クールダウン：4ターン。<br/>"
+
+[Beastmaster_LW X2AbilityTemplate]
+LocFriendlyName="ビーストマスター"
+LocLongDescription="バーサーカーからの攻撃でダメージを受けない。"
+LocHelpText="バーサーカーからの攻撃でダメージを受けない。"
+LocFlyOverText="ビーストマスター"
+LocPromotionPopupText="<Bullet/>バーサーカーからの攻撃を無効化。<br/>"
+
+[MassMindSpin X2AbilityTemplate]
+LocFriendlyName="マス・マインドスピン"
+LocFlyOverText="マス・マインドスピン"
+LocLongDescription="円錐状の効果範囲内にいる複数ターゲットに対して、マインドスピン攻撃を行う。"
+LocHelpText="サイキック攻撃を複数ターゲットに仕掛け、精神支配などの状態異常を生じさせる。"
+LocPromotionPopupText="<Bullet/>サイキック攻撃を複数ターゲットに仕掛け、精神支配などの状態異常を生じさせる。"
+LocMissMessage="マインドスピンに抵抗！"
+
+[LWDroneShock X2AbilityTemplate]
+LocFriendlyName="ドローンショック"
+LocLongDescription="民間人制圧用兵器。目標に与えるダメージを最小限に抑え、行動の自由を奪うのみにとどめるよう設計されている。"
+LocHelpText="民間人制圧用兵器。目標に与えるダメージは最小限に抑えられている。"
+LocFlyOverText="ドローンショック"
+LocPromotionPopupText="<Bullet/>民間人制圧用兵器。目標に与えるダメージを最小限に抑え、行動の自由を奪うのみにとどめるよう設計されている。<br/>"
+
+[LWDroneRepair X2AbilityTemplate]
+LocFriendlyName="修復"
+LocFlyOverText="修復"
+LocHelpText="近くにいる機械ユニット1体を修復する。"
+LocLongDescription="近くにいる機械ユニット1体を修復する。"
+LocPromotionPopupText="<Bullet/>近くにいる機械ユニット1体を修復する。"
+
+[LWDroneMeleeStun X2AbilityTemplate]
+LocFriendlyName="スタナー"
+LocFlyOverText="スタナー"
+LocHelpText="近接攻撃の届く距離にいる敵1体にスタン効果を与える。"
+LocLongDescription="近接攻撃の届く距離にいる敵1体にスタン効果を与える。"
+LocPromotionPopupText="<Bullet/>近接攻撃の届く距離にいる敵1体にスタン効果を与える。"
+LocMissMessage="外した！"
+
+[PersonalShield X2AbilityTemplate]
+LocFriendlyName="パーソナルシールド"
+LocFlyOverText="パーソナルシールド"
+LocHelpText="5ポイントの摩耗アーマーが得られる。クールダウン：5ターン。"
+LocLongDescription="5ポイントの摩耗アーマーが得られる。クールダウン：5ターン。"
+LocPromotionPopupText="<Bullet/>5ポイントの摩耗アーマーが得られる。<br/><Bullet/>クールダウン：5ターン。<br/><Bullet/>行動値1を消費。使用してもターン終了にはならない。<br/>"
+
+[MassReanimation_LW X2AbilityTemplate]
+LocFriendlyName="マス・リアニメート"
+LocFlyOverText="マス・リアニメート"
+LocHelpText="付近に存在する全ての死体をゾンビとして蘇らせる。"
+LocLongDescription="付近に存在する全ての死体をゾンビとして蘇らせる。"
+LocPromotionPopupText="<Bullet/>付近に存在する全ての死体をゾンビとして蘇らせる。"
+
+[ReadyForAnything X2AbilityTemplate]
+LocFriendlyName="全状況対応"
+LocFlyOverText="監視：全状況対応"
+LocHelpText="メイン武器による通常射撃を行い、その後監視状態になる。"
+LocLongDescription="メイン武器による通常射撃を行い、その後監視状態になる。"
+LocPromotionPopupText="<Bullet/>メイン武器による通常射撃を行い、その後監視状態になる。"
+
+[ReadyForAnythingFlyover X2AbilityTemplate]
+LocFriendlyName="全状況対応"
+LocFlyOverText="監視：全状況対応"
+LocHelpText="メイン武器による通常射撃を行い、その後監視状態になる。"
+LocLongDescription="メイン武器による通常射撃を行い、その後監視状態になる。"
+LocPromotionPopupText="<Bullet/>メイン武器による通常射撃を行い、その後監視状態になる。"
+
+[RepairServos X2AbilityTemplate]
+LocFriendlyName="ダメージコントロール"
+LocFlyOverText="ダメージコントロール"
+LocLongDescription="ダメージを受けると、次のターンが終了するまでアーマー+2となる。"
+LocHelpText="ダメージを受けると、次のターンが終了するまでアーマー+2となる。"
+LocPromotionPopupText="<Bullet/>衝撃を受けたアーマーが一時的に硬化する。ダメージを受けると、次のターンが終了するまでアーマー+2となる。<br/><Bullet/>続くターンに連続して攻撃を受けると、効果が延長される。<br/>"
+
+[RepairServosPassive X2AbilityTemplate]
+LocFriendlyName="ダメージコントロール"
+LocFlyOverText="ダメージコントロール"
+LocLongDescription="ダメージを受けると、次のターンが終了するまでアーマー+2となる。"
+LocHelpText="ダメージを受けると、次のターンが終了するまでアーマー+2となる。"
+LocPromotionPopupText="<Bullet/>ダメージを受けると、次のターンが終了するまでアーマー+2となる。<br/><Bullet/>続くターンに連続して攻撃を受けると、効果が延長される。<br/>"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; MutonM2_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[X2Ability_MutonM2_Abilities]
+strBayonetChargePenalty="センチュリオンは<XGParam:IntValue0/>ターンの間、防御力<XGParam:IntValue1/>。"
+
+[MutonM2_LW X2CharacterTemplate]
+strCharacterName="ミュートン・センチュリオン"
+
+[MutonM2_LW_Wpn X2WeaponTemplate]
+FriendlyName="センチュリオン・ライフル"
+BriefSummary="これまでにXCOMはさまざまな標準的歩兵用小火器の回収に成功してきた。これは最もよく見られるタイプで、20年前に用いられていたライフルによく似ている。当然、アドヴェントの磁力兵器よりは劣るが、さらなる研究と兵器の回収によって改良の余地が残されているのが救いだ。"
+TacticalText="<Bullet/>メイン武器を撃った兵士はターン終了となる。\n<Bullet/>行動値2の状態で射撃した場合は3回発砲する。この場合、個々の命中率は下がるが、総合的な威力はむしろ高まる。\n<Bullet/>敵から奪ったアップグレードを使い、アサルトライフルの性能を強化せよ。"
+
+[MutonM2_LWGrenade X2GrenadeTemplate]
+FriendlyName="エイリアングレネード"
+FriendlyNamePlural="エイリアングレネード"
+BriefSummary="ミュートン・センチュリオンは、それぞれ高ダメージのプラズマグレネードを1つ持っている。"
+TacticalText="<Bullet/>高ダメージのグレネード1つ。"
+ThrownAbilityName="エイリアングレネード投てき"
+ThrownAbilityHelpText="ターゲットエリアにエイリアングレネードを投げる。"
+LaunchedAbilityName="エイリアングレネード発射"
+LaunchedAbilityHelpText="狙った場所にエイリアングレネードを撃ち込む。アーマーを削る効果がある。"
+
+[MutonM2_LW_MeleeAttack X2WeaponTemplate]
+FriendlyName="銃剣"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; MutonM3_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[MutonM3_LW X2CharacterTemplate]
+strCharacterName="ミュートン・エリート"
+
+[MutonM3_LW_Wpn X2WeaponTemplate]
+FriendlyName="エリート・プラズマキャノン"
+
+[MutonM3_LWGrenade X2GrenadeTemplate]
+FriendlyName="エイリアングレネード"
+FriendlyNamePlural="エイリアングレネード"
+BriefSummary="ミュートン・エリートは各個体が高ダメージのプラズマグレネードを1個ずつ携行している。"
+TacticalText="<Bullet/>高ダメージのグレネード1つ。"
+ThrownAbilityName="エイリアングレネード投てき"
+ThrownAbilityHelpText="ターゲットエリアにエイリアングレネードを投げる。"
+LaunchedAbilityName="エイリアングレネード発射"
+LaunchedAbilityHelpText="狙った場所にエイリアングレネードを撃ち込む。アーマーを削る効果がある。"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Naja ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[NajaM1 X2CharacterTemplate]
+strCharacterName="ナーガ"
+
+[NajaM2 X2CharacterTemplate]
+strCharacterName="ナーガ・サーペンス"
+
+[NajaM3 X2CharacterTemplate]
+strCharacterName="ナーガ・エリート"
+
+[NajaM1_WPN X2WeaponTemplate]
+FriendlyName="ナーガ・スナイパーライフル"
+
+[NajaM2_WPN X2WeaponTemplate]
+FriendlyName="ナーガ・スナイパーライフル"
+
+[NajaM3_WPN X2WeaponTemplate]
+FriendlyName="ナーガ・スナイパーライフル"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Sidewinder ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[SidewinderM1 X2CharacterTemplate]
+strCharacterName="サイドワインダー"
+
+[SidewinderM2 X2CharacterTemplate]
+strCharacterName="サイドワインダー・サーペンス"
+
+[SidewinderM3 X2CharacterTemplate]
+strCharacterName="サイドワインダー・エリート"
+
+[SidewinderM1_WPN X2WeaponTemplate]
+FriendlyName="サイドワインダー・スクラムガン"
+
+[SidewinderM2_WPN X2WeaponTemplate]
+FriendlyName="サイドワインダー・スクラムガン"
+
+[SidewinderM3_WPN X2WeaponTemplate]
+FriendlyName="サイドワインダー・スクラムガン"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Viper ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ViperM2_LW X2CharacterTemplate]
+strCharacterName="ヴァイパー・サーペンス"
+
+[ViperM3_LW X2CharacterTemplate]
+strCharacterName="ヴァイパー・エリート"
+
+[ViperM2_LW_WPN X2WeaponTemplate]
+FriendlyName="ビームライフル"
+
+[ViperM3_LW_WPN X2WeaponTemplate]
+FriendlyName="ビームライフル"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; ArchonM2_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ArchonM2_LW X2CharacterTemplate]
+strCharacterName="グレートアーコン"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; SectoidM2_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[SectoidM2_LW X2CharacterTemplate]
+strCharacterName="セクトイド・コマンダー"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvGunnerM1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvGunnerM1 X2CharacterTemplate]
+strCharacterName="アドヴェント・ガンナー"
+
+[AdvGunnerM1_WPN X2WeaponTemplate]
+FriendlyName="オートマグ"
+
+[AdvGunnerM2 X2CharacterTemplate]
+strCharacterName="アドヴェント・ヘビーガンナー"
+
+[AdvGunnerM2_WPN X2WeaponTemplate]
+FriendlyName="オートマグ"
+
+[AdvGunnerM3 X2CharacterTemplate]
+strCharacterName="アドヴェント・エリートガンナー"
+
+[AdvGunnerM3_WPN X2WeaponTemplate]
+FriendlyName="オートマグ"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvSentryM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvSentryM1 X2CharacterTemplate]
+strCharacterName="アドヴェント・セントリー"
+
+[AdvSentryM1_WPN X2WeaponTemplate]
+FriendlyName="アドヴェント磁力ライフル"
+
+[AdvSentryM2 X2CharacterTemplate]
+strCharacterName="アドヴェント・ガーディアン"
+
+[AdvSentryM2_WPN X2WeaponTemplate]
+FriendlyName="アドヴェント磁力ライフル"
+
+[AdvSentryM3 X2CharacterTemplate]
+strCharacterName="アドヴェント・センチネル"
+
+[AdvSentryM3_WPN X2WeaponTemplate]
+FriendlyName="アドヴェント磁力ライフル"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvGrenadierM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvGrenadierM1 X2CharacterTemplate]
+strCharacterName="アドヴェント・エンジニア"
+
+[AdvGrenadierM1_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="アドヴェント・グレネードランチャー"
+
+[AdvGrenadierM2 X2CharacterTemplate]
+strCharacterName="アドヴェント・グレネード兵"
+
+[AdvGrenadierM2_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="アドヴェント・グレネードランチャー"
+
+[AdvGrenadierM3 X2CharacterTemplate]
+strCharacterName="アドヴェント・ヘビーグレネード兵"
+
+[AdvGrenadierM3_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="アドヴェント・グレネードランチャー"
+
+[AdvGrenadierFlashbangGrenade X2GrenadeTemplate]
+FriendlyName="フラッシュグレネード"
+FriendlyNamePlural="フラッシュグレネード"
+BriefSummary="フラッシュグレネードは非常に広い範囲の敵を混乱状態にし、攻撃時に大きなペナルティーを発生させる。"
+TacticalText="<Bullet/>フラッシュグレネードに殺傷力はないが、広範囲の敵の感覚を麻痺させ、混乱させる。<br><Bullet/>味方の隊員は影響を受けない。"
+ThrownAbilityName="フラッシュグレネード投てき"
+ThrownAbilityHelpText="効果範囲内のすべての敵ターゲットを混乱状態にする。"
+LaunchedAbilityname="フラッシュグレネード発射"
+LaunchedAbilityHelpText="効果範囲内のすべての敵ターゲットを混乱状態にする。"
+
+[AdvGrenadierFireGrenade X2GrenadeTemplate]
+FriendlyName="ファイアグレネード"
+FriendlyNamePlural="ファイアグレネード"
+BriefSummary="ファイアグレネードはレジスタンスが長年使用してきた即席の火炎瓶を改良したものだ。爆発後、ほとんどの敵を炎上させ、持続的な炎上ダメージを与える。"
+TacticalText="<Bullet/>ファイアグレネードは爆発範囲に存在するすべてのユニットにダメージを与え、火に弱い場合は「炎上」の効果を与える。\n<Bullet/>ファイアグレネードの爆発ダメージは他のグレネードよりも大きい。\n<Bullet/>一部の敵、特に金属製のユニットは炎に耐性を持ち、「炎上」の効果を受けない。"
+ThrownAbilityName="ファイアグレネード投てき"
+ThrownAbilityHelpText="標的エリアと巻き込まれたユニットを炎上させる。"
+LaunchedAbilityname="ファイアグレネード発射"
+LaunchedAbilityHelpText="標的エリアと巻き込まれたユニットを炎上させる。"
+
+[AdvGrenadierAcidGrenade X2GrenadeTemplate]
+FriendlyName="アシッドグレネード"
+FriendlyNamePlural="アシッドグレネード"
+BriefSummary="通常のフラググレネードに強酸を加えることで、敵のアーマーを削るのに極めて有効な兵器となっている。ターゲットはかかった酸によって継続してダメージを受ける。また、付着した部分は酸の侵食を受け続ける。"
+TacticalText="<Bullet/>アシッドグレネードは通常のフラググレネードよりも多くアーマーを削る。<br><Bullet/>酸の影響を受けた敵は、数ターンにわたってダメージを受け続ける。"
+ThrownAbilityName="アシッドグレネード投てき"
+ThrownAbilityHelpText="ユニットにダメージを与える酸のプールを作り出す。"
+LaunchedAbilityname="アシッドグレネード発射"
+LaunchedAbilityHelpText="ユニットにダメージを与える酸のプールを作り出す。"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvRocketeerM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvRocketeerM1 X2CharacterTemplate]
+strCharacterName="アドヴェント・ロケット兵"
+
+[AdvRocketeerM2 X2CharacterTemplate]
+strCharacterName="アドヴェント・ヘビーロケット兵"
+
+[AdvRocketeerM3 X2CharacterTemplate]
+strCharacterName="アドヴェント・エリートロケット兵"
+
+[AdvRocketeerM1_RocketLauncher X2WeaponTemplate]
+FriendlyName="アドヴェント・ロケットランチャー"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecM3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMec_M3_LW X2CharacterTemplate]
+strCharacterName="スーパーヘビーMEC"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; DroneM1-2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[LWDroneM1 X2CharacterTemplate]
+strCharacterName="アドヴェント・監視ドローン"
+
+[LWDroneM2 X2CharacterTemplate]
+strCharacterName="アドヴェント・ハンタードローン"
+
+[LWDroneM1_WPN X2WeaponTemplate]
+FriendlyName="ドローンショック"
+
+[LWDroneM2_WPN X2WeaponTemplate]
+FriendlyName="ドローン電気ショック"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecArcherM1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMECArcherM1 X2CharacterTemplate]
+strCharacterName="MECアーチャー"
+
+[AdvMECArcher_WPN X2WeaponTemplate]
+FriendlyName="MECミニマグ"
+
+[AdvMECArcher_Shoulder_WPN X2WeaponTemplate]
+FriendlyName="ロケット砲"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecArcherM2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMECArcherM2 X2CharacterTemplate]
+strCharacterName="MECロングボウ"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Chryssalid Soldier ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ChryssalidSoldier X2CharacterTemplate]
+strCharacterName="クリサリド兵"
+
+[ChryssalidSoldierSlash X2AbilityTemplate]
+LocFriendlyName="クリサリド・ソルジャースラッシュ"
+LocLongDescription="敵を切りつけ、大きなダメージを与える。"
+LocHelpText="敵を切りつけ、大きなダメージを与える。"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Hive Queen ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[HiveQueen X2CharacterTemplate]
+strCharacterName="クリサリド・クイーン"
+
+[HiveQueenSlash X2AbilityTemplate]
+LocFriendlyName="グレーター・クリサリドスラッシュ"
+LocLongDescription="敵を切りつけ、大きなダメージを与える。"
+LocHelpText="敵を切りつけ、大きなダメージを与える。"
+
+;;;;;;;;;;;;;;;;;;;;;;;;; Additional ADVENT Trooper types ;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvSergeantM1 X2CharacterTemplate]
+strCharacterName="アドヴェント・サージェント"
+
+[AdvSergeantM1_WPN X2WeaponTemplate]
+FriendlyName="アドヴェント磁力ライフル"
+
+[AdvSergeantM2 X2CharacterTemplate]
+strCharacterName="アドヴェント・ファーストサージェント"
+
+[AdvSergeantM2_WPN X2WeaponTemplate]
+FriendlyName="アドヴェント磁力ライフル"
+
+[AdvShockTroop X2CharacterTemplate]
+strCharacterName="アドヴェント・ショックトルーパー"
+
+[AdvShockTroop_WPN X2WeaponTemplate]
+FriendlyName="アドヴェント磁力ライフル"
+
+[AdvCommando X2CharacterTemplate]
+strCharacterName="アドヴェント・コマンドー"
+
+[AdvCommando_WPN X2WeaponTemplate]
+FriendlyName="アドヴェント磁力ライフル"
+
+[AdvVanguard X2CharacterTemplate]
+strCharacterName="アドヴェント・ヴァンガード"
+
+[AdvVanguard_WPN X2WeaponTemplate]
+FriendlyName="アドヴェント磁力ライフル"
+
+[AdvScout X2CharacterTemplate]
+strCharacterName="アドヴェント・スカウト"
+
+[AdvScout_WPN X2WeaponTemplate]
+FriendlyName="アドヴェント磁力ライフル"
+
+[AdvGeneralM1_LW X2CharacterTemplate]
+strCharacterName="アドヴェント・ジェネラル"
+
+[AdvGeneralM1_LW_WPN X2WeaponTemplate]
+FriendlyName="アドヴェント磁力ライフル"
+
+[AdvGeneralM2_LW X2CharacterTemplate]
+strCharacterName="アドヴェント・ジェネラル"
+
+[AdvGeneralM2_LW_WPN X2WeaponTemplate]
+FriendlyName="アドヴェント磁力ライフル"

@@ -1,0 +1,7 @@
+
+[X2Ability_LWAlienAbilities]
+strBayonetChargePenalty="El Centurión sufre <XGParam:IntValue1/> en defensa durante <XGParam:IntValue0/> turnos."
+
+[X2Effect_WarCry]
+strWarCryFriendlyDesc="Recibe mejoras a puntería, movilidad y voluntad."
+

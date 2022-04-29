@@ -1,0 +1,24 @@
+; SMG item localization 
+; this includes schematics, as of 13 Oct 2015 update
+; this includes ability descriptor, as of 5 Jan 2016 update
+
+[SMG_CV X2WeaponTemplate]
+FriendlyName="MP"
+FriendlyNamePlural="MPs"
+BriefSummary="Maschinenpistolen sind eine leichtere und besser versteckbare Alternative zum gängigen Sturmgewehr, auch wenn es ihnen an Durchschlagskraft mangelt und sie auf große Entfernung nicht so präzise sind."
+TacticalText="<Bullet/> Das Abfeuern der Primärwaffe beendet die Runde eines Soldaten ohne Spezialausbildung.\n<Bullet/> Benutze von ADVENT-Gegnern erbeutete Verbesserungen, um die taktische Effektivität der MP zu verbessern.\n<Bullet/> MP-artige Waffen bieten im Vergleich zu Sturmgewehren gesteigerte Mobilität, Nahkampfpräzision und Verborgenheit, verursachen dafür jedoch weniger Schaden, verfügen über weniger Munition und erleiden Präzisionsabzüge auf große Entfernungen."
+AbilityDescName="MP"
+
+[SMG_MG X2WeaponTemplate]
+FriendlyName="Stuttermag"
+FriendlyNamePlural="Stuttermags"
+BriefSummary="Das Stuttermag ist eine leichtere Version des Magnetgewehrs und erfüllt eine ähnliche Rolle wie die MP, indem sie Feuerkraft, Munition und Präzision auf Entfernung gegen gesteigerte Soldatenmobilität und -verborgenheit tauscht."
+TacticalText="<Bullet/> Das Abfeuern der Primärwaffe beendet die Runde eines Soldaten ohne Spezialausbildung.\n<Bullet/> Benutze von ADVENT-Gegnern erbeutete Verbesserungen, um die taktische Effektivität des Stuttermags zu verbessern.\n<Bullet/> MP-artige Waffen bieten im Vergleich zu Sturmgewehren gesteigerte Mobilität, Nahkampfpräzision und Verborgenheit, verursachen dafür jedoch weniger Schaden, verfügen über weniger Munition und erleiden Präzisionsabzüge auf große Entfernungen."
+AbilityDescName="MP"
+
+[SMG_BM X2WeaponTemplate]
+FriendlyName="Störkanone"
+FriendlyNamePlural="Störkanonen"
+BriefSummary="Die Störkanone ist wie die MP und das Stuttermag eine kleinere Primärwaffe, die Mobilitäts- und Verborgenheitsboni gewährt, jedoch weniger Schaden verursacht und auf längere Entfernungen Präzisionsabzüge erleidet. Sie ist dennoch eine persönliche Waffe mit beträchtlicher Feuerkraft."
+TacticalText="<Bullet/> Das Abfeuern der Primärwaffe beendet die Runde eines Soldaten ohne Spezialausbildung.\n<Bullet/> Benutze von ADVENT-Gegnern erbeutete Verbesserungen, um die taktische Effektivität der Störkanone zu verbessern.\n<Bullet/> MP-artige Waffen bieten im Vergleich zu Sturmgewehren gesteigerte Mobilität, Nahkampfpräzision und Verborgenheit, verursachen dafür jedoch weniger Schaden, verfügen über weniger Munition und erleiden Präzisionsabzüge auf große Entfernungen.<br/><Bullet/> Angriffe mit Plasmawaffen bewirken, dass getroffene Ziele 1 Punkt zusätzlichen Schaden bei jedem nachfolgenden Treffer erhalten."
+AbilityDescName="MP"

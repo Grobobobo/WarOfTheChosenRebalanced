@@ -1,0 +1,428 @@
+[XComMultiplayerTacticalUI]
+MutonM2_LW="<Bullet/> 뮤톤 센추리온은 기본 뮤톤 능력에 더해, 전장의 포효로 주위 아군의 능력을 향상시킬 수 있으며, 총검을 들고 질주해 구간 내에 있는 적에게 피해를 입힐 수 있습니다.\n<Bullet/> 침략 시대의 뮤톤과는 다르게 새롭게 유전자 조작이 된 뮤톤은 근거리 전투에 뛰어납니다.\n<Bullet/> 그들은 역습 능력이 있어 근거리에서 공격한 적에게 반격을 가할 수 있습니다.\n<Bullet/> 그들은 주위에 무능력해진 적들을 처형할 수 있습니다. 기절한 유닛 근처에 다가가게 해선 안됩니다.\n<Bullet/> 그들은 또한 소총으로 제압 사격을 할 수 있으며, 전투 방어구로 지속적인 보호를 받습니다."
+MutonM3_LW="<Bullet/>"
+
+DroneM1="<Bullet/> 가디언 드론은 값싼 정찰대 유닛입니다. 주로 민간인 군중 제어를 위해 사용됩니다."
+
+[CorpseDrone X2ItemTemplate]
+FriendlyName="드론 잔해"
+FriendlyNamePlural="드론 잔해"
+BriefSummary="이 경량 자율보안 호버크래프트의 잔해는 주로 민간인을 감시하고 군중을 제어하기 위해 고안되었음을 보여줍니다."
+
+[CorpseMutonElite X2ItemTemplate]
+FriendlyName="엘리트 뮤톤 시체"
+FriendlyNamePlural="엘리트 뮤톤 시체"
+BriefSummary="이 외계인들은 뮤톤 내부 계급의 상위에 있습니다. 센추리온들과는 다르게 이들은 우리가 상대한 일반 뮤톤들과 비교해 두드러지는 유전적 수정이 있었습니다."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; NEW ABILITIES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[WarCry X2AbilityTemplate]
+LocFriendlyName="전장의 포효"
+LocLongDescription="다른 뮤톤에게 대량의 조준과 의지, 기동력 보너스를 부여하고, 다른 지능을 가진 외계인과 어드밴트에게 소량의 보너스를 부여합니다. 쿨타임은 6턴입니다."
+LocHelpText="다른 뮤톤과 외계인에게 보너스를 부여합니다."
+LocFlyOverText="전장의 포효"
+LocPromotionPopupText="<Bullet/> 다른 뮤톤에게 대량의 조준과 의지, 기동력 보너스를 부여하고, 다른 지능을 가진 외계인과 어드밴트에게 소량의 보너스를 부여합니다. <br/><Bullet/>쿨타임은 6턴입니다.<br/>"
+
+[BayonetCharge X2AbilityTemplate]
+LocFriendlyName="총검 돌격"
+LocLongDescription="돌진 범위 내 임의의 타일에서 근접 공격을 가할 수 있습니다. 쿨타임은 4턴입니다."
+LocHelpText="돌진 범위 내 임의의 타일에서 근접 공격을 가할 수 있습니다."
+LocFlyOverText="총검 돌격"
+LocPromotionPopupText="<Bullet/> 돌진 범위 내 임의의 타일에서 근접 공격을 가할 수 있습니다.<br/>><Bullet/> 쿨타임은 4턴입니다.<br/>"
+
+[Beastmaster_LW X2AbilityTemplate]
+LocFriendlyName="비스트마스터"
+LocLongDescription="버서커의 공격에 대미지를 입지 않습니다."
+LocHelpText="버서커의 공격에 대미지를 입지 않습니다."
+LocFlyOverText="비스트마스터"
+LocPromotionPopupText="<Bullet/> 버서커의 공격에 대미지를 입지 않습니다.<br/>"
+
+[MassMindSpin X2AbilityTemplate]
+LocFriendlyName="대규모 정신 착란"
+LocFlyOverText="대규모 정신 착란"
+LocLongDescription="원뿔형 범위 안에 있는 다수의 대상에 정신 착란 공격을 가합니다."
+LocHelpText="정신을 약화시키는 사이오닉 공격을 가해, 다수의 대상이 정신 지배를 포함한 여러가지 이상 상태에 빠지게 합니다."
+LocPromotionPopupText="<Bullet/> 정신을 약화시키는 사이오닉 공격을 가해, 다수의 대상이 정신 지배를 포함한 여러가지 이상 상태에 빠지게 합니다."
+LocMissMessage="정신 착란에 저항함!"
+
+[LWDroneShock X2AbilityTemplate]
+LocFriendlyName="드론 쇼크"
+LocLongDescription="이 능력은 민간인을 진정시키기 위한 목적으로 사용되었으며, 작은 대미지를 주고 대상을 혼란 상태에 빠지게 합니다."
+LocHelpText="이 무기는 대상에게 작은 대미지를 주고 이상 상태에 빠지게 합니다."
+LocFlyOverText="드론 쇼크"
+LocPromotionPopupText="<Bullet/> 이 능력은 민간인을 진정시키기 위한 목적으로 사용되었으며, 작은 대미지를 주고 대상을 혼란 상태에 빠지게 합니다.<br/>"
+
+[LWDroneRepair X2AbilityTemplate]
+LocFriendlyName="수리"
+LocFlyOverText="수리"
+LocHelpText="근처의 기계 유닛을 수리합니다."
+LocLongDescription="근처의 기계 유닛을 수리합니다."
+LocPromotionPopupText="<Bullet/> 근처의 기계 유닛을 수리합니다."
+
+[LWDroneMeleeStun X2AbilityTemplate]
+LocFriendlyName="스터너"
+LocFlyOverText="스터너"
+LocHelpText="가까운 적을 기절시킵니다."
+LocLongDescription="가까운 적을 기절시킵니다."
+LocPromotionPopupText="<Bullet/> 가까운 적을 기절시킵니다."
+LocMissMessage="빗나감!"
+
+[PersonalShield X2AbilityTemplate]
+LocFriendlyName="개인 방어막"
+LocFlyOverText="개인 방어막"
+LocHelpText="5의 임시 방어구가 부여됩니다. 5턴 동안 쿨타임을 가집니다."
+LocLongDescription="5의 임시 방어구가 부여됩니다. 5턴 동안 쿨타임을 가집니다."
+LocPromotionPopupText="<Bullet/> 5의 임시 방어구가 부여됩니다.<br/><Bullet/> 5턴 동안 쿨타임을 가집니다.<br/><Bullet/> 1개의 행동력이 사용되며 턴이 종료되지 않습니다.<br/>"
+
+[MassReanimation_LW X2AbilityTemplate]
+LocFriendlyName="대규모 좀비화"
+LocFlyOverText="대규모 좀비화"
+LocHelpText="근처의 모든 죽어있는 유기체를 좀비로 소생시킵니다."
+LocLongDescription="근처의 모든 죽어있는 유기체를 좀비로 소생시킵니다."
+LocPromotionPopupText="<Bullet/> 근처의 모든 죽어있는 유기체를 좀비로 소생시킵니다."
+
+[ReadyForAnything X2AbilityTemplate]
+LocFriendlyName="만반의 준비"
+LocFlyOverText="경계: 만반의 준비"
+LocHelpText="주요 무기로 일반 사격 후 경계를 합니다."
+LocLongDescription="주요 무기로 일반 사격 후 경계를 합니다."
+LocPromotionPopupText="<Bullet/> 주요 무기로 일반 사격 후 경계를 합니다."
+
+[ReadyForAnythingFlyover X2AbilityTemplate]
+LocFriendlyName="만반의 준비"
+LocFlyOverText="경계: 만반의 준비"
+LocHelpText="주요 무기로 일반 사격 후 경계를 합니다."
+LocLongDescription="주요 무기로 일반 사격 후 경계를 합니다."
+LocPromotionPopupText="<Bullet/> 주요 무기로 일반 사격 후 경계를 합니다."
+
+[RepairServos X2AbilityTemplate]
+LocFriendlyName="대미지 컨트롤"
+LocFlyOverText="대미지 컨트롤"
+LocLongDescription="대미지를 입은 후, 다음 턴이 종료될 때까지 방어구 포인트가 2 증가합니다."
+LocHelpText="대미지를 입은 후, 다음 턴이 종료될 때까지 방어구 포인트가 2 증가합니다."
+LocPromotionPopupText="<Bullet/> 충돌 시 방어구가 일시적으로 단단해집니다. 피해를 입은 후, 다음 턴이 종료될 때까지 방어력이 2 증가합니다.<br/><Bullet/> 연속으로 공격을 받으면 타이머가 연장됩니다.<br/>"
+
+[RepairServosPassive X2AbilityTemplate]
+LocFriendlyName="대미지 컨트롤"
+LocFlyOverText="대미지 컨트롤"
+LocLongDescription="대미지를 입은 후, 다음 턴이 종료될 때까지 방어구 포인트가 2 증가합니다."
+LocHelpText="대미지를 입은 후, 다음 턴이 종료될 때까지 방어구 포인트가 2 증가합니다."
+LocPromotionPopupText="<Bullet/> 피해를 입은 후, 다음 턴이 종료될 때까지 방어력이 2 증가합니다.<br/><Bullet/> 이후의 턴에 공격을 받으면 타이머가 연장됩니다.<br/>"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; MutonM2_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[X2Ability_MutonM2_Abilities]
+strBayonetChargePenalty="센추리온이 <XGParam:IntValue0/>턴 동안 <XGParam:IntValue1/> 방어 페널티를 받습니다."
+
+[MutonM2_LW X2CharacterTemplate]
+strCharacterName="뮤톤 센추리온"
+
+[MutonM2_LW_Wpn X2WeaponTemplate]
+FriendlyName="센추리온 소총"
+BriefSummary="XCOM 요원은 여러 가지 일반 병사용 소화기를 회수했습니다. 이건 가장 평범한 종류인데, 20년 전에 사용된 소총과 유사합니다. 일반적인 기술적 접근이 이뤄진다면, 어드밴트의 전자기 기술에는 못 미치겠지만 회수한 다른 무기를 이용해 업그레이드할 수 있습니다."
+TacticalText="<Bullet/> 주요 무기를 발사하면 항상 병사의 턴이 종료됩니다\n<Bullet/> 만약 병사가 행동력이 2개인 상태에서 발사하면, 정확도는 떨어지지만, 전체 위력이 증가한 공격을 3번 합니다\n<Bullet/> 어드밴트 적에게서 회수한 업그레이드를 사용하면 돌격 소총의 전술적 효율성이 증가합니다"
+
+[MutonM2_LWGrenade X2GrenadeTemplate]
+FriendlyName="외계인 수류탄"
+FriendlyNamePlural="외계인 수류탄"
+BriefSummary="뮤톤 센추리온마다 큰 대미지를 입힐 수 있는 플라스마 수류탄을 1개씩 소지합니다."
+TacticalText="<Bullet/> 수류탄을 던져 한 차례의 큰 피해를 입힙니다."
+ThrownAbilityName="외계인 수류탄 투척"
+ThrownAbilityHelpText="목표 지점에 외계인 수류탄을 던집니다."
+LaunchedAbilityName="외계인 수류탄 발사"
+LaunchedAbilityHelpText="목표 지점에 외계인 수류탄을 발사합니다. 방어구가 파괴됩니다."
+
+[MutonM2_LW_MeleeAttack X2WeaponTemplate]
+FriendlyName="총검"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; MutonM3_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[MutonM3_LW X2CharacterTemplate]
+strCharacterName="엘리트 뮤톤"
+
+[MutonM3_LW_Wpn X2WeaponTemplate]
+FriendlyName="엘리트 플라스마 캐넌"
+
+[MutonM3_LWGrenade X2GrenadeTemplate]
+FriendlyName="외계인 수류탄"
+FriendlyNamePlural="외계인 수류탄"
+BriefSummary="뮤톤 엘리트마다 큰 피해를 입힐 수 있는 플라스마 수류탄을 1개씩 소지합니다."
+TacticalText="<Bullet/> 수류탄을 던져 한 차례의 큰 피해를 입힙니다."
+ThrownAbilityName="외계인 수류탄 투척"
+ThrownAbilityHelpText="목표 지점에 외계인 수류탄을 던집니다."
+LaunchedAbilityName="외계인 수류탄 발사"
+LaunchedAbilityHelpText="목표 지점에 외계인 수류탄을 발사합니다. 방어구가 파괴됩니다."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Naja ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[NajaM1 X2CharacterTemplate]
+strCharacterName="코브라"
+
+[NajaM2 X2CharacterTemplate]
+strCharacterName="뱀자리 코브라"
+
+[NajaM3 X2CharacterTemplate]
+strCharacterName="엘리트 코브라"
+
+[NajaM1_WPN X2WeaponTemplate]
+FriendlyName="코브라 저격총"
+
+[NajaM2_WPN X2WeaponTemplate]
+FriendlyName="코브라 저격총"
+
+[NajaM3_WPN X2WeaponTemplate]
+FriendlyName="코브라 저격총"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Sidewinder ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[SidewinderM1 X2CharacterTemplate]
+strCharacterName="방울뱀"
+
+[SidewinderM2 X2CharacterTemplate]
+strCharacterName="뱀자리 방울뱀"
+
+[SidewinderM3 X2CharacterTemplate]
+strCharacterName="엘리트 방울뱀"
+
+[SidewinderM1_WPN X2WeaponTemplate]
+FriendlyName="사이드와인더 스크램건"
+
+[SidewinderM2_WPN X2WeaponTemplate]
+FriendlyName="사이드와인더 스크램건"
+
+[SidewinderM3_WPN X2WeaponTemplate]
+FriendlyName="사이드와인더 스크램건"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Viper ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ViperM2_LW X2CharacterTemplate]
+strCharacterName="바이퍼 뱀자리"
+
+[ViperM3_LW X2CharacterTemplate]
+strCharacterName="바이퍼 엘리트"
+
+[ViperM2_LW_WPN X2WeaponTemplate]
+FriendlyName="빔 소총"
+
+[ViperM3_LW_WPN X2WeaponTemplate]
+FriendlyName="빔 소총"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; ArchonM2_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ArchonM2_LW X2CharacterTemplate]
+strCharacterName="엘리트 아르콘"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; SectoidM2_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[SectoidM2_LW X2CharacterTemplate]
+strCharacterName="섹토이드 지휘관"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvGunnerM1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvGunnerM1 X2CharacterTemplate]
+strCharacterName="어드밴트 거너"
+
+[AdvGunnerM1_WPN X2WeaponTemplate]
+FriendlyName="오토매그넘"
+
+[AdvGunnerM2 X2CharacterTemplate]
+strCharacterName="어드밴트 헤비 거너"
+
+[AdvGunnerM2_WPN X2WeaponTemplate]
+FriendlyName="오토매그넘"
+
+[AdvGunnerM3 X2CharacterTemplate]
+strCharacterName="어드밴트 엘리트 거너"
+
+[AdvGunnerM3_WPN X2WeaponTemplate]
+FriendlyName="오토매그넘"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvSentryM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvSentryM1 X2CharacterTemplate]
+strCharacterName="어드밴트 경비병"
+
+[AdvSentryM1_WPN X2WeaponTemplate]
+FriendlyName="어드밴트 전자기 소총"
+
+[AdvSentryM2 X2CharacterTemplate]
+strCharacterName="어드밴트 위병"
+
+[AdvSentryM2_WPN X2WeaponTemplate]
+FriendlyName="어드밴트 전자기 소총"
+
+[AdvSentryM3 X2CharacterTemplate]
+strCharacterName="어드밴트 초병"
+
+[AdvSentryM3_WPN X2WeaponTemplate]
+FriendlyName="어드밴트 전자기 소총"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvGrenadierM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvGrenadierM1 X2CharacterTemplate]
+strCharacterName="어드밴트 기술자"
+
+[AdvGrenadierM1_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="어드밴트 유탄 발사기"
+
+[AdvGrenadierM2 X2CharacterTemplate]
+strCharacterName="어드밴트 척탄병"
+
+[AdvGrenadierM2_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="어드밴트 유탄 발사기"
+
+[AdvGrenadierM3 X2CharacterTemplate]
+strCharacterName="어드밴트 중장갑 척탄병"
+
+[AdvGrenadierM3_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="어드밴트 유탄 발사기"
+
+[AdvGrenadierFlashbangGrenade X2GrenadeTemplate]
+FriendlyName="섬광 수류탄"
+FriendlyNamePlural="섬광 수류탄"
+BriefSummary="섬광 수류탄은 넓은 반경 내의 적을 방해하고 혼란시켜 상당한 공격 페널티를 가합니다."
+TacticalText="<Bullet/> 섬광 수류탄은 대미지를 주지 않지만 넓은 반경 내의 적을 혼란시키고 방해합니다.<br><Bullet/> 아군 분대원들은 영향을 받지 않습니다."
+ThrownAbilityName="섬광 수류탄 투척"
+ThrownAbilityHelpText="효과 범위 내의 모든 적 대상을 혼란시킵니다."
+LaunchedAbilityname="섬광 수류탄 발사"
+LaunchedAbilityHelpText="효과 범위 내의 모든 적 대상을 혼란시킵니다."
+
+[AdvGrenadierFireGrenade X2GrenadeTemplate]
+FriendlyName="소이 수류탄"
+FriendlyNamePlural="소이 수류탄"
+BriefSummary="소이 수류탄은 저항군이 오랫동안 사용한 간이식 소이무기를 기술적으로 개량한 것입니다. 이 무기는 폭발 후 대부분의 목표물에 불을 붙여 지속적으로 화염 피해를 입힙니다."
+TacticalText="<Bullet/> 소이 수류탄은 폭발 반경 내 모든 유닛에 피해를 주고, 화염에 취약한 유닛에게 \"화상\" 효과를 줍니다.\n<Bullet/> 소이 수류탄은 다른 수류탄보다 더 많은 폭발 피해를 줍니다.\n<Bullet/> 일부 적, 특히 로봇 유닛은 화염에 면역 효과를 지녀, \"화상\" 효과를 받지 않습니다."
+ThrownAbilityName="소이 수류탄 투척"
+ThrownAbilityHelpText="목표 지역에 불을 붙여, 범위 내 유닛에게 피해를 줍니다."
+LaunchedAbilityname="소이 수류탄 발사"
+LaunchedAbilityHelpText="목표 지역에 불을 붙여, 범위 내 유닛에게 피해를 줍니다."
+
+[AdvGrenadierAcidGrenade X2GrenadeTemplate]
+FriendlyName="산성 수류탄"
+FriendlyNamePlural="산성 수류탄"
+BriefSummary="일반 파쇄 수류탄에 부식성 화학 물질을 추가하면, 적의 방어구를 제거하는 데 특별히 효과적인 폭발을 일으킬 수 있습니다. 산성액이 닿은 표면은 계속 부식되어 목표물은 지속적인 피해를 입습니다."
+TacticalText="<Bullet/> 산성 수류탄은 일반 파쇄 수류탄보다 적의 방어구를 더 많이 파괴합니다.<br><Bullet/> 산성액에 데인 적은 여러 턴 동안 지속 피해를 입습니다."
+ThrownAbilityName="산성 수류탄 투척"
+ThrownAbilityHelpText="적에게 대미지를 주는 산성 웅덩이를 생성합니다."
+LaunchedAbilityname="산성 수류탄 발사"
+LaunchedAbilityHelpText="적에게 대미지를 주는 산성 웅덩이를 생성합니다."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvRocketeerM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvRocketeerM1 X2CharacterTemplate]
+strCharacterName="어드밴트 로켓티어"
+
+[AdvRocketeerM2 X2CharacterTemplate]
+strCharacterName="어드밴트 헤비 로켓티어"
+
+[AdvRocketeerM3 X2CharacterTemplate]
+strCharacterName="어드밴트 엘리트 로켓티어"
+
+[AdvRocketeerM1_RocketLauncher X2WeaponTemplate]
+FriendlyName="어드밴트 로켓 발사기"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecM3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMec_M3_LW X2CharacterTemplate]
+strCharacterName="슈퍼헤비 MEC"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; DroneM1-2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[LWDroneM1 X2CharacterTemplate]
+strCharacterName="어드밴트 감시 드론"
+
+[LWDroneM2 X2CharacterTemplate]
+strCharacterName="어드밴트 헌터 드론"
+
+[LWDroneM1_WPN X2WeaponTemplate]
+FriendlyName="드론 쇼크"
+
+[LWDroneM2_WPN X2WeaponTemplate]
+FriendlyName="드론 전기쇼크"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecArcherM1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMECArcherM1 X2CharacterTemplate]
+strCharacterName="MEC 아처"
+
+[AdvMECArcher_WPN X2WeaponTemplate]
+FriendlyName="MEC 미니매그넘"
+
+[AdvMECArcher_Shoulder_WPN X2WeaponTemplate]
+FriendlyName="로켓포"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecArcherM2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMECArcherM2 X2CharacterTemplate]
+strCharacterName="MEC 롱보우"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Chryssalid Soldier ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ChryssalidSoldier X2CharacterTemplate]
+strCharacterName="크리살리드 병사"
+
+[ChryssalidSoldierSlash X2AbilityTemplate]
+LocFriendlyName="크리살리드 병사 베기"
+LocLongDescription="베기 공격으로 많은 피해를 입힙니다."
+LocHelpText="베기 공격으로 많은 피해를 입힙니다."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Hive Queen ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[HiveQueen X2CharacterTemplate]
+strCharacterName="하이브 퀸"
+
+[HiveQueenSlash X2AbilityTemplate]
+LocFriendlyName="치명적인 크리살리드 찍기"
+LocLongDescription="베기 공격은 대량의 대미지를 입힙니다."
+LocHelpText="베기 공격은 대량의 대미지를 입힙니다."
+
+;;;;;;;;;;;;;;;;;;;;;;;;; Additional ADVENT Trooper types ;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvSergeantM1 X2CharacterTemplate]
+strCharacterName="어드밴트 병장"
+
+[AdvSergeantM1_WPN X2WeaponTemplate]
+FriendlyName="어드밴트 전자기 소총"
+
+[AdvSergeantM2 X2CharacterTemplate]
+strCharacterName="어드밴트 하사"
+
+[AdvSergeantM2_WPN X2WeaponTemplate]
+FriendlyName="어드밴트 전자기 소총"
+
+[AdvShockTroop X2CharacterTemplate]
+strCharacterName="어드밴트 충격 병사"
+
+[AdvShockTroop_WPN X2WeaponTemplate]
+FriendlyName="어드밴트 전자기 소총"
+
+[AdvCommando X2CharacterTemplate]
+strCharacterName="어드밴트 특공대"
+
+[AdvCommando_WPN X2WeaponTemplate]
+FriendlyName="어드밴트 전자기 소총"
+
+[AdvVanguard X2CharacterTemplate]
+strCharacterName="어드밴트 선봉장"
+
+[AdvVanguard_WPN X2WeaponTemplate]
+FriendlyName="어드밴트 전자기 소총"
+
+[AdvScout X2CharacterTemplate]
+strCharacterName="어드밴트 정찰병"
+
+[AdvScout_WPN X2WeaponTemplate]
+FriendlyName="어드밴트 전자기 소총"
+
+[AdvGeneralM1_LW X2CharacterTemplate]
+strCharacterName="어드밴트 장군"
+
+[AdvGeneralM1_LW_WPN X2WeaponTemplate]
+FriendlyName="어드밴트 전자기 소총"
+
+[AdvGeneralM2_LW X2CharacterTemplate]
+strCharacterName="어드밴트 장군"
+
+[AdvGeneralM2_LW_WPN X2WeaponTemplate]
+FriendlyName="어드밴트 전자기 소총"

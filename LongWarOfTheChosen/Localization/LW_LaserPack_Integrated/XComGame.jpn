@@ -1,0 +1,34 @@
+[AssaultRifle_LS X2WeaponTemplate]
+FriendlyName="レーザーライフル"
+FriendlyNamePlural="レーザーライフル"
+BriefSummary="レーザーライフルはマイクロ秒長の光の衝撃波を連続的に放出し、ターゲットの化学結合を破壊する。"
+TacticalText="<Bullet/>メイン武器を撃った兵士は特別な訓練を受けていない限りターン終了となる。\n<Bullet/>アドヴェントから回収したアップグレードを使い、パルスライフルの性能を強化せよ。\n<Bullet/>これらのレーザー兵装の高い出力は、再発見された戦前のレーザー兵器にエイリアンのテクノロジーを組み合わせることで実現されている。\n<Bullet/>レーザーの命中率が増加する。"
+AbilityDescName="アサルトライフル"
+
+[SMG_LS X2WeaponTemplate]
+FriendlyName="レーザーステンガン"
+FriendlyNamePlural="レーザーステンガン"
+BriefSummary="レーザーライフルの軽量版。サブマシンガンと同様、遠距離での威力、装弾数、命中精度と引き替えに、兵士の機動力と隠密性を向上させる。"
+TacticalText="<Bullet/>メイン武器を撃った兵士は特別な訓練を受けていない限りターン終了となる。\n<Bullet/>アドヴェントから回収したアップグレードを使い、ステンガンの性能を強化せよ。\n<Bullet/>サブマシンガン型の武器は、アサルトライフルと比較して機動力、近距離命中率、潜伏性に優れているが、攻撃力、装填数、遠距離命中率では劣る。\n<Bullet/>レーザーの命中率が増加する。"
+AbilityDescName="サブマシンガン"
+
+[Cannon_LS X2WeaponTemplate]
+FriendlyName="レーザーキャノン"
+FriendlyNamePlural="レーザーキャノン"
+BriefSummary="改良された冷却システムを組み込んだレーザー兵器技術により、砲撃力をさらに増した速射型キャノンの運用が可能となる。"
+TacticalText="<Bullet/>レーザーキャノンは従来のキャノンと同等の可搬性を備えつつも攻撃力は大幅に強化されている。\n<Bullet/>敵から奪ったアップグレードを使い、レーザーキャノンの性能を強化せよ。\n<Bullet/>レーザーの命中率が増加する。"
+AbilityDescName="キャノン"
+
+[Shotgun_LS X2WeaponTemplate]
+FriendlyName="スキャッターレイ"
+FriendlyNamePlural="スキャッターレイ"
+BriefSummary="スキャッターレイは、レーザー技術を応用してショットガン的な運用を可能とした武器である。その拡散ビームは近距離で最大の効果を発揮する。"
+TacticalText="<Bullet/>ショットガン系の武器は近距離で絶大な効果を発揮する反面、離れるほど命中精度が低下する。\n<Bullet/>敵から奪ったアップブレードを用い、スキャッターレイの性能を強化せよ。\n<Bullet/>レーザーの命中率が増加する。"
+AbilityDescName="ショットガン"
+
+[SniperRifle_LS X2WeaponTemplate]
+FriendlyName="レーザーランス"
+FriendlyNamePlural="レーザーランス"
+BriefSummary="レーザーライフルの長銃身版。超高エネルギーのフラッシュコンデンサーを搭載することにより、レーザーランスは高精度の長距離レーザー兵器として仕上がっている。"
+TacticalText="<Bullet/>パルスランスの発射には必ず行動値2を必要とする。\n<Bullet/>近距離では命中精度が下がるが、遠距離では絶大な威力を発揮する。\n<Bullet/>敵から奪ったアップグレードを使い、レーザーランスの性能を強化せよ。\n<Bullet/>レーザーの命中率が増加する。"
+AbilityDescName="スナイパーライフル"

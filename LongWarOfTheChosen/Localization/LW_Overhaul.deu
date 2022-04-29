@@ -1,0 +1,617 @@
+[XComGameState_LWOverhaulOptions]
+LWOverhaulTabName="LONG WAR (LWOTC)"
+GrazeBandWidthMod="Streifschuss-Bereich"
+GrazeBandWidthModTooltip="Dies bestimmt, wie nah ein Schuss am exakten Trefferbereich liegen muss, um als Streifschuss gewertet zu werden."
+GrazeBandValue="Wert: <XGParam:IntValue0>"
+PauseOnRecruitMod="Bei Rekrutierung pausieren"
+PauseOnRecruitModTooltip="Weltkartenansicht anhalten, wenn ein Versteck einen neuen Soldaten oder Rebellen rekrutiert."
+
+[UIScreenListener_ShellDifficulty]
+strIncompatibleModsTitle="DOPPELTE MODIFIKATIONEN AKTIV"
+strIncompatibleModsText="Doppelte Mods entdeckt:\n%modnames%\nDie betroffenen Mods wurden in diesen Mod integriert und sollten im Launcher deaktiviert werden. Wenn du fortfährst, kann dies das Spielerlebnis negativ beeinflussen und zu verminderter Leistung oder Instabilitäten führen. Du fährst auf eigenes Risiko fort."
+
+[UIMission_LWCustomMission]
+m_strMissionDifficulty_start="FEINDLICHE GRUNDAKTIVITÄT"
+
+[ProtectRegionEarly X2LWAlienActivityTemplate]
+ActivityName="ProtectRegion1Activity"
+ActivityObjectives[0]="Einen Hinweis finden"
+
++MissionDescriptions=(MissionFamily="Recover_LW", Description="Wir haben einen möglichen Hinweis zu ADVENT-Aktivitäten gefunden. Wir sollten der Sache nachgehen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="Wir haben einen möglichen Hinweis zu ADVENT-Aktivitäten gefunden. Wir sollten der Sache nachgehen.", MissionIndex=0)
+
+[ProtectRegionMid X2LWAlienActivityTemplate]
+ActivityName="ProtectRegion2Activity"
+ActivityObjectives[0]="Befreiung: Einen Überläufer retten"
+
++MissionDescriptions=(MissionFamily="Extract_LW", Description="Wir können einen Überläufer von ADVENT evakuieren, der wichtige Informationen zu den Schwachstellen der Aliens in dieser Region hat.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="Wir haben von einem Sympathisanten des Widerstands erfahren, der wichtige Details zu den Schwachstellen der Aliens in dieser Region hat.", MissionIndex=0)
+
+[ProtectRegion X2LWAlienActivityTemplate]
+ActivityName="ProtectRegion3Activity"
+ActivityObjectives[0]="Befreiung: ADVENT-Einsätze behindern"
+ActivityObjectives[1]="Befreiung: Netzwerkturm zerstören"
+ActivityObjectives[2]="Befreiung: ADVENT-Basis angreifen"
+
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="Wir haben von einem ADVENT-Gerät erfahren, mit dem das Kommunikationsnetzwerk des Widerstands gestört wird. Wir müssen es zerstören.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Neutralize_LW", Description="Wir sind auf einen menschlichen ADVENT-Vertreter gestoßen, der den Feind bei seinen Operationen in dieser Region berät. Diese Person muss verschwinden.", MissionIndex=0)
+
++MissionDescriptions=(MissionFamily="AssaultNetworkTower_LW", Description="Wir verzeichnen immer mehr Siege in dieser Region. Es wird Zeit, dass wir das Kommunikationszentrum in der Hauptstadt der Region ausschalten.", MissionIndex=1)
+
++MissionDescriptions=(MissionFamily="AssaultAlienBase_LW", Description="Da die ADVENT-Operationen in dieser Region empfindlich getroffen wurden, können wir das örtliche Militärhauptquartier angreifen und ihnen die Region entreißen.", MissionIndex=2)
+
+[Counterinsurgency X2LWAlienActivityTemplate]
+ActivityName="CounterinsurgencyActivity"
+ActivityObjectives[0]="Widerstands-Datenleck verhindern"
+ActivityObjectives[1]="Widerstandsversteck verteidigen"
+
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="ADVENT untersucht unsere Operationen in dieser Region. Unser Versteck könnte in Gefahr sein.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Terror_LW", Description="Feindliche Truppen nähern sich unserem Versteck. Wir müssen sofort dorthin und unsere Leute verteidigen.", MissionIndex=1)
++MissionDescriptions=(MissionFamily="Defend_LW", Description="Feindliche Truppen nähern sich unserem Versteck. Wir müssen sofort dorthin und unsere Leute verteidigen.", MissionIndex=1)
+
+[ReinforceActivity X2LWAlienActivityTemplate]
+ActivityName="ReinforceActivity"
+ActivityObjectives[0]="ADVENT-Verstärkungen abfangen"
++MissionDescriptions=(MissionFamily="SupplyLineRaid_LW", Description="Wir haben erfahren, dass ADVENT als Reaktion auf unsere Operationen Truppen in diese Region verlegt.", MissionIndex=0)
+
+[COINResearch X2LWAlienActivityTemplate]
+ActivityName="COINResearchActivity"
+ActivityObjectives[0]="ADVENT-Militärforschung verhindern"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="Wir haben eine Möglichkeit gefunden, die Aliens daran zu hindern, ein militärisches Forschungsprojekt abzuschließen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="Wir haben eine Möglichkeit gefunden, die Aliens daran zu hindern, ein militärisches Forschungsprojekt abzuschließen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="Wir haben eine Möglichkeit gefunden, die Aliens daran zu hindern, ein militärisches Alien-Forschungsprojekt abzuschließen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Neutralize_LW", Description="Wir haben eine Möglichkeit gefunden, einen menschlichen ADVENT-Vertreter auszuschalten, um zu verhindern, dass die Aliens ein militärisches Forschungsprojekt abschließen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="Wir haben eine Möglichkeit gefunden, einen gefangenen Wissenschaftler zu retten, der gezwungen wird, bei einem militärischen Alien-Forschungsprojekt zu helfen.", MissionIndex=0)
+
+[COINOps X2LWAlienActivityTemplate]
+ActivityName="COINOpsActivity"
+ActivityObjectives[0]="ADVENT-Aufstandsbekämpfungsoperation angreifen"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="ADVENT leitet Schritte ein, um den Widerstand und XCOM zu behindern. Wir haben eine Chance, sie aufzuhalten.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="ADVENT leitet Schritte ein, um den Widerstand und XCOM zu behindern. Wir haben eine Chance, sie aufzuhalten.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="ADVENT leitet Schritte ein, um den Widerstand und XCOM zu behindern. Wir haben eine Chance, sie aufzuhalten.", MissionIndex=0)
+
+[BuildResearchFacility X2LWAlienActivityTemplate]
+ActivityName="BuildResearchFacilityActivity"
+ActivityObjectives[0]="ADVENT-Baueinheit angreifen"
++MissionDescriptions=(MissionFamily="SupplyLineRaid_LW", Description="Wir haben erfahren, dass die Aliens versuchen, in dieser Region eine neue Forschungseinrichtung zu bauen. Wir können eine Baueinheit angreifen, um das zu verhindern.", MissionIndex=0)
+
+[RegionalAvatarResearch X2LWAlienActivityTemplate]
+ActivityObjectives[0]="Ein Alien-Forschungslabor angreifen"
++MissionDescriptions=(MissionFamily="Sabotage_LW", Description="Wir haben eine wichtige Alien-Forschungseinrichtung entdeckt. Brennen wir sie nieder.", MissionIndex=0)
+
+[ScheduledOffworldReinforcements X2LWAlienActivityTemplate]
+ActivityName="ScheduledOffworldReinforcementsActivity"
+ActivityObjectives[0]="Einen Hinweis finden"
+ActivityObjectives[1]="UFO-Artefakte bergen"
+
++MissionDescriptions=(MissionFamily="Recover_LW", Description="Wir haben einen möglichen Hinweis zu ADVENT-Aktivitäten gefunden. Wir sollten der Sache nachgehen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="Wir haben einen möglichen Hinweis zu ADVENT-Aktivitäten gefunden. Wir sollten der Sache nachgehen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="Wir haben Informationen zu einem ungeschützten UFO am Boden.", MissionIndex=1)
+
+[EmergencyOffworldReinforcements X2LWAlienActivityTemplate]
+ActivityName="EmergencyOffworldReinforcementsActivity"
+ActivityObjectives[0]="Einen Hinweis finden"
+ActivityObjectives[1]="UFO-Artefakte bergen"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="Wir haben einen möglichen Hinweis auf ADVENT-Aktivitäten gefunden. Wir sollten der Sache nachgehen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="Wir haben einen möglichen Hinweis auf ADVENT-Aktivitäten gefunden. Wir sollten der Sache nachgehen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="Wir haben Informationen zu einem ungeschützten UFO am Boden.", MissionIndex=1)
+
+[SuperEmergencyOffworldReinforcements X2LWAlienActivityTemplate]
+ActivityName="SuperEmergencyOffworldReinforcementsActivity"
+ActivityObjectives[0]="Einen Hinweis finden"
+ActivityObjectives[1]="UFO-Artefakte bergen"
+
++MissionDescriptions=(MissionFamily="Recover_LW", Description="Wir haben einen möglichen Hinweis auf ADVENT-Aktivitäten gefunden. Wir sollten der Sache nachgehen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="Wir haben einen möglichen Hinweis auf ADVENT-Aktivitäten gefunden. Wir sollten der Sache nachgehen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="Wir haben einen ADVENT-Gefangenen gefunden, der möglicherweise Hinweise zu feindlichen Aktivitäten verraten könnte.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="Wir haben Informationen zu einem ungeschützten UFO am Boden.", MissionIndex=1)
+
+[Invasion X2LWAlienActivityTemplate]
+ActivityName="InvasionActivity"
+ActivityObjectives[0]="ADVENT-Stoßtruppen angreifen"
+ActivityObjectives[1]="Die Übergangsregierung verteidigen"
+
++MissionDescriptions=(MissionFamily="SupplyLineRaid_LW", Description="Wir haben herausgefunden, dass ADVENT-Truppen in die Region eindringen. Wir müssen ihren Vormarsch unbedingt aufhalten.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Invasion_LW", Description="ADVENT fällt in dieser Region ein und greift die Übergangsregierung an. Verteidigen Sie unsere Leute, sonst fällt die Region wieder den Aliens in die Hände.", MissionIndex=1)
+
+[Foothold X2LWAlienActivityTemplate]
+ActivityName="FootholdActivity"
+ActivityObjectives[0]="UFO-Angriffsträger angreifen"
+ActivityObjectives[1]="Die Übergangsregierung verteidigen"
+
++MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="Die Aliens versuchen, auf der Erde wieder Fuß zu fassen. Wir können das verhindern, indem wir einen ihrer Angriffsträger bei der Landung angreifen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Invasion_LW", Description="Die Aliens fallen in diese Region ein und greifen die Übergangsregierung an. Verteidigen Sie unsere Leute, sonst fällt die Region wieder den Aliens in die Hände.", MissionIndex=1)
+
+[Propaganda X2LWAlienActivityTemplate]
+ActivityName="PropagandaActivity"
+ActivityObjectives[0]="Aufmerksamkeit von ADVENT erlangen"
++MissionDescriptions=(MissionFamily="SabotageCC_LW", Description="Die Aliens haben ein Stadtzentrum relativ ungeschützt gelassen. Wir können eines ihrer Monumente angreifen, um ein Zeichen zu setzen, doch ADVENT wird garantiert reagieren.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Neutralize_LW", Description="Wir haben erfahren, dass ein hochrangiges menschliches Mitglied der ADVENT-Verwaltung für kurze Zeit ungeschützt sein wird. Wir können ihn ausschalten, aber ADVENT wird garantiert davon erfahren.", MissionIndex=0)
+
+[ProtectResearch X2LWAlienActivityTemplate]
+ActivityName="ProtectResearchActivity"
+ActivityObjectives[0]="Einen Hinweis finden"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="Wir haben einen möglichen Hinweis auf ADVENT-Aktivitäten gefunden. Wir sollten der Sache nachgehen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="Wir haben einen möglichen Hinweis auf ADVENT-Aktivitäten gefunden. Wir sollten der Sache nachgehen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="Wir haben ein ADVENT-Gerät entdeckt, das die Widerstandskommunikation stört. Seine Zerstörung könnte zur Entdeckung neuer Informationsquellen und Daten führen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="Wir haben einen ADVENT-Gefangenen gefunden, der möglicherweise Hinweise zu feindlichen Aktivitäten verraten könnte.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Extract_LW", Description="Wir haben von einem Flüchtling aus einer ADVENT-Einrichtung erfahren, der uns möglicherweise etwas zu feindlichen Aktivitäten verraten könnte und dringend evakuiert werden muss.", MissionIndex=0)
+
+[ProtectData X2LWAlienActivityTemplate]
+ActivityName="ProtectDataActivity"
+ActivityObjectives[0]="Einen Hinweis finden"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="Wir haben einen möglichen Hinweis auf ADVENT-Aktivitäten gefunden. Wir sollten der Sache nachgehen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="Wir haben einen möglichen Hinweis auf ADVENT-Aktivitäten gefunden. Wir sollten der Sache nachgehen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="Wir haben ein ADVENT-Gerät entdeckt, das die Widerstandskommunikation stört. Seine Zerstörung könnte zur Entdeckung neuer Informationsquellen und Daten führen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="Wir haben einen ADVENT-Gefangenen gefunden, der möglicherweise Hinweise zu feindlichen Aktivitäten verraten könnte.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Extract_LW", Description="Wir haben von einem Flüchtling aus einer ADVENT-Einrichtung erfahren, der uns möglicherweise etwas zu feindlichen Aktivitäten verraten könnte und dringend evakuiert werden muss.", MissionIndex=0)
+
+[TroopManeuvers X2LWAlienActivityTemplate]
+ActivityName="TroopManeuversActivity"
+ActivityObjectives[0]="Feindstärke reduzieren"
++MissionDescriptions=(MissionFamily="TroopManeuvers_LW", Description="ADVENT hat eine Kampfeinheit ungeschützt zurückgelassen. Unsere Truppen können sie angreifen.")
+
+[HighValuePrisoner X2LWAlienActivityTemplate]
+ActivityName="HighValuePrisonerActivity"
+ActivityObjectives[0]="Befreie wichtigen Gefangenen"
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="Wir haben erfahren, wo ADVENT einen wichtigen Gefangenen festhält. Wir haben kurzzeitig die Chance zur Befreiung dieser Person.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Extract_LW", Description="Wir haben von einem Flüchtling aus einer ADVENT-Einrichtung erfahren, der dem Widerstand helfen kann. Wir haben kurzzeitig die Chance zur Evakuierung dieser Person.", MissionIndex=0)
+
+[PoliticalPrisoners X2LWAlienActivityTemplate]
+ActivityName="PoliticalPrisonersActivity"
+ActivityObjectives[0]="Gefangene Rebellen befreien"
++MissionDescriptions=(MissionFamily="Jailbreak_LW", Description="Eine Gruppe Widerstandsmitglieder wird in einer gesicherten Einrichtung festgehalten. Wir haben kurzzeitig die Chance zu ihrer Befreiung.", MissionIndex=0)
+
+[IntelRaid X2LWAlienActivityTemplate]
+ActivityName="IntelRaidActivity"
+ActivityObjectives[0]="Widerstandseinheiten beschützen"
++MissionDescriptions=(MissionFamily="IntelRaid_LW", Description="Ein Bergungsteam des Widerstands wurde von ADVENT entdeckt. Wir müssen unsere Leute und unser Material vor den ADVENT-Einsatzteams schützen.")
+
+[SupplyConvoy X2LWAlienActivityTemplate]
+ActivityName="SupplyConvoyActivity"
+ActivityObjectives[0]="Widerstandseinheiten beschützen"
++MissionDescriptions=(MissionFamily="SupplyConvoy_LW", Description="ADVENT-Truppen rücken vor, um einen Versorgungskonvoi des Widerstands anzugreifen. Wir müssen unsere Leute und das Material beschützen.")
+
+[RecruitRaid X2LWAlienActivityTemplate]
+ActivityName="RecruitRaidActivity"
+ActivityObjectives[0]="Widerstandseinheiten beschützen"
++MissionDescriptions=(MissionFamily="RecruitRaid_LW", Description="Eine Rekrutierungseinheit des Widerstands ist auf eine ADVENT-Patrouille gestoßen. Wir müssen unsere Leute sofort da rausholen.")
+
+[Snare X2LWAlienActivityTemplate]
+ActivityName="SnareActivity"
+ActivityObjectives[0]="Einen Hinweis finden"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="Wir haben einen möglichen Hinweis auf ADVENT-Aktivitäten gefunden. Wir sollten der Sache nachgehen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="Wir haben einen möglichen Hinweis auf ADVENT-Aktivitäten gefunden. Wir sollten der Sache nachgehen.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="Wir haben einen ADVENT-Gefangenen gefunden, der möglicherweise Hinweise zu feindlichen Aktivitäten verraten könnte.", MissionIndex=0)
+
+[DebugMission X2LWAlienActivityTemplate]
+ActivityObjectives[0]="DEBUG Mission"
+
+[Rendezvous X2LWAlienActivityTemplate]
+ActivityName="RendezvousActivity"
+ActivityObjectives[0]="Dummy mission"
+ActivityObjectives[1]="ADVENT-Truppen überfallen"
++MissionDescriptions=(MissionFamily="Rendezvous_LW", Description="Dummy mission", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rendezvous_LW", Description="Jagen Sie die Gesichtslosen-Spione und ihre ADVENT-Kontakte in der Nähe dieses Verstecks.", MissionIndex=1)
+
+[X2Item_LWGauntlet]
+PrimaryRangeLabel="Raketenreichweite"
+PrimaryRadiusLabel="Raketenradius"
+SecondaryRangeLabel="Flammenwerfer-Reichweite"
+SecondaryRadiusLabel="Flammenwerfer-Radius"
+
+[LWGauntlet_CV X2MultiWeaponTemplate]
+FriendlyName="Handschuh"
+FriendlyNamePlural="Handschuhe"
+BriefSummary="Diese Kombination aus Flammenwerfer und Miniraketenwerfer wurde für unsere Techniker-Einheiten entworfen, um in unterschiedlichsten Kampfsituationen zu bestehen."
+TacticalText="<Bullet/> Der XCOM-Handschuh ist ein fortschrittliches Gerät, das sowohl über einen Miniraketenwerfer als auch einen Flammenwerfer verfügt.<br/><Bullet/> Der Raketenwerfer fasst anfänglich eine Rakete, deren Wirkungsbereich einen Radius von drei Feldern aufweist.<br/><Bullet/> Er kann jedes Ziel in Sichtweite angreifen.<br/><Bullet/> Der Schaden von Raketen nimmt vom Einschlagpunkt ausgehend ab.<br/><Bullet/> Der Flammenwerfer ist eine Kurzstreckenwaffe, die mehreren Zielen in einem kegelförmigen Wirkungsbereich Schaden zufügt.<br/><Bullet/> Der Flammenwerfer hat 2 Ladungen. Ohne weitere Verbesserungen kann er mechanischen Einheiten keinen Schaden zufügen.<br/><Bullet/> Der Einsatz einer Handschuh-Fähigkeit verbraucht eine Aktion verbraucht und beendet die Runde.<br/><Bullet/> Raketengenauigkeit hängt ab von der Zielsicherheit des Soldaten und der Entfernung zum Ziel, und davon, ob der Soldat in diesem Zug bereits eine Aktion durchgeführt hat. Raketen mit niedriger Genauigkeit haben höhere Streuungswerte – es ist also wahrscheinlicher, dass sie weiter am Zielfeld vorbeifliegen. Die größtmögliche Abweichung der Rakete wird im Pop-Up angegeben und der Wert, der neben dem Zielcursor steht, zeigt die zu erwartende (durchschnittliche) Abweichung für dieses Feld an."
+AbilityDescName="Handschuh"
+
+[LWGauntlet_MG X2MultiWeaponTemplate]
+FriendlyName="Handschuh Mark II"
+FriendlyNamePlural="Handschuhe Mark II"
+BriefSummary="Die Waffen des Handschuhs Mark II verursachen mehr Schaden als die Mark I-Version."
+TacticalText="<Bullet/> Der XCOM-Handschuh ist ein fortschrittliches Gerät, das sowohl über einen Miniraketenwerfer als auch einen Flammenwerfer verfügt.<br/><Bullet/> Der Raketenwerfer fasst anfänglich eine Rakete, deren Wirkungsbereich einen Radius von drei Feldern aufweist.<br/><Bullet/> Er kann jedes Ziel in Sichtweite angreifen.<br/><Bullet/> Der Schaden von Raketen nimmt vom Einschlagpunkt ausgehend ab.<br/><Bullet/> Der Flammenwerfer ist eine Kurzstreckenwaffe, die mehreren Zielen in einem kegelförmigen Wirkungsbereich Schaden zufügt.<br/><Bullet/> Der Flammenwerfer hat 2 Ladungen. Ohne weitere Verbesserungen kann er mechanischen Einheiten keinen Schaden zufügen.<br/><Bullet/> Der Einsatz einer Handschuh-Fähigkeit verbraucht eine Aktion verbraucht und beendet die Runde.<br/><Bullet/> Raketengenauigkeit hängt ab von der Zielsicherheit des Soldaten und der Entfernung zum Ziel, und davon, ob der Soldat in diesem Zug bereits eine Aktion durchgeführt hat. Raketen mit niedriger Genauigkeit haben höhere Streuungswerte – es ist also wahrscheinlicher, dass sie weiter am Zielfeld vorbeifliegen. Die größtmögliche Abweichung der Rakete wird im Pop-Up angegeben und der Wert, der neben dem Zielcursor steht, zeigt die zu erwartende (durchschnittliche) Abweichung für dieses Feld an."
+AbilityDescName="Handschuh"
+
+[LWGauntlet_CG X2MultiWeaponTemplate]
+FriendlyName="Handschuh Mark III"
+FriendlyNamePlural="Handschuhe Mark III"
+BriefSummary="Der Handschuh Mark III verursacht mehr Schaden als die Mark I- und Mark II-Versionen."
+TacticalText="<Bullet/> Der XCOM-Handschuh ist ein fortschrittliches Gerät, das sowohl über einen Miniraketenwerfer als auch einen Flammenwerfer verfügt.<br/><Bullet/> Der Raketenwerfer fasst anfänglich eine Rakete, deren Wirkungsbereich einen Radius von drei Feldern aufweist.<br/><Bullet/> Er kann jedes Ziel in Sichtweite angreifen.<br/><Bullet/> Der Schaden von Raketen nimmt vom Einschlagpunkt ausgehend ab.<br/><Bullet/> Der Flammenwerfer ist eine Kurzstreckenwaffe, die mehreren Zielen in einem kegelförmigen Wirkungsbereich Schaden zufügt.<br/><Bullet/> Der Flammenwerfer hat 2 Ladungen. Ohne weitere Verbesserungen kann er mechanischen Einheiten keinen Schaden zufügen.<br/><Bullet/> Der Einsatz einer Handschuh-Fähigkeit verbraucht eine Aktion verbraucht und beendet die Runde.<br/><Bullet/> Raketengenauigkeit hängt ab von der Zielsicherheit des Soldaten und der Entfernung zum Ziel, und davon, ob der Soldat in diesem Zug bereits eine Aktion durchgeführt hat. Raketen mit niedriger Genauigkeit haben höhere Streuungswerte – es ist also wahrscheinlicher, dass sie weiter am Zielfeld vorbeifliegen. Die größtmögliche Abweichung der Rakete wird im Pop-Up angegeben und der Wert, der neben dem Zielcursor steht, zeigt die zu erwartende (durchschnittliche) Abweichung für dieses Feld an."
+AbilityDescName="Handschuh"
+
+[LWGauntlet_BM X2MultiWeaponTemplate]
+FriendlyName="Blasterhandschuh"
+FriendlyNamePlural="Blasterhandschuhe"
+BriefSummary="Die Waffen des fortschrittlichen Handschuhs verursachen erheblichen Schaden und Miniraketen können jetzt zum Ziel gelenkt werden."
+TacticalText="<Bullet/> Die Blasterwerfer-Komponente des fortschrittlichen Handschuhs feuert eine Hightech-Rakete ab, die um Hindernisse gelenkt werden kann.\n<Bullet/> Der verbesserte Flammenwerfer richtet großen Schaden innerhalb eines kleinen Kegels an, der sowohl feindliche Ziele als auch die Umgebung beschädigt.<br/><Bullet/> Der Schaden von Raketen nimmt vom Einschlagpunkt ausgehend ab.<br/><Bullet/> Der Flammenwerfer ist eine Kurzstreckenwaffe, die mehreren Zielen in einem kegelförmigen Wirkungsbereich Schaden zufügt.<br/><Bullet/> Der Flammenwerfer hat 2 Ladungen. Ohne weitere Verbesserungen kann er mechanischen Einheiten keinen Schaden zufügen.<br/><Bullet/> Der Einsatz einer Handschuh-Fähigkeit verbraucht eine Aktion verbraucht und beendet die Runde. <br/><Bullet/> Raketengenauigkeit hängt ab von der Zielsicherheit des Soldaten und der Entfernung zum Ziel, und davon, ob der Soldat in diesem Zug bereits eine Aktion durchgeführt hat. Raketen mit niedriger Genauigkeit haben höhere Streuungswerte – es ist also wahrscheinlicher, dass sie weiter am Zielfeld vorbeifliegen. Die größtmögliche Abweichung der Rakete wird im Pop-Up angegeben und der Wert, der neben dem Zielcursor steht, zeigt die zu erwartende (durchschnittliche) Abweichung für dieses Feld an."
+AbilityDescName="Handschuh"
+
+[UISquadSelect_InfiltrationPanel]
+strInfiltrationTitle="GESAMT-INFILTRATION:"
+strBaseInfiltrationTitle="Grundinfiltration:"
+strSquadSizeTitle="Truppgrößen-Modifikator"
+strCovertnessTitle="Fähigk./Ausrüst.-Modifik.:"
+strMissionTimeTitle="Einsatz läuft ab in:"
+strDaysAndHours="<XGParam:IntValue0> Tage, <XGParam:IntValue1> Stunden"
+strMinusDaysAndHours="- <XGParam:IntValue0> Tage, <XGParam:IntValue1> Stunden"
+strPlusDaysAndHours="+ <XGParam:IntValue0> Tage, <XGParam:IntValue1> Stunden"
+strMissionIndefinite="Unbestimmte Dauer"
+
+[UIScreenListener_DropShipBriefing_MissionStart]
+strLaunchingInfiltration="KONTAKT STEHT BEVOR"
+
+[UIUtilities_Text_LW]
+m_strHelp="Hilfe"
+
+[X2Ability_LW_GearAbilities]
+strWeight="Kleines Gegenstandsgewicht"
+AblativeHPLabel="Ablative TP"
+
+[X2Ability_LW_TechnicalAbilitySet]
+strMaxScatter="\nMaximale Streuung (Felder):"
+
+[XComGameState_LWListenerManager]
+ResistanceHQBodyText="Auf Informationen über das Widerstandsversteck zugreifen"
+
+[X2LWAbilitiesModTemplate]
+strCritReductionFromConditionalToHit="Trefferchance"
+
+[X2EventListener_Missions]
+m_strClearSquad="TRUPP LÖSCHEN"
+m_strTooltipClearSquad="Entfernt alle Soldaten aus dem Trupp."
+
+m_strAutofillSquad="TRUPP AUTOM. FÜLLEN"
+m_strTooltipAutofillSquad="Leere Trupp-Plätze automatisch füllen."
+
+[X2EventListener_StrategyMap]
+strTimeRemainingHoursOnly="<XGParam:IntValue0> Stunden"
+strTimeRemainingDaysAndHours="<XGParam:IntValue1>T, <XGParam:IntValue0>S"
+
+[X2EventListener_Soldiers]
+OnLiaisonDuty="Versteckberater"
+OnInfiltrationMission="Infiltration"
+UnitAlreadyInSquad="Einheit in einem anderen Trupp"
+UnitInSquad="Einheit in einem Trupp"
+RankTooLow="Rang zu niedrig"
+CannotModifyOnMissionSoldierTooltip="Im Einsatz befindliche Soldaten können nicht modifiziert werden"
+
+[X2Effect_LWHolotarget]
+HoloTargetEffectName="Holo-Ziel"
+
+[XComGameState_LWPersistentSquad]
++DefaultSquadNames="Menace"
++DefaultSquadNames="Voodoo"
++DefaultSquadNames="Swordsman"
++DefaultSquadNames="Super Six"
++DefaultSquadNames="Hussar"
++DefaultSquadNames="Dragoons"
++DefaultSquadNames="Devils"
++DefaultSquadNames="Feral"
++DefaultSquadNames="Spearhead"
++DefaultSquadNames="Victory"
++DefaultSquadNames="Sandman"
++DefaultSquadNames="Tornado"
++DefaultSquadNames="Freiwillige"
++DefaultSquadNames="Grizzly"
++DefaultSquadNames="Keystone"
++DefaultSquadNames="Screaming Eagles"
++DefaultSquadNames="Hitman"
++DefaultSquadNames="Assassin"
++DefaultSquadNames="Raptor"
++DefaultSquadNames="Moccasin"
++DefaultSquadNames="Vega"
++DefaultSquadNames="Roughnecks"
++DefaultSquadNames="Marauders"
++DefaultSquadNames="Black Watch"
++DefaultSquadNames="Blackguards"
++DefaultSquadNames="Kiryu-Kai"
++DefaultSquadNames="Trident"
++DefaultSquadNames="Timberwolf"
+
++TempSquadNames="Alpha"
++TempSquadNames="Bravo"
++TempSquadNames="Charlie"
++TempSquadNames="Delta"
++TempSquadNames="Echo"
++TempSquadNames="Foxtrot"
++TempSquadNames="Golf"
++TempSquadNames="Hotel"
++TempSquadNames="Indien"
++TempSquadNames="Juliet"
++TempSquadNames="Kilo"
++TempSquadNames="Lima"
++TempSquadNames="Mike"
++TempSquadNames="November"
++TempSquadNames="Oscar"
++TempSquadNames="Papa"
++TempSquadNames="Quebec"
++TempSquadNames="Romeo"
++TempSquadNames="Sierra"
++TempSquadNames="Tango"
++TempSquadNames="Uniform"
++TempSquadNames="Victor"
++TempSquadNames="Yankee"
++TempSquadNames="Zulu"
+
+
+BackupSquadName="XCOM-Trupp <XGParam:StrValue0>"
+BackupTempSquadName="Temporärer Trupp <XGParam:StrValue0>"
+
+[UIScreenListener_LivingQuarters]
++m_strSquadSelection="TRUPP-KASERNE"
+
+[UIScreenListener_Alert]
+m_strNewRebelsAvailableTitle="NEUES WIDERSTANDSPERSONAL ERHALTEN"
+m_strNewRebelsAvailable="Aufgabenzuweisung erforderlich bei Widerstandsversteck in: %REGION"
+m_strHelpBMGoodsDescription="Commander, neue Wissenschaftler, Ingenieure und Veteranen sind zur Rekrutierung auf dem Schwarzmarkt verfügbar."
+
+m_strInvasionTitle="ADVENT-INVASION"
+m_strInvasionLabel="FREIE REGION WIRD ANGEGRIFFEN"
+m_strInvasionBody="Commander, ADVENT versucht, eine befreite Region zurückzuerobern. Sie starten einen schweren Angriff auf das Hauptquartier der Übergangsregierung!"
+m_strInvasionFlare="NOTFALLNACHRICHT"
+m_strInvasionConfirm="INVASIONSSTÄTTE"
+
+m_strRepeatResearch="FORSCHUNG WIEDERHOLEN"
+
+[UIScreenListener_ArmoryWeaponUpgrade_LW]
+strStripWeaponUpgradesButton="Waffenverbesserungen entfernen"
+strStripWeaponUpgradesTooltip="Entfernt alle Verbesserungen und legt die Waffe zurück ins allgemeine Inventar"
+strStripWeaponUpgradeDialogueTitle="ENTFERNEN ALLER VERBESSERUNGEN BESTÄTIGEN"
+strStripWeaponUpgradeDialogueText="Möchtest du wirklich sämtliche Verbesserungen von dieser Waffe entfernen und sie ins Inventar zurücklegen?"
+
+[UIPersonnel_SquadBarracks]
+strSquadBarrackTitle="TRUPP: <XGParam:StrValue0>"
+strUnassignedSoldierTitle="NICHT ZUGEWIESENE SOLDATEN"
+strEdit="ANZEIGEN"
+strSelect="AUSWÄHLEN"
+strSquad="TRUPP"
+strRenameSquad="TRUPP UMBENENNEN"
+strEditBiography="GESCHICHTE BEARBEITEN"
+strDeleteSquad="TRUPP LÖSCHEN"
+strAddSquad="TRUPP ERSTELLEN"
+strViewUnassigned="SOLDATEN ZUWEISEN"
+strViewSquad="TRUPP-SOLDATEN"
+strDeleteSquadConfirm="TRUPP-LÖSCHUNG BESTÄTIGEN"
+strDeleteSquadConfirmDesc="Möchtest du diesen Trupp wirklich löschen?"
+strMissions="Einsätze: <XGParam:IntValue0>"
+strDefaultSquadBiography="Aktiviert: <XGParam:StrValue0>"
+
+[UISquadContainer]
+DefaultSquadTitle="TRUPP"
+
+[UISquadListItem]
+sSquadOnMission="IM EINSATZ"
+sSquadAvailable="VERFÜGBAR"
+sCovertness="Tarnung: <XGParam:IntValue0>"
+
+[UIScreenListener_SquadSelect_LW]
+strSave="Speichern"
+strSquad="Trupp"
+strStart="Start"
+strInfiltration="Infiltration"
+
+[UIScreenListener_SkyrangerArrives_LW]
+strLaunchInfiltration="INFILTRATION STARTEN"
+strAbortInfiltration="INFILTRATION ABBRECHEN"
+strContinueInfiltration="INFILTRATION FORTSETZEN"
+
+[XComGameState_LWSquadManager]
+LabelBarracks_SquadManagement="Truppverwaltung"
+TooltipBarracks_SquadManagement="Dauerhafte Soldatentrupps verwalten"
+
+[UIStrategyMapItem_Mission_LW]
+strRecon="Infil."
+
+[UIMission_LWLaunchDelayedMission]
+m_strMission="INFILTRATION"
+m_strOptions="INFILTRATIONS-OPTIONEN"
+m_strImageGreeble="GESICHERTE ÜBERTRAGUNG"
+m_strWait="WARTEN"
+m_strAbort="ABBRUCH"
+m_strBoostInfiltration="INFILTRATION VERSTÄRKEN"
+m_strAlreadyBoostedInfiltration="Trupp <XGParam:StrValue0> hat die Infiltration bereits verstärkt"
+m_strInsufficentIntelForBoostInfiltration="Nicht genügend Informationen"
+m_strBoostInfiltrationDescription="Du kannst <XGParam:StrValue0> ausgeben, um den Infiltrationswert dieses Trupps für diesen Einsatz um <XGParam:IntValue1>% zu erhöhen. Die Verstärkung ist rückwirkend. Möchtest du die Informationen ausgeben?"
+m_strViewSquad="TRUPP ANSEHEN"
+m_strInfiltrationStatusExpiring="<XGParam:IntValue0>% infiltriert / <XGParam:IntValue1>T <XGParam:IntValue2>S bis 100%"
+m_strInfiltrationStatusMissionEnding="<XGParam:IntValue0>% infiltriert / <XGParam:IntValue1>T. <XGParam:IntValue2>St. bis zum obligatorischen Start"
+m_strInfiltrationStatusNonExpiring="<XGParam:IntValue0>% infiltriert"
+m_strInfiltrationConsequence="Feindbereitschaft: <XGParam:StrValue0>"
+m_strMustLaunchMission="Einsatz läuft ab: Start oder Abbruch erforderlich"
+m_strInsuffientInfiltrationToLaunch="Mindestens <XGParam:IntValue0>% müssen infiltriert sein, um den Einsatz zu starten"
+
+; these need to be coordinated in length with the  in LW_InfiltrationSettings.ini : AlertModifierAtInfiltration
++m_strAlertnessModifierDescriptions[0]="Unbezwingbar"
++m_strAlertnessModifierDescriptions[1]="Unbezwingbar"
++m_strAlertnessModifierDescriptions[2]="Unbezwingbar"
++m_strAlertnessModifierDescriptions[3]="Verstärkt"
++m_strAlertnessModifierDescriptions[4]="Verstärkt"
++m_strAlertnessModifierDescriptions[5]="Verstärkt"
++m_strAlertnessModifierDescriptions[6]="Alarmiert"
++m_strAlertnessModifierDescriptions[7]="Alarmiert"
++m_strAlertnessModifierDescriptions[8]="Alarmiert"
++m_strAlertnessModifierDescriptions[9]="Wachsam"
++m_strAlertnessModifierDescriptions[10]="Wachsam"
++m_strAlertnessModifierDescriptions[11]="Wachsam"
++m_strAlertnessModifierDescriptions[12]="Normal"
++m_strAlertnessModifierDescriptions[13]="Angreifbar"
++m_strAlertnessModifierDescriptions[14]="Angreifbar"
++m_strAlertnessModifierDescriptions[15]="Angreifbar"
+
+[UIMission_LWCustomMission]
++m_strUrgent="SICHERHEITSVERLETZUNG"
++m_strRendezvousMission="TREFFEN"
++m_strRendezvousDesc="**Nicht autorisiertes Signal aus Widerstandsversteck in: <XGParam:StrValue0/!WorldRegionName>** Der Berater und Freiwillige aus dem Versteck werden einen Spion und dessen ADVENT-Kontaktleute bei einem Treffpunkt in der Nähe abfangen und ausschalten."
+
+m_strInvasionMission="INVASION"
+m_strInvasionWarning="ALARM"
+m_strInvasionDesc="ADVENT-Truppen fallen in <XGParam:StrValue0/!WorldRegionName/> ein! Wir müssen sofort eingreifen, andernfalls fällt die Region wieder unter ADVENT-Kontrolle."
+
+[UIStrategyMapItem_Region_LW]
+m_strOutpostTitle="Versteck: <XGParam:StrValue0>"
+m_strAlertLevel="ADVENT-Stärke:<XGParam:IntValue0> (W:<XGParam:IntValue2> M:<XGParam:IntValue1>)"
+m_strLiberatedRegion="Region befreit"
+m_strStaffingPinText="V:<XGParam:IntValue0> A:<XGParam:IntValue1> R:<XGParam:IntValue2>"
+m_strStaffingPinTextMore="V:<XGParam:IntValue0>"
+m_strMonthlyRegionalIncome="+§<XGParam:IntValue0> (+§<XGParam:IntValue1>)"
+
+[XComGameState_LWOutpostManager]
+LabelCQ_ResistanceManagement="Widerstandsverwaltung"
+TooltipCQ_ResistanceManagement="Regionale Widerstandsverstecke verwalten"
+
+[UIResistanceManagement_LW]
+m_strTitle="WIDERSTANDS-ÜBERSICHT"
+m_strLabel="WIDERSTANDSVERSTECKE KONTAKTIEREN ..."
+m_strRegionLabel="REGION"
+m_strStrength="ADVENT-STÄRKE"
+m_strAdviserLabel="VB"
+m_strIncomeLabel="EINNAHMEN"
+m_strRebelCountLabel="VERSTECK"
+m_strADVENTUnitSingular="Legion"
+m_strADVENTUnitPlural="Legionen"
+
+m_strGlobalAlert="Globale ADVENT-Stärke:"
+m_strGlobalInsurgency="• Globale Widerstandsstärke:"
+m_strAvatarPenalty="• Avatar-Fortschritt um <XGParam:IntValue0/> % verlangsamt"
+m_strThreatVeryLow="Niedrig"
+m_strThreatLow="Wachsam"
+m_strThreatMedium="Erhöht"
+m_strThreatHigh="Hoch"
+m_strThreatVeryHigh="Ernst"
+m_strLiberated="Befreit"
+m_strResistanceManagementLevels="<XGParam:IntValue0> (W:<XGParam:IntValue1>)"
+
+[UIOutpostManagement]
+m_strTitle="VERSTECKVERWALTUNG"
+m_strLabel="Platzhalter-Oberfläche für Versteckverwaltung ..."
+m_strName="Name"
+m_strMission="Einsatz"
+m_strBuildRadioRelay="Funkrelais errichten"
+m_strLiaisonTitle="Versteckberater"
+; 0=Alert, 1=Vigilance, 2=Force
+m_strRegionalInfo="ADVENT-Stärke: <XGParam:IntValue0/>"
+m_strResistanceMecs="Widerstands-MECHs: <XGParam:IntValue0/>"
+m_strProhibited="Verboten"
+m_strCannotChangeLiaisonTitle="Beraterwechsel nicht möglich"
+m_strCannotChangeLiaison="Der Berater kann derzeit aufgrund von laufenden Einsätzen in dieser Region nicht gewechselt werden"
+
+[UIScreenListener_TacticalHUD]
+strEvacRequestTitle="Evakuierung angefordert"
+strEvacRequestSubtitle="Runden bis zum Eintreffen des Skyrangers"
+
+[LWRebelJob_DefaultJobSet]
+strRebelRecruited="%UNIT rekrutiert für Versteck in: %REGION"
+strSoldierRecruited="%UNIT kontaktiert in: %REGION. Steht jetzt zur Rekrutierung bereit."
+strStaffRecruited="%TITLE %UNIT rekrutiert aus: %REGION"
+
+;; REBEL JOB TEMPLATES
+[NoJob LWRebelJobTemplate]
+strJobName="Keine"
+
+[Resupply LWRebelJobTemplate]
+strJobName="Versorgung"
+
+[Recruit LWRebelJobTemplate]
+strJobName="Rekrutierung"
+
+[Intel LWRebelJobTemplate]
+strJobName="Aufklärung"
+
+[Hiding LWRebelJobTemplate]
+strJobName="Verstecken"
+
+[RebelJobMissions LWRebelJobTemplate]
+strJobName="Einsätze"
+
+[UIScreenListener_ResistanceReport]
+m_strStaffingHelp="Rekrutiere neues Personal auf dem Schwarzmarkt"
+
+;;HELP TEMPLATES
+[ResistanceManagement_Help LWHelpTemplate]
+m_strHelpTitle="Widerstandsverwaltung"
+m_strHelpText="Über das Widerstandsverwaltungs-Menü kann XCOM die Aktivitäten der Widerstandszellen auf der ganzen Welt bestimmen. Neue Widerstandsverstecke werden hier mitsamt ihrer Stärke und Aktivitäten angezeigt, sobald der Kontakt hergestellt wurde. Wähle eine Region aus, um den Versteckverwaltungs-Bildschirm aufzurufen und die Prioritäten des Widerstands in dieser Region festzulegen. Im Widerstands-Übersichtsschirm zeigen ein oder zwei Zeichen neben dem Namen der Region an, wie weit die Befreiung der Region fortgeschritten ist."
+m_strHelpButtonTooltip="Widerstandsverwaltungs-Hilfe"
+
+[OutpostManagement_Help LWHelpTemplate]
+m_strHelpTitle="Versteckverwaltung"
+m_strHelpText="In diesem Menü lassen sich Widerstandsmitgliedern, die in einem Widerstandsversteck stationiert sind, Aufgaben zuweisen, um XCOM beim Kampf gegen ADVENT zu helfen. Außerdem kann der Commander ein XCOM-Mitglied per Klick auf den Bildrahmen zum Berater des Verstecks bestimmen. Militärische Berater helfen bei der Rekrutierung und der internen Sicherheit, wissenschaftliche Berater helfen bei der Aufklärung und technische Berater helfen bei der Beschaffung von Vorräten. Eine komplette Beschreibung dieser Funktionen gibt es in den Beiträgen zu den Widerstandsverstecken im XCOM-Archiv des Commander-Quartiers."
+m_strHelpButtonTooltip="Versteckverwaltungs-Hilfe"
+
+[Personnel_SquadBarracks_Help LWHelpTemplate]
+m_strHelpTitle="Truppverwaltung"
+m_strHelpText="In der Truppverwaltung kann XCOM Trupps erstellen und verwalten, um diese auf Einsätze zu schicken. Trupps sind vordefinierte Gruppen von Soldaten, die über eine einzelne Aktion im Truppauswahl-Bildschirm einem Einsatz zugewiesen werden können. Für Trupps gelten die folgenden Richtlinien:<br/><Bullet/> Einem Truppe können bis zu 10 Soldaten zugewiesen werden. Trupps können direkt vor einem Einsatz im Truppauswahl-Bildschirm gewählt werden.<br/><Bullet/> Wenn ein Truppmitglied verletzt ist, sich in der Ausbildung befindet oder anderweitig nicht für einen Einsatz geeignet ist, kannst du es für diesen Einsatz vorübergehend durch einen Soldaten ersetzen, der keinem Trupp zugewiesen ist.<br/><Bullet/> Es ist auch möglich, einen Trupp unmittelbar vor einem Einsatz vollständig aus nicht zugewiesenen Soldaten zusammenzustellen. Der Trupp erhält dann einen Namen (zur Kennzeichnung auf der Weltkarte) und wird direkt nach dem Einsatz wieder aufgelöst.<br/><Bullet/> Um Soldaten aus einem festen Trupp in einen anderen zu versetzen, müssen sie erst aus ihrem aktuellen Trupp entfernt werden."
+m_strHelpButtonTooltip="Truppverwaltungs-Hilfe"
+
+[SquadSelect_Help LWHelpTemplate]
+m_strHelpTitle="Trupp-Infiltration"
+m_strHelpText="Bei vielen Einsätzen muss der Trupp zunächst das Einsatzgebiet infiltrieren, um nicht den schwersten Truppen von ADVENT ausgesetzt zu sein. Der Commander kann die Infiltrationsdauer beeinflussen, indem er die Größe des Trupps anpasst oder Soldaten mit Tarnfähigkeiten und -ausrüstung zuweist. Eine komplette Beschreibung dieser Funktionen gibt es in den Beiträgen zur Infiltration im XCOM-Archiv des Commander-Quartiers."
+m_strHelpButtonTooltip="Infiltrations-Hilfe"
+
+[X2StrategyElement_DefaultStaffSlots_LW]
+m_strLiaisonLocation="Versteckberater: <XGParam:StrValue0>"
+
+[X2StrategyElement_MissionSiteDescriptions_LW]
+; This goes in front of a city name in invasion missions, e.g. "Free Chicago"
+m_strLiberatedCityPrefix="(befreit)"
+
+[XComGameState_LWOutPost]
+m_strProhibitedJobAlert="Aufgrund eines ADVENT-Überfalls können die Widerstandsmitglieder in <XGParam:StrValue1/> <XGParam:IntValue0/> Tage lang nicht der <XGParam:StrValue0/> zugewiesen werden. Alle mit dieser Aufgabe betrauten Widerstandsmitglieder sind untergetaucht."
+m_strProhibitedJobEnded="Die der <XGParam:StrValue1/> zugewiesenen Widerstandsmitglieder in <XGParam:StrValue0/> sind jetzt wieder produktiv."
+
+[X2StrategyElement_DefaultAlienActivities]
+m_strInsufficientRebels="Es müssen mindestens <XGParam:IntValue0/> Rebellen im Versteck sein, um mit Nachbarn in Kontakt zu treten"
+
+[UIScreenListener_Alert]
+m_strInvasionTitle="ADVENT-INVASION"
+m_strInvasionLabel="FREIE REGION WIRD ANGEGRIFFEN"
+m_strInvasionBody="Commander, ADVENT versucht, eine befreite Region zurückzuerobern. Sie starten einen schweren Angriff auf das Hauptquartier der Übergangsregierung!"
+m_strInvasionFlare="NOTFALLNACHRICHT"
+m_strInvasionConfirm="INVASIONSSTÄTTE"
+
+[UIUtilities_LW]
+m_strStripWeaponUpgrades=WAFFENMODULE VERFÜGBAR MACHEN
+m_strStripWeaponUpgradesLower=Waffenmodule Verfügbar Machen
+m_strStripWeaponUpgradesConfirm=WAFFENVERBESSERUNGEN VERFÜGBAR MACHEN?
+m_strStripWeaponUpgradesConfirmDesc=Hiermit werden alle Waffenverbesserungen von allen Primärwaffen entfernt, außer denen, die von Soldaten in dieser Mission getragen werden. Die entfernten Waffenmodule können sofort neu angebracht werden.
+m_strTooltipStripWeapons=Alle Waffenverbesserungen von Soldaten entfernen, die NICHT für die aktuelle Mission ausgewählt sind.
+
+m_strInfiltrationMission="Infiltrationsmission"
+m_strQuickResponseMission="Schnelles Eingreifen"
+m_strFixedEvacLocation="Feste Evakuierungszone"
+m_strFlareEvac="Evakuierung auf Anforderung"
+m_strDelayedEvac="Verzögerte Evakuierung"
+m_strNoEvac="Keine Evakuierung"
+m_strMaxSquadSize="Maximale Truppgröße"
+m_strConcealedStart="Trupp getarnt"
+m_strRevealedStart="Keine Trupptarnung"
+m_strObjectiveTimer="Runden zum Missionsziel:"
+m_strExtractionTimer="Runden bis zum erzwungenen Rückzug:"
+m_strEvacTimer="Skyranger trifft ein:"
+m_strGetCorpses="Alienleichen werden geborgen"
+m_strSweepObjective="Beutezug"
+m_strEvacRequired="Evakuierung, keine Bergung"
+m_strTurnSingular="Runde"
+m_strTurnPlural="Runden"
+m_strMinimumInfiltration="Mindestens <XGParam:IntValue0>% Infiltration"
+m_strYellowAlert="Erhöhte Alarmbereitschaft"
+
+m_sAverageScatterText="± <XGParam:StrValue0/> Felder"
+
+m_strAllHandsToHangar=JEDERMANN ZUM HANGAR
+m_strAllHandsToHangarConfirm=JEDERMANN ZUM HANGAR BESTÄTIGEN
+m_strAllHandsToHangarConfirmDesc=Hiermit werden alle Soldaten, die gerade ein Training in der Guerillataktikschule oder dem Fortschrittlichen Kriegszentrum absolvieren, für diesen Einsatz verfügbar gemacht. Gilt nicht für laufende Psi-Tests.
+m_strTooltipAllHandsToHangar=Entferne alle Soldaten aus dem Training der Guerillataktikschule oder dem Fortschrittlichen Kriegszentrum.
+
+m_strPrevHaven="VORIGES VERSTECK"
+m_strNextHaven="NÄCHSTES VERSTECK"
+
+m_strVIPCaptureReward="(bei Gefangennahme der VIP)"
+
+[Logistics X2LWAlienActivityTemplate]
+ActivityObjectives[0]="Stiehl ADVENT Militärgut"
++MissionDescriptions=(MissionFamily="SmashnGrab_LW", Description="Der Widerstand hat den Aufbewahrungsort von wichtigem Feindmaterial herausgefunden, das wir für unsere eigenen Zwecke beschaffen können.", MissionIndex=0)
+
+[UICovertActionReport_LW]
+strCovertActionFailed="GESCHEITERT"

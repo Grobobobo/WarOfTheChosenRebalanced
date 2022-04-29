@@ -1,0 +1,33 @@
+[T_Guerilla_Ops_Recover_Item_Central_01 SoundNodeWave]
+SpokenText="Recon indicates an ADVENT data vault holding files critical to their latest operation was stolen by the resistance in this area. Unfortunately, the aliens were quick to reclaim the site, wiping out everyone they came across in the process. This is an opportunity to disrupt their project that we can't pass up. Recover the assets."
+
+[T_Guerilla_Ops_Recover_Item_Central_02 SoundNodeWave]
+SpokenText="Local resistance forces in this area managed to seize control of an ADVENT data vault holding files tied to the alien operation we picked up on. The aliens weren't about to let it go that easy. They overran the site, recapturing the data, and killing everyone they found. We're not going to let that stop us. Recover the assets."
+
+[T_Guerilla_Ops_Recover_Item_Central_03 SoundNodeWave]
+SpokenText="A resistance team operating out of this area got the jump on ADVENT forces passing through, and apparently they stumbled on a data vault with files critical to the alien operation. Unfortunately, hostile reinforcements overran the site, and all communication from the local operatives have gone silent. We're moving in to secure the area and find the assets."
+
+[T_Guerilla_Ops_Recover_Item_Central_04 SoundNodeWave]
+SpokenText="A group of local resistance operatives working in this area ambushed an ADVENT patrol and discovered a data vault they were transporting. From what we've heard, it looks like this thing is holding data critical to the alien project we picked up on. Unfortunately, alien reinforcements were quick to move on the site. We've lost all contact from the resistance forces. We're moving in to secure the area. Recover the assets."
+
+[AssaultAlienBase_TacIntro SoundNodeWave]
+SpokenText="Menace 1-5: Infiltrate and investigate the area. Expect heavy resistance. Neutralize all hostile contacts."
+
+[T_AssaultNetworkTower_Central_01 SoundNodeWave]
+SpokenText="Commander, this'll be a two-pronged assault. First we hack the heart of the ADVENT tower and disrupt their network -- but we'll have to move fast. If we can seize control of that data, Shen's cooking up a little surprise for them that should more than get their attention. Lock it down, secure the surrounding area and remove all enemy security forces guarding the target. All goes well, they won't even see us coming."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_01 SoundNodeWave]
+SpokenText="Remote recon suggests that an exposed data vault is being held by ADVENT forces inside one of their facilities in this area. From what we can gather, the vault is storing data critical to the aliens' latest operation. So we're moving in seize it by force. Take control of those assets at all costs."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_02 SoundNodeWave]
+SpokenText="Dr. Tygan has been tracking the movements of an ADVENT data vault carrying information critical to the aliens' latest project, and he's finally managed to trace it to one of their facilities in this area. Tygan thinks we can recover the contents, assuming we can eliminate any hostile forces protecting this thing."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_03 SoundNodeWave]
+SpokenText="We've traced the location of an ADVENT data vault through their network to a facility situated in this region. As far as we can tell it's storing data critical to the aliens' latest operation. We're moving in to seize control of the assets, but security forces in the area won't make it easy on us."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_04 SoundNodeWave]
+SpokenText="One of our resistance contacts tipped us to an ADVENT patrol group storing a secure data vault in this area, and it looks like the files are critical to the aliens' latest operation. We can't pass up any opportunity to stop their progress, so we're moving to capture those assets."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_05 SoundNodeWave]
+SpokenText="We just got word from the resistance, one of their operatives located an ADVENT data vault in this area, storing information critical to the latest alien operation. We're moving in to seize that data, and stop their progress before this goes any further."
+

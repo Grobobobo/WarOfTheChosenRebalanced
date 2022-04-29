@@ -1,0 +1,63 @@
+[UIOptionsPCScreen_LW]
+m_strResetCurrentModOption="СБРОС МОДИФИКАЦИИ"
+
+[XComGameState_LWToolboxOptions]
+ToolboxTabName="КАМПАНИЯ"
+
+HelpButtonLabel="Полезная информация"
+HelpButtonLabelText="Помощь"
+HelpButtonLabelTooltip="Показать информацию о LW Toolbox"
+
+SetCameraRotation="Укажите угол вращения камеры (в градусах)"
+SetCameraRotationTooltip="Выберите угол вращения для камеры во время выполнения тактических заданий."
+
+SelectSquadSize="Начальный размер отряда"
+SelectSquadSizeTooltip="Увеличивает базовый размер отряда (без учета улучшений партизанской школы)"
+
+EnableRandomizedDamageMod="Русская рулетка"
+EnableRandomizedDamageModTooltip="Урон, наносимый солдатами и противником, будет варьироваться в заданных пределах относительно базового значения."
+
+EnableRandomizedInitialStatsMod="Все люди разные"
+EnableRandomizedInitialStatsModTooltip="Солдаты создаются со случайными параметрами. При отключении этой функции параметры возвращаются к стандартным значениям. Функцию можно включить/выключить в режиме глобуса или на первом ходу тактических заданий, если еще никто не получил ранения."
+sCantChangeWithWoundedSoldiers="Опцию \"Все люди разные\" нельзя включить\выключить, если есть раненые солдаты, а также после первого хода в бою."
+NormalDamage="Откл."
+MaxDamage="МАКС."
+
+EnableRandomizedLevelupStatsMod="Скрытый потенциал"
+EnableRandomizedLevelupStatsModTooltip="При повышении уровня солдаты получают случайные прибавки к параметрам."
+
+RandomizedLevelupStrength="Случайный разброс: <XGParam:IntValue0>%"
+RandomizedLevelupStrengthTooltip="Величина случайного разброса при использовании опции \"Скрытый потенциал\". Чем выше значение, тем разнообразнее будет прирост параметров при получении уровня."
+
+EnableRedFogMod="Красный туман"
+EnableRedFogModTooltip="Раненые солдаты теряют меткость, волю, мобильность и навык взлома."
+EnableRedFogLinearPenaltiesMod="Использовать линейные штрафы за красный туман (вместо квадратичных)"
+EnableRedFogModLinearPenaltiesTooltip="Легкие ранения приводят к большему снижению параметров солдат."
+RedFogOptions[0]="Откл."
+RedFogOptions[1]="Только XCOM"
+RedFogOptions[2]="Только пришельцы"
+RedFogOptions[3]="Все"
+
+EnableSimCombatMod="Разрешить авторасчет боя"
+EnableSimCombatModTooltip="В режиме выбора отряда добавляет возможность автоматически рассчитать исход боя для выбранного отряда. Поскольку эта возможность несовместима с некоторыми официальными дополнениями, ее активация возможна через отладочную консоль при помощи команды LWSetAutoResolveEnabled true. Рекомендуется использовать этот функционал только при разработке модификаций."
+
+[X2Effect_RedFog_LW]
+RedFogEffectName="Красный туман"
+RedFogEffectDesc="Характеристики солдат снижаются от полученных ранений."
+
+[UISquadSelect_LW]
+m_strStripWeapons="ИЗЪЯТЬ ВСЕ ОРУЖИЕ"
+m_strStripWeaponsConfirm="ПОДТВЕРДИТЬ ИЗЪЯТИЕ ОРУЖИЯ"
+
+m_strStripWeaponsConfirmDesc="Подтвердить изъятие оружия у всех, кто НЕ участвует в этом задании. Любой солдат сможет немедленно использовать это снаряжение."
+m_strTooltipStripWeapons="Изъять оружие у всех, кто не задействован в текущих операциях."
+
+m_strTooltipNeedsFrontRowSoldier=""
+m_strClearSquad="ОЧИСТИТЬ ОТРЯД"
+m_strTooltipClearSquad="Убрать всех солдат из отряда."
+
+m_strAutofillSquad="СОБРАТЬ ОТРЯД АВТОМАТИЧЕСКИ"
+m_strTooltipAutofillSquad="Автоматически заполнить свободные позиции в отряде."
+
+m_strSimCombat="АВТОРАСЧЕТ"
+m_strTooltipSimCombat="Автоматически рассчитать исход боя."

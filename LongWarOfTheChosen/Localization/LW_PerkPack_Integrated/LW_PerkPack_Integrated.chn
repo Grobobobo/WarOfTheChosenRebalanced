@@ -1,0 +1,62 @@
+[XComGameState_LWPerkPackOptions]
+PerkPackTabName="能力"
+
+ViewLockedPerksMod="查看锁定的技能"
+ViewLockedPerksModTooltip="启用以允许查看锁定的技能（不会揭示灵能士兵技能树）"
+
+BaseGamePerkUIMod="使用基础游戏两列技能UI"
+BaseGamePerkUIModTooltip="切换以在升级时使用原始的两列技能选择UI（或使用其他模组的技能UI）"
+
+DefaultTacticalAbilityContainerMod="使用基础游戏战术能力HUD"
+DefaultTacticalAbilityContainerModTooltip="通过创建多个玩家可在任务中分类的能力图标页面，模组允许士兵拥有超过15个可用能力。选择此选项以关闭功能（可能会使用其他模组）。"
+
+NumDisplayedAbilitiesMod="在战术HUD中每页能力数量"
+NumDisplayedAbilitiesModTooltip="在战术HUD中显示的每页能力数量。如果「使用基础游戏战术能力HUD」选项开启，则该选项没有作用。"
+
+[UIScreenListener_Armory_MainMenu_LWExpandedPerkTree]
+strExpandedMenuOption="能力"
+strExpandedTooltip="扩充技能树"
+ExpandedListItemDescription="扩充技能树测试按钮"
+
+[UIScreenListener_Armory_MainMenu_LW_LWExpandedPerkTree]
+strExpandedMenuOption="能力"
+strExpandedTooltip="扩充技能树"
+ExpandedListItemDescription="扩充技能树测试按钮"
+
+[UITacticalHUD_AbilityContainer_LWExtended]
+strChangePageTitle="额外能力"
+strChangePageDesc="查看其他你可以激活的能力。你也可以使用「x」键来查看额外能力。"
+
+[UIArmory_MainMenu_LW]
+m_strNoWeaponUpgradesTooltip="没有可用的武器升级"
+
+[X2Ability_PerkPackAbilitySet2]
+TrojanVirus="木马病毒"
+TrojanVirusTriggered="<XGParam:StrValue0/!UnitName/>已触发木马病毒。"
+
+[X2Effect_Savior]
+strSavior_WorldMessage="妙手回春：已回复额外<XGParam:IntValue0/>生命值。"
+
+[X2Effect_LWHolotarget]
+HoloTargetEffectName="全息瞄准"
+
+[X2Item_DenseSmokeGrenade]
+DenseSmokeGrenadeEffectDisplayName="浓密烟雾"
+DenseSmokeGrenadeEffectDisplayDesc="浓密烟雾赋予该单位额外的防御加成。"
+
+[X2Ability_PerkPackAbilitySet]
+LocCoveringFire="掩护火力"
+LocCoveringFireMalus="该单位已经被一名具有掩护火力技能的监视单位瞄准，在本回合剩余时间-10命中。"
+; LWOTC Needs Translation
+LocSoulStealBuff="灵魂灼烧"
+LocSoulStealBuffHelpText="灵魂汲取在治疗过度时给予护盾。"
+; End Translation
+
+; LWOTC Needs Translation
+[X2Effect_RegenerationPCT]
+HealedMessage="+<Heal/> 生命回复"
+
+[X2StatusEffects_LW]
+MaimedFriendlyName="残废"
+MaimedFriendlyDesc="单位的机动性降低至零，所以他们不能移动。他们仍然可以射击和执行其他非移动能力。"
+; End Translation

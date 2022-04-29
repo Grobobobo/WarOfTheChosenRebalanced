@@ -1,0 +1,220 @@
+
+;---- BEGIN ABILITIES
+
+;displayed both for officer and soldiers receiving effect
+[GetSome X2AbilityTemplate]
+LocFriendlyName="맹공격"
+LocLongDescription="임무당 두 번 사용할 수 있고, 행동력 1개를 사용해 리더의 명령 범위 내에 있는 모든 아군에게 턴이 끝날 때까지 20의 치명타율 보너스를 부여합니다."
+LocHelpText="장교 주위에 있는 병사들의 치명타율이 증가합니다."
+LocFlyOverText="맹공격"
+LocPromotionPopupText="<Bullet/> 행동력 1개를 사용해 리더의 명령 범위 내에 있는 모든 아군에게 턴이 끝날 때까지 20의 치명타율 보너스를 부여합니다.<br/><Bullet/> 임무당 2번 사용할 수 있습니다.<br/><Bullet/> 명령 범위는 장교 레벨이 올라갈수록 증가합니다."
+
+[Collector X2AbilityTemplate]
+LocFriendlyName="수집가"
+LocLongDescription="분대가 인간이 아닌 적을 처치할 시, 장교가 살아 있다면 33%의 확률로 정보 포인트 1점을 획득합니다."
+LocHelpText="분대원들이 적 처치 시 추가 정보를 획득합니다."
+LocFlyOverText="수집가"
+; displayed for officer in OfficerAbility UI
+LocPromotionPopupText="<Bullet/> 분대가 인간이 아닌 적을 처치할 시, 장교가 살아 있다면 33%의 확률로 정보 포인트 1점을 획득합니다."
+
+;displayed on officer in tactical container
+[CollectorPassive X2AbilityTemplate]
+LocFriendlyName="수집가"
+LocLongDescription="분대가 인간이 아닌 적을 처치할 시, 장교가 살아 있다면 33%의 확률로 정보 포인트 1점을 획득합니다."
+LocHelpText="분대원들이 적 처치 시 추가 정보를 획득합니다."
+LocFlyOverText="수집가"
+LocPromotionPopupText="<Bullet/> 분대가 인간이 아닌 적을 처치할 시, 장교가 살아 있다면 33%의 확률로 정보 포인트 1점을 획득합니다."
+
+;displayed on other soldier that receive the effect
+[Defilade X2AbilityTemplate]
+LocFriendlyName="차폐"
+LocLongDescription="장교의 명령 범위 내에 있는 병사는 엄폐로 얻는 방어력이 5 증가합니다."
+LocHelpText="장교 주위에 있는 병사는 엄폐로 얻는 방어력이 증가합니다."
+LocFlyOverText="차폐"
+;displayed for officer in Officer Ability UI
+LocPromotionPopupText="<Bullet/> 장교의 명령 범위 내에 있는 병사는 엄폐로 얻는 방어력이 5 증가합니다.<br/><Bullet/> 명령 범위는 장교 레벨이 올라갈수록 증가합니다."
+
+;Displayed on officer in tactical container
+[DefiladePassive X2AbilityTemplate]
+LocFriendlyName="차폐"
+LocLongDescription="장교의 명령 범위 내에 있는 병사는 엄폐로 얻는 방어력이 5 증가합니다."
+LocHelpText="장교 주위에 있는 병사는 엄폐로 얻는 방어력이 증가합니다."
+LocFlyOverText="차폐"
+LocPromotionPopupText="<Bullet/> 장교의 명령 범위 내에 있는 병사는 엄폐로 얻는 방어력이 5 증가합니다.<br/><Bullet/> 명령 범위는 장교 레벨이 올라갈수록 증가합니다."
+
+;displayed both on officer and in debuff on target
+[FocusFire X2AbilityTemplate]
+LocFriendlyName="집중 사격"
+LocLongDescription="1개의 행동 포인트를 사용해 목표물을 핀포인트합니다. 턴이 끝날 때까지 분대원은 해당 목표물을 공격할 때 누적되는 조준 보너스와 1의 철갑 보너스를 얻습니다."
+LocHelpText="목표물을 핀포인트하여, 분대원이 목표물을 공격할 때 조준 보너스와 철갑 보너스를 얻게 합니다."
+LocFlyOverText="집중 사격"
+LocPromotionPopupText="<Bullet/> 1개의 행동 포인트를 사용하여 목표물을 핀포인트합니다. 턴이 끝날 때까지 분대원은 해당 목표물을 공격할 때 누적되는 조준 보너스와 1의 철갑 보너스를 얻습니다.<br/><Bullet/> 턴이 끝날 때까지 목표물을 향한 직접적인 무기 공격이 적중할 때마다 조준 보너스는 <ABILITY:FOCUS_FIRE_AIM_BONUS/>씩 증가합니다.<br/><Bullet/> 쿨타임은 3턴입니다.<br/>"
+
+;displayed both on officer and on soldiers receiving effect
+[FallBack X2AbilityTemplate]
+LocFriendlyName="후퇴!"
+LocLongDescription="가시거리 내에 이미 움직인 아군에게 제어되지 않은 방어 행동을 하게 합니다."
+LocHelpText="시야 내의 아군이 행동력은 사용하지 않지만 제어되지 않는 방어 행동을 하게 합니다."
+LocFlyOverText="후퇴!"
+LocPromotionPopupText="<Bullet/> 가시거리 내에 이미 움직인 아군에게 제어되지 않은 방어 행동을 하게 합니다. 해당 아군은 더 안전한 위치로 이동하거나 잠복하게 됩니다.<br/><Bullet/> 제압하거나 감시의 목적으로 유닛들은 작동하지 않습니다.<br/><Bullet/>  행동력을 소모하지 않습니다."
+
+[Scavenger X2AbilityTemplate]
+LocFriendlyName="스캐빈저"
+LocLongDescription="임무 성공 시 보상으로 받는 보급품, 외계인 합금, 엘레리움의 양이 30% 증가합니다. 분대원이 일정한 확률로 외계인으로부터 외계인 합금과 엘레리움을 추가로 회수하기도 합니다."
+LocHelpText="보급품과 외계인 합금, 엘레리움을 추가로 얻습니다."
+LocFlyOverText="스캐빈저"
+LocPromotionPopupText="<Bullet/> 장교가 의식 있는 상태로 임무에서 살아남는다면, 보상으로 받는 보급품과 외계인 합금, 엘레리움의 양이 30% 증가합니다.<br/><Bullet> 분대는 사망한 외계인으로부터 외계인 합금과 엘레리움을 회수하기도 합니다.<br/>"
+
+;Displayed on officer in tactical container
+[ScavengerPassive X2AbilityTemplate]
+LocFriendlyName="스캐빈저"
+LocLongDescription="임무 성공 시 보상으로 받는 보급품, 외계인 합금, 엘레리움의 양이 30% 증가합니다. 일정한 확률로 외계인으로부터 외계인 합금과 엘레리움을 회수하기도 합니다."
+LocHelpText="보급품과 외계인 합금, 엘레리움을 추가로 얻습니다."
+LocFlyOverText="스캐빈저"
+LocPromotionPopupText="<Bullet/> 장교가 양호한 상태로 임무에서 살아남는다면, 보상으로 받는 보급품과 외계인 합금, 엘레리움의 양이 30% 증가합니다.<br/><Bullet> 분대는 사망한 외계인으로부터 외계인 합금과 엘레리움을 회수하기도 합니다.<br/>"
+
+;displayed on other soldier that receive the effect
+[FireDiscipline X2AbilityTemplate]
+LocFriendlyName="사격 훈련"
+LocLongDescription="장교의 명령 범위 내에 있는 모든 아군은 대응 사격 명중률이 10% 증가합니다."
+LocHelpText="장교 주위의 모든 아군은 대응 사격 시 조준 보너스를 획득합니다."
+LocFlyOverText="사격 훈련"
+;displayed for officer in Officer Ability UI
+LocPromotionPopupText="<Bullet/> 장교의 명령 범위 내에 있는 모든 아군은 대응 사격 명중률이 10% 증가합니다.<br/><Bullet/> 명령 범위는 장교 레벨이 올라갈수록 증가합니다."
+
+;Displayed on officer in tactical container
+[FireDisciplinePassive X2AbilityTemplate]
+LocFriendlyName="사격 훈련"
+LocLongDescription="장교의 명령 범위 내에 있는 모든 아군은 대응 사격 명중률이 10% 증가합니다."
+LocHelpText="장교 주위의 모든 아군은 대응 사격 시 조준 보너스를 획득합니다."
+LocFlyOverText="사격 훈련"
+LocPromotionPopupText="<Bullet/> 장교의 명령 범위 내에 있는 모든 아군은 대응 사격 명중률이 10% 증가합니다.<br/><Bullet/> 명령 범위는 장교 레벨이 올라갈수록 증가합니다."
+
+;displayed both on officer and on soldiers receiving effect
+[OscarMike X2AbilityTemplate]
+LocFriendlyName="오스카 마이크"
+LocLongDescription="1개의 행동 포인트를 사용해 명령 범위 내에 있는 모든 아군에게 턴이 끝날 때까지 5의 기동력 보너스를 부여합니다. 임무당 한 번 사용할 수 있습니다."
+LocHelpText="활성화하면 주변의 아군에게 기동력 보너스를 부여합니다."
+LocFlyOverText="오스카 마이크"
+LocPromotionPopupText="<Bullet/> 행동력 1개를 사용해 명령 범위 내에 있는 모든 아군에게 턴이 끝날 때까지 기동력 보너스 5을 부여합니다.<br/><Bullet/> 임무당 한 번 사용할 수 있습니다.<br/><Bullet/> 명령 범위는 장교 레벨이 올라갈수록 증가합니다."
+
+;displayed on other soldier that receive the effect
+[LeadByExample X2AbilityTemplate]
+LocFriendlyName="솔선수범"
+LocLongDescription="장교의 명령 범위 내에 있는 병사의 조준, 의지 및 해킹이 증가합니다. 증가치는 장교와 나는 차이의 절반입니다."
+LocHelpText="장교 주위에 있는 아군은 조준, 의지 및 해킹 보너스를 획득합니다."
+LocFlyOverText="솔선수범"
+;displayed for officer in Officer Ability UI
+LocPromotionPopupText="<Bullet/> 장교의 조준, 의지 혹은 해킹이 명령 범위 내에 있는 임의의 병사보다 높다면, 해당 병사의 조준, 의지 혹은 해킹이 증가합니다. 증가치는 장교와 나는 차이의 절반입니다.<br/><Bullet/> 명령 범위는 장교 레벨이 올라갈수록 증가합니다."
+
+;Displayed on officer in tactical container
+[LeadByExamplePassive X2AbilityTemplate]
+LocFriendlyName="솔선수범"
+LocLongDescription="장교의 명령 범위 내에 있는 병사의 조준, 의지 및 해킹이 증가합니다. 증가치는 장교와 나는 차이의 절반입니다."
+LocHelpText="장교 주위에 있는 아군은 조준, 의지 및 해킹 보너스를 획득합니다."
+LocFlyOverText="솔선수범"
+LocPromotionPopupText="<Bullet/> 장교의 조준, 의지 혹은 해킹이 명령 범위 내에 있는 임의의 병사보다 높다면, 해당 병사의 조준, 의지 혹은 해킹이 증가합니다. 증가치는 장교와 나는 차이의 절반입니다.<br/><Bullet/> 명령 범위는 장교 레벨이 올라갈수록 증가합니다."
+
+;this may not be displayed -- needs testing
+[LeadByExampleLeader X2AbilityTemplate]
+LocFriendlyName="솔선수범"
+LocLongDescription="장교의 명령 범위 내에 있는 병사의 조준, 의지 및 해킹이 증가합니다. 증가치는 장교와 나는 차이의 절반입니다."
+LocHelpText="장교 주위에 있는 아군은 조준, 의지 및 해킹 보너스를 획득합니다."
+LocFlyOverText="솔선수범"
+LocPromotionPopupText="<Bullet/> 장교의 조준, 의지 혹은 해킹이 명령 범위 내에 있는 임의의 병사보다 높다면, 해당 병사의 조준, 의지 혹은 해킹이 증가합니다. 증가치는 장교와 나는 차이의 절반입니다.<br/><Bullet/> 명령 범위는 장교 레벨이 올라갈수록 증가합니다."
+
+;displayed on other soldier that receive the effect
+[CombinedArms X2AbilityTemplate]
+LocFriendlyName="제병연합"
+LocLongDescription="장교의 명령 범위 내에 있는 아군은 공격 성공 시 1의 추가 피해를 입힙니다."
+LocHelpText="장교 주위에 있는 아군은 추가 피해를 입힙니다."
+LocFlyOverText="제병연합"
+LocPromotionPopupText="<Bullet/> 장교의 명령 범위 내에 있는 아군은 공격 성공 시 1의 추가 피해를 입힙니다.<br/><Bullet/> 명령 범위는 장교 레벨이 올라갈수록 증가합니다."
+
+;Displayed on officer in tactical container
+[CombinedArmsPassive X2AbilityTemplate]
+LocFriendlyName="제병연합"
+LocLongDescription="장교의 명령 범위 내에 있는 아군은 공격 성공 시 1의 추가 피해를 입힙니다."
+LocHelpText="장교 주위에 있는 아군은 추가 피해를 입힙니다."
+LocFlyOverText="제병연합"
+LocPromotionPopupText="<Bullet/> 장교의 명령 범위 내에 있는 아군은 공격 성공 시 1의 추가 피해를 입힙니다.<br/><Bullet/> 명령 범위는 장교 레벨이 올라갈수록 증가합니다."
+
+[Command X2AbilityTemplate]
+LocFriendlyName="명령"
+LocLongDescription="턴을 종료하면 가시거리 내에 있는 분대원들에게 보너스 행동력을 부여합니다. 사용 횟수는 장교의 계급에 따라 다릅니다."
+LocHelpText="아군에게 보너스 행동력을 부여합니다."
+LocFlyOverText="명령"
+LocPromotionPopupText="<Bullet/> 행동력 1개가 소모되고 턴이 종료됩니다.<br/><Bullet/> 이 능력은 소위와 중위는 1번, 대위와 소령은 2번, 중령과 대령은 3번, 야전 사령관은 4번 사용할 수 있습니다.<br/><Bullet/> 유닛들은 감시 또는 다른 목표물 제압에 사용할 수 없습니다."
+
+[Infiltrator X2AbilityTemplate]
+LocFriendlyName="잠입자"
+LocLongDescription="장교가 이끄는 분대가 적 목표물에 더 빨리 잠입합니다."
+LocHelpText="장교가 이끄는 분대가 적 목표물에 더 빨리 잠입합니다."
+LocFlyOverText="잠입자"
+LocPromotionPopupText="<Bullet/> 이 특기를 가진 장교가 이끄는 분대는 그렇지 않을 때보다 은폐 능력이 크게 더 향상되므로, 잠입 시간이 줄어들 것입니다.<br/>"
+
+[AirController X2AbilityTemplate]
+LocFriendlyName="항공 관제관"
+LocLongDescription="탈출 시 스카이레인저가 <Ability:AIR_CONTROLLER_EVAC_TURN_REDUCTION/>턴 더 빨리 도착합니다."
+LocHelpText="탈출 시 스카이레인저가 2턴 더 빨리 도착합니다."
+LocFlyOverText="항공 관제관"
+LocPromotionPopupText="<Bullet/> 이 장교는 아군의 공중 자산을 지휘하는 능력이 뛰어나며, 탈출 신호탄이 사용된 후 스카이레인저가 도착하는 시간을 2턴 앞당겨줍니다.<br/><Bullet/> 보너스들과 상관없이 스카이레인저가 도착하기 위한 최소한의 시간이 있음을 유의 하십시오."
+
+[Jammer X2AbilityTemplate]
+LocFriendlyName="방해 전파"
+LocLongDescription="임무당 한 번, 적 지원군이 도착하는 시간을 1턴 지연시킵니다."
+LocHelpText="적 지원군이 도착하는 시간을 1턴 지연시킵니다."
+LocFlyOverText="방해 전파"
+LocPromotionPopupText="<Bullet/> 이 능력을 활성화하면 적 지원군이 도착하는 시간이 1턴 지연됩니다.<br/><Bullet/> 접근하는 지원군이 보고되지 않으면, 나중에 오는 지원군을 대신 지연시킵니다."
+
+[Incoming X2AbilityTemplate]
+LocFriendlyName="Incoming!"
+LocLongDescription="이 능력을 활성화하면 명령 범위 내의 모든 대상이 다음 외계인 턴이 종료될 때까지 폭발물 공격에 대한 피해 저항 포인트가 4입니다."
+LocHelpText="장교와 인근 아군 병사들은 폭발물에 대해 피해 저항 4를 획득합니다."
+LocFlyOverText="Incoming!"
+LocPromotionPopupText="<Bullet/> 이 능력을 활성화하면 명령 범위 내의 모든 아군 병사가 다음 외계인 턴이 종료될 때까지 폭발물 공격에 대해 피해 저항 포인트 4를 얻습니다.<br/><Bullet/> 행동력을 소모하지 않습니다.<br/><Bullet/> 5턴의 쿨타임을 가집니다.<br/><Bullet/> 명령 범위는 장교 레벨이 올라갈수록 증가합니다.<br/><Bullet/> 공포에 빠진 병사에게는 적용되지 않으며 유닛들이 다른 목표물을 제압하지 않습니다.<br/>"
+
+[Intervention X2AbilityTemplate]
+LocFriendlyName="개입"
+LocLongDescription="이 능력을 활성화하면 정보 10을 지불해 현재 임무 타이머에 2턴을 추가합니다. 사용 횟수는 장교의 계급에 따라 다릅니다."
+LocHelpText="활성화하면 정보를 지불해 임무 타이머에 2턴을 추가합니다."
+LocFlyOverText="개입"
+LocPromotionPopUpText="<Bullet/> 이 능력을 활성화하면 정보 10을 지불해 현재 임무 타이머에 2턴을 추가합니다.<br/><Bullet/> 행동력 1개가 소모됩니다.<br/><Bullet/> 사용 횟수는 장교의 계급에 따라 다릅니다.<br/><Bullet/> 임무 타이머가 없으면 효과가 없습니다.<br/><Bullet/> 정보 비용은 이벤트에 따라 유동적입니다; XCOM이 가진 정보가 10 미만이면 발사할 수 없습니다.<br/>"
+
+;---- END ABILITIES
+
+;---- BEGIN OTS / STAFFSLOT
+
+[OfficerTrainingUnlock X2SoldierUnlockTemplate]
+DisplayName="장교 훈련"
+Summary="병사 슬롯을 잠금 해제하면 장교 훈련을 할 수 있게 됩니다."
+
+[OTSOfficerSlot X2StaffSlotTemplate]
+EmptyText="열림: 병사 필요"
+BonusEmptyText="장교 능력을 훈련합니다."
+BonusText="%SKILL 훈련"
+FilledText="%UNITNAME은(는) 광범위한 %SKILL 훈련 프로그램에 등록되었습니다!"
+LockedText="잠김: 업그레이드 구매"
+
+[OTS_LWOfficerTrainingUpgrade X2FacilityUpgradeTemplate]
+DisplayName="장교 훈련소"
+FacilityName="사관학교"
+Summary="일병 계급 이상의 병사가 특수 리더 능력 훈련을 받을 수 있는 스테이션을 추가합니다.\n중요: 분대에서 가장 높은 계급의 장교만 임무 중에 능력을 사용할 수 있으므로, 진급 대상을 신중히 고르십시오."
+
+[OTS_LWOfficerTrainingUpgrade_SecondSlot X2FacilityUpgradeTemplate]
+DisplayName="장교 훈련소"
+FacilityName="사관학교"
+Summary="일병 계급 이상의 병사가 특수 리더 능력 훈련을 받을 수 있는 스테이션을 추가합니다.\n중요: 분대에서 가장 높은 계급의 장교만 임무 중에 능력을 사용할 수 있으므로, 진급 대상을 신중히 고르십시오."
+
+[UIPersonnel_LWOfficer]
+m_strTitle="장교로 훈련시킬 병사"
+EmptyListMessage="적격 후보 없음"
+
+;---- END OTS / STAFFSLOT
+
+[TrialByFire X2AbilityTemplate]
+LocFriendlyName="매서운 시련"
+LocLongDescription="병장 계급 미만의 병사들이 이 장교와 함께 임무를 완수할 경우에 자동으로 진급합니다."
+LocHelpText="병장 계급 미만의 병사들이 이 장교와 함께 임무를 완수할 경우에 자동으로 진급합니다."
+LocPromotionPopUpText="<Bullet/> 지휘하는 장교가 이 능력을 갖고 있을 때에만 적용되며, 같은 임무를 수행중인 다른 장교들은 보너스의 영향을 받지 않습니다."
+

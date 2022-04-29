@@ -1,0 +1,14 @@
+[RedFog_LW X2AbilityTemplate]
+LocFriendlyName="Red Fog"
+LocLongDescription="Wounded units have reduced stats."
+LocHelpText="Wounded units have reduced stats."
+LocFlyOverText="Red Fog"
+LocPromotionPopupText="REDFOGLOCPROMOTIONPOPUPTEXT"
+
+[XComGame.UIShellDifficulty]
+[UIShellDifficulty]
+m_arrDifficultyDescStrings[0]="Appropriate for players new to tactical games or XCOM in general.<br/><br/>Long War options may be set in an Options menu after the campaign begins."
+m_arrDifficultyDescStrings[1]="A challenge appropriate for players familiar with XCOM.<br/><br/>Long War options may be set in an Options menu after the campaign begins."
+m_arrDifficultyDescStrings[2]="A significant challenge for experienced Long Warriors.<br/><br/>Long War options may be set in an Options menu after the campaign begins."
+m_arrDifficultyDescStrings[3]="A brutal and unforgiving campaign.<br/><br/>Long War options may be set in an Options menu after the campaign begins."
+m_strTutorialOnImpossible="The Tutorial will not be enabled for Long War.<br><br/><font color='#9acbcb'>Long War options may be set in an Options menu after the campaign begins.</font>"

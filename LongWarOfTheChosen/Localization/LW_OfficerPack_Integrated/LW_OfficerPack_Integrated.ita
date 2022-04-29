@@ -1,0 +1,93 @@
+[UIArmory_LWOfficerPromotion]
+strLeadershipButton="Vedi cronologia di comando"
+strLeadershipDialogueTitle="Missioni sotto questo ufficiale"
+strLeadershipDialogueData="<XGParam:StrValue0/>: <XGParam:IntValue0/>"
+
+[UIScreenListener_Armory_Promotion_LWOfficerPack]
+strOfficerMenuOption="Abilità ufficiale"
+
+[UIScreenListener_Armory_MainMenu_LWOfficerPack]
+strOfficerMenuOption="Abilità ufficiale"
+OfficerListItemDescription="Visualizza le abilità del centro bellico avanzato già apprese."
+
+[UIScreenListener_Facility_Academy_LWOfficerPack]
+strOfficerTrainButton="Addestra ufficiale"
+
+[UIScreenListener_SquadSelect_LWOfficerPack]
+strAutoFillLabel="SELEZIONE AUTOMATICA"
+strAutoFillTooltip="Riempimento automatico squadra"
+
+
+[UITacticalHUD_MouseControls_LWOfficerPack]
+strCommandRangeToggleTooltip="Clicca per attivare/disattivare Portata di comando"
+
+[X2StrategyElement_LW_OTS_OfficerStaffSlot]
+;strOTSLocationDisplayString=<XGParam:StrValue0/> Training
+
+;[UIArmory_LWOfficerMenu]
+;m_strSelectAbility=SELECT Officer ABILITY:
+;m_strAbilityHeader=Officer ABILITIES:
+;m_strConfirmAbilityTitle=CONFIRM ABILITY SELECTION
+;m_strConfirmAbilityText=You can't remove or change abilities. Are you sure you want to learn <XGParam:StrValue0/>?
+;m_strAbilityLockedTitle=LOCKED
+;m_strAbilityLockedDescription=Get more combat experience to learn new abilities.
+
+[UIArmory_LWOfficerPromotion]
+m_strSelectAbility="SELEZIONA ABILITÀ:"
+m_strAbilityHeader="ABILITÀ:"
+m_strConfirmAbilityTitle="CONFERMA SELEZIONE ABILITÀ"
+m_strConfirmAbilityText="Non puoi rimuovere o cambiare le abilità. Vuoi davvero apprendere <XGParam:StrValue0/>?"
+m_strAbilityLockedTitle="BLOCCATA"
+m_strAbilityLockedDescription="Fai più esperienza di combattimento per apprendere nuove abilità."
+
+[LWOfficerUtilities]
+LWOfficerRankNames[0]="Sottufficiale"
+LWOfficerRankNames[1]="Secondo tenente"
+LWOfficerRankNames[2]="Primo tenente"
+LWOfficerRankNames[3]="Capitano"
+LWOfficerRankNames[4]="Maggiore"
+LWOfficerRankNames[5]="Tenente colonnello"
+LWOfficerRankNames[6]="Colonnello"
+LWOfficerRankNames[7]="Comandante in campo"
+
+LWOfficerShortNames[0]="Sottufficiale"
+LWOfficerShortNames[1]="2 Ten."
+LWOfficerShortNames[2]="1 Ten."
+LWOfficerShortNames[3]="Cap."
+LWOfficerShortNames[4]="Mag."
+LWOfficerShortNames[5]="Ten. Col."
+LWOfficerShortNames[6]="Col."
+LWOfficerShortNames[7]="Com."
+
+
+[UIFacility_LWOfficerSlot]
+m_strTrainOfficerDialogTitle="ADDESTRA UFFICIALE"
+m_strTrainOfficerDialogText="I soldati di grado sufficiente possono sottoporsi a un addestramento specializzato nella scuola di guerriglia, studiando per diventare ufficiali. Durante l'addestramento non saranno disponibili per i combattimenti.\n\nIMPORTANTE: solo l'ufficiale di grado più alto della squadra potrà utilizzare le sue abilità in missione, quindi scegli con cura chi vuoi promuovere.\n\nVuoi proseguire?"
+m_strStopTrainOfficerDialogTitle="Vuoi FERMARE l'ADDESTRAMENTO da ufficiale?"
+m_strStopTrainOfficerDialogText="Vuoi interrompere l'addestramento di %UNITNAME?\n\nATTENZIONE: tutti i progressi avanzati andranno persi."
+
+[UIAlert_LWOfficerTrainingComplete]
+m_strTrainingCompleteLabel="ADDESTRAMENTO ufficiale COMPLETATO"
+m_strTrainingComplete="<XGParam:StrValue0/> ha completato l'addestramento. Le nuove abilità possono essere esaminate e assegnate visualizzando il soldato nell'armeria."
+m_strViewSoldier="VISUALIZZA SOLDATO"
+m_strNewAbilityLabel="NUOVA ABILITÀ"
+
+[UIPersonnel_ListItem_SquadSelect_LWOfficerPack]
+strOfficerAlreadySelectedStatus="Attenzione: ufficiale già selezionato"
+
+[UIStrategyScreenListener_LWOfficerPack]
+strCommandingOfficerTooltipTitle="Ufficiale comandante"
+strCommandingOfficerTooltip="Può usare tutte le abilità da ufficiale."
+strSubordinateOfficerTooltipTitle="Ufficiale subordinato"
+strSubordinateOfficerTooltip="Non può usare abilità da ufficiale in missione."
+
+[X2Ability_OfficerAbilitySet]
+strIntervention_WorldMessage="Intervento: -<XGPARAM:IntValue0> dati"
+strCollector_WorldMessage="Collezionista: +1 dato"
+FocussedFriendlyName="Fuoco concentrato"
+FocussedFriendlyDesc="I bersagli di Fuoco concentrato possono essere colpiti e danneggiati più facilmente dai nemici."
+
+[X2Effect_Scavenger]
+;the string shown in world message for scavenged items
+m_strScavengerLoot="(<XGParam:IntValue0/>) <XGParam:StrValue0/!ItemName/> recuperato/i."
+

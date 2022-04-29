@@ -1,0 +1,60 @@
+// For this to work, set user configs `xcom.highlander.sdkroot` and `xcom.highlander.gameroot` to their correct paths.
+// sdkroot should point at the SDK directory, i.e. the parent of the Development directory
+// gameroot must point to the XCom2-WaroftheChosen directory. Make sure there aren't any trailing backslashes, as they will escape our quotation marks
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build LWOTC (release)",
+            "type": "shell",
+            "command": "powershell.exe –NonInteractive –ExecutionPolicy Unrestricted -file '${workspaceRoot}\\.scripts\\build.ps1' -srcDirectory '${workspaceRoot}' -sdkPath '${config:xcom.highlander.sdkroot}' -gamePath '${config:xcom.highlander.gameroot}' -config 'default'",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build LWOTC (debug)",
+            "type": "shell",
+            "command": "powershell.exe –NonInteractive –ExecutionPolicy Unrestricted -file '${workspaceRoot}\\.scripts\\build.ps1' -srcDirectory '${workspaceRoot}' -sdkPath '${config:xcom.highlander.sdkroot}' -gamePath '${config:xcom.highlander.gameroot}' -config 'debug'",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Clean LWOTC",
+            "type": "shell",
+            "command": "powershell.exe –NonInteractive –ExecutionPolicy Unrestricted -file '${workspaceRoot}\\.scripts\\X2ModBuildCommon\\clean.ps1' -modName 'LongWarOfTheChosen' -srcDirectory '${workspaceRoot}' -sdkPath '${config:xcom.highlander.sdkroot}' -gamePath '${config:xcom.highlander.gameroot}'",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Build CHL (final release)",
+            "type": "shell",
+            "command": "powershell.exe –NonInteractive –ExecutionPolicy Unrestricted -file '${workspaceRoot}\\X2WOTCCommunityHighlander\\.scripts\\build.ps1' -srcDirectory '${workspaceRoot}\\X2WOTCCommunityHighlander' -sdkPath '${config:xcom.highlander.sdkroot}' -gamePath '${config:xcom.highlander.gameroot}' -config final_release",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Build CHL (debug)",
+            "type": "shell",
+            "command": "powershell.exe –NonInteractive –ExecutionPolicy Unrestricted -file '${workspaceRoot}\\X2WOTCCommunityHighlander\\.scripts\\build.ps1' -srcDirectory '${workspaceRoot}\\X2WOTCCommunityHighlander' -sdkPath '${config:xcom.highlander.sdkroot}' -gamePath '${config:xcom.highlander.gameroot}' -config debug",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Build DLC2 CHL",
+            "type": "shell",
+            "command": "powershell.exe –NonInteractive –ExecutionPolicy Unrestricted -file '${workspaceRoot}\\X2WOTCCommunityHighlander\\Components\\DLC2CommunityHighlander\\.scripts\\build.ps1' -srcDirectory '${workspaceRoot}\\X2WOTCCommunityHighlander\\Components\\DLC2CommunityHighlander' -sdkPath '${config:xcom.highlander.sdkroot}' -gamePath '${config:xcom.highlander.gameroot}' -config default",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Install LWOTC Localization",
+            "type": "shell",
+            "command": "powershell.exe –NonInteractive –ExecutionPolicy Unrestricted -file '${workspaceRoot}\\.scripts\\install_loc.ps1' -srcDirectory '${workspaceRoot}' -sdkPath '${config:xcom.highlander.sdkroot}' -gamePath '${config:xcom.highlander.gameroot}'",
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
+}

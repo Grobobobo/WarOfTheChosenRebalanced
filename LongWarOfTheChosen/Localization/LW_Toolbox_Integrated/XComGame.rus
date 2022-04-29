@@ -1,0 +1,14 @@
+[RedFog_LW X2AbilityTemplate]
+LocFriendlyName="Красный туман"
+LocLongDescription="Характеристики раненых бойцов снижаются."
+LocHelpText="Характеристики раненых бойцов снижаются."
+LocFlyOverText="Красный туман"
+LocPromotionPopupText="REDFOGLOCPROMOTIONPOPUPTEXT"
+
+[XComGame.UIShellDifficulty]
+[UIShellDifficulty]
+m_arrDifficultyDescStrings[0]="Уровень сложности, подходящий для игроков, не знакомых с тактическими стратегиями и с играми серии XCOM.<br/><br/>Параметры Long War доступны в меню настроек после начала кампании."
+m_arrDifficultyDescStrings[1]="Настоящий вызов для ветеранов XCOM.<br/><br/>Параметры Long War доступны в меню настроек после начала кампании."
+m_arrDifficultyDescStrings[2]="Ощутимая сложность. Только для опытных знатоков Long War.<br/><br/>Параметры Long War доступны в меню настроек после начала кампании."
+m_arrDifficultyDescStrings[3]="Суровая сложность, не прощающая ошибок.<br/><br/>Параметры Long War доступны в меню настроек после начала кампании."
+m_strTutorialOnImpossible="В Long War обучение не работает.<br><br/><font color='#9acbcb'>Параметры Long War доступны в меню настроек после начала кампании.</font>"

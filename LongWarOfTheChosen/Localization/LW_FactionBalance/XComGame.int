@@ -1,0 +1,233 @@
+; LWOTC Needs Translation
+[LingeringShadow X2AbilityTemplate]
+LocFriendlyName="Lingering Shadow"
+LocLongDescription="Provides +<Ability:LingeringShadowDefenseBonus/> Defense and +<Ability:LingeringShadowDodgeBonus/> Dodge for one turn when the Reaper loses Shadow."
+LocHelpText="Provides +<Ability:LingeringShadowDefenseBonus/> Defense and +<Ability:LingeringShadowDodgeBonus/> Dodge for one turn when the Reaper loses Shadow."
+LocPromotionPopupText="<Bullet/> Provides +<Ability:LingeringShadowDefenseBonus/> Defense and +<Ability:LingeringShadowDodgeBonus/> Dodge as soon as the Reaper loses Shadow, either because they break concealment or Shadow expires.<br/><Bullet/> Lasts until the start of XCOM's next turn."
+
+; LWOTC Needs Translation (2)
+[LingeringShadowTrigger X2AbilityTemplate]
+LocFriendlyName="Lingering Shadow"
+LocLongDescription="Provides +<Ability:LingeringShadowDefenseBonus/> Defense and +<Ability:LingeringShadowDodgeBonus/> Dodge for one turn when the Reaper loses Shadow."
+LocHelpText="Provides +<Ability:LingeringShadowDefenseBonus/> Defense and +<Ability:LingeringShadowDodgeBonus/> Dodge for one turn when the Reaper loses Shadow."
+; End Translation (2)
+
+[Demolitionist X2AbilityTemplate]
+LocFriendlyName="Demolitionist"
+LocLongDescription="The Reaper gains +<Ability:DemolitionistExtraChargeCount/> charge for Remote Start and for Homing Mine."
+LocHelpText="The Reaper gains +<Ability:DemolitionistExtraChargeCount/> charge for Remote Start and for Homing Mine."
+LocPromotionPopupText="<Bullet/> Adds <Ability:DemolitionistExtraChargeCount/> extra charge to Remote Start and for Homing Mine.<br/>"
+
+[CripplingStrike X2AbilityTemplate]
+LocFriendlyName="Crippling Strike"
+LocLongDescription="Throw a knife that causes the target to be maimed for 1 turn (zero mobility)."
+LocHelpText="Throw a knife that causes the target to be maimed for 1 turn (zero mobility)."
+LocPromotionPopupText="<Bullet/> Throws a throwing knife, without breaking Shadow.<br/><Bullet/> The maimed status reduces the target's mobility to 0, making it immobile.<br>"
+; End Translation
+
+; LWOTC Needs Translation
+[Distraction_LW X2AbilityTemplate]
+LocFriendlyName="Distraction"
+LocLongDescription="The Claymore disorients non-robotic enemies when it explodes."
+LocHelpText="The Claymore disorients non-robotic enemies when it explodes."
+LocPromotionPopupText="<Bullet/> Adds a disorient effect that applies to all organic units caught in the explosion.<br/>"
+
+; LWOTC Needs Translation (3)
+[DisablingShot X2AbilityTemplate]
+LocFriendlyName="Disabling Shot"
+LocLongDescription="Fire a shot that deals half damage but disables the enemy weapon on hit."
+LocHelpText="Fire a shot that deals half damage but disables the enemy weapon on hit."
+LocPromotionPopupText="<Bullet/> Disabling Shot requires <Ability:SelfAmmoCost/> ammo to use.<br/><Bullet/> Disabling Shot has a <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
+; End Translation (3)
+
+[Meditation X2AbilityTemplate]
+LocFriendlyName="Meditation"
+LocLongDescription="Adds up to <Ability:MeditationFocusRecovery/> focus to the Templar."
+LocHelpText="Adds up to <Ability:MeditationFocusRecovery/> focus to the Templar."
+LocPromotionPopupText="<Bullet/> Adds <Ability:MeditationFocusRecovery/> points of focus to the Templar.<br/><Bullet/> Ends the turn.<br/><Bullet/> Has a <Ability:SelfCooldown/>-turn cooldown."
+
+[Overcharge_LW X2AbilityTemplate]
+LocFriendlyName="Overcharge"
+LocLongDescription="Gain bonus aim and crit chance for each point of focus you have."
+LocHelpText="Gain bonus aim and crit chance for each point of focus you have."
+LocPromotionPopupText="<Bullet/> Each point of focus provides +<Ability:OverchargeAimBonus/> aim and +<Ability:OverchargeCritBonus/> crit chance.<br/><Bullet/> Based on the current focus, not max focus."
+
+[VoltDangerZone X2AbilityTemplate]
+LocFriendlyName="High Voltage"
+LocLongDescription="Gain <Ability:VoltDangerZoneBonus/>-tile bonus radius for Volt."
+LocHelpText="Gain <Ability:VoltDangerZoneBonus/>-tile bonus radius for Volt."
+LocPromotionPopupText="<Bullet/> Provides a <Ability:VoltDangerZoneBonus/>-tile bonus to the radius of Volt."
+; End Translation
+
+; LWOTC Needs Translation
+[TemplarVigilance X2AbilityTemplate]
+LocFriendlyName="Vigilance"
+LocLongDescription="Gain 1 focus whenever your squad activates an enemy pod of size 3 or more."
+LocHelpText="Gain 1 focus whenever your squad activates an enemy pod of size 3 or more."
+; LWOTC Needs Translation (2)
+LocPromotionPopupText="<Bullet/> Adds 1 focus to the Templar when an enemy pod scampers.<br/><Bullet/> Only triggers if the pod has at least 3 units in it.<br/><Bullet/> If you are already at max focus, the focus gain is wasted."
+; End Translation (2)
+
+[TemplarTerror X2AbilityTemplate]
+LocFriendlyName="Terrorize"
+LocLongDescription="Gain <Ability:VoltDangerZoneBonus/>-tile bonus radius for Volt. Adds a chance to panic enemies hit by Volt."
+LocHelpText="Gain <Ability:VoltDangerZoneBonus/>-tile bonus radius for Volt. Adds a chance to panic enemies hit by Volt."
+; LWOTC Needs Translation (2)
+LocPromotionPopupText="<Bullet/> Volt can now panic the enemy.<br/><Bullet/> The chance to panic is <Ability:TERROR_STAT_CHECK_BASE_VALUE/>% and is affected by both the Templar's Will and the target's Will."
+; End Translation (2)
+
+[Apotheosis X2AbilityTemplate]
+LocFriendlyName="Apotheosis"
+; LWOTC Needs Translation (2)
+LocFlyoverText="Apotheosis!"
+; End Translation (2)
+; LWOTC Needs Translation (2)
+LocLongDescription="Become a god, massively increasing your dodge, damage and mobility. Requires a minimum of 3 focus and consumes it all."
+LocHelpText="Become a god, massively increasing your dodge, damage and mobility. Requires a minimum of 3 focus and consumes it all."
+; End Translation (2)
+; LWOTC Needs Translation (3)
+LocPromotionPopupText="<Bullet/> A free action that makes the Templar substantially more powerful for two turns.<br/><Bullet/> Increases all damage by <Ability:ApotheosisDamageMultiplier/>% for each point of focus above 2.<br/><Bullet/> Increases Dodge by <Ability:ApotheosisDodgeBonus/> for each point of focus above 2.<br/><Bullet/> Increases mobility by <Ability:ApotheosisMobilityBonus/> for each point of focus above 2.<br/><Bullet/> Requires a minimum of 3 focus.<br/><Bullet/> Consumes all focus.<br/><Bullet/> The Templar can gain focus while under the effect of Apotheosis."
+; End Translation (3)
+; End Translation
+
+; Needs Translation
+[ShadowGrenadier X2AbilityTemplate]
+LocFriendlyName="Shadow Grenadier"
+LocHelpText="Throwing or launching grenades no longer breaks Shadow and grenades have no cooldown."
+LocLongDescription="Throwing or launching grenades no longer breaks Shadow and grenades have no cooldown."
+LocPromotionPopupText="<Bullet/> Allows the soldier to throw or launch grenades without breaking Shadow.<br/><Bullet/> Adds a grenade pocket.<br/><Bullet/> Removes the cooldown for grenades.<br/>"
+
+[PoisonedBlades X2AbilityTemplate]
+LocFriendlyName="Poisoned Blades"
+LocHelpText="Throwing knives apply poison to the target."
+LocLongDescription="Throwing knives apply poison to the target."
+LocPromotionPopupText="<Bullet/> This is a passive ability that adds poison to throwing knife abilities.<br/>"
+
+[ChargeBattery X2AbilityTemplate]
+LocFriendlyName="Charge Battery"
+LocFlyoverText="Shadow: +1 Turn"
+LocHelpText="Consumes a charge to extend Shadow's duration by 1 turn."
+LocLongDescription="Consumes a charge to extend Shadow's duration by 1 turn."
+; LWOTC Needs Translation (2)
+LocPromotionPopupText="<Bullet/> Allows the player to extend Shadow by 1 turn.<br/><Bullet/> Can only be used while in Shadow.<br/><Bullet/> Charge Battery is a free action and has a <Ability:SelfCooldown_LW/> turn cooldown.<br/><Bullet/> Charge Battery has <Ability:CHARGE_BATTERY_CHARGES/> charge(s).<br/>"
+; End Translation (2)
+; End Translation
+
+; LWOTC Needs Translation
+[SilentKillerDurationExtension X2AbilityTemplate]
+LocFriendlyName="Silent Killer Refresh Shadow"
+LocFlyoverText="Shadow: +1 Turn"
+; End Translation
+
+; LWOTC Needs Translation
+[Parkour_LW X2AbilityTemplate]
+LocFriendlyName="Parkour"
+LocHelpText="The cooldown for the Skrimisher's Grapple is reduced by one turn."
+LocLongDescription="The cooldown for the Skrimisher's Grapple is reduced by one turn."
+LocPromotionPopupText="<Bullet/> Improves the Skirmisher's mobility around the map.<br/>"
+; End Translation
+
+; LWOTC Needs Translation
+[Executioner X2AbilityTemplate]
+LocFriendlyName="Death Dealer"
+LocLongDescription="Grants +<Ability:DEATH_DEALER_CRIT/> crit chance. Critical shots against a flanked target while in Shadow will deal double critical damage."
+LocHelpText="Grants +<Ability:DEATH_DEALER_CRIT/> crit chance. Critical shots against a flanked target while in Shadow will deal double critical damage."
+LocPromotionPopupText="<Bullet/> Use Shadow's increased mobility and smaller enemy detection radii to flank enemies and deal massive damage.<br/>"
+
+; End Translation
+
+; LWOTC Needs Translation
+; LWOTC Needs Translation (2)
+[RendTheMarked X2AbilityTemplate]
+LocFriendlyName="Eviscerate"
+LocHelpText="Throwing knives apply a stacking +<Ability:REND_THE_MARKED_CRIT/> crit chance against the target from all sources for the remainder of the turn."
+LocLongDescription="Throwing knives apply a stacking +<Ability:REND_THE_MARKED_CRIT/> crit chance against the target from all sources for the remainder of the turn."
+LocPromotionPopupText="<Bullet/> Throwing knives apply a stacking +<Ability:REND_THE_MARKED_CRIT/> crit chance against the target from all sources for the remainder of the turn."
+; End Translation (2)
+
+
+[KnifeEncounters X2AbilityTemplate]
+LocFriendlyName="Knife Encounters"
+LocFlyOverText="Knife Encounters"
+;LWOTC needs Translation(2)
+LocLongDescription="Once per turn, gain a bonus action after throwing a knife at an enemy within <Ability:CLOSE_ENCOUNTERS_RANGE/> tiles. Cannot trigger on the same turn as Cheap Shot."
+LocHelpText="Once per turn, gain a bonus action after throwing a knife at an enemy within <Ability:CLOSE_ENCOUNTERS_RANGE/> tiles. Cannot trigger on the same turn as Cheap Shot."
+LocPromotionPopupText="<Bullet/> Once per turn, gain a bonus action after throwing a knife at an enemy within <Ability:CLOSE_ENCOUNTERS_RANGE/> tiles.<br/><Bullet/> A red ring will mark the range of this ability.<br/><Bullet/> Knife Encounters cannot be used on the same turn as Run and Gun, or Cheap Shot.<br/>"
+;LWOTC End Translation(2)
+
+; LWOTC Needs Translation (2)
+[ImpersonalEdge X2AbilityTemplate]
+LocFriendlyName="Impersonal Edge"
+LocFlyOverText="Impersonal Edge"
+LocLongDescription="When you get a kill with a throwing knife, reduce Shadow cooldown by 1 and gain stackable +<Ability:IMPERSONAL_EDGE_AIM/> aim buff for 3 turns."
+LocHelpText="When you get a kill with a throwing knife, reduce Shadow cooldown by 1 and gain stackable +<Ability:IMPERSONAL_EDGE_AIM/> aim buff for 3 turns."
+LocPromotionPopupText="When you get a kill with a throwing knife, reduce Shadow cooldown by 1 and gain stackable +<Ability:IMPERSONAL_EDGE_AIM/> aim buff for 3 turns.<br/>"
+
+[ImpersonalEdgePassive X2AbilityTemplate]
+LocFriendlyName="Impersonal Edge"
+LocFlyOverText="Impersonal Edge"
+LocLongDescription="When you get a kill with a throwing knife, reduce Shadow cooldown by 1 and gain stackable +<Ability:IMPERSONAL_EDGE_AIM/> aim buff for 3 turns."
+LocHelpText="When you get a kill with a throwing knife, reduce Shadow cooldown by 1 and gain stackable +<Ability:IMPERSONAL_EDGE_AIM/> aim buff for 3 turns."
+LocPromotionPopupText="When you get a kill with a throwing knife, reduce Shadow cooldown by 1 and gain stackable +<Ability:IMPERSONAL_EDGE_AIM/> aim buff for 3 turns.<br/>"
+; End Translation (2)
+
+
+; LWOTCR Needs Translation 
+[ArterialStrike_LW X2AbilityTemplate]
+LocFriendlyName="Arterial Strike"
+LocFlyOverText="Arterial Strike"
+LocLongDescription="Your primary weapon shots cause bleeding. Your bleeding damage is increased by <Ability:ARTERIAL_STRIKE_BLEED_INCREASE/>."
+LocHelpText="Your primary weapon shots cause bleeding. Your bleeding damage is increased by <Ability:ARTERIAL_STRIKE_BLEED_INCREASE/>."
+LocPromotionPopupText="<Bullet/>The base damage of primary weapon bleeding is <Ability:ARTERIAL_STRIKE_PRIMARY_BLEED/>, and is increased by the bonus.<br/><Bullet/>The bleeding damage bonus also applies to bleeding caused by knives.<br/>"
+
+[ArterialStrikePassive_LW X2AbilityTemplate]
+LocFriendlyName="Arterial Strike"
+LocFlyOverText="Arterial Strike"
+LocLongDescription="Your primary weapon shots cause bleeding. Your bleeding damage is increased by <Ability:ARTERIAL_STRIKE_BLEED_INCREASE/>."
+LocHelpText="Your primary weapon shots cause bleeding. Your bleeding damage is increased by <Ability:ARTERIAL_STRIKE_BLEED_INCREASE/>."
+LocPromotionPopupText="<Bullet/>The base damage of primary weapon bleeding is <Ability:ARTERIAL_STRIKE_PRIMARY_BLEED/>, and is increased by the bonus.<br/><Bullet/>The bleeding damage bonus also applies to bleeding caused by knives.<br/>"
+
+; LWOTCR End Translation 
+
+[BlueScreenKnives X2AbilityTemplate]
+LocFriendlyName="Bluescreen knives"
+LocHelpText="Throwing knives gain +<Ability:BLUESCREEN_KNIVES_PIERCE/> pierce and will disorient robotic units."
+LocLongDescription="Throwing knives gain +<Ability:BLUESCREEN_KNIVES_PIERCE/> pierce and will disorient robotic units."
+; LWOTC Needs Translation (2)
+LocPromotionPopupText="<Bullet/> Throwing knives gain +<Ability:BLUESCREEN_KNIVES_PIERCE/> pierce and will disorient robotic units."
+; End Translation (2)
+
+; LWOTC Needs Translation
+[BattlefieldAwareness X2AbilityTemplate]
+LocFriendlyName="Battlefield Awareness"
+LocLongDescription="If you score a kill during your turn, the next attack against you during the enemy turn will miss. Upon usage, the ability goes on a <Ability:BATTLEFIELD_AWARENESS_COOLDOWN/> turn cooldown."
+LocHelpText="If you score a kill during your turn, the next attack against you during the enemy turn will miss. Upon usage, the ability goes on a <Ability:BATTLEFIELD_AWARENESS_COOLDOWN/> turn cooldown."
+LocFlyOverText="Battlefield Awareness"
+LocPromotionPopupText="<Bullet/> When Battlefield Awareness is triggered the soldier is immune to the next damage-dealing attack during the enemy turn, including area of effect attacks.<br/>"
+
+
+[BattlefieldAwarenessPassive X2AbilityTemplate]
+LocFriendlyName="Battlefield Awareness"
+LocLongDescription="If you score a kill during your turn, the next attack against you during the enemy turn will miss. Upon usage, the ability goes on a <Ability:BATTLEFIELD_AWARENESS_COOLDOWN/> turn cooldown."
+LocHelpText="If you score a kill during your turn, the next attack against you during the enemy turn will miss. Upon usage, the ability goes on a <Ability:BATTLEFIELD_AWARENESS_COOLDOWN/> turn cooldown."
+LocFlyOverText="Battlefield Awareness"
+
+[BattlefieldAwarenessCooldown X2AbilityTemplate]
+LocFriendlyName="Battlefield Awareness Cooldown"
+LocLongDescription="Battlefield Awareness will not activate until this effect ends."
+LocHelpText="Battlefield Awareness will not activate until this effect ends."
+
+
+[CombatPresence X2AbilityTemplate]
+LocPromotionPopupText="<Bullet/> Combat Presence can be used to get squadmates out of tough situations where they need an extra attack or move.<br/><Bullet/> Combat Presence has a <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
+
+
+; LWOTC Needs Translation
+
+[CheapShot X2AbilityTemplate]
+LocFriendlyName="Cheap Shot"
+LocFlyOverText="Cheap Shot"
+LocLongDescription= "Once per turn, your first primary weapon shot against an enemy wounded this turn deals +<Ability:CHEAPSHOT_BONUS_DAMAGE/>% damage and grants a move action. Cannot trigger on the same turn as Knife Encounters."
+LocHelpText="Once per turn, your first primary weapon shot against an enemy wounded this turn deals +<Ability:CHEAPSHOT_BONUS_DAMAGE/>% damage and grants a move action. Cannot trigger on the same turn as Knife Encounters."
+LocPromotionPopupText="<Bullet/> Cheap Shot triggers if the target was previously damaged by any type of damage since the player's last turn, i.e. overwatch and damage over time during the enemy turn counts.<br/><Bullet/> Works for Light 'em Up, Chain Shot and Banish in addition to the standard shot.<br/><Bullet/> The movement action can be used to enter Shadow if it's off cooldown.<br/>"
+; End Translation

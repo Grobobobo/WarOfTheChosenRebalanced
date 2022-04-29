@@ -1,0 +1,63 @@
+[UIOptionsPCScreen_LW]
+m_strResetCurrentModOption="RESET CURRENT MOD"
+
+[XComGameState_LWToolboxOptions]
+ToolboxTabName="CAMPAIGN"
+
+HelpButtonLabel="Helpful Info"
+HelpButtonLabelText="Help"
+HelpButtonLabelTooltip="Show information about Toolbox"
+
+SetCameraRotation="Set Camera Rotation (degrees)"
+SetCameraRotationTooltip="Select Rotation Angle for camera in tactical missions."
+
+SelectSquadSize="Default Squadsize"
+SelectSquadSizeTooltip="Increases the default squad size (before any Guerrilla Tactics School bonuses)."
+
+EnableRandomizedDamageMod="Damage Roulette"
+EnableRandomizedDamageModTooltip="Weapon damage for both XCOM and the enemy will vary from the base damage by the selected amount."
+
+EnableRandomizedInitialStatsMod="Not Created Equally"
+EnableRandomizedInitialStatsModTooltip="Soldiers will have base stats randomized around a baseline. They will return to default if this is unselected. This option may be toggled in the Avenger, or during the first turn only of tactical missions, and only then if no one has been wounded."
+sCantChangeWithWoundedSoldiers="Not Created Equally cannot be activated or deactivated if any XCOM soldiers are wounded, or after the first turn of a tactical mission."
+NormalDamage="Off"
+MaxDamage="MAX"
+
+EnableRandomizedLevelupStatsMod="Hidden Potential"
+EnableRandomizedLevelupStatsModTooltip="Soldiers will have randomized increases in stats upon level-up."
+
+RandomizedLevelupStrength="Randomness: <XGParam:IntValue0>%"
+RandomizedLevelupStrengthTooltip="The degree of randomization applied when Hidden Potential is active. Higher settings mean soldiers will see a wider range of stat increases on level-up."
+
+EnableRedFogMod="Red Fog"
+EnableRedFogModTooltip="Wounded units suffer penalties to aim, will, mobility and hack skill."
+EnableRedFogLinearPenaltiesMod="Use Linear Red Fog Penalties (Instead of Quadratic)"
+EnableRedFogModLinearPenaltiesTooltip="Units will suffer greater stat penalties when lightly injured."
+RedFogOptions[0]="Off"
+RedFogOptions[1]="XCOM Only"
+RedFogOptions[2]="Aliens Only"
+RedFogOptions[3]="All"
+
+EnableSimCombatMod="Allow Combat Auto-Resolve"
+EnableSimCombatModTooltip="Enables an option in Squad Select to automatically resolve combat missions with the currently selected squad. Because it is not compatible with certain official DLCs, this requires having the debug console available and using the console command LWSetAutoResolveEnabled true to activate the menu option. It is recommended that only modders use this as a debugging tool."
+
+[X2Effect_RedFog_LW]
+RedFogEffectName="Red Fog"
+RedFogEffectDesc="Causes reduction in stats based on wounds taken."
+
+[UISquadSelect_LW]
+m_strStripWeapons=MAKE WEAPONS AVAILABLE
+m_strStripWeaponsConfirm=CONFIRM MAKE WEAPONS AVAILABLE
+
+m_strStripWeaponsConfirmDesc=Confirm removal of weapons from all soldiers NOT selected for current mission duty. This gear will become available for any soldier to equip immediately.
+m_strTooltipStripWeapons=Remove all weapons from all soldiers NOT selected for current mission duty.
+
+m_strTooltipNeedsFrontRowSoldier=""
+m_strClearSquad="CLEAR SQUAD"
+m_strTooltipClearSquad="Remove all soldiers from squad."
+
+m_strAutofillSquad="AUTOFILL SQUAD"
+m_strTooltipAutofillSquad="Autofill empty squad positions."
+
+m_strSimCombat="AUTO-RESOLVE"
+m_strTooltipSimCombat="Auto-resolve battle."

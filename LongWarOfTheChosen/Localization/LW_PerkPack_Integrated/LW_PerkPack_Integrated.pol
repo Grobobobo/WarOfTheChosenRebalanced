@@ -1,0 +1,45 @@
+[XComGameState_LWPerkPackOptions]
+PerkPackTabName="ZDOLNOŚCI"
+
+ViewLockedPerksMod="Pokaż zablokowane atuty"
+ViewLockedPerksModTooltip="Włącz, żeby umożliwić wyświetlanie zablokowanych atutów (nie odkrywa drzewka agenta PSI)."
+
+BaseGamePerkUIMod="Dwie kolumny atutów z podstawowej wersji gry"
+BaseGamePerkUIModTooltip="Przy awansowaniu używaj oryginalnego, dwukolumnowego interfejsu wyboru atutów (albo korzystaj z interfejsu atutów z innej modyfikacji)."
+
+DefaultTacticalAbilityContainerMod="Podstawowy HUD zdolności taktycznych"
+DefaultTacticalAbilityContainerModTooltip="Dzięki tej modyfikacji żołnierze mogą mieć więcej niż 15 aktywnych zdolności, poprzez tworzenie wielu stron ikon, które gracze mogą sortować podczas misji. Wybierz tę opcję, żeby wyłączyć tę funkcję (na przykład, żeby skorzystać z innej modyfikacji)."
+
+NumDisplayedAbilitiesMod="Zdolności na stronę w taktycznym HUD"
+NumDisplayedAbilitiesModTooltip="Liczba zdolności na stronę w taktycznym HUD. Ta opcja niczego nie zmienia, jeśli jest ustawiona opcja \"podstawowy HUD zdolności taktycznych\"."
+
+[UIScreenListener_Armory_MainMenu_LWExpandedPerkTree]
+strExpandedMenuOption="Zdolności"
+strExpandedTooltip="Powiększone drzewko atutów"
+ExpandedListItemDescription="Przycisk testowy powiększonego drzewka atutów"
+
+[UIScreenListener_Armory_MainMenu_LW_LWExpandedPerkTree]
+strExpandedMenuOption="Zdolności"
+strExpandedTooltip="Powiększone drzewko atutów"
+ExpandedListItemDescription="Przycisk testowy powiększonego drzewka atutów"
+
+[UITacticalHUD_AbilityContainer_LWExtended]
+strChangePageTitle="Dodatkowe zdolności"
+strChangePageDesc="Zobacz dodatkowe zdolności, które możesz aktywować. Możesz również użyć klawisza \"x\", aby zobaczyć dodatkowe zdolności."
+
+[UIArmory_MainMenu_LW]
+m_strNoWeaponUpgradesTooltip="BRAK DOSTĘPNYCH ULEPSZEŃ BRONI"
+
+[X2Ability_PerkPackAbilitySet2]
+TrojanVirus="Wirus typu trojan"
+TrojanVirusTriggered="<XGParam:StrValue0/!UnitName/> uruchamia wirus typu trojan."
+
+[X2Effect_Savior]
+strSavior_WorldMessage="Zbawca: leczenie dodatkowych <XGParam:IntValue0/> pkt. zdrowia."
+
+[X2Item_DenseSmokeGrenade]
+DenseSmokeGrenadeEffectDisplayName="Gęsty dym"
+DenseSmokeGrenadeEffectDisplayDesc="Gęsty dym daje tej jednostce premię do obrony."
+
+[X2Ability_PerkPackAbilitySet]
+LocCoveringFire="Ogień osłonowy"

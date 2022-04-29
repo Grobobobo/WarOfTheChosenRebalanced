@@ -1,0 +1,33 @@
+[T_Guerilla_Ops_Recover_Item_Central_01 SoundNodeWave]
+SpokenText="Zwiad informuje, że krypta z danymi ADVENT-u, w której znajdują się istotne pliki związane z ich obecnymi działaniami, została skradziona przez miejscowy ruch oporu. Niestety obcy szybko odbili tę placówkę i zabili wszystkich na swej drodze. Nie możemy przepuścić takiej okazji zakłócenia ich projektu. Odzyskajcie te materiały."
+
+[T_Guerilla_Ops_Recover_Item_Central_02 SoundNodeWave]
+SpokenText="Miejscowy ruch oporu zdobył kryptę z danymi ADVENT-u, w której znajdują się informacje o wykrytej przez nas operacji obcych. Niestety obcy nie zamierzali oddać jej tak łatwo. Przeprowadzili kontratak, odzyskali dane i zabili wszystkich na swej drodze. To nas nie powstrzyma. Odzyskajcie dane."
+
+[T_Guerilla_Ops_Recover_Item_Central_03 SoundNodeWave]
+SpokenText="Siły ruchu oporu działające w tym rejonie zaatakowały przemieszczające się tamtędy siły ADVENT-u i natknęły się na kryptę z danymi, w której przechowywane są informacje związane z obecnymi działaniami obcych. Niestety zjawiły się tam posiłki wroga i odbiły tę placówkę, a my straciliśmy łączność z tamtejszymi agentami. Musimy zdobyć ten teren. Macie znaleźć te dane!"
+
+[T_Guerilla_Ops_Recover_Item_Central_04 SoundNodeWave]
+SpokenText="Grupa agentów miejscowego ruchu oporu wciągnęła w zasadzkę patrol ADVENT-u i natrafiła na transportowaną przez niego kryptę danych. Z tego, co słyszeliśmy, mogą znajdować się w niej ważne informacje o odkrytym przez nas projekcie obcych. Niestety na miejscu szybko zjawiły się posiłki wroga i straciliśmy kontakt z ruchem oporu. Musimy zająć ten teren. Macie zdobyć te materiały."
+
+[AssaultAlienBase_TacIntro SoundNodeWave]
+SpokenText="Widmo 1-5: Dotrzyjcie na miejsce i sprawdźcie teren. Możecie spodziewać się silnego oporu. Zabijcie wszystkich wrogów."
+
+[T_AssaultNetworkTower_Central_01 SoundNodeWave]
+SpokenText="Dowódco, to będzie podwójny atak. Najpierw włamiemy się do serca wieży ADVENT-u i zakłócimy działanie ich sieci. Ale musimy działać szybko. Jeśli uda nam się przejąć kontrolę nad danymi, Shen przyszykuje dla nich małą niespodziankę, która osiągnie coś więcej, niż tylko zwróci ich uwagę. Przejąć placówkę, zabezpieczyć okolicę i wyeliminować wrogie siły strzegące celu. Jeżeli wszystko dobrze pójdzie, kompletnie ich zaskoczymy."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_01 SoundNodeWave]
+SpokenText="Zwiad doniósł nam o słabo chronionej krypcie danych znajdującej się w placówce ADVENT-u w tym rejonie. Podejrzewamy, że zawiera ona ważne informacje o najnowszej operacji obcych, co oznacza, że musimy ją przejąć siłą. Macie za wszelką cenę zdobyć te dane."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_02 SoundNodeWave]
+SpokenText="Dr Tygan śledzi ruchy krypty danych ADVENT-u zawierającej ważne informacje o najnowszym projekcie obcych. Udało mu się namierzyć ją w jednej z ich placówek w tym rejonie. Tygan sądzi, że możemy zdobyć jej zawartość, jeśli zlikwidujemy strzegące je siły wroga."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_03 SoundNodeWave]
+SpokenText="Przez sieć ADVENT-u namierzyliśmy kryptę danych znajdującą się w jednej z ich placówek w tej okolicy. Przypuszczamy, że znajdują się tam ważne informacje o najnowszej operacji obcych. Musimy zdobyć te materiały, ale ich ochrona na pewno nie ułatwi nam roboty."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_04 SoundNodeWave]
+SpokenText="Jeden z agentów ruchu oporu doniósł nam, że grupa patrolowa ADVENT-u trzyma w tym rejonie zabezpieczoną kryptę danych. Zdaje się, że zawiera ona ważne informacje o najnowszej operacji obcych. Nie możemy przepuścić okazji zahamowania ich postępów. Zdobądźcie te materiały."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_05 SoundNodeWave]
+SpokenText="Ruch oporu właśnie zameldował nam, że jeden z ich agentów natrafił na kryptę danych ADVENT-u w tym rejonie. Znajdują się w niej ważne informacje o najnowszej operacji obcych. Zdobędziemy te materiały i spowolnimy ich działania, zanim to zajdzie za daleko."
+

@@ -1,0 +1,23 @@
+[XCom_Perfect_Information_X2Action_ApplyWeaponDamageToUnit]
+HIT_CHANCE_MSG ="ПОПАДАНИЕ:";
+CRIT_CHANCE_MSG ="КРИТ:";
+DODGE_CHANCE_MSG ="УКЛОНЕНИЕ:";
+MISS_CHANCE_MSG ="ПРОМАХ:";
+ 
+GUARANTEED_HIT_MSG ="- ГАРАНТИРОВАННОЕ ПОПАДАНИЕ";
+GUARANTEED_MISS_MSG ="- ГАРАНТИРОВАННЫЙ ПРОМАХ";
+ 
+REPEATER_KILL_MSG ="- Повторитель:";
+ 
+[XCom_Perfect_Information_UITacticalHUD_ShotWings]
+LOWER_DIFFICULTY_MSG = "НИЗКАЯ СЛОЖНОСТЬ";
+MISS_STREAK_MSG = "СЕРИЯ ПРОМАХОВ";
+SOLDIER_LOST_BONUS = "БОНУС ЗА ПОТЕРЮ СОЛДАТА";
+ 
+[XCom_Perfect_Information_UITacticalHUD_SoldierInfoTooltip]
+KILLS_LABEL = "Убийства";
+ASSIST_LABEL = "Содействия";
+FLANKING_CRIT_LABEL = "Крит с фланга";
+
+[XCom_Perfect_Information_UIEffectListItem]
+TURNS_REMAINING = "ХОДА (-ОВ) ОСТАЛОСЬ"

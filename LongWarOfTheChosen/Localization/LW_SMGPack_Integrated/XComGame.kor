@@ -1,0 +1,24 @@
+; SMG item localization 
+; this includes schematics, as of 13 Oct 2015 update
+; this includes ability descriptor, as of 5 Jan 2016 update
+
+[SMG_CV X2WeaponTemplate]
+FriendlyName="기관단총"
+FriendlyNamePlural="기관단총"
+BriefSummary="기관단총은 표준 돌격 소총에 비해 가볍고 잠행하여 사용하기 쉽지만, 표준 돌격 소총에 비해 파괴력과 원거리 명중률이 낮습니다."
+TacticalText="<Bullet/> 특수 훈련을 받지 않은 한, 주요 무기를 발사하면 병사의 턴이 종료됩니다.\n<Bullet/> 어드밴트 적에게서 획득한 업그레이드를 사용하면 기관단총의 전술적 효율성이 증가합니다. \n<Bullet/> 기관단총류의 무기는 기동력, 근거리 명중률과 잠행 보너스를 부여하지만, 돌격 소총에 비해 입히는 대미지가 적고 클립 크기가 작으며 원거리 명중률이 낮습니다."
+AbilityDescName="기관단총"
+
+[SMG_MG X2WeaponTemplate]
+FriendlyName="스터터맥"
+FriendlyNamePlural="스터터맥"
+BriefSummary="스터터맥은 경량화한 전자기 소총으로, 기관단총과 마찬가지로 병사에게 기동력과 잠행 보너스를 부여해주는 대신, 파괴력, 클립 크기 및 원거리 명중률이 떨어집니다."
+TacticalText="<Bullet/> 특수 훈련을 받지 않은 한, 주요 무기를 발사하면 병사의 턴이 종료됩니다.\n<Bullet/> 어드밴트 적에게서 획득한 업그레이드를 사용하면 스터터맥의 전술적 효율성이 증가합니다. \n<Bullet/> 기관단총류의 무기는 기동력, 근거리 명중률과 잠행 보너스를 부여하지만, 돌격 소총에 비해 입히는 대미지가 적고 클립 크기가 작으며 원거리 명중률이 낮습니다."
+AbilityDescName="기관단총"
+
+[SMG_BM X2WeaponTemplate]
+FriendlyName="스크램건"
+FriendlyNamePlural="스크램건"
+BriefSummary="기관단총과 스터터맥과 마찬가지로 스크램건은 소형 주요 무기로 기동력과 잠행 보너스를 부여해 주는 대신, 입히는 대미지가 적고 원거리 명중률이 낮습니다. 하지만 존재감이 강한 개인 무기임은 틀림없습니다."
+TacticalText="<Bullet/> 특수 훈련을 받지 않은 한, 주요 무기를 발사하면 병사의 턴이 종료됩니다.\n<Bullet/> 어드밴트 적에게서 획득한 업그레이드를 사용하면 스크램건의 전술적 효율성이 증가합니다. \n<Bullet/> 기관단총류의 무기는 기동력, 근거리 명중률과 잠행 보너스를 부여하지만, 돌격 소총에 비해 입히는 대미지가 적고 클립 크기가 작으며 원거리 명중률이 낮습니다.<br/><Bullet/> 플라스마 무기들은 피해를 입힐 때마다 대상 유닛이 1의 추가 대미지를 더 받게 만듭니다."
+AbilityDescName="기관단총"

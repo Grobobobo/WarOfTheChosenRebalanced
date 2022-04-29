@@ -1,0 +1,46 @@
+[XComGameState_LWPerkPackOptions]
+PerkPackTabName="능력"
+
+ViewLockedPerksMod="잠긴 특기 보기"
+ViewLockedPerksModTooltip="잠긴 특기가 보이도록 설정 (사이오닉 병사 트리는 보이지 않음)"
+
+BaseGamePerkUIMod="기본 게임 2종류 특기 UI 사용"
+BaseGamePerkUIModTooltip="레벨업 시 기본 2종류 특기 선택 UI를 사용하기로 설정 (혹은 다른 모드의 특기 UI를 사용)"
+
+DefaultTacticalAbilityContainerMod="기본 게임 전술 능력 모드 사용"
+DefaultTacticalAbilityContainerModTooltip="이 모드에서는 임무 중에 능력 아이콘에 관한 페이지가 추가되어 병사들이 15개 이상의 능력을 활성화시킬 수 있습니다. 해당 기능을 끄기 위하여 이 옵션을 선택하십시오. (다른 모드 사용을 위하여)"
+
+NumDisplayedAbilitiesMod="전술 모드의 페이지당 능력 수"
+NumDisplayedAbilitiesModTooltip="전술 모드에서 한 페이지에 보이는 능력의 갯수. 기본 게임 전술 능력 모드로 설정되어 있는 경우 이 옵션은 필요 없게 됩니다."
+
+[UIScreenListener_Armory_MainMenu_LWExpandedPerkTree]
+strExpandedMenuOption="능력"
+strExpandedTooltip="확장된 특기 트리"
+ExpandedListItemDescription="확장된 특기 트리 테스트 버튼"
+
+[UIScreenListener_Armory_MainMenu_LW_LWExpandedPerkTree]
+strExpandedMenuOption="능력"
+strExpandedTooltip="확장된 특기 트리"
+ExpandedListItemDescription="확장된 특기 트리 테스트 버튼"
+
+[UITacticalHUD_AbilityContainer_LWExtended]
+strChangePageTitle="추가 능력"
+strChangePageDesc="활성화시킬 추가 능력들을 살펴보십시오. 'x'키를 눌러서 추가 능력들을 살펴볼 수 있습니다."
+
+[UIArmory_MainMenu_LW]
+m_strNoWeaponUpgradesTooltip="사용 가능한 무기 업그레이드 없음"
+
+[X2Ability_PerkPackAbilitySet2]
+TrojanVirus="트로이 바이러스"
+TrojanVirusTriggered="<XGParam:StrValue0/!UnitName/>(이)가 트로이 바이러스에 감염되었습니다."
+
+[X2Effect_Savior]
+strSavior_WorldMessage="구세주: <XGParam:IntValue0/>의 추가 체력을 회복했습니다."
+
+[X2Item_DenseSmokeGrenade]
+DenseSmokeGrenadeEffectDisplayName="짙은 연막"
+DenseSmokeGrenadeEffectDisplayDesc="짙은 연막이 해당 유닛에게 추가 방어 보너스를 부여해줍니다."
+
+[X2Ability_PerkPackAbilitySet]
+LocCoveringFire="엄호 사격"
+

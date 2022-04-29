@@ -1,0 +1,1488 @@
+[X2ExperienceConfig]
+PsiRankNames[8]="マスター"
+PsiShortNames[8]="マスター"
+
+[XComGame.UIArmory_Loadout]
+[UIArmory_Loadout]
+m_strNeedsSoldierClass="装備不可"
+m_strUnavailableToClass="利用不可"
+
+[X2Ability_PerkPackAbilitySet]
+LocCoveringFireMalus="このユニットは援護射撃アビリティを持つ監視状態のユニットに狙われたため、残りのターンの間命中率が-10される。"
+
+[DepthPerceptionPCS X2EquipmentTemplate]
+FriendlyName="PCS：深度知覚力"
+FriendlyNamePlural="PCS：深度知覚力"
+BriefSummary="このサイバネティック・インプラントの効果により、ターゲットより高い位置にいる場合、命中率+5、敵の回避率-25となる。"
+
+[HyperReactivePupilsPCS X2EquipmentTemplate]
+FriendlyName="PCS：超反応性瞳孔"
+FriendlyNamePlural="PCS：超反応性瞳孔"
+BriefSummary="インプラントの効果により、攻撃を外した後のメイン武器による次の射撃の命中率が+10となる。"
+
+[CombatAwarenessPCS X2EquipmentTemplate]
+FriendlyName="PCS：コンバットアウェアネス"
+FriendlyNamePlural="PCS：コンバットアウェアネス"
+BriefSummary="監視状態のとき、防御力+15、アーマー+1となる。"
+
+[CombatRushPCS X2EquipmentTemplate]
+FriendlyName="PCS：コンバットラッシュ"
+FriendlyNamePlural="PCS：コンバットラッシュ"
+BriefSummary="敵を撃破すると、7タイル以内の味方が命中率、クリティカル率、機動力に一時的なボーナスを得る。クールダウン：5ターン。"
+
+[DamageControlPCS X2EquipmentTemplate]
+FriendlyName="PCS：ダメージコントロール"
+FriendlyNamePlural="PCS：ダメージコントロール"
+BriefSummary="敵の攻撃が命中したとき、インプラントの効果によってアーマーが硬化し、ダメージをこうむった後、2ターンにわたってアーマー+2となる。"
+
+[AbsorptionFieldsPCS X2EquipmentTemplate]
+FriendlyName="PCS：インパクトフィールド"
+FriendlyNamePlural="PCS：インパクトフィールド"
+BriefSummary="このシールドプロジェクターインプラントを起動すると、2ターンの間、ダメージが33%軽減される。"
+
+[BodyShieldPCS X2EquipmentTemplate]
+FriendlyName="PCS：ボディシールド"
+FriendlyNamePlural="PCS：ボディシールド"
+BriefSummary="ターゲットの命中率が-20、クリティカル率が-50となる。"
+
+[EmergencyLifeSupportPCS X2EquipmentTemplate]
+FriendlyName="PCS：緊急ライフサポート"
+FriendlyNamePlural="PCS：緊急ライフサポート"
+BriefSummary="このインプラントは、あるミッションで初めて致命傷を受けたときに即死を回避し、失血死までの時間を延長してくれる。"
+
+[IronSkinPCS X2EquipmentTemplate]
+FriendlyName="PCS：アイアンスキン"
+FriendlyNamePlural="PCS：アイアンスキン"
+BriefSummary="近接攻撃によるダメージ-3。"
+
+[SmartMacrophagesPCS X2EquipmentTemplate]
+FriendlyName="PCS：スマート・マクロファージ"
+FriendlyNamePlural="PCS：スマート・マクロファージ"
+BriefSummary="負傷からの回復時間が短縮され、毒と酸への耐性を得る。"
+
+[CenterMass X2AbilityTemplate]
+LocFriendlyName="センターマス"
+LocFlyOverText="センターマス"
+LocLongDescription="ガンの基礎ダメージを1ポイント増加させる。"
+LocHelpText="ガンの基礎ダメージを1ポイント増加させる。"
+LocPromotionPopupText="<Bullet/>メイン武器、ピストル、ソードオフ・ショットガンの基礎ダメージを1ポイント増加させる。"
+
+[Lethal X2AbilityTemplate]
+LocFriendlyName="リーサル"
+LocFlyOverText="リーサル"
+LocLongDescription="メイン武器の基礎ダメージ+2ポイント。"
+LocHelpText="メイン武器の基礎ダメージ+2ポイント。"
+LocPromotionPopupText="<Bullet/>メイン武器の基礎ダメージ+2。"
+
+[HitandRun X2AbilityTemplate]
+LocFriendlyName="一撃離脱"
+LocFlyOverText="一撃離脱"
+LocLongDescription="各ターンに一度、側面をさらしているか、露出しているターゲットにメイン武器で通常射撃を行った後、もう一度行動できる。"
+LocHelpText="各ターンに一度、側面をさらしているか、露出しているターゲットにメイン武器で通常射撃を行った後、もう一度行動できる。"
+LocPromotionPopupText="<Bullet/>ラン&ガンと同じターンには使用不可。<br/><Bullet/>シリアルと頭上の死神によるボーナスアクションが優先して与えられる。"
+
+[HitandSlither X2AbilityTemplate]
+LocFriendlyName="ヒットアンド蛇行"
+LocFlyoverText="ヒットアンド蛇行"
+LocLongDescription="各ターンに1回、側面または背後をさらしているターゲットにメイン武器で通常射撃を行った後、もう一度移動できる。"
+LocHelpText="各ターンに1回、側面または背後をさらしているターゲットにメイン武器で通常射撃を行った後、もう一度移動できる。"
+LocPromotionPopupText="<Bullet/>各ターンに1回、側面または背後をさらしているターゲットにメイン武器で通常射撃を行った後、もう一度移動できる。<br/><Bullet/>ラン&ガン発動後は使用できない。<br/><Bullet/>シリアルキラーおよび頭上の死神によるボーナスが優先される。"
+
+[CloseCombatSpecialist X2AbilityTemplate]
+LocFriendlyName="近接戦闘スペシャリスト"
+LocFlyOverText="近接戦闘スペシャリスト"
+LocLongDescription="敵のターン中に、4タイル以内の視認可能な敵が移動/射撃すると、行動値消費ゼロでメイン武器による反応射撃を行う。"
+LocHelpText="敵のターン中に、4タイル以内の視認可能な敵が移動/射撃すると、行動値消費ゼロで反応射撃を行う。"
+LocPromotionPopupText="<Bullet/>兵士が潜伏状態の場合には発動しない。<br/><Bullet/>各ターンに1回、このアビリティでそれぞれの敵に射撃を行うことができる。<br/><Bullet/>弾薬を2発消費。<br/>""
+
+[CloseCombatSpecialistAttack X2AbilityTemplate]
+LocFriendlyName="近接戦闘スペシャリスト"
+LocFlyOverText="近接戦闘スペシャリスト"
+LocLongDescription="敵のターン中に、4タイル以内の視認可能な敵が移動/射撃すると、行動値消費ゼロでメイン武器による反応射撃を行う。"
+LocHelpText="敵のターン中に、4タイル以内の視認可能な敵が移動/射撃すると、行動値消費ゼロで反応射撃を行う。"
+LocPromotionPopupText="<Bullet/>兵士が潜伏状態の場合には発動しない。<br/><Bullet/>各ターンに1回、このアビリティでそれぞれの敵に射撃を行うことができる。<br/><Bullet/>弾薬を<Ability:SelfAmmoCost/>発消費。<br/>""
+
+[CloseandPersonal X2AbilityTemplate]
+LocFriendlyName="クロース&パーソナル"
+LocFlyOverText="クロース&パーソナル"
+LocLongDescription="隣接したターゲットにクリティカル率+30のボーナスを与える。ターゲットまでの距離に応じてボーナスは減少する。"
+LocHelpText="隣接したターゲットにクリティカル率+30のボーナスを与える。ターゲットまでの距離に応じてボーナスは減少する。"
+LocPromotionPopupText="<Bullet/>隣接したターゲットに対するクリティカル率+30。<br/><Bullet/>ボーナスはターゲットが1タイル離れるごとに5%減少し、7タイル以上では0%となる。<br/>"
+
+[DamnGoodGround X2AbilityTemplate]
+LocFriendlyName="ダムグッドグラウンド"
+LocFlyOverText="ダムグッドグラウンド"
+LocLongDescription="自分より低い位置にいるターゲットに対し、命中率+10、防御力+10のボーナスを得る。"
+LocHelpText="自分より低い位置にいるターゲットに対し、命中率+10、防御力+10のボーナスを得る。"
+LocPromotionPopupText="<Bullet/>自分より低い位置にいるターゲットに対し、命中率+10、防御力+10のボーナスを得る。<br/><Bullet/> このアビリティによる防御ボーナスは、混乱状態、スタン状態、パニック状態、発火等の影響下あるユニットには適応されない。"
+
+[Executioner_LW X2AbilityTemplate]
+LocFriendlyName="エクゼキューショナー"
+LocFlyOverText="エクゼキューショナー"
+LocLongDescription="HPが最大値の半分以下のターゲットに対し、命中率+10、クリティカル率+10のボーナスを与える。"
+LocHelpText="HPが最大値の半分以下のターゲットに対し、命中率+10、クリティカル率+10のボーナスを与える。"
+LocPromotionPopupText="<Bullet/>HPが最大値の半分以下のターゲットに対し、命中率+10、クリティカル率+10のボーナスを与える。<br/>"
+
+[Resilience X2AbilityTemplate]
+LocFriendlyName="逆境力"
+LocFlyOverText="逆境力"
+LocLongDescription="敵からの攻撃がクリティカルヒット率-<ABILITY:RESILIENCE_BONUS_LW/>になる。"
+LocHelpText="敵からの攻撃がクリティカルヒット率-<ABILITY:RESILIENCE_BONUS_LW/>になる。"
+LocPromotionPopupText="<Bullet/>敵からの攻撃がクリティカルヒット率-<ABILITY:RESILIENCE_BONUS_LW/>になる。<br/>"
+
+[TacticalSense X2AbilityTemplate]
+LocFriendlyName="戦術的センス"
+LocFlyOverText="戦術的センス"
+LocLongDescription="視界内の敵1体につき防御力+5（最大防御力20）。"
+LocHelpText="視界内の敵1体につき防御力+3（最大防御力15）。"
+LocPromotionPopupText="<Bullet/>視界内の敵1体につき防御力+3（最大防御力15）。<br/><Bullet/>部隊視界範囲内で視認可能なユニットは対象外。<br/><Bullet/> このアビリティによる防御ボーナスは、混乱状態、スタン状態、パニック状態、発火等の影響下あるユニットには適応されない。"
+
+[Aggression X2AbilityTemplate]
+LocFriendlyName="アグレッション"
+LocFlyOverText="アグレッション"
+LocLongDescription="視界内の敵1体ごとにクリティカル率+5（最大+30）。"
+LocHelpText="視界内の敵1体ごとにクリティカル率+5（最大+30）。"
+LocPromotionPopupText="<Bullet/>視界内の敵1体ごとにクリティカル率+5（最大+30）。<br/><Bullet/>部隊視界範囲内で視認可能なユニットが対象となる。<br/>"
+
+[BringEmOn X2AbilityTemplate]
+LocFriendlyName="かかってこい"
+LocFlyOverText="かかってこい"
+LocLongDescription="視界内の敵2体ごとにクリティカルヒットのダメージ+1（最大+8）。"
+LocHelpText="視界内の敵2体ごとにクリティカルヒットのダメージ+1（最大+8）。"
+LocPromotionPopupText="<Bullet/>視界内の敵2体ごとにクリティカルヒットのダメージ+1（最大+8）。<br/><Bullet/>部隊視界範囲内で視認可能なユニットが対象となる。<br/>"
+
+[HardTarget X2AbilityTemplate]
+LocFriendlyName="ハードターゲット"
+LocFlyOverText="ハードターゲット"
+LocLongDescription="視界内の敵1体につき回避+5（最大+30）。"
+LocHelpText="視界内の敵1体につき回避+5（最大+30）。"
+LocPromotionPopupText="<Bullet/>視界内の敵1体につき回避+5（最大+30）。<br/><Bullet/>部隊視界範囲内で視認可能なユニットは対象外。<br/><Bullet/> このアビリティによる防御ボーナスは、混乱状態、スタン状態、パニック状態、発火等の影響下あるユニットには適応されない。"
+
+[Infighter X2AbilityTemplate]
+LocFriendlyName="インファイター"
+LocFlyOverText="インファイター"
+LocLongDescription="4タイル以内からの攻撃に対して回避+<Ability:INFIGHTER_DODGE_BONUS/>。"
+LocHelpText="4タイル以内からの攻撃に対して回避+<Ability:INFIGHTER_DODGE_BONUS/>。"
+LocPromotionPopupText="<Bullet/>4タイル以内からの攻撃に対する回避+<Ability:INFIGHTER_DODGE_BONUS/>。<br/><Bullet/>この回避ボーナスは近接攻撃にも適用される。<br/><Bullet/> このアビリティによる防御ボーナスは、混乱状態、スタン状態、パニック状態、発火等の影響下あるユニットには適応されない。"
+
+[DepthPerception X2AbilityTemplate]
+LocFriendlyName="深度知覚力"
+LocFlyOverText="深度知覚力"
+LocLongDescription="ターゲットより高い位置にいる場合、命中率+5、敵の回避率-25となる。"
+LocHelpText="ターゲットより高い位置にいる場合、命中率+5、敵の回避率-25となる。"
+LocPromotionPopupText="<Bullet/>ターゲットより高い位置にいる場合、命中率+5、敵の回避率-25となる。<br/>"
+
+[WilltoSurvive X2AbilityTemplate]
+LocFriendlyName="生存への意志"
+LocFlyOverText="生存への意志"
+LocLongDescription="遮へい物越しに受けた攻撃のダメージ-1。意志力+5。"
+LocHelpText="遮へい物越しに受けた攻撃のダメージ-1。"
+LocPromotionPopupText="<Bullet/>遮へい物越しに受けた攻撃のダメージ-1。<br/><Bullet/>爆発など、間接的な攻撃を遮へい物越しに受けた場合、ダメージは爆発地点から算出される。<br/><Bullet/>徹甲弾系の武器もこの効果を無効化することはできない。<br/><Bullet/>永久的に意志力+5。<br/><Bullet/> このアビリティによる防御ボーナスは、混乱状態、スタン状態、パニック状態、発火等の影響下あるユニットには適応されない。"
+
+[LightEmUp X2AbilityTemplate]
+LocFriendlyName="着火"
+LocFlyOverText="着火"
+LocLongDescription="最初の行動でメイン武器による通常射撃を行ってもターン終了とならない。"
+LocHelpText="最初の行動でメイン武器による通常射撃を行ってもターン終了とならない。"
+LocPromotionPopupText="<Bullet/>最初の行動でメイン武器による通常射撃を行ってもターン終了とならない。<br/>"
+
+[CloseEncounters X2AbilityTemplate]
+LocFriendlyName="クロースエンカウンター"
+LocFlyOverText="クロースエンカウンター"
+LocLongDescription="各ターンに1回、<Ability:CLOSE_ENCOUNTERS_RANGE/>タイル以内の敵にメイン武器で通常射撃を行うと、ボーナス行動値1を得る。"
+LocHelpText="各ターンに1回、<Ability:CLOSE_ENCOUNTERS_RANGE/>タイル以内の敵にメイン武器で通常射撃を行うと、ボーナス行動値1を得る。"
+LocPromotionPopupText="<Bullet/>各ターンに1回、<Ability:CLOSE_ENCOUNTERS_RANGE/>タイル以内の敵にメイン武器で通常射撃を行うと、ボーナス行動値1を得る。<br/><Bullet/>クロースエンカウンターは、ラン&ガン発動後は使用できない。<br/><Bullet/>このアビリティの効果範囲は赤い円でマークされる。<br/><Bullet/>ラン&ガンと同じターンには使用不可。<br/>"
+
+[LoneWolf X2AbilityTemplate]
+LocFriendlyName="ローンウルフ"
+LocFlyOverText="ローンウルフ"
+LocLongDescription="最も近くの味方から7タイル以上離れている場合、命中率+10、防御力+10。"
+LocHelpText="最も近くの味方から7タイル以上離れている場合、命中率+10、防御力+10。"
+LocPromotionPopupText="<Bullet/>最も近くの味方から7タイル以上離れている場合、命中率+10、防御力+10。<br/><Bullet/> このアビリティによる防御ボーナスは、混乱状態、スタン状態、パニック状態、発火等の影響下あるユニットには適応されない。"
+
+[LowProfile X2AbilityTemplate]
+LocFriendlyName="ロープロファイル"
+LocFlyOverText="ロープロファイル"
+LocLongDescription="部分的遮へいが完全遮へいとして扱われる。"
+LocHelpText="部分的遮へいが完全遮へいとして扱われる。"
+LocPromotionPopupText="<Bullet/>部分的遮へいが完全遮へいとして扱われる。<br/>"
+
+[DoubleTap X2AbilityTemplate]
+LocFriendlyName="ダブルタップ"
+LocFlyOverText="ダブルタップ"
+LocLongDescription="特殊射撃：同じターゲットをメイン武器で2回射撃する。行動値2を消費。2発目に命中率ペナルティ-10。"
+LocHelpText="同じターゲットを2回射撃する。2発目に命中率ペナルティを課せられる。"
+LocPromotionPopupText="<Bullet/>ダブルタップで同じターゲットに対して2回射撃できる。2発目は命中確率が-10。行動値を2消費し、ターン終了となる。<br/><Bullet/>弾薬を<Ability:SelfAmmoCost/>発消費し、クールダウンに1ターンを要する。<br/>"
+
+[TraverseFire X2AbilityTemplate]
+LocFriendlyName="トラバースファイア"
+LocFlyOverText="トラバースファイア"
+LocLongDescription="最初の行動でメイン武器による通常射撃を行った後、移動以外の行動を追加で1つ行える。"
+LocHelpText="最初の行動でメイン武器による通常射撃を行った後、移動以外の行動を追加で1つ行える。"
+LocPromotionPopupText="<Bullet/>最初の行動でメイン武器による通常射撃を行った後、移動以外の行動を追加で1つ行える。<br/>"
+
+[WalkFire X2AbilityTemplate]
+LocFriendlyName="ウォークファイア"
+LocFlyOverText="ウォークファイア"
+LocLongDescription="命中率+30の超精密射撃を行う。ただし、ダメージ半減、クリティカル率-30。弾薬<Ability:SelfAmmoCost/>発を消費。"
+LocHelpText="特殊射撃：命中率+30、クリティカル率-30、ダメージ半減、弾薬<Ability:SelfAmmoCost/>発を消費。"
+LocPromotionPopupText="<Bullet/>オートマチック武器によるバースト射撃中に狙いを調整する特殊射撃。命中率+30となるが、クリティカルヒットは-30となり、ダメージも半減する。<br/><Bullet/>弾薬を<Ability:SelfAmmoCost/>発消費。<br/><Bullet/>各ターンに1回使用可能。<br/><Bullet/>バースト射撃型の武器が必要。メイン武器としてショットガンまたはスナイパーライフルを装備している場合、このアビリティ使用不可。"
+
+[PrecisionShot X2AbilityTemplate]
+LocFriendlyName="精密射撃"
+LocFlyOverText="精密射撃"
+LocLongDescription="特殊射撃：クリティカル率+30、クリティカルダメージ+33%。クールダウン：3ターン。"
+LocHelpText="特殊射撃：クリティカル率+30、クリティカルダメージ+33%。クールダウン：3ターン。"
+LocPromotionPopupText="<Bullet/>特殊射撃：クリティカル率+30、クリティカルダメージ+33%。クールダウン：3ターン。クールダウン：3ターン。<br/>"
+
+[CyclicFire X2AbilityTemplate]
+LocFriendlyName="サイクリックファイア"
+LocFlyOverText="サイクリックファイア"
+LocLongDescription="特殊射撃：1回の攻撃でターゲット1体に3回射撃する。行動値2を消費し、全弾に命中率ペナルティが課せられる。クールダウン：4ターン。"
+LocHelpText="特殊射撃：1回の攻撃でターゲット1体に3回射撃する。行動値2を消費し、全弾に命中率ペナルティが課せられる。クールダウン：4ターン。"
+LocPromotionPopupText="<Bullet/>特殊射撃：1回の攻撃でターゲット1体に3回射撃する。行動値2を消費し、全弾に命中率-15のペナルティが課せられる。<br/><Bullet/>弾薬を<Ability:SelfAmmoCost/>発消費。<br/><Bullet/>バースト射撃型の武器が必要。メイン武器としてショットガンまたはスナイパーライフルを装備している場合、このアビリティは使用不可。"
+
+[StreetSweeper X2AbilityTemplate]
+LocFriendlyName="トレンチガン"
+LocFlyOverText="トレンチガン"
+LocLongDescription="メイン武器であるショットガン専用の特殊射撃：近くのターゲットに円錐状の攻撃を加える。クールダウン：3ターン。"
+LocHelpText="メイン武器であるショットガン専用の特殊射撃：近くのターゲットに円錐状の攻撃を加える。クールダウン：3ターン。"
+LocPromotionPopupText="<Bullet/>メイン武器であるショットガン専用の特殊射撃：近くのターゲットに円錐状の攻撃を加える。<br/><Bullet/>弾薬を<Ability:SelfAmmoCost/>発消費し、クールダウンに3ターンを要する。<br/><Bullet/>他のメイン武器では利用できない。<br/><Bullet/>重装甲は貫通しないため、側面攻撃の際に有効である。<br/><Bullet/>範囲内にいるエイリアンにダメージを与える。<br/>"
+
+[SlugShot X2AbilityTemplate]
+LocFriendlyName="スラグショット"
+LocFlyOverText="スラグショット"
+LocLongDescription="メイン武器であるショットガン専用の特殊射撃：アーマーを2個貫通し、射撃に距離ペナルティがつかない。弾薬を<Ability:SelfAmmoCost/>発消費。クールダウン：3ターン。"
+LocHelpText="徹甲弾系の特殊なショットガンによる射撃。距離ペナルティがつかない。"
+LocPromotionPopupText="<Bullet/>メイン武器ショットガン専用の特殊射撃：射撃に距離ペナルティがつかない。<br/><Bullet/>アーマーを2個貫通させることができる。<br/><Bullet/>クールダウン：3ターン。<br/><Bullet/>弾薬を<Ability:SelfAmmoCost/>発消費。<br/>"
+
+[SlugShotRangeEffect X2AbilityTemplate]
+LocFriendlyName="スラグショット"
+LocFlyOverText="スラグショット"
+LocLongDescription="メイン武器であるショットガン専用の特殊射撃：射撃に距離ペナルティがつかない。弾薬を<Ability:SelfAmmoCost/>発消費。クールダウン：5ターン。"
+LocHelpText="メイン武器であるショットガン専用の特殊射撃：射撃に距離ペナルティがつかない。弾薬を<Ability:SelfAmmoCost/>発消費。クールダウン：5ターン。"
+LocPromotionPopupText="<Bullet/>メイン武器ショットガン専用の特殊射撃：射撃に距離ペナルティがつかない。<br/><Bullet/>クールダウン：5ターン。<br/><Bullet/>弾薬を<Ability:SelfAmmoCost/>発消費。<br/>"
+
+[Commissar X2AbilityTemplate]
+LocFriendlyName="コミッサール"
+LocFlyOverText="コミッサール"
+LocLongDescription="敵にマインドコントロールされている味方へのピストル射撃の命中率+50。この攻撃は回避できず、命中すると自動的にターゲット撃破となる。"
+LocHelpText="敵にマインドコントロールされている味方へのピストル射撃の命中率+50。この攻撃は回避できず、命中すると自動的にターゲット撃破となる。"
+LocPromotionPopupText="<Bullet/>敵にマインドコントロールされている味方へのピストル射撃の命中率+50。この攻撃は回避できず、命中すると自動的にターゲット撃破となる。<br/>"
+
+[ClutchShot X2AbilityTemplate]
+LocFriendlyName="クラッチショット"
+LocFlyOverText="クラッチショット"
+LocLongDescription="1ミッションに1回、必中のピストル射撃を行う。"
+LocHelpText="1ミッションに1回、必中のピストル射撃を行う。"
+LocPromotionPopupText="<Bullet/>1ミッションに1回、必中のピストル射撃を行う。<br/>"
+
+[Gunslinger X2AbilityTemplate]
+LocFriendlyName="ガンスリンガー"
+LocFlyOverText="ガンスリンガー"
+LocLongDescription="12タイルの扇状の範囲内で移動や攻撃を行なった敵に対し、ピストルによる反応射撃を行なう。"
+LocHelpText="特定の方向へのピストルの監視を強化。"
+LocPromotionPopupText="<Bullet/>射程：12タイル<br/><Bullet/>クールダウン：3ターン<br/>"
+
+[HyperReactivePupils X2AbilityTemplate]
+LocFriendlyName="超反応性瞳孔"
+LocFlyOverText="超反応性瞳孔"
+LocLongDescription="攻撃を外した後、次のメイン武器での射撃の命中率+10。"
+LocHelpText="攻撃を外した後、次のメイン武器での射撃の命中率+10。"
+LocPromotionPopupText="<Bullet/>このボーナスは、攻撃を命中させられないかぎり、ミッション終了まで適用される。<br/><Bullet/>範囲攻撃型の射撃はこのボーナスの対象外。<br/>"
+
+[SteadyWeapon X2AbilityTemplate]
+LocFriendlyName="ステディウェポン"
+LocFlyOverText="ステディウェポン"
+LocLongDescription="次のメイン武器による射撃の命中率+20。複数回使用すると、ボーナスが累積される。行動または負傷するとボーナスは消失する。"
+LocHelpText="次のメイン武器による射撃の命中率+20。複数回使用すると、ボーナスが累積される。行動または負傷するとボーナスは消失する。"
+LocPromotionPopupText="<Bullet/>次のメイン武器による射撃の命中率+20。行動または負傷するとボーナスは失われる。<br/><Bullet/>抑圧されている場合はステディウェポンを使用できない。<br/><Bullet/>なにも行わなければ、効果は数ターン持続する。<br/><Bullet/>ステディウェポンを連続で数回使用すると、ボーナスが累積される。"
+
+[LockedOn X2AbilityTemplate]
+LocFriendlyName="ロックオン"
+LocFlyOverText="ロックオン"
+LocLongDescription="同じ敵を連続で射撃すると命中率+10、クリティカル率+10。"
+LocHelpText="同じ敵を連続で射撃すると命中率+10。"
+LocPromotionPopupText="<Bullet/>同じ敵にメイン武器を使用して連続で射撃すると命中率+10、クリティカル率+10。効果は累積せず、敵に対してのみ適用される。<br/><Bullet/>範囲攻撃型の射撃はボーナスの対象外。"
+
+[Sentinel_LW X2AbilityTemplate]
+LocFriendlyName="センチネル"
+LocFlyOverText="センチネル"
+LocLongDescription="監視状態の間、最大で2回反応射撃を行うことが可能となる。"
+LocHelpText="監視状態の間、最大で2回反応射撃を行うことが可能となる。"
+LocPromotionPopupText="<Bullet/>反射射撃はエイリアンの動きによって1体以上に命中することがある。<br/>"
+
+[RapidReaction X2AbilityTemplate]
+LocFriendlyName="即応"
+LocFlyOverText="即応"
+LocLongDescription="監視状態の間、射撃が命中するたびに最大3発まで反応射撃が追加で可能となる。"
+LocHelpText="監視状態の間、射撃が命中するたびに最大3発まで追加射撃が可能となる。"
+LocPromotionPopupText="<Bullet/>監視状態の間、射撃が命中するたびに最大3発まで反応射撃が追加で可能となる。<br/>"
+
+[LightningReflexes_LW X2AbilityTemplate]
+LocFriendlyName="ライトニングリフレックス"
+LocFlyOverText="ライトニングリフレックス"
+LocLongDescription="敵からの反応射撃の命中確率が大幅に低下する。このボーナスは反応射撃にさらされるたびに減少していく。"
+LocHelpText="敵からの反応射撃の命中確率が低下する。"
+LocPromotionPopupText="<Bullet/>敵からの反応射撃の命中率が大幅に低下する。<br/><Bullet/>あるターンにおける敵からの反応射撃の命中率が、1発目は-100、2発目は-80、3発目は-60、4発目は-40、5発目は-20となる。6発目以降の反応射撃の命中率は通常どおり。<br/><Bullet/> このアビリティによる防御ボーナスは、混乱状態、スタン状態、パニック状態、発火等の影響下あるユニットには適応されない。"
+
+[Cutthroat X2AbilityTemplate]
+LocFriendlyName="カットスロート"
+LocFlyOverText="カットスロート"
+LocLongDescription="生物系の敵への近接攻撃がアーマーを無視し、クリティカル率+15、クリティカルダメージ+2となる。"
+LocHelpText="生物系の敵への近接攻撃がアーマーを無視し、クリティカル率+15、クリティカルダメージ+2となる。"
+LocPromotionPopupText="<Bullet/>生物系の敵への近接攻撃がアーマーを無視し、クリティカル率+15、クリティカルダメージ+2となる。<br/>"
+
+[KillerInstinct X2AbilityTemplate]
+LocFriendlyName="闘争本能"
+LocFlyOverText="闘争本能"
+LocLongDescription="ラン&ガンを発動させると、ターン終了までクリティカルダメージ+50%となる。"
+LocHelpText="ラン&ガンを発動させると、ターン終了までクリティカルダメージ+50%となる。"
+LocPromotionPopupText="<Bullet/>ラン&ガンを発動させると、ターン終了までクリティカルダメージ+50%となる。<br/>"
+
+[ExtraConditioning X2AbilityTemplate]
+LocFriendlyName="エクストラコンディショニング"
+LocFlyOverText="エクストラコンディショニング"
+LocLongDescription="ラン&ガンのクールダウンが1ターン短縮される。"
+LocHelpText="ラン&ガンのクールダウンが1ターン短縮される。"
+LocPromotionPopupText="<Bullet/>ラン&ガンのクールダウンが1ターン短縮される。<br/>"
+
+[RunAndGun_LW X2AbilityTemplate]
+LocFriendlyName="ラン&ガン"
+LocFlyOverText="ラン&ガン"
+LocLongDescription="ダッシュ後にアクションを行う。"
+LocHelpText="ダッシュ後にアクションを行う。"
+LocPromotionPopupText="<Bullet/>ラン&ガンを使用した兵士は、ターゲットとの距離を素早く縮めることができる。敵の側面や背後に回り込むことも容易だ。<br/><Bullet/>ラン&ガンのクールダウン時間：3ターン。<br/>"
+
+[Suppression X2AbilityTemplate]
+LocFriendlyName="抑圧"
+LocFlyOverText="抑圧"
+LocLongDescription="弾幕を張ってターゲットを釘付けにし、ターゲットが移動すると反応射撃を行い、多くのアビリティの使用を制限する。また、ターゲットの命中率に<Ability:SUPPRESSIONPENALTY/>のペナルティを与える。"
+LocHelpText="ターゲットの命中率を低下させ、ターゲットが移動すると射撃する。"
+LocPromotionPopupText="<Bullet/>抑圧には弾薬<Ability:SelfAmmoCost/>ポイントを使うが、クールダウンは必要ない。<br/><Bullet/>発動中のユニットがダメージを受けると抑圧は中断される。<br/><Bullet/>複数のユニットが同じターゲットを抑圧した場合は命中率ペナルティが累積する。<br/><Bullet/>スナイパーライフルまたはショットガンを装備している場合は使用できない。<br/><Bullet/>抑圧されているターゲットはロケットやグレネードの使用など、多くのアビリティが制限される。"
+
+[AreaSuppression X2AbilityTemplate]
+LocFriendlyName="エリア抑圧"
+LocFlyOverText="エリア抑圧"
+LocLongDescription="弾幕を張ることで複数のターゲットを半径4タイル以内に釘付けにし、移動したターゲットに対して反応射撃を行う。また、エリア抑圧が終了するまで、すべてのターゲットの命中率に<Ability:SUPPRESSIONPENALTY/>のペナルティを与える。潜伏状態のユニットは使用できない。"
+LocHelpText="効果範囲内の複数のターゲットの動きを制限する。"
+LocPromotionPopupText="<Bullet/>潜伏状態のユニットはエリア抑圧を使用できない。<Bullet/>エリア移動を試みたユニットに対し、弾切れになるまで反応射撃が繰り出される。<br/><Bullet/>ショットガンまたはスナイパーライフルでは使用できない。<br/><Bullet/>エリアの抑圧には弾薬<Ability:SelfAmmoCost/>ポイントを消費し、反応射撃一発ごとに追加の弾薬が必要になる。<br/><Bullet/>発動中のユニットがダメージを受けると抑圧は中断される。<br/><Bullet/>複数のユニットが同じターゲットを抑圧した場合は命中率ペナルティが累積する。<br/><Bullet/>ターゲットを抑圧するとロケットやグレネードの使用など、多くのアビリティの使用を制限することができる。"
+
+[SuppressionShot_LW X2AbilityTemplate]
+LocFriendlyName="抑圧"
+LocFlyOverText="抑圧"
+
+[DangerZone X2AbilityTemplate]
+LocFriendlyName="デンジャーゾーン"
+LocFlyOverText="デンジャーゾーン"
+LocLongDescription="半径5タイルの敵を抑圧する。"
+LocHelpText="エリア抑圧の範囲が拡大。"
+LocPromotionPopupText="<Bullet/>半径5タイルの敵を抑圧する。<br/>"
+
+[Lockdown X2AbilityTemplate]
+LocFriendlyName="ロックダウン"
+LocFlyOverText="ロックダウン"
+LocLongDescription="抑圧されている場合、移動を試みる敵に対する命中率+15。"
+LocHelpText="抑圧されている場合、移動を試みる敵に対する命中率が上がり、ダメージが増える。"
+LocPromotionPopupText="<Bullet/>抑圧されている場合、移動を試みる敵に対する命中率+15。<br/><Bullet/>他の反応射撃関連ボーナスと重複する。"
+
+[Lockdown X2AbilityTemplate]
+LocFriendlyName="ロックダウン"
+LocFlyOverText="ロックダウン"
+LocLongDescription="抑圧されている場合、移動を試みる敵に対する命中率+15。"
+LocHelpText="抑圧されている場合、移動を試みる敵に対する命中率が上がり、ダメージが増える。"
+LocPromotionPopupText="<Bullet/>抑圧されている場合、移動を試みる敵に対する命中率+15。<br/><Bullet/>他の反応射撃関連ボーナスと重複する。"
+
+[Mayhem X2AbilityTemplate]
+LocFriendlyName="騒乱"
+LocFlyOverText="騒乱"
+LocLongDescription="抑圧されている場合、移動を試みる敵に対するダメージ+25%。"
+LocHelpText="抑圧されている場合、移動を試みる敵に対するダメージが増える。"
+LocPromotionPopupText="<Bullet/>抑圧されている場合、移動を試みる敵に対するダメージ+25%。<br/>"
+
+[MayhemBonuses X2AbilityTemplate]
+LocFriendlyName="騒乱"
+LocFlyOverText="騒乱"
+LocLongDescription="抑圧されている場合、移動を試みる敵に対するダメージ+20%。"
+LocHelpText="抑圧されている場合、移動を試みる敵に対するダメージが増える。"
+LocPromotionPopupText="<Bullet/>抑圧されている場合、移動を試みる敵に対するダメージ+20%。<br/>"
+
+[Interference X2AbilityTemplate]
+LocFriendlyName="干渉"
+LocFlyOverText="干渉"
+LocLongDescription="グレムリンが味方に対する監視状態を解除する。1回の戦闘で3回まで使用可能。"
+LocHelpText="ターゲットの監視状態を解除する。"
+LocPromotionPopupText="<Bullet/>監視されている味方ユニットを解放する。<br/><Bullet/>行動値1を消費。<br/><Bullet/>1回の戦闘ごとに3回まで使用可能。<br/>"
+
+[DamageControl X2AbilityTemplate]
+LocFriendlyName="ダメージコントロール"
+LocFlyOverText="ダメージコントロール"
+LocLongDescription="ダメージを受けると、次のターンが終了するまでアーマー+2となる。"
+LocHelpText="ダメージを受けると、次のターンが終了するまでアーマー+2となる。"
+LocPromotionPopupText="<Bullet/>衝撃を受けたアーマーが一時的に硬化する。ダメージを受けると、次のターンが終了するまでアーマー+2となる。<br/><Bullet/>続くターンに連続して攻撃を受けると、効果が延長される。<br/>"
+
+[DamageControlPassive X2AbilityTemplate]
+LocFriendlyName="ダメージコントロール"
+LocFlyOverText="ダメージコントロール"
+LocLongDescription="ダメージを受けると、次のターンが終了するまでアーマー+2となる。"
+LocHelpText="ダメージを受けると、次のターンが終了するまでアーマー+2となる。"
+LocPromotionPopupText="<Bullet/>ダメージを受けると、次のターンが終了するまでアーマー+2となる。<br/><Bullet/>続くターンに連続して攻撃を受けると、効果が延長される。<br/>"
+
+[Evasive X2AbilityTemplate]
+LocFriendlyName="イヴェイシブ"
+LocFlyOverText="イヴェイシブ：回避+100"
+LocLongDescription="+100の回避ボーナスを得た状態でミッションを開始する。最初にダメージを受けた時点でボーナスは消失する。"
+LocHelpText="ダメージを受けるまで回避+100。"
+LocPromotionPopupText="<Bullet/>通常、このアビリティは最初の負傷をかすり傷に変えてくれる。ただし、回避不能の攻撃に対しては一切のボーナスが適用されず、アビリティの効果も消えてしまう。"
+
+[RemoveEvasive X2AbilityTemplate]
+LocFriendlyName="回避ボーナス消失"
+LocFlyOverText="回避ボーナス消失"
+LocLongDescription="+100の回避ボーナスを得た状態でミッションを開始する。最初にダメージを受けた時点でボーナスは消失する。"
+LocHelpText="ダメージを受けるまで回避+100。"
+LocPromotionPopupText="<Bullet/>通常、このアビリティは最初の負傷をかすり傷に変えてくれる。ただし、回避不能の攻撃に対しては一切のボーナスが適用されず、アビリティの効果も消えてしまう。"
+
+[SnapShot X2AbilityTemplate]
+LocFriendlyName="スナップショット"
+LocFlyOverText="スナップショット"
+LocLongDescription="移動後もスナイパーライフルの通常射撃が行えるが、5タイルの部隊視界より遠くへの射撃には大きなペナルティを受ける。"
+LocHelpText="ターゲットを撃つ。"
+LocPromotionPopupText="<Bullet/> 兵士は移動後もスナイパーライフルの通常射撃ができるようになるが、22タイルより遠くの敵に対しての射撃には極めて深刻な命中率ペナルティを受ける。<br/><Bullet/> 移動後にスナイパーライフルで監視することはできない。<br/>
+
+[SnapShotOverwatch X2AbilityTemplate]
+LocFriendlyName="監視"
+LocHelpText="視界内にいる最初に動いた敵を撃つ。ただし命中率にペナルティが課せられる。命中率が1%未満の場合、監視射撃は行わない。"
+LocLongDescriptionWhenConcealed="視界内にいる最初に動いた敵を撃つ。ただし、その敵が発見されている場合に限られる。"
+LocFlyOverText="監視"
+LocFriendlyNameWhenConcealed="監視（潜伏状態）"
+
+[SnapShotAimModifier X2AbilityTemplate]
+LocFriendlyName="スナップショット"
+LocFlyOverText="スナップショット"
+LocLongDescription="スナイパーライフル装備時も移動後に通常の射撃や監視を行えるかわりに、5タイルの部隊視界より遠くのターゲットに対しては、すべての射撃に大きなペナルティを課せられる。"
+LocHelpText="移動後のスナイパーライフルによる通常射撃および監視が可能となる。"
+
+[Trojan X2AbilityTemplate]
+LocFriendlyName="トロイ"
+LocFlyOverText="トロイ"
+LocLongDescription="ハッキングされた敵ユニットはダメージを受け、ハッキング効果が終了するターンに行動値を失う。"
+LocHelpText="ハッキングされた敵は、ハッキング効果終了時にダメージを受け、行動値を失う。"
+LocPromotionPopupText="<Bullet/>故障プロトコルでハッキングされた敵は0～8ダメージを受け、ハッキング効果が終了するターンに行動値が失う。<br/><Bullet/>対象はスタンまたは故障プロトコルが適用されたユニット。<br/><Bullet/>ダメージはハッキング能力とターゲットのハッキング防御力の差にもとづいて算出される。<br/>"
+
+[Covert X2AbilityTemplate]
+LocFriendlyName="コヴァート"
+LocFlyOverText="コヴァート"
+LocLongDescription="敵の探知範囲が25%減少する。"
+LocHelpText="敵の探知範囲が減少する。"
+LocPromotionPopupText="<Bullet/>敵の探知範囲が25%狭まる。こちらの存在に気づいていない敵の周囲には赤いタイルが表示されるが、これが探知範囲を表している。<br/><Bullet/>さらに、兵士の潜入にかかる時間が僅かに短縮する。<br/><Bullet/>アドヴェントのセキュリティ・タワーには適用されない。"
+
+[Ghostwalker X2AbilityTemplate]
+LocFriendlyName="ゴーストウォーカー"
+LocFlyOverText="ゴーストウォーカー"
+LocLongDescription="このアビリティを発動させると、次のターンが終了するまで敵の探知範囲が25%減少する。"
+LocHelpText="2ターンの間、敵の探知範囲を25%減少させる。"
+LocPromotionPopupText="<Bullet/>このアビリティを発動させると、現在のターンも含めて2ターンの間、敵の探知範囲が25%減少する。こちらの存在に気づいていない敵の周囲には赤いタイルが表示されるが、これが探知範囲を表している。<br/><Bullet/>クールダウン：<Ability:SelfCooldown/>ターン<br/><Bullet/>行動値は消費しない。<br/><Bullet/>さらに、兵士の潜入にかかる時間が僅かに短縮する。<br/><Bullet/>アドヴェントのセキュリティ・タワーには適用されない。"
+
+[Kubikuri X2AbilityTemplate]
+LocFriendlyName="クビキリ"
+LocFlyOverText="クビキリ"
+LocLongDescription="HPが100%ではないほとんどの敵に対する特殊射撃：クリティカルヒットなら即撃破となるが、通常ヒットの場合はダメージが半減する。行動値を2消費し、クールダウンに4ターンを要する。"
+LocHelpText="HPが100%ではない敵にクリティカルヒットが発生すると、自動的に撃破となる。通常ヒットの場合はダメージが半減する。"
+LocPromotionPopupText="<Bullet/>HPが50%以下の敵に対する特殊射撃：クリティカルヒットなら即撃破となるが、通常ヒットの場合はダメージが半減する。<br/><Bullet/>行動値2を消費。<br/><Bullet/>クールダウン：4ターン。<br/><Bullet/>支配種エイリアンに対するクリティカルヒットは、即撃破とはならず通常の2倍のダメージとなる。"
+
+[CombatAwareness X2AbilityTemplate]
+LocFriendlyName="コンバットアウェアネス"
+LocFlyOverText="コンバットアウェアネス"
+LocLongDescription="監視状態のとき、防御力+15、アーマー+1となる。"
+LocHelpText="監視状態のとき、防御力+15、アーマー+1となる。"
+LocPromotionPopupText="<Bullet/>監視状態のとき、防御力+15、アーマー+1となる。<br/><Bullet/> このアビリティによる防御ボーナスは、混乱状態、スタン状態、パニック状態、発火等の影響下あるユニットには適応されない。"
+
+[FieldSurgeon X2AbilityTemplate]
+LocFriendlyName="野戦外科医"
+LocFlyOverText="野戦外科医"
+LocLongDescription="大半の兵士の負傷回復時間を短縮する。"
+LocHelpText="大半の兵士の負傷回復時間を短縮する。"
+LocPromotionPopupText="<Bullet/>野戦外科医がいると、戦闘後に兵士が回復するのにかかる時間が、実際に失ったHPより1ポイント少ないものとして計算される。<br/><Bullet/>同じミッションに複数の野戦外科医がいれば、負傷からの回復時間がさらに短縮される。<br/><Bullet/>このアビリティを有する兵士自身も効果の対象となる。<br/><Bullet/>致命傷を受け、失血状態から安定状態になった兵士には効果がない。"
+
+[Flashbanger X2AbilityTemplate]
+LocFriendlyName="フラッシュバンガー"
+LocFlyOverText="フラッシュバンガー"
+LocLongDescription="代価なしでフラッシュグレネード1個が所持品に加わる。"
+LocHelpText="代価なしでフラッシュグレネード1個が所持品に加わる。"
+LocPromotionPopupText="<Bullet/>代価なしでフラッシュグレネード1個が所持品に加わる。<br/>"
+
+[SmokeGrenade X2AbilityTemplate]
+LocFriendlyName="スモーカー"
+LocFlyOverText="スモーカー"
+LocLongDescription="代価なしでスモークグレネード1個が所持品に加わる。"
+LocHelpText="代価なしでスモークグレネード1個が所持品に加わる。"
+LocPromotionPopupText="<Bullet/>代価なしでスモークグレネード1個が所持品に加わる。<br/>"
+
+[Savior X2AbilityTemplate]
+LocFriendlyName="救いの神"
+LocFlyOverText="救いの神"
+LocLongDescription="治療アビリティで回復するHP+<Ability:SAVIOR_BONUS_HEAL/>。"
+LocHelpText="治療アビリティで回復するHP+<Ability:SAVIOR_BONUS_HEAL/>。"
+LocPromotionPopupText="<Bullet/>対象は、グレムリン・ヒール、治療キット、回復アビリティ。<br/>"
+
+[DenseSmoke X2AbilityTemplate]
+LocFriendlyName="高密度スモーク"
+LocFlyOverText="高密度スモーク"
+LocLongDescription="スモークグレネードによる防御力+10。"
+LocHelpText="スモークグレネードによる防御力+10。"
+LocPromotionPopupText="<Bullet/>スモークグレネードの煙幕の中にいるユニットが得る防御力+10。合計30。<br/>"
+
+[DenseSmokeGrenade X2GrenadeTemplate]
+FriendlyName="高密度スモークグレネード"
+FriendlyNamePlural="高密度スモークグレネード"
+BriefSummary="煙幕の中にいる敵味方すべてのユニットの防御力がアップする。"
+TacticalText="<Bullet/>煙幕を張ると近くのユニットの防御力を即座に高めることができる。<br><Bullet/>スモークグレネードは通常のグレネードよりもずっと遠くまで投射できる。"
+ThrownAbilityName="高密度スモークグレネード投てき"
+ThrownAbilityHelpText="有効範囲内にいるユニットの防御力を向上させる。"
+LaunchedAbilityname="高密度スモークグレネード発射"
+LaunchedAbilityHelpText="有効範囲内にいるユニットの防御力を向上させる。"
+
+[DenseSmokeGrenadeMk2 X2GrenadeTemplate]
+FriendlyName="高密度スモークボム"
+FriendlyNamePlural="高密度スモークボム"
+BriefSummary="改良された高密度スモークボムを使うと、煙幕の中にいる敵味方すべてのユニットの防御力が大幅にアップする。"
+TacticalText="<Bullet/>高密度スモークボムはスモークグレネードの強化版で、効果範囲の拡大に加え、防御力も高まっている。<br><Bullet/>煙幕を張ると近くのユニットの防御力を即座に高めることができる。<br><Bullet/>スモークグレネードは通常のグレネードよりもずっと遠くまで投射できる。"
+ThrownAbilityName="高密度スモークボム投てき"
+ThrownAbilityHelpText="有効範囲内にいるユニットの防御力を大幅に向上させる。"
+LaunchedAbilityname="高密度スモークボム発射"
+LaunchedAbilityHelpText="有効範囲内にいるユニットの防御力を大幅に向上させる。"
+
+[StingGrenades X2AbilityTemplate]
+LocFriendlyName="スティンググレネード"
+LocFlyOverText="スティンググレネード"
+LocLongDescription="フラッシュグレネードは効果範囲にいる敵を50%の確率で1ターンの間、スタン状態にする。"
+LocHelpText="フラッシュグレネードは50%の確率で敵をスタン状態にする。"
+LocPromotionPopupText="<Bullet/>フラッシュグレネードは50%の確率で敵をスタン状態にする。<br/>"
+
+[X2Item_StingGrenade]
+DenseSmokeGrenadeEffectDisplayName="スティンググレネード"
+DenseSmokeGrenadeEffectDisplayDesc="スティンググレネードは効果範囲にいるユニットを50%の確率でスタン状態にする。"
+
+[StingGrenade X2GrenadeTemplate]
+FriendlyName="スティンググレネード"
+FriendlyNamePlural="スティンググレネード"
+BriefSummary="効果範囲内のユニットを50%の確率で1ターンの間、スタンおよび混乱状態にする。"
+TacticalText="<Bullet/>効果範囲内のユニットを50%の確率で1ターンの間、スタンおよび混乱状態にする。<br/>"
+ThrownAbilityName="スティンググレネード投てき"
+ThrownAbilityHelpText="効果範囲内のユニットを50%の確率で1ターンの間、スタンおよび混乱状態にする。"
+LaunchedAbilityname="スティンググレネード発射"
+LaunchedAbilityHelpText="効果範囲内のユニットを50%の確率で1ターンの間、スタンおよび混乱状態にする。"
+
+[RapidDeployment X2AbilityTemplate]
+LocFriendlyName="緊急展開"
+LocFlyOverText="緊急展開"
+LocLongDescription="支援型グレネードの発射/投てき前にこのアビリティを発動させると、行動値の消費なしでグレネードを使える。"
+LocHelpText="支援型グレネードの発射/投てき前にこのアビリティを発動させると、行動値の消費なしでグレネードを使える。"
+LocPromotionPopupText="<Bullet/>支援型グレネードの発射/投てき前にこのアビリティを発動させると、行動値の消費なしでグレネードを使える。<br/><Bullet/>スモークグレネード、フラッシュグレネード、バトルスキャナーが対象。<br/><Bullet/>クールダウン：2ターン。"
+
+[CombatRush X2AbilityTemplate]
+LocFriendlyName="コンバットラッシュ"
+LocFlyOverText="コンバットラッシュ"
+LocLongDescription="敵を撃破すると、近くの味方が命中率、クリティカル率、機動力にボーナスを得る。クールダウン：5ターン。"
+LocHelpText="敵を撃破すると、近くの味方が命中率、クリティカル率、機動力にボーナスを得る。"
+LocPromotionPopupText="<Bullet/>コンバットラッシュは敵ユニットを撃破すると発動し、7タイル内の味方に命中率+10、クリティカル率+10、機動力+1のボーナスを与える。<br/><Bullet/>効果は敵を撃破してから次ターンが終了するまで継続する。<br/><Bullet/>発動は5ターンおきにのみ可能。<br/>"
+
+[BroadcastCombatRush X2AbilityTemplate]
+LocFriendlyName="コンバットラッシュ"
+LocFlyOverText="コンバットラッシュ"
+LocLongDescription="近くに味方がいると、2ターンの間、命中率+10、クリティカル率+10、機動力+1となる。"
+LocHelpText="近くに味方がいると、2ターンの間、命中率+10、クリティカル率+10、機動力+1となる。"
+
+[GrazingFire X2AbilityTemplate]
+LocFriendlyName="グレイジングファイア"
+LocFlyOverText="グレイジングファイア"
+LocLongDescription="メイン武器の射撃を外しても、一定確率でかすり傷を負わせることができる。"
+LocHelpText="一定確率で外れがかすり傷になる。"
+LocPromotionPopupText="<Bullet/>メイン武器の射撃を外しても、<Ability:GRAZING_FIRE_SUCCESS_CHANCE>%の確率でかすり傷を負わせることができる。<br/><Bullet/>この効果は、通常の命中/外れ/かすり傷判定の後に行われる。<br/><Bullet/>回避力のあるターゲットの場合、そのスコアがアビリティの成功確率から引かれる。"
+
+[HeavyFrags X2AbilityTemplate]
+LocFriendlyName="コアブースト"
+LocFlyOverText="コアブースト"
+LocLongDescription="爆発型グレネードのダメージ+1。"
+LocHelpText="爆発型グレネードのダメージ+1。"
+LocPromotionPopupText="<Bullet/>グレネードに爆薬が追加される。これによってダメージが増えるが、特殊な訓練を必要とする。<br/><Bullet/>効果は爆発後の炎上にも適用される。<br/>"
+
+[Airdrop X2AbilityTemplate]
+LocFriendlyName="エアドロップ"
+LocFlyOverText="エアドロップ"
+LocLongDescription="グレムリンが狙った味方に爆発型グレネードを補給する。使用回数は各ミッションにつき2回。"
+LocHelpText="狙った味方に爆発型グレネードを補給する。"
+LocPromotionPopupText="<Bullet/>狙った味方に爆発型グレネードを補給する。<br/><Bullet/>最初はフラググレネードが補給されるが、XCOMのテクノロジーが向上すると、より高度な装備を受け取れるようになる。<br/><Bullet/>エアドロップは行動値を1消費し、ユニットのターンを終了させない。<br/><Bullet/>1ミッションにつき2回使用可能。"
+
+[SwordSlice_LW X2AbilityTemplate]
+LocFriendlyName="フレイシュ"
+LocFlyOverText="フレイシュ"
+LocLongDescription="移動範囲内にいるすべての敵を剣で攻撃する。ユニットの移動開始位置とターゲットが<Ability:FLECHE_BONUS_DAMAGE_PER_TILES/>タイル離れているごとにダメージ+1となる。"
+LocHelpText="移動範囲内にいるすべての敵を剣で攻撃する。離れた場所からの攻撃はボーナスダメージを与える。"
+LocPromotionPopupText="<Bullet/>フレイシュは敵の頭上に移動カーソルを合わせることで発動できる。<br/><Bullet/>「ダッシュ」には行動値2が必要だが、ここには攻撃も含まれている。<br/><Bullet/>ターン開始時のユニットの位置とターゲットが<Ability:FLECHE_BONUS_DAMAGE_PER_TILES/>タイル離れているごとダメージ+1となる。<br/>"
+
+[Fleche X2AbilityTemplate]
+LocFriendlyName="フレイシュ"
+LocFlyOverText="フレイシュ"
+LocLongDescription="移動範囲内にいるすべての敵を剣で攻撃する。ユニットの移動開始位置とターゲットが<Ability:FLECHE_BONUS_DAMAGE_PER_TILES/>タイル離れているごとダメージ+1となる。"
+LocHelpText="移動範囲内にいるすべての敵を剣で攻撃する。離れた場所からの攻撃はボーナスダメージを与える。"
+LocPromotionPopupText="<Bullet/>フレイシュは敵の頭上に移動カーソルを合わせることで発動できる。<br/><Bullet/>「ダッシュ」には行動値2が必要だが、ここには攻撃も含まれている。<br/><Bullet/>ターン開始時のユニットの位置とターゲットが<Ability:FLECHE_BONUS_DAMAGE_PER_TILES/>タイル離れているごとダメージ+1となる。<br/>"
+
+[FullKit X2AbilityTemplate]
+LocFriendlyName="フルキット"
+LocFlyOverText="フルキット"
+LocLongDescription="ユーティリティスロット内のグレネード1発につきチャージ+1。"
+LocHelpText="ユーティリティスロット内のグレネード1発につきチャージ+1。"
+LocPromotionPopupText="<Bullet/>ユーティリティスロット内のグレネード1発につきチャージ+1。<br/><Bullet/>爆発型グレネードと支援型グレネード、バトルスキャナーが対象。<br/>"
+
+[Bastion X2AbilityTemplate]
+LocFriendlyName="バスティオン"
+LocLongDescription="フォートレスが近くの味方にも耐性を付与するようになる。"
+LocHelpText="フォートレスが近くの味方にも耐性を付与するようになる。"
+LocFlyOverText="バスティオン"
+LocPromotionPopupText="<Bullet/>バスティオンは半径4タイルの効果範囲を持つ。br/><Bullet/>負傷した味方の隣に移動すると、物理的なステータス異常が即座に回復する。<br/>"
+
+[BastionPassive X2AbilityTemplate]
+LocFriendlyName="バスティオン"
+LocLongDescription="フォートレスが近くの味方にも耐性を付与するようになる。"
+LocHelpText="フォートレスが近くの味方にも耐性を付与するようになる。"
+LocFlyOverText="バスティオン"
+LocPromotionPopupText="<Bullet/>バスティオンは半径4タイルの効果範囲を持つ。br/><Bullet/>負傷した味方の隣に移動すると、物理的なステータス異常が即座に回復する。<br/>"
+
+[BastionCleanse X2AbilityTemplate]
+LocFriendlyName="バスティオン"
+LocLongDescription="フォートレスが近くの味方にも耐性を付与するようになる。"
+LocHelpText="フォートレスが近くの味方にも耐性を付与するようになる。"
+LocFlyOverText="バスティオン"
+LocPromotionPopupText="<Bullet/>バスティオンは半径4タイルの効果範囲を持つ。br/><Bullet/>負傷した味方の隣に移動すると、物理的なステータス異常が即座に回復する。<br/>"
+
+[IronCurtain X2AbilityTemplate]
+LocFriendlyName="鉄のカーテン"
+LocFlyOverText="鉄のカーテン"
+LocLongDescription="特殊射撃：与えるダメージは小さいが、2ターンにわたってターゲットの機動力を低下させる。"
+LocHelpText="特殊射撃：与えるダメージは小さいが、2ターンにわたって敵の機動力を低下させる。"
+LocPromotionPopupText="<Bullet/>円錐状の攻撃が命中すると、鉄のカーテンが通常の半分のダメージに加え、2ターンの間、敵は機動力-5となる。<br/><Bullet/>クールダウン：3ターン。<br/><Bullet/>弾薬を3発消費する。<br/><Bullet/>移動後も使用可能。<br/><Bullet/>鉄のカーテンは、ショットガンやスナイパーライフルでは使用できない。<br/><Bullet/>円錐内にいる味方にこのアビリティが命中する可能性がある。<br/>"
+
+[IronCurtainShot X2AbilityTemplate]
+LocFriendlyName="鉄のカーテン"
+LocFlyOverText="鉄のカーテン"
+LocLongDescription="特殊射撃：与えるダメージは小さいが、2ターンにわたって敵の機動力を減少させる。メイン武器による円錐状攻撃。"
+LocHelpText="特殊射撃：与えるダメージは小さいが、2ターンにわたって敵の機動力を低下させる。"
+LocPromotionPopupText="<Bullet/>鉄のカーテンが命中した敵は、ダメージが通常の25%になり、2ターンの間、機動力-4となる。<br/><Bullet/>クールダウン：4ターン。<br/><Bullet/>弾薬を<Ability:SelfAmmoCost/>発消費する。<br/><Bullet/>移動後も使用可能。<br/><Bullet/>鉄のカーテンは、ショットガンやスナイパーライフルでは使用できない。<br/>"
+str_IronCurtainEffect="鉄のカーテン"
+
+[Slash_LW X2AbilityTemplate]
+LocFriendlyName="スラッシュ"
+LocFlyOverText="スラッシュ"
+LocLongDescription="隣接するターゲットを剣で攻撃する。行動値1を消費。"
+LocHelpText="隣接するターゲットを剣で攻撃する。行動値1を消費。"
+LocPromotionPopupText="<Bullet/>隣接したターゲットを剣で攻撃する。<br/><Bullet/>消費する行動値は1で、自動的にターン終了となることはないため、1ターンに2回の攻撃が可能。"
+
+[AbsorptionFields X2AbilityTemplate]
+LocFriendlyName="インパクトフィールド"
+LocFlyOverText="インパクトフィールド"
+LocLongDescription="2ターンの間、ダメージを33%軽減する力場を発生させる。クールダウン：6ターン。"
+LocHelpText="2ターンの間、ダメージを33%軽減する力場を発生させる。クールダウン：6ターン。"
+LocPromotionPopupText="<Bullet/>2ターンの間、ダメージを33%軽減する力場を発生させる。<br/><Bullet/>クールダウンに6ターンを要する（発動したターンも含む）。<br/><Bullet/>行動値1を消費する。自動的にターン終了となることはない。<br/><Bullet/>徹甲弾系の武器もこの効果を無効化することはできない。<br/>"
+
+[BodyShield X2AbilityTemplate]
+LocFriendlyName="ボディシールド"
+LocFlyOverText="ボディシールド"
+LocLongDescription="ターゲットのボディシールド使用兵士に対する命中率が-20、クリティカル率が-50となる。"
+LocHelpText="ターゲットのボディシールド使用兵士に対する命中率が-20、クリティカル率が-50となる。"
+LocPromotionPopupText="<Bullet/>ターゲットのボディシールド使用兵士に対する命中率が-20、クリティカル率が-50となる。<br/>"
+
+[EmergencyLifeSupport X2AbilityTemplate]
+LocFriendlyName="緊急ライフサポート"
+LocFlyOverText="緊急ライフサポート"
+LocLongDescription="緊急ライフサポートは、あるミッションで初めて致命傷を受けたときに即死を防いでくれる。また、失血死するまでの時間も延長される。"
+LocHelpText="あるミッションで初めて致命傷を受けたときに即死せず、失血死するまでの時間が延長される。"
+LocPromotionPopupText="<Bullet/>緊急ライフサポートは、あるミッションにおける最初の失血判定を自動的に成功させる。<br/><Bullet/>失血タイマーが2ターン延長される。<br/>"
+
+[IronSkin X2AbilityTemplate]
+LocFriendlyName="アイアンスキン"
+LocFlyOverText="アイアンスキン"
+LocLongDescription="近接攻撃によるダメージ-3。"
+LocHelpText="近接攻撃によるダメージ-3。"
+LocPromotionPopupText="<Bullet/>近接攻撃によるダメージ-3。<br/>"
+
+[SmartMacrophages X2AbilityTemplate]
+LocFriendlyName="スマート・マクロファージ"
+LocFlyOverText="スマート・マクロファージ"
+LocLongDescription="負傷からの回復時間が短縮され、毒と酸への耐性を得る。"
+LocHelpText="負傷からの回復時間が短縮され、毒と酸への耐性を得る。"
+LocPromotionPopupText="<Bullet/>戦闘中に失ったHPから1を引いた値で回復にかかる時間が算出される。<br/><Bullet/>毒と酸への耐性を得る。<br/>"
+
+[MindMerge X2AbilityTemplate]
+LocFriendlyName="精神融合"
+LocFlyOverText="精神融合"
+LocLongDescription="自軍の次のターン開始まで味方にボーナス意志力、クリティカル率、摩耗アーマーポイントを与える。"
+LocHelptext="一時的な意志力、クリティカル率、摩耗アーマーポイントボーナスを味方に与える。"
+LocPromotionPopupText="<Bullet/>味方ターゲットに摩耗（シールド）HPを1追加。加えて精神融合を使用しているサイキック兵のサイキック攻撃スコアの1/30分増加する。<br/><Bullet/>味方ターゲットの意志力がサイキック兵のサイキック攻撃スコアの1/10分増加する。<br/>効果はサイキック兵の次のターンまで持続する。<br/>クールダウン：3ターン。<br/><Bullet/>ターゲットにできるのは視認可能な味方のみ。<br/><Bullet/>サイキック・アンプを改良すると、得られるボーナス意志力と摩耗HPも増加する。<br/><Bullet/>行動値1を消費するが、ターンは終了しない。<br/><Bullet/> また、サイキック兵のサイキック攻撃スコア10につき1のクリティカル率を味方に与える。<br/>"
+
+[SoulMerge X2AbilityTemplate]
+LocFriendlyName="魂魄融合"
+LocFlyOverText="魂魄融合"
+LocLongDescription="精神融合の効果を強化し、クリティカル率にボーナスを与え、意志力と摩耗アーマーポイントにより大きなボーナスを与え、クールダウン時間を短縮する。"
+LocHelpText="精神融合の効果を上昇させる。"
+LocPromotionPopupText="<Bullet/>精神融合のクールダウンが1ターン短くなる<br/><Bullet/>ボーナス磨耗HPが向上。サイキック攻撃スコア20につき1になる<br/><Bullet/>ボーナスが向上。サイキック攻撃スコア5につき1になる<br/><Bullet/>サイキック攻撃スコア5につき1%クリティカル率を増加させる。"
+
+[Shadowstrike_LW X2AbilityTemplate]
+LocFriendlyName="シャドウストライク"
+LocLongDescription="潜伏状態の間、敵への攻撃時に命中率+<Ability:SHADOWSTRIKEAIM/>、クリティカル率+<Ability:SHADOWSTRIKECRIT/>のボーナスを得る。"
+LocHelpText="潜伏状態の間、敵への攻撃時に命中率とクリティカル率にボーナスを得る。"
+LocPromotionPopupText="<Bullet/>シャドウストライクのボーナスは、兵士がミッション中に再度潜伏状態となった際に適用される。<br/>"
+
+[Formidable X2AbilityTemplate]
+LocFriendlyName="フォーミダブル"
+LocFlyOverText="フォーミダブル"
+LocLongDescription="装備品の防御力向上が図られる。これによって2ポイントの摩耗アーマーを獲得し、爆発物の攻撃によって受けるダメージが<Ability:BlastPadding/>%減少する。"
+LocHelpText="ボーナスHPを獲得し爆発ダメージを減少させる。"
+LocPromotionPopupText="<Bullet/> フォーミダブルは爆発ダメージを<Ability:BlastPadding/>%減少させる。
+
+; Updated perk loc
+
+[XComGame.PistolStandardShot X2AbilityTemplate]
+[PistolStandardShot X2AbilityTemplate]
+LocFriendlyName="ピストル射撃"
+LocLongDescription="メイン武器の補助としてピストルを効果的に活用するための訓練を受けた。"
+LocHelpText="ターゲットをピストルで撃つ。"
+LocFlyOverText=""
+
+[XComGame.Killzone X2AbilityTemplate]
+[KillZone X2AbilityTemplate]
+LocFriendlyName="キルゾーン"
+LocLongDescription="扇状の範囲内で移動や攻撃を行なった敵に対し、反応射撃を行なう。"
+LocHelpText="特定の方向への監視を強化。"
+LocFlyOverText="キルゾーン"
+LocPromotionPopupText="<Bullet/>1人の兵士が実行できるキルゾーン射撃の回数は、弾薬数以外の制約を受けない。<br/><Bullet/>キルゾーンでは、兵士がロングウォッチ・アビリティを持たない場合も、部隊視界が使用される。<br/><Bullet/>キルゾーンはクールダウンに<Ability:SelfCooldown/>ターンを要する。<br/>"
+LocFriendlyNameWhenConcealed="キルゾーン（潜伏状態）"
+
+[XComGame.DeathFromAbove X2AbilityTemplate]
+[DeathFromAbove X2AbilityTemplate]
+LocFriendlyName="頭上の死神"
+LocLongDescription="自分より低い位置にいる敵を<Ability:WeaponName/>で倒した場合、消費される行動値が1で済み、ターン終了とならない。スナイパーライフルの長距離射程命中率にボーナスを追加する。"
+LocHelpText="自分より低い位置にいる敵を<Ability:WeaponName/>で倒した場合、消費される行動値が1で済み、ターン終了とならない。"
+LocFlyOverText="頭上の死神"
+LocPromotionPopupText="<Bullet/>頭上の死神はピストル関連のアビリティと相性が良い。また、兵士の機動力向上にも役立つ。<br/><Bullet/> スナイパーライフルの長距離射程命中率にボーナスを追加する。"
+
+[XComGame.Implacable X2AbilityTemplate]
+[Implacable X2AbilityTemplate]
+LocFriendlyName="懐柔不能"
+LocLongDescription="自ターン中に1回以上キルを達成すると、ボーナスとして1ムーブを獲得できる。"
+LocHelpText="キル後に毎ターン最大1ムーブを獲得。"
+LocFlyOverText="懐柔不能"
+LocPromotionPopupText="<Bullet/>懐柔不能によるボーナス行動値を得た後にフレイシュを使用することはできない。<br/>"
+
+[XComGame.VolatileMix X2AbilityTemplate]
+[VolatileMix X2AbilityTemplate]
+LocFriendlyName="ヴォラタイルミックス"
+LocLongDescription="グレネードの効果範囲が1タイル拡大する。"
+LocHelpText="グレネードの効果範囲が拡大する。"
+LocFlyOverText="ヴォラタイルミックス"
+LocPromotionPopupText="<Bullet/>グレネードの通常ターゲットおよびオブジェクトに対する効果範囲が広がる。ここには追加効果もすべて含まれる。"
+
+[XComGame.Salvo X2AbilityTemplate]
+[Salvo X2AbilityTemplate]
+LocFriendlyName="一斉射撃"
+LocLongDescription="最初の行動でグレネードの投射や投てき、重火器またはガントレットのロケットランチャーの発射を行っても、ターン終了とならない。"
+LocHelpText="グレネードの投射や投てき、ガントレットのロケットランチャーの発射を行っても、ターン終了とならない。"
+LocFlyOverText="一斉射撃"
+LocPromotionPopupText="<Bullet/>一斉射撃アビリティを持つ兵士は、ヘビーアーマー装着の最有力候補となる。<br/>"
+
+[XComGame.Quickdraw X2AbilityTemplate]
+[Quickdraw X2AbilityTemplate]
+LocFriendlyName="クイックドロー"
+LocLongDescription="最初の行動でピストルを発砲すると、ターンが終了しなくなる。"
+LocHelpText="最初の行動でピストルを発砲すると、ターンが終了しなくなる。"
+LocFlyOverText="クイックドロー"
+LocPromotionPopupText="<Bullet/>クイックドローによって兵士は同一ターン内で異なるターゲットに銃撃を浴びせることが可能となる。<br/>"
+
+[XComGame.SharpshooterAim X2AbilityTemplate]
+[SharpshooterAim X2AbilityTemplate]
+LocFriendlyName="命中率"
+LocLongDescription="「かがむ」により、次のターンの最初の射撃は命中率+<Ability:SHARPSHOOTERAIMBONUS/>となる。"
+LocHelpText="「かがむ」により、次のターンの最初の射撃は命中率+<Ability:SHARPSHOOTERAIMBONUS/>となる。"
+LocFlyOverText="座射 - 命中率"
+LocPromotionPopupText="<Bullet/>命中率ボーナスがピストルとメイン武器いずれかの射撃に適用される。<br/>"
+
+[XComGame.LightningHands X2AbilityTemplate]
+[LightningHands X2AbilityTemplate]
+LocFriendlyName="ライトニングハンド"
+LocLongDescription="標的にピストルを発砲する。この攻撃は行動値を消費しない。"
+LocHelpText="標的にピストルを発砲する。この攻撃は行動値を消費しない。"
+LocFlyOverText="ライトニングハンド"
+LocPromotionPopupText="<Bullet/>ライトニングハンドは、同一ターン内での2アクションアビリティの使用を妨げないため、効率的に使用できる。<br/><Bullet/>ライトニングハンドはクールダウンに<Ability:SelfCooldown/>ターンを要する。<br/>"
+
+[XComGame.IntrusionProtocol X2AbilityTemplate]
+[IntrusionProtocol X2AbilityTemplate]
+LocFriendlyName="ハッキング"
+LocLongDescription="グレムリンを使ってネットワーク・アクセスポイントのハッキングを試みる。"
+LocHelpText="標的をグレムリンでハッキングすることができる。"
+LocFlyOverText="ハッキング"
+LocPromotionPopupText="<Bullet/> グレムリンを使用して、マップアイテム（チェストやワークステーション）を離れた場所からハッキングできる。<br/>"
+
+[XComGame.EverVigilant X2AbilityTemplate]
+[EverVigilant X2AbilityTemplate]
+LocFriendlyName="常時警戒"
+LocLongDescription="行動値のすべてを移動に費やした場合、ターン終了時に自動的に監視状態が付与される。"
+LocHelpText="このターンに移動しか行わなかった場合、自動的に「監視」が発動する。"
+LocFlyOverText="監視：常時警戒"
+LocPromotionPopupText="<Bullet/>常時警戒は兵士に極めて機動的なプレイスタイルをもたらす。<br/><Bullet/>移動以外の行動をとると常時警戒は無効化される。<br/>"
+
+[XComGame.Phantom X2AbilityTemplate]
+[Phantom X2AbilityTemplate]
+LocFriendlyName="ファントム"
+LocLongDescription="部隊が見つかっても、この兵士は潜伏状態を維持する。"
+LocHelpText="部隊が見つかっても、この兵士は潜伏状態を維持する。"
+LocFlyOverText="ファントム"
+LocPromotionPopupText="<Bullet/>ミッション開始時点で部隊が潜伏状態でなくても、ファントムを持っている兵士は潜伏状態で開始できる。<br/><Bullet/>ファントムを持っている兵士が部隊の潜伏状態を破った場合は、ファントムは適用されない。<br/>"
+
+[XComGame.Shadowstep X2AbilityTemplate]
+[Shadowstep X2AbilityTemplate]
+LocFriendlyName="忍び足"
+LocLongDescription="この兵士は監視や反応射撃を発動させない。"
+LocHelpText="この兵士は監視や反応射撃を発動させない。"
+LocPromotionPopupText="<Bullet/>忍び足を有する兵士は監視射撃や抑圧射撃を誘発することはないが、友軍から監視射撃を引き付けることもできない。<br/>"
+
+[XComGame.Bladestorm X2AbilityTemplate]
+[Bladestorm X2AbilityTemplate]
+LocFriendlyName="ブレイドストーム"
+LocLongDescription="近接攻撃の範囲に入った敵や範囲内から攻撃してくる敵にノーコストで<Ability:SecondaryWeaponName/>による攻撃を行う。"
+LocHelpText="近接攻撃の範囲に入った敵や範囲内から攻撃してくる敵にノーコストで<Ability:SecondaryWeaponName/>による攻撃を行う。"
+LocFlyOverText="ブレイドストーム"
+LocPromotionPopupText="<Bullet/>敵がターン開始時に隣接タイルにいて、かつその敵が兵士を攻撃しようとした場合にブレイドストームが発動する。<br/><Bullet/>敵がターン開始時に隣接タイルにいない場合、その敵が近接攻撃範囲内に移動してきたときにブレイドストームが発動する。<br/>"
+
+[XComeGame.BladestormAttack X2AbilityTemplate]
+[BladestormAttack X2AbilityTemplate]
+LocFriendlyName="ブレイドストーム"
+LocLongDescription="近接攻撃の範囲に入った敵や範囲内から攻撃してくる敵にノーコストで<Ability:SecondaryWeaponName/>による攻撃を行う。"
+LocHelpText="近接攻撃の範囲に入った敵や範囲内から攻撃してくる敵にノーコストで<Ability:SecondaryWeaponName/>による攻撃を行う。"
+LocFlyOverText="ブレイドストーム"
+LocPromotionPopupText="<Bullet/>敵がターン開始時に隣接タイルにいて、かつその敵が兵士を攻撃しようとした場合にブレイドストームが発動する。<br/><Bullet/>敵がターン開始時に隣接タイルにいない場合、その敵が近接攻撃範囲内に移動してきたときにブレイドストームが発動する。<br/>"
+
+[XComGame.Untouchable X2AbilityTemplate]
+[Untouchable X2AbilityTemplate]
+LocFriendlyName="手出し不能"
+LocLongDescription="自ターン中に1回キルを達成すると、次の自分に対する攻撃が外れる。"
+LocHelpText="自ターン中に1回キルを達成すると、次の自分に対する攻撃が外れる。"
+LocFlyOverText="手出し不能"
+LocPromotionPopupText="<Bullet/>手出し不能が発動すると、兵士にダメージを与える次の攻撃は無効となる（範囲攻撃を含む）。<br/>"
+
+[XComGame.Stealth X2AbilityTemplate]
+[Stealth X2AbilityTemplate]
+LocFriendlyName="潜伏"
+LocLongDescription="ミッション中に1回だけ即座に潜伏状態になることができる。"
+LocHelpText="ミッション中に1回だけ即座に潜伏状態になることができる。"
+LocFlyOverText="潜伏"
+LocPromotionPopupText="<Bullet/>潜伏はあらゆる場所で発動可能だが、付近にいる敵の探知半径内で発動させた場合、側面や背後に回りこまれた兵士は発見されてしまう。<br/>"
+
+[XComGame.RevivalProtocol X2AbilityTemplate]
+[RevivalProtocol X2AbilityTemplate]
+LocPromotionPopupText="<Bullet/>意識回復プロトコルを使うと、意識不明の兵士を蘇生することができる。重傷を負った後に容態が安定した者にも有効。<br/><Bullet/>最初のアクションで使用してもターンが終了することはない。<br/><Bullet/>最初は2チャージだが、グレムリンをアップグレードすると使用回数が増えることがある。<br/>"
+
+
+; Gear loc updates for new classes
+
+[XComGame.Shotgun_MG X2WeaponTemplate]
+[Shotgun_MG X2WeaponTemplate]
+FriendlyName="シャードガン"
+FriendlyNamePlural="シャードガン"
+BriefSummary="磁力兵器技術により、エイリアンの合金の破片からスプレー状の弾丸を合成することが可能になる。これを使うことにより、兵士は劇的な効果を得られる。その威力は距離が近いほど強力になる。"
+TacticalText="<Bullet/>磁力兵器技術はXCOMのコンバット・ショットガンの性能向上に著しい効果を発揮した。\n<Bullet/>ショットガンは近距離ではきわめて効果的だが、離れるとたちまち命中精度が落ちてしまう。\n<Bullet/>アドヴェントから回収したアップグレードを使い、シャードガンの性能を強化せよ。"
+AbilityDescName="ショットガン"
+
+[XComGame.RangerSword X2WeaponTemplate]
+[RangerSword X2WeaponTemplate]
+FriendlyName="剣"
+FriendlyNamePlural="剣"
+BriefSummary="刀剣類の使用訓練を受けたXCOMの兵士は、接近戦で敵を倒すことができる。"
+TacticalText="<Bullet/>剣を装備した兵士は行動値2を消費した後に移動可能範囲いっぱいまで移動またはダッシュし、隣接する敵を攻撃できる。\n<Bullet/>敵に肉薄しての攻撃は強力だが危険も大きいので、よく考えてから実行すること。\n<Bullet/>XCOM側はテクノロジーの面で劣りがちなので、刀剣類の威力を高めるチャンスを見逃さないようにすること。"
+
+[XComGame.Sword_CV X2WeaponTemplate]
+[Sword_CV X2WeaponTemplate]
+FriendlyName="剣"
+FriendlyNamePlural="剣"
+BriefSummary="刀剣類の使用訓練を受けたXCOMの兵士は、接近戦で敵を倒すことができる。"
+TacticalText="<Bullet/>剣を装備した兵士は行動値2を消費した後に移動可能範囲いっぱいまで移動またはダッシュし、隣接する敵を攻撃できる。\n<Bullet/>敵に肉薄しての攻撃は強力だが危険も大きいので、よく考えてから実行すること。\n<Bullet/>XCOM側はテクノロジーの面で劣りがちなので、刀剣類の威力を高めるチャンスを見逃さないようにすること。"
+AbilityDescName="剣"
+
+[XComGame.Sword_BM X2WeaponTemplate]
+[Sword_BM X2WeaponTemplate]
+FriendlyName="フュージョンブレード"
+FriendlyNamePlural="フュージョンブレード"
+BriefSummary="プラズマによって超高温まで加熱された金属核をきわめて薄い磁場の中に封じ込めたフュージョンブレードは、近接攻撃において並外れた威力を発揮し、敵を炎上させる。"
+TacticalText="<Bullet/>剣の最終強化版で、ターゲットに最大級のダメージを与えるだけでなく、炎上させる可能性もある。"
+AbilityDescName="剣"
+
+[XComGame.Cannon_MG X2WeaponTemplate]
+[Cannon_MG X2WeaponTemplate]
+FriendlyName="磁力キャノン"
+FriendlyNamePlural="磁力キャノン"
+BriefSummary="磁力兵器技術により、連射式キャノンの配備が可能になる。これにより、兵士はそれまで以上に強力な弾幕を張れるようになる。"
+TacticalText="<Bullet/>磁力キャノンは従来のキャノンと同等の可搬性を備えつつも攻撃力は大幅に強化されている。\n<Bullet/>敵から奪ったアップグレードを使い、磁力キャノンの性能を強化せよ。"
+AbilityDescName="キャノン"
+
+[XComGame.Cannon_BM X2WeaponTemplate]
+[Cannon_BM X2WeaponTemplate]
+FriendlyName="ビームキャノン"
+FriendlyNamePlural="ビームキャノン"
+BriefSummary="兵士用のより強力な高容量ビーム兵器の開発には困難が予想されるが、火力の強化につながることは間違いない。"
+TacticalText="<Bullet/>ビームキャノンは人類が運用できる中で最も強力な戦闘支援兵器だ。\n<Bullet/>敵から奪ったアップグレードを使い、ビームキャノンの性能を強化せよ。<br/><Bullet/>プラズマ兵器は、攻撃対象への以後の攻撃に追加の1ダメージを与える。"
+AbilityDescName="キャノン"
+
+[XComGame.Pistol_CV X2WeaponTemplate]
+[Pistol_CV X2WeaponTemplate]
+FriendlyName="ピストル"
+FriendlyNamePlural="ピストル"
+BriefSummary="メイン武器に加えて大口径のピストルも携行しているXCOMの兵士に、適切な訓練を施せば、近距離でも敵にとって大きな脅威となる。"
+TacticalText="<Bullet/>訓練された兵士が扱えば、ピストルは単なるサイドアームをはるかに超えた武器になりうる。\n<Bullet/>ピストルは行動値1で発射できる。\n<Bullet/>クラスによっては、いくつかのアビリティを鍛えることにより、ピストルの腕を飛躍的に高めることができる。"
+
+[XComGame.Pistol_MG X2WeaponTemplate]
+[Pistol_MG X2WeaponTemplate]
+FriendlyName="磁力ピストル"
+FriendlyNamePlural="磁力ピストル"
+BriefSummary="我々の磁力兵器テクノロジーにもとづいたこの新型ピストルは、通常のピストルと比較してはるかに強力なパワーを備えている。"
+TacticalText="<Bullet/>磁力ピストルは、アドヴェントの通常のピストルと比べてもはるかに強力だ。\n<Bullet/>ピストルは行動値1で発射できる。"
+
+[XComeGame.Pistol_BM X2WeaponTemplate]
+[Pistol_BM X2WeaponTemplate]
+FriendlyName="ビームピストル"
+FriendlyNamePlural="ビームピストル"
+BriefSummary="究極の携帯武器と呼べるこのピストルは、強大な効果を生み出すためにエイリアンの光線兵器技術を統合したものだ。"
+TacticalText="<Bullet/>ビームピストルは最強のハンドガンだ。\n<Bullet/>ピストルは行動値1で発射できる。"
+
+[XComGame.AutopsyArchon X2TechTemplate]
+[AutopsyArchon X2TechTemplate]
+DisplayName="アーコンの解剖"
+Summary="この種族の外見はとても立派だが、生物と機械が融合したその外見の下には恐るべき本質が隠されている。しかし、この独特な近接武器は、参考となるに違いない。"
+CodeName="バルセラフ"
+LongDescription="ブラッドフォードを含む数名の証人によると、エイリアンは侵略の初期にも似たような機械と生物の融合体を戦闘に投入したらしい。ただし、彼らが目撃したのは、現在我々が対峙している敵よりグロテスクで原始的だったようだ。今日見られる敵の外見は優雅と言っても差し支えなく、威風堂々としていて畏怖の念さえ生じるほどだし、装備している武器もきわめて高性能だ。R・タイガン"
+AlertString="アーコン"
+
+[XComGame.AutopsyAdventStunLancer X2TechTemplate]
+[AutopsyAdventStunLancer X2TechTemplate]
+DisplayName="アドヴェント・スタンランサーの解剖"
+Summary="アドヴェント・スタンランサーは世界中の治安維持と暴動鎮圧に広く用いられている。その独特なスタンランスは、兵士が得意としている武器に転用可能だろう。"
+CodeName="チャプレン"
+LongDescription="アドヴェント・スタンランサーは、肉体と遺伝子のどちらにおいても、我々が普段戦闘で遭遇するトルーパーとほぼ同一だ。しかし、ランサーの筋繊維密度に施されたほんの些細な調整が、敏捷性と全体的な生存力を向上させている。アドヴェントが都市の中心部を設立した後の最初期、あからさまな抵抗よりも市民の不安が問題視されていたころに、人間のターゲットの動きを容易に奪える非致死性の兵器を装備したランサーがまず配備された。その用兵と配備を研究する中で、1つの興味深い疑問が浮上した ― ランサーがアドヴェント軍で最初に配備された兵士の一種で、その生存力が通常のトルーパーよりもいくらか高いなら ― エイリアンは人類の戦闘への備えを評価し、それに基づき意図的にトルーパーの強さを減じたのか？そうであれば、エイリアンはこれまで想定していたよりも高速な遺伝子操作が可能ということになる。また、彼らが行った多岐にわたる異常な実験を見るにエイリアンには無縁のものだと思い込んでいたのだが、ある程度の「遺伝子の節約」を明示することになる。R・タイガン"
+AlertString="アドヴェント・スタンランサー"
+
+[XComGame.XGLocalizedData]
+[XGLocalizedData]
+GameplayTips_Tactical[1]="剣を装備した兵士を操作中に敵を右クリックすると、突進して近接攻撃を行います。"
+GameplayTips_Tactical[10]="ファントムのアビリティを持つ兵士は、部隊の状態に関わらず、すべてのミッションを潜伏状態で開始します。"
+
+[XComGame.HuntersInstinctUnlock X2SoldierAbilityUnlockTemplate]
+[HuntersInstinctUnlock X2SoldierAbilityUnlockTemplate]
+DisplayName="遊撃兵（基本ゲームクラスのみ）：狩人の本能"
+Summary="側面や背後から攻撃した場合のダメージ+<Ability:HUNTERSINSTINCTDMG/>。"
+
+[XComGame.HitWhereItHurtsUnlock X2SoldierAbilityUnlockTemplate]
+[HitWhereItHurtsUnlock X2SoldierAbilityUnlockTemplate]
+DisplayName="狙撃兵（基本ゲームクラスのみ）：デッドショット"
+Summary="クリティカルヒット率ボーナス<Ability:HITWHEREITHURTS/>%。"
+
+[XComGame.CoolUnderPressureUnlock X2SoldierAbilityUnlockTemplate]
+[CoolUnderPressureUnlock X2SoldierAbilityUnlockTemplate]
+DisplayName="技術兵（基本ゲームクラスのみ）：冷静沈着"
+Summary="監視と反応射撃の命中率+10。クリティカルヒットの可能性あり。"
+
+[XComGame.BiggestBoomsUnlock X2SoldierAbilityUnlockTemplate]
+[BiggestBoomsUnlock X2SoldierAbilityUnlockTemplate]
+DisplayName="グレネード兵（基本ゲームクラスのみ）：巨大爆発"
+Summary="爆発物が致命的なダメージを与える可能性がある。"
+
+[HuntersInstinct X2AbilityTemplate]
+LocFriendlyName="狩人の本能"
+LocLongDescription="側面や背後から近づいた敵に対する遠距離攻撃ダメージ+<Ability:HUNTERSINSTINCTDMG/>。"
+LocHelpText="側面や背後から近づいた敵に対する遠距離攻撃ダメージ+<Ability:HUNTERSINSTINCTDMG/>。"
+LocFlyOverText="狩人の本能"
+LocPromotionPopupText="<Bullet/> 側面や背後から近づいた敵に対する遠距離攻撃ダメージ+<Ability:HUNTERSINSTINCTDMG/>。"
+
+[HitWhereItHurts X2AbilityTemplate]
+LocFriendlyName="デッドショット"
+LocLongDescription="クリティカルヒット率ボーナス<Ability:HITWHEREITHURTS/>%。"
+LocHelpText="クリティカルヒット率ボーナス<Ability:HITWHEREITHURTS/>%。"
+LocFlyOverText="デッドショット"
+LocPromotionPopupText="<Bullet/>クリティカルヒット率ボーナス<Ability:HITWHEREITHURTS/>%。<br/>"
+
+[CoolUnderPressure X2AbilityTemplate]
+LocFriendlyName="冷静沈着"
+LocLongDescription="監視と反応射撃の命中率+<Ability:COOLUNDERPRESSUREBONUS/>。クリティカルヒットの可能性あり。"
+LocHelpText="監視と反応射撃の命中率とクリティカル率が増加する。"
+LocFlyOverText="冷静沈着"
+LocPromotionPopupText="<Bullet/>監視と反応射撃の命中率+<Ability:COOLUNDERPRESSUREBONUS/>。クリティカルヒットの可能性あり。<br/>"
+
+[BiggestBooms X2AbilityTemplate]
+LocFriendlyName="巨大爆発"
+LocLongDescription="爆発物による攻撃が致命的なダメージを与える可能性がある（<Ability:BIGGESTBOOMSCHANCE/>%の確率で+<Ability:BIGGESTBOOMSDAMAGE/>ダメージ）。"
+LocHelpText="爆発物による攻撃が致命的なダメージを与える可能性がある。"
+LocFlyOverText="巨大爆発"
+LocPromotionPopupText="<Bullet/>爆発物による攻撃が致命的なダメージを与える可能性がある（<Ability:BIGGESTBOOMSCHANCE/>%の確率で+<Ability:BIGGESTBOOMSDAMAGE/>ダメージ）。<br/>"
+
+; New Class loc
+
+[PsiOperative X2SoldierClassTemplate]
+RankNames[8]="マスター"
+ShortNames[8]="マスター"
+RankIcons[8]="UILibrary_LW_PerkPack.psirank_Master"
+
+[LW_Sharpshooter X2SoldierClassTemplate]
+DisplayName="狙撃兵"
+ClassSummary="狙撃兵は超遠距離から極めて高い精度に敵ターゲットを攻撃できる。また、遠距離戦闘力を犠牲にするかわりに機動力を強化し、凄腕の銃兵として特化させることも可能である。"
+LeftAbilityTreeTitle="スナイパー"
+RightAbilityTreeTitle="マークスマン"
+
+;ALPHABETICAL ORDER
+RandomNickNames[0]="Apex"
+RandomNickNames[1]="Ace"
+RandomNickNames[2]="Aftermath"
+RandomNickNames[3]="Alpha"
+RandomNickNames[4]="Blackjack"
+RandomNickNames[5]="Bullseye"
+RandomNickNames[6]="Bolt"
+RandomNickNames[7]="Big Shot"
+RandomNickNames[8]="Big Sleep"
+RandomNickNames[9]="Big Time"
+RandomNickNames[10]="Boss"
+RandomNickNames[11]="Bullseye"
+RandomNickNames[12]="Checkmate"
+RandomNickNames[13]="Chief"
+RandomNickNames[14]="Colt"
+RandomNickNames[15]="Dallas"
+RandomNickNames[16]="Deadbolt"
+RandomNickNames[17]="Deadeye"
+RandomNickNames[18]="Deadlock"
+RandomNickNames[19]="Deadwood"
+RandomNickNames[20]="D.O.A."
+RandomNickNames[21]="Eagle Eye"
+RandomNickNames[22]="Eight Ball"
+RandomNickNames[23]="Flatline"
+RandomNickNames[24]="Game Time"
+RandomNickNames[25]="Gangster"
+RandomNickNames[26]="Grave Digger"
+RandomNickNames[27]="Hat Trick"
+RandomNickNames[28]="Hawkeye"
+RandomNickNames[29]="Heater"
+RandomNickNames[30]="High Noon"
+RandomNickNames[31]="Hitman"
+RandomNickNames[32]="Hollywood"
+RandomNickNames[33]="Hype"
+RandomNickNames[34]="Icon"
+RandomNickNames[35]="Jackal"
+RandomNickNames[36]="Judge"
+RandomNickNames[37]="Lights Out"
+RandomNickNames[38]="Lockdown"
+RandomNickNames[39]="Long Shot"
+RandomNickNames[40]="Longwalker"
+RandomNickNames[41]="Needle"
+RandomNickNames[42]="Pale Rider"
+RandomNickNames[43]="Reaper"
+RandomNickNames[44]="Scratch"
+RandomNickNames[45]="Serial"
+RandomNickNames[46]="Sheriff"
+RandomNickNames[47]="Shooter"
+RandomNickNames[48]="Showtime"
+RandomNickNames[49]="Slick"
+RandomNickNames[50]="Slinger"
+RandomNickNames[51]="Stonecold"
+RandomNickNames[52]="The Cleaner"
+RandomNickNames[53]="The Kid"
+RandomNickNames[54]="The Truth"
+RandomNickNames[55]="Tombstone"
+RandomNickNames[56]="Top Notch"
+RandomNickNames[57]="Top Shelf"
+RandomNickNames[58]="Two Tap"
+RandomNickNames[59]="Undertaker"
+RandomNickNames[60]="Valentine"
+;ALPHABETICAL ORDER
+RandomNicknames_Male[0]="Cowboy"
+RandomNickNames_Male[1]="Godfather"
+RandomNickNames_Male[2]="Mailman"
+RandomNickNames_Male[3]="Sandman"
+RandomNickNames_Male[4]="Slim"
+RandomNickNames_Male[5]="Taxman"
+RandomNickNames_Male[6]="Zeus"
+RandomNickNames_Female[0]="Baroness"
+RandomNickNames_Female[1]="Black Widow"
+RandomNicknames_Female[2]="Calamity"
+RandomNicknames_Female[3]="Queen Bee"
+;ALPHABETICAL ORDER
+
+[LW_Gunner X2SoldierClassTemplate]
+DisplayName="重火器兵"
+ClassSummary="重火器兵は大型自動火器の使用訓練を受けており、大火力によって敵を攻撃できる。"
+LeftAbilityTreeTitle="SAWガンナー"
+RightAbilityTreeTitle="マシンガンナー"
+
+RandomNickNames[0]="Backfire"
+RandomNickNames[1]="Baja"
+RandomNickNames[2]="Bearcat"
+RandomNickNames[3]="Brutal"
+RandomNickNames[4]="Chainsaw"
+RandomNickNames[5]="Flounder"
+RandomNickNames[6]="Gameshow"
+RandomNickNames[7]="Gonzo"
+RandomNickNames[8]="Hawker"
+RandomNickNames[9]="Kozmo"
+RandomNickNames[10]="Lunchbox"
+RandomNickNames[11]="Mangler"
+RandomNickNames[12]="Meathook"
+RandomNickNames[13]="Moose"
+RandomNickNames[14]="Nanook"
+RandomNickNames[15]="Nugget"
+RandomNickNames[16]="Nuke"
+RandomNickNames[17]="Ogre"
+RandomNickNames[18]="Pancake"
+RandomNickNames[19]="Panzer"
+RandomNickNames[20]="Piston"
+RandomNickNames[21]="Slinger"
+RandomNickNames[22]="Sparrow"
+RandomNickNames[23]="Spike"
+RandomNickNames[24]="Yogi"
+RandomNickNames[25]="Zarfer"
+RandomNickNames_Male[0]="Chuckles"
+RandomNickNames_Male[1]="Dingus"
+RandomNickNames_Male[2]="Maniac"
+RandomNickNames_Male[3]="Knuckles"
+RandomNickNames_Male[4]="Walrus"
+RandomNickNames_Female[0]="Bubbles"
+RandomNickNames_Female[1]="Gadget"
+RandomNickNames_Female[2]="Giggles"
+RandomNickNames_Female[3]="Mango"
+RandomNickNames_Female[4]="Pepper"
+
+[LW_Ranger X2SoldierClassTemplate]
+DisplayName="遊撃兵"
+ClassSummary="遊撃兵はライフルの達人であり、訓練次第では攻防両面にライフルを活用することが可能となる。"
+LeftAbilityTreeTitle="インファントリー"
+RightAbilityTreeTitle="ディフェンダー"
+
+RandomNickNames[0]="Bronco"
+RandomNickNames[1]="Buck"
+RandomNickNames[2]="Buckeye"
+RandomNickNames[3]="Cobalt"
+RandomNickNames[4]="Cowboy"
+RandomNickNames[5]="Digger"
+RandomNickNames[6]="Dinger"
+RandomNickNames[7]="Frosty"
+RandomNickNames[8]="Grunt"
+RandomNickNames[9]="Hollywood"
+RandomNickNames[10]="Hoss"
+RandomNickNames[11]="Howler"
+RandomNickNames[12]="Jaybird"
+RandomNickNames[13]="Jayhawk"
+RandomNickNames[14]="Judge"
+RandomNickNames[15]="Marlin"
+RandomNickNames[16]="Mustang"
+RandomNickNames[17]="Pappy"
+RandomNickNames[18]="Painter"
+RandomNickNames[19]="Pinto"
+RandomNickNames[20]="Rascal"
+RandomNickNames[21]="Rocky"
+RandomNickNames[22]="Scooter"
+RandomNickNames[23]="Skeeter"
+RandomNickNames[24]="Skids"
+RandomNickNames[25]="Stretch"
+RandomNickNames[26]="Thumper"
+RandomNickNames[27]="Werewolf"
+RandomNickNames_Male[0]="Dusty"
+RandomNickNames_Male[1]="Dutch"
+RandomNickNames_Male[2]="Husker"
+RandomNickNames_Male[3]="Slick"
+RandomNickNames_Male[4]="Pops"
+RandomNickNames_Female[0]="Aunty"
+RandomNickNames_Female[1]="Goodnight"
+RandomNickNames_Female[2]="Medusa"
+RandomNickNames_Female[3]="Sugar"
+
+[LW_Shinobi X2SoldierClassTemplate]
+DisplayName="シノビ"
+ClassSummary="シノビは斥候ユニットの主力であり、剣を使ったステルス近距離攻撃を行うことができる。"
+LeftAbilityTreeTitle="サバター"
+RightAbilityTreeTitle="ケンシ"
+;ALPHABETICAL ORDER
+RandomNickNames[0]="Clutch"
+RandomNickNames[1]="Cobra"
+RandomNickNames[2]="Dagger"
+RandomNickNames[3]="Dancer"
+RandomNickNames[4]="Dasher"
+RandomNickNames[5]="Dodger"
+RandomNickNames[6]="Dragon"
+RandomNickNames[7]="Fencer"
+RandomNickNames[8]="Flipper"
+RandomNickNames[9]="Furball"
+RandomNickNames[10]="Gopher"
+RandomNickNames[11]="Mace"
+RandomNickNames[12]="Midnight"
+RandomNickNames[13]="Neutron"
+RandomNickNames[14]="Painter"
+RandomNickNames[15]="Pasha"
+RandomNickNames[16]="Poacher"
+RandomNickNames[17]="Rattler"
+RandomNickNames[18]="Razor"
+RandomNickNames[19]="Ripper"
+RandomNickNames[20]="Royal"
+RandomNickNames[21]="Shady"
+RandomNickNames[22]="Sticks"
+RandomNickNames[23]="Spacebar"
+RandomNickNames[24]="Splinter"
+RandomNickNames[25]="Stalker"
+RandomNickNames[26]="Talon"
+RandomNickNames[27]="Undertaker"
+RandomNickNames[28]="Wildcat"
+;ALPHABETICAL ORDER
+RandomNickNames_Male[0]="Bender"
+RandomNickNames_Male[1]="Cochise"
+RandomNickNames_Male[2]="Slim"
+RandomNickNames_Male[3]="Jockey"
+RandomNickNames_Male[4]="Sandman"
+RandomNickNames_Male[5]="Swordsman"
+;ALPHABETICAL ORDER
+RandomNickNames_Female[0]="Panther"
+RandomNickNames_Female[1]="Siren"
+RandomNickNames_Female[2]="Sparkplug"
+RandomNickNames_Female[3]="Spitfire"
+;ALPHABETICAL ORDER
+
+[LW_Specialist X2SoldierClassTemplate]
+DisplayName="技術兵"
+ClassSummary="技術兵は最新技術を用いた装備を操る。彼らが使うドローンには、負傷兵の手当てや戦闘のための機材が搭載されている。"
+LeftAbilityTreeTitle="メディック"
+RightAbilityTreeTitle="ハッカー"
+
+;ALPHABETICAL ORDER
+RandomNickNames[0]="Angel"
+RandomNickNames[1]="Beta"
+RandomNickNames[2]="Bishop"
+RandomNickNames[3]="Bones"
+RandomNickNames[4]="Breaker"
+RandomNickNames[5]="Broker"
+RandomNickNames[6]="Crypto"
+RandomNickNames[7]="Cyber"
+RandomNickNames[8]="Cypher"
+RandomNickNames[9]="Data"
+RandomNickNames[10]="Deacon"
+RandomNickNames[11]="Dr. Feelgood"
+RandomNickNames[12]="Doc"
+RandomNickNames[13]="Feedback"
+RandomNickNames[14]="Firewall"
+RandomNickNames[15]="Genius"
+RandomNickNames[16]="Gizmo"
+RandomNickNames[17]="Glitch"
+RandomNickNames[18]="Hijack"
+RandomNickNames[19]="Jammer"
+RandomNickNames[20]="Jester"
+RandomNickNames[21]="Jolt"
+RandomNickNames[22]="Lightning"
+RandomNickNames[23]="Mayday"
+RandomNickNames[24]="Mega"
+RandomNickNames[25]="Newton"
+RandomNickNames[26]="Overdrive"
+RandomNickNames[27]="Patch"
+RandomNickNames[28]="Professor"
+RandomNickNames[29]="Ragtime"
+RandomNickNames[30]="Rascal"
+RandomNickNames[31]="Rattler"
+RandomNickNames[32]="Red"
+RandomNickNames[33]="Rift"
+RandomNickNames[34]="Ripcord"
+RandomNickNames[35]="Rogue"
+RandomNickNames[36]="Scorch"
+RandomNickNames[37]="Sentinel"
+RandomNickNames[38]="Shady"
+RandomNickNames[39]="Shakes"
+RandomNickNames[40]="Shifter"
+RandomNickNames[41]="Shrink"
+RandomNickNames[42]="Slider"
+RandomNickNames[43]="Solar"
+RandomNickNames[44]="Sonar"
+RandomNickNames[45]="Sparks"
+RandomNickNames[46]="Stitch"
+RandomNickNames[47]="Tapper"
+RandomNickNames[48]="Teardrop"
+RandomNickNames[49]="Tinker"
+RandomNickNames[50]="Turbo"
+RandomNickNames[51]="Venom"
+RandomNickNames[52]="Vapor"
+RandomNickNames[53]="Warbird"
+RandomNickNames[54]="Warden"
+RandomNickNames[55]="Whiskey"
+RandomNickNames[56]="Wild Thing"
+RandomNickNames[57]="Zulu"
+;ALPHABETICAL ORDER
+RandomNickNames_Male[0]="Candyman"
+RandomNickNames_Male[1]="Magic Man"
+RandomNickNames_Male[2]="Priest"
+RandomNickNames_Male[3]="Rainman"
+RandomNickNames_Male[4]="Rooster"
+RandomNickNames_Female[0]="Priestess"
+RandomNickNames_Female[1]="Wolfmother"
+RandomNickNames_Female[2]="Black Widow"
+RandomNickNames_Female[4]="Duchess"
+;ALPHABETICAL ORDER
+
+[LW_Grenadier X2SoldierClassTemplate]
+DisplayName="グレネード兵"
+ClassSummary="破壊のエキスパートであるグレネード兵は、必要なタイミングで必要な場所へ大火力を展開する。また、味方を守り、敵をかく乱する、支援型グレネードの使用に特化することもできる。"
+LeftAbilityTreeTitle="ブーマー"
+RightAbilityTreeTitle="サポート"
+
+;ALPHABETICAL ORDER
+RandomNickNames[0]="All Day"
+RandomNickNames[1]="All In"
+RandomNickNames[2]="Animal"
+RandomNickNames[3]="Baller"
+RandomNickNames[4]="Big Country"
+RandomNickNames[5]="Big Money"
+RandomNickNames[6]="Big Nasty"
+RandomNickNames[7]="Blaze"
+RandomNickNames[8]="Boom Boom"
+RandomNickNames[9]="Bomber"
+RandomNickNames[10]="Buddy"
+RandomNickNames[11]="Bulldog"
+RandomNickNames[12]="Bull Rush"
+RandomNickNames[13]="Claymore"
+RandomNickNames[14]="Demo"
+RandomNickNames[15]="Defcon"
+RandomNickNames[16]="Devil Dog"
+RandomNickNames[17]="Diesel"
+RandomNickNames[18]="Encore"
+RandomNickNames[19]="Fireball"
+RandomNickNames[20]="Fridge"
+RandomNickNames[21]="Gunner"
+RandomNickNames[22]="Hammer"
+RandomNickNames[23]="Hellfire"
+RandomNickNames[24]="Hightower"
+RandomNickNames[25]="Hoss"
+RandomNickNames[26]="Volcano"
+RandomNickNames[27]="Hurricane"
+RandomNickNames[28]="Junkyard"
+RandomNickNames[29]="Juggernaut"
+RandomNickNames[30]="Knockout"
+RandomNickNames[31]="Kong"
+RandomNickNames[32]="Mad Dog"
+RandomNickNames[33]="Meltdown"
+RandomNickNames[34]="Moose"
+RandomNickNames[35]="Nova"
+RandomNickNames[36]="Nasty"
+RandomNickNames[37]="Nitro"
+RandomNickNames[38]="Overlord"
+RandomNickNames[39]="Pitbull"
+RandomNickNames[40]="Pyro"
+RandomNickNames[41]="Redline"
+RandomNickNames[42]="Rhino"
+RandomNickNames[43]="Rocket"
+RandomNickNames[44]="Seabreeze"
+RandomNickNames[45]="Slab"
+RandomNickNames[46]="Smash"
+RandomNickNames[47]="Spitfire"
+RandomNickNames[48]="Smokey"
+RandomNickNames[49]="Swamp Thing"
+RandomNickNames[50]="T-Bone"
+RandomNickNames[51]="T-Rex"
+RandomNickNames[52]="Tank"
+RandomNickNames[53]="Thumper"
+RandomNickNames[54]="Thunder"
+RandomNickNames[55]="Tickle"
+RandomNickNames[56]="Tiny"
+RandomNickNames[57]="Titan"
+RandomNickNames[58]="Dynamite"
+RandomNickNames[59]="Torch"
+RandomNickNames[60]="Wardog"
+RandomNickNames[61]="Warhorse"
+RandomNickNames[62]="Wildchild"
+;ALPHABETICAL ORDER
+RandomNicknames_Male[0]="Barbarian"
+RandomNickNames_Male[1]="Big Boy"
+RandomNicknames_Male[2]="Boss Man"
+RandomNickNames_Male[3]="Cowboy"
+RandomNickNames_Male[4]="Meathead"
+RandomNickNames_Male[5]="Nero"
+RandomNickNames_Male[6]="Papa Bear"
+RandomNickNames_Male[7]="Wildman"
+RandomNickNames_Female[0]="Amazon"
+RandomNicknames_Female[1]="Boss Lady"
+RandomNickNames_Female[2]="Cowgirl"
+RandomNicknames_Female[3]="Domino"
+RandomNickNames_Female[4]="Freya"
+RandomNickNames_Female[5]="Mama Bear"
+RandomNickNames_Female[6]="Deep Six"
+RandomNickNames_Female[7]="Firebug"
+;ALPHABETICAL ORDER
+
+[LW_Assault X2SoldierClassTemplate]
+DisplayName="強襲兵"
+ClassSummary="強襲兵は近接戦闘ユニットの主力であり、敵への肉薄や戦線の維持を得意とする。"
+LeftAbilityTreeTitle="レイダー"
+RightAbilityTreeTitle="ブリーチャー"
+;ALPHABETICAL ORDER
+RandomNickNames[0]="Bandit"
+RandomNickNames[1]="Blitz"
+RandomNickNames[2]="Brick"
+RandomNickNames[3]="Butcher"
+RandomNickNames[4]="Buzzsaw"
+RandomNickNames[5]="Cajun"
+RandomNickNames[6]="Chops"
+RandomNickNames[7]="Cobra"
+RandomNickNames[8]="Cougar"
+RandomNickNames[9]="Coyote"
+RandomNickNames[10]="Crash"
+RandomNickNames[11]="Diamond"
+RandomNickNames[12]="Enforcer"
+RandomNickNames[13]="Fatal"
+RandomNickNames[14]="Flash"
+RandomNickNames[15]="Fury"
+RandomNickNames[16]="Gator"
+RandomNickNames[17]="Ghost"
+RandomNickNames[18]="Gunner"
+RandomNickNames[19]="Hound Dog"
+RandomNickNames[20]="Ice"
+RandomNickNames[21]="Icepick"
+RandomNickNames[22]="Jaws"
+RandomNickNames[23]="Judgment Day"
+RandomNickNames[24]="Kinky"
+RandomNickNames[25]="Monster"
+RandomNickNames[26]="Mustang"
+RandomNickNames[27]="Paladin"
+RandomNickNames[28]="Pitbull"
+RandomNickNames[29]="Pathfinder"
+RandomNickNames[30]="Ringo"
+RandomNickNames[31]="Samurai"
+RandomNickNames[32]="Scorpion"
+RandomNickNames[33]="Shogun"
+RandomNickNames[34]="Shadow"
+RandomNickNames[35]="Slayer"
+RandomNickNames[36]="Snake"
+RandomNickNames[37]="Snake Eyes"
+RandomNickNames[38]="Solo"
+RandomNickNames[39]="Specter"
+RandomNickNames[40]="Spider"
+RandomNickNames[41]="Stalker"
+RandomNickNames[42]="Steel"
+RandomNickNames[43]="Stinger"
+RandomNickNames[44]="Templar"
+RandomNickNames[45]="Trojan"
+RandomNickNames[46]="Vandal"
+RandomNickNames[47]="Viking"
+RandomNickNames[48]="Warden"
+RandomNickNames[49]="Warlord"
+RandomNickNames[50]="Wolverine"
+RandomNickNames[51]="Wildchild"
+RandomNickNames[52]="Wildling"
+RandomNickNames[53]="Zulu"
+;ALPHABETICAL ORDER
+RandomNickNames_Male[0]="Axeman"
+RandomNickNames_Male[1]="Duke"
+RandomNickNames_Male[2]="Rocky"
+RandomNickNames_Male[3]="Stallion"
+RandomNickNames_Male[4]="Wolfman"
+;ALPHABETICAL ORDER
+RandomNickNames_Female[0]="Athena"
+RandomNickNames_Female[1]="Duchess"
+RandomNicknames_Female[2]="Iron Lady"
+RandomNicknames_Female[3]="Iron Maiden"
+RandomNicknames_Female[4]="Shieldmaiden"
+RandomNickNames_Female[5]="Valkyrie"
+;ALPHABETICAL ORDER

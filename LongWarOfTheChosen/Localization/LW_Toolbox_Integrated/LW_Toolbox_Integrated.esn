@@ -1,0 +1,63 @@
+[UIOptionsPCScreen_LW]
+m_strResetCurrentModOption="RESTABLECER MOD ACTUAL"
+
+[XComGameState_LWToolboxOptions]
+ToolboxTabName="CAMPAÑA"
+
+HelpButtonLabel="Información útil"
+HelpButtonLabelText="Ayuda"
+HelpButtonLabelTooltip="Mostrar información sobre LW Toolbox"
+
+SetCameraRotation="Rotación de la cámara (grados)"
+SetCameraRotationTooltip="Selecciona el ángulo de rotación de la cámara en las misiones tácticas."
+
+SelectSquadSize="Tamaño de pelotón por defecto"
+SelectSquadSizeTooltip="Aumenta el tamaño predeterminado del pelotón (antes de las bonificaciones de la escuela de tácticas de guerrilla)."
+
+EnableRandomizedDamageMod="Ruleta de daños"
+EnableRandomizedDamageModTooltip="El daño de las armas de XCOM y del enemigo se modificará respecto al daño básico en la cantidad seleccionada."
+
+EnableRandomizedInitialStatsMod="No creados iguales"
+EnableRandomizedInitialStatsModTooltip="Los soldados tendrán atributos básicos aleatorios en torno a un punto de referencia. Volverán a su valor predeterminado si se anula la selección de esta opción. Esta opción se puede activar o desactivar en el Avenger, o bien durante el primer turno de las misiones tácticas si nadie ha resultado herido."
+sCantChangeWithWoundedSoldiers="No creados iguales no se puede activar ni desactivar si hay algún soldado de XCOM herido, ni después del primer turno de una misión táctica."
+NormalDamage="Desactivar"
+MaxDamage="MÁX."
+
+EnableRandomizedLevelupStatsMod="Potencial oculto"
+EnableRandomizedLevelupStatsModTooltip="Los atributos de los soldados reciben aumentos aleatorios al subir de nivel."
+
+RandomizedLevelupStrength="Aleatoriedad: <XGParam:IntValue0>%"
+RandomizedLevelupStrengthTooltip="El grado de aleatoriedad aplicado cuando se ha activado Potencial oculto. Un valor más alto significa que los soldados experimentarán un intervalo más amplio de incrementos de atributos al subir de nivel."
+
+EnableRedFogMod="Niebla roja"
+EnableRedFogModTooltip="Las unidades heridas reciben penalizaciones a la puntería, la voluntad, la movilidad y el pirateo."
+EnableRedFogLinearPenaltiesMod="Usar penalizaciones de niebla roja lineales (en lugar de cuadráticas)"
+EnableRedFogModLinearPenaltiesTooltip="Las unidades reciben mayores penalizaciones a los atributos cuando sufren heridas leves."
+RedFogOptions[0]="Desactivar"
+RedFogOptions[1]="Solo XCOM"
+RedFogOptions[2]="Solo alienígenas"
+RedFogOptions[3]="Todos"
+
+EnableSimCombatMod="Permitir resolver automáticamente el combate"
+EnableSimCombatModTooltip="Habilita una opción en la selección de pelotón para resolver automáticamente las misiones de combate con el pelotón seleccionado en ese momento. Puesto que no es compatible con algunos contenidos descargables oficiales, requiere tener la consola de depuración disponible y usar el comando LWSetAutoResolveEnabled true para activar la opción del menú. Recomendamos que solo la utilicen los creadores de mods como herramienta de depuración."
+
+[X2Effect_RedFog_LW]
+RedFogEffectName="Niebla roja"
+RedFogEffectDesc="Reduce los atributos en función de las heridas recibidas."
+
+[UISquadSelect_LW]
+m_strStripWeapons="DEJAR ARMAS DISPONIBLES"
+m_strStripWeaponsConfirm="CONFIRMAR DEJAR ARMAS DISPONIBLES"
+
+m_strStripWeaponsConfirmDesc="Confirma la eliminación de las armas de todos los soldados no seleccionados para la misión actual. Este equipo estará disponible para que cualquier soldado lo equipe de inmediato."
+m_strTooltipStripWeapons="Quita todas las armas de todos los soldados no seleccionados para la misión actual."
+
+m_strTooltipNeedsFrontRowSoldier=""
+m_strClearSquad="ELIMINAR PELOTÓN"
+m_strTooltipClearSquad="Elimina a todos los soldados del pelotón."
+
+m_strAutofillSquad="AUTOCOMPLETAR PELOTÓN"
+m_strTooltipAutofillSquad="Completa los puestos vacíos del pelotón automáticamente."
+
+m_strSimCombat="RESOLVER AUTOMÁTICAMENTE"
+m_strTooltipSimCombat="Resuelve automáticamente el combate."

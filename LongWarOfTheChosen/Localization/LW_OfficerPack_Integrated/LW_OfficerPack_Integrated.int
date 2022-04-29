@@ -1,0 +1,91 @@
+[UIArmory_LWOfficerPromotion]
+strLeadershipButton=View Leadership History
+strLeadershipDialogueTitle=Missions Under This Officer
+strLeadershipDialogueData="<XGParam:StrValue0/> : <XGParam:IntValue0/>"
+
+[UIScreenListener_Armory_Promotion_LWOfficerPack]
+strOfficerMenuOption=Officer Abilities
+
+[UIScreenListener_Armory_MainMenu_LWOfficerPack]
+strOfficerMenuOption=Officer Abilities
+OfficerListItemDescription=View already trained Officer Abilities.
+
+[UIScreenListener_Facility_Academy_LWOfficerPack]
+strOfficerTrainButton=Train Officer
+
+[UIScreenListener_SquadSelect_LWOfficerPack]
+strAutoFillLabel="AUTOFILL SQUAD"
+strAutoFillTooltip="Autofill squad up to maximum"
+
+
+[UITacticalHUD_MouseControls_LWOfficerPack]
+strCommandRangeToggleTooltip=Click to toggle Command Range
+
+[X2StrategyElement_LW_OTS_OfficerStaffSlot]
+;strOTSLocationDisplayString=<XGParam:StrValue0/> Training
+
+;[UIArmory_LWOfficerMenu]
+;m_strSelectAbility=SELECT Officer ABILITY:
+;m_strAbilityHeader=Officer ABILITIES:
+;m_strConfirmAbilityTitle=CONFIRM ABILITY SELECTION
+;m_strConfirmAbilityText=You can't remove or change abilities. Are you sure you want to learn <XGParam:StrValue0/>?
+;m_strAbilityLockedTitle=LOCKED
+;m_strAbilityLockedDescription=Get more combat experience to learn new abilities.
+
+[UIArmory_LWOfficerPromotion]
+m_strSelectAbility=SELECT ABILITY:
+m_strAbilityHeader=ABILITIES:
+m_strConfirmAbilityTitle=CONFIRM ABILITY SELECTION
+m_strConfirmAbilityText=You can't remove or change abilities. Are you sure you want to learn <XGParam:StrValue0/>?
+m_strAbilityLockedTitle=LOCKED
+m_strAbilityLockedDescription=Get more combat experience to learn new abilities.
+
+[LWOfficerUtilities]
+LWOfficerRankNames[0]="NCO"
+LWOfficerRankNames[1]="Lieutenant"
+LWOfficerRankNames[2]="Captain"
+LWOfficerRankNames[3]="Major"
+LWOfficerRankNames[4]="Lieutenant Colonel"
+LWOfficerRankNames[5]="Colonel"
+LWOfficerRankNames[6]="Field Commander"
+
+LWOfficerShortNames[0]="NCO"
+LWOfficerShortNames[1]="1Lt"
+LWOfficerShortNames[2]="Capt"
+LWOfficerShortNames[3]="Maj"
+LWOfficerShortNames[4]="LtC"
+LWOfficerShortNames[5]="Col"
+LWOfficerShortNames[6]="Cmdr"
+
+
+[UIFacility_LWOfficerSlot]
+m_strTrainOfficerDialogTitle=TRAIN OFFICER
+m_strTrainOfficerDialogText=Soldiers of sufficient rank can undergo specialized training at the Guerrilla Tactics School, studying to become an Officer. They will be unavailable for combat during the training process.\n\nIMPORTANT: Only the highest ranking Officer in a squad will be able to utilize their abilities on a mission, so choose carefully who you want to promote.\n\nDo you want to proceed?
+m_strStopTrainOfficerDialogTitle=STOP Officer TRAINING?
+m_strStopTrainOfficerDialogText=Do you want to stop %UNITNAME from training?\n\nWARNING: All Officer training progress will be lost.
+
+[UIAlert_LWOfficerTrainingComplete]
+m_strTrainingCompleteLabel=Officer TRAINING COMPLETED
+m_strTrainingComplete=<XGParam:StrValue0/> has completed their training. New abilities can be examined and assigned by viewing the soldier in the Armory.
+m_strViewSoldier=VIEW SOLDIER
+m_strNewAbilityLabel=NEW ABILITY
+
+[UIPersonnel_ListItem_SquadSelect_LWOfficerPack]
+strOfficerAlreadySelectedStatus=Warning: Officer Already Selected
+
+[UIStrategyScreenListener_LWOfficerPack]
+strCommandingOfficerTooltipTitle="Commanding Officer"
+strCommandingOfficerTooltip="Can use all officer abilities."
+strSubordinateOfficerTooltipTitle="Subordinate Officer"
+strSubordinateOfficerTooltip="Cannot use officer abilities on mission."
+
+[X2Ability_OfficerAbilitySet]
+strIntervention_WorldMessage="Intervention: -<XGPARAM:IntValue0> Intel"
+strCollector_WorldMessage=Collector: +1 Intel
+FocussedFriendlyName=Focus Fire
+FocussedFriendlyDesc=Targets subject to Focus Fire are easier for enemies to hit and damage.
+
+[X2Effect_Scavenger]
+;the string shown in world message for scavenged items
+m_strScavengerLoot="(<XGParam:IntValue0/>) <XGParam:StrValue0/!ItemName/> scavenged."
+

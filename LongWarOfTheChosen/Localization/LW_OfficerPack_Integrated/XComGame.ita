@@ -1,0 +1,219 @@
+
+;---- BEGIN ABILITIES
+
+;displayed both for officer and soldiers receiving effect
+[GetSome X2AbilityTemplate]
+LocFriendlyName="Prendi questo!"
+LocLongDescription="Due volte per missione, investi un'azione per fornire a tutti gli alleati entro la Portata di comando un bonus di +20 alla Probabilità di critico per il resto del turno."
+LocHelpText="Migliora la Probabilità di critico per i soldati vicini all'ufficiale."
+LocFlyOverText="Prendi questo!"
+LocPromotionPopupText="<Bullet/> Investi un'azione per fornire a tutti gli alleati entro la Portata di comando un bonus di +20 alla Probabilità di critico per il resto del turno.<br/><Bullet/> Utilizzabile due volte per missione.<br/><Bullet/> La Portata di comando aumenta con ogni nuovo livello da ufficiale."
+
+[Collector X2AbilityTemplate]
+LocFriendlyName="Collezionista"
+LocLongDescription="Uccidere un nemico non umano con la squadra ha il 33% di probabilità di fornire un punto di dati, a patto che l'ufficiale sia in salute."
+LocHelpText="Ottieni dati aggiuntivi dalle uccisioni della squadra."
+LocFlyOverText="Collezionista"
+; displayed for officer in OfficerAbility UI
+LocPromotionPopupText="<Bullet/> Uccidere un nemico non umano con la squadra ha il 33% di probabilità di fornire un punto di dati, a patto che l'ufficiale sia in salute."
+
+;displayed on officer in tactical container
+[CollectorPassive X2AbilityTemplate]
+LocFriendlyName="Collezionista"
+LocLongDescription="Uccidere un nemico non umano con la squadra ha il 33% di probabilità di fornire un punto di dati, a patto che l'ufficiale sia in salute."
+LocHelpText="Ottieni dati aggiuntivi dalle uccisioni della squadra."
+LocFlyOverText="Collezionista"
+LocPromotionPopupText="<Bullet/> Uccidere un nemico non umano con la squadra ha il 33% di probabilità di fornire un punto di dati, a patto che l'ufficiale sia in salute."
+
+;displayed on other soldier that receive the effect
+[Defilade X2AbilityTemplate]
+LocFriendlyName="Defilamento"
+LocLongDescription="I soldati entro la Portata di comando dell'ufficiale ricevono un bonus di +5 alla Difesa fornita dai ripari."
+LocHelpText="Difesa bonus dai ripari per i soldati vicino all'ufficiale."
+LocFlyOverText="Defilamento"
+;displayed for officer in Officer Ability UI
+LocPromotionPopupText="<Bullet/> I soldati entro la Portata di comando dell'ufficiale ricevono un bonus di +5 alla Difesa fornita dai ripari.<br/><Bullet/> La Portata di comando aumenta con ogni nuovo livello da ufficiale."
+
+;Displayed on officer in tactical container
+[DefiladePassive X2AbilityTemplate]
+LocFriendlyName="Defilamento"
+LocLongDescription="I soldati entro la Portata di comando dell'ufficiale ricevono un bonus di +5 alla Difesa fornita dai ripari."
+LocHelpText="Difesa bonus dai ripari per i soldati vicino all'ufficiale."
+LocFlyOverText="Defilamento"
+LocPromotionPopupText="<Bullet/> I soldati entro la Portata di comando dell'ufficiale ricevono un bonus di +5 alla Difesa fornita dai ripari.<br/><Bullet/> La Portata di comando aumenta con ogni nuovo livello da ufficiale."
+
+;displayed both on officer and in debuff on target
+[FocusFire X2AbilityTemplate]
+LocFriendlyName="Fuoco concentrato"
+LocLongDescription="Investi un'azione per designare un bersaglio e conferire alla squadra bonus cumulativi alla Mira e 1 penetrazione armatura contro quel bersaglio per il resto del turno."
+LocHelpText="Designa un bersaglio in modo che la squadra ottenga bonus mira e penetrazione armatura ai suoi danni."
+LocFlyOverText="Fuoco concentrato"
+LocPromotionPopupText="<Bullet/> Investi un'azione per designare un bersaglio e conferire alla squadra bonus cumulativi alla Mira e 1 punto di penetrazione armatura contro quel bersaglio per il resto del turno.<br/><Bullet/> Ogni attacco con armi diretto ai danni del bersaglio nello stesso turno ottiene un bonus aggiuntivo alla Mira di +<ABILITY:FOCUS_FIRE_AIM_BONUS/>.<br/><Bullet/> Tre turni di ricarica.<br/>"
+
+;displayed both on officer and on soldiers receiving effect
+[FallBack X2AbilityTemplate]
+LocFriendlyName="Ritirata!"
+LocLongDescription="Conferisci un'azione difensiva gratuita ma non controllata a un alleato visibile che ha usato tutte le sue mosse."
+LocHelpText="Conferisci un'azione difensiva gratuita ma non controllata a un alleato visibile."
+LocFlyOverText="Ritirata!"
+LocPromotionPopupText="<Bullet/> Conferisci un'azione difensiva gratuita ma non controllata a un alleato visibile. L'alleato, solitamente, cercherà una posizione più sicura o userà Riparo.<br/><Bullet/> Non funziona sulle unità che stanno usando Soppressione o Guardia.<br/><Bullet/> Azione gratuita."
+
+[Scavenger X2AbilityTemplate]
+LocFriendlyName="Raccoglitore"
+LocLongDescription="Le ricompense in riserve, leghe aliene ed elerium aumentano del 30% dopo le missioni riuscite. I membri della squadra hanno una probabilità di ottenere più leghe aliene ed elerium dagli alieni."
+LocHelpText="Riserve, leghe aliene ed elerium."
+LocFlyOverText="Raccoglitore"
+LocPromotionPopupText="<Bullet/> Se l'ufficiale sopravvive e non è privo di sensi, le ricompense della missione in riserve, leghe aliene ed elerium aumentano del 30%.<br/><Bullet> La squadra può recuperare leghe aliene ed elerium dagli alieni morti.<br/>"
+
+;Displayed on officer in tactical container
+[ScavengerPassive X2AbilityTemplate]
+LocFriendlyName="Raccoglitore"
+LocLongDescription="Le ricompense in riserve, leghe aliene ed elerium aumentano del 30% dopo le missioni riuscite. Probabilità di ottenere leghe aliene ed elerium dagli alieni."
+LocHelpText="Riserve, leghe aliene ed elerium."
+LocFlyOverText="Raccoglitore"
+LocPromotionPopupText="<Bullet/> Se l'ufficiale sopravvive in buone condizioni, le ricompense della missione in riserve, leghe aliene ed elerium aumentano del 30%.<br/><Bullet> La squadra può recuperare leghe aliene ed elerium dagli alieni morti.<br/>"
+
+;displayed on other soldier that receive the effect
+[FireDiscipline X2AbilityTemplate]
+LocFriendlyName="Contrattacco"
+LocLongDescription="Gli alleati entro la Portata di comando dell'ufficiale ottengono +10% alla probabilità di colpire con il fuoco di reazione."
+LocHelpText="Gli alleati vicino all'ufficiale ottengono un bonus al fuoco di reazione."
+LocFlyOverText="Contrattacco"
+;displayed for officer in Officer Ability UI
+LocPromotionPopupText="<Bullet/> Gli alleati entro la Portata di comando dell'ufficiale ricevono un bonus di +5 alla Difesa fornita dai ripari.<br/><Bullet/> La Portata di comando aumenta con ogni nuovo livello da ufficiale."
+
+;Displayed on officer in tactical container
+[FireDisciplinePassive X2AbilityTemplate]
+LocFriendlyName="Contrattacco"
+LocLongDescription="Gli alleati entro la Portata di comando dell'ufficiale ottengono +10% alla probabilità di colpire con il fuoco di reazione."
+LocHelpText="Gli alleati vicino all'ufficiale ottengono un bonus al fuoco di reazione."
+LocFlyOverText="Contrattacco"
+LocPromotionPopupText="<Bullet/> Gli alleati entro la Portata di comando dell'ufficiale ricevono un bonus di +5 alla Difesa fornita dai ripari.<br/><Bullet/> La Portata di comando aumenta con ogni nuovo livello da ufficiale."
+
+;displayed both on officer and on soldiers receiving effect
+[OscarMike X2AbilityTemplate]
+LocFriendlyName="Arrivo!"
+LocLongDescription="Investi un'azione per conferire a tutti gli alleati entro la Portata di comando +5 alla Mobilità per il resto del turno. Utilizzabile una volta per missione."
+LocHelpText="Attiva per conferire un bonus alla Mobilità agli alleati vicini"
+LocFlyOverText="Arrivo!"
+LocPromotionPopupText="<Bullet/> Investi un'azione per fornire a tutti gli alleati entro la Portata di comando un bonus di +5 alla mobilità per il resto del turno.<br/><Bullet/> Utilizzabile una volta per missione.<br/><Bullet/> La Portata di comando aumenta con ogni nuovo livello da ufficiale."
+
+;displayed on other soldier that receive the effect
+[LeadByExample X2AbilityTemplate]
+LocFriendlyName="Dare l'esempio"
+LocLongDescription="L'ufficiale migliora Mira, Volontà e Violazione dei soldati entro la Portata di comando di metà della differenza tra soldato e ufficiale."
+LocHelpText="Gli alleati vicini all'ufficiale ottengono Mira, Volontà e Violazione migliorate."
+LocFlyOverText="Dare l'esempio"
+;displayed for officer in Officer Ability UI
+LocPromotionPopupText="<Bullet/> Se le statistiche di Mira, Volontà e/o Violazione sono più alte di quelle di un soldato entro la Portata di comando, il soldato ottiene bonus alle sue statistiche, pari a metà della differenza con quelle dell'ufficiale.<br/><Bullet/> La Portata di comando aumenta con ogni nuovo livello da ufficiale."
+
+;Displayed on officer in tactical container
+[LeadByExamplePassive X2AbilityTemplate]
+LocFriendlyName="Dare l'esempio"
+LocLongDescription="L'ufficiale migliora Mira, Volontà e Violazione dei soldati entro la Portata di comando di metà della differenza tra soldato e ufficiale."
+LocHelpText="Gli alleati vicini all'ufficiale ottengono Mira, Volontà e Violazione migliorate."
+LocFlyOverText="Dare l'esempio"
+LocPromotionPopupText="<Bullet/> Se le statistiche di Mira, Volontà e/o Violazione sono più alte di quelle di un soldato entro la Portata di comando, il soldato ottiene bonus alle sue statistiche, pari a metà della differenza con quelle dell'ufficiale.<br/><Bullet/> La Portata di comando aumenta con ogni nuovo livello da ufficiale."
+
+;this may not be displayed -- needs testing
+[LeadByExampleLeader X2AbilityTemplate]
+LocFriendlyName="Dare l'esempio"
+LocLongDescription="L'ufficiale migliora Mira, Volontà e Violazione dei soldati entro la Portata di comando di metà della differenza tra soldato e ufficiale."
+LocHelpText="Gli alleati vicini all'ufficiale ottengono Mira, Volontà e Violazione migliorate."
+LocFlyOverText="Dare l'esempio"
+LocPromotionPopupText="<Bullet/> Se le statistiche di Mira, Volontà e/o Violazione sono più alte di quelle di un soldato entro la Portata di comando, il soldato ottiene bonus alle sue statistiche, pari a metà della differenza con quelle dell'ufficiale.<br/><Bullet/> La Portata di comando aumenta con ogni nuovo livello da ufficiale."
+
+;displayed on other soldier that receive the effect
+[CombinedArms X2AbilityTemplate]
+LocFriendlyName="Armi combinate"
+LocLongDescription="Tutti gli alleati entro la Portata di comando dell'ufficiale infliggono +1 danno con tutti gli attacchi che vanno a segno."
+LocHelpText="Gli alleati vicino all'ufficiale infliggono danni bonus."
+LocFlyOverText="Armi combinate"
+LocPromotionPopupText="<Bullet/> Tutti gli alleati entro la Portata di comando dell'ufficiale infliggono +1 danno con tutti gli attacchi che vanno a segno.<br/><Bullet/> La Portata di comando aumenta con ogni nuovo livello da ufficiale."
+
+;Displayed on officer in tactical container
+[CombinedArmsPassive X2AbilityTemplate]
+LocFriendlyName="Armi combinate"
+LocLongDescription="Tutti gli alleati entro la Portata di comando dell'ufficiale infliggono +1 danno con tutti gli attacchi che vanno a segno."
+LocHelpText="Gli alleati vicino all'ufficiale infliggono danni bonus."
+LocFlyOverText="Armi combinate"
+LocPromotionPopupText="<Bullet/> Tutti gli alleati entro la Portata di comando dell'ufficiale infliggono +1 danno con tutti gli attacchi che vanno a segno.<br/><Bullet/> La Portata di comando aumenta con ogni nuovo livello da ufficiale."
+
+[Command X2AbilityTemplate]
+LocFriendlyName="Comando"
+LocLongDescription="Concludi il tuo turno per conferire un'azione bonus a uno dei membri visibili della squadra. Il numero di cariche dipende dal grado dell'ufficiale."
+LocHelpText="Conferisce azioni bonus agli alleati."
+LocFlyOverText="Comando"
+LocPromotionPopupText="<Bullet/> Richiede un'azione e conclude il tuo turno.<br/><Bullet/> I primi e secondi tenenti hanno una carica dell'abilità; capitani e maggiori ne hanno due; tenenti e colonnelli hanno tre cariche, i comandanti ne hanno quattro.<br/><Bullet/> Non si può usare con le unità in Guardia o che stanno sopprimendo un altro bersaglio."
+
+[Infiltrator X2AbilityTemplate]
+LocFriendlyName="Infiltrato"
+LocLongDescription="La squadra dell'ufficiale si infiltra più rapidamente nei bersagli nemici."
+LocHelpText="La squadra dell'ufficiale si infiltra più rapidamente nei bersagli nemici."
+LocFlyOverText="Infiltrato"
+LocPromotionPopupText="<Bullet/> La squadra di un ufficiale con questa abilità è molto più furtiva rispetto ai valori normali e ha tempi di infiltrazione ridotti.<br/>"
+
+[AirController X2AbilityTemplate]
+LocFriendlyName="Controllore di volo"
+LocLongDescription="Lo Skyranger arriva <Ability:AIR_CONTROLLER_EVAC_TURN_REDUCTION/> turni prima durante le estrazioni."
+LocHelpText="Lo Skyranger arriva due turni prima durante le estrazioni."
+LocFlyOverText="Controllore di volo"
+LocPromotionPopupText="<Bullet/> L'ufficiale è abile nella gestione delle risorse aeree alleate e permette allo Skyranger di arrivare due turni prima in caso di uso di un bengala estrazione.<br/><Bullet/> C'è un tempo minimo necessario per l'arrivo dello Skyranger, a prescindere dai bonus."
+
+[Jammer X2AbilityTemplate]
+LocFriendlyName="Jammer"
+LocLongDescription="Una volta per battaglia, ritarda di un turno l'arrivo dei rinforzi nemici."
+LocHelpText="Ritarda di un turno l'arrivo dei rinforzi nemici."
+LocFlyOverText="Jammer"
+LocPromotionPopupText="<Bullet/> Attiva questa abilità per ritardare di un turno l'arrivo dei rinforzi nemici.<br/><Bullet/> Se non è stato segnalato l'arrivo dei rinforzi, verranno ritardati i rinforzi futuri."
+
+[Incoming X2AbilityTemplate]
+LocFriendlyName="In arrivo"
+LocLongDescription="Attiva questa abilità per conferire a tutti entro la Portata di comando quattro punti di resistenza ai danni contro gli attacchi esplosivi fino alla fine del prossimo turno alieno."
+LocHelpText="L'ufficiale e gli alleati vicini hanno 4 di resistenza ai danni contro gli esplosivi."
+LocFlyOverText="In arrivo"
+LocPromotionPopupText="<Bullet/> Attiva questa abilità per conferire a tutti entro la Portata di comando quattro punti di resistenza ai danni contro gli attacchi esplosivi fino alla fine del prossimo turno alieno.<br/><Bullet/> Non richiede azioni.<br/><Bullet/> Cinque turni di ricarica.<br/><Bullet/> La Portata di comando aumenta con ogni nuovo livello da ufficiale.<br/><Bullet/> Non si applica ai soldati nel panico o alle unità che stanno sopprimendo altri bersagli.<br/>"
+
+[Intervention X2AbilityTemplate]
+LocFriendlyName="Intervento"
+LocLongDescription="Attiva questa abilità per investire 10 unità di dati e ottenere due turni sul timer della missione. Il numero di cariche dipende dal grado dell'ufficiale."
+LocHelpText="Attiva per investire dati e ottenere due turni sul timer della missione."
+LocFlyOverText="Intervento"
+LocPromotionPopUpText="<Bullet/> Attiva questa abilità per investire 10 unità di dati e ottenere due turni sul timer della missione.<br/><Bullet/> Richiede un'azione.<br/><Bullet/> Il numero di cariche dipende dal grado dell'ufficiale.<br/><Bullet/> Se non ci sono timer della missione è inattivo.<br/><Bullet/> Il costo in dati può essere influenzato dagli eventi; non si attiva se gli XCOM hanno meno di 10 unità di dati.<br/>"
+
+[TrialByFire X2AbilityTemplate]
+LocFriendlyName="Sentenza della battaglia"
+LocLongDescription="Ogni soldato con un grado inferiore a sergente sarà automaticamente promosso dopo una missione completata con successo sotto il comando di questo ufficiale."
+LocHelpText="Ogni soldato con un grado inferiore a sergente sarà automaticamente promosso dopo una missione completata con successo sotto il comando di questo ufficiale."
+LocPromotionPopUpText="<Bullet/> Il bonus si applica solo se il comandante della missione dispone di questa abilità, e non garantisce bonus ad altri ufficiali nella missione."
+
+;---- END ABILITIES
+
+;---- BEGIN OTS / STAFFSLOT
+
+[OfficerTrainingUnlock X2SoldierUnlockTemplate]
+DisplayName="Addestramento da ufficiale"
+Summary="Sblocca gli slot soldato per consentire l'addestramento degli ufficiali."
+
+[OTSOfficerSlot X2StaffSlotTemplate]
+EmptyText="POSIZIONI APERTE: CERCASI SOLDATO"
+BonusEmptyText="Addestra le abilità degli ufficiali."
+BonusText="%SKILL IN ADDESTRAMENTO"
+FilledText="%UNITNAME partecipa a un programma intensivo per l'apprendimento dell'abilità %SKILL!"
+LockedText="BLOCCATO: ACQUISTA POTENZIAMENTO"
+
+[OTS_LWOfficerTrainingUpgrade X2FacilityUpgradeTemplate]
+DisplayName="Postazione di addestramento ufficiali"
+FacilityName="Scuola di addestramento ufficiali"
+Summary="Aggiunge una postazione dove i soldati che hanno almeno il grado di Caporale possono apprendere le abilità speciali da capi.\nIMPORTANTE: solo l'ufficiale di grado più alto della squadra potrà utilizzare le sue abilità in missione, quindi scegli con cura chi vuoi promuovere."
+
+[OTS_LWOfficerTrainingUpgrade_SecondSlot X2FacilityUpgradeTemplate]
+DisplayName="Postazione di addestramento ufficiali"
+FacilityName="Scuola di addestramento ufficiali"
+Summary="Aggiunge una postazione dove i soldati che hanno almeno il grado di Caporale possono apprendere le abilità speciali da capi.\nIMPORTANTE: solo l'ufficiale di grado più alto della squadra potrà utilizzare le sue abilità in missione, quindi scegli con cura chi vuoi promuovere."
+
+[UIPersonnel_LWOfficer]
+m_strTitle="Soldato da addestrare come ufficiale"
+EmptyListMessage="NESSUN CANDIDATO ADATTO"
+
+;---- END OTS / STAFFSLOT

@@ -1,0 +1,63 @@
+[UIOptionsPCScreen_LW]
+m_strResetCurrentModOption="RIPRISTINA MOD ATTUALE"
+
+[XComGameState_LWToolboxOptions]
+ToolboxTabName="CAMPAGNA"
+
+HelpButtonLabel="Informazioni utili"
+HelpButtonLabelText="Aiuto"
+HelpButtonLabelTooltip="Mostra informazioni su LW Toolbox"
+
+SetCameraRotation="Imposta rotazione visuale (gradi)"
+SetCameraRotationTooltip="Seleziona l'angolo di rotazione della visuale nelle missioni tattiche."
+
+SelectSquadSize="Dimensioni della squadra predefinite"
+SelectSquadSizeTooltip="Aumenta la dimensione predefinita della squadra (prima dei bonus della scuola di guerriglia)."
+
+EnableRandomizedDamageMod="Roulette danni"
+EnableRandomizedDamageModTooltip="I danni delle armi dei soldati XCOM e dei nemici variano dai danni base della quantità selezionata."
+
+EnableRandomizedInitialStatsMod="Non tutti siamo uguali"
+EnableRandomizedInitialStatsModTooltip="Le statistiche base dei soldati sono determinate casualmente partendo da un valore base. Disattivando questa opzione, torneranno ai valori base. L'opzione può essere disattivata dall'Avenger o nel primo turno delle missioni tattiche, solo se nessun soldato è stato ferito."
+sCantChangeWithWoundedSoldiers="L'opzione Non tutti siamo uguali non può essere attivata o disattivata se un soldato XCOM è ferito o se si è concluso il primo turno di una missione tattica."
+NormalDamage="No"
+MaxDamage="MAX"
+
+EnableRandomizedLevelupStatsMod="Potenziale nascosto"
+EnableRandomizedLevelupStatsModTooltip="Le statistiche dei soldati aumentano casualmente quando salgono di livello."
+
+RandomizedLevelupStrength="Casualità: <XGParam:IntValue0>%"
+RandomizedLevelupStrengthTooltip="Il grado di casualità applicato quando è attivata l'opzione Potenziale nascosto. Valori più alti implicano una variazione più ampia degli incrementi di statistica quando i soldati salgono di livello."
+
+EnableRedFogMod="Nebbia rossa"
+EnableRedFogModTooltip="Le unità ferite subiscono una penalità a Mira, Volontà, Mobilità e Violazione."
+EnableRedFogLinearPenaltiesMod="Usa penalità Nebbia rossa lineari (invece che esponenziali)"
+EnableRedFogModLinearPenaltiesTooltip="Le unità subiscono penalità alle statistiche più alte quando sono lievemente ferite."
+RedFogOptions[0]="No"
+RedFogOptions[1]="Solo XCOM"
+RedFogOptions[2]="Solo alieni"
+RedFogOptions[3]="Tutti"
+
+EnableSimCombatMod="Consenti risoluzione automatica combattimenti"
+EnableSimCombatModTooltip="Abilita un'opzione nella selezione della squadra per risolvere le missioni di combattimento in automatico, usando la squadra selezionata. Visto che l'opzione non è compatibile con alcuni DLC ufficiali, per attivarla è necessario usare la console di debug con il comando LWSetAutoResolveEnabled true. L'utilizzo della funzione come strumento di debug è consigliabile ai soli modder."
+
+[X2Effect_RedFog_LW]
+RedFogEffectName="Nebbia rossa"
+RedFogEffectDesc="Causa riduzione delle statistiche in base alle ferite subite."
+
+[UISquadSelect_LW]
+m_strStripWeapons="RENDI ARMI DISP."
+m_strStripWeaponsConfirm="RENDERE ARMI DISPONIBILI?"
+
+m_strStripWeaponsConfirmDesc="Conferma la rimozione di armi da tutti i soldati NON selezionati per l'attuale missione. L'equipaggiamento diverrà disponibile per essere equipaggiato da qualsiasi soldato."
+m_strTooltipStripWeapons="Rimuovi armi e armatura da tutti i soldati NON selezionati per l'attuale missione."
+
+m_strTooltipNeedsFrontRowSoldier=""
+m_strClearSquad="RIMUOVI SQUADRA"
+m_strTooltipClearSquad="Rimuovi tutti i soldati dalla squadra."
+
+m_strAutofillSquad="SELEZIONE AUTOMATICA"
+m_strTooltipAutofillSquad="Riempimento automatico posizioni vuote in squadra."
+
+m_strSimCombat="SOLUZIONE AUTOMATICA"
+m_strTooltipSimCombat="Risolvi automaticamente la battaglia."

@@ -1,0 +1,36 @@
+[AssaultRifle_LS X2WeaponTemplate]
+FriendlyName="Fusil láser"
+FriendlyNamePlural="Fusiles láser"
+BriefSummary="El fusil láser emite una serie de descargas con una duración de microsegundos que destruyen los enlaces químicos de los objetivos."
+TacticalText="<Bullet/> Disparar el arma principal termina el turno del soldado si no cuenta con entrenamiento especial.\n<Bullet/> Usa las mejoras recuperadas de los enemigos de ADVENT para mejorar la eficacia táctica de los fusiles de láser.\n<Bullet/> La gran energía generada por estas armas láser es el resultado de la integración de la tecnología alienígena en las armas láser prebélicas descubiertas.\n<Bullet/> Los láseres reciben una bonificación a la puntería."
+AbilityDescName="fusil de asalto"
+
+[SMG_LS X2WeaponTemplate]
+FriendlyName="Subfusil Sten láser"
+FriendlyNamePlural="Subfusiles Sten láser"
+BriefSummary="Se trata de una versión ligera del fusil láser. Cumple una función similar a la del subfusil y sacrifica potencia, munición y precisión a distancia a cambio de una mayor movilidad y ocultación del soldado."
+; LWOTC translated
+TacticalText="<Bullet/> Disparar el arma principal siempre termina el turno del soldado si no cuenta con entrenamiento especial.\n<Bullet/> Usa las mejoras recuperadas de los enemigos de ADVENT para incrementar la eficacia táctica del subfusil Sten láser. \n<Bullet/> Las armas de tipo subfusil ofrecen una mayor movilidad, precisión a corta distancia y ocultación comparadas con los fusiles de asalto, pero infligen menos daño y sufren penalizaciones en su precisión a larga distancia.\n<Bullet/> Los láseres reciben una bonificación a la puntería."
+; End translated
+AbilityDescName="Subfusil"
+
+[Cannon_LS X2WeaponTemplate]
+FriendlyName="Cañón láser"
+FriendlyNamePlural="Cañones láser"
+BriefSummary="La combinación de la tecnología láser con un sistema de enfriamiento mejorado nos permitirá desplegar una versión de disparo rápido del cañón, que podrá producir un volumen de disparos mucho más letal."
+TacticalText="<Bullet/> El cañón láser es una versión mucho más potente, pero igualmente funcional, del cañón convencional.\n<Bullet/> Usa mejoras saqueadas de los enemigos para mejorar la eficacia táctica del cañón láser.\n<Bullet/> Los láseres reciben una bonificación a la puntería."
+AbilityDescName="cañón"
+
+[Shotgun_LS X2WeaponTemplate]
+FriendlyName="Rayo de dispersión"
+FriendlyNamePlural="Rayos de dispersión"
+BriefSummary="El rayo de dispersión es una aplicación de la tecnología láser que produce efectos similares a los de una escopeta. Debido a la difusión del rayo, es más efectivo a corta distancia."
+TacticalText="<Bullet/> Las armas de tipo escopeta son sumamente eficaces a corta distancia, pero su precisión decae rápidamente a mayores distancias.\n<Bullet/> Usa mejoras saqueadas de los enemigos para aumentar la eficacia táctica del rayo de dispersión.\n<Bullet/> Los láseres reciben una bonificación a la puntería."
+AbilityDescName="escopeta"
+
+[SniperRifle_LS X2WeaponTemplate]
+FriendlyName="Lanza láser"
+FriendlyNamePlural="Lanzas láser"
+BriefSummary="La lanza láser, una versión más larga del fusil láser, incorpora capacitadores de flash de enorme energía. El resultado es un arma láser de gran alcance y alta precisión."
+TacticalText="Los fusiles de francotirador siempre requieren las dos acciones para disparar.\n<Bullet/> Son menos precisos a corto alcance, pero letales a distancia.\n<Bullet/> Usa mejoras saqueadas de los enemigos para aumentar la eficacia táctica de la lanza láser.\n<Bullet/> Los láseres reciben una bonificación a la puntería."
+AbilityDescName="fusil de francotirador"

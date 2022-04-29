@@ -1,0 +1,1488 @@
+[X2ExperienceConfig]
+PsiRankNames[8]="주교"
+PsiShortNames[8]="주교"
+
+[XComGame.UIArmory_Loadout]
+[UIArmory_Loadout]
+m_strNeedsSoldierClass="장착 불가"
+m_strUnavailableToClass="사용할 수 없음"
+
+[DepthPerceptionPCS X2EquipmentTemplate]
+FriendlyName="개인 전투 시뮬레이션: 깊은 지각"
+FriendlyNamePlural="개인 전투 시뮬레이션: 깊은 지각"
+BriefSummary="이 사이버네틱 삽입물은 공격 대상보다 높은 고도에 있을 때 5의 조준 보너스를 부여하고, 적의 회피를 25 감소시킵니다."
+
+[HyperReactivePupilsPCS X2EquipmentTemplate]
+FriendlyName="개인 전투 시뮬레이션: 동공 과민 반응"
+FriendlyNamePlural="개인 전투 시뮬레이션: 동공 과민 반응"
+BriefSummary="이 삽입물은 사격이 빗나간 후의 다음 주요 무기 공격에 10 조준 보너스를 부여합니다."
+
+[CombatAwarenessPCS X2EquipmentTemplate]
+FriendlyName="개인 전투 시뮬레이션: 전투 의식"
+FriendlyNamePlural="개인 전투 시뮬레이션: 전투 의식"
+BriefSummary="경계 시 15의 방어력과 1의 방어구 보너스를 받습니다."
+
+[CombatRushPCS X2EquipmentTemplate]
+FriendlyName="개인 전투 시뮬레이션: 전투 돌진"
+FriendlyNamePlural="개인 전투 시뮬레이션: 전투 돌진"
+BriefSummary="적을 처치하면, 반경 7타일 내의 아군은 일시적으로 조준과 치명타율 및 기동력 보너스를 받습니다. 5턴 동안 쿨타임을 가집니다."
+
+[DamageControlPCS X2EquipmentTemplate]
+FriendlyName="개인 전투 시뮬레이션: 피해 대책"
+FriendlyNamePlural="개인 전투 시뮬레이션: 피해 대책"
+BriefSummary="이 삽입물은 적의 공격을 받을 시 방어구를 단단하게 만들어줍니다. 대미지를 입은 후 2턴 동안 방어구 포인트가 2 증가합니다."
+
+[AbsorptionFieldsPCS X2EquipmentTemplate]
+FriendlyName="개인 전투 시뮬레이션: 영향력 필드"
+FriendlyNamePlural="개인 전투 시뮬레이션: 영향력 필드"
+BriefSummary="방어막을 생성할 수 있는 이 삽입물을 작동시키면 2턴 동안 대미지를 33% 줄일 수 있습니다."
+
+[BodyShieldPCS X2EquipmentTemplate]
+FriendlyName="개인 전투 시뮬레이션: 육체 방어"
+FriendlyNamePlural="개인 전투 시뮬레이션: 육체 방어"
+BriefSummary="적의 공격을 받을 때 적은 -20의 조준과 -50의 치명타율 페널티를 받습니다."
+
+[EmergencyLifeSupportPCS X2EquipmentTemplate]
+FriendlyName="개인 전투 시뮬레이션: 긴급 생명 지원"
+FriendlyNamePlural="개인 전투 시뮬레이션: 긴급 생명 지원"
+BriefSummary="이 삽입물은 임무 내에서 첫 번째로 치명 일격을 받을 때 바로 죽지 않게 해주며, 출혈 상태 지속 시간을 2턴 연장시켜줍니다."
+
+[IronSkinPCS X2EquipmentTemplate]
+FriendlyName="개인 전투 시뮬레이션: 강철 피부"
+FriendlyNamePlural="개인 전투 시뮬레이션: 강철 피부"
+BriefSummary="근접 공격으로 입는 대미지가 3 감소합니다."
+
+[SmartMacrophagesPCS X2EquipmentTemplate]
+FriendlyName="개인 전투 시뮬레이션: 지능형 대식 세포"
+FriendlyNamePlural="개인 전투 시뮬레이션: 지능형 대식 세포"
+BriefSummary="부상 회복 시간을 단축시키고 맹독과 산성에 면역되게 해줍니다."
+
+[CenterMass X2AbilityTemplate]
+LocFriendlyName="무게 중심"
+LocFlyOverText="무게 중심"
+LocLongDescription="총기로 입히는 기본 대미지가 1 증가합니다."
+LocHelpText="총기로 입히는 기본 대미지가 1 증가합니다."
+LocPromotionPopupText="<Bullet/> 주요 무기, 권총 및 단총신 산탄총으로 입히는 기본 대미지가 1 증가합니다."
+
+[Lethal X2AbilityTemplate]
+LocFriendlyName="치명상"
+LocFlyOverText="치명상"
+LocLongDescription="주요 무기로 입히는 기본 대미지가 2 증가합니다."
+LocHelpText="주요 무기로 입히는 기본 대미지가 2 증가합니다."
+LocPromotionPopupText="<Bullet/> 주요 무기로 입히는 기본 대미지가 2 증가합니다."
+
+[HitandRun X2AbilityTemplate]
+LocFriendlyName="히트 앤 런"
+LocFlyOverText="히트 앤 런"
+LocLongDescription="한 턴에 한 번, 측면 또는 노출된 적을 주무기로 일반 사격을 사용해 공격하면 추가 행동 포인트를 얻습니다. "
+LocHelpText="한 턴에 한 번, 측면 또는 노출된 적을 주무기로 일반 사격을 사용해 공격하면 추가 행동 포인트를 얻습니다."
+LocPromotionPopupText="<Bullet/> 런 앤 건과 같은 턴에 사용할 수 없습니다.<br/><Bullet/> 연쇄 저격과 천상의 레퀴엠으로부터 얻는 보너스 행동 포인트가 먼저 적용됩니다."
+
+[HitandSlither X2AbilityTemplate]
+LocFriendlyName="히트 앤 미끄러지기"
+LocFlyoverText="히트 앤 미끄러지기"
+LocLongDescription="매 턴마다 한 번씩, 주요 무기로 측면이 노출되거나 엄폐하지 않은 목표물에 일반 사격을 한 후 이동할 수 있습니다."
+LocHelpText="매 턴마다 한 번씩, 주요 무기로 측면이 노출되거나 엄폐하지 않은 목표물에 일반 사격을 한 후 이동할 수 있습니다."
+LocPromotionPopupText="<Bullet/> 매 턴마다 한 번씩, 주요 무기로 측면이 노출되거나 엄폐하지 않은 목표물에 일반 사격을 한 후 이동할 수 있습니다.<br/><Bullet/> 런 앤 건 발동 후에는 히트 앤 런이 적용되지 않습니다.<br/><Bullet/> 연쇄 저격과 천상의 레퀴엠으로 반환되는 행동력 보너스를 먼저 받습니다."
+
+[CloseCombatSpecialist X2AbilityTemplate]
+LocFriendlyName="근접 전투 전문가"
+LocFlyOverText="근접 전투 전문가"
+LocLongDescription="적의 턴에 반경 4타일 내의 보이는 적이 움직이거나 발포하면 행동력 소모 없이 주요 무기로 대응 사격을 합니다."
+LocHelpText="적의 턴에 반경 4타일 내의 보이는 적이 움직이거나 발포하면 행동력 소모 없이 대응 사격을 합니다."
+LocPromotionPopupText="<Bullet/> 병사가 잠행 상태일 때는 발동되지 않습니다.<br/><Bullet/> 이 능력으로 매 턴마다 각각의 적을 한 번씩만 공격할 수 있습니다.<br/><Bullet/> 2 탄약 포인트를 소모합니다.<br/>""
+
+[CloseCombatSpecialistAttack X2AbilityTemplate]
+LocFriendlyName="근접 전투 전문가"
+LocFlyOverText="근접 전투 전문가"
+LocLongDescription="적의 턴에 반경 4타일 내의 보이는 적이 움직이거나 발포하면 행동력 소모 없이 주요 무기로 대응 사격을 합니다."
+LocHelpText="적의 턴에 반경 4타일 내의 보이는 적이 움직이거나 발포하면 행동력 소모 없이 대응 사격을 합니다."
+LocPromotionPopupText="<Bullet/> 병사가 잠행 상태일 때는 발동되지 않습니다.<br/><Bullet/> 이 능력으로 매 턴마다 각각의 적을 한 번씩 공격할 수 있습니다.<br/><Bullet/> <Ability:SelfAmmoCost/> 탄약 포인트를 소모합니다.<br/>""
+
+[CloseandPersonal X2AbilityTemplate]
+LocFriendlyName="밀착 공격"
+LocFlyOverText="밀착 공격"
+LocLongDescription="인접한 목표물을 공격할 때 30의 치명타율 보너스가 부여됩니다. 목표물과의 거리가 멀어질수록 보너스가 감소합니다."
+LocHelpText="인접한 목표물을 공격할 때 30의 치명타율 보너스가 부여됩니다. 목표물과의 거리가 멀어질수록 보너스가 감소합니다."
+LocPromotionPopupText="<Bullet/> 인접한 목표물을 공격할 때 30의 치명타율 보너스가 부여됩니다.<br/><Bullet/> 목표물과의 거리가 1타일 증가할 때마다 보너스가 5씩 감소하며, 7타일 이상일 때 0이 됩니다.<br/>"
+
+[DamnGoodGround X2AbilityTemplate]
+LocFriendlyName="고지 점령"
+LocFlyOverText="고지 점령"
+LocLongDescription="낮은 고도에 있는 대상과 교전 시 10 조준 보너스와 10 방어 보너스가 부여됩니다."
+LocHelpText="낮은 고도에 있는 대상과 교전 시 10 조준 보너스와 10 방어 보너스가 부여됩니다."
+LocPromotionPopupText="<Bullet/> 낮은 고도에 있는 대상과 교전 시 10 조준 보너스와 10 방어 보너스가 부여됩니다.<br/><Bullet/> 이 유닛이 혼란, 기절, 공포, 화상 등 행동에 제약이 생겼을 경우에는 이 능력이 방어 보너스를 부여하지 않습니다."
+
+[Executioner_LW X2AbilityTemplate]
+LocFriendlyName="사형 집행인"
+LocFlyOverText="사형 집행인"
+LocLongDescription="기본 체력 포인트가 절반 이하로 떨어진 대상을 공격할 때 10의 조준 및 10의 치명타율 보너스가 부여됩니다."
+LocHelpText="기본 체력 포인트가 절반 이하로 떨어진 대상을 공격할 때 10의 조준 및 10의 치명타율 보너스가 부여됩니다."
+LocPromotionPopupText="<Bullet/> 기본 체력 포인트가 절반 이하로 떨어진 대상을 공격할 때 10의 조준 및 10의 치명타율 보너스가 부여됩니다.<br/>"
+
+[Resilience X2AbilityTemplate]
+LocFriendlyName="대응력"
+LocFlyOverText="대응력"
+LocLongDescription="이 병사를 향한 적의 공격은 -<ABILITY:RESILIENCE_BONUS_LW/>의 치명타율 페널티를 받습니다."
+LocHelpText="이 병사를 향한 적의 공격은 -<ABILITY:RESILIENCE_BONUS_LW/>의 치명타율 페널티를 받습니다."
+LocPromotionPopupText="<Bullet/> 이 병사를 향한 적의 공격은 -<ABILITY:RESILIENCE_BONUS_LW/>의 치명타율 페널티를 받습니다.<br/>"
+
+[TacticalSense X2AbilityTemplate]
+LocFriendlyName="전술 감각"
+LocFlyOverText="전술 감각"
+LocLongDescription="시야 내의 적 하나당 3의 방어 보너스를 부여합니다. 이 보너스는 최대 15까지 받을 수 있습니다."
+LocHelpText="시야 내의 적 하나당 3의 방어 보너스를 부여합니다. 이 보너스는 최대 15까지 받을 수 있습니다."
+LocPromotionPopupText="<Bullet/> 시야 내의 적 하나당 3의 방어 보너스를 부여합니다. 이 보너스는 최대 15까지 받을 수 있습니다.<br/><Bullet/> 분대 시야 내의 적 유닛은 보너스를 부여하지 않습니다.<br/><Bullet/> 이 유닛이 혼란, 기절, 공포, 화상 등 행동에 제약이 생겼을 경우에는 이 능력이 방어 보너스를 부여하지 않습니다."
+
+[Aggression X2AbilityTemplate]
+LocFriendlyName="호전성"
+LocFlyOverText="호전성"
+LocLongDescription="시야 내의 적 하나당 5의 치명타율 보너스를 부여합니다. 이 보너스는 최대 30까지 받을 수 있습니다."
+LocHelpText="시야 내의 적 하나당 5의 치명타율 보너스를 부여합니다. 이 보너스는 최대 30까지 받을 수 있습니다."
+LocPromotionPopupText="<Bullet/> 시야 내의 적 하나당 5의 치명타율 보너스를 부여합니다. 이 보너스는 최대 30까지 받을 수 있습니다.<br/><Bullet/> 분대 시야 내의 적 유닛도 보너스를 부여합니다.<br/>"
+
+[BringEmOn X2AbilityTemplate]
+LocFriendlyName="드루와 드루와"
+LocFlyOverText="드루와 드루와"
+LocLongDescription="시야 내의 적 두 기당 치명타 대미지가 1 증가합니다. 최대 8까지 증가합니다."
+LocHelpText="시야 내의 적 두 기당 치명타 대미지가 1 증가합니다. 최대 8까지 증가합니다."
+LocPromotionPopupText="<Bullet/> 시야 내의 적 두 기당 치명타 대미지가 1 증가합니다. 최대 8까지 증가합니다.<br/><Bullet/> 분대 시야 내의 적 유닛도 보너스를 부여합니다.<br/>"
+
+[HardTarget X2AbilityTemplate]
+LocFriendlyName="강인 표적"
+LocFlyOverText="강인 표적"
+LocLongDescription="시야 내의 적 하나당 5의 회피 보너스를 부여합니다. 이 보너스는 최대 30까지 받을 수 있습니다."
+LocHelpText="시야 내의 적 하나당 5의 회피 보너스를 부여합니다. 이 보너스는 최대 30까지 받을 수 있습니다."
+LocPromotionPopupText="<Bullet/> 시야 내의 적 하나당 5의 회피 보너스를 부여합니다. 이 보너스는 최대 30까지 받을 수 있습니다.<br/><Bullet/> 분대 시야 내의 적 유닛은 보너스를 부여하지 않습니다.<br/><Bullet/> 이 유닛이 혼란, 기절, 공포, 화상 등 행동에 제약이 생겼을 경우에는 이 능력이 방어 보너스를 부여하지 않습니다."
+
+[Infighter X2AbilityTemplate]
+LocFriendlyName="인파이터"
+LocFlyOverText="인파이터"
+LocLongDescription="반경 4타일 이내의 적이 공격해오면 <Ability:INFIGHTER_DODGE_BONUS/>의 회피 보너스를 받습니다."
+LocHelpText="반경 4타일 이내의 적이 공격해오면 <Ability:INFIGHTER_DODGE_BONUS/>의 회피 보너스를 받습니다."
+LocPromotionPopupText="<Bullet/> 반경 4타일 이내의 적이 공격해오면 <Ability:INFIGHTER_DODGE_BONUS/>의 회피 보너스를 받습니다.<br/><Bullet/> 근접 공격에도 회피 보너스가 적용됩니다.<br/><Bullet/> 이 유닛이 혼란, 기절, 공포, 화상 등 행동에 제약이 생겼을 경우에는 이 능력이 방어 보너스를 부여하지 않습니다."
+
+[DepthPerception X2AbilityTemplate]
+LocFriendlyName="깊은 지각"
+LocFlyOverText="깊은 지각"
+LocLongDescription="공격 대상보다 높은 고도에 있을 때 5의 조준 보너스를 받고, 적의 회피를 25 감소시킵니다."
+LocHelpText="공격 대상보다 높은 고도에 있을 때 5의 조준 보너스를 받고, 적의 회피를 25 감소시킵니다."
+LocPromotionPopupText="<Bullet/>공격 대상보다 높은 고도에 있을 때 5의 조준 보너스를 받고, 적의 회피를 25 감소시킵니다.<br/>"
+
+[WilltoSurvive X2AbilityTemplate]
+LocFriendlyName="생존 의지"
+LocFlyOverText="생존 의지"
+LocLongDescription="엄폐 중 엄폐물을 통과하여 받는 적 공격의 피해가 1 감소합니다. 또한, 의지 5를 부여합니다."
+LocHelpText="엄폐 중 엄폐물을 통과하여 받는 적 공격의 대미지가 1 감소합니다."
+LocPromotionPopupText="<Bullet/> 엄폐 중 엄폐물을 통과하여 받는 적 공격의 피해가 1 감소합니다.<br/><Bullet/> 폭발물이나 기타 간접적 공격을 받을 시 피해는 폭발 지점을 기준으로 계산됩니다.<br/><Bullet/> 방어구 관통 효과는 해당 보너스를 무효화하지 않습니다.<br/><Bullet/> 또한, 이 유닛은 영구적으로 의지 5를 얻습니다.<br/><Bullet/> 이 유닛이 혼란, 기절, 공포, 화상 등 행동에 제약이 생겼을 경우에는 이 능력이 방어 보너스를 부여하지 않습니다."
+
+[LightEmUp X2AbilityTemplate]
+LocFriendlyName="점화 완료"
+LocFlyOverText="점화 완료"
+LocLongDescription="첫 번째 행동으로 주요 무기를 사용하여 일반 사격을 하면 턴이 종료되지 않습니다."
+LocHelpText="첫 번째 행동으로 주요 무기를 사용하여 일반 사격을 하면 턴이 종료되지 않습니다."
+LocPromotionPopupText="<Bullet/> 첫 번째 행동으로 주요 무기를 사용하여 일반 사격을 하면 턴이 종료되지 않습니다.<br/>"
+
+[CloseEncounters X2AbilityTemplate]
+LocFriendlyName="조우전"
+LocFlyOverText="조우전"
+LocLongDescription="매 턴마다 한 번씩, 반경 <Ability:CLOSE_ENCOUNTERS_RANGE/>타일 이내의 적에게 주요 무기로 일반 사격을 하면 보너스 행동력 1개를 받습니다."
+LocHelpText="매 턴마다 한 번씩, 반경 <Ability:CLOSE_ENCOUNTERS_RANGE/>타일 이내의 적에게 주요 무기로 일반 사격을 하면 보너스 행동력 1개를 받습니다."
+LocPromotionPopupText="<Bullet/> 매 턴마다 한 번씩, 반경 <Ability:CLOSE_ENCOUNTERS_RANGE/>타일 이내의 적에게 주요 무기로 일반 사격을 하면 보너스 행동력 1개를 받습니다.<br/><Bullet/> 런 앤 건 발동 후에는 조우전이 적용되지 않습니다.<br/><Bullet/> 이 능력의 사용 범위는 빨간색 원형으로 표시됩니다.<Bullet/> 런 앤 건과 같은 턴에 사용할 수 없습니다.<br/>"
+
+[LoneWolf X2AbilityTemplate]
+LocFriendlyName="외로운 늑대"
+LocFlyOverText="외로운 늑대"
+LocLongDescription="아군과의 거리가 7타일 이상일 때 조준이 10, 방어력이 10 증가합니다."
+LocHelpText="아군과의 거리가 7타일 이상일 때 조준이 10, 방어력이 10 증가합니다."
+LocPromotionPopupText="<Bullet/> 아군과의 거리가 7타일 이상일 때 조준이 10, 방어력이 10 증가합니다.<br/><Bullet/> 이 유닛이 혼란, 기절, 공포, 화상 등 행동에 제약이 생겼을 경우에는 이 능력이 방어 보너스를 부여하지 않습니다."
+
+[LowProfile X2AbilityTemplate]
+LocFriendlyName="저자세"
+LocFlyOverText="저자세"
+LocLongDescription="부분 엄폐 보너스를 완전 엄폐 보너스로 받습니다."
+LocHelpText="부분 엄폐 보너스를 완전 엄폐 보너스로 받습니다."
+LocPromotionPopupText="<Bullet/> 부분 엄폐 보너스를 완전 엄폐 보너스로 받습니다.<br/>"
+
+[DoubleTap X2AbilityTemplate]
+LocFriendlyName="이연사"
+LocFlyOverText="이연사"
+LocLongDescription="특수 사격: 주요 무기로 동일한 목표물에 두 번 사격합니다. 2개의 행동력이 필요합니다. 두 번째 사격은 -10의 조준 페널티를 받습니다."
+LocHelpText="동일한 목표물에 두 번 사격합니다. 두번째 사격은 조준 페널티를 받습니다."
+LocPromotionPopupText="<Bullet/> 이연사를 사용하면 동일한 목표물에 두 번 사격할 수 있습니다. 두 번째 사격은 조준 페널티 -10 정도를 받습니다. 행동력 2개가 소모되고 턴이 종료됩니다.<br/><Bullet/> <Ability:SelfAmmoCost/> 탄약이 필요하며, 쿨타임은 1턴입니다.<br/>"
+
+[TraverseFire X2AbilityTemplate]
+LocFriendlyName="교차 사격"
+LocFlyOverText="교차 사격"
+LocLongDescription="첫 번째 행동으로 주요 무기 일반 사격을 하면, 추가로 이동이 필요하지 않는 다른 행동을 할 수 있습니다."
+LocHelpText="첫 번째 행동으로 주요 무기 일반 사격을 하면, 추가로 이동이 필요하지 않는 다른 행동을 할 수 있습니다."
+LocPromotionPopupText="<Bullet/> 첫 번째 행동으로 주요 무기 일반 사격을 하면, 추가로 이동이 필요하지 않는 다른 행동을 할 수 있습니다.<br/>"
+
+[WalkFire X2AbilityTemplate]
+LocFriendlyName="보행 사격"
+LocFlyOverText="보행 사격"
+LocLongDescription="정확도가 높은 사격을 합니다. 조준이 30 증가하지만 대미지가 절반 줄어들고 치명타율이 30 감소합니다. <Ability:SelfAmmoCost/> 탄약 포인트를 소모합니다."
+LocHelpText="특수 사격: 조준이 30 증가하고, 치명타율이 30, 대미지가 50% 감소합니다. <Ability:SelfAmmoCost/> 탄약 포인트를 소모합니다."
+LocPromotionPopupText="<Bullet/> 자동 무기를 연속으로 발사하면서 조준을 조절하는 특수 사격입니다. 조준이 30 증가하지만 치명타율이 30 감소하고 절반의 대미지만 입힙니다.<br/><Bullet/> <Ability:SelfAmmoCost/> 탄약 포인트를 소모합니다.<br/><Bullet/> 턴당 한 번씩 사용 가능합니다.<br/><Bullet/> 연속으로 발사할 수 있는 무기가 필요합니다. 주요 무기로 산탄총이나 저격총을 장비하고 있을 때는 사용할 수 없습니다."
+
+[PrecisionShot X2AbilityTemplate]
+LocFriendlyName="정밀 사격"
+LocFlyOverText="정밀 사격"
+LocLongDescription="30 치명타율 보너스를 받고 치명타 대미지가 33% 늘어나는 특수 사격을 합니다. 3턴 동안 쿨타임을 가집니다."
+LocHelpText="30 치명타율 보너스를 받고 치명타 대미지가 33% 늘어나는 특수 사격을 합니다. 3턴 동안 쿨타임을 가집니다."
+LocPromotionPopupText="<Bullet/> 30 치명타율 보너스를 받고 치명타 대미지가 33% 늘어나는 특수 사격을 합니다. 3턴 동안 쿨타임을 가집니다.<br/>"
+
+[CyclicFire X2AbilityTemplate]
+LocFriendlyName="순환 사격"
+LocFlyOverText="순환 사격"
+LocLongDescription="특수 사격: 한 번의 공격으로 한 목표물에 세 번 사격합니다. 2개의 행동력이 필요하며 모든 사격은 조준 페널티를 받습니다. 4턴 동안 쿨타임을 가집니다."
+LocHelpText="특수 사격: 한 번의 공격으로 한 목표물에 세 번 사격합니다. 2개의 행동력이 필요하며 모든 사격은 조준 페널티를 받습니다. 4턴 동안 쿨타임을 가집니다."
+LocPromotionPopupText="<Bullet/> 특수 사격: 한 번의 공격으로 한 목표물에 세 번 사격합니다. 행동력 2개가 필요하며 모든 사격은 15의 조준 페널티를 받습니다.<br/><Bullet/> <Ability:SelfAmmoCost/> 탄약 포인트가 필요합니다.<br/><Bullet/> 연속으로 발사할 수 있는 무기가 필요합니다. 주요 무기로 산탄총이나 저격총을 장착하고 있을 때는 사용할 수 없습니다."
+
+[StreetSweeper X2AbilityTemplate]
+LocFriendlyName="트렌치건"
+LocFlyOverText="트렌치건"
+LocLongDescription="주요 무기인 산탄총으로만 사용할 수 있는 특수 사격: 근처의 목표물에 원뿔형 범위의 단거리 공격을 가합니다. 3턴 동안 쿨타임을 가집니다."
+LocHelpText="주요 무기인 산탄총으로만 사용할 수 있는 특수 사격: 근처의 목표물에 원뿔형 범위의 단거리 공격을 가합니다. 3턴 동안 쿨타임을 가집니다."
+LocPromotionPopupText="<Bullet/> 주요 무기인 산탄총으로만 사용할 수 있는 특수 사격: 근처의 목표물에 원뿔형 범위의 단거리 공격을 가합니다.<br/><Bullet/> 3턴 동안 쿨타임을 가지며, <Ability:SelfAmmoCost/> 탄약 포인트를 사용합니다.<br/><Bullet/> 다른 주요 무기로는 이 능력을 사용할 수 없습니다.<br/><Bullet/> 이 사격은 엄폐물을 관통할 수 없기에 목표물의 측면에서 사용하는 것이 가장 효과적입니다.<br/><Bullet/> 효과 범위 내의 아군에게도 대미지를 입힙니다.<br/>"
+
+[SlugShot X2AbilityTemplate]
+LocFriendlyName="슬러그샷"
+LocFlyOverText="슬러그샷"
+LocLongDescription="주요 무기인 산탄총으로만 사용할 수 있는 특수 사격: 2 방어구 포인트를 관통하고 사정거리 페널티를 받지 않는 사격을 합니다. <Ability:SelfAmmoCost/> 탄약 포인트를 소모하며 3턴 동안 쿨타임을 가집니다."
+LocHelpText="방어구를 관통하고 사정거리 페널티를 받지 않는 산탄총 특수 사격입니다."
+LocPromotionPopupText="<Bullet/> 주요 무기인 산탄총으로만 사용할 수 있는 특수 사격: 사정거리 페널티를 받지 않는 사격을 합니다.<br/><Bullet/> 이 사격은 2 방어구 포인트를 관통합니다.<br/><Bullet/> 3턴 동안 쿨타임을 가집니다.<br/><Bullet/> <Ability:SelfAmmoCost/> 탄약 포인트를 소모합니다.<br/>"
+
+[SlugShotRangeEffect X2AbilityTemplate]
+LocFriendlyName="슬러그샷"
+LocFlyOverText="슬러그샷"
+LocLongDescription="주요 무기인 산탄총으로만 사용할 수 있는 특수 사격: 사정거리 페널티를 받지 않는 사격을 합니다. <Ability:SelfAmmoCost/> 탄약 포인트를 소모하며 5턴 동안 쿨타임을 가집니다."
+LocHelpText="주요 무기인 산탄총으로만 사용할 수 있는 특수 사격: 사정거리 페널티를 받지 않는 사격을 합니다. <Ability:SelfAmmoCost/> 탄약 포인트를 소모하며 5턴 동안 쿨타임을 가집니다."
+LocPromotionPopupText="<Bullet/> 주요 무기인 산탄총으로만 사용할 수 있는 특수 사격: 사정거리 페널티를 받지 않는 사격을 합니다.<br/><Bullet/> 5턴 동안 쿨타임을 가집니다.<br/><Bullet/> <Ability:SelfAmmoCost/> 탄약 포인트를 소모합니다.<br/>"
+
+[Commissar X2AbilityTemplate]
+LocFriendlyName="인민의 심판"
+LocFlyOverText="인민의 심판"
+LocLongDescription="정신 조종을 당하는 아군을 대상으로 한 권총 사격은 명중률이 +50 증가하고, 회피할 수 없으며, 명중 시 대상이 자동으로 처치됩니다."
+LocHelpText="정신 조종을 당하는 아군을 대상으로 한 권총 사격은 명중률이 +50 증가하고, 회피할 수 없으며, 명중 시 대상이 자동으로 처치됩니다."
+LocPromotionPopupText="<Bullet/> 정신 조종을 당하는 아군을 대상으로 한 권총 사격은 명중률이 +50 증가하고, 회피할 수 없으며, 명중 시 대상이 자동으로 처치됩니다.<br/>"
+
+[ClutchShot X2AbilityTemplate]
+LocFriendlyName="클러치 샷"
+LocFlyOverText="클러치 샷"
+LocLongDescription="반드시 명중하는 권총 사격을 합니다. 임무당 한 번만 사용할 수 있습니다."
+LocHelpText="반드시 명중하는 권총 사격을 합니다. 임무당 한 번만 사용할 수 있습니다."
+LocPromotionPopupText="<Bullet/> 임무당 한 번씩 반드시 명중하는 권총 사격을 할 수 있습니다.<br/>"
+
+[Gunslinger X2AbilityTemplate]
+LocFriendlyName="총잡이"
+LocFlyOverText="총잡이"
+LocLongDescription="12타일 내의 넓은 원뿔형 범위 안에 있는 적이 움직이거나 공격하면 권총으로 대응 사격을 합니다."
+LocHelpText="원뿔형 범위 안의 적을 향한 강화된 권총 경계입니다."
+LocPromotionPopupText="<Bullet/> 범위는 12타일입니다.<br/><Bullet/> 3턴 동안 쿨타임을 가집니다.<br/>"
+
+[HyperReactivePupils X2AbilityTemplate]
+LocFriendlyName="동공 과민 반응"
+LocFlyOverText="동공 과민 반응"
+LocLongDescription="사격이 빗나간 후의 다음 주요 무기 공격에 10 조준 보너스를 부여합니다."
+LocHelpText="사격이 빗나간 후의 다음 주요 무기 공격에 10 조준 보너스를 부여합니다."
+LocPromotionPopupText="<Bullet/> 보너스는 목표물을 명중하거나 임무가 종료될 때까지 적용됩니다.<br/><Bullet/> 광역 사격은 보너스 효과를 발동하지 않습니다.<br/>"
+
+[SteadyWeapon X2AbilityTemplate]
+LocFriendlyName="안정한 무기"
+LocFlyOverText="안정한 무기"
+LocLongDescription="주요 무기로 다음번에 사격할 때 조준 보너스 20을 얻습니다. 여러 번 사용하면 보너스가 중첩됩니다. 행동력을 사용하거나 부상당하면 보너스가 사라집니다."
+LocHelpText="주요 무기로 다음번에 사격할 때 조준 보너스 20을 얻습니다. 여러 번 사용하면 보너스가 중첩됩니다. 행동력을 사용하거나 부상당하면 보너스가 사라집니다."
+LocPromotionPopupText="<Bullet/> 주요 무기로 다음번에 사격할 때 조준 보너스 20을 얻습니다. 행동력을 사용하거나 부상당하면 보너스가 사라집니다.<br/><Bullet/> 제압된 상태에서는 무기 안정을 사용할 수 없습니다.<br/><Bullet/> 아무 행동도 하지 않으면 효과는 여러 턴 동안 계속 지속됩니다.<br/><Bullet/> 무기 안정을 여러 턴 동안 연속으로 사용하면 보너스가 중첩됩니다."
+
+[LockedOn X2AbilityTemplate]
+LocFriendlyName="자동 추적"
+LocFlyOverText="자동 추적"
+LocLongDescription="동일한 적에게 연속으로 사격할 때 10 조준 보너스와 10 치명타율 보너스를 받습니다."
+LocHelpText="동일한 적에게 연속으로 사격할 때 조준이 10 증가합니다."
+LocPromotionPopupText="<Bullet/> 주요 무기로 동일한 목표물에 반복해서 사격할 때 10 조준 보너스와 10 치명타율 보너스를 얻습니다. 누적되지 않으며, 적 유닛에게만 적용됩니다.<br/><Bullet/> 광역 사격에는 보너스가 부여되지 않습니다."
+
+[Sentinel_LW X2AbilityTemplate]
+LocFriendlyName="감시병"
+LocFlyOverText="감시병"
+LocLongDescription="경계 시, 2번의 대응 사격을 할 수 있습니다."
+LocHelpText="경계 시, 2번의 대응 사격을 할 수 있습니다."
+LocPromotionPopupText="<Bullet/> 외계인의 움직임에 따라, 단일 또는 다수의 목표물에 대응 사격을 할 수 있습니다.<br/>"
+
+[RapidReaction X2AbilityTemplate]
+LocFriendlyName="신속 대응"
+LocFlyOverText="신속 대응"
+LocLongDescription="경계 시, 경계 사격이 적중할 때마다 추가 대응 사격을 가합니다. 최대 3회까지 사격 가능합니다."
+LocHelpText="경계 시, 경계 사격이 적중할 때마다 추가 사격을 가합니다. 최대 3회까지 사격 가능합니다."
+LocPromotionPopupText="<Bullet/> 경계 시, 경계 사격이 적중할 때마다 추가 대응 사격을 가합니다. 최대 3회까지 사격 가능합니다.<br/>"
+
+[LightningReflexes_LW X2AbilityTemplate]
+LocFriendlyName="예리한 반사 신경"
+LocFlyOverText="예리한 반사 신경"
+LocLongDescription="이 병사를 향한 대응 사격 명중률이 대폭 감소합니다. 추가로 대응 사격을 받을 때마다 명중률 감소치는 작아집니다."
+LocHelpText="이 병사를 향한 대응 사격의 명중률이 감소합니다."
+LocPromotionPopupText="<Bullet/> 이 병사를 향한 대응 사격 명중률이 대폭 감소합니다.<br/><Bullet/> 한 턴 내에서 처음 가해진 대응 사격의 명중률은 100 감소합니다. 두 번째 대응 사격의 명중률은 80 감소하며, 세 번째는 60, 네 번째는 20 감소합니다. 이후 대응 사격의 명중률은 감소하지 않습니다.<br/><Bullet/> 이 유닛이 혼란, 기절, 공포, 화상 등 행동에 제약이 생겼을 경우에는 이 능력이 방어 보너스를 부여하지 않습니다."
+
+[Cutthroat X2AbilityTemplate]
+LocFriendlyName="극악무도"
+LocFlyOverText="극악무도"
+LocLongDescription="유기체 적 유닛에 가하는 근접 공격은 그들의 방어구를 무시하며, 치명타율이 15, 치명타 대미지가 2 증가합니다."
+LocHelpText="유기체 적 유닛에 가하는 근접 공격은 그들의 방어구를 무시하며, 치명타율이 15, 치명타 대미지가 2 증가합니다."
+LocPromotionPopupText="<Bullet/> 유기체 적 유닛에 가하는 근접 공격은 그들의 방어구를 무시하며, 치명타율이 15, 치명타 대미지가 2 증가합니다."
+
+[KillerInstinct X2AbilityTemplate]
+LocFriendlyName="킬러의 본능"
+LocFlyOverText="킬러의 본능"
+LocLongDescription="런 앤 건을 발동하면 남은 턴 동안 치명타 대미지가 50% 증가합니다."
+LocHelpText="런 앤 건을 발동하면 남은 턴 동안 치명타 대미지가 50% 증가합니다."
+LocPromotionPopupText="<Bullet/> 런 앤 건을 발동하면 남은 턴 동안 치명타 대미지가 50% 증가합니다.<br/>"
+
+[ExtraConditioning X2AbilityTemplate]
+LocFriendlyName="추가 조절"
+LocFlyOverText="추가 조절"
+LocLongDescription="런 앤 건의 쿨타임이 1턴 감소합니다."
+LocHelpText="런 앤 건의 쿨타임이 1턴 감소합니다."
+LocPromotionPopupText="<Bullet/> 런 앤 건의 쿨타임이 1턴 감소합니다.<br/>"
+
+[RunAndGun_LW X2AbilityTemplate]
+LocFriendlyName="런 앤 건"
+LocFlyOverText="런 앤 건"
+LocLongDescription="돌진 후에 행동을 취할 수 있습니다."
+LocHelpText="돌진 후에 행동을 취할 수 있습니다."
+LocPromotionPopupText="<Bullet/> 런 앤 건을 사용하면, 병사가 대상에게 빠르게 다가가거나 측면 위치를 쉽게 차지할 수 있습니다.<br/><Bullet/> 런 앤 건은 3턴 동안 쿨타임을 가집니다.<br/>"
+
+[Suppression X2AbilityTemplate]
+LocFriendlyName="제압"
+LocFlyOverText="제압"
+LocLongDescription="적에게 총알 세례를 퍼부어 움직이지 못하게 합니다. 목표물이 이동하면 대응 사격을 가하고, 많은 능력의 사용을 제한 시키며, <Ability:SUPPRESSIONPENALTY/>의 조준 페널티를 줍니다."
+LocHelpText="대상에게 조준 페널티를 주고, 대상이 이동하면 공격합니다."
+LocPromotionPopupText="<Bullet/> 제압은 <Ability:SelfAmmoCost/> 탄약 포인트를 사용하지만, 쿨타임은 없습니다.<br/><Bullet/> 제압을 시전 중인 유닛이 피해를 입으면 제압이 취소됩니다.<br/><Bullet/> 다수의 유닛이 하나의 대상에 제압을 사용할 경우, 조준 페널티가 중첩됩니다.<br/><Bullet/> 저격총이나 산탄총류의 무기로는 제압을 사용할 수 없습니다.<br/><Bullet/> 제압은 로켓과 수류탄을 포함한 목표물의 많은 능력에 제한 됩니다."
+
+[AreaSuppression X2AbilityTemplate]
+LocFriendlyName="광역 제압"
+LocFlyOverText="광역 제압"
+LocLongDescription="반경 4타일 내 다수의 적에게 총알 세례를 퍼부어 움직이지 못하게 합니다. 이동하는 모든 적에게 대응 사격을 하며, 제압이 끝날 때까지 모든 목표물에 <Ability:SUPPRESSIONPENALTY/>의 조준 페널티를 줍니다. 잠행 중에는 사용할 수 없습니다."
+LocHelpText="효과 범위 내 다수의 대상을 제압합니다."
+LocPromotionPopupText="병사가 잠행 상태일 때에는 광역 제압을 사용할 수 없습니다.<br/><Bullet/> 제압하는 유닛의 탄약이 소진될 때까지 이동하려는 모든 유닛은 대응 사격을 받습니다.<br/><Bullet/> 산탄총이나 저격총으로는 사용할 수 없습니다.<br/><Bullet/> 광역 제압을 사용하려면 <Ability:SelfAmmoCost/> 탄약 포인트가 필요하며, 대응 사격을 할 때마다 1 탄약 포인트를 소모합니다. 쿨타임은 없습니다.<br/><Bullet/> 제압하는 유닛이 대미지를 입으면 광역 제압은 취소됩니다.<br/><Bullet/> 다수 유닛이 목표물을 제압하면, 조준 페널티가 중첩됩니다.<br/><Bullet/> 제압은 로켓 및 수류탄 사용을 포함한 목표물의 많은 능력을 제한합니다."
+
+[SuppressionShot_LW X2AbilityTemplate]
+LocFriendlyName="제압"
+LocFlyOverText="제압"
+
+[DangerZone X2AbilityTemplate]
+LocFriendlyName="위험 지대"
+LocFlyOverText="위험 지대"
+LocLongDescription="광역 제압은 반경 5타일 내의 적을 제압합니다."
+LocHelpText="광역 제압의 범위가 늘어납니다."
+LocPromotionPopupText="<Bullet/> 광역 제압은 반경 5타일 내의 적을 제압합니다.<br/>"
+
+[Lockdown X2AbilityTemplate]
+LocFriendlyName="제재"
+LocFlyOverText="제재"
+LocLongDescription="제압된 적이 이동하면 대응 사격 시 15의 조준 보너스를 받습니다."
+LocHelpText="제압된 적이 이동하면 대응 사격 시 조준 보너스와 대미지 보너스를 받습니다."
+LocPromotionPopupText="<Bullet/> 제압된 적이 이동하면 대응 사격 시 조준 보너스 15를 얻습니다.<br/><Bullet/> 이 보너스는 다른 대응 사격 보너스와 중첩됩니다."
+
+[Lockdown X2AbilityTemplate]
+LocFriendlyName="제재"
+LocFlyOverText="제재"
+LocLongDescription="제압된 적이 이동하면 대응 사격 시 15의 조준 보너스를 받습니다."
+LocHelpText="제압된 적이 이동하면 대응 사격 시 조준 보너스와 대미지 보너스를 받습니다."
+LocPromotionPopupText="<Bullet/> 제압된 적이 이동하면 대응 사격 시 15의 조준 보너스를 받습니다.<br/><Bullet/> 이 보너스는 다른 대응 사격 보너스와 함께 적용될 수 있습니다."
+
+[Mayhem X2AbilityTemplate]
+LocFriendlyName="대혼란"
+LocFlyOverText="대혼란"
+LocLongDescription="제압된 적이 이동하면 대응 사격 시 25%의 보너스 대미지를 입힐 수 있습니다."
+LocHelpText="제압된 적이 이동하면 대응 사격 시 대미지 보너스를 받습니다."
+LocPromotionPopupText="<Bullet/> 제압된 적이 이동하면 대응 사격 시 25%의 보너스 대미지를 입힐 수 있습니다.<br/>"
+
+[MayhemBonuses X2AbilityTemplate]
+LocFriendlyName="대혼란"
+LocFlyOverText="대혼란"
+LocLongDescription="제압된 적이 이동하면 대응 사격 시 20%의 보너스 대미지를 입힐 수 있습니다."
+LocHelpText="제압된 적이 이동하면 대응 사격 시 대미지 보너스를 받습니다."
+LocPromotionPopupText="<Bullet/> 제압된 적이 이동하면 대응 사격 시 20%의 보너스 대미지를 입힐 수 있습니다.<br/>"
+
+[Interference X2AbilityTemplate]
+LocFriendlyName="간섭"
+LocFlyOverText="간섭"
+LocLongDescription="그렘린이 목표 유닛의 경계를 해제합니다. 임무당 3번 사용 가능합니다."
+LocHelpText="목표 유닛의 경계를 해제시킵니다."
+LocPromotionPopupText="<Bullet/> 목표 유닛의 경계를 해제합니다.<br/><Bullet/> 1개의 행동력을 소모합니다.<br/><Bullet/> 임무당 3번 사용 가능합니다.<br/>"
+
+[DamageControl X2AbilityTemplate]
+LocFriendlyName="대미지 컨트롤"
+LocFlyOverText="대미지 컨트롤"
+LocLongDescription="대미지를 입은 후, 다음 턴이 종료될 때까지 방어구 포인트가 2 증가합니다."
+LocHelpText="대미지를 입은 후, 다음 턴이 종료될 때까지 방어구 포인트가 2 증가합니다."
+LocPromotionPopupText="<Bullet/> 충돌 시 방어구가 일시적으로 단단해집니다. 피해를 입은 후, 다음 턴이 종료될 때까지 방어력이 2 증가합니다.<br/><Bullet/> 연속으로 공격을 받으면 타이머가 연장됩니다.<br/>"
+
+[DamageControlPassive X2AbilityTemplate]
+LocFriendlyName="대미지 컨트롤"
+LocFlyOverText="대미지 컨트롤"
+LocLongDescription="대미지를 입은 후, 다음 턴이 종료될 때까지 방어구 포인트가 2 증가합니다."
+LocHelpText="대미지를 입은 후, 다음 턴이 종료될 때까지 방어구 포인트가 2 증가합니다."
+LocPromotionPopupText="<Bullet/> 대미지를 입은 후, 다음 턴이 종료될 때까지 방어구 포인트가 2 증가합니다.<br/><Bullet/> 이후의 턴에 공격을 받으면 지속 시간이 연장됩니다.<br/>"
+
+[Evasive X2AbilityTemplate]
+LocFriendlyName="위기 모면"
+LocFlyOverText="위기 모면: +100 회피"
+LocLongDescription="임무가 시작될 때 100의 회피 보너스를 받습니다. 이 보너스는 처음으로 대미지를 입은 후 제거됩니다."
+LocHelpText="대미지를 입을 때까지 회피가 100 증가합니다."
+LocPromotionPopupText="<Bullet/> 이 능력은 첫 번째로 입는 대미지를 찰과상이 되게 합니다. 하지만 회피 불가능한 공격을 받은 경우에는 어떤 보너스도 얻지 못한 채 효과가 제거됩니다."
+
+[RemoveEvasive X2AbilityTemplate]
+LocFriendlyName="위기 모면 보너스 제거됨"
+LocFlyOverText="위기 모면 보너스 제거됨"
+LocLongDescription="임무가 시작될 때 100의 회피 보너스를 받습니다. 이 보너스는 처음으로 대미지를 입은 후 제거됩니다."
+LocHelpText="대미지를 입을 때까지 회피가 100 증가합니다."
+LocPromotionPopupText="<Bullet/> 이 능력은 첫 번째로 입는 대미지를 찰과상이 되게 합니다. 하지만 회피 불가능한 공격을 받은 경우에는 어떤 보너스도 얻지 못한 채 효과가 제거됩니다."
+
+[SnapShot X2AbilityTemplate]
+LocFriendlyName="스냅 샷"
+LocFlyOverText="스냅 샷"
+LocLongDescription="이동 후 저격총으로 일반 사격을 가할 수 있지만, 분대 시야 5타일 밖의 적에게 가하는 모든 사격에 심한 사정거리 페널티가 적용됩니다."
+LocHelpText="대상을 향해 사격합니다."
+LocPromotionPopupText="<Bullet/> 병사는 이동 후 저격총으로 일반 사격을 가할 수 있지만, 22타일 밖의 적에게 가하는 모든 사격에 심한 사정거리 패널티가 적용됩니다.<br/><Bullet/> 병사는 이동 후 저격총으로 경계를 할 수 없습니다.<br/>
+
+[SnapShotOverwatch X2AbilityTemplate]
+LocFriendlyName="경계"
+LocHelpText="조준 페널티를 받고, 시야 내에서 움직이는 첫 번째 적을 사격합니다. 병사는 명중률이 1% 미만일 경우 경계 사격을 하지 않습니다."
+LocLongDescriptionWhenConcealed="발각된 경우에만, 시야 내에서 움직이는 첫 번째 적을 사격합니다."
+LocFlyOverText="경계"
+LocFriendlyNameWhenConcealed="경계 (잠행 중)"
+
+[SnapShotAimModifier X2AbilityTemplate]
+LocFriendlyName="스냅 샷"
+LocFlyOverText="스냅 샷"
+LocLongDescription="이동 후 저격총으로 일반 사격을 가하거나 일반 경계를 할 수 있지만, 분대 시야 5타일 밖의 적에게 가하는 모든 사격에 심한 사정거리 페널티가 적용됩니다."
+LocHelpText="이동 후 저격총으로 일반 사격을 가하거나 경계를 할 수 있습니다."
+
+[Trojan X2AbilityTemplate]
+LocFriendlyName="트로이"
+LocFlyOverText="트로이"
+LocLongDescription="해킹된 적 유닛은 대미지를 입고 해킹 효과가 종료되는 턴에 행동력을 잃습니다."
+LocHelpText="해킹된 유닛은 대미지를 입고 해킹 효과가 종료되면 행동력을 잃습니다."
+LocPromotionPopupText="<Bullet/> 혼란 프로토콜로 해킹된 적 유닛은 0부터 8의 대미지를 입고 해킹 효과가 종료되는 턴에 행동력을 잃습니다.<br/><Bullet/> 혼란 프로토콜에 의해 셧다운되거나 조종되는 유닛에게 적용됩니다.<br/><Bullet/> 대상의 해킹 방어력 대비 해킹 능력을 기준으로 피해량이 결정됩니다.<br/>"
+
+[Covert X2AbilityTemplate]
+LocFriendlyName="기도비닉"
+LocFlyOverText="기도비닉"
+LocLongDescription="이 병사를 향한 적들의 탐지 범위가 25% 감소합니다."
+LocHelpText="이 병사를 향한 적들의 탐지 범위가 줄어듭니다."
+LocPromotionPopupText="<Bullet/> 이 병사를 향한 적들의 탐지 범위가 25% 감소합니다. 이 병사를 발견하지 못하는 주변의 적들은 빨간색 타일로 표시됩니다.<br/><Bullet/> 또한, 이 병사가 잠입 시간에 미치는 영향을 줄여 줍니다.<br/><Bullet/> 어드밴트 보안 타워에는 적용되지 않습니다."
+
+[Ghostwalker X2AbilityTemplate]
+LocFriendlyName="고스트워커"
+LocFlyOverText="고스트워커"
+LocLongDescription="이 능력을 발동하면 이번 턴과 다음 턴 동안 적의 탐지 범위가 25%만큼 줄어듭니다."
+LocHelpText="2턴 동안 적의 탐지 범위가 25%만큼 줄어듭니다."
+LocPromotionPopupText="<Bullet/> 이 능력을 발동하면 2턴(이번 턴 포함) 동안 적의 탐지 범위가 25% 줄어듭니다. 아군 병사를 발견하지 못하는 주변의 적들은 빨간색 타일로 표시됩니다.<br/><Bullet/> <Ability:SelfCooldown/>턴의 쿨타임을 가집니다.<br/><Bullet/> 행동력을 소모하지 않습니다.<br/><Bullet/> 또한, 이 병사가 잠입 시간에 미치는 영향을 줄여 줍니다.<br/><Bullet/> 어드밴트 보안 타워에는 적용되지 않습니다."
+
+[Kubikuri X2AbilityTemplate]
+LocFriendlyName="참수"
+LocFlyOverText="참수"
+LocLongDescription="이미 대미지를 입은 대부분의 적을 향한 특수 사격: 적에게 치명타를 입히면 해당 적은 바로 처치됩니다. 하지만 치명타가 아닌 일반 적중의 경우 절반의 대미지만 입힙니다. 2개의 행동력이 필요하며 4턴 동안 쿨타임을 가집니다."
+LocHelpText="체력이 100% 미만인 적에게 치명타를 입히면 적을 즉시 처치합니다.  치명타가 아닌 일반 적중의 경우 절반의 대미지만 입힙니다."
+LocPromotionPopupText="<Bullet/> 체력이 100% 미만인 적을 향한 특수 사격: 적에게 치명타를 입히면 해당 적은 바로 처치됩니다. 하지만 치명타가 아닌 일반 적중의 경우 절반의 대미지만 입힙니다.<br/><Bullet/> 2개의 행동력이 필요합니다.<br/><Bullet/> 4턴 동안 쿨타임을 가집니다.<br/><Bullet/> 외계인 지배자 상대 시, 적을 바로 처치하는 대신 일반 치명타 대미지의 두 배에 해당하는 대미지를 줍니다."
+
+[CombatAwareness X2AbilityTemplate]
+LocFriendlyName="전투 의식"
+LocFlyOverText="전투 의식"
+LocLongDescription="경계 시 15의 방어력과 1의 방어구 보너스를 받습니다."
+LocHelpText="경계 시 15의 방어력과 1의 방어구 보너스를 받습니다."
+LocPromotionPopupText="<Bullet/> 경계 시 15의 방어력과 1의 방어구 보너스를 받습니다.<br/><Bullet/> 이 유닛이 혼란, 기절, 공포, 화상 등 행동에 제약이 생겼을 경우에는 이 능력이 방어 보너스를 부여하지 않습니다."
+
+[FieldSurgeon X2AbilityTemplate]
+LocFriendlyName="전장 군의"
+LocFlyOverText="전장 군의"
+LocLongDescription="대부분 병사의 부상 회복 시간이 감소합니다."
+LocHelpText="대부분 병사의 부상 회복 시간이 감소합니다."
+LocPromotionPopupText="<Bullet/> 전장 군의는 전투에서 부상을 입은 후 병사가 회복해야 하는 체력 포인트를 1만큼 줄여줍니다.<br/><Bullet/> 한 임무에 전장 군의 능력을 가진 병사가 여러 명 있는 경우 부상 회복 시간이 더 많이 단축됩니다.<br/><Bullet/> 이 효과는 해당 능력을 가진 병사에게도 적용됩니다.<br/><Bullet/> 치명적인 부상을 입은 후 출혈 상태로부터 안정화된 병사에게는 적용되지 않습니다."
+
+[Flashbanger X2AbilityTemplate]
+LocFriendlyName="섬광탄 애호가"
+LocFlyOverText="섬광탄 애호가"
+LocLongDescription="무료 섬광 아이템 1개가 인벤토리에 추가됩니다."
+LocHelpText="무료 섬광 아이템 1개가 인벤토리에 추가됩니다."
+LocPromotionPopupText="<Bullet/> 무료 섬광 아이템 1개가 인벤토리에 추가됩니다.<br/>"
+
+[SmokeGrenade X2AbilityTemplate]
+LocFriendlyName="연막탄 애호가"
+LocFlyOverText="연막탄 애호가"
+LocLongDescription="무료 연막 수류탄 1개가 인벤토리에 추가됩니다."
+LocHelpText="무료 연막 수류탄 1개가 인벤토리에 추가됩니다."
+LocPromotionPopupText="<Bullet/> 무료 연막 수류탄 1개가 인벤토리에 추가됩니다.<br/>"
+
+[Savior X2AbilityTemplate]
+LocFriendlyName="구세주"
+LocFlyOverText="구세주"
+LocLongDescription="치료 능력은 <Ability:SAVIOR_BONUS_HEAL/> 체력 포인트를 추가로 치료합니다."
+LocHelpText="치료 능력은 <Ability:SAVIOR_BONUS_HEAL/> 체력 포인트를 추가로 치료합니다."
+LocPromotionPopupText="<Bullet/> 이 효과는 그렘린 치료, 메디킷, 레스터레이션 능력에 적용됩니다.<br/>"
+
+[DenseSmoke X2AbilityTemplate]
+LocFriendlyName="짙은 연막"
+LocFlyOverText="짙은 연막"
+LocLongDescription="연막 수류탄이 10의 추가 방어력을 부여합니다."
+LocHelpText="연막 수류탄이 10의 추가 방어력을 부여합니다."
+LocPromotionPopupText="<Bullet/> 연막 수류탄의 연막 내에 들어온 유닛에게 10의 추가 방어력을 부여할 수 있습니다. 최고는 30입니다.<br/>"
+
+[DenseSmokeGrenade X2GrenadeTemplate]
+FriendlyName="짙은 연막 수류탄"
+FriendlyNamePlural="짙은 연막 수류탄"
+BriefSummary="연막의 반경 내에 들어온 모든 적 또는 아군 유닛에게 방어 보너스를 부여합니다."
+TacticalText="<Bullet/> 즉시 연막을 불러내 주변 유닛의 방어력을 높여줍니다.<br/><Bullet/> 연막 수류탄은 표준형 수류탄보다 훨씬 멀리 투척하거나 발사할 수 있습니다."
+ThrownAbilityName="짙은 연막 수류탄 투척"
+ThrownAbilityHelpText="반경 내의 유닛에게 방어 보너스를 부여합니다."
+LaunchedAbilityname="짙은 연막 수류탄 발사"
+LaunchedAbilityHelpText="반경 내의 유닛에게 방어 보너스를 부여합니다."
+
+[DenseSmokeGrenadeMk2 X2GrenadeTemplate]
+FriendlyName="짙은 연막 폭탄"
+FriendlyNamePlural="짙은 연막 폭탄"
+BriefSummary="업그레이드된 짙은 연막 폭탄은 연막의 반경 내에 들어온 모든 적 또는 아군 유닛에게 상당한 방어 보너스를 부여합니다."
+TacticalText="<Bullet/> 기존의 연막 수류탄의 강력한 업그레이드 버전인 짙은 연막 폭탄은 증가된 반경 내에서 더 큰 방어력을 부여해줍니다.<br/><Bullet/> 즉시 연막을 불러내 주변 유닛의 방어력을 높여줍니다.<br/><Bullet/> 연막 폭탄은 표준형 수류탄보다 훨씬 멀리 투척하거나 발사할 수 있습니다."
+ThrownAbilityName="짙은 연막 폭탄 투척"
+ThrownAbilityHelpText="반경 내의 유닛에게 상당한 방어 보너스를 부여합니다."
+LaunchedAbilityname="짙은 연막 폭탄 발사"
+LaunchedAbilityHelpText="반경 내의 유닛에게 상당한 방어 보너스를 부여합니다."
+
+[StingGrenades X2AbilityTemplate]
+LocFriendlyName="독침 수류탄"
+LocFlyOverText="독침 수류탄"
+LocLongDescription="섬광 수류탄은 섬광탄의 효과 범위 내에서 50% 확률로 적을 기절시킵니다."
+LocHelpText="섬광 수류탄은 50% 확률로 적을 기절시킵니다."
+LocPromotionPopupText="<Bullet/> 섬광 수류탄은 50% 확률로 적을 기절시킵니다.<br/>"
+
+[X2Item_StingGrenade]
+DenseSmokeGrenadeEffectDisplayName="독침 수류탄"
+DenseSmokeGrenadeEffectDisplayDesc="독침 수류탄이 수류탄의 효과 범위 내의 유닛을 50% 확률로 기절시킬 수 있습니다."
+
+[StingGrenade X2GrenadeTemplate]
+FriendlyName="독침 수류탄"
+FriendlyNamePlural="독침 수류탄"
+BriefSummary="효과 범위 내 유닛을 50% 확률로 1턴 간 기절시키고 혼란 상태로 만들 수 있습니다."
+TacticalText="<Bullet/> 효과 범위 내 유닛을 50% 확률로 1턴 간 기절시키고 혼란 상태로 만들 수 있습니다.<br/>"
+ThrownAbilityName="독침 수류탄 투척"
+ThrownAbilityHelpText="효과 범위 내 유닛을 50% 확률로 1턴 간 기절시키고 혼란 상태로 만들 수 있습니다."
+LaunchedAbilityname="독침 수류탄 발사"
+LaunchedAbilityHelpText="효과 범위 내 유닛을 50% 확률로 1턴 간 기절시키고 혼란 상태로 만들 수 있습니다."
+
+[RapidDeployment X2AbilityTemplate]
+LocFriendlyName="신속 배치"
+LocFlyOverText="신속 배치"
+LocLongDescription="보조 수류탄을 투척하거나 발사하기 전에 이 능력을 발동하면, 투척 시 행동력이 소모되지 않습니다."
+LocHelpText="보조 수류탄을 투척하거나 발사하기 전에 이 능력을 발동하면, 투척 시 행동력이 소모되지 않습니다."
+LocPromotionPopupText="<Bullet/> 보조형 수류탄을 투척하거나 발사하기 전에 이 능력을 발동하면, 투척 행동은 행동력을 소모하지 않습니다.<br/><Bullet/> 연막 수류탄, 섬광 수류탄, 전투 스캐너에 적용됩니다.<br/><Bullet/> 2턴 동안 쿨타임을 가집니다.<br/>"
+
+[CombatRush X2AbilityTemplate]
+LocFriendlyName="전투 돌진"
+LocFlyOverText="전투 돌진"
+LocLongDescription="적을 처치하면, 근처의 아군은 일시적으로 조준과 치명타율 및 기동력 보너스를 받습니다. 5턴 동안 쿨타임을 가집니다."
+LocHelpText="적을 처치하면, 근처의 아군은 일시적으로 조준과 치명타율 및 기동력 보너스를 받습니다."
+LocPromotionPopupText="<Bullet/> 적 유닛을 처치하면 전투 돌진이 발동되며, 반경 7타일 내의 아군은 +10의 조준, +10의 치명타율과 +1의 기동력 보너스를 받습니다.<br/><Bullet/> 다음 턴이 끝날 때까지 보너스 효과가 지속됩니다.<br/><Bullet/> 5턴에 한 번씩 발동될 수 있습니다.<br/>"
+
+[BroadcastCombatRush X2AbilityTemplate]
+LocFriendlyName="전투 돌진"
+LocFlyOverText="전투 돌진"
+LocLongDescription="주위의 아군으로부터 2턴 동안 지속되는 10의 조준, 10의 치명타율, 1의 기동력 보너스를 부여받았습니다."
+LocHelpText="주위의 아군으로부터 2턴 동안 지속되는 10의 조준, 10의 치명타율, 1의 기동력 보너스를 부여받았습니다."
+
+[GrazingFire X2AbilityTemplate]
+LocFriendlyName="최저표척사격"
+LocFlyOverText="최저표척사격"
+LocLongDescription="주요 무기 사격이 빗나갈 경우 추가 확률로 찰과상을 입힐 수 있습니다."
+LocHelpText="빗나간 사격은 찰과상을 입힐 수 있습니다."
+LocPromotionPopupText="<Bullet/> 주요 무기 사격이 빗나가면 <Ability:GRAZING_FIRE_SUCCESS_CHANCE>%의 확률로 찰과상을 입힙니다.<br/><Bullet/> 이 효과는 일반 적중, 빗나감, 찰과상 여부의 판정이 난 후 발동됩니다. <br/><Bullet/> 회피 능력을 갖춘 목표물은 이 능력의 성공률을 회피 능력치만큼 감소시킵니다."
+
+[HeavyFrags X2AbilityTemplate]
+LocFriendlyName="증폭 코어"
+LocFlyOverText="증폭 코어"
+LocLongDescription="폭발형 수류탄이 1의 추가 대미지를 입힙니다."
+LocHelpText="폭발형 수류탄이 1의 추가 대미지를 입힙니다."
+LocPromotionPopupText="<Bullet/> 수류탄에 추가 폭발물이 들어 있어 1의 추가 대미지를 주지만, 수류탄을 다루기 위해 전문 훈련을 받아야 합니다.<br/><Bullet/> 소이 수류탄의 화염과 같은 수류탄 효과에도 적용됩니다.<br/>"
+
+[Airdrop X2AbilityTemplate]
+LocFriendlyName="공중 투하"
+LocFlyOverText="공중 투하"
+LocLongDescription="그렘린은 아군 대상에게 폭발성 수류탄을 부여합니다. 임무당 2번 사용할 수 있습니다."
+LocHelpText="아군 대상에게 폭발성 수류탄을 부여합니다."
+LocPromotionPopupText="<Bullet/> 아군 대상에게 폭발성 수류탄을 부여합니다.<br/><Bullet/> 공중 투하는 초기에 파쇄 수류탄을 부여하지만, XCOM의 기술이 개선되면 더 고급적인 수류탄을 부여할 수 있습니다.<br/><Bullet/> 공중 투하를 활성화하면 행동력 1개가 소모되고 병사의 턴이 종료됩니다.<br/><Bullet/> 임무당 2번 사용할 수 있습니다."
+
+[SwordSlice_LW X2AbilityTemplate]
+LocFriendlyName="플레시"
+LocFlyOverText="플레시"
+LocLongDescription="이동 범위 내의 적을 검으로 공격합니다. 시작 지점과 목표물 사이의 거리를 기준으로 <Ability:FLECHE_BONUS_DAMAGE_PER_TILES/>타일마다 대미지가 1씩 증가합니다."
+LocHelpText="이동 범위 내의 적을 검으로 공격합니다. 공격 시 이동하는 거리에 따라 보너스 대미지를 입힙니다."
+LocPromotionPopupText="<Bullet/> 이동 커서를 적 위에 놓으면 플레시 능력을 사용할 수 있습니다.<br/><Bullet/> 행동력 2개를 사용하여 \"돌진\"한 후에도 인접한 적을 공격할 수 있습니다.<br/><Bullet/> 턴이 시작될 때 유닛의 시작 지점과 목표물 사이의 거리를 기준으로 <Ability:FLECHE_BONUS_DAMAGE_PER_TILES/>타일마다 대미지가 1씩 증가합니다.<br/>"
+
+[Fleche X2AbilityTemplate]
+LocFriendlyName="플레시"
+LocFlyOverText="플레시"
+LocLongDescription="이동 범위 내의 적을 검으로 공격합니다. 시작 지점과 목표물 사이의 거리를 기준으로 <Ability:FLECHE_BONUS_DAMAGE_PER_TILES/>타일마다 대미지가 1씩 증가합니다."
+LocHelpText="이동 범위 내의 적을 검으로 공격합니다. 공격 시 이동하는 거리에 따라 보너스 대미지를 입힙니다."
+LocPromotionPopupText="<Bullet/> 이동 커서를 적 위에 놓으면 플레시 능력을 사용할 수 있습니다.<br/><Bullet/> 행동력 2개를 사용하여 \"돌진\"한 후에도 인접한 적을 공격할 수 있습니다.<br/><Bullet/> 턴이 시작될 때 유닛의 시작 지점과 목표물 사이의 거리를 기준으로 <Ability:FLECHE_BONUS_DAMAGE_PER_TILES/>타일마다 대미지가 1씩 증가합니다.<br/>"
+
+[FullKit X2AbilityTemplate]
+LocFriendlyName="완전군장"
+LocFlyOverText="완전군장"
+LocLongDescription="유틸리티 슬롯에 있는 수류탄 아이템의 사용 횟수가 1 증가합니다."
+LocHelpText="유틸리티 슬롯에 있는 수류탄 아이템의 사용 횟수가 1 증가합니다."
+LocPromotionPopupText="<Bullet/> 유틸리티 슬롯에 있는 수류탄 아이템의 사용 횟수가 1회 증가합니다.<br/><Bullet/> 폭발형 수류탄과 보조형 수류탄, 그리고 전투 스캐너에도 적용됩니다.<br/>"
+
+[Bastion X2AbilityTemplate]
+LocFriendlyName="성채"
+LocLongDescription="요새는 주위의 분대원들에게도 적용됩니다."
+LocHelpText="요새는 주위의 분대원들에게도 적용됩니다."
+LocFlyOverText="성채"
+LocPromotionPopupText="<Bullet/> 성채는 4타일의 반경을 지닙니다.<br/><Bullet/> 지속 대미지를 입고 있는 아군 옆으로 이동하면 그들의 물리적 이상 상태 효과를 즉시 제거합니다.<br/>"
+
+[BastionPassive X2AbilityTemplate]
+LocFriendlyName="성채"
+LocLongDescription="요새는 주위의 분대원들에게도 적용됩니다."
+LocHelpText="요새는 주위의 분대원들에게도 적용됩니다."
+LocFlyOverText="성채"
+LocPromotionPopupText="<Bullet/> 성채는 4타일의 반경을 지닙니다.<br/><Bullet/> 지속 대미지를 입고 있는 아군 옆으로 이동하면 그들의 물리적 이상 상태 효과를 즉시 제거합니다.<br/>"
+
+[BastionCleanse X2AbilityTemplate]
+LocFriendlyName="성채"
+LocLongDescription="요새는 주위의 분대원들에게도 적용됩니다."
+LocHelpText="요새는 주위의 분대원들에게도 적용됩니다."
+LocFlyOverText="성채"
+LocPromotionPopupText="<Bullet/> 성채는 4타일의 반경을 지닙니다.<br/><Bullet/> 지속 대미지를 입고 있는 아군 옆으로 이동하면 그들의 물리적 이상 상태 효과를 즉시 제거합니다.<br/>"
+
+[IronCurtain X2AbilityTemplate]
+LocFriendlyName="철의 장막"
+LocFlyOverText="철의 장막"
+LocLongDescription="절반의 대미지만 입히나 다음 2턴 동안 목표물의 기동력을 감소시키는 특수 사격으로, 주요 무기를 사용하여 원뿔형 범위의 적을 공격합니다."
+LocHelpText="입히는 대미지는 적으나 다음 2턴 동안 적의 기동력을 감소시키는 특수 사격을 가합니다."
+LocPromotionPopupText="<Bullet/> 철의 장막으로 원뿔형 범위의 적을 적중하면, 절반의 대미지를 주고 2턴 동안 적의 기동력을 5 감소시킵니다.<br/><Bullet/> 3턴 동안 쿨타임을 가집니다.<br/><Bullet/> 3 탄약 포인트를 소모합니다.<br/><Bullet/> 이동 후 사용 가능합니다.<br/><Bullet/> 산탄총이나 저격총으로는 철의 장막을 사용할 수 없습니다.<br/><Bullet/> 원뿔형 범위 안에 있는 아군도 대미지를 입을 수 있습니다.<br/>"
+
+[IronCurtainShot X2AbilityTemplate]
+LocFriendlyName="철의 장막"
+LocFlyOverText="철의 장막"
+LocLongDescription="적은 대미지만 입히나 다음 2턴 동안 적의 기동력을 감소시키는 특수 사격으로, 주요 무기를 사용하여 원뿔형 범위의 적을 공격합니다."
+LocHelpText="입히는 대미지는 적으나 다음 2턴 동안 적의 기동력을 감소시키는 특수 사격을 가합니다."
+LocPromotionPopupText="<Bullet/> 철의 장막 명중 시, 보통 피해의 25%를 주고 2턴 동안 적의 기동력을 4 감소시킵니다.<br/><Bullet/> 쿨타임은 4턴입니다.<br/><Bullet/> 탄약 <Ability:SelfAmmoCost/>개가 소모됩니다.<br/><Bullet/> 이동 후 사용 가능합니다.<br/><Bullet/> 철의 장막은 산탄총이나 저격총으로는 사용할 수 없습니다.<br/>"
+str_IronCurtainEffect="철의 장막"
+
+[Slash_LW X2AbilityTemplate]
+LocFriendlyName="베기"
+LocFlyOverText="베기"
+LocLongDescription="근처의 적에게 검 공격을 가합니다. 1개의 행동력이 사용됩니다."
+LocHelpText="근처의 적에게 검 공격을 가합니다. 1개의 행동력이 사용됩니다."
+LocPromotionPopupText="<Bullet/> 근처의 적에게 검 공격을 가합니다.<br/><Bullet/> 1개의 행동력이 사용되나, 턴을 종료하지 않으므로 한 턴에 두 번 공격하는 것이 가능합니다."
+
+[AbsorptionFields X2AbilityTemplate]
+LocFriendlyName="영향력 필드"
+LocFlyOverText="영향력 필드"
+LocLongDescription="2턴동안 대미지를 33% 줄여주는 역장을 생성합니다. 6턴 동안 쿨타임을 가집니다."
+LocHelpText="2턴동안 대미지를 33% 줄여주는 역장을 생성합니다. 6턴 동안 쿨타임을 가집니다."
+LocPromotionPopupText="<Bullet/> 2턴동안 대미지를 33% 줄여주는 역장을 생성합니다.<br/><Bullet/> 6턴 동안 쿨타임(능력을 사용한 턴 포함)을 가집니다.<br/><Bullet/> 1개의 행동력을 사용하며 턴이 자동으로 종료되지 않습니다.<br/><Bullet/> 이 효과는 방어구를 관통하는 무기에 의해 줄어들지 않습니다.<br/>"
+
+[BodyShield X2AbilityTemplate]
+LocFriendlyName="육체 방어"
+LocFlyOverText="육체 방어"
+LocLongDescription="병사를 상대하는 적 대상에게 -20의 조준력과 -50의 치명타율이 적용됩니다."
+LocHelpText="병사를 상대하는 적은 -20의 조준과 -50의 치명타율 페널티를 받습니다."
+LocPromotionPopupText="<Bullet/>목표로 된 적은 이 병사를 공격할 때 -20의 조준과 -50의 치명타율 페널티를 받습니다.<br/>"
+
+[EmergencyLifeSupport X2AbilityTemplate]
+LocFriendlyName="긴급 생명 지원"
+LocFlyOverText="긴급 생명 지원"
+LocLongDescription="긴급 생명 지원은 임무 내에서 첫 번째로 치명 일격을 받을 때 바로 죽지 않게 해줍니다. 또한 병사가 출혈 상태에서 죽음에 이르기까지 걸리는 시간을 연장시켜줍니다."
+LocHelpText="임무 내에서 첫 번째로 치명 일격을 받을 때 바로 죽지 않게 해주며, 출혈 상태 지속 시간을 2턴 연장합니다."
+LocPromotionPopupText="<Bullet/> 긴급 생명 지원은 매번 임무에서, 첫 번째로 죽음에 이르는 대미지를 입을 때 반드시 출혈 상태가 되게 합니다.<br/> <Bullet/> 출혈 상태의 지속 시간이 2턴 연장됩니다.<br/>"
+
+[IronSkin X2AbilityTemplate]
+LocFriendlyName="강철 피부"
+LocFlyOverText="강철 피부"
+LocLongDescription="근접 공격으로 입는 대미지가 3 감소합니다."
+LocHelpText="근접 공격으로 입는 대미지가 3 감소합니다."
+LocPromotionPopupText="<Bullet/> 근접 공격으로 입는 대미지가 3 감소합니다.<br/>"
+
+[SmartMacrophages X2AbilityTemplate]
+LocFriendlyName="지능형 대식 세포"
+LocFlyOverText="지능형 대식 세포"
+LocLongDescription="전투 후 상처를 치료하여 부상 회복 시간이 단축됩니다. 또한 맹독과 산성에 면역되게 해줍니다."
+LocHelpText="부상 회복 시간이 단축되며 맹독과 산성에 면역합니다."
+LocPromotionPopupText="<Bullet/> 전투 중 잃은 체력에서 1 포인트를 빼고 부상 회복 시간을 계산합니다.<br/><Bullet/> 맹독과 산성에 면역합니다.<br/>"
+
+[MindMerge X2AbilityTemplate]
+LocFriendlyName="정신 융합"
+LocFlyOverText="정신 융합"
+LocLongDescription="아군에게 다음 플레이어 턴이 시작할 때까지 의지, 치명타율, 임시 체력에 보너스를 줍니다."
+LocHelptext="아군에게 임시적으로 의지, 치명타율, 임시 체력에 보너스를 줍니다."
+LocPromotionPopupText="<Bullet/> 아군 대상에게 1의 임시 체력 포인트(방어막)를 부여하며, 정신 융합을 시전 중인 사이오니스트의 사이오닉 공격 점수 30당 1씩 추가로 부여됩니다.<br/><Bullet/> 아군 대상에게 사이오니스트의 사이오닉 공격 점수 10당 1씩 의지 보너스를 부여합니다.<br/><Bullet/> 이 효과는 사이오니스트의 다음 턴이 시작될 때까지 지속됩니다.<br/><Bullet/> 3턴 동안 쿨타임을 가집니다.<br/><Bullet/> 시야 내에 있는 아군에게만 사용할 수 있습니다.<br/><Bullet/> 향상된 사이오닉 증폭기는 추가 의지 보너스와 임시 체력 포인트를 부여합니다.<br/><Bullet/> 행동력 1개를 소모하고 턴을 종료하지 않습니다.<br/><Bullet/> 사이오닉 공격 점수 10당 치명타율 +1%를 부여합니다.<br/>"
+
+[SoulMerge X2AbilityTemplate]
+LocFriendlyName="영혼 융합"
+LocFlyOverText="영혼 융합"
+LocLongDescription="정신 융합을 향상시켜 치명타율 보너스를 부여하고, 더 많은 의지와 임시 체력 보너스를 주며, 쿨타임을 감소시킵니다."
+LocHelpText="정신 융합의 효과가 향상됩니다."
+LocPromotionPopupText="<Bullet/> 정신 융합  감소의 쿨타임은 1턴입니다.<br/><Bullet/> 임시 체력 포인트 보너스를 사이오닉 공격 점수 20당 1씩 증가 시킵니다.<br/><Bullet/> 의지 보너스는 사이오닉 공격 점수 5당 1씩 증가 시킵니다.<br/><Bullet/> 사이오닉 공격 점수 5당 치명타율 +1%를 부여합니다.""
+
+[Shadowstrike_LW X2AbilityTemplate]
+LocFriendlyName="어둠 속의 습격"
+LocLongDescription="잠행 상태에서 적을 공격하면 <Ability:SHADOWSTRIKEAIM/>의 조준 보너스와 <Ability:SHADOWSTRIKECRIT/>의 치명타율 보너스를 얻습니다."
+LocHelpText="잠행 상태에서 적을 공격하면 조준과 치명타율 보너스를 얻습니다."
+LocPromotionPopupText="<Bullet/> 어둠 속의 습격 보너스는 병사가 임무 도중에 다시 잠행할 때에도 적용됩니다.<br/>"
+
+[Formidable X2AbilityTemplate]
+LocFriendlyName="방폭"
+LocFlyOverText="방폭"
+LocLongDescription="장비에 폭발 완충판이 추가되어, 2의 임시 체력 포인트를 주고 폭발 공격으로 입는 대미지가 <Ability:BlastPadding/>% 줄어듭니다."
+LocHelpText="방어구에 보너스 체력을 주고, 폭발 공격으로 입는 대미지를 줄여 줍니다."
+LocPromotionPopupText="<Bullet/> 방폭은 폭발 공격으로부터 입는 대미지를 <Ability:BlastPadding/>% 줄여 줍니다."
+
+; Updated perk loc
+
+[XComGame.PistolStandardShot X2AbilityTemplate]
+[PistolStandardShot X2AbilityTemplate]
+LocFriendlyName="권총 발사"
+LocLongDescription="주요 무기에 대한 보완책으로, 권총의 융통성을 충분히 활용할 수 있도록 훈련받았습니다."
+LocHelpText="대상에 권총을 발사합니다."
+LocFlyOverText=""
+
+[XComGame.Killzone X2AbilityTemplate]
+[KillZone X2AbilityTemplate]
+LocFriendlyName="살상지대"
+LocLongDescription="원뿔형 범위 안에 있는 적이 움직이거나 공격하면 대응 사격을 합니다."
+LocHelpText="원뿔형 범위 안의 적을 향한 강화된 경계입니다."
+LocFlyOverText="살상지대"
+LocPromotionPopupText="<Bullet/> 보유한 탄약 수의 제한 외에는 횟수에 상관없이 살상지대 공격을 할 수 있습니다.<br/><Bullet/> 원거리 경계 능력이 없어도, 살상지대에는 분대 시야가 적용됩니다.<br/><Bullet/> 살상지대는 <Ability:SelfCooldown/>턴 동안 쿨타임을 가집니다.<br/>"
+LocFriendlyNameWhenConcealed="살상지대 (잠행 중)"
+
+[XComGame.DeathFromAbove X2AbilityTemplate]
+[DeathFromAbove X2AbilityTemplate]
+LocFriendlyName="천상의 레퀴엠"
+LocLongDescription="<Ability:WeaponName/>(으)로 낮은 고도에 있는 적을 처치하면, 1개의 행동력만 사용하고 턴을 종료하지 않습니다. 추가로, 저격총에 장거리 명중률 보너스가 부여됩니다."
+LocHelpText="<Ability:WeaponName/>(으)로 낮은 고도에 있는 적을 처치하면, 1개의 행동력만 사용하고 턴을 종료하지 않습니다."
+LocFlyOverText="천상의 레퀴엠"
+LocPromotionPopupText="<Bullet/> 천상의 레퀴엠은 권총 능력과 좋은 콤보를 이루거나, 병사의 기동성을 향상할 수 있습니다.<br/><Bullet/> 추가로, 저격총에 장거리 명중률 보너스가 부여됩니다."
+
+[XComGame.Implacable X2AbilityTemplate]
+[Implacable X2AbilityTemplate]
+LocFriendlyName="흥분"
+LocLongDescription="이 병사의 턴에서 적을 한 명 이상 처치하면, 추가로 한 번 이동할 수 있습니다."
+LocHelpText="적을 처치한 후, 턴당 한 번씩 추가로 이동할 수 있습니다."
+LocFlyOverText="흥분"
+LocPromotionPopupText="<Bullet/> 무자비에서 보너스 이동을 얻은 후에는 플레시 능력을 사용할 수 없습니다.<br/>"
+
+[XComGame.VolatileMix X2AbilityTemplate]
+[VolatileMix X2AbilityTemplate]
+LocFriendlyName="불안정한 혼합물"
+LocLongDescription="수류탄의 효과 범위가 1타일 증가합니다."
+LocHelpText="수류탄의 효과 범위가 늘어납니다."
+LocFlyOverText="불안정한 혼합물"
+LocPromotionPopupText="<Bullet/> 수류탄이 더 넓은 범위에 일반 대미지와 환경 대미지를 줍니다. 수류탄의 추가 효과에도 적용됩니다."
+
+[XComGame.Salvo X2AbilityTemplate]
+[Salvo X2AbilityTemplate]
+LocFriendlyName="일제 사격"
+LocLongDescription="첫 번째 행동으로 수류탄을 발사 또는 투척하거나, 중화기를 사용하거나, 건틀릿 로켓 발사기를 사용하면 턴을 종료하지 않습니다."
+LocHelpText="수류탄 발사 또는 투척, 중화기 사용 및 건틀릿 로켓 발사기 사용은 턴을 종료하지 않습니다."
+LocFlyOverText="일제 사격"
+LocPromotionPopupText="<Bullet/> 일제 사격 능력을 갖춘 병사는 중형 방어구에 매우 적합합니다.<br/>"
+
+[XComGame.Quickdraw X2AbilityTemplate]
+[Quickdraw X2AbilityTemplate]
+LocFriendlyName="퀵 드로"
+LocLongDescription="첫 번째 행동으로 권총을 발사하면 턴이 종료되지 않습니다."
+LocHelpText="첫 번째 행동으로 권총을 발사하면 턴이 종료되지 않습니다."
+LocFlyOverText="퀵 드로"
+LocPromotionPopupText="<Bullet/> 퀵 드로는 병사가 같은 턴에 다른 목표물까지 공격할 수 있도록 해줍니다.<br/>"
+
+[XComGame.SharpshooterAim X2AbilityTemplate]
+[SharpshooterAim X2AbilityTemplate]
+LocFriendlyName="겨냥"
+LocLongDescription="잠복하면 다음 턴의 첫 번째 공격에 +<Ability:SHARPSHOOTERAIMBONUS/>의 조준 보너스를 받습니다."
+LocHelpText="잠복하면 다음 턴의 첫 번째 공격에 +<Ability:SHARPSHOOTERAIMBONUS/>의 조준 보너스를 받습니다."
+LocFlyOverText="잠복 - 겨냥"
+LocPromotionPopupText="<Bullet/> 조준으로 받는 보너스는 권총이나 주요 무기 공격에 모두 적용됩니다.<br/>"
+
+[XComGame.LightningHands X2AbilityTemplate]
+[LightningHands X2AbilityTemplate]
+LocFriendlyName="날렵한 손"
+LocLongDescription="목표물에 권총을 발사합니다. 이 공격은 행동력을 소모하지 않습니다."
+LocHelpText="목표물에 권총을 발사합니다. 이 공격은 행동력을 소모하지 않습니다."
+LocFlyOverText="날렵한 손"
+LocPromotionPopupText="<Bullet/> 날렵한 손은 다른 능력의 사용을 제한하지 않으므로, 2개의 행동력을 소모하는 능력과 좋은 콤보를 이룹니다.<br/><Bullet/> 날렵한 손은 <Ability:SelfCooldown/>턴 동안 쿨타임을 가집니다.<br/>"
+
+[XComGame.IntrusionProtocol X2AbilityTemplate]
+[IntrusionProtocol X2AbilityTemplate]
+LocFriendlyName="해킹"
+LocLongDescription="그렘린으로 원격에서 네트워크 접속 지점의 보안 파괴를 시도합니다."
+LocHelpText="그렘린으로 원격에서 목표물을 해킹할 수 있습니다."
+LocFlyOverText="해킹"
+LocPromotionPopupText="<Bullet/> 그렘린을 이용해 원거리에서 지도 아이템(상자, 워크스테이션 등)을 해킹할 수 있습니다.<br/>"
+
+[XComGame.EverVigilant X2AbilityTemplate]
+[EverVigilant X2AbilityTemplate]
+LocFriendlyName="철저한 감시"
+LocLongDescription="행동력을 모두 이동에 사용할 경우, 턴이 끝나면 자동으로 경계 상태에 들어섭니다."
+LocHelpText="이번 턴에 행동력을 모두 이동에 사용하면 자동으로 경계 상태에 들어섭니다."
+LocFlyOverText="경계: 철저한 감시"
+LocPromotionPopupText="<Bullet/> 철저한 감시는 병사가 높은 기동성을 필요로 하는 전략을 실행할 수 있게 해줍니다.<br/><Bullet/> 이동을 제외한 기타 행동을 할 경우 철저한 감시는 발동되지 않습니다.<br/>"
+
+[XComGame.Phantom X2AbilityTemplate]
+[Phantom X2AbilityTemplate]
+LocFriendlyName="유령"
+LocLongDescription="분대가 발각됐을 때에도 이 병사는 잠행 상태로 남습니다."
+LocHelpText="분대가 발각됐을 때에도 이 병사는 잠행 상태로 남습니다."
+LocFlyOverText="유령"
+LocPromotionPopupText="<Bullet/> 분대가 잠행하지 않은 상태에서 임무를 시작해도, 유령을 배운 병사들은 여전히 잠행 상태로 임무를 시작합니다.<br/><Bullet/> 유령을 배운 병사가 분대 잠행을 깨버렸다면, 유령은 적용되지 않습니다.<br/>"
+
+[XComGame.Shadowstep X2AbilityTemplate]
+[Shadowstep X2AbilityTemplate]
+LocFriendlyName="섀도 스텝"
+LocLongDescription="이 병사는 적의 경계나 대응 사격을 발동시키지 않습니다."
+LocHelpText="이 병사는 적의 경계나 대응 사격을 발동시키지 않습니다."
+LocPromotionPopupText="<Bullet/> 섀도 스텝을 배운 병사는 경계 사격이나 제압 사격을 발동시키지 않으므로, 분대 동료를 위하여 적의 경계 사격을 유도해낼 수 없습니다.<br/>"
+
+[XComGame.Bladestorm X2AbilityTemplate]
+[Bladestorm X2AbilityTemplate]
+LocFriendlyName="블레이드 스톰"
+LocLongDescription="근거리에 들어오거나 근거리에서 공격해 오는 적에게 행동력 소모 없이 <Ability:SecondaryWeaponName/> 공격을 가합니다."
+LocHelpText="근거리에 들어오거나 근거리에서 공격해 오는 적에게 행동력 소모 없이 <Ability:SecondaryWeaponName/> 공격을 가합니다."
+LocFlyOverText="블레이드 스톰"
+LocPromotionPopupText="<Bullet/> 적이 인접한 타일에서 그의 턴을 시작할 경우, 블레이드 스톰은 적이 병사를 공격하려고 할 때 발동됩니다.<br/><Bullet/> 적이 인접한 타일에서 그의 턴을 시작하지 않을 경우, 블레이드 스톰은 적이 근접 범위로 이동할 때 발동됩니다.<br/>"
+
+[XComeGame.BladestormAttack X2AbilityTemplate]
+[BladestormAttack X2AbilityTemplate]
+LocFriendlyName="블레이드 스톰"
+LocLongDescription="근거리에 들어오거나 근거리에서 공격해 오는 적에게 행동력 소모 없이 <Ability:SecondaryWeaponName/> 공격을 가합니다."
+LocHelpText="근거리에 들어오거나 근거리에서 공격해 오는 적에게 행동력 소모 없이 <Ability:SecondaryWeaponName/> 공격을 가합니다."
+LocFlyOverText="블레이드 스톰"
+LocPromotionPopupText="<Bullet/> 적이 인접한 타일에서 그의 턴을 시작할 경우, 블레이드 스톰은 적이 병사를 공격하려고 할 때 발동됩니다.<br/><Bullet/> 적이 인접한 타일에서 그의 턴을 시작하지 않을 경우, 블레이드 스톰은 적이 근접 범위로 이동할 때 발동됩니다.<br/>"
+
+[XComGame.Untouchable X2AbilityTemplate]
+[Untouchable X2AbilityTemplate]
+LocFriendlyName="언터처블"
+LocLongDescription="자신의 턴에 적을 처치하면, 적 턴에 자신이 받는 다음 공격이 빗나갑니다."
+LocHelpText="자신의 턴에 적을 처치하면, 적 턴에 자신이 받는 다음 공격이 빗나갑니다."
+LocFlyOverText="언터처블"
+LocPromotionPopupText="<Bullet/> 언터처블이 발동되면, 적 턴 동안 광역 공격을 포함한 대미지를 주는 다음 공격에 면역됩니다.<br/>"
+
+[XComGame.Stealth X2AbilityTemplate]
+[Stealth X2AbilityTemplate]
+LocFriendlyName="잠행 돌입"
+LocLongDescription="바로 잠행 상태에 들어갑니다. 임무당 한 번만 사용할 수 있습니다."
+LocHelpText="바로 잠행 상태에 들어갑니다. 임무당 한 번만 사용할 수 있습니다."
+LocFlyOverText="잠행 돌입"
+LocPromotionPopupText="<Bullet/> 어떠한 지역에서도 잠행 상태에 들어설 수 있지만, 주변 적의 탐지 범위 안에서 잠행 능력을 사용하거나, 적에게 측면이 노출된다면 즉시 발각됩니다.<br/>"
+
+[XComGame.RevivalProtocol X2AbilityTemplate]
+[RevivalProtocol X2AbilityTemplate]
+LocPromotionPopupText="<Bullet/> 회복 프로토콜은 출혈을 있다 멈춘 이들을 포함한 의식을 잃은 병사를 회복시키는데 사용합니다.<br/><Bullet/> 회복 프로토콜은 사용하면 턴이 종료되지 않습니다.<br/><Bullet/> 사용 횟수2회로 시작하며, 그렘린의 업그레이들 통해 더 많이 부여 됩니다."
+
+
+; Gear loc updates for new classes
+
+[XComGame.Shotgun_MG X2WeaponTemplate]
+[Shotgun_MG X2WeaponTemplate]
+FriendlyName="파편총"
+FriendlyNamePlural="파편총"
+BriefSummary="전자기 무기 기술로 외계인 합금 파편을 분사형 발사체로 합성할 수 있습니다. 아군 병사는 이 무기를 이용해서 극적 효과를 낼 수 있는데, 가까울수록 효과가 좋습니다."
+TacticalText="<Bullet/> 전자기 무기 기술은 XCOM 전투 산탄총의 성능 향상에 특별히 유용합니다.\n<Bullet/> 산탄총 유형의 무기는 근거리에서 굉장히 효과적이지만, 원거리에서는 명중률이 현저히 떨어집니다.\n<Bullet/> 적에게서 획득한 업그레이드를 사용하면 파편총의 전술적 효율성이 증가합니다."
+AbilityDescName="산탄총"
+
+[XComGame.RangerSword X2WeaponTemplate]
+[RangerSword X2WeaponTemplate]
+FriendlyName="검"
+FriendlyNamePlural="검"
+BriefSummary="일부 아군 병사들은 근접 전투에서 적을 제거할 수 있도록 검 무기 훈련을 받습니다."
+TacticalText="<Bullet/> 검을 소지한 병사는 두 개의 행동력을 모두 이동 범위 내에서 이동하거나 돌진하는 데 사용한 후에도 검으로 인접한 적을 공격할 수 있습니다.\n<Bullet/> 적과 근접 전투를 벌이는 것은 결정적일 수 있으니, 신중히 진행하십시오.\n<Bullet/> 검 무기의 효율성을 높일 기회를 놓치지 마십시오. 적이 훨씬 좋은 기술을 가지고 있을지도 모릅니다."
+
+[XComGame.Sword_CV X2WeaponTemplate]
+[Sword_CV X2WeaponTemplate]
+FriendlyName="검"
+FriendlyNamePlural="검"
+BriefSummary="일부 아군 병사들은 근접 전투에서 적을 제거할 수 있도록 검 무기 훈련을 받습니다."
+TacticalText="<Bullet/> 검을 소지한 병사는 두 개의 행동력을 모두 이동 범위 내에서 이동하거나 돌진하는 데 사용한 후에도 검으로 인접한 적을 공격할 수 있습니다.\n<Bullet/> 적과 근접 전투를 벌이는 것은 결정적일 수 있으니, 신중히 진행하십시오.\n<Bullet/> 검 무기의 효율성을 높일 기회를 놓치지 마십시오. 적이 훨씬 좋은 기술을 가지고 있을지도 모릅니다."
+AbilityDescName="검"
+
+[XComGame.Sword_BM X2WeaponTemplate]
+[Sword_BM X2WeaponTemplate]
+FriendlyName="퓨전 블레이드"
+FriendlyNamePlural="퓨전 블레이드"
+BriefSummary="퓨전 블레이드는 극소형 전자기장 안에 플라즈마로 가열한 금속제 코어가 장착된 검으로, 파괴적인 근접 공격을 가해 적을 불태웁니다."
+TacticalText="<Bullet/> 이 무기는 최첨단 검으로, 적 목표물에 최대 피해를 입히고 일정 확률로 불태웁니다."
+AbilityDescName="검"
+
+[XComGame.Cannon_MG X2WeaponTemplate]
+[Cannon_MG X2WeaponTemplate]
+FriendlyName="전자기 캐넌"
+FriendlyNamePlural="전자기 캐넌"
+BriefSummary="전자기 무기 기술로 속사 버전의 캐넌을 제작할 수 있습니다. 아군 병사들은 훨씬 더 치명적인 연속 사격을 가할 수 있을 겁니다."
+TacticalText="<Bullet/> 전자기 캐넌은 일반 캐넌보다 훨씬 강력하면서도, 일반 캐넌처럼 사용할 수 있습니다.\n<Bullet/> 적에게서 획득한 업그레이드를 사용하면 전자기 캐넌의 전술적 효율성이 증가합니다."
+AbilityDescName="캐넌"
+
+[XComGame.Cannon_BM X2WeaponTemplate]
+[Cannon_BM X2WeaponTemplate]
+FriendlyName="빔 캐넌"
+FriendlyNamePlural="빔 캐넌"
+BriefSummary="아군 병사들이 쓸 수 있는 더욱 강력한 고용량 빔 무기를 개발하려면 지속적인 노력이 필요하지만, 무기의 화력은 상당할 겁니다."
+TacticalText="<Bullet/> 빔 캐넌은 인간 부대가 사용할 수 있는 가장 강력한 전투 지원 무기입니다.\n<Bullet/> 적에게서 획득한 업그레이드를 사용하면 빔 캐넌의 전술적 효율성이 증가합니다.<br/><Bullet/> 플라스마 무기들은 피해를 입힐 때마다 대상 유닛이 1의 추가 대미지를 더 받게 만듭니다."
+AbilityDescName="캐넌"
+
+[XComGame.Pistol_CV X2WeaponTemplate]
+[Pistol_CV X2WeaponTemplate]
+FriendlyName="권총"
+FriendlyNamePlural="권총"
+BriefSummary="일부 XCOM 병사들은 주요 무기와 함께 고품질 권총도 가지고 있습니다. 적절한 훈련을 통하여, 이 병사들은 근거리에서 거대한 위협을 줄 수 있습니다."
+TacticalText="<Bullet/> 숙련된 병사가 지닌 권총은 단순한 휴대 무기가 아닙니다.\n<Bullet/> 권총은 1개의 행동력으로 발사할 수 있습니다.\n<Bullet/> 일부 병과는 여러 가지 능력을 훈련해, 권총 사용 능력을 극적으로 강화할 수 있습니다."
+
+[XComGame.Pistol_MG X2WeaponTemplate]
+[Pistol_MG X2WeaponTemplate]
+FriendlyName="전자기 권총"
+FriendlyNamePlural="전자기 권총"
+BriefSummary="우리는 전자기 무기 기술 분야에서 큰 발전을 이루었고, 그 결과 기존 권총보다 훨씬 뛰어난 공격력을 자랑하는 새로운 권총을 개발했습니다."
+TacticalText="<Bullet/> 전자기 권총은 재래식 무기에 비해 월등히 효과적입니다.\n<Bullet/> 권총은 1개의 행동력으로 발사할 수 있습니다."
+
+[XComeGame.Pistol_BM X2WeaponTemplate]
+[Pistol_BM X2WeaponTemplate]
+FriendlyName="빔 권총"
+FriendlyNamePlural="빔 권총"
+BriefSummary="궁극의 휴대무기인 이 권총은 외계인의 빔 무기 기술을 통합해 강력한 효과를 발휘합니다."
+TacticalText="<Bullet/> 빔 권총은 지구에서 가장 강력한 권총입니다.\n<Bullet/> 권총은 1개의 행동력으로 발사할 수 있습니다."
+
+[XComGame.AutopsyArchon X2TechTemplate]
+[AutopsyArchon X2TechTemplate]
+DisplayName="아르콘 해부"
+Summary="심미적으로 뛰어난 표본으로, 유기조직과 기계가 혼합된 끔찍한 내부의 모습을 잘 숨기고 있습니다. 이 생명체가 사용하는 독특한 근접 무기가 특히 흥미롭군요."
+CodeName="발제라프"
+LongDescription="작전 참모인 브래드포드를 포함한 여러 목격자의 증언을 살펴보면, 침략 초기 외계인들이 이와 비슷한 생체공학 유기체를 전투에 투입했다고 합니다. 하지만 그 당시 보고된 생물체는 지금보다 훨씬 소름 끼치고 미발달된 것이었지요. 최근 표본은 그에 비하면 우아해 보이기까지 합니다. 고급 무기에 어울리는 권위적이며, 위협적인 모습을 하고 있죠. R. 타이건"
+AlertString="아르콘"
+
+[XComGame.AutopsyAdventStunLancer X2TechTemplate]
+[AutopsyAdventStunLancer X2TechTemplate]
+DisplayName="어드밴트 스턴 랜서 해부"
+Summary="어드밴트 스턴 랜서는 세계의 질서를 유지하고 분쟁을 진압하는 데 주로 활용됩니다. 그들의 독특한 스턴 랜스는 우리 병사들이 훈련에 사용하는 무기에도 적용할 수 있습니다."
+CodeName="사제"
+LongDescription="어드밴트 스턴 랜서의 육체와 유전자는 전투에서 흔히 보는 병사들과 거의 동일합니다. 하지만 근섬유 밀도를 미세하게 조정함으로써 기동성과 전반적인 생존력이 향상되었죠. 비살상 무기로도 인간 목표물을 쉽게 무력화하는 스턴 랜서는 어드밴트가 도시 중심부를 건립한 초창기에 처음 배치됐습니다. 당시에는 직접적인 반대 세력인 저항군보다 만연한 도시 불안이 더 흔한 문제였죠. 그들의 활용법과 배치법을 연구하다가 흥미로운 생각이 떠올랐습니다. 만약 스턴 랜서가 최초에 배치된 부대에 포함됐고 그들의 생존력이 일반 병사들보다 약간 높았다면, 외계인들은 인간의 전투 능력에 대한 평가를 기반으로 병사들의 힘을 의식적으로 줄인 것이 아닐까요? 이는 예전에 외계인이 할 수 있을 거라고 생각한 범위를 넘어선, 빠른 유전자 변형이 가능하다는 의미입니다. 또한, 그들이 진행했던 여러 특이 실험 때문에 제가 외계인은 할 수 없다고 믿게 됐던 \"유전적 절약\"도 가능하다는 의미이지요. R. 타이건"
+AlertString="어드밴트 스턴 랜서"
+
+[XComGame.XGLocalizedData]
+[XGLocalizedData]
+GameplayTips_Tactical[1]="검을 소지한 병사를 조종할 때, 적을 마우스 오른쪽 버튼으로 클릭하면 근거리 돌진 공격을 개시합니다."
+GameplayTips_Tactical[10]="유령 능력을 갖춘 병사는 분대의 잠행 여부와는 관계 없이 모든 임무를 잠행 상태로 시작합니다."
+
+[XComGame.HuntersInstinctUnlock X2SoldierAbilityUnlockTemplate]
+[HuntersInstinctUnlock X2SoldierAbilityUnlockTemplate]
+DisplayName="돌격병 (기본 게임 병과에만 해당): 헌터의 본능"
+Summary="측면에서 적을 공격할 때 +<Ability:HUNTERSINSTINCTDMG/>의 피해를 줍니다."
+
+[XComGame.HitWhereItHurtsUnlock X2SoldierAbilityUnlockTemplate]
+[HitWhereItHurtsUnlock X2SoldierAbilityUnlockTemplate]
+DisplayName="저격병 (기본 게임 병과에만 해당): 데드샷"
+Summary="치명타율이 <Ability:HITWHEREITHURTS/> 증가합니다."
+
+[XComGame.CoolUnderPressureUnlock X2SoldierAbilityUnlockTemplate]
+[CoolUnderPressureUnlock X2SoldierAbilityUnlockTemplate]
+DisplayName="전문가 (기본 게임 병과에만 해당) : 평정심 유지"
+Summary="경계와 대응 사격에 10의 조준 보너스가 부여되고 치명타를 입힐 수 있습니다."
+
+[XComGame.BiggestBoomsUnlock X2SoldierAbilityUnlockTemplate]
+[BiggestBoomsUnlock X2SoldierAbilityUnlockTemplate]
+DisplayName="척탄병 (기본 게임 병과에만 해당): 거대한 폭발"
+Summary="폭발 공격으로 치명타를 입힐 수 있습니다."
+
+[HuntersInstinct X2AbilityTemplate]
+LocFriendlyName="헌터의 본능"
+LocLongDescription="적의 측면에서 비근접 공격을 하면 <Ability:HUNTERSINSTINCTDMG/>의 보너스 대미지를 줍니다."
+LocHelpText="적의 측면에서 비근접 공격을 하면 <Ability:HUNTERSINSTINCTDMG/>의 보너스 대미지를 줍니다."
+LocFlyOverText="헌터의 본능"
+LocPromotionPopupText="<Bullet/> 적의 측면에서 비근접 공격을 하면 <Ability:HUNTERSINSTINCTDMG/>의 보너스 대미지를 줍니다."
+
+[HitWhereItHurts X2AbilityTemplate]
+LocFriendlyName="데드샷"
+LocLongDescription="치명타율이 <Ability:HITWHEREITHURTS/> 증가합니다."
+LocHelpText="치명타율이 <Ability:HITWHEREITHURTS/> 증가합니다."
+LocFlyOverText="데드샷"
+LocPromotionPopupText="<Bullet/> 치명타율이 <Ability:HITWHEREITHURTS/> 증가합니다.<br/>"
+
+[CoolUnderPressure X2AbilityTemplate]
+LocFriendlyName="평정심 유지"
+LocLongDescription="경계와 기타 대응 사격 시 <Ability:COOLUNDERPRESSUREBONUS/>의 조준 보너스가 부여되며, 치명타를 입힐 수 있습니다."
+LocHelpText="경계 및 대응 사격 시 조준 보너스가 부여되며 치명타를 입힐 수 있습니다."
+LocFlyOverText="평정심 유지"
+LocPromotionPopupText="<Bullet/> 경계와 기타 대응 사격 시 <Ability:COOLUNDERPRESSUREBONUS/>의 조준 보너스가 부여되며, 치명타를 입힐 수 있습니다.<br/>"
+
+[BiggestBooms X2AbilityTemplate]
+LocFriendlyName="거대한 폭발"
+LocLongDescription="폭발 공격은 치명타를 입힐 수 있습니다. <Ability:BIGGESTBOOMSCHANCE/>% 확률로 <Ability:BIGGESTBOOMSDAMAGE/>의 추가 대미지를 입힙니다."
+LocHelpText="폭발 공격은 치명타를 입힐 수 있습니다."
+LocFlyOverText="거대한 폭발"
+LocPromotionPopupText="<Bullet/> 폭발 공격은 치명타를 입힐 수 있습니다. <Ability:BIGGESTBOOMSCHANCE/>% 확률로 <Ability:BIGGESTBOOMSDAMAGE/>의 추가 대미지를 입힙니다.<br/><Bullet/> 수류탄으로 치명타를 입힐 때, 화상과 같은 지속 대미지에 +1 을 부여합니다.""
+
+; New Class loc
+
+[PsiOperative X2SoldierClassTemplate]
+RankNames[8]="주교"
+ShortNames[8]="주교"
+RankIcons[8]="UILibrary_LW_PerkPack.psirank_Master"
+
+[LW_Sharpshooter X2SoldierClassTemplate]
+DisplayName="저격병"
+ClassSummary="저격병은 최대 사정거리에서 한 치의 오차도 없이 정확하게 적 목표물을 노립니다. 또한 그들은 원거리 저격 능력 대신 기동성을 갖춘 지정 사수로 훈련받을 수도 있습니다."
+LeftAbilityTreeTitle="스나이퍼"
+RightAbilityTreeTitle="지정 사수"
+
+;ALPHABETICAL ORDER
+RandomNickNames[0]="정점"
+RandomNickNames[1]="에이스"
+RandomNickNames[2]="후유증"
+RandomNickNames[3]="알파"
+RandomNickNames[4]="블랙잭"
+RandomNickNames[5]="명중"
+RandomNickNames[6]="화살"
+RandomNickNames[7]="실력자"
+RandomNickNames[8]="영면"
+RandomNickNames[9]="대성공"
+RandomNickNames[10]="보스"
+RandomNickNames[11]="명중"
+RandomNickNames[12]="체크 메이트"
+RandomNickNames[13]="치프"
+RandomNickNames[14]="콜트"
+RandomNickNames[15]="댈러스"
+RandomNickNames[16]="데드볼트"
+RandomNickNames[17]="사격의 명수"
+RandomNickNames[18]="데드록"
+RandomNickNames[19]="무용지물"
+RandomNickNames[20]="D.O.A."
+RandomNickNames[21]="이글 아이"
+RandomNickNames[22]="얼간이"
+RandomNickNames[23]="플랫라인"
+RandomNickNames[24]="게임 타임"
+RandomNickNames[25]="갱스터"
+RandomNickNames[26]="묘지기"
+RandomNickNames[27]="해트 트릭"
+RandomNickNames[28]="호크 아이"
+RandomNickNames[29]="가열기"
+RandomNickNames[30]="전성기"
+RandomNickNames[31]="암살자"
+RandomNickNames[32]="헐리우드"
+RandomNickNames[33]="선전"
+RandomNickNames[34]="아이콘"
+RandomNickNames[35]="자칼"
+RandomNickNames[36]="심판자"
+RandomNickNames[37]="소등"
+RandomNickNames[38]="제재"
+RandomNickNames[39]="위험한 도박"
+RandomNickNames[40]="방랑자"
+RandomNickNames[41]="바늘"
+RandomNickNames[42]="청황색 기사"
+RandomNickNames[43]="리퍼"
+RandomNickNames[44]="스크래치"
+RandomNickNames[45]="연쇄 저격"
+RandomNickNames[46]="보안관"
+RandomNickNames[47]="사수"
+RandomNickNames[48]="쇼타임"
+RandomNickNames[49]="슬리크"
+RandomNickNames[50]="투척자"
+RandomNickNames[51]="냉혈한"
+RandomNickNames[52]="청부업자"
+RandomNickNames[53]="아이"
+RandomNickNames[54]="진실"
+RandomNickNames[55]="묘비"
+RandomNickNames[56]="최고"
+RandomNickNames[57]="최상"
+RandomNickNames[58]="이연사"
+RandomNickNames[59]="장의사"
+RandomNickNames[60]="밸런타인"
+;ALPHABETICAL ORDER
+RandomNicknames_Male[0]="카우보이"
+RandomNickNames_Male[1]="대부"
+RandomNickNames_Male[2]="우체부"
+RandomNickNames_Male[3]="잠귀신"
+RandomNickNames_Male[4]="멋쟁이"
+RandomNickNames_Male[5]="세무관"
+RandomNickNames_Male[6]="제우스"
+RandomNickNames_Female[0]="남작 부인"
+RandomNickNames_Female[1]="블랙 위도우"
+RandomNicknames_Female[2]="재앙"
+RandomNicknames_Female[3]="여왕벌"
+;ALPHABETICAL ORDER
+
+[LW_Gunner X2SoldierClassTemplate]
+DisplayName="기관총병"
+ClassSummary="기관총병은 중형 자동 화기를 다루는 훈련을 받아, 적에게 엄청난 화력을 퍼부을 수 있습니다."
+LeftAbilityTreeTitle="분대자동화기병"
+RightAbilityTreeTitle="기관총 사수"
+
+RandomNickNames[0]="역효과"
+RandomNickNames[1]="바하"
+RandomNickNames[2]="곰고양이"
+RandomNickNames[3]="잔혹한"
+RandomNickNames[4]="전기톱"
+RandomNickNames[5]="허둥지둥"
+RandomNickNames[6]="게임쇼"
+RandomNickNames[7]="곤조"
+RandomNickNames[8]="호커"
+RandomNickNames[9]="코즈모"
+RandomNickNames[10]="도시락"
+RandomNickNames[11]="난동꾼"
+RandomNickNames[12]="도살업자"
+RandomNickNames[13]="무스"
+RandomNickNames[14]="북극곰"
+RandomNickNames[15]="너겟"
+RandomNickNames[16]="핵"
+RandomNickNames[17]="오거"
+RandomNickNames[18]="팬케이크"
+RandomNickNames[19]="기갑 부대"
+RandomNickNames[20]="피스톤"
+RandomNickNames[21]="투척자"
+RandomNickNames[22]="스패로우"
+RandomNickNames[23]="스파이크"
+RandomNickNames[24]="요기"
+RandomNickNames[25]="자퍼"
+RandomNickNames_Male[0]="껄껄이"
+RandomNickNames_Male[1]="딩거스"
+RandomNickNames_Male[2]="미치광이"
+RandomNickNames_Male[3]="너클"
+RandomNickNames_Male[4]="바다코끼리"
+RandomNickNames_Female[0]="버블"
+RandomNickNames_Female[1]="가제트"
+RandomNickNames_Female[2]="낄낄이"
+RandomNickNames_Female[3]="망고"
+RandomNickNames_Female[4]="페퍼"
+
+[LW_Ranger X2SoldierClassTemplate]
+DisplayName="돌격병"
+ClassSummary="돌격병은 소총 전문가로, 훈련을 통하여 소총을 공격 혹은 방어 목적으로 사용할 수 있습니다."
+LeftAbilityTreeTitle="보병"
+RightAbilityTreeTitle="수비병"
+
+RandomNickNames[0]="야생마"
+RandomNickNames[1]="수사슴"
+RandomNickNames[2]="칠엽수"
+RandomNickNames[3]="코발트"
+RandomNickNames[4]="카우보이"
+RandomNickNames[5]="채굴기"
+RandomNickNames[6]="거지"
+RandomNickNames[7]="서리"
+RandomNickNames[8]="졸병"
+RandomNickNames[9]="헐리우드"
+RandomNickNames[10]="말"
+RandomNickNames[11]="하울러"
+RandomNickNames[12]="어치"
+RandomNickNames[13]="강탈자"
+RandomNickNames[14]="심판자"
+RandomNickNames[15]="청새치"
+RandomNickNames[16]="무스탕"
+RandomNickNames[17]="아빠"
+RandomNickNames[18]="화가"
+RandomNickNames[19]="얼룩말"
+RandomNickNames[20]="악동"
+RandomNickNames[21]="록키"
+RandomNickNames[22]="스쿠터"
+RandomNickNames[23]="모기"
+RandomNickNames[24]="밑바닥"
+RandomNickNames[25]="스트레치"
+RandomNickNames[26]="타격가"
+RandomNickNames[27]="웨어울프"
+RandomNickNames_Male[0]="먼지투성이"
+RandomNickNames_Male[1]="더치"
+RandomNickNames_Male[2]="탈곡기"
+RandomNickNames_Male[3]="슬리크"
+RandomNickNames_Male[4]="아저씨"
+RandomNickNames_Female[0]="아줌마"
+RandomNickNames_Female[1]="굿나잇"
+RandomNickNames_Female[2]="메두사"
+RandomNickNames_Female[3]="슈가"
+
+[LW_Shinobi X2SoldierClassTemplate]
+DisplayName="닌자"
+ClassSummary="닌자는 아군의 주요 정찰 유닛으로, 검을 사용해 은밀하게 근거리 공격을 가합니다."
+LeftAbilityTreeTitle="파괴자"
+RightAbilityTreeTitle="검객"
+;ALPHABETICAL ORDER
+RandomNickNames[0]="클러치"
+RandomNickNames[1]="코브라"
+RandomNickNames[2]="별종"
+RandomNickNames[3]="무용수"
+RandomNickNames[4]="돌진전사"
+RandomNickNames[5]="회피전문가"
+RandomNickNames[6]="용"
+RandomNickNames[7]="펜싱 선수"
+RandomNickNames[8]="공중제비"
+RandomNickNames[9]="털복숭이"
+RandomNickNames[10]="땅다람쥐"
+RandomNickNames[11]="철퇴"
+RandomNickNames[12]="깊은 밤"
+RandomNickNames[13]="중성자"
+RandomNickNames[14]="화가"
+RandomNickNames[15]="파샤"
+RandomNickNames[16]="밀렵꾼"
+RandomNickNames[17]="수다쟁이"
+RandomNickNames[18]="면도칼"
+RandomNickNames[19]="살인광"
+RandomNickNames[20]="왕족"
+RandomNickNames[21]="수상한 자"
+RandomNickNames[22]="방망이"
+RandomNickNames[23]="스페이스바"
+RandomNickNames[24]="파쇄 전문가"
+RandomNickNames[25]="스토커"
+RandomNickNames[26]="탤런"
+RandomNickNames[27]="장의사"
+RandomNickNames[28]="살쾡이"
+;ALPHABETICAL ORDER
+RandomNickNames_Male[0]="굴곡기"
+RandomNickNames_Male[1]="코치스"
+RandomNickNames_Male[2]="멋쟁이"
+RandomNickNames_Male[3]="기수"
+RandomNickNames_Male[4]="잠귀신"
+RandomNickNames_Male[5]="검술사"
+;ALPHABETICAL ORDER
+RandomNickNames_Female[0]="표범"
+RandomNickNames_Female[1]="사이렌"
+RandomNickNames_Female[2]="점화기"
+RandomNickNames_Female[3]="다혈질"
+;ALPHABETICAL ORDER
+
+[LW_Specialist X2SoldierClassTemplate]
+DisplayName="특수병"
+ClassSummary="아군의 최첨단 장비를 사용하는 특수병은 전투 및 전장 의무병의 역할을 하는 로봇 드론을 전장에 배치할 수 있습니다."
+LeftAbilityTreeTitle="의무병"
+RightAbilityTreeTitle="해커"
+
+;ALPHABETICAL ORDER
+RandomNickNames[0]="천사"
+RandomNickNames[1]="베타"
+RandomNickNames[2]="주교"
+RandomNickNames[3]="뼈다귀"
+RandomNickNames[4]="큰 파도"
+RandomNickNames[5]="브로커"
+RandomNickNames[6]="비밀 당원"
+RandomNickNames[7]="사이버"
+RandomNickNames[8]="암호"
+RandomNickNames[9]="데이터"
+RandomNickNames[10]="집사"
+RandomNickNames[11]="유쾌한 박사"
+RandomNickNames[12]="의사"
+RandomNickNames[13]="피드백"
+RandomNickNames[14]="화염벽"
+RandomNickNames[15]="천재"
+RandomNickNames[16]="기즈모"
+RandomNickNames[17]="작은 결함"
+RandomNickNames[18]="납치"
+RandomNickNames[19]="방해 전파"
+RandomNickNames[20]="어릿광대"
+RandomNickNames[21]="동요"
+RandomNickNames[22]="번개"
+RandomNickNames[23]="메이데이"
+RandomNickNames[24]="메가"
+RandomNickNames[25]="뉴턴"
+RandomNickNames[26]="오버드라이브"
+RandomNickNames[27]="패치"
+RandomNickNames[28]="교수"
+RandomNickNames[29]="래그타임"
+RandomNickNames[30]="악동"
+RandomNickNames[31]="수다쟁이"
+RandomNickNames[32]="빨강"
+RandomNickNames[33]="균열"
+RandomNickNames[34]="낙하산 줄"
+RandomNickNames[35]="불한당"
+RandomNickNames[36]="그을음"
+RandomNickNames[37]="감시병"
+RandomNickNames[38]="수상한 자"
+RandomNickNames[39]="요동"
+RandomNickNames[40]="사기꾼"
+RandomNickNames[41]="심리학자"
+RandomNickNames[42]="슬라이더"
+RandomNickNames[43]="태양"
+RandomNickNames[44]="음파 탐지기"
+RandomNickNames[45]="불똥"
+RandomNickNames[46]="바느질"
+RandomNickNames[47]="딱따구리"
+RandomNickNames[48]="눈물"
+RandomNickNames[49]="땜장이"
+RandomNickNames[50]="터보"
+RandomNickNames[51]="맹독"
+RandomNickNames[52]="수증기"
+RandomNickNames[53]="항공병"
+RandomNickNames[54]="감시관"
+RandomNickNames[55]="위스키"
+RandomNickNames[56]="난폭한 녀석"
+RandomNickNames[57]="줄루"
+;ALPHABETICAL ORDER
+RandomNickNames_Male[0]="마약 판매자"
+RandomNickNames_Male[1]="마술사"
+RandomNickNames_Male[2]="사제"
+RandomNickNames_Male[3]="레인맨"
+RandomNickNames_Male[4]="수탉"
+RandomNickNames_Female[0]="여사제"
+RandomNickNames_Female[1]="울프 마더"
+RandomNickNames_Female[2]="블랙 위도우"
+RandomNickNames_Female[4]="공작부인"
+;ALPHABETICAL ORDER
+
+[LW_Grenadier X2SoldierClassTemplate]
+DisplayName="척탄병"
+ClassSummary="폭파 전문가로 활동하는 척탄병은 필요한 경우 언제 어디서든 강력한 화력를 제공합니다. 또한 보조 수류탄 전문 훈련을 통하여 아군을 보호하고 적을 무력화할 수도 있습니다."
+LeftAbilityTreeTitle="폭파수"
+RightAbilityTreeTitle="서포터"
+
+;ALPHABETICAL ORDER
+RandomNickNames[0]="올데이"
+RandomNickNames[1]="올인"
+RandomNickNames[2]="동물"
+RandomNickNames[3]="멋쟁이"
+RandomNickNames[4]="대륙"
+RandomNickNames[5]="거금"
+RandomNickNames[6]="심술쟁이"
+RandomNickNames[7]="불꽃"
+RandomNickNames[8]="붐붐"
+RandomNickNames[9]="폭격기"
+RandomNickNames[10]="버디"
+RandomNickNames[11]="불독"
+RandomNickNames[12]="돌진"
+RandomNickNames[13]="클레이모어"
+RandomNickNames[14]="데모"
+RandomNickNames[15]="데프콘"
+RandomNickNames[16]="악마개"
+RandomNickNames[17]="디젤"
+RandomNickNames[18]="앙코르"
+RandomNickNames[19]="화염구"
+RandomNickNames[20]="냉장고"
+RandomNickNames[21]="기관총병"
+RandomNickNames[22]="망치"
+RandomNickNames[23]="지옥불"
+RandomNickNames[24]="고주탑"
+RandomNickNames[25]="말"
+RandomNickNames[26]="볼케이노"
+RandomNickNames[27]="허리케인"
+RandomNickNames[28]="고물상"
+RandomNickNames[29]="저거너트"
+RandomNickNames[30]="녹아웃"
+RandomNickNames[31]="킹콩"
+RandomNickNames[32]="미친개"
+RandomNickNames[33]="멜트 다운"
+RandomNickNames[34]="무스"
+RandomNickNames[35]="신성"
+RandomNickNames[36]="신경질쟁이"
+RandomNickNames[37]="니트로"
+RandomNickNames[38]="지배자"
+RandomNickNames[39]="핏불"
+RandomNickNames[40]="방화광"
+RandomNickNames[41]="레드라인"
+RandomNickNames[42]="코뿔소"
+RandomNickNames[43]="로켓"
+RandomNickNames[44]="해풍"
+RandomNickNames[45]="석판"
+RandomNickNames[46]="스매쉬"
+RandomNickNames[47]="다혈질"
+RandomNickNames[48]="스모키"
+RandomNickNames[49]="늪지 괴물"
+RandomNickNames[50]="티본"
+RandomNickNames[51]="티렉스"
+RandomNickNames[52]="탱크"
+RandomNickNames[53]="타격가"
+RandomNickNames[54]="번개"
+RandomNickNames[55]="간지럼"
+RandomNickNames[56]="꼬마"
+RandomNickNames[57]="타이탄"
+RandomNickNames[58]="다이너마이트"
+RandomNickNames[59]="토치"
+RandomNickNames[60]="전투견"
+RandomNickNames[61]="전투마"
+RandomNickNames[62]="야생 소년"
+;ALPHABETICAL ORDER
+RandomNicknames_Male[0]="야만인"
+RandomNickNames_Male[1]="거인"
+RandomNicknames_Male[2]="남자 보스"
+RandomNickNames_Male[3]="카우보이"
+RandomNickNames_Male[4]="얼뜨기"
+RandomNickNames_Male[5]="네로"
+RandomNickNames_Male[6]="아빠 곰"
+RandomNickNames_Male[7]="거친 남자"
+RandomNickNames_Female[0]="아마존"
+RandomNicknames_Female[1]="여자 보스"
+RandomNickNames_Female[2]="카우걸"
+RandomNicknames_Female[3]="도미노"
+RandomNickNames_Female[4]="프레야"
+RandomNickNames_Female[5]="엄마 곰"
+RandomNickNames_Female[6]="수장"
+RandomNickNames_Female[7]="방화범"
+;ALPHABETICAL ORDER
+
+[LW_Assault X2SoldierClassTemplate]
+DisplayName="강습병"
+ClassSummary="강습병은 아군의 주요 근접전 유닛으로, 근거리에서 밀어붙이고 전선을 유지하는 역할을 합니다."
+LeftAbilityTreeTitle="습격자"
+RightAbilityTreeTitle="브리쳐"
+;ALPHABETICAL ORDER
+RandomNickNames[0]="강도"
+RandomNickNames[1]="대공습"
+RandomNickNames[2]="벽돌"
+RandomNickNames[3]="도살자"
+RandomNickNames[4]="둥근 톱"
+RandomNickNames[5]="케이준"
+RandomNickNames[6]="난도질"
+RandomNickNames[7]="코브라"
+RandomNickNames[8]="쿠거"
+RandomNickNames[9]="코요테"
+RandomNickNames[10]="충돌"
+RandomNickNames[11]="다이아몬드"
+RandomNickNames[12]="집행자"
+RandomNickNames[13]="치명타"
+RandomNickNames[14]="섬광"
+RandomNickNames[15]="격노"
+RandomNickNames[16]="악어"
+RandomNickNames[17]="고스트"
+RandomNickNames[18]="기관총병"
+RandomNickNames[19]="사냥개"
+RandomNickNames[20]="얼음"
+RandomNickNames[21]="얼음송곳"
+RandomNickNames[22]="상어"
+RandomNickNames[23]="심판의 날"
+RandomNickNames[24]="요물"
+RandomNickNames[25]="괴물"
+RandomNickNames[26]="무스탕"
+RandomNickNames[27]="성기사"
+RandomNickNames[28]="핏불"
+RandomNickNames[29]="길잡이"
+RandomNickNames[30]="링고"
+RandomNickNames[31]="사무라이"
+RandomNickNames[32]="전갈"
+RandomNickNames[33]="쇼군"
+RandomNickNames[34]="그림자"
+RandomNickNames[35]="살해자"
+RandomNickNames[36]="뱀"
+RandomNickNames[37]="뱀의 눈"
+RandomNickNames[38]="솔로"
+RandomNickNames[39]="망령"
+RandomNickNames[40]="독거미"
+RandomNickNames[41]="스토커"
+RandomNickNames[42]="강철"
+RandomNickNames[43]="스팅어"
+RandomNickNames[44]="템플기사단"
+RandomNickNames[45]="트로이"
+RandomNickNames[46]="반달"
+RandomNickNames[47]="바이킹"
+RandomNickNames[48]="감시관"
+RandomNickNames[49]="군 지도자"
+RandomNickNames[50]="울버린"
+RandomNickNames[51]="야생 소년"
+RandomNickNames[52]="야생 동물"
+RandomNickNames[53]="줄루"
+;ALPHABETICAL ORDER
+RandomNickNames_Male[0]="도끼병"
+RandomNickNames_Male[1]="공작"
+RandomNickNames_Male[2]="록키"
+RandomNickNames_Male[3]="종마"
+RandomNickNames_Male[4]="늑대 인간"
+;ALPHABETICAL ORDER
+RandomNickNames_Female[0]="아테나"
+RandomNickNames_Female[1]="공작부인"
+RandomNicknames_Female[2]="철의 여인"
+RandomNicknames_Female[3]="철의 아가씨"
+RandomNicknames_Female[4]="방패 든 아가씨"
+RandomNickNames_Female[5]="발키리"
+;ALPHABETICAL ORDER
+
+[X2Ability_PerkPackAbilitySet]
+LocCoveringFireMalus="이 유닛은 엄호 사격 능력이 있는 경계중인 유닛의 목표가 되었기 때문에 남은 턴동안 조준이 -10 감소합니다."

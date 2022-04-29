@@ -1,0 +1,7 @@
+
+[X2Ability_LWAlienAbilities]
+strBayonetChargePenalty="Il Centurion subisce <XGParam:IntValue1/> Difesa per <XGParam:IntValue0/> turni."
+
+[X2Effect_WarCry]
+strWarCryFriendlyDesc="Riceve un incremento a Mira, Mobilità e Volontà."
+

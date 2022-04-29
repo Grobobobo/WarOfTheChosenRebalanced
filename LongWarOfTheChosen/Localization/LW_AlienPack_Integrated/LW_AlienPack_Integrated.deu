@@ -1,0 +1,7 @@
+
+[X2Ability_LWAlienAbilities]
+strBayonetChargePenalty="Befehlshaber erleidet <XGParam:IntValue0/> Runden lang einen Abzug in Höhe von <XGParam:IntValue1/> auf seine Verteidigung."
+
+[X2Effect_WarCry]
+strWarCryFriendlyDesc="Erhält einen Schub auf Zielsicherheit, Mobilität und Wille."
+

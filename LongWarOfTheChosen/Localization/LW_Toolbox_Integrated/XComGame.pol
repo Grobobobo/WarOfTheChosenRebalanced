@@ -1,0 +1,14 @@
+[RedFog_LW X2AbilityTemplate]
+LocFriendlyName="Czerwona mgła"
+LocLongDescription="Ranne jednostki mają obniżone statystyki."
+LocHelpText="Ranne jednostki mają obniżone statystyki."
+LocFlyOverText="Czerwona mgła"
+LocPromotionPopupText="REDFOGLOCPROMOTIONPOPUPTEXT"
+
+[XComGame.UIShellDifficulty]
+[UIShellDifficulty]
+m_arrDifficultyDescStrings[0]="Odpowiedni dla graczy nieznających XCOM czy ogólnie gier taktycznych.<br/><br/> Ustawienia Long War można dostosować w menu opcji po rozpoczęciu kampanii."
+m_arrDifficultyDescStrings[1]="Wyzwanie odpowiednie dla graczy znających XCOM.<br/><br/>Ustawienia Long War można dostosować w menu opcji po rozpoczęciu kampanii."
+m_arrDifficultyDescStrings[2]="Poważne wyzwanie dla doświadczonych graczy Long War.<br/><br/>Ustawienia Long War można dostosować w menu opcji po rozpoczęciu kampanii."
+m_arrDifficultyDescStrings[3]="Brutalna kampania, w której nie ma miejsca na pomyłki.<br/><br/>Ustawienia Long War można dostosować w menu opcji po rozpoczęciu kampanii."
+m_strTutorialOnImpossible="W Long War samouczek będzie wyłączony.<br/><br/><font color='#9acbcb'>Ustawienia Long War można dostosować w menu opcji po rozpoczęciu kampanii.</font>"

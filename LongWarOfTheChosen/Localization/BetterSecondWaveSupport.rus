@@ -1,0 +1,27 @@
+; LWOTC Translated
+[DisableTutorial SecondWaveOptionObject]
+Tooltip="Отключить обучение Long War of the Chosen."
+Description="Не лезь под руку: отключить обучение LWOTC."
+; End Translated
+
+; LWOTC Translated
+[DisableChosen SecondWaveOptionObject]
+Tooltip="Отключить Избранных, если вы не хотите играть с ними."
+Description="Избранные в отпуске: отключить Избранных."
+
+[EnableResistanceOrders SecondWaveOptionObject]
+Tooltip="Включить Приказы Сопротивления."
+Description="Стратегическое преимущество: включить Приказы Сопротивления для XCOM."
+; End Translated
+
+; LWOTC Translated
+[AllowSameRankAbilities SecondWaveOptionObject]
+Tooltip="Позволяет оперативникам XCOM приобретать дополнительные классовые способности того же ранга за очки способностей после постройки Тренировочного центра."
+Description="Разрешить дополнительные способности: позволяет оперативникам XCOM приобретать новые способности за ОС."
+; End Translated
+
+;  LWOTC Translated
+[BabyChosen SecondWaveOptionObject]
+Tooltip="Отключить мгновенные реакции Избранных, делая их более слабыми противниками в бою."
+Description="Слабые Избранные: у Избранных отключены мгновенные реакции."
+; End Translated

@@ -1,0 +1,1471 @@
+[XComMultiplayerTacticalUI]
+MutonM2_LW="<Bullet/> The Muton Centurion can do all the things a Muton can, plus issue a war cry that improves the abilities of some nearby allies, and charge with its bayonet at any enemy within sprint distance.\n<Bullet/> Unlike the Mutons of the invasion era, the new hybridized Mutons are highly effective at close combat\n<Bullet/> Their Counterattack ability permits them to take a return attack at anyone who engages them in melee\n<Bullet/> They can also Execute incapacitated nearby enemies; under no circumstances should you allow an enemy Muton near one of your stunned units\n<Bullet/> They can also Suppress with their rifles, and their battle armor provides consistent protection."
+MutonM3_LW="<Bullet/>""
+
+DroneM1="<Bullet/>The Guardian Drone is a cheap recon unit, primarily intended for civilian crowd control."
+
+[CorpseDrone X2ItemTemplate]
+FriendlyName="Drone Wreck"
+FriendlyNamePlural="Drone Wrecks"
+BriefSummary="The wreckage of this light, autonomous security hovercraft indicates its design is primarily intended for civilan monitoring and crowd control."
+
+[CorpseMutonElite X2ItemTemplate]
+FriendlyName="Muton Elite Corpse"
+FriendlyNamePlural="Muton Elite Corpses"
+BriefSummary="These aliens sit atop the Muton internal hierarchy. Unlike the Centurions, they have received significant genetic modifications relative to the standard Mutons we have encountered."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; NEW ABILITIES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[WarCry X2AbilityTemplate]
+LocFriendlyName="War Cry"
+LocLongDescription="Grant major Aim, Will and Mobility bonuses to other Mutons and lesser bonuses to other sapient aliens and ADVENT. 6-turn cooldown."
+LocHelpText="Grant bonuses to other Mutons and some other aliens."
+LocFlyOverText="War Cry"
+LocPromotionPopupText="<Bullet/> Grant major Aim, Will and Mobility bonuses to other Mutons and lesser bonuses to many other sapient aliens and ADVENT.<br/><Bullet/> 6-turn cooldown.<br/>"
+
+[BayonetCharge X2AbilityTemplate]
+LocFriendlyName="Bayonet Charge"
+LocLongDescription="Allows a melee attack anywhere within sprint distance. Four-turn cooldown."
+LocHelpText="Allows a melee attack anywhere within sprint distance."
+LocFlyOverText="Bayonet Charge"
+LocPromotionPopupText="<Bullet/> Allows a melee attack anywhere within sprint distance.<br/><Bullet/> 4-turn cooldown.<br/>"
+
+[Beastmaster_LW X2AbilityTemplate]
+LocFriendlyName="Beastmaster"
+LocLongDescription="Immune to damage from Berserkers."
+LocHelpText="Immune to damage from Berserkers."
+LocFlyOverText="Beastmaster"
+LocPromotionPopupText="<Bullet/> Immune to damage from Berserkers.<br/>"
+
+[MassMindSpin X2AbilityTemplate]
+LocFriendlyName="Mass Mindspin"
+LocFlyOverText="Mass Mindspin"
+LocLongDescription="Perform a Mindspin attack on multiple targets within a cone."
+LocHelpText="Launch a debilitating psionic attack against multiple targets that can inflict different negative conditions, including mental control."
+LocPromotionPopupText="<Bullet/> Launch a debilitating psionic attack against multiple targets target that can inflict different negative conditions, including mental control."
+LocMissMessage="Mindspin resisted!"
+
+[Mindspin X2AbilityTemplate]
+LocFriendlyName="Mindspin"
+LocLongDescription="Debilitating telepathic attack that can inflict different negative mental conditions. It won't mind control by default, but it's guaranteed to mind control against stunned, panicked, or disoriented units."
+LocHelpText="Launch a debilitating Psionic attack against a target that can inflict different negative mental conditions. It won't mind control by default, but it's guaranteed to mind control against stunned, panicked, or disoriented units."
+LocFlyOverText="Mindspin"
+LocMissMessage="Mindspin resisted!"
+
+[LWDroneShock X2AbilityTemplate]
+LocFriendlyName="Drone Shock"
+LocLongDescription="Intended to pacify civilians, this effect does minimal damage and only disorients."
+LocHelpText="This weapon does minimal damage and impairs the target."
+LocFlyOverText="Drone Shock"
+LocPromotionPopupText="<Bullet/> Intended to pacify civilians, this effect does minimal damage and only disorients the target.<br/>"
+
+[LWDroneRepair X2AbilityTemplate]
+LocFriendlyName="Repair"
+LocFlyOverText="Repair"
+LocHelpText="Repair any nearby mechanical unit."
+LocLongDescription="Repair any nearby mechanical unit."
+LocPromotionPopupText="<Bullet/> Repair any nearby mechanical unit."
+
+[LWDroneHeal X2AbilityTemplate]
+LocFriendlyName="Drone Heal"
+LocFlyOverText="Drone Heal"
+LocHelpText="Heal any nearby Biological unit."
+LocLongDescription="Heal any nearby Biological unit."
+LocPromotionPopupText="<Bullet/> Heal any nearby Biological unit."
+
+[LWDroneMeleeStun X2AbilityTemplate]
+LocFriendlyName="Stunner"
+LocFlyOverText="Stunner"
+LocHelpText="Attempt to stun any enemy within melee range."
+LocLongDescription="Attempt to stun any enemy within melee range."
+LocPromotionPopupText="<Bullet/> Attempt to stun any enemy within melee range."
+LocMissMessage="Missed!"
+
+[PersonalShield X2AbilityTemplate]
+LocFriendlyName="Personal Shield"
+LocFlyOverText="Personal Shield"
+LocHelpText="Grants 5 points of ablative armor. 5-turn cooldown."
+LocLongDescription="Grants 5 points of ablative armor. 5-turn cooldown."
+LocPromotionPopupText="<Bullet/> Grants 5 points of ablative armor.<br/><Bullet/> 5-turn cooldown.<br/><Bullet/> Uses one action; does not end turn.<br/>"
+
+[MassReanimation_LW X2AbilityTemplate]
+LocFriendlyName="Mass Reanimate"
+LocFlyOverText="Mass Reanimate"
+LocHelpText="Reanimate all nearby dead organics, turning them into zombies."
+LocLongDescription="Reanimate all nearby dead organics, turning them into zombies."
+LocPromotionPopupText="<Bullet/> Reanimate all nearby dead organics, turning them into zombies."
+
+[ReadyForAnything X2AbilityTemplate]
+LocFriendlyName="Ready For Anything"
+LocFlyOverText="Overwatch: Ready For Anything"
+; LWOTC Needs Translation
+LocHelpText="Enter overwatch after firing a turn-ending standard shot with your primary weapon."
+LocLongDescription="Enter overwatch after firing a turn-ending standard shot  with your primary weapon."
+LocPromotionPopupText="<Bullet/> Enter overwatch after firing a turn-ending standard shot with your primary weapon."
+; End Translation
+
+[ReadyForAnythingFlyover X2AbilityTemplate]
+LocFriendlyName="Ready For Anything"
+LocFlyOverText="Overwatch: Ready For Anything"
+LocHelpText="Enter Overwatch after firing a standard shot with your primary weapon."
+LocLongDescription="Enter Overwatch after firing a standard shot with your primary weapon."
+LocPromotionPopupText="<Bullet/> Enter Overwatch after firing a standard shot with your primary weapon."
+
+[RepairServos X2AbilityTemplate]
+LocFriendlyName="Damage Control"
+LocFlyOverText="Damage Control"
+LocLongDescription="After taking damage, gain two armor through the end of the next turn."
+LocHelpText="After taking damage, gain two armor through the end of the next turn."
+LocPromotionPopupText="<Bullet/> Your armor hardens temporarily after an impact. After taking damage, gain two armor through the end of the next turn.<br/><Bullet/> Taking multiple hits on successive turns extends the timer.<br/>"
+
+[RepairServosPassive X2AbilityTemplate]
+LocFriendlyName="Damage Control"
+LocFlyOverText="Damage Control"
+LocLongDescription="After taking damage, gain two armor through the end of the next turn."
+LocHelpText="After taking damage, gain two armor through the end of the next turn."
+LocPromotionPopupText="<Bullet/> After taking damage, gain two armor through the end of the next turn.<br/><Bullet/> Taking multiple hits on successive turns extends the timer.<br/>"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; MutonM2_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[X2Ability_MutonM2_Abilities]
+strBayonetChargePenalty="Centurion suffers <XGParam:IntValue1/> Defense for <XGParam:IntValue0/> turns."
+
+[MutonM2_LW X2CharacterTemplate]
+strCharacterName="Advanced Muton"
+
+[MutonM2_LW_Wpn X2WeaponTemplate]
+FriendlyName="Muton Rifle"
+BriefSummary="XCOM has managed to salvage a variety of standard infantry small arms; this is the most common variety, similar to the rifle used twenty years before. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage, once a standard technical approach is unked."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/> If the soldier fires with both actions available, three shots will be taken at reduced accuracy, but overall increased efficiency\n<Bullet/> Use upgrades looted from enemies to improve assault rifle tactical effectiveness"
+; LWOTC Needs Translation
+AbilityDescName="plasma rifle"
+; End translation
+
+[MutonM3_LW_Wpn X2WeaponTemplate]
+FriendlyName="Centurion Rifle"
+BriefSummary="XCOM has managed to salvage a variety of standard infantry small arms; this is the most common variety, similar to the rifle used twenty years before. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage, once a standard technical approach is unked."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/> If the soldier fires with both actions available, three shots will be taken at reduced accuracy, but overall increased efficiency\n<Bullet/> Use upgrades looted from enemies to improve assault rifle tactical effectiveness"
+; LWOTC Needs Translation
+AbilityDescName="plasma rifle"
+; End translation
+
+[MutonM4_LW_Wpn X2WeaponTemplate]
+FriendlyName="Centurion Rifle"
+BriefSummary="XCOM has managed to salvage a variety of standard infantry small arms; this is the most common variety, similar to the rifle used twenty years before. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage, once a standard technical approach is unked."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/> If the soldier fires with both actions available, three shots will be taken at reduced accuracy, but overall increased efficiency\n<Bullet/> Use upgrades looted from enemies to improve assault rifle tactical effectiveness"
+; LWOTC Needs Translation
+AbilityDescName="plasma rifle"
+; End translation
+
+[MutonM5_LW_Wpn X2WeaponTemplate]
+FriendlyName="Centurion Rifle"
+BriefSummary="XCOM has managed to salvage a variety of standard infantry small arms; this is the most common variety, similar to the rifle used twenty years before. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage, once a standard technical approach is unked."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/> If the soldier fires with both actions available, three shots will be taken at reduced accuracy, but overall increased efficiency\n<Bullet/> Use upgrades looted from enemies to improve assault rifle tactical effectiveness"
+; LWOTC Needs Translation
+AbilityDescName="plasma rifle"
+; End translation
+
+[MutonM2_LWGrenade X2GrenadeTemplate]
+FriendlyName="Alien Grenade"
+FriendlyNamePlural="Alien Grenades"
+BriefSummary="Each Muton carries a single high damage plasma grenade."
+TacticalText="<Bullet/> A single, high damage grenade."
+ThrownAbilityName="Throw Alien Grenade"
+ThrownAbilityHelpText="Throw an Alien Grenade at target area."
+LaunchedAbilityName="Launch Alien Grenade"
+LaunchedAbilityHelpText="Launch an Alien Grenade at target area. Shreds armor."
+
+[MutonM3_LWGrenade X2GrenadeTemplate]
+FriendlyName="Alien Grenade"
+FriendlyNamePlural="Alien Grenades"
+BriefSummary="Each Muton Centurion carries a single high damage plasma grenade."
+TacticalText="<Bullet/> A single, high damage grenade."
+ThrownAbilityName="Throw Alien Grenade"
+ThrownAbilityHelpText="Throw an Alien Grenade at target area."
+LaunchedAbilityName="Launch Alien Grenade"
+LaunchedAbilityHelpText="Launch an Alien Grenade at target area. Shreds armor."
+
+[MutonM4_LWGrenade X2GrenadeTemplate]
+FriendlyName="Alien Grenade"
+FriendlyNamePlural="Alien Grenades"
+BriefSummary="Each Muton Centurion carries a single high damage plasma grenade."
+TacticalText="<Bullet/> A single, high damage grenade."
+ThrownAbilityName="Throw Alien Grenade"
+ThrownAbilityHelpText="Throw an Alien Grenade at target area."
+LaunchedAbilityName="Launch Alien Grenade"
+LaunchedAbilityHelpText="Launch an Alien Grenade at target area. Shreds armor."
+
+[MutonM5_LWGrenade X2GrenadeTemplate]
+FriendlyName="Alien Grenade"
+FriendlyNamePlural="Alien Grenades"
+BriefSummary="Each Muton Centurion carries a single high damage plasma grenade."
+TacticalText="<Bullet/> A single, high damage grenade."
+ThrownAbilityName="Throw Alien Grenade"
+ThrownAbilityHelpText="Throw an Alien Grenade at target area."
+LaunchedAbilityName="Launch Alien Grenade"
+LaunchedAbilityHelpText="Launch an Alien Grenade at target area. Shreds armor."
+
+[MutonM2_LW_MeleeAttack X2WeaponTemplate]
+FriendlyName="Bayonet"
+
+[MutonM3_LW_MeleeAttack X2WeaponTemplate]
+FriendlyName="Bayonet"
+
+[MutonM4_LW_MeleeAttack X2WeaponTemplate]
+FriendlyName="Bayonet"
+
+[MutonM5_LW_MeleeAttack X2WeaponTemplate]
+FriendlyName="Bayonet"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; MutonM3_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Muton_Leader X2CharacterTemplate]
+strCharacterName="Muton Centurion"
+
+[Muton_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Centurion Rifle"
+BriefSummary="XCOM has managed to salvage a variety of standard infantry small arms; this is the most common variety, similar to the rifle used twenty years before. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage, once a standard technical approach is unked."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/> If the soldier fires with both actions available, three shots will be taken at reduced accuracy, but overall increased efficiency\n<Bullet/> Use upgrades looted from enemies to improve assault rifle tactical effectiveness"
+; LWOTC Needs Translation
+AbilityDescName="plasma rifle"
+; End translation
+
+[MutonM2_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Centurion Rifle"
+BriefSummary="XCOM has managed to salvage a variety of standard infantry small arms; this is the most common variety, similar to the rifle used twenty years before. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage, once a standard technical approach is unked."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/> If the soldier fires with both actions available, three shots will be taken at reduced accuracy, but overall increased efficiency\n<Bullet/> Use upgrades looted from enemies to improve assault rifle tactical effectiveness"
+; LWOTC Needs Translation
+AbilityDescName="plasma rifle"
+; End translation
+
+
+
+[MutonM3_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Elite Plasma Cannon"
+; LWOTC Needs Translation
+AbilityDescName="plasma cannon"
+; End translation
+
+[MutonM4_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Elite Plasma Cannon"
+; LWOTC Needs Translation
+AbilityDescName="plasma cannon"
+; End translation
+
+[MutonM5_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Elite Plasma Cannon"
+; LWOTC Needs Translation
+AbilityDescName="plasma cannon"
+; End translation
+
+[Muton_Leader_MeleeAttack X2WeaponTemplate]
+FriendlyName="Bayonet"
+
+[MutonM2_Leader_MeleeAttack X2WeaponTemplate]
+FriendlyName="Bayonet"
+
+[MutonM3_Leader_MeleeAttack X2WeaponTemplate]
+FriendlyName="Bayonet"
+
+[MutonM4_Leader_MeleeAttack X2WeaponTemplate]
+FriendlyName="Bayonet"
+
+[MutonM5_Leader_MeleeAttack X2WeaponTemplate]
+FriendlyName="Bayonet"
+
+[Muton_Leader_Grenade X2GrenadeTemplate]
+FriendlyName="Alien Grenade"
+FriendlyNamePlural="Alien Grenades"
+BriefSummary="Each Muton Centurion carries a single high damage plasma grenade."
+TacticalText="<Bullet/> A single, high damage grenade."
+ThrownAbilityName="Throw Alien Grenade"
+ThrownAbilityHelpText="Throw an Alien Grenade at target area."
+LaunchedAbilityName="Launch Alien Grenade"
+LaunchedAbilityHelpText="Launch an Alien Grenade at target area. Shreds armor."
+
+[MutonM2_Leader_Grenade X2GrenadeTemplate]
+FriendlyName="Alien Grenade"
+FriendlyNamePlural="Alien Grenades"
+BriefSummary="Each Muton Centurion carries a single high damage plasma grenade."
+TacticalText="<Bullet/> A single, high damage grenade."
+ThrownAbilityName="Throw Alien Grenade"
+ThrownAbilityHelpText="Throw an Alien Grenade at target area."
+LaunchedAbilityName="Launch Alien Grenade"
+LaunchedAbilityHelpText="Launch an Alien Grenade at target area. Shreds armor."
+
+[MutonM3_Leader_Grenade X2GrenadeTemplate]
+FriendlyName="Alien Grenade"
+FriendlyNamePlural="Alien Grenades"
+BriefSummary="Each Muton Elite carries a single high damage plasma grenade."
+TacticalText="<Bullet/> A single, high damage grenade."
+ThrownAbilityName="Throw Alien Grenade"
+ThrownAbilityHelpText="Throw an Alien Grenade at target area."
+LaunchedAbilityName="Launch Alien Grenade"
+LaunchedAbilityHelpText="Launch an Alien Grenade at target area. Shreds armor."
+
+[MutonM4_Leader_Grenade X2GrenadeTemplate]
+FriendlyName="Alien Grenade"
+FriendlyNamePlural="Alien Grenades"
+BriefSummary="Each Muton Elite carries a single high damage plasma grenade."
+TacticalText="<Bullet/> A single, high damage grenade."
+ThrownAbilityName="Throw Alien Grenade"
+ThrownAbilityHelpText="Throw an Alien Grenade at target area."
+LaunchedAbilityName="Launch Alien Grenade"
+LaunchedAbilityHelpText="Launch an Alien Grenade at target area. Shreds armor."
+
+[MutonM5_Leader_Grenade X2GrenadeTemplate]
+FriendlyName="Alien Grenade"
+FriendlyNamePlural="Alien Grenades"
+BriefSummary="Each Muton Elite carries a single high damage plasma grenade."
+TacticalText="<Bullet/> A single, high damage grenade."
+ThrownAbilityName="Throw Alien Grenade"
+ThrownAbilityHelpText="Throw an Alien Grenade at target area."
+LaunchedAbilityName="Launch Alien Grenade"
+LaunchedAbilityHelpText="Launch an Alien Grenade at target area. Shreds armor."
+
+[MutonM2_Leader X2CharacterTemplate]
+strCharacterName="Muton Elite"
+
+[Muton_Leader_MeleeAttack X2WeaponTemplate]
+FriendlyName="Bayonet"
+
+[MutonM2_Leader_MeleeAttack X2WeaponTemplate]
+FriendlyName="Bayonet"
+
+[MutonM3_Leader_MeleeAttack X2WeaponTemplate]
+FriendlyName="Bayonet"
+
+[MutonM4_Leader_MeleeAttack X2WeaponTemplate]
+FriendlyName="Bayonet"
+
+[MutonM5_Leader_MeleeAttack X2WeaponTemplate]
+FriendlyName="Bayonet"
+
+[MutonM5_LW X2CharacterTemplate]
+strCharacterName="Bashar"
+;;;;;;;;;;;;;;;;;;;;;;;;;; Naja ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[NajaM1 X2CharacterTemplate]
+strCharacterName="Naja"
+
+[NajaM2 X2CharacterTemplate]
+strCharacterName="Naja Serpens"
+
+[NajaM3 X2CharacterTemplate]
+strCharacterName="Naja Elite"
+
+[NajaM1_WPN X2WeaponTemplate]
+FriendlyName="Naja Sniper Rifle"
+; LWOTC Needs Translation
+AbilityDescName="sniper rifle"
+; End translation
+
+[NajaM2_WPN X2WeaponTemplate]
+FriendlyName="Naja Sniper Rifle"
+; LWOTC Needs Translation
+AbilityDescName="sniper rifle"
+; End translation
+
+[NajaM3_WPN X2WeaponTemplate]
+FriendlyName="Naja Sniper Rifle"
+; LWOTC Needs Translation
+AbilityDescName="sniper rifle"
+; End translation
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Sidewinder ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[SidewinderM1 X2CharacterTemplate]
+strCharacterName="Sidewinder"
+
+[Sidewinder_Leader X2CharacterTemplate]
+strCharacterName="Psionic Whisper"
+
+[SidewinderM1_WPN X2WeaponTemplate]
+FriendlyName="Sidewinder Scramgun"
+; LWOTC Needs Translation
+AbilityDescName="scramgun"
+; End translation
+
+[SidewinderM2_WPN X2WeaponTemplate]
+FriendlyName="Sidewinder Scramgun"
+; LWOTC Needs Translation
+AbilityDescName="scramgun"
+; End translation
+
+[SidewinderM3_WPN X2WeaponTemplate]
+FriendlyName="Sidewinder Scramgun"
+; LWOTC Needs Translation
+AbilityDescName="scramgun"
+; End translation
+
+[SidewinderM4_WPN X2WeaponTemplate]
+FriendlyName="Sidewinder Scramgun"
+; LWOTC Needs Translation
+AbilityDescName="scramgun"
+; End translation
+
+[SidewinderM5_WPN X2WeaponTemplate]
+FriendlyName="Sidewinder Scramgun"
+; LWOTC Needs Translation
+AbilityDescName="scramgun"
+; End translation
+
+[SideWinder_Leader_WPN X2WeaponTemplate]
+FriendlyName="Sidewinder Gatling Psi Rifle"
+
+[SideWinderM2_Leader_WPN X2WeaponTemplate]
+FriendlyName="Sidewinder Gatling Psi Rifle"
+
+[SideWinderM3_Leader_WPN X2WeaponTemplate]
+FriendlyName="Sidewinder Gatling Psi Rifle"
+
+[SideWinderM4_Leader_WPN X2WeaponTemplate]
+FriendlyName="Sidewinder Gatling Psi Rifle"
+
+[SideWinderM5_Leader_WPN X2WeaponTemplate]
+FriendlyName="Sidewinder Gatling Psi Rifle"
+
+[SideWinder_Leader_Sword_WPN X2WeaponTemplate]
+FriendlyName="Vorpal Blade"
+AbilityDescName="Vorpal Blade"
+
+[SideWinderM2_Leader_Sword_WPN X2WeaponTemplate]
+FriendlyName="Vorpal Blade"
+AbilityDescName="Vorpal Blade"
+
+[SideWinderM3_Leader_Sword_WPN X2WeaponTemplate]
+FriendlyName="Vorpal Blade"
+AbilityDescName="Vorpal Blade"
+
+[SideWinderM4_Leader_Sword_WPN X2WeaponTemplate]
+FriendlyName="Vorpal Blade"
+AbilityDescName="Vorpal Blade"
+
+[SideWinderM5_Leader_Sword_WPN X2WeaponTemplate]
+FriendlyName="Vorpal Blade"
+AbilityDescName="Vorpal Blade"
+
+[PsiSpit_LW X2AbilityTemplate]
+LocFriendlyName="Psionic Spit"
+LocLongDescription="A psionic spit attack on a single target that deals small amount of damage, poisons, and generates focus."
+LocHelpText="Spits a psionic attack at a single target."
+LocFlyOverText="Psionic Spit"
+
+[VorpalCharge X2AbilityTemplate]
+LocFriendlyName="Vorpal Charge"
+LocLongDescription="A dash melee attack that costs all focus."
+LocHelpText="A dash melee attack that costs all focus."
+LocFlyOverText="Vorpal Charge"
+
+[SidewinderFocus X2AbilityTemplate]
+LocFriendlyName="Whisper Focus"
+LocLongDescription="Whisper can gain focus, and gets <Ability:SIDEWINDER_FOCUS1AIM/> aim, <Ability:SIDEWINDER_FOCUS1CRIT/> crit chance, and <Ability:SIDEWINDER_FOCUS1MOBILITY/> mobility for each focus point."
+LocHelpText="Whisper can gain focus, and gets 10 aim, 15 crit chance, and 1 mobility for each focus point."
+LocFlyOverText="Whisper can gain focus, and gets 10 aim, 15 crit chance, and 1 mobility for each focus point."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Viper ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Viper_Leader X2CharacterTemplate]
+strCharacterName="Constrictor"
+
+[ViperM2_LW_WPN X2WeaponTemplate]
+FriendlyName="Beam Rifle"
+; LWOTC Needs Translation
+AbilityDescName="plasma rifle"
+; End translation
+
+[ViperM3_LW_WPN X2WeaponTemplate]
+FriendlyName="Beam Rifle"
+; LWOTC Needs Translation
+AbilityDescName="plasma rifle"
+; End translation
+
+[ViperM4_LW_WPN X2WeaponTemplate]
+FriendlyName="Beam Rifle"
+; LWOTC Needs Translation
+AbilityDescName="plasma rifle"
+; End translation
+
+[ViperM5_LW_WPN X2WeaponTemplate]
+FriendlyName="Beam Rifle"
+; LWOTC Needs Translation
+AbilityDescName="plasma rifle"
+; End translation
+
+[ViperM5_LW_WPN X2WeaponTemplate]
+FriendlyName="Beam Rifle"
+; LWOTC Needs Translation
+AbilityDescName="plasma rifle"
+; End translation
+
+[Viper_Leader_WPN X2WeaponTemplate]
+FriendlyName="Typhon"
+
+[ViperM2_Leader_WPN X2WeaponTemplate]
+FriendlyName="Viper Gatling Rifle"
+
+[ViperM3_Leader_WPN X2WeaponTemplate]
+FriendlyName="Viper Gatling Rifle"
+
+[ViperM4_Leader_WPN X2WeaponTemplate]
+FriendlyName="Viper Gatling Rifle"
+
+[ViperM5_Leader_WPN X2WeaponTemplate]
+FriendlyName="Viper Gatling Rifle"
+
+
+
+;;purifier loc
+
+[AdvPurifier_Leader X2WeaponTemplate]
+FriendlyName="Advent Gunslinger"
+
+;;Priest loc
+
+[AdvPriest_Leader X2CharacterTemplate]
+strCharacterName="Purge Priest"
+
+[AdvPriest_Leader_WPN X2WeaponTemplate]
+FriendlyName="Purge Gun"
+
+[AdvPriestM2_Leader_WPN X2WeaponTemplate]
+FriendlyName="Purge Gun"
+
+[AdvPriestM3_Leader_WPN X2WeaponTemplate]
+FriendlyName="Purge Gun"
+
+[AdvPriestM4_Leader_WPN X2WeaponTemplate]
+FriendlyName="Purge Gun"
+
+[AdvPriestM5_Leader_WPN X2WeaponTemplate]
+FriendlyName="Purge Gun"
+
+[AdvPriestM4_PsiAmp X2WeaponTemplate]
+FriendlyName="Psionic Amplifier"
+FriendlyNamePlural="Psionic Amplifiers""
+BriefSummary="Psionic Amplifier"
+TacticalText="Psionic Amplifer"
+AbilityDescName="Psionic Amplifier"
+
+[AdvPriestM5_PsiAmp X2WeaponTemplate]
+FriendlyName="Psionic Amplifier"
+FriendlyNamePlural="Psionic Amplifiers""
+BriefSummary="Psionic Amplifier"
+TacticalText="Psionic Amplifer"
+AbilityDescName="Psionic Amplifier"
+
+[AdvPriest_Leader_PsiAmp X2WeaponTemplate]
+FriendlyName="Psionic Amplifier"
+FriendlyNamePlural="Psionic Amplifiers""
+BriefSummary="Psionic Amplifier"
+TacticalText="Psionic Amplifer"
+AbilityDescName="Psionic Amplifier"
+
+[AdvPriestM2_Leader_PsiAmp X2WeaponTemplate]
+FriendlyName="Psionic Amplifier"
+FriendlyNamePlural="Psionic Amplifiers""
+BriefSummary="Psionic Amplifier"
+TacticalText="Psionic Amplifer"
+AbilityDescName="Psionic Amplifier"
+
+[AdvPriestM3_Leader_PsiAmp X2WeaponTemplate]
+FriendlyName="Psionic Amplifier"
+FriendlyNamePlural="Psionic Amplifiers""
+BriefSummary="Psionic Amplifier"
+TacticalText="Psionic Amplifer"
+AbilityDescName="Psionic Amplifier"
+
+[AdvPriestM4_Leader_PsiAmp X2WeaponTemplate]
+FriendlyName="Psionic Amplifier"
+FriendlyNamePlural="Psionic Amplifiers""
+BriefSummary="Psionic Amplifier"
+TacticalText="Psionic Amplifer"
+AbilityDescName="Psionic Amplifier"
+
+[AdvPriestM5_Leader_PsiAmp X2WeaponTemplate]
+FriendlyName="Psionic Amplifier"
+FriendlyNamePlural="Psionic Amplifiers""
+BriefSummary="Psionic Amplifier"
+TacticalText="Psionic Amplifer"
+AbilityDescName="Psionic Amplifier"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Berserker Loc ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Berserker_Leader X2CharacterTemplate]
+strCharacterName="Juggernaut"
+
+[Berserker_MeleeAttack X2WeaponTemplate]
+FriendlyName="Berserker Fists"
+
+[BerserkerM2_MeleeAttack X2WeaponTemplate]
+FriendlyName="Berserker Fists"
+
+[BerserkerM3_MeleeAttack X2WeaponTemplate]
+FriendlyName="Berserker Fists"
+
+[BerserkerM4_MeleeAttack X2WeaponTemplate]
+FriendlyName="Berserker Fists"
+
+[Berserker_Leader_MeleeAttack X2WeaponTemplate]
+FriendlyName="Berserker Fists"
+
+[Berserker_Leader_MeleeAttack X2WeaponTemplate]
+FriendlyName="Berserker Fists"
+
+[Berserker_Leader_MeleeAttack X2WeaponTemplate]
+FriendlyName="Berserker Fists"
+
+[Berserker_Leader_MeleeAttack X2WeaponTemplate]
+FriendlyName="Berserker Fists"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Archon Loc ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Archon_Leader X2CharacterTemplate]
+strCharacterName="Great Archon"
+
+[Archon_Wpn X2WeaponTemplate]
+AbilityDescName="Staff"
+
+[ArchonM2_Wpn X2WeaponTemplate]
+FriendlyName="Archon Staff"
+FriendlyNamePlural="Archon Staves"
+AbilityDescName="Staff"
+
+[ArchonM3_Wpn X2WeaponTemplate]
+FriendlyName="Archon Staff"
+FriendlyNamePlural="Archon Staves"
+AbilityDescName="Staff"
+
+[ArchonStaffM2 X2WeaponTemplate]
+FriendlyName="Archon Staff"
+FriendlyNamePlural="Archon Staves"
+AbilityDescName="Staff"
+
+[ArchonStaffM3 X2WeaponTemplate]
+FriendlyName="Archon Staff"
+FriendlyNamePlural="Archon Staves"
+AbilityDescName="Staff"
+
+[Archon_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Archon Staff"
+FriendlyNamePlural="Archon Staves"
+AbilityDescName="Staff"
+
+[ArchonM2_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Archon Staff"
+FriendlyNamePlural="Archon Staves"
+AbilityDescName="Staff"
+
+[ArchonM3_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Archon Staff"
+FriendlyNamePlural="Archon Staves"
+AbilityDescName="Staff"
+
+[Archon_LeaderStaff X2WeaponTemplate]
+FriendlyName="Archon Staff"
+FriendlyNamePlural="Archon Staves"
+AbilityDescName="Staff"
+
+[ArchonM2_LeaderStaff X2WeaponTemplate]
+FriendlyName="Archon Staff"
+FriendlyNamePlural="Archon Staves"
+AbilityDescName="Staff"
+
+[ArchonM3_LeaderStaff X2WeaponTemplate]
+FriendlyName="Archon Staff"
+FriendlyNamePlural="Archon Staves"
+AbilityDescName="Staff"
+
+;;Archon Reaver is another possible name
+
+;;;Troopers
+
+[AdvTrooperM4_Wpn X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+FriendlyNamePlural="ADVENT Mag Rifles"
+BriefSummary="XCOM has managed to salvage a variety of standard infantry small arms; this is the most common variety, similar to the rifle used twenty years before. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage, once a standard technical approach is discovered."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/> If the soldier fires with both actions available, three shots will be taken at reduced accuracy, but overall increased efficiency\n<Bullet/> Use upgrades looted from enemies to improve assault rifle tactical effectiveness"
+
+[AdvTrooperM5_Wpn X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+FriendlyNamePlural="ADVENT Mag Rifles"
+BriefSummary="XCOM has managed to salvage a variety of standard infantry small arms; this is the most common variety, similar to the rifle used twenty years before. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage, once a standard technical approach is discovered."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/> If the soldier fires with both actions available, three shots will be taken at reduced accuracy, but overall increased efficiency\n<Bullet/> Use upgrades looted from enemies to improve assault rifle tactical effectiveness"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; SectoidM2_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Sectoid_Leader X2CharacterTemplate]
+strCharacterName="Sectoid Commmander"
+
+[SectoidM2_Wpn X2WeaponTemplate]
+FriendlyName="Beam Pistol"
+FriendlyNamePlural="Beam Pistols"
+
+[SectoidM3_Wpn X2WeaponTemplate]
+FriendlyName="Beam Pistol"
+FriendlyNamePlural="Beam Pistols"
+
+[SectoidM4_Wpn X2WeaponTemplate]
+FriendlyName="Beam Pistol"
+FriendlyNamePlural="Beam Pistols"
+
+[SectoidM5_Wpn X2WeaponTemplate]
+FriendlyName="Beam Pistol"
+FriendlyNamePlural="Beam Pistols"
+
+[Sectoid_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Beam Pistol"
+FriendlyNamePlural="Beam Pistols"
+
+[SectoidM2_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Beam Pistol"
+FriendlyNamePlural="Beam Pistols"
+
+[SectoidM3_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Beam Pistol"
+FriendlyNamePlural="Beam Pistols"
+
+[SectoidM4_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Beam Pistol"
+FriendlyNamePlural="Beam Pistols"
+
+[SectoidM5_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Beam Pistol"
+FriendlyNamePlural="Beam Pistols"
+
+;;;;Faceless
+
+[Faceless_Leader X2CharacterTemplate]
+strCharacterName="Shoggoth"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Troopers ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[AdvTrooperM4 X2CharacterTemplate]
+strCharacterName="Supreme Trooper"
+
+[AdvTrooper_Leader X2CharacterTemplate]
+strCharacterName="ADVENT Shock Trooper"
+
+
+;;zerkers;;
+[BerserkerM2 X2CharacterTemplate]
+strCharacterName="Elite Berserker"
+
+[BerserkerM3 X2CharacterTemplate]
+strCharacterName="Supreme Berserker"
+
+[BerserkerM4 X2CharacterTemplate]
+strCharacterName="Mongo"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Lancer ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+[AdvStunLancer_Leader X2CharacterTemplate]
+strCharacterName="Advent Hunter"
+
+[AdvStunLancerM4 X2CharacterTemplate]
+strCharacterName="Supreme Lancer"
+
+[AdvStunLancerM5 X2CharacterTemplate]
+strCharacterName="Advent Praetorian"
+
+[AdvStunLancerM1_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+[AdvStunLancerM2_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+[AdvStunLancerM3_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+[AdvStunLancerM4_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+[AdvStunLancerM5_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+[AdvStunLancer_Leader_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Hunter Rifle"
+; LWOTC Needs Translation
+AbilityDescName="Hunter Rifle"
+; End translation
+
+[AdvStunLancerM2_Leader_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Hunter Rifle"
+; LWOTC Needs Translation
+AbilityDescName="Hunter Rifle"
+; End translation
+
+[AdvStunLancerM3_Leader_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Hunter Rifle"
+; LWOTC Needs Translation
+AbilityDescName="Hunter Rifle"
+; End translation
+
+[AdvStunLancerM4_Leader_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Hunter Rifle"
+; LWOTC Needs Translation
+AbilityDescName="Hunter Rifle"
+; End translation
+
+[AdvStunLancerM5_Leader_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Hunter Rifle"
+; LWOTC Needs Translation
+AbilityDescName="Hunter Rifle"
+; End translation
+
+[AdvStunLancerM4_Stunlance X2WeaponTemplate]
+FriendlyName="ADVENT Stun Lance"
+; LWOTC Needs Translation
+AbilityDescName="Stun Lance"
+; End translation
+
+[AdvStunLancerM5_Stunlance X2WeaponTemplate]
+FriendlyName="ADVENT Stun Lance"
+; LWOTC Needs Translation
+AbilityDescName="Stun Lance"
+; End translation
+
+[AdvStunLancer_Leader_Stunlance X2WeaponTemplate]
+FriendlyName="ADVENT Stun Lance"
+; LWOTC Needs Translation
+AbilityDescName="Stun Lance"
+; End translation
+
+[AdvStunLancerM2_Leader_Stunlance X2WeaponTemplate]
+FriendlyName="ADVENT Stun Lance"
+; LWOTC Needs Translation
+AbilityDescName="Stun Lance"
+; End translation
+
+[AdvStunLancerM3_Leader_Stunlance X2WeaponTemplate]
+FriendlyName="ADVENT Stun Lance"
+; LWOTC Needs Translation
+AbilityDescName="Stun Lance"
+; End translation
+
+[AdvStunLancerM4_Leader_Stunlance X2WeaponTemplate]
+FriendlyName="ADVENT Stun Lance"
+; LWOTC Needs Translation
+AbilityDescName="Stun Lance"
+; End translation
+
+[AdvStunLancerM5_Leader_Stunlance X2WeaponTemplate]
+FriendlyName="ADVENT Stun Lance"
+; LWOTC Needs Translation
+AbilityDescName="Stun Lance"
+; End translation
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvGunnerM1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+[AdvGunnerM1 X2CharacterTemplate]
+strCharacterName="ADVENT Gunner"
+
+[AdvGunnerM1_WPN X2WeaponTemplate]
+FriendlyName="AutoMag"
+; LWOTC Needs Translation
+AbilityDescName="cannon"
+; End translation
+
+[AdvGunnerM2 X2CharacterTemplate]
+strCharacterName="Advanced Gunner"
+
+[AdvGunnerM2_WPN X2WeaponTemplate]
+FriendlyName="AutoMag"
+; LWOTC Needs Translation
+AbilityDescName="cannon"
+; End translation
+
+[AdvGunnerM3 X2CharacterTemplate]
+strCharacterName="Elite Gunner"
+
+[AdvGunnerM3_WPN X2WeaponTemplate]
+FriendlyName="AutoMag"
+; LWOTC Needs Translation
+AbilityDescName="cannon"
+; End translation
+
+[AdvGunnerM4 X2CharacterTemplate]
+strCharacterName="Supreme Gunner"
+
+[AdvGunnerM5 X2CharacterTemplate]
+strCharacterName="Advent Heavy"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvSentryM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvSentryM1 X2CharacterTemplate]
+strCharacterName="ADVENT Sentry"
+
+[AdvSentryM1_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+[AdvSentryM2 X2CharacterTemplate]
+strCharacterName="Advanced Sentry"
+
+[AdvSentryM2_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+[AdvSentryM3 X2CharacterTemplate]
+strCharacterName="Elite Sentry"
+
+[AdvSentryM3_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+[AdvSentryM4 X2CharacterTemplate]
+strCharacterName="Supreme Sentry"
+
+[AdvSentryM5 X2CharacterTemplate]
+strCharacterName="Advent Guardian"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvGrenadierM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvGrenadierM1 X2CharacterTemplate]
+strCharacterName="ADVENT Engineer"
+
+[AdvGrenadierM1_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="ADVENT Grenade Launcher"
+
+[AdvGrenadierM2 X2CharacterTemplate]
+strCharacterName="ADVENT Grenadier"
+
+[AdvGrenadierM2_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="ADVENT Grenade Launcher"
+
+[AdvGrenadierM3 X2CharacterTemplate]
+strCharacterName="ADVENT Heavy Grenadier"
+
+[AdvGrenadierM3_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="ADVENT Grenade Launcher"
+
+[AdvGrenadierFlashbangGrenade X2GrenadeTemplate]
+FriendlyName="Flashbang Grenade"
+FriendlyNamePlural="Flashbang Grenades"
+BriefSummary="The Flashbang Grenade disrupts and disorients enemies in a very large radius, inflicting significant offensive penalties."
+TacticalText="<Bullet/> Flashbang grenades don't do damage, but disorient and disrupt enemies in a large radius.<br><Bullet/> Friendly squad members will not be affected."
+ThrownAbilityName="Throw Flashbang Grenade"
+ThrownAbilityHelpText="Disorient all hostile targets in the affected area."
+LaunchedAbilityname="Launch Flashbang Grenade"
+LaunchedAbilityHelpText="Disorient all hostile targets in the affected area."
+
+[AdvGrenadierFireGrenade X2GrenadeTemplate]
+FriendlyName="Incendiary Grenade"
+FriendlyNamePlural="Incendiary Grenades"
+BriefSummary="The Incendiary Grenade is a technical improvement to the improvised fire weapons the Resistance has been using for years. After the initial blast, most targets will be set aflame and suffer persistent burning damage."
+TacticalText="<Bullet/> Incendiary grenades will damage all units in the blast radius, and apply the \"burning\" effect to any units vulnerable to flame.\n<Bullet/> Incendiary grenades do more blast damage than all other grenades.\n<Bullet/> Some enemies, particularly metallic ones, are immune to fire and will not suffer the \"burning\" effect."
+ThrownAbilityName="Throw Incendiary Grenade"
+ThrownAbilityHelpText="Sets fire to the target area, along with affected units."
+LaunchedAbilityname="Launch Incendiary Grenade"
+LaunchedAbilityHelpText="Sets fire to the target area, along with affected units."
+
+[AdvGrenadierAcidGrenade X2GrenadeTemplate]
+FriendlyName="Acid Grenade"
+FriendlyNamePlural="Acid Grenades"
+BriefSummary="The addition of a corrosive chemical additive to our standard frag grenades results in a small explosive that is especially effective at removing enemy armor. Targets will continue to suffer persistent damage as the acid clings to them and continues to eat away at any surface it touches."
+TacticalText="<Bullet/> Acid grenades shred more armor than a standard frag grenade.<br><Bullet/> Enemies burned by acid will take additional damage over multiple turns."
+ThrownAbilityName="Throw Acid Grenade"
+ThrownAbilityHelpText="Creates pools of acid that will damage units."
+LaunchedAbilityname="Launch Acid Grenade"
+LaunchedAbilityHelpText="Creates pools of acid that will damage units."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvRocketeerM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvRocketeerM1 X2CharacterTemplate]
+strCharacterName="ADVENT Rocketeer"
+
+[AdvRocketeerM2 X2CharacterTemplate]
+strCharacterName="ADVENT Heavy Rocketeer"
+
+[AdvRocketeerM3 X2CharacterTemplate]
+strCharacterName="ADVENT Elite Rocketeer"
+
+[AdvRocketeerM1_RocketLauncher X2WeaponTemplate]
+FriendlyName="ADVENT Rocket Launcher"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecM3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMec_Leader X2CharacterTemplate]
+strCharacterName="Superheavy MEC"
+
+[AdvMEC_M3_Wpn X2WeaponTemplate]
+FriendlyName="ADVENT Mag Cannon"
+FriendlyNamePlural="ADVENT Mag Cannons"
+
+[AdvMEC_M4_Wpn X2WeaponTemplate]
+FriendlyName="ADVENT Mag Cannon"
+FriendlyNamePlural="ADVENT Mag Cannons"
+
+[AdvMEC_M5_Wpn X2WeaponTemplate]
+FriendlyName="ADVENT Mag Cannon"
+FriendlyNamePlural="ADVENT Mag Cannons"
+
+[AdvMEC_Leader_Wpn X2WeaponTemplate]
+FriendlyName="ADVENT Mag Cannon"
+FriendlyNamePlural="ADVENT Mag Cannons"
+
+[AdvMECM2_Leader_Wpn X2WeaponTemplate]
+FriendlyName="ADVENT Mag Cannon"
+FriendlyNamePlural="ADVENT Mag Cannons"
+
+[AdvMECM3_Leader_Wpn X2WeaponTemplate]
+FriendlyName="ADVENT Mag Cannon"
+FriendlyNamePlural="ADVENT Mag Cannons"
+
+[AdvMECM4_Leader_Wpn X2WeaponTemplate]
+FriendlyName="ADVENT Mag Cannon"
+FriendlyNamePlural="ADVENT Mag Cannons"
+
+[AdvMECM5_Leader_Wpn X2WeaponTemplate]
+FriendlyName="ADVENT Mag Cannon"
+FriendlyNamePlural="ADVENT Mag Cannons"
+
+
+
+[AdvMEC_M1_Shoulder_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Micro Missiles"
+FriendlyNamePlural="ADVENT Micro Missiles"
+
+[AdvMEC_M2_Shoulder_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Micro Missiles"
+FriendlyNamePlural="ADVENT Micro Missiles"
+
+[AdvMEC_M3_Shoulder_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Micro Missiles"
+FriendlyNamePlural="ADVENT Micro Missiles"
+
+[AdvMEC_M4_Shoulder_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Micro Missiles"
+FriendlyNamePlural="ADVENT Micro Missiles"
+
+[AdvMEC_M5_Shoulder_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Micro Missiles"
+FriendlyNamePlural="ADVENT Micro Missiles"
+
+[AdvMEC_Leader_Shoulder_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Micro Missiles"
+FriendlyNamePlural="ADVENT Micro Missiles"
+
+[AdvMECM2_Leader_Shoulder_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Micro Missiles"
+FriendlyNamePlural="ADVENT Micro Missiles"
+
+[AdvMECM3_Leader_Shoulder_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Micro Missiles"
+FriendlyNamePlural="ADVENT Micro Missiles"
+
+[AdvMECM4_Leader_Shoulder_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Micro Missiles"
+FriendlyNamePlural="ADVENT Micro Missiles"
+
+[AdvMECM5_Leader_Shoulder_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Micro Missiles"
+FriendlyNamePlural="ADVENT Micro Missiles"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; DroneM1-2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[LWDroneM1 X2CharacterTemplate]
+strCharacterName="ADVENT Surveillance Drone"
+
+[LWDrone_Leader X2CharacterTemplate]
+strCharacterName="Advent Combat Drone"
+
+[LWDroneM2_Leader X2CharacterTemplate]
+strCharacterName="Advent Hunter Drone"
+
+
+[LWDroneM1_WPN X2WeaponTemplate]
+FriendlyName="Drone Shock"
+; LWOTC Needs Translation
+AbilityDescName="shock weapon"
+; End translation
+
+[LWDroneM2_WPN X2WeaponTemplate]
+FriendlyName="Drone Shock"
+; LWOTC Needs Translation
+AbilityDescName="shock weapon"
+; End translation
+
+[LWDroneM3_WPN X2WeaponTemplate]
+FriendlyName="Drone Shock"
+; LWOTC Needs Translation
+AbilityDescName="shock weapon"
+; End translation
+
+[LWDroneM4_WPN X2WeaponTemplate]
+FriendlyName="Drone Shock"
+; LWOTC Needs Translation
+AbilityDescName="shock weapon"
+; End translation
+
+[LWDroneM5_WPN X2WeaponTemplate]
+FriendlyName="Drone Shock"
+; LWOTC Needs Translation
+AbilityDescName="shock weapon"
+; End translation
+
+[LWDrone_Leader_WPN X2WeaponTemplate]
+FriendlyName="Drone Electroshock"
+; LWOTC Needs Translation
+AbilityDescName="shock weapon"
+; End translation
+
+[LWDroneM2_Leader_WPN X2WeaponTemplate]
+FriendlyName="Drone Electroshock"
+; LWOTC Needs Translation
+AbilityDescName="shock weapon"
+; End translation
+
+[LWDroneM3_Leader_WPN X2WeaponTemplate]
+FriendlyName="Drone Electroshock"
+; LWOTC Needs Translation
+AbilityDescName="shock weapon"
+; End translation
+
+[LWDroneM4_Leader_WPN X2WeaponTemplate]
+FriendlyName="Drone Electroshock"
+; LWOTC Needs Translation
+AbilityDescName="shock weapon"
+; End translation
+
+
+[LWDroneM5_Leader_WPN X2WeaponTemplate]
+FriendlyName="Drone Electroshock"
+; LWOTC Needs Translation
+AbilityDescName="shock weapon"
+; End translation
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecArcherM1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMECArcherM1 X2CharacterTemplate]
+strCharacterName="MEC Archer"
+
+[AdvMECArcher_WPN X2WeaponTemplate]
+FriendlyName="MEC MiniMag"
+; LWOTC Needs Translation
+AbilityDescName="minigun"
+; End translation
+
+[AdvMECArcher_Shoulder_WPN X2WeaponTemplate]
+FriendlyName="Rocket Artillery"
+; LWOTC Needs Translation
+AbilityDescName="micromissiles"
+; End translation
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecArcherM2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMECArcherM2 X2CharacterTemplate]
+strCharacterName="MEC Longbow"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Chryssalid Soldier ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ChryssalidSoldier X2CharacterTemplate]
+strCharacterName="Chryssalid Soldier"
+
+[ChryssalidSoldierSlash X2AbilityTemplate]
+LocFriendlyName="Chryssalid Soldier Slash"
+LocLongDescription="Your slash attacks do lots of damage."
+LocHelpText="Your slash attacks do lots of damage."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Hive Queen ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[HiveQueen X2CharacterTemplate]
+strCharacterName="Hive Queen"
+
+[HiveQueenSlash X2AbilityTemplate]
+LocFriendlyName="Greater Chryssalid Slash"
+LocLongDescription="Your slash attacks do lots of damage."
+LocHelpText="Your slash attacks do lots of damage."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;; Lids ;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ChryssalidM2 X2CharacterTemplate]
+strCharacterName="Advanced Chryssalid"
+
+[ChryssalidM3 X2CharacterTemplate]
+strCharacterName="Elite Chryssalid"
+
+[ChryssalidM4 X2CharacterTemplate]
+strCharacterName="Supreme Chryssalid"
+
+[ChryssalidM5 X2CharacterTemplate]
+strCharacterName="Chryssalid Warrior"
+;;;;;;;;;;;;;;;;;;;;;;;;; Additional ADVENT Trooper types ;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvSergeantM1 X2CharacterTemplate]
+strCharacterName="ADVENT Sergeant"
+
+[AdvSergeantM1_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+[AdvSergeantM2 X2CharacterTemplate]
+strCharacterName="ADVENT First Sergeant"
+
+[AdvSergeantM2_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+[AdvShockTroop X2CharacterTemplate]
+strCharacterName="ADVENT Shock Trooper"
+
+[AdvShockTroop_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+[AdvCommando X2CharacterTemplate]
+strCharacterName="ADVENT Commando"
+
+[AdvCommando_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+[AdvVanguard X2CharacterTemplate]
+strCharacterName="ADVENT Vanguard"
+
+[AdvVanguard_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+[AdvScout X2CharacterTemplate]
+strCharacterName="ADVENT Scout"
+
+[AdvScout_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+[AdvGeneralM1_LW X2CharacterTemplate]
+strCharacterName="ADVENT General"
+
+[AdvGeneralM1_LW_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+[AdvGeneralM2_LW X2CharacterTemplate]
+strCharacterName="ADVENT General"
+
+[AdvGeneralM2_LW_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+[AdvGeneralM3_LW X2CharacterTemplate]
+strCharacterName="ADVENT General"
+
+[AdvGeneralM3_LW_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+[AdvGeneralM4_LW X2CharacterTemplate]
+strCharacterName="ADVENT General"
+
+[AdvGeneralM4_LW_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+
+[AdvGeneralM5_LW X2CharacterTemplate]
+strCharacterName="ADVENT General"
+
+[AdvGeneralM5_LW_WPN X2WeaponTemplate]
+FriendlyName="ADVENT Mag Rifle"
+; LWOTC Needs Translation
+AbilityDescName="mag rifle"
+; End translation
+
+;Shieldbearers
+
+[AdvShieldbearerM4 X2CharacterTemplate]
+strCharacterName="Supreme Shieldbearer"
+
+[AdvShieldbearerM5 X2CharacterTemplate]
+strCharacterName="ADVENT Vanguard"
+
+;Andromedons
+
+;Chryssalids
+
+[Chryssalid_Leader X2CharacterTemplate]
+strCharacterName="Chryssalid Soldier"
+
+[Chryssalid_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[ChryssalidM2_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[ChryssalidM3_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[ChryssalidM4_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[Chryssalid_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[ChryssalidM2_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[ChryssalidM3_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[ChryssalidM4_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[Andromedon_Leader X2CharacterTemplate]
+strCharacterName="Cybertoid"
+
+[AndromedonRobot_Leader X2CharacterTemplate]
+strCharacterName="Superior Shell"
+
+[Andromedon_Wpn X2WeaponTemplate]
+FriendlyName="Andromedon Cannon"
+FriendlyNamePlural="Andromedon Cannons"
+
+[AndromedonM2_Wpn X2WeaponTemplate]
+FriendlyName="Andromedon Cannon"
+FriendlyNamePlural="Andromedon Cannons"
+
+[AndromedonM3_Wpn X2WeaponTemplate]
+FriendlyName="Andromedon Cannon"
+FriendlyNamePlural="Andromedon Cannons"
+
+[Andromedon_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Andromedon Cannon"
+FriendlyNamePlural="Andromedon Cannons"
+
+[AndromedonM2_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Andromedon Cannon"
+FriendlyNamePlural="Andromedon Cannons"
+
+[AndromedonM3_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Andromedon Cannon"
+FriendlyNamePlural="Andromedon Cannons"
+
+
+[AndromedonRobot_Wpn X2WeaponTemplate]
+FriendlyName="Andromedon Fist"
+FriendlyNamePlural="Andromedon Fists"
+
+[AndromedonRobotM2_Wpn X2WeaponTemplate]
+FriendlyName="Andromedon Fist"
+FriendlyNamePlural="Andromedon Fists"
+
+[AndromedonRobotM3_Wpn X2WeaponTemplate]
+FriendlyName="Andromedon Fist"
+FriendlyNamePlural="Andromedon Fists"
+
+[AndromedonRobot_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Andromedon Fist"
+FriendlyNamePlural="Andromedon Fists"
+
+[AndromedonRobotM2_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Andromedon Fist"
+FriendlyNamePlural="Andromedon Fists"
+
+[AndromedonRobotM3_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Andromedon Fist"
+FriendlyNamePlural="Andromedon Fists"
+
+[AcidBlobM2 X2GrenadeTemplate]
+LocFriendlyName="Acid Bomb"
+LocLongDescription="The Andromedon's internal coolant is extremely caustic. This creature can launch a glob of this viscious liquid that splatters on impact into pools of acid."
+LocHelpText="Launch a stream of caustic acid at an area."
+LocFlyOverText="Acid Bomb"
+
+[AcidBlobM3 X2GrenadeTemplate]
+LocFriendlyName="Acid Bomb"
+LocLongDescription="The Andromedon's internal coolant is extremely caustic. This creature can launch a glob of this viscious liquid that splatters on impact into pools of acid."
+LocHelpText="Launch a stream of caustic acid at an area."
+LocFlyOverText="Acid Bomb"
+
+[AcidBlob_Leader X2GrenadeTemplate]
+LocFriendlyName="Acid Bomb"
+LocLongDescription="The Andromedon's internal coolant is extremely caustic. This creature can launch a glob of this viscious liquid that splatters on impact into pools of acid."
+LocHelpText="Launch a stream of caustic acid at an area."
+LocFlyOverText="Acid Bomb"
+
+[AcidBlobM2_Leader X2GrenadeTemplate]
+LocFriendlyName="Acid Bomb"
+LocLongDescription="The Andromedon's internal coolant is extremely caustic. This creature can launch a glob of this viscious liquid that splatters on impact into pools of acid."
+LocHelpText="Launch a stream of caustic acid at an area."
+LocFlyOverText="Acid Bomb"
+
+[AcidBlobM3_Leader X2GrenadeTemplate]
+LocFriendlyName="Acid Bomb"
+LocLongDescription="The Andromedon's internal coolant is extremely caustic. This creature can launch a glob of this viscious liquid that splatters on impact into pools of acid."
+LocHelpText="Launch a stream of caustic acid at an area."
+LocFlyOverText="Acid Bomb"
+
+[AndromedonImmunities_Leader X2AbilityTemplate]
+LocFriendlyName="Immunities"
+LocLongDescription="The Andromedon's Battlesuit protects it from fire, poison, and acid effects. It is still vulnerable to all Psi abilities, however, including Mind Control."
+LocHelpText="The Andromedon's Battlesuit renders it immune to fire, poison, and acid."
+LocFlyOverText="Andromedon Immunities"
+
+[Artillery_LW X2AbilityTemplate]
+LocFriendlyName="Artillery"
+LocLongDescription="The Andromedon's Acid blob has +2 radius."
+LocHelpText="The Andromedon's Acid blob has +2 radius."
+LocFlyOverText="Artillery"
+
+;Sectopods
+
+[SectopodM3 X2CharacterTemplate]
+strCharacterName="Atlas"
+
+
+[GatekeeperM2 X2CharacterTemplate]
+strCharacterName="Dreadnought"
+
+
+

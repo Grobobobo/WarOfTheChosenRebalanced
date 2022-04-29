@@ -1,0 +1,219 @@
+
+;---- BEGIN ABILITIES
+
+;displayed both for officer and soldiers receiving effect
+[GetSome X2AbilityTemplate]
+LocFriendlyName="No chodźcie"
+LocLongDescription="Dwukrotnie podczas misji możesz poświęcić akcję, aby dać do końca tury wszystkim sojusznikom w zasięgu dowodzenia premię +20 do szansy trafienia krytycznego."
+LocHelpText="Zwiększa szansę zadania trafienia krytycznego przez żołnierzy znajdujących się w pobliżu oficera."
+LocFlyOverText="No chodźcie"
+LocPromotionPopupText="<Bullet/> Możesz poświęcić akcję, żeby dać do końca tury wszystkim jednostkom sojuszniczym w zasięgu dowodzenia premię +20 do szansy trafienia krytycznego.<br/><Bullet/> Można użyć dwa razy w ciągu misji.<br/><Bullet/> Zasięg dowodzenia rośnie wraz z każdym poziomem oficera."
+
+[Collector X2AbilityTemplate]
+LocFriendlyName="Kolekcjoner"
+LocLongDescription="Jeśli oficer jest zdrowy, zabicie przez drużynę wroga niebędącego człowiekiem ma 33% szans wygenerowania 1 punktu informacji."
+LocHelpText="Zyskaj dodatkowe informacje za przeciwników zabitych przez drużynę."
+LocFlyOverText="Kolekcjoner"
+; displayed for officer in OfficerAbility UI
+LocPromotionPopupText="<Bullet/> Jeśli oficer jest zdrowy, zabicie przez drużynę wroga niebędącego człowiekiem ma 33% szans wygenerowania 1 punktu informacji."
+
+;displayed on officer in tactical container
+[CollectorPassive X2AbilityTemplate]
+LocFriendlyName="Kolekcjoner"
+LocLongDescription="Jeśli oficer jest zdrowy, zabicie przez drużynę wroga niebędącego człowiekiem ma 33% szans wygenerowania 1 punktu informacji."
+LocHelpText="Zyskaj dodatkowe informacje za przeciwników zabitych przez drużynę."
+LocFlyOverText="Kolekcjoner"
+LocPromotionPopupText="<Bullet/> Jeśli oficer jest zdrowy, zabicie przez drużynę wroga niebędącego człowiekiem ma 33% szans wygenerowania 1 punktu informacji."
+
+;displayed on other soldier that receive the effect
+[Defilade X2AbilityTemplate]
+LocFriendlyName="Umocnienie"
+LocLongDescription="Żołnierze w zasięgu dowodzenia oficera otrzymują premię +5 do obrony zapewnianej przez osłonę."
+LocHelpText="Żołnierze znajdujący się blisko oficera otrzymują dodatkową obronę, gdy przebywają za osłoną."
+LocFlyOverText="Umocnienie"
+;displayed for officer in Officer Ability UI
+LocPromotionPopupText="<Bullet/> Żołnierze w zasięgu dowodzenia oficera otrzymują premię +5 do obrony zapewnianej przez osłonę.<br/><Bullet/> Zasięg dowodzenia rośnie wraz z każdym poziomem oficera."
+
+;Displayed on officer in tactical container
+[DefiladePassive X2AbilityTemplate]
+LocFriendlyName="Umocnienie"
+LocLongDescription="Żołnierze w zasięgu dowodzenia oficera otrzymują premię +5 do obrony zapewnianej przez osłonę."
+LocHelpText="Żołnierze znajdujący się blisko oficera otrzymują dodatkową obronę, gdy przebywają za osłoną."
+LocFlyOverText="Umocnienie"
+LocPromotionPopupText="<Bullet/> Żołnierze w zasięgu dowodzenia oficera otrzymują premię +5 do obrony zapewnianej przez osłonę.<br/><Bullet/> Zasięg dowodzenia rośnie wraz z każdym poziomem oficera."
+
+;displayed both on officer and in debuff on target
+[FocusFire X2AbilityTemplate]
+LocFriendlyName="Ogień skoncentrowany"
+LocLongDescription="Poświęć akcję, żeby wskazać jakiś cel i dać do końca tury swojej drużynie kumulatywną premię do celności oraz możliwość przebicia 1 pkt. pancerza podczas wszystkich ataków na tego wroga."
+LocHelpText="Wskaż cel, przeciw któremu twoja drużyna otrzymała premię do celności i przebijania pancerza."
+LocFlyOverText="Ogień skoncentrowany"
+LocPromotionPopupText="<Bullet/> Poświęć akcję, żeby wskazać jakiś cel i dać do końca tury swojej drużynie kumulatywną premię do celności oraz możliwość przebicia 1 pkt. pancerza podczas wszystkich ataków na tego wroga.<br/><Bullet/> Każdy kolejny bezpośredni atak bronią wymierzony w ten cel w tej turze daje dodatkową premię +<ABILITY:FOCUS_FIRE_AIM_BONUS/> do celności.<br/><Bullet/> Odnawianie trwa 3 tury.<br/>"
+
+;displayed both on officer and on soldiers receiving effect
+[FallBack X2AbilityTemplate]
+LocFriendlyName="Odwrót!"
+LocLongDescription="Daje dowolnemu widocznemu sojusznikowi, który wykorzystał wszystkie akcje, darmową, ale niekontrolowaną akcję obronną."
+LocHelpText="Daje dowolnemu widocznemu sojusznikowi darmową, ale niekontrolowaną akcję obronną."
+LocFlyOverText="Odwrót!"
+LocPromotionPopupText="<Bullet/> Daje dowolnemu widocznemu sojusznikowi darmową, ale niekontrolowaną akcję obronną. Sojusznik zwykle przykucnie lub spróbuje znaleźć bezpieczniejszą pozycję.<br/><Bullet/> Nie działa na jednostki przygważdżające wroga lub będące w trybie warty.<br/><Bullet/> Darmowa akcja."
+
+[Scavenger X2AbilityTemplate]
+LocFriendlyName="Zbieracz"
+LocLongDescription="Nagrody po udanych misjach w postaci zasobów, stopów metali obcych i elerium są większe o 30%. Członkowie drużyny mają szansę zdobycia dodatkowych stopów i elerium od obcych."
+LocHelpText="Dodatkowe zasoby, stopy metali obcych i elerium."
+LocFlyOverText="Zbieracz"
+LocPromotionPopupText="<Bullet/> Jeżeli oficer przetrwa misję i będzie przytomny, nagrody za misję (zasoby, stopy metali obcych i elerium) są większe o 30 procent.<br/><Bullet> Drużyna może pozyskiwać stopy metali obcych i elerium z martwych obcych.<br/>"
+
+;Displayed on officer in tactical container
+[ScavengerPassive X2AbilityTemplate]
+LocFriendlyName="Zbieracz"
+LocLongDescription="Nagrody po udanych misjach w postaci zasobów, stopów metali obcych i elerium są większe o 30%. Szansa pozyskania dodatkowych stopów i elerium od obcych."
+LocHelpText="Dodatkowe zasoby, stopy metali obcych i elerium."
+LocFlyOverText="Zbieracz"
+LocPromotionPopupText="<Bullet/> Jeżeli oficer przetrwa misję i będzie w dobrym stanie, nagrody za misję (zasoby, stopy metali obcych i elerium) są większe o 30 procent.<br/><Bullet> Drużyna może pozyskiwać stopy metali obcych i elerium z martwych obcych.<br/>"
+
+;displayed on other soldier that receive the effect
+[FireDiscipline X2AbilityTemplate]
+LocFriendlyName="Dyscyplina ogniowa"
+LocLongDescription="Wszyscy sojusznicy w zasięgu dowodzenia oficera otrzymują +10% do szansy trafienia strzałem reakcji."
+LocHelpText="Wszyscy sojusznicy znajdujący się blisko oficera otrzymują premię do strzału reakcji."
+LocFlyOverText="Dyscyplina ogniowa"
+;displayed for officer in Officer Ability UI
+LocPromotionPopupText="<Bullet/> Wszyscy sojusznicy w zasięgu dowodzenia oficera otrzymują +10% do szansy trafienia strzałem reakcji.<br/><Bullet/> Zasięg dowodzenia rośnie wraz z każdym poziomem oficera."
+
+;Displayed on officer in tactical container
+[FireDisciplinePassive X2AbilityTemplate]
+LocFriendlyName="Dyscyplina ogniowa"
+LocLongDescription="Wszyscy sojusznicy w zasięgu dowodzenia oficera otrzymują +10% do szansy trafienia strzałem reakcji."
+LocHelpText="Wszyscy sojusznicy znajdujący się blisko oficera otrzymują premię do strzału reakcji."
+LocFlyOverText="Dyscyplina ogniowa"
+LocPromotionPopupText="<Bullet/> Wszyscy sojusznicy w zasięgu dowodzenia oficera otrzymują +10% do szansy trafienia strzałem reakcji.<br/><Bullet/> Zasięg dowodzenia rośnie wraz z każdym poziomem oficera."
+
+;displayed both on officer and on soldiers receiving effect
+[OscarMike X2AbilityTemplate]
+LocFriendlyName="W drodze"
+LocLongDescription="Poświęć akcję, żeby dać do końca tury wszystkim sojusznikom w zasięgu dowodzenia premię +5 do mobilności. Można użyć tylko raz w trakcie misji."
+LocHelpText="Aktywuj, aby zapewnić pobliskim sojusznikom premię do mobilności."
+LocFlyOverText="W drodze"
+LocPromotionPopupText="<Bullet/> Poświęć akcję, żeby dać do końca tury wszystkim sojusznikom w zasięgu dowodzenia premię +5 do mobilności.<br/><Bullet/> Można użyć tylko raz w trakcie misji.<br/><Bullet/> Zasięg dowodzenia rośnie wraz z każdym poziomem oficera."
+
+;displayed on other soldier that receive the effect
+[LeadByExample X2AbilityTemplate]
+LocFriendlyName="Świecić przykładem"
+LocLongDescription="Oficer wzmacnia celność, wolę i hakowanie żołnierzy znajdujących się w zasięgu dowodzenia o połowę różnicy, jaka dzieli w tych statystykę dowódcę od danego żołnierza."
+LocHelpText="Sojusznicy w pobliżu oficera mogą otrzymać premię do celności, woli i hakowania."
+LocFlyOverText="Świecić przykładem"
+;displayed for officer in Officer Ability UI
+LocPromotionPopupText="<Bullet/> Jeżeli celność, wola lub hakowanie oficera są większe niż dowolnego żołnierza w zasięgu dowodzenia, żołnierz ten otrzyma premie do tych statystyk równe połowie różnicy pomiędzy nim a oficerem.<br/><Bullet/> Zasięg dowodzenia rośnie wraz z poziomem oficera."
+
+;Displayed on officer in tactical container
+[LeadByExamplePassive X2AbilityTemplate]
+LocFriendlyName="Świecić przykładem"
+LocLongDescription="Oficer wzmacnia celność, wolę i hakowanie żołnierzy znajdujących się w zasięgu dowodzenia o połowę różnicy, jaka dzieli w tych statystykę dowódcę od danego żołnierza."
+LocHelpText="Sojusznicy w pobliżu oficera mogą otrzymać premię do celności, woli i hakowania."
+LocFlyOverText="Świecić przykładem"
+LocPromotionPopupText="<Bullet/> Jeżeli celność, wola lub hakowanie oficera są większe niż dowolnego żołnierza w zasięgu dowodzenia, żołnierz ten otrzyma premie do tych statystyk równe połowie różnicy pomiędzy nim a oficerem.<br/><Bullet/> Zasięg dowodzenia rośnie wraz z poziomem oficera."
+
+;this may not be displayed -- needs testing
+[LeadByExampleLeader X2AbilityTemplate]
+LocFriendlyName="Świecić przykładem"
+LocLongDescription="Oficer wzmacnia celność, wolę i hakowanie żołnierzy znajdujących się w zasięgu dowodzenia o połowę różnicy, jaka dzieli w tych statystykę dowódcę od danego żołnierza."
+LocHelpText="Sojusznicy w pobliżu oficera mogą otrzymać premię do celności, woli i hakowania."
+LocFlyOverText="Świecić przykładem"
+LocPromotionPopupText="<Bullet/> Jeżeli celność, wola lub hakowanie oficera są większe niż u dowolnego żołnierza w zasięgu dowodzenia, żołnierz ten otrzyma premie do tych statystyk równe połowie różnicy w nich między nim a oficerem.<br/><Bullet/> Zasięg dowodzenia rośnie wraz z poziomem oficera."
+
+;displayed on other soldier that receive the effect
+[CombinedArms X2AbilityTemplate]
+LocFriendlyName="Współpraca"
+LocLongDescription="Wszyscy sojusznicy w zasięgu dowodzenia oficera zadają celnymi atakami 1 dodatkowy punkt obrażeń."
+LocHelpText="Sojusznicy znajdujący się blisko oficera zadają dodatkowe obrażenia."
+LocFlyOverText="Współpraca"
+LocPromotionPopupText="<Bullet/> Wszyscy sojusznicy w zasięgu dowodzenia oficera zadają celnymi atakami 1 dodatkowy punkt obrażeń.<br/><Bullet/> Zasięg dowodzenia rośnie wraz z każdym poziomem oficera."
+
+;Displayed on officer in tactical container
+[CombinedArmsPassive X2AbilityTemplate]
+LocFriendlyName="Współpraca"
+LocLongDescription="Wszyscy sojusznicy w zasięgu dowodzenia oficera zadają celnymi atakami 1 dodatkowy punkt obrażeń."
+LocHelpText="Sojusznicy znajdujący się blisko oficera zadają dodatkowe obrażenia."
+LocFlyOverText="Współpraca"
+LocPromotionPopupText="<Bullet/> Wszyscy sojusznicy w zasięgu dowodzenia oficera zadają celnymi atakami 1 dodatkowy punkt obrażeń.<br/><Bullet/> Zasięg dowodzenia rośnie wraz z każdym poziomem oficera."
+
+[Command X2AbilityTemplate]
+LocFriendlyName="Dowodzenie"
+LocLongDescription="Zakończ swoją turę, by dać dodatkowe akcje każdemu widocznemu członkowi drużyny. Liczba użyć zależy od rangi oficera."
+LocHelpText="Daje sojusznikom dodatkowe akcje."
+LocFlyOverText="Dowodzenie"
+LocPromotionPopupText="<Bullet/> Wymaga jednej akcji i kończy twoją turę.<br/><Bullet/> Porucznicy i podporucznicy mają jedno użycie zdolności, kapitanowie i majorzy dwa, podpułkownicy i pułkownicy trzy, a dowódcy polowi cztery.<br/><Bullet/> Nie działa na jednostki przygważdżające wroga lub będące w trybie warty."
+
+[Infiltrator X2AbilityTemplate]
+LocFriendlyName="Szpieg"
+LocLongDescription="Drużyna oficera będzie szybciej infiltrowała wrogie cele."
+LocHelpText="Drużyna oficera będzie szybciej infiltrowała wrogie cele."
+LocFlyOverText="Szpieg"
+LocPromotionPopupText="<Bullet/> Drużyna oficera dysponującego tą zdolnością ukrywa się znacznie lepiej, dzięki czemu szybciej infiltruje obszar misji.<br/>"
+
+[AirController X2AbilityTemplate]
+LocFriendlyName="Kontroler lotów"
+LocLongDescription="Podczas ewakuacji Skyranger przybędzie wcześniej. Liczba tur, o które zostanie skrócony czas oczekiwania: <Ability:AIR_CONTROLLER_EVAC_TURN_REDUCTION/>."
+LocHelpText="Podczas ewakuacji Skyranger przybędzie o dwie tury wcześniej."
+LocFlyOverText="Kontroler lotów"
+LocPromotionPopupText="<Bullet/> Po użyciu flary ewakuacyjnej oficer wyszkolony w kierowaniu lotem sojuszniczych jednostek powietrznych pozwala skrócić okres oczekiwania na przybycie Skyrangera o 2 tury.<br/><Bullet/> Należy pamiętać, że istnieje minimalny okres oczekiwania na przybycie Skyrangera, którego nie można skrócić specjalnymi premiami."
+
+[Jammer X2AbilityTemplate]
+LocFriendlyName="Zakłócacz"
+LocLongDescription="Raz podczas misji opóźnia przybycie posiłków wroga o jedną turę."
+LocHelpText="Opóźnia przybycie posiłków wroga o jedną turę."
+LocFlyOverText="Zakłócacz"
+LocPromotionPopupText="<Bullet/> Aktywuj tę zdolność, aby opóźnić przybycie posiłków wroga o jedną turę.<br/><Bullet/> Jeśli w chwili aktywacji w drodze nie ma żadnych posiłków, to opóźnienie nastąpi, gdy zostaną wysłane."
+
+[Incoming X2AbilityTemplate]
+LocFriendlyName="Uwaga!"
+LocLongDescription="Aktywuj tę zdolność, aby zapewnić wszystkim sojusznikom znajdującym się w zasięgu dowodzenia 4 punkty odporności na obrażenia powodowane przez wybuchy aż do końca następnej tury obcych."
+LocHelpText="Oficer i pobliscy sojusznicy zyskują 4 punkty odporności na obrażenia powodowane przez wybuchy."
+LocFlyOverText="Uwaga!"
+LocPromotionPopupText="<Bullet/> Aktywuj tę zdolność, aby zapewnić wszystkim sojusznikom znajdującym się w zasięgu dowodzenia 4 punkty odporności na obrażenia powodowane przez wybuchy aż do końca następnej tury obcych.<br/><Bullet/> Nie wymaga akcji.<br/><Bullet/> Odnowienie trwa 5 tur.<br/><Bullet/> Zasięg dowodzenia zwiększa się wraz z każdym poziomem oficera.<br/><Bullet/> Zdolność nie obejmuje żołnierzy, którzy wpadli w panikę, oraz jednostek, które przygważdżają inne cele.<br/>"
+
+[Intervention X2AbilityTemplate]
+LocFriendlyName="Interwencja"
+LocLongDescription="Aktywuj, aby kosztem 10 jednostek informacji przedłużyć tę misję o dwie tury. Liczba ładunków zależy od rangi oficera."
+LocHelpText="Aktywuj, aby kosztem jednostek informacji przedłużyć tę misję o dwie tury"
+LocFlyOverText="Interwencja"
+LocPromotionPopUpText="<Bullet/> Aktywuj, aby kosztem 10 jednostek informacji przedłużyć tę misję o dwie tury.<br/><Bullet/> Wymaga jednej akcji.<br/><Bullet/> Liczba ładunków zależy od rangi oficera.<br/><Bullet/> Brak efektu, jeśli misja nie jest ograniczona czasowo.<br/><Bullet/> Wydarzenia mogą wpłynąć na koszt aktywacji. Nie dojdzie do aktywacji, jeśli XCOM posiada mniej niż 10 jednostek informacji.<br/>"
+
+;---- END ABILITIES
+
+;---- BEGIN OTS / STAFFSLOT
+
+[OfficerTrainingUnlock X2SoldierUnlockTemplate]
+DisplayName="Szkolenie oficerskie"
+Summary="Odblokowuje miejsce na szkolenie oficerskie."
+
+[OTSOfficerSlot X2StaffSlotTemplate]
+EmptyText="PUSTO: POTRZEBNY ŻOŁNIERZ"
+BonusEmptyText="Uczy żołnierzy zdolności oficerskich."
+BonusText="SZKOLENIE - %SKILL"
+FilledText="%UNITNAME bierze udział w intensywnym szkoleniu (%SKILL)!"
+LockedText="ZABLOKOWANE: KUP ULEPSZENIE"
+
+[OTS_LWOfficerTrainingUpgrade X2FacilityUpgradeTemplate]
+DisplayName="Stanowisko szkolenia oficera"
+FacilityName="Szkoła oficerska"
+Summary="Dodaje stanowisko szkoleniowe, na którym żołnierze w stopniu starszego szeregowego lub wyższym mogą uczyć się specjalnych zdolności dowódczych.\n\nUWAGA: tylko najwyższy rangą oficer w drużynie będzie w stanie korzystać w czasie misji ze swoich zdolności, więc dobrze się zastanów, kogo awansujesz."
+
+[OTS_LWOfficerTrainingUpgrade_SecondSlot X2FacilityUpgradeTemplate]
+DisplayName="Stanowisko szkolenia oficera"
+FacilityName="Szkoła oficerska"
+Summary="Dodaje stanowisko szkoleniowe, na którym żołnierze w stopniu starszego szeregowego lub wyższym mogą uczyć się specjalnych zdolności dowódczych.\n\nUWAGA: tylko najwyższy rangą oficer w drużynie będzie w stanie korzystać w czasie misji ze swoich zdolności, więc dobrze się zastanów, kogo awansujesz."
+
+[UIPersonnel_LWOfficer]
+m_strTitle="Żołnierz szkolony na oficera"
+EmptyListMessage="BRAK KANDYDATÓW"
+
+;---- END OTS / STAFFSLOT
+
+[TrialByFire X2AbilityTemplate]
+LocFriendlyName="Próba Ognia"
+LocLongDescription="Każdy żołnierz poniżej stopnia sierżanta zostanie awansowany, po każdej udanej misji dowodzonej przez tego oficera."
+LocHelpText="Każdy żołnierz poniżej stopnia sierżanta zostanie awansowany, po każdej udanej misji dowodzonej przez tego oficera."
+LocPromotionPopUpText="<Bullet/> Ten bonus zostanie przyznany tylko wtedy kiedy oficer dowodzący posiada tę zdolność. Bonus nie zapewnia dodatkowych możliwości innym oficerom biorących udział w misji."

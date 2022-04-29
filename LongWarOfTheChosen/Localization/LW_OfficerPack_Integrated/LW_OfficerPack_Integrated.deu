@@ -1,0 +1,93 @@
+[UIArmory_LWOfficerPromotion]
+strLeadershipButton="Anführerhistorie ansehen"
+strLeadershipDialogueTitle="Einsätze unter diesem Offizier"
+strLeadershipDialogueData="<XGParam:StrValue0/> : <XGParam:IntValue0/>"
+
+[UIScreenListener_Armory_Promotion_LWOfficerPack]
+strOfficerMenuOption="Offiziersfähigkeiten"
+
+[UIScreenListener_Armory_MainMenu_LWOfficerPack]
+strOfficerMenuOption="Offiziersfähigkeiten"
+OfficerListItemDescription="Bereits erlernte Offiziersfähigkeiten ansehen"
+
+[UIScreenListener_Facility_Academy_LWOfficerPack]
+strOfficerTrainButton="Offizier ausbilden"
+
+[UIScreenListener_SquadSelect_LWOfficerPack]
+strAutoFillLabel="TRUPP AUTOM. FÜLLEN"
+strAutoFillTooltip="Trupp autom. bis zum Maximum auffüllen"
+
+
+[UITacticalHUD_MouseControls_LWOfficerPack]
+strCommandRangeToggleTooltip="Klicken zum Anzeigen/Ausblenden der Befehlsreichweite"
+
+[X2StrategyElement_LW_OTS_OfficerStaffSlot]
+;strOTSLocationDisplayString=<XGParam:StrValue0/> Training
+
+;[UIArmory_LWOfficerMenu]
+;m_strSelectAbility=SELECT Officer ABILITY:
+;m_strAbilityHeader=Officer ABILITIES:
+;m_strConfirmAbilityTitle=CONFIRM ABILITY SELECTION
+;m_strConfirmAbilityText=You can't remove or change abilities. Are you sure you want to learn <XGParam:StrValue0/>?
+;m_strAbilityLockedTitle=LOCKED
+;m_strAbilityLockedDescription=Get more combat experience to learn new abilities.
+
+[UIArmory_LWOfficerPromotion]
+m_strSelectAbility="FÄHIGKEIT WÄHLEN:"
+m_strAbilityHeader="FÄHIGKEITEN:"
+m_strConfirmAbilityTitle="FÄHIGKEITSAUSWAHL BESTÄTIGEN"
+m_strConfirmAbilityText="Fähigkeiten können nicht entfernt oder gewechselt werden. Möchtest du Folgendes erlernen: <XGParam:StrValue0/>?"
+m_strAbilityLockedTitle="GESPERRT"
+m_strAbilityLockedDescription="Sammle mehr Kampferfahrung, um neue Fähigkeiten zu erlernen."
+
+[LWOfficerUtilities]
+LWOfficerRankNames[0]="Unteroffizier"
+LWOfficerRankNames[1]="2nd Lieutenant"
+LWOfficerRankNames[2]="1st Lieutenant"
+LWOfficerRankNames[3]="Captain"
+LWOfficerRankNames[4]="Major"
+LWOfficerRankNames[5]="Lieutenant Colonel"
+LWOfficerRankNames[6]="Colonel"
+LWOfficerRankNames[7]="Feldkommandant"
+
+LWOfficerShortNames[0]="Unteroffizier"
+LWOfficerShortNames[1]="2Lt"
+LWOfficerShortNames[2]="1Lt"
+LWOfficerShortNames[3]="Capt"
+LWOfficerShortNames[4]="Maj"
+LWOfficerShortNames[5]="LtC"
+LWOfficerShortNames[6]="Col"
+LWOfficerShortNames[7]="Cmdr"
+
+
+[UIFacility_LWOfficerSlot]
+m_strTrainOfficerDialogTitle="OFFIZIER AUSBILDEN"
+m_strTrainOfficerDialogText="Soldaten mit entsprechendem Rang können an der Guerillataktik-Schule eine besondere Ausbildung durchlaufen, um Offizier zu werden. Sie stehen währenddessen aber nicht für Kampfeinsätze zur Verfügung.\n\nWICHTIG: Nur der Offizier mit dem höchsten Rang in einem Trupp kann seine Fähigkeiten im Einsatz nutzen, also entscheide sorgsam, wen du befördern möchtest.\n\nMöchtest du fortfahren?"
+m_strStopTrainOfficerDialogTitle="AUSBILDUNG ZUM OFFIZIER ABBRECHEN?"
+m_strStopTrainOfficerDialogText="Möchtest du die Ausbildung von %UNITNAME abbrechen?\n\nWARNUNG: Jeglicher Ausbildungsfortschritt zum Offizier geht verloren."
+
+[UIAlert_LWOfficerTrainingComplete]
+m_strTrainingCompleteLabel="AUSBILDUNG ZUM OFFIZIER ABGESCHLOSSEN"
+m_strTrainingComplete="<XGParam:StrValue0/> hat die Ausbildung abgeschlossen. In der Waffenkammer können neue Fähigkeiten angesehen und zugewiesen werden."
+m_strViewSoldier="SOLDAT ANZEIGEN"
+m_strNewAbilityLabel="NEUE FÄHIGKEIT"
+
+[UIPersonnel_ListItem_SquadSelect_LWOfficerPack]
+strOfficerAlreadySelectedStatus="Warnung: Offizier bereits gewählt"
+
+[UIStrategyScreenListener_LWOfficerPack]
+strCommandingOfficerTooltipTitle="Befehlshabender Offizier"
+strCommandingOfficerTooltip="Kann alle Offiziersfähigkeiten benutzen."
+strSubordinateOfficerTooltipTitle="Untergeordneter Offizier"
+strSubordinateOfficerTooltip="Kann im Einsatz keine Offiziersfähigkeiten benutzen."
+
+[X2Ability_OfficerAbilitySet]
+strIntervention_WorldMessage="Unterbrechung: -<XGPARAM:IntValue0> Informationen"
+strCollector_WorldMessage="Sammler: +1 Info"
+FocussedFriendlyName="Feuer konzentrieren"
+FocussedFriendlyDesc="Mit 'Feuer konzentrieren' belegte Ziele können leichter vom Feind getroffen werden und erleiden mehr Schaden."
+
+[X2Effect_Scavenger]
+;the string shown in world message for scavenged items
+m_strScavengerLoot="(<XGParam:IntValue0/>) <XGParam:StrValue0/!ItemName/> geplündert."
+

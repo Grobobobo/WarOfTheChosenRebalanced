@@ -1,0 +1,7 @@
+
+[X2Ability_LWAlienAbilities]
+strBayonetChargePenalty="センチュリオンは<XGParam:IntValue0/>ターンの間、防御力<XGParam:IntValue1/>。"
+
+[X2Effect_WarCry]
+strWarCryFriendlyDesc="命中率、機動力、意志力にボーナス発生。"
+

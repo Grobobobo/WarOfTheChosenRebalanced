@@ -1,0 +1,14 @@
+[RedFog_LW X2AbilityTemplate]
+LocFriendlyName="Niebla roja"
+LocLongDescription="Las unidades heridas sufren reducción de atributos."
+LocHelpText="Las unidades heridas sufren reducción de atributos."
+LocFlyOverText="Niebla roja"
+LocPromotionPopupText="REDFOGLOCPROMOTIONPOPUPTEXT"
+
+[XComGame.UIShellDifficulty]
+[UIShellDifficulty]
+m_arrDifficultyDescStrings[0]="Apropiado para los jugadores sin experiencia en juegos tácticos o de XCOM.<br/><br/>Las opciones de Long War se pueden configurar en el menú Opciones tras el comienzo de la campaña."
+m_arrDifficultyDescStrings[1]="Un desafío apropiado para los jugadores familiarizados con XCOM.<br/><br/>Las opciones de Long War se pueden configurar en el menú Opciones tras el comienzo de la campaña."
+m_arrDifficultyDescStrings[2]="Un desafío considerable para jugadores con mucha experiencia en Long War.<br/><br/>Las opciones de Long War se pueden configurar en el menú Opciones tras el comienzo de la campaña."
+m_arrDifficultyDescStrings[3]="Una campaña brutal y despiadada.<br/><br/>Las opciones de Long War se pueden configurar en el menú Opciones tras el comienzo de la campaña."
+m_strTutorialOnImpossible="El tutorial no estará disponible para Long War.<br><br/><font color='#9acbcb'>Las opciones de Long War se pueden configurar en el menú Opciones tras el comienzo de la campaña.</font>"

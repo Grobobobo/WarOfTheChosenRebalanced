@@ -1,0 +1,93 @@
+[UIArmory_LWOfficerPromotion]
+strLeadershipButton="리더십 이력보기"
+strLeadershipDialogueTitle="해당 장교 지휘의 임무"
+strLeadershipDialogueData="<XGParam:StrValue0/> : <XGParam:IntValue0/>"
+
+[UIScreenListener_Armory_Promotion_LWOfficerPack]
+strOfficerMenuOption="장교 능력"
+
+[UIScreenListener_Armory_MainMenu_LWOfficerPack]
+strOfficerMenuOption="장교 능력"
+OfficerListItemDescription="훈련 완료된 장교 능력을 확인합니다."
+
+[UIScreenListener_Facility_Academy_LWOfficerPack]
+strOfficerTrainButton="장교 훈련"
+
+[UIScreenListener_SquadSelect_LWOfficerPack]
+strAutoFillLabel="분대 자동 선발"
+strAutoFillTooltip="분대를 최대 인원으로 자동 선발합니다."
+
+
+[UITacticalHUD_MouseControls_LWOfficerPack]
+strCommandRangeToggleTooltip="클릭하여 명령 범위 활성화/비활성화"
+
+[X2StrategyElement_LW_OTS_OfficerStaffSlot]
+;strOTSLocationDisplayString=<XGParam:StrValue0/> Training
+
+;[UIArmory_LWOfficerMenu]
+;m_strSelectAbility=SELECT Officer ABILITY:
+;m_strAbilityHeader=Officer ABILITIES:
+;m_strConfirmAbilityTitle=CONFIRM ABILITY SELECTION
+;m_strConfirmAbilityText=You can't remove or change abilities. Are you sure you want to learn <XGParam:StrValue0/>?
+;m_strAbilityLockedTitle=LOCKED
+;m_strAbilityLockedDescription=Get more combat experience to learn new abilities.
+
+[UIArmory_LWOfficerPromotion]
+m_strSelectAbility="능력 선택:"
+m_strAbilityHeader="능력:"
+m_strConfirmAbilityTitle="능력 선택 확인"
+m_strConfirmAbilityText="능력은 제거하거나 변경할 수 없습니다. <XGParam:StrValue0/> 능력을 배우시겠습니까?"
+m_strAbilityLockedTitle="잠김"
+m_strAbilityLockedDescription="새로운 능력을 배우려면 전투 경험이 더 필요합니다."
+
+[LWOfficerUtilities]
+LWOfficerRankNames[0]="준위"
+LWOfficerRankNames[1]="소위"
+LWOfficerRankNames[2]="중위"
+LWOfficerRankNames[3]="대위"
+LWOfficerRankNames[4]="소령"
+LWOfficerRankNames[5]="중령"
+LWOfficerRankNames[6]="대령"
+LWOfficerRankNames[7]="준장"
+
+LWOfficerShortNames[0]="준위"
+LWOfficerShortNames[1]="소위"
+LWOfficerShortNames[2]="중위"
+LWOfficerShortNames[3]="대위"
+LWOfficerShortNames[4]="소령"
+LWOfficerShortNames[5]="중령"
+LWOfficerShortNames[6]="대령"
+LWOfficerShortNames[7]="준장"
+
+
+[UIFacility_LWOfficerSlot]
+m_strTrainOfficerDialogTitle="장교 훈련"
+m_strTrainOfficerDialogText="충분한 계급에 도달한 병사들은 게릴라 전술 학교에서 특수 훈련을 거쳐 장교가 될 수 있습니다. 훈련 도중에는 전투에 참여할 수 없습니다.\n\n중요: 분대에서 가장 높은 계급의 장교만 임무 중에 능력을 사용할 수 있으므로, 진급 대상을 신중히 고르십시오.\n\n계속하시겠습니까?"
+m_strStopTrainOfficerDialogTitle="장교 훈련을 중지하시겠습니까?"
+m_strStopTrainOfficerDialogText="%UNITNAME의 훈련을 중지하시겠습니까?\n\n경고: 모든 훈련 진행 과정을 잃게 됩니다."
+
+[UIAlert_LWOfficerTrainingComplete]
+m_strTrainingCompleteLabel="장교 훈련 완료"
+m_strTrainingComplete="<XGParam:StrValue0/>이(가) 훈련을 완료했습니다. 무기고에서 병사를 확인하면 새로운 능력을 검토하고 지정할 수 있습니다."
+m_strViewSoldier="병사 보기"
+m_strNewAbilityLabel="새로운 능력"
+
+[UIPersonnel_ListItem_SquadSelect_LWOfficerPack]
+strOfficerAlreadySelectedStatus="경고: 이미 선택된 장교임"
+
+[UIStrategyScreenListener_LWOfficerPack]
+strCommandingOfficerTooltipTitle="지휘관"
+strCommandingOfficerTooltip="모든 장교 능력을 사용할 수 있습니다."
+strSubordinateOfficerTooltipTitle="하급 장교"
+strSubordinateOfficerTooltip="임무에서 장교 능력을 사용할 수 없습니다."
+
+[X2Ability_OfficerAbilitySet]
+strIntervention_WorldMessage="개입: -<XGPARAM:IntValue0> 정보"
+strCollector_WorldMessage="수집가: +1 정보"
+FocussedFriendlyName="집중 사격"
+FocussedFriendlyDesc="집중 사격의 대상인 타겟은 적에게 더 쉽게 공격당하며 피해를 입습니다."
+
+[X2Effect_Scavenger]
+;the string shown in world message for scavenged items
+m_strScavengerLoot="스캐빈저 능력으로 <XGParam:IntValue0/>개의 <XGParam:StrValue0/!ItemName/>이(가) 드롭됐습니다."
+

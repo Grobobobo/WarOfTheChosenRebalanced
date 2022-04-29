@@ -1,0 +1,93 @@
+[UIArmory_LWOfficerPromotion]
+strLeadershipButton="Показать опыт командования"
+strLeadershipDialogueTitle="Заданий под началом этого офицера"
+strLeadershipDialogueData="<XGParam:StrValue0/> : <XGParam:IntValue0/>"
+
+[UIScreenListener_Armory_Promotion_LWOfficerPack]
+strOfficerMenuOption="Способности офицера"
+
+[UIScreenListener_Armory_MainMenu_LWOfficerPack]
+strOfficerMenuOption="Способности офицера"
+OfficerListItemDescription="Показать уже изученные способности офицера."
+
+[UIScreenListener_Facility_Academy_LWOfficerPack]
+strOfficerTrainButton="Обучить офицера"
+
+[UIScreenListener_SquadSelect_LWOfficerPack]
+strAutoFillLabel="СОБРАТЬ ОТРЯД АВТОМАТИЧЕСКИ"
+strAutoFillTooltip="Автоматически подбирает участников для боевой операции"
+
+
+[UITacticalHUD_MouseControls_LWOfficerPack]
+strCommandRangeToggleTooltip="Щелкните, чтобы показать или скрыть радиус командования"
+
+[X2StrategyElement_LW_OTS_OfficerStaffSlot]
+;strOTSLocationDisplayString=<XGParam:StrValue0/> Training
+
+;[UIArmory_LWOfficerMenu]
+;m_strSelectAbility=SELECT Officer ABILITY:
+;m_strAbilityHeader=Officer ABILITIES:
+;m_strConfirmAbilityTitle=CONFIRM ABILITY SELECTION
+;m_strConfirmAbilityText=You can't remove or change abilities. Are you sure you want to learn <XGParam:StrValue0/>?
+;m_strAbilityLockedTitle=LOCKED
+;m_strAbilityLockedDescription=Get more combat experience to learn new abilities.
+
+[UIArmory_LWOfficerPromotion]
+m_strSelectAbility="ВЫБЕРИТЕ СПОСОБНОСТЬ:"
+m_strAbilityHeader="СПОСОБНОСТИ:"
+m_strConfirmAbilityTitle="ПОДТВЕРДИТЕ ВЫБОР СПОСОБНОСТИ"
+m_strConfirmAbilityText="Вы не сможете удалить или изменить способности. Вы уверены, что хотите изучить способность \"<XGParam:StrValue0/>\"?"
+m_strAbilityLockedTitle="НЕДОСТУПНО"
+m_strAbilityLockedDescription="Зарабатывайте боевой опыт, чтобы изучить новые способности."
+
+[LWOfficerUtilities]
+LWOfficerRankNames[0]="СРЖ"
+LWOfficerRankNames[1]="Лейтенант"
+LWOfficerRankNames[2]="Старший лейтенант"
+LWOfficerRankNames[3]="Капитан"
+LWOfficerRankNames[4]="Майор"
+LWOfficerRankNames[5]="Подполковник"
+LWOfficerRankNames[6]="Полковник"
+LWOfficerRankNames[7]="Полевой командир"
+
+LWOfficerShortNames[0]="СРЖ"
+LWOfficerShortNames[1]="Лейт."
+LWOfficerShortNames[2]="Ст. лейт."
+LWOfficerShortNames[3]="Кпт."
+LWOfficerShortNames[4]="Май."
+LWOfficerShortNames[5]="Подп."
+LWOfficerShortNames[6]="Полк."
+LWOfficerShortNames[7]="Кмдр."
+
+
+[UIFacility_LWOfficerSlot]
+m_strTrainOfficerDialogTitle="ОБУЧИТЬ ОФИЦЕРА"
+m_strTrainOfficerDialogText="Солдаты, имеющие определенное звание, могут проходить подготовку в партизанской школе и становиться офицерами. Во время обучения они не смогут принимать участие в боевых операциях.\n\nВНИМАНИЕ: только офицер с самым высоким званием в отряде сможет применять свои способности на задании, поэтому выбирайте кандидатуры с умом.\n\nПродолжить?"
+m_strStopTrainOfficerDialogTitle="ПРЕКРАТИТЬ ОБУЧЕНИЕ ОФИЦЕРА?"
+m_strStopTrainOfficerDialogText="Хотите прекратить обучение солдата %UNITNAME?\n\nВНИМАНИЕ: прогресс обучения офицера будет полностью потерян."
+
+[UIAlert_LWOfficerTrainingComplete]
+m_strTrainingCompleteLabel="Обучение офицера завершено"
+m_strTrainingComplete="<XGParam:StrValue0/> завершает обучение. Изучить и назначить новые способности можно, выбрав солдата в оружейной."
+m_strViewSoldier="ПОКАЗАТЬ СОЛДАТА"
+m_strNewAbilityLabel="НОВАЯ СПОСОБНОСТЬ"
+
+[UIPersonnel_ListItem_SquadSelect_LWOfficerPack]
+strOfficerAlreadySelectedStatus="Внимание: офицер уже назначен"
+
+[UIStrategyScreenListener_LWOfficerPack]
+strCommandingOfficerTooltipTitle="Командующий офицер"
+strCommandingOfficerTooltip="Может использовать все способности офицера."
+strSubordinateOfficerTooltipTitle="Подчиненный офицер"
+strSubordinateOfficerTooltip="Не может использовать способности офицера на задании."
+
+[X2Ability_OfficerAbilitySet]
+strIntervention_WorldMessage="Вмешательство: -<XGPARAM:IntValue0> данных"
+strCollector_WorldMessage="Разведчик: +1 единица данных"
+FocussedFriendlyName="Плотный огонь"
+FocussedFriendlyDesc="Солдатам легче поразить и уничтожить цели после приказа вести плотный огонь."
+
+[X2Effect_Scavenger]
+;the string shown in world message for scavenged items
+m_strScavengerLoot="Найдено: (<XGParam:IntValue0/>) <XGParam:StrValue0/!ItemName/>"
+

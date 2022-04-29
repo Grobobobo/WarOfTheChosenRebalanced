@@ -1,0 +1,264 @@
+
+;---- BEGIN ABILITIES
+
+;displayed both for officer and soldiers receiving effect
+[GetSome X2AbilityTemplate]
+LocFriendlyName="Получай!"
+LocLongDescription="Два раза за задание доступно действие, повышающее вероятность критического попадания всех солдат в радиусе командования на +20 до конца хода."
+LocHelpText="Находящиеся рядом с офицером солдаты получают бонус к вероятности критического попадания."
+LocFlyOverText="Получай!"
+LocPromotionPopupText="<Bullet/> Действие, повышающее вероятность критического попадания для всех солдат в радиусе командования на +20 до конца хода.<br/><Bullet/> Доступно дважды за задание.<br/><Bullet/> Радиус командования увеличивается с каждым уровнем офицера."
+
+[Collector X2AbilityTemplate]
+LocFriendlyName="Разведчик"
+LocLongDescription="Если офицер не ранен, убийство негуманоидного противника с вероятностью 33% приносит 1 ед. данных."
+LocHelpText="Получает данные после убийства вражеским отрядом."
+LocFlyOverText="Разведчик"
+; displayed for officer in OfficerAbility UI
+LocPromotionPopupText="<Bullet/> Если офицер не ранен, убийство негуманоидного противника с вероятностью 33% приносит 1 ед. данных."
+
+;displayed on officer in tactical container
+[CollectorPassive X2AbilityTemplate]
+LocFriendlyName="Разведчик"
+LocLongDescription="Если офицер не ранен, убийство негуманоидного противника с вероятностью 33% приносит 1 ед. данных."
+LocHelpText="Получает данные после убийства вражеским отрядом."
+LocFlyOverText="Разведчик"
+LocPromotionPopupText="<Bullet/> Если офицер не ранен, убийство негуманоидного противника с вероятностью 33% приносит 1 ед. данных."
+
+;displayed on other soldier that receive the effect
+[Defilade X2AbilityTemplate]
+LocFriendlyName="Надежные укрытия"
+LocLongDescription="Повышает защиту всех находящихся в укрытии солдат в радиусе командования офицера на 5."
+LocHelpText="Находящиеся рядом с офицером солдаты более эффективно используют укрытие."
+LocFlyOverText="Надежные укрытия"
+;displayed for officer in Officer Ability UI
+LocPromotionPopupText="<Bullet/> Повышает защиту всех находящихся в укрытии солдат в радиусе командования офицера на 5.<br/><Bullet/> Радиус командования увеличивается с каждым уровнем офицера."
+
+;Displayed on officer in tactical container
+[DefiladePassive X2AbilityTemplate]
+LocFriendlyName="Надежные укрытия"
+LocLongDescription="Повышает защиту всех находящихся в укрытии солдат в радиусе командования офицера на 5."
+LocHelpText="Находящиеся рядом с офицером солдаты более эффективно используют укрытие."
+LocFlyOverText="Надежные укрытия"
+LocPromotionPopupText="<Bullet/> Повышает защиту всех находящихся в укрытии солдат в радиусе командования офицера на 5.<br/><Bullet/> Радиус командования увеличивается с каждым уровнем офицера."
+
+;displayed both on officer and in debuff on target
+[FocusFire X2AbilityTemplate]
+LocFriendlyName="Плотный огонь"
+LocLongDescription="Потратив действие, вы можете указать цель, чтобы дать всему отряду суммарные бонусы к меткости и +1 к бронебойной силе при стрельбе по ней до конца хода."
+LocHelpText="Выберите цель, чтобы дать вашему отряду бонус к меткости и бронебойной силе."
+LocFlyOverText="Плотный огонь"
+LocPromotionPopupText="<Bullet/> Потратив действие, вы можете указать цель, чтобы дать всему отряду +10 к меткости и +1 к бронебойной силе при стрельбе по ней до конца хода.<br/><Bullet/> Каждый последующий выстрел по цели в пределах хода дает еще +<ABILITY:FOCUS_FIRE_AIM_BONUS/> к меткости.<br/><Bullet/> Перезарядка в течение 3 ходов.<br/>"
+
+;displayed both on officer and on soldiers receiving effect
+[FallBack X2AbilityTemplate]
+LocFriendlyName="Назад!"
+LocLongDescription="Дает бесплатное, но неуправляемое защитное действие любому союзнику в поле зрения, который потратил все свои действия."
+LocHelpText="Дает солдату в пределах видимости возможность использовать еще одно защитное действие на его усмотрение."
+LocFlyOverText="Назад!"
+LocPromotionPopupText="<Bullet/> Дает бесплатное, но неуправляемое защитное действие любому союзнику в поле зрения. Чаще всего он попытается найти укрытие или уйдет в глухую оборону.<br/><Bullet/> Неприменимо для солдат, находящихся в режиме \"наблюдения\" или ведущих подавление цели.<br/><Bullet/> Бесплатное действие."
+
+[Scavenger X2AbilityTemplate]
+LocFriendlyName="Утилизатор"
+LocLongDescription="Успешное выполнение заданий приносит на 30% больше материалов, инопланетных сплавов и элерия. Отряд получает шанс найти дополнительные сплавы и элерий после уничтожения инопланетян."
+LocHelpText="Дополнительные материалы, инопланетные сплавы и элерий."
+LocFlyOverText="Утилизатор"
+LocPromotionPopupText="<Bullet/> Успешное выполнение задания приносит на 30% больше материалов, инопланетных сплавов и элерия, если офицер выжил и находится в сознании.<br/><Bullet> Отряд может собирать сплавы и элерий с трупов инопланетян.<br/>"
+
+;Displayed on officer in tactical container
+[ScavengerPassive X2AbilityTemplate]
+LocFriendlyName="Утилизатор"
+LocLongDescription="Успешное выполнение заданий приносит на 30% больше материалов, инопланетных сплавов и элерия. Шанс получить сплавы и элерий после уничтожения инопланетян."
+LocHelpText="Дополнительные материалы, инопланетные сплавы и элерий."
+LocFlyOverText="Утилизатор"
+LocPromotionPopupText="<Bullet/> Успешное выполнение задания приносит на 30% больше материалов, инопланетных сплавов и элерия, если офицер выжил и почти не пострадал.<br/><Bullet> Отряд может собирать сплавы и элерий с трупов инопланетян.<br/>"
+
+;displayed on other soldier that receive the effect
+[FireDiscipline X2AbilityTemplate]
+LocFriendlyName="Огневая дисциплина"
+LocLongDescription="Все солдаты в радиусе командования офицера получают +10% к меткости при ведении ответного огня."
+LocHelpText="Находящиеся рядом с офицером солдаты получают бонус к меткости при ведении ответного огня."
+LocFlyOverText="Огневая дисциплина"
+;displayed for officer in Officer Ability UI
+LocPromotionPopupText="<Bullet/> Все солдаты в радиусе командования офицера получают +10% к меткости при ведении ответного огня.<br/><Bullet/> Радиус командования увеличивается с каждым уровнем офицера."
+
+;Displayed on officer in tactical container
+[FireDisciplinePassive X2AbilityTemplate]
+LocFriendlyName="Огневая дисциплина"
+LocLongDescription="Все солдаты в радиусе командования офицера получают +10% к меткости при ведении ответного огня."
+LocHelpText="Находящиеся рядом с офицером солдаты получают бонус к меткости при ведении ответного огня."
+LocFlyOverText="Огневая дисциплина"
+LocPromotionPopupText="<Bullet/> Все солдаты в радиусе командования офицера получают +10% к меткости при ведении ответного огня.<br/><Bullet/> Радиус командования увеличивается с каждым уровнем офицера."
+
+;displayed both on officer and on soldiers receiving effect
+[OscarMike X2AbilityTemplate]
+LocFriendlyName="Бегом!"
+LocLongDescription="Потратив действие, вы можете увеличить мобильность всех солдат в радиусе командования на +5 до конца хода. Используется один раз за задание."
+LocHelpText="Дает находящимся рядом солдатам бонус к мобильности при активации."
+LocFlyOverText="Бегом!"
+LocPromotionPopupText="<Bullet/> Действие, увеличивающее мобильность всех солдат в радиусе командования на +5 до конца хода.<br/><Bullet/> Используется один раз за задание.<br/><Bullet/> Радиус командования увеличивается с каждым уровнем офицера."
+
+;displayed on other soldier that receive the effect
+[LeadByExample X2AbilityTemplate]
+LocFriendlyName="Личный пример"
+LocLongDescription="Офицер дает всем солдатам в радиусе командования бонус к меткости, силе воли и взлому, равный половине разницы между значением характеристики солдата и самого офицера."
+LocHelpText="Находящиеся рядом с офицером солдаты получают бонус к меткости, силе воли и взлому."
+LocFlyOverText="Личный пример"
+;displayed for officer in Officer Ability UI
+LocPromotionPopupText="<Bullet/> Если меткость, сила воли и/или взлом офицера выше, чем у кого-либо в радиусе командования, солдат получает бонусы, равные половине разницы между значением характеристики солдата и самого офицера.<br/><Bullet/> Радиус командования увеличивается с каждым уровнем офицера."
+
+;Displayed on officer in tactical container
+[LeadByExamplePassive X2AbilityTemplate]
+LocFriendlyName="Личный пример"
+LocLongDescription="Офицер дает всем солдатам в радиусе командования бонус к меткости, силе воли и взлому, равный половине разницы между значением характеристики солдата и самого офицера."
+LocHelpText="Находящиеся рядом с офицером солдаты получают бонус к меткости, силе воли и взлому."
+LocFlyOverText="Личный пример"
+LocPromotionPopupText="<Bullet/> Если меткость, сила воли и/или взлом офицера выше, чем у кого-либо в радиусе командования, солдат получает бонусы, равные половине разницы между значением характеристики солдата и самого офицера.<br/><Bullet/> Радиус командования увеличивается с каждым уровнем офицера."
+
+;this may not be displayed -- needs testing
+[LeadByExampleLeader X2AbilityTemplate]
+LocFriendlyName="Личный пример"
+LocLongDescription="Офицер дает всем солдатам в радиусе командования бонус к меткости, силе воли и взлому, равный половине разницы между значением характеристики солдата и самого офицера."
+LocHelpText="Находящиеся рядом с офицером солдаты получают бонус к меткости, силе воли и взлому."
+LocFlyOverText="Личный пример"
+LocPromotionPopupText="<Bullet/> Если меткость, сила воли и/или взлом офицера выше, чем у кого-либо в радиусе командования, солдат получает бонусы, равные половине разницы между значением характеристики солдата и самого офицера.<br/><Bullet/> Радиус командования увеличивается с каждым уровнем офицера."
+
+;displayed on other soldier that receive the effect
+[CombinedArms X2AbilityTemplate]
+LocFriendlyName="Сила в единстве"
+LocLongDescription="Все солдаты в радиусе командования офицера наносят дополнительно +1 ед. урона своими атаками."
+LocHelpText="Находящиеся рядом с офицером солдаты наносят дополнительный урон."
+LocFlyOverText="Сила в единстве"
+LocPromotionPopupText="<Bullet/> Все солдаты в радиусе командования офицера наносят дополнительно +1 ед. урона своими атаками.<br/><Bullet/> Радиус командования увеличивается с каждым уровнем офицера."
+
+;Displayed on officer in tactical container
+[CombinedArmsPassive X2AbilityTemplate]
+LocFriendlyName="Сила в единстве"
+LocLongDescription="Все солдаты в радиусе командования офицера наносят дополнительно +1 ед. урона своими атаками."
+LocHelpText="Находящиеся рядом с офицером солдаты наносят дополнительный урон."
+LocFlyOverText="Сила в единстве"
+LocPromotionPopupText="<Bullet/> Все солдаты в радиусе командования офицера наносят дополнительно +1 ед. урона своими атаками.<br/><Bullet/> Радиус командования увеличивается с каждым уровнем офицера."
+
+[Command X2AbilityTemplate]
+LocFriendlyName="Приказ"
+LocLongDescription="Заканчивает ход и добавляет доп. действие любому видимому члену отряда. Количество зарядов зависит от звания офицера."
+LocHelpText="Дает союзникам дополнительные действия."
+LocFlyOverText="Приказ"
+LocPromotionPopupText="<Bullet/> Расходует одно действие и заканчивает ход.<br/><Bullet/> У лейтенантов и старших лейтенантов один заряд способности, у капитанов и майоров - два, у подполковников и полковников - три, у полевых командиров - четыре.<br/><Bullet/> Неприменимо для солдат, находящихся в режиме \"наблюдения\" или ведущих подавление цели."
+
+[Infiltrator X2AbilityTemplate]
+LocFriendlyName="Лазутчик"
+LocLongDescription="Отряд этого офицера быстрее проникает на задания."
+LocHelpText="Отряд этого офицера быстрее проникает на задания."
+LocFlyOverText="Лазутчик"
+LocPromotionPopupText="<Bullet/> Отряд офицера, обладающего этой способностью, станет значительно незаметнее, тем самым снижая время проникновения.<br/>"
+
+[AirController X2AbilityTemplate]
+LocFriendlyName="Диспетчер"
+LocLongDescription="\"Рейнджер\" будет прибывать по запросу эвакуации на <Ability:AIR_CONTROLLER_EVAC_TURN_REDUCTION/> ход. быстрее."
+LocHelpText="\"Рейнджер\" будет прибывать по запросу эвакуации на два хода быстрее."
+LocFlyOverText="Диспетчер"
+LocPromotionPopupText="<Bullet/> Этот офицер обладает опытом координирования действий авиации, что позволит \"Рейнджеру\" прибывать по запросу эвакуации на два хода быстрее.<br/><Bullet/> Обратите внимание, что существует минимальное время подлёта \"Рейнджера\", на которое не влияют никакие бонусы."
+
+[Jammer X2AbilityTemplate]
+LocFriendlyName="Вредитель"
+LocLongDescription="Один раз за бой позволяет задержать прибытие подкреплений противника на один ход."
+LocHelpText="Задерживает прибытие подкреплений противника на один ход."
+LocFlyOverText="Вредитель"
+LocPromotionPopupText="<Bullet/> Действие, позволяющее задержать прибытие подкреплений противника на один ход.<br/><Bullet/> Если прямо сейчас подкреплений не ожидается, то действие будет применено к будущим подкреплениям."
+
+[Incoming X2AbilityTemplate]
+LocFriendlyName="Обстрел!"
+LocLongDescription="Действие, дающее всем в радиусе командования защиту, уменьшающую урон от взрывов на 4 ед. до конца следующего хода пришельцев."
+LocHelpText="Офицер и солдаты рядом с ним получают на 4 ед. урона меньше от взрывов."
+LocFlyOverText="Обстрел!"
+LocPromotionPopupText="<Bullet/> Активация способности дает всем союзникам в радиусе командования защиту, уменьшающую урон от взрывов на 4 ед. до конца следующего хода пришельцев.<br/><Bullet/> Не расходует действие.<br/><Bullet/> Перезарядка 5 ходов.<br/><Bullet/> Радиус командования увеличивается с каждым уровнем офицера.<br/><Bullet/> Не применяется к паникующим солдатам и солдатам, ведущим подавление цели.<br/>"
+
+[Intervention X2AbilityTemplate]
+LocFriendlyName="Вмешательство"
+LocLongDescription="Активация способности позволяет потратить 10 данных и увеличить таймер задания на 2 хода. Количество зарядов зависит от звания офицера."
+LocHelpText="Действие, позволяющее потратить разведданные и получить 2 дополнительных хода на задание."
+LocFlyOverText="Вмешательство"
+LocPromotionPopUpText="<Bullet/> Активация способности позволяет потратить 10 данных и увеличить таймер задания на 2 хода.<br/><Bullet/> Расходует 1 действие.<br/><Bullet/> Количество зарядов зависит от звания офицера.<br/><Bullet/> При отсутствии таймера не делает ничего.<br/><Bullet/> Стоимость может быть изменена в результате различных событий; способность недоступна, если XCOM не располагает 10 данными.<br/>"
+
+[TrialByFire X2AbilityTemplate]
+LocFriendlyName="Испытание боем"
+LocLongDescription="Каждый солдат ниже сержанта по званию будет автоматически повышен после успешной миссии с этим офицером."
+LocHelpText="Каждый солдат ниже сержанта по званию будет автоматически повышен после успешной миссии с этим офицером."
+LocPromotionPopUpText="<Bullet/> Этот бонус будет применен, только если командующий офицер имеет эту способность, остальные офицеры в этой миссии не получат бонусов."
+
+;---- END ABILITIES
+
+;---- BEGIN OTS / STAFFSLOT
+
+[OfficerTrainingUnlock X2SoldierUnlockTemplate]
+DisplayName="Обучение офицера"
+Summary="Открывает дополнительную ячейку для обучения офицера."
+
+[OTSOfficerSlot X2StaffSlotTemplate]
+EmptyText="ВАКАНСИЯ: ТРЕБУЕТСЯ СОЛДАТ"
+BonusEmptyText="Изучает офицерские способности"
+BonusText="ОБУЧЕНИЕ СПОСОБНОСТИ %SKILL"
+FilledText="%UNITNAME проходит расширенную программу обучения способности %SKILL!"
+LockedText="НЕДОСТУПНО: ПРИОБРЕТИТЕ УЛУЧШЕНИЕ"
+
+[OTS_LWOfficerTrainingUpgrade X2FacilityUpgradeTemplate]
+DisplayName="Учебная станция для офицеров"
+FacilityName="Школа офицеров"
+Summary="Добавляет место, где солдаты в звании младшего капрала и выше могут изучать особые лидерские способности.\nВНИМАНИЕ: только офицер с самым высоким званием в отряде сможет применять свои способности на задании, поэтому выбирайте кандидатуры с умом."
+
+[OTS_LWOfficerTrainingUpgrade_SecondSlot X2FacilityUpgradeTemplate]
+DisplayName="Учебная станция для офицеров"
+FacilityName="Школа офицеров"
+Summary="Добавляет место, где солдаты в звании младшего капрала и выше могут изучать особые лидерские способности.\nВНИМАНИЕ: только офицер с самым высоким званием в отряде сможет применять свои способности на задании, поэтому выбирайте кандидатуры с умом."
+
+[UIPersonnel_LWOfficer]
+m_strTitle="Солдат для обучения на офицера"
+EmptyListMessage="НЕТ ПОДХОДЯЩЕГО СОЛДАТА"
+
+;---- END OTS / STAFFSLOT
+
+; LWOTC Translated
+[CommandRange1 X2AbilityTemplate]
+LocFriendlyName="Радиус командования 1"
+LocLongDescription="Увеличивает радиус командования офицера на 1 клетку"
+LocHelpText=""
+LocPromotionPopupText="TBC............"
+
+[CommandRange2 X2AbilityTemplate]
+LocFriendlyName="Дальность приказа 2"
+LocLongDescription="Увеличивает радиус командования офицера на 2 клетки"
+LocHelpText=""
+LocPromotionPopupText="TBC............"
+
+[CommandRange3 X2AbilityTemplate]
+LocFriendlyName="Радиус командования 3"
+LocLongDescription="Увеличивает радиус командования офицера на 3 клетки"
+LocHelpText=""
+LocPromotionPopupText="TBC............"
+
+[CommandRange4 X2AbilityTemplate]
+LocFriendlyName="Радиус командования 4"
+LocLongDescription="Увеличивает радиус командования офицера на 4 клетки"
+LocHelpText=""
+LocPromotionPopupText="TBC............"
+
+[CommandRange5 X2AbilityTemplate]
+LocFriendlyName="Радиус командования 5"
+LocLongDescription="Увеличивает радиус командования офицера на 5 клеток"
+LocHelpText=""
+LocPromotionPopupText="TBC............"
+
+[CommandRange6 X2AbilityTemplate]
+LocFriendlyName="Радиус командования 6"
+LocLongDescription="Увеличивает радиус командования офицера на 6 клеток"
+LocHelpText=""
+LocPromotionPopupText="TBC............"
+
+[CommandRange7 X2AbilityTemplate]
+LocFriendlyName="Радиус командования 7"
+LocLongDescription="Увеличивает радиус командования офицера на 7 клеток"
+LocHelpText=""
+LocPromotionPopupText="TBC............"
+
+; End Translated

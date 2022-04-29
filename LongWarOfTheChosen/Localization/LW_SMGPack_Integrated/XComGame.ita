@@ -1,0 +1,24 @@
+; SMG item localization 
+; this includes schematics, as of 13 Oct 2015 update
+; this includes ability descriptor, as of 5 Jan 2016 update
+
+[SMG_CV X2WeaponTemplate]
+FriendlyName="Fucile mitragliatore"
+FriendlyNamePlural="Fucili mitragliatore"
+BriefSummary="I fucili mitragliatori offrono un'alternativa più leggera e meno appariscente ai fucili d'assalto standard, ma non hanno la stessa potenza e sono meno precisi sulla lunga distanza."
+TacticalText="<Bullet/> Sparare con l'arma primaria conclude il turno di un soldato, se non ha ricevuto addestramenti speciali.\n<Bullet/> Usa i potenziamenti recuperati dai nemici per migliorare l'efficacia tattica del fucile mitragliatore. \n<Bullet/> Le armi in stile fucile mitragliatore offrono mobilità bonus, precisione negli scontri ravvicinati e occultamento, rispetto ai fucili d'assalto, ma infliggono meno danni, hanno meno munizioni e subiscono penalità alla Precisione sulla lunga distanza."
+AbilityDescName="Fucile mitragliatore"
+
+[SMG_MG X2WeaponTemplate]
+FriendlyName="Stuttermag"
+FriendlyNamePlural="Stuttermag"
+BriefSummary="Lo Stuttermag è una versione leggera del fucile magnetico e ha un ruolo analogo al fucile mitragliatore. Cede potenza, munizioni e precisione sulla distanza in cambio di mobilità e occultamento per il soldato."
+TacticalText="<Bullet/> Sparare con l'arma primaria conclude sempre il turno di un soldato, se non ha ricevuto addestramenti speciali.\n<Bullet/> Usa i potenziamenti recuperati dai nemici per migliorare l'efficacia tattica dello Stuttermag. \n<Bullet/> Le armi in stile fucile mitragliatore offrono mobilità bonus, precisione negli scontri ravvicinati e occultamento, rispetto ai fucili d'assalto, ma infliggono meno danni, hanno meno munizioni e subiscono penalità alla Precisione sulla lunga distanza."
+AbilityDescName="Fucile mitragliatore"
+
+[SMG_BM X2WeaponTemplate]
+FriendlyName="Scramgun"
+FriendlyNamePlural="Scramgun"
+BriefSummary="La Scramgun, come il fucile mitragliatore e lo Stuttermag, è una piccola arma primaria che conferisce mobilità e bonus all'Occultamento, ma infligge meno danni e subisce penalità alla Precisione sulla lunga distanza. Rimane comunque un'arma personale con una buona potenza."
+TacticalText="<Bullet/> Sparare con l'arma primaria conclude sempre il turno di un soldato\n<Bullet/> Usa i potenziamenti recuperati dai nemici per migliorare l'efficacia tattica della Scramgun. \n<Bullet/> Le armi in stile fucile mitragliatore offrono mobilità bonus, precisione negli scontri ravvicinati e occultamento, rispetto ai fucili d'assalto, ma infliggono meno danni, hanno meno munizioni e subiscono penalità alla Precisione sulla lunga distanza.<br/><Bullet/> Le armi al plasma causano al bersaglio un ulteriore danno aggiuntivo ad ogni colpo."
+AbilityDescName="Fucile mitragliatore"

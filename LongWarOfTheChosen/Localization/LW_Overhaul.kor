@@ -1,0 +1,616 @@
+[XComGameState_LWOverhaulOptions]
+LWOverhaulTabName="LONG WAR (LWOTC)"
+GrazeBandWidthMod="찰과상 대역"
+GrazeBandWidthModTooltip="찰과상으로 간주되려면 목표물에 얼마나 근접해서 명중시켜야 하는지 결정합니다."
+GrazeBandValue="값: <XGParam:IntValue0>"
+PauseOnRecruitMod="모집 시 일시 정지"
+PauseOnRecruitModTooltip="피난처에서 신규 병사나 반란군을 모집할 때 지구 홀로그램을 일시 정지합니다."
+
+[UIScreenListener_ShellDifficulty]
+strIncompatibleModsTitle="중복 개조 존재"
+strIncompatibleModsText="중복 모드 감지됨:\n%modnames%\n이 모드는 해당 모드에 통합되었으므로 시작 프로그램에서 비활성화되었습니다. 계속 진행하도록 선택하면 성능이 떨어지거나 불안정해질 수 있습니다. 계속하려면 이 점을 감안해 주십시오."
+
+[UIMission_LWCustomMission]
+m_strMissionDifficulty_start="적 활동 수준"
+
+[ProtectRegionEarly X2LWAlienActivityTemplate]
+ActivityName="ProtectRegion1Activity"
+ActivityObjectives[0]="단서 찾기"
+
++MissionDescriptions=(MissionFamily="Recover_LW", Description="어드밴트 활동에 대한 잠재적 단서를 발견했습니다. 서둘러 조사해야 합니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="어드밴트 활동에 대한 잠재적 단서를 발견했습니다. 서둘러 조사해야 합니다.", MissionIndex=0)
+
+[ProtectRegionMid X2LWAlienActivityTemplate]
+ActivityName="ProtectRegion2Activity"
+ActivityObjectives[0]="해방: 망명자 구출"
+
++MissionDescriptions=(MissionFamily="Extract_LW", Description="이 지역의 외계인 약점에 대한 핵심 정보를 쥐고 있는 망명자를 어드밴트로부터 구출해야 합니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="이 지역의 외계인 약점에 대한 중요한 정보를 가지고 있는 저항군 동조자를 확인했습니다.", MissionIndex=0)
+
+[ProtectRegion X2LWAlienActivityTemplate]
+ActivityName="ProtectRegion3Activity"
+ActivityObjectives[0]="해방: 어드밴트 작전 저지"
+ActivityObjectives[1]="해방: 네트워크 타워 파괴"
+ActivityObjectives[2]="해방: 어드밴트 기지 공격"
+
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="저항군 통신 네트워크를 방해하고 있는 어드밴트 장치를 확인했습니다. 이 장치를 파괴해야 합니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Neutralize_LW", Description="인간 어드밴트 관계자가 이 지역에서 적 작전에 조언을 제공한다는 정보를 입수했습니다. 그 관계자를 제거해야 합니다.", MissionIndex=0)
+
++MissionDescriptions=(MissionFamily="AssaultNetworkTower_LW", Description="이 지역에서 우리의 승리가 가까워지고 있습니다. 지역 수도에서 외계인들의 통신 허브를 파괴해야 합니다.", MissionIndex=1)
+
++MissionDescriptions=(MissionFamily="AssaultAlienBase_LW", Description="이 지역에서 어드밴트 작전이 와해되고 있습니다. 지금 군사령부를 공격해 이 지역을 어드밴트의 통제로부터 해방시켜야 합니다.", MissionIndex=2)
+
+[Counterinsurgency X2LWAlienActivityTemplate]
+ActivityName="CounterinsurgencyActivity"
+ActivityObjectives[0]="저항군 데이터 유출 차단"
+ActivityObjectives[1]="저항군 피난처 방어"
+
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="어드밴트가 이 지역에서 우리의 작전을 조사하고 있습니다. 피난처가 위험에 빠질 수 있습니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Terror_LW", Description="적들이 피난처에 접근하고 있습니다. 피난처와 그곳에 있는 사람들을 구하기 위해 서둘러야 합니다.", MissionIndex=1)
++MissionDescriptions=(MissionFamily="Defend_LW", Description="적들이 피난처에 접근하고 있습니다. 피난처와 그곳에 있는 사람들을 구하기 위해 서둘러야 합니다.", MissionIndex=1)
+
+[ReinforceActivity X2LWAlienActivityTemplate]
+ActivityName="ReinforceActivity"
+ActivityObjectives[0]="어드밴트 지원군 요격하기"
++MissionDescriptions=(MissionFamily="SupplyLineRaid_LW", Description="우리의 작전에 대응해 어드밴트가 이 지역으로 병력을 이동 중인 것이 감지되었습니다.", MissionIndex=0)
+
+[COINResearch X2LWAlienActivityTemplate]
+ActivityName="COINResearchActivity"
+ActivityObjectives[0]="어드밴트 군사 개발 저지"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="외계인들이 군사 연구 프로젝트를 완료하지 못하도록 저지할 기회를 포착했습니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="외계인들이 군사 연구 프로젝트를 완료하지 못하도록 저지할 기회를 포착했습니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="외계인들이 외계인 군사 연구 프로젝트를 완료하지 못하도록 저지할 기회를 포착했습니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Neutralize_LW", Description="어드밴트 인간 관계자를 처치해 외계인들이 군사 연구 프로젝트를 완료하지 못하도록 저지할 기회를 포착했습니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="감금된 채 외계인 군사 연구 프로젝트에 투입되고 있는 과학자를 구출할 기회를 포착했습니다.", MissionIndex=0)
+
+[COINOps X2LWAlienActivityTemplate]
+ActivityName="COINOpsActivity"
+ActivityObjectives[0]="어드밴트 대반란 작전실 공격"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="어드밴트가 저항군과 XCOM에 대해 방해 공작을 펴고 있습니다. 이들을 저지할 기회가 생겼습니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="어드밴트가 저항군과 XCOM에 대해 방해 공작을 펴고 있습니다. 이들을 저지할 기회가 생겼습니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="어드밴트가 저항군과 XCOM에 대해 방해 공작을 펴고 있습니다. 이들을 저지할 기회가 생겼습니다.", MissionIndex=0)
+
+[BuildResearchFacility X2LWAlienActivityTemplate]
+ActivityName="BuildResearchFacilityActivity"
+ActivityObjectives[0]="어드밴트 건설 유닛 기습하기"
++MissionDescriptions=(MissionFamily="SupplyLineRaid_LW", Description="이 지역에서 새로운 연구 시설을 건설하려는 외계인 활동을 확인했습니다. 건설 유닛을 공격해 건설을 저지하십시오.", MissionIndex=0)
+
+[RegionalAvatarResearch X2LWAlienActivityTemplate]
+ActivityObjectives[0]="외계인 연구실 공격"
++MissionDescriptions=(MissionFamily="Sabotage_LW", Description="중요 외계인 연구 시설을 발견했습니다. 철저히 파괴하십시오.", MissionIndex=0)
+
+[ScheduledOffworldReinforcements X2LWAlienActivityTemplate]
+ActivityName="ScheduledOffworldReinforcementsActivity"
+ActivityObjectives[0]="단서 찾기"
+ActivityObjectives[1]="UFO 아티팩트 회수"
+
++MissionDescriptions=(MissionFamily="Recover_LW", Description="어드밴트 활동에 대한 잠재적 단서를 발견했습니다. 서둘러 조사해야 합니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="어드밴트 활동에 대한 잠재적 단서를 발견했습니다. 서둘러 조사해야 합니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="방어가 취약한 UFO 한 대가 착륙해 있다는 정보가 입수되었습니다.", MissionIndex=1)
+
+[EmergencyOffworldReinforcements X2LWAlienActivityTemplate]
+ActivityName="EmergencyOffworldReinforcementsActivity"
+ActivityObjectives[0]="단서 찾기"
+ActivityObjectives[1]="UFO 아티팩트 회수"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="어드밴트 활동에 대한 잠재적 단서를 발견했습니다. 서둘러 조사해야 합니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="어드밴트 활동에 대한 잠재적 단서를 발견했습니다. 서둘러 조사해야 합니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="방어가 취약한 UFO 한 대가 착륙해 있다는 정보가 입수되었습니다.", MissionIndex=1)
+
+[SuperEmergencyOffworldReinforcements X2LWAlienActivityTemplate]
+ActivityName="SuperEmergencyOffworldReinforcementsActivity"
+ActivityObjectives[0]="단서 찾기"
+ActivityObjectives[1]="UFO 아티팩트 회수"
+
++MissionDescriptions=(MissionFamily="Recover_LW", Description="어드밴트 활동에 대한 잠재적 단서를 발견했습니다. 서둘러 조사해야 합니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="어드밴트 활동에 대한 잠재적 단서를 발견했습니다. 서둘러 조사해야 합니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="적 활동에 대한 잠재적 단서를 제공할 수도 있는 어드밴트 포로를 발견했습니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="방어가 취약한 UFO 한 대가 착륙해 있다는 정보가 입수되었습니다.", MissionIndex=1)
+
+[Invasion X2LWAlienActivityTemplate]
+ActivityName="InvasionActivity"
+ActivityObjectives[0]="어드밴트 전진 부대 기습하기"
+ActivityObjectives[1]="임시 정부 방어"
+
++MissionDescriptions=(MissionFamily="SupplyLineRaid_LW", Description="이 지역에 진입 중인 어드밴트 부대를 발견했습니다. 이들의 진입을 반드시 막아야 합니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Invasion_LW", Description="어드밴트가 이 지역을 침략해 임시 정부를 공격하고 있습니다. 사람들을 보호하지 않으면 이 지역이 외계인의 손에 다시 넘어갈 수 있습니다.", MissionIndex=1)
+
+[Foothold X2LWAlienActivityTemplate]
+ActivityName="FootholdActivity"
+ActivityObjectives[0]="UFO 어설트 캐리어 공격"
+ActivityObjectives[1]="임시 정부 방어"
+
++MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="외계인들이 지구에 거점을 다시 확보하려고 합니다. 외계인 어설트 캐리어가 착륙할 때 공격해 그들의 계획을 저지할 수 있습니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Invasion_LW", Description="외계인들이 이 지역을 침략해 임시 정부를 공격하고 있습니다. 사람들을 보호하지 않으면 이 지역이 외계인의 손에 다시 넘어갈 수 있습니다.", MissionIndex=1)
+
+[Propaganda X2LWAlienActivityTemplate]
+ActivityName="PropagandaActivity"
+ActivityObjectives[0]="어드밴트 관심 끌기"
++MissionDescriptions=(MissionFamily="SabotageCC_LW", Description="외계인들의 도심 지역 방어가 상대적으로 취약합니다. 기념비 하나를 파괴해 경고 메시지를 보낼 수 있습니다. 하지만 어드밴트에서 분명 대응할 것입니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Neutralize_LW", Description="어드밴트 정부에서 일하는 인간 고위 관계자에 대한 보호가 짧은 시간 동안 약화된다는 정보를 확인했습니다. 고위 인간 관계자를 제거하십시오. 하지만 어드밴트에서 분명 눈치챌 것입니다.", MissionIndex=0)
+
+[ProtectResearch X2LWAlienActivityTemplate]
+ActivityName="ProtectResearchActivity"
+ActivityObjectives[0]="단서 찾기"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="어드밴트 활동에 대한 잠재적 단서를 발견했습니다. 서둘러 조사해야 합니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="어드밴트 활동에 대한 잠재적 단서를 발견했습니다. 서둘러 조사해야 합니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="저항군 통신을 방해하고 있는 어드밴트 장치를 확인 했습니다. 장치가 파괴되었다면, 정보출처와 데이터를 새로 생성할 것입니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="적 활동에 대한 잠재적 단서를 제공할 수도 있는 어드밴트 포로를 발견 했습니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Extract_LW", Description="적 활동과 탈출에 필요한 잠재적 단서를 제공할 수도 있는 어드밴트 시설로부터의 탈주자 무리를 발견 했습니다.", MissionIndex=0)
+
+[ProtectData X2LWAlienActivityTemplate]
+ActivityName="ProtectDataActivity"
+ActivityObjectives[0]="단서 찾기"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="어드밴트 활동에 대한 잠재적 단서를 발견했습니다. 서둘러 조사해야 합니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="어드밴트 활동에 대한 잠재적 단서를 발견했습니다. 서둘러 조사해야 합니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="저항군 통신을 방해하고 있는 어드밴트 장치를 확인 했습니다. 장치가 파괴되었다면, 정보출처와 데이터를 새로 생성할 것입니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="적 활동에 대한 잠재적 단서를 제공할 수도 있는 어드밴트 포로를 발견했습니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Extract_LW", Description="적 활동과 탈출에 필요한 잠재적 단서를 제공할 수도 있는 어드밴트 시설로부터의 탈주자 무리를 발견 했습니다.", MissionIndex=0)
+
+[TroopManeuvers X2LWAlienActivityTemplate]
+ActivityName="TroopManeuversActivity"
+ActivityObjectives[0]="적의 힘 감소시키기"
++MissionDescriptions=(MissionFamily="TroopManeuvers_LW", Description="어드밴트의 전투 유닛 하나가 우리 부대의 습격에 취약합니다.")
+
+[HighValuePrisoner X2LWAlienActivityTemplate]
+ActivityName="HighValuePrisonerActivity"
+ActivityObjectives[0]="중요한 포로 구출"
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="어드밴트가 중요한 포로를 수감하고 있는 장소를 확인했습니다. 이 포로를 즉시 구출해야 합니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Extract_LW", Description="저항군을 도울수 있는 어드밴트 시설로부터의 탈주자 무리를 발견 했습니다. 이 탈주자를 즉시 구출해야 합니다.", MissionIndex=0)
+
+[PoliticalPrisoners X2LWAlienActivityTemplate]
+ActivityName="PoliticalPrisonersActivity"
+ActivityObjectives[0]="생포된 반란군 구출"
++MissionDescriptions=(MissionFamily="Jailbreak_LW", Description="저항군 대원들이 현재 보안 시설에 감금되어 있습니다. 그들을 구출할 수 있는 짧은 기회가 왔습니다.", MissionIndex=0)
+
+[IntelRaid X2LWAlienActivityTemplate]
+ActivityName="IntelRaidActivity"
+ActivityObjectives[0]="저항군 자산 보호하기"
++MissionDescriptions=(MissionFamily="IntelRaid_LW", Description="저항군 수거팀이 어드밴트에 발각되었습니다. 어드밴트 공격 부대로부터 아군과 하드웨어를 보호해야 합니다.")
+
+[SupplyConvoy X2LWAlienActivityTemplate]
+ActivityName="SupplyConvoyActivity"
+ActivityObjectives[0]="저항군 자산 보호하기"
++MissionDescriptions=(MissionFamily="SupplyConvoy_LW", Description="어드밴트 부대가 저항군 보급품 수송대를 공격하기 위해 이동 중입니다. 우리 사람들과 물자를 보호해야 합니다.")
+
+[RecruitRaid X2LWAlienActivityTemplate]
+ActivityName="RecruitRaidActivity"
+ActivityObjectives[0]="저항군 자산 보호하기"
++MissionDescriptions=(MissionFamily="RecruitRaid_LW", Description="저항군 모집 유닛이 어드밴트 순찰대에 발각되었습니다. 즉시 우리 인력을 대피시켜야 합니다.")
+
+[Snare X2LWAlienActivityTemplate]
+ActivityName="SnareActivity"
+ActivityObjectives[0]="단서 찾기"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="어드밴트 활동에 대한 잠재적 단서를 발견했습니다. 서둘러 조사해야 합니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="어드밴트 활동에 대한 잠재적 단서를 발견했습니다. 서둘러 조사해야 합니다.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="적 활동에 대한 잠재적 단서를 제공할 수도 있는 어드밴트 포로를 발견했습니다.", MissionIndex=0)
+
+[DebugMission X2LWAlienActivityTemplate]
+ActivityObjectives[0]="DEBUG Mission"
+
+[Rendezvous X2LWAlienActivityTemplate]
+ActivityName="RendezvousActivity"
+ActivityObjectives[0]="Dummy mission"
+ActivityObjectives[1]="어드밴트 부대 기습하기"
++MissionDescriptions=(MissionFamily="Rendezvous_LW", Description="Dummy mission", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rendezvous_LW", Description="이 피난처 근처에서 페이스리스 스파이와 상대 어드밴트 담당자를 제거하십시오.", MissionIndex=1)
+
+[X2Item_LWGauntlet]
+PrimaryRangeLabel="로켓 사정거리"
+PrimaryRadiusLabel="로켓 반경"
+SecondaryRangeLabel="화염방사기 사정거리"
+SecondaryRadiusLabel="화염방사기 반경"
+
+[LWGauntlet_CV X2MultiWeaponTemplate]
+FriendlyName="건틀릿"
+FriendlyNamePlural="건틀릿"
+BriefSummary="화염방사기와 미니 로켓 발사기를 조합한 이 장갑은 기술병이 다양한 전투 상황에 대비할 수 있도록 고안되었습니다."
+TacticalText="<Bullet/> XCOM 건틀릿은 미니 로켓 발사기와 화염방사기를 모두 보유한 고급 장치입니다.<br/><Bullet/> 로켓 발사기는 처음에는 1발의 로켓을 보유하며, 효과 범위는 반경 3타일입니다.<br/><Bullet/> 시야 내에 있는 모든 대상을 목표로 정할 수 있습니다.<br/><Bullet/> 로켓의 대미지는 충격 중심에서 멀어질수록 감소합니다.<br/><Bullet/> 화염방사기는 원뿔형 범위 내 다수의 목표물에 대미지를 입히는 근거리 무기입니다.<br/><Bullet/> 화염방사기는 두 번 사용할 수 있으며, 업그레이드 시 기계 유닛에게도 피해를 입힐 수 있습니다.<br/><Bullet/> 건틀릿 능력 사용은 행동력 1개가 필요하며 턴을 종료합니다.<br/><Bullet/> 로켓의 명중률은 병사의 조준, 목표물까지의 거리, 그리고 병사가 이번 턴에 행동력을 사용했는지의 영향을 받습니다. 낮은 명중률의 로켓은 높은 산탄수치를 갖게 되어 목표물에서 상대적으로 더 멀리 빗나갈 수 있습니다. 로켓의 최대산탄거리는 스킬창에 표시되며, 마우스커서와 함께 뜨는 수치는 해당거리까지의 평균산탄거리를 나타냅니다. "
+AbilityDescName="건틀릿"
+
+[LWGauntlet_MG X2MultiWeaponTemplate]
+FriendlyName="건틀릿 Mark II"
+FriendlyNamePlural="건틀릿 Mark II"
+BriefSummary="건틀릿 Mark II의 무기는 Mark I보다 더 많은 대미지를 입힙니다."
+TacticalText="<Bullet/> XCOM 건틀릿은 미니 로켓 발사기와 화염방사기를 모두 보유한 고급 장치입니다.<br/><Bullet/> 로켓 발사기는 처음에는 1발의 로켓을 보유하며, 효과 범위는 반경 3타일입니다.<br/><Bullet/> 시야 내에 있는 모든 대상을 목표로 정할 수 있습니다.<br/><Bullet/> 로켓의 대미지는 충격 중심에서 멀어질수록 감소합니다.<br/><Bullet/> 화염방사기는 원뿔형 범위 내 다수의 목표물에 대미지를 입히는 근거리 무기입니다.<br/><Bullet/> 화염방사기는 두 번 사용할 수 있으며, 업그레이드 시 기계 유닛에게도 피해를 입힐 수 있습니다.<br/><Bullet/> 건틀릿 능력 사용은 행동력 1개가 필요하며 턴을 종료합니다.<br/><Bullet/> 로켓의 명중률은 병사의 조준, 목표물까지의 거리, 그리고 병사가 이번 턴에 행동력을 사용했는지의 영향을 받습니다. 낮은 명중률의 로켓은 높은 산탄수치를 갖게 되어 목표물에서 상대적으로 더 멀리 빗나갈 수 있습니다. 로켓의 최대산탄거리는 스킬창에 표시되며, 마우스커서와 함께 뜨는 수치는 해당거리까지의 평균산탄거리를 나타냅니다. "
+AbilityDescName="건틀릿"
+
+[LWGauntlet_CG X2MultiWeaponTemplate]
+FriendlyName="건틀릿 Mark III"
+FriendlyNamePlural="건틀릿 Mark III"
+BriefSummary="건틀릿 Mark III의 무기는 Mark I 및 Mark II보다 더 큰 대미지를 입힙니다."
+TacticalText="<Bullet/> XCOM 건틀릿은 미니 로켓 발사기와 화염방사기를 모두 보유한 고급 장치입니다.<br/><Bullet/> 로켓 발사기는 처음에는 1발의 로켓을 보유하며, 효과 범위는 반경 3타일입니다.<br/><Bullet/> 시야 내에 있는 모든 대상을 목표로 정할 수 있습니다.<br/><Bullet/> 로켓의 대미지는 충격 중심에서 멀어질수록 감소합니다.<br/><Bullet/> 화염방사기는 원뿔형 범위 내 다수의 목표물에 대미지를 입히는 근거리 무기입니다.<br/><Bullet/> 화염방사기는 두 번 사용할 수 있으며, 업그레이드 시 기계 유닛에게도 피해를 입힐 수 있습니다.<br/><Bullet/> 건틀릿 능력 사용은 행동력 1개가 필요하며 턴을 종료합니다.<br/><Bullet/> 로켓의 명중률은 병사의 조준, 목표물까지의 거리, 그리고 병사가 이번 턴에 행동력을 사용했는지의 영향을 받습니다. 낮은 명중률의 로켓은 높은 산탄수치를 갖게 되어 목표물에서 상대적으로 더 멀리 빗나갈 수 있습니다. 로켓의 최대산탄거리는 스킬창에 표시되며, 마우스커서와 함께 뜨는 수치는 해당거리까지의 평균산탄거리를 나타냅니다. "
+AbilityDescName="건틀릿"
+
+[LWGauntlet_BM X2MultiWeaponTemplate]
+FriendlyName="블래스터 건틀릿"
+FriendlyNamePlural="블래스터 건틀릿"
+BriefSummary="고급 건틀릿은 더 많은 대미지를 입히며, 유도 미니 로켓으로 목표물을 적중합니다."
+TacticalText="<Bullet/> 고급 건틀릿의 블래스터 발사기는 막힌 지역을 우회할 수 있는 최첨단 로켓을 발사합니다.\n<Bullet/> 업그레이드된 화염방사기는 작은 원뿔형 범위 내 환경과 적에게 모두 엄청난 대미지를 줍니다.<br/><Bullet/> 로켓의 대미지는 충격 중심에서 멀어질수록 감소합니다.<br/><Bullet/> 화염방사기는 원뿔형 범위 내 다수의 목표물에 대미지를 입히는 근거리 무기입니다.<br/><Bullet/>화염방사기는 두 번 사용할 수 있으며, 업그레이드 시 기계화 유닛에게도 피해를 입힐 수 있습니다.<br/><Bullet/> 건틀릿 능력 사용은 행동력 1개가 필요하며 턴을 종료합니다.<br/><Bullet/> 로켓의 명중률은 병사의 조준, 목표물까지의 거리, 그리고 병사가 이번 턴에 행동력을 사용했는지의 영향을 받습니다. 낮은 명중률의 로켓은 높은 산탄수치를 갖게 되어 목표물에서 상대적으로 더 멀리 빗나갈 수 있습니다. 로켓의 최대산탄거리는 스킬창에 표시되며, 마우스커서와 함께 뜨는 수치는 해당거리까지의 평균산탄거리를 나타냅니다. "
+AbilityDescName="건틀릿"
+
+[UISquadSelect_InfiltrationPanel]
+strInfiltrationTitle="총 잠입 시간:"
+strBaseInfiltrationTitle="기본 잠입 시간:"
+strSquadSizeTitle="분대 규모 수정 시간:"
+strCovertnessTitle="능력 및 장비 수정 시간:"
+strMissionTimeTitle="임무 만료:"
+strDaysAndHours="<XGParam:IntValue0>일, <XGParam:IntValue1>시간"
+strMinusDaysAndHours="- <XGParam:IntValue0>일, <XGParam:IntValue1>시간"
+strPlusDaysAndHours="+ <XGParam:IntValue0>일, <XGParam:IntValue1>시간"
+strMissionIndefinite="무기한"
+
+[UIScreenListener_DropShipBriefing_MissionStart]
+strLaunchingInfiltration="접촉 임박"
+
+[UIUtilities_Text_LW]
+m_strHelp="도움말"
+
+[X2Ability_LW_GearAbilities]
+strWeight="소형 아이템 무게"
+AblativeHPLabel="임시 체력"
+
+[X2Ability_LW_TechnicalAbilitySet]
+strMaxScatter="\n최대 산탄 범위(타일):"
+
+[XComGameState_LWListenerManager]
+ResistanceHQBodyText="저항군 피난처 정보 액세스"
+
+[X2LWAbilitiesModTemplate]
+strCritReductionFromConditionalToHit="명중"
+
+[X2EventListener_Missions]
+m_strClearSquad="분대 비우기"
+m_strTooltipClearSquad="분대의 모든 병사를 제거합니다."
+
+m_strAutofillSquad="분대 자동 선발"
+m_strTooltipAutofillSquad="분대의 빈자리를 자동으로 채웁니다."
+
+[X2EventListener_StrategyMap]
+strTimeRemainingHoursOnly="<XGParam:IntValue0>시간"
+strTimeRemainingDaysAndHours="<XGParam:IntValue1>일, <XGParam:IntValue0>시간"
+
+[X2EventListener_Soldiers]
+OnLiaisonDuty="피난처 고문"
+OnInfiltrationMission="침투"
+UnitAlreadyInSquad="유닛이 다른 분대에 있음"
+UnitInSquad="유닛이 분대에 있음"
+RankTooLow="계급이 너무 낮음"
+CannotModifyOnMissionSoldierTooltip="현재 임무에 투입된 병사는 수정할 수 없습니다."
+
+[X2Effect_LWHolotarget]
+HoloTargetEffectName="홀로그램 조준됨"
+
+[XComGameState_LWPersistentSquad]
++DefaultSquadNames="메나스"
++DefaultSquadNames="부두"
++DefaultSquadNames="검술사"
++DefaultSquadNames="슈퍼 식스"
++DefaultSquadNames="후사르"
++DefaultSquadNames="드라군"
++DefaultSquadNames="데빌"
++DefaultSquadNames="페랄"
++DefaultSquadNames="스피어헤드"
++DefaultSquadNames="승리"
++DefaultSquadNames="잠귀신"
++DefaultSquadNames="토네이도"
++DefaultSquadNames="지원자"
++DefaultSquadNames="회색곰"
++DefaultSquadNames="키스톤"
++DefaultSquadNames="비명 독수리"
++DefaultSquadNames="암살자"
++DefaultSquadNames="어쌔신"
++DefaultSquadNames="랩터"
++DefaultSquadNames="모카신"
++DefaultSquadNames="Vega"
++DefaultSquadNames="망나니"
++DefaultSquadNames="약탈자"
++DefaultSquadNames="블랙 워치"
++DefaultSquadNames="블랙가드"
++DefaultSquadNames="키류 카이"
++DefaultSquadNames="트라이던트"
++DefaultSquadNames="팀버울프"
+
++TempSquadNames="알파"
++TempSquadNames="브라보"
++TempSquadNames="찰리"
++TempSquadNames="델타"
++TempSquadNames="메아리"
++TempSquadNames="폭스트롯"
++TempSquadNames="골프"
++TempSquadNames="호텔"
++TempSquadNames="인도"
++TempSquadNames="줄리엣"
++TempSquadNames="킬로"
++TempSquadNames="리마"
++TempSquadNames="마이크"
++TempSquadNames="노벰버"
++TempSquadNames="오스카"
++TempSquadNames="파파"
++TempSquadNames="퀘벡"
++TempSquadNames="로미오"
++TempSquadNames="시에라"
++TempSquadNames="탱고"
++TempSquadNames="유니폼"
++TempSquadNames="빅토르"
++TempSquadNames="양키"
++TempSquadNames="줄루"
+
+
+BackupSquadName="XCOM 분대 <XGParam:StrValue0>"
+BackupTempSquadName="임시 분대 <XGParam:StrValue0>"
+
+[UIScreenListener_LivingQuarters]
++m_strSquadSelection="분대 병영"
+
+[UIScreenListener_Alert]
+m_strNewRebelsAvailableTitle="새로운 저항군 인원 획득"
+m_strNewRebelsAvailable="저항군 피난처에 대기 중인 임무 배치: %REGION"
+m_strHelpBMGoodsDescription="사령관님, 암시장에서 새로운 과학자, 기술자 및 베테랑 병사를 모집할 수 있습니다."
+
+m_strInvasionTitle="어드밴트 침략"
+m_strInvasionLabel="공격으로부터 자유 지역"
+m_strInvasionBody="사령관님, 어드밴트가 해방 지역을 다시 정복하려 하고 있습니다. 그들은 임시 정부 본부에 대규모 공격을 시작 하려 합니다!"
+m_strInvasionFlare="긴급 통신"
+m_strInvasionConfirm="침략지 확인하기"
+
+m_strRepeatResearch="반복 연구"
+
+[UIScreenListener_ArmoryWeaponUpgrade_LW]
+strStripWeaponUpgradesButton="무기 업그레이드 제거하기"
+strStripWeaponUpgradesTooltip="모든 업그레이드와 커스트마이즈를 제거하고 무기를 일반 인벤토리에 돌려놓기"
+strStripWeaponUpgradeDialogueTitle="모든 업그레이드 제거 확인하기"
+strStripWeaponUpgradeDialogueText="해당 무기의 모든 업그레이드를 제거하고 일반 인벤토리에 돌려놓기를 원합니까?"
+
+[UIPersonnel_SquadBarracks]
+strSquadBarrackTitle="분대: <XGParam:StrValue0>"
+strUnassignedSoldierTitle="투입되지 않은 병사"
+strEdit="보기"
+strSelect="선택"
+strSquad="분대"
+strRenameSquad="분대 이름 변경"
+strEditBiography="이력 편집"
+strDeleteSquad="분대 삭제"
+strAddSquad="분대 생성"
+strViewUnassigned="병사 투입"
+strViewSquad="분대 병사"
+strDeleteSquadConfirm="분대 삭제 확인"
+strDeleteSquadConfirmDesc="이 분대를 삭제하시겠습니까?"
+strMissions="임무: <XGParam:IntValue0>"
+strDefaultSquadBiography="<XGParam:StrValue0> 가동"
+
+[UISquadContainer]
+DefaultSquadTitle="분대"
+
+[UISquadListItem]
+sSquadOnMission="임무 중"
+sSquadAvailable="사용 가능"
+sCovertness="은신: <XGParam:IntValue0>"
+
+[UIScreenListener_SquadSelect_LW]
+strSave="분대"
+strSquad="저장"
+strStart="시작"
+strInfiltration="잠입"
+
+[UIScreenListener_SkyrangerArrives_LW]
+strLaunchInfiltration="잠입 시작"
+strAbortInfiltration="잠입 중단"
+strContinueInfiltration="잠입 계속"
+
+[XComGameState_LWSquadManager]
+LabelBarracks_SquadManagement="분대 관리"
+TooltipBarracks_SquadManagement="영구적인 병사 분대 관리"
+
+[UIStrategyMapItem_Mission_LW]
+strRecon="잠입"
+
+[UIMission_LWLaunchDelayedMission]
+m_strMission="잠입"
+m_strOptions="잠입 옵션"
+m_strImageGreeble="암호화된 통신"
+m_strWait="대기"
+m_strAbort="교전 이탈"
+m_strBoostInfiltration="잠입 강화"
+m_strAlreadyBoostedInfiltration="<XGParam:StrValue0> 분대가 이미 잠입을 강화했습니다."
+m_strInsufficentIntelForBoostInfiltration="불충분한 정보"
+m_strBoostInfiltrationDescription="<XGParam:StrValue0>을(를) 지불해 이 임무에서 이 분대의 잠입률을 <XGParam:IntValue1>% 높일 수 있습니다. 강화 효과는 소급 적용됩니다. 정보를 사용하시겠습니까?"
+m_strViewSquad="분대 보기"
+m_strInfiltrationStatusExpiring="<XGParam:IntValue0>% 잠입함 / <XGParam:IntValue1>일 <XGParam:IntValue2>시간 후 100% 도달"
+m_strInfiltrationStatusMissionEnding="<XGParam:IntValue0>% 잠입함 / <XGParam:IntValue1>일 <XGParam:IntValue2>시간 후 반드시 시작"
+m_strInfiltrationStatusNonExpiring="<XGParam:IntValue0>% 잠입함"
+m_strInfiltrationConsequence="적 대응 수준: <XGParam:StrValue0>"
+m_strMustLaunchMission="임무 만료: 반드시 시작 또는 중단"
+m_strInsuffientInfiltrationToLaunch="<XGParam:IntValue0>% 이상으로 잠입해야 임무를 시작할 수 있습니다."
+
+; these need to be coordinated in length with the  in LW_InfiltrationSettings.ini : AlertModifierAtInfiltration
++m_strAlertnessModifierDescriptions[0]="난공불락"
++m_strAlertnessModifierDescriptions[1]="난공불락"
++m_strAlertnessModifierDescriptions[2]="난공불락"
++m_strAlertnessModifierDescriptions[3]="강화됨"
++m_strAlertnessModifierDescriptions[4]="강화됨"
++m_strAlertnessModifierDescriptions[5]="강화됨"
++m_strAlertnessModifierDescriptions[6]="경비태세"
++m_strAlertnessModifierDescriptions[7]="경비태세"
++m_strAlertnessModifierDescriptions[8]="경비태세"
++m_strAlertnessModifierDescriptions[9]="방어됨"
++m_strAlertnessModifierDescriptions[10]="방어됨"
++m_strAlertnessModifierDescriptions[11]="방어됨"
++m_strAlertnessModifierDescriptions[12]="일반적"
++m_strAlertnessModifierDescriptions[13]="취약함"
++m_strAlertnessModifierDescriptions[14]="취약함"
++m_strAlertnessModifierDescriptions[15]="취약함"
+
+[UIMission_LWCustomMission]
++m_strUrgent="보안 침해"
++m_strRendezvousMission="접선"
++m_strRendezvousDesc="** <XGParam:StrValue0/!WorldRegionName>의 저항군 피난처에서 허가받지 않은 신호가 감지됩니다. ** 피난처의 조언자와 지원자들이 이 신호를 가로챈 후 인근 모임 장소에서 스파이와 상대 어드밴트 담당자를 제거할 예정입니다."
+
+m_strInvasionMission="침입"
+m_strInvasionWarning="경고"
+m_strInvasionDesc="어드밴트 부대가 <XGParam:StrValue0/!WorldRegionName/> 침입에 착수 했습니다! 부대에 즉시 대비하거나 어드밴트의 지배로부터 도망쳐야 합니다."
+
+[UIStrategyMapItem_Region_LW]
+m_strOutpostTitle="피난처: <XGParam:StrValue0>"
+m_strAlertLevel="어드밴트 세력: <XGParam:IntValue0>"
+m_strLiberatedRegion="지역 해방됨"
+m_strStaffingPinText="S:<XGParam:IntValue0> I:<XGParam:IntValue1> R:<XGParam:IntValue2>"
+m_strStaffingPinTextMore="H:<XGParam:IntValue0>"
+m_strMonthlyRegionalIncome="+§<XGParam:IntValue0> (+§<XGParam:IntValue1>)"
+
+[XComGameState_LWOutpostManager]
+LabelCQ_ResistanceManagement="저항군 관리"
+TooltipCQ_ResistanceManagement="저항군 피난처 관리"
+
+[UIResistanceManagement_LW]
+m_strTitle="저항군 개요"
+m_strLabel="저항군 피난처에 연락 중..."
+m_strRegionLabel="지역"
+m_strStrength="어드밴트 세력"
+m_strAdviserLabel="고문"
+m_strIncomeLabel="수입"
+m_strRebelCountLabel="피난처"
+m_strADVENTUnitSingular="군"
+m_strADVENTUnitPlural="군"
+
+m_strGlobalAlert="글로벌 어드밴트 세력"
+m_strGlobalInsurgency="글로벌 어드밴트 위기"
+m_strAvatarPenalty="• 아바타 프로젝트 진행 상황이 <XGParam:IntValue0/>%만큼 지연됨"
+m_strThreatVeryLow="낮음"
+m_strThreatLow="방어됨"
+m_strThreatMedium="높은"
+m_strThreatHigh="높음"
+m_strThreatVeryHigh="심각한"
+m_strLiberated="해방됨"
+
+[UIOutpostManagement]
+m_strTitle="피난처 관리"
+m_strLabel="피난처 관리에 대한 플레이스홀더 UI..."
+m_strName="이름"
+m_strMission="임무"
+m_strBuildRadioRelay="라디오 중계기 건설"
+m_strLiaisonTitle="피난처 고문"
+; 0=Alert, 1=Vigilance, 2=Force
+m_strRegionalInfo="어드밴트 세력: <XGParam:IntValue0/>"
+m_strResistanceMecs="저항군 MEC: <XGParam:IntValue0/>"
+m_strProhibited="금지"
+m_strCannotChangeLiaisonTitle="이동 불가의 조언자"
+m_strCannotChangeLiaison="진행중인 임무가 있으므로 군대의 조언자를 바꿀 수 없습니다."
+
+[UIScreenListener_TacticalHUD]
+strEvacRequestTitle="탈출 요청됨"
+strEvacRequestSubtitle="스카이레인저가 도착하기까지 남은 턴"
+
+[LWRebelJob_DefaultJobSet]
+strRebelRecruited="%UNIT이(가) %REGION의 피난처에 모집되었습니다."
+strSoldierRecruited="%UNIT이(가) %REGION에서 접촉되어 이제 모집할 수 있습니다."
+strStaffRecruited="%TITLE %UNIT이(가) %REGION에서 모집되었습니다."
+
+;; REBEL JOB TEMPLATES
+[NoJob LWRebelJobTemplate]
+strJobName="없음"
+
+[Resupply LWRebelJobTemplate]
+strJobName="보급"
+
+[Recruit LWRebelJobTemplate]
+strJobName="모집"
+
+[Intel LWRebelJobTemplate]
+strJobName="정보"
+
+[Hiding LWRebelJobTemplate]
+strJobName="잠복"
+
+[RebelJobMissions LWRebelJobTemplate]
+strJobName="임무"
+
+[UIScreenListener_ResistanceReport]
+m_strStaffingHelp="암시장에서 새로운 인력 모집"
+
+;;HELP TEMPLATES
+[ResistanceManagement_Help LWHelpTemplate]
+m_strHelpTitle="저항군 관리"
+m_strHelpText="XCOM은 저항군 관리 패널에서 전 세계 저항군 조직의 활동을 지휘할 수 있습니다. 접촉이 이루어지면, 새로운 저항군 피난처가 현재 세력 및 활동에 대한 요약과 함께 이곳에 표시됩니다. 지역을 선택해 피난처 관리 화면으로 이동한 후 해당 지역의 저항군 우선순위를 조정할 수 있습니다. 저항군 관리창에서 각 지역이름에 붙어있는 점들은 해당지역의 해방단계를 나타냅니다."
+m_strHelpButtonTooltip="저항군 관리 도움말"
+
+[OutpostManagement_Help LWHelpTemplate]
+m_strHelpTitle="피난처 관리"
+m_strHelpText="이 패널에서 특정 저항군 피난처에 배치된 저항군 대원들에게 임무를 배치하여 XCOM을 도와 어드밴트에 대항할 수 있습니다. 액자를 클릭하면 사령관은 XCOM 요원을 고문으로 임명하여 피난처와 연락할 수 있습니다. 병사 고문은 인원 모집과 내부 보안을 돕습니다. 과학자 고문은 정보 수집을 돕고, 기술자 고문은 보급품 수집을 돕습니다. 이 기능에 대한 자세한 설명은 사령관 숙소에서 XCOM 기록 보관소의 저항군 피난처 항목을 참조하십시오."
+m_strHelpButtonTooltip="피난처 관리 도움말"
+
+[Personnel_SquadBarracks_Help LWHelpTemplate]
+m_strHelpTitle="분대 관리"
+m_strHelpText="분대 관리 패널에서 XCOM은 임무에 파견할 분대를 생성하고 관리할 수 있습니다. 분대는 사전 구성된 병사 그룹으로, 분대 선택 화면에서 간단하게 임무에 추가할 수 있습니다. 분대는 다음의 지침에 따라 운영됩니다.<br/><Bullet/> 최대 10명의 병사를 분대에 투입할 수 있으며, 분대는 임무 전에 분대 선택 화면에서 즉시 불러올 수 있습니다.<br/><Bullet/> 분대원이 부상하거나, 훈련 중이거나, 임무에 적합하지 않은 경우에는 임무에 따라 투입되지 않은 병사들 중에서 임시 분대원을 대체 투입할 수 있습니다.<br/><Bullet/> 임무 전에 투입되지 않은 병사들로 완전히 새로운 분대를 구성할 수도 있습니다. 이 경우 세계지도 화면에서 참조하기 위해 분대에 이름이 부여되고, 임무가 끝나면 분대는 해산됩니다.<br/><Bullet/> 영구적인 분대에 있는 병사를 다른 분대에 배치하려면, 먼저 해당 병사를 현재 분대에서 제외해야 합니다."
+m_strHelpButtonTooltip="분대 관리 도움말"
+
+[SquadSelect_Help LWHelpTemplate]
+m_strHelpTitle="분대 잠입"
+m_strHelpText="많은 임무에서 분대는 어드밴트의 대규모 병력을 마주치지 않고 임무 지역에 잠입하기 위해 일정 시간을 소비해야 합니다. 사령관은 분대 규모를 줄이거나 잠행 능력 혹은 장비를 갖춘 병사를 투입해 잠입 시간을 감소할 수 있습니다. 이 기능에 대한 자세한 설명은 사령관 숙소에서 XCOM 기록 보관소의 잠입 항목을 참조하십시오."
+m_strHelpButtonTooltip="잠입 도움말"
+
+[X2StrategyElement_DefaultStaffSlots_LW]
+m_strLiaisonLocation="피난처 고문"
+
+[X2StrategyElement_MissionSiteDescriptions_LW]
+; This goes in front of a city name in invasion missions, e.g. "Free Chicago"
+m_strLiberatedCityPrefix="해방된"
+
+[XComGameState_LWOutPost]
+m_strProhibitedJobAlert="어드밴트 습격 때문에 <XGParam:IntValue0/>일 동안 저항군 대원들을 <XGParam:StrValue1/>의 <XGParam:StrValue0/> 작업에 투입할 수 없습니다. 해당 작업을 수행하던 저항군 인원들은 잠복하기 시작했습니다."
+m_strProhibitedJobEnded="<XGParam:StrValue0/>의 저항군 대원들은 <XGParam:StrValue1/> 작업에 투입되어 이제 다시 성과를 낼 수 있습니다."
+
+[X2StrategyElement_DefaultAlienActivities]
+m_strInsufficientRebels="인근 지역과 접촉하려면 피난처에 최소 <XGParam:IntValue0/>명의 반란군이 필요함"
+
+[UIScreenListener_Alert]
+m_strInvasionTitle="어드밴트 침략"
+m_strInvasionLabel="공격으로부터 자유 지역"
+m_strInvasionBody="사령관님, 어드밴트가 해방 지역을 다시 정복하려 하고 있습니다. 그들은 임시 정부 본부에 대규모 공격을 시작 하려 합니다!"
+m_strInvasionFlare="긴급 통신"
+m_strInvasionConfirm="침략지 확인하기"
+
+[UIUtilities_LW]
+m_strStripWeaponUpgrades=모든 무기 업그레이드 해제
+m_strStripWeaponUpgradesLower=모든 무기 업그레이드 해제
+m_strStripWeaponUpgradesConfirm=모든 무기 업그레이드 해제 확인
+m_strStripWeaponUpgradesConfirmDesc=현재 선택되지 않은 병사들의 모든 주무기에 장착된 무기 업그레이드를 해제합니다. 이 장비들은 아무 병사나 바로 재장착이 가능합니다.
+m_strTooltipStripWeapons=현재 임무에 선택되지 않은 모든 병사의 무기 업그레이드를 해제합니다
+
+m_strVIPCaptureReward=(VIP 생포시)
+
+m_strInfiltrationMission="잠입 임무"
+m_strQuickResponseMission="신속대응 임무"
+m_strFixedEvacLocation="고정된 탈출지역"
+m_strFlareEvac="신호 호출로 탈출"
+m_strDelayedEvac="탈출 지연"
+m_strNoEvac="탈출 불가"
+m_strMaxSquadSize="최대 분대 크기"
+m_strConcealedStart="잠행 시작"
+m_strRevealedStart="발각 시작"
+m_strObjectiveTimer="임무 제한시간:" ;please confirm this "objective timer" is referring to the "turn countdown" in-mission
+m_strExtractionTimer="추출 시간:"
+m_strEvacTimer="스카이레인저 도착:"
+m_strGetCorpses="전량 회수"
+m_strSweepObjective="적전멸 목표"
+m_strEvacRequired="탈출 필요"
+m_strTurnSingular="턴"
+m_strTurnPlural="턴"
+m_strMinimumInfiltration="<XGParam:IntValue0>% 잠입 필요"
+m_strYellowAlert="적군 경계태세"
+
+m_sAverageScatterText="± <XGParam:StrValue0/> 타일"
+
+m_strAllHandsToHangar=모든 병사 격납고로
+m_strAllHandsToHangarConfirm=모든 병사 격납고로 확인
+m_strAllHandsToHangarConfirmDesc=게릴라 전술 학교와 고급 전술 센터에서 수행중이던 모든 병사의 훈련을 취소하여 이번 임무에 출전가능하게 만듭니다. 이 병사들은 훈련을 처음부터 다시 시작해야됩니다. 사이오닉 실험실은 영향받지 않습니다.
+m_strTooltipAllHandsToHangar=게릴라 전술 학교와 고급 전술 센터에서 수행중이던 모든 병사의 훈련을 중지시킵니다.
+
+m_strPrevHaven="이전 피난처"
+m_strNextHaven="다음 피난처"
+
+[Logistics X2LWAlienActivityTemplate]
+ActivityObjectives[0]="어드밴트 자원 캐시를 확보하시오"
++MissionDescriptions=(MissionFamily="SmashnGrab_LW", Description="저항군이 우리가 확보하여 사용할 수 있는 적의 중요자원위치를 알아냈습니다.", MissionIndex=0)
+
+[UICovertActionReport_LW]
+strCovertActionFailed="실패함"

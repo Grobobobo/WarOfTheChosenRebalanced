@@ -1,0 +1,59 @@
+[XComGameState_LWPerkPackOptions]
+PerkPackTabName="HABILIDADES"
+
+ViewLockedPerksMod="Ver mejoras bloqueadas"
+ViewLockedPerksModTooltip="Alternar para permitir que se vean las mejoras bloqueadas (no revela el árbol del soldado psi)."
+
+BaseGamePerkUIMod="Usar interfaz de mejoras a dos columnas del juego básico"
+BaseGamePerkUIModTooltip="Alternar para usar la interfaz original de selección de mejoras a dos columnas al subir de nivel (o usa otro mod de interfaz de mejoras)."
+
+DefaultTacticalAbilityContainerMod="Usar interfaz de habilidades tácticas del juego básico"
+DefaultTacticalAbilityContainerModTooltip="Este mod permite que los soldados tengan más de 15 habilidades activas al crear varias páginas de iconos de habilidades que los jugadores pueden revisar durante las misiones. Selecciona esta opción para desactivar la funcionalidad (para usar otro mod, por ejemplo)."
+
+NumDisplayedAbilitiesMod="Habilidades por página en la interfaz táctica"
+NumDisplayedAbilitiesModTooltip="Número de habilidades que se muestran por página en la interfaz táctica. Esta opción no funciona si está activada la opción Usar interfaz de habilidades tácticas del juego básico."
+
+[UIScreenListener_Armory_MainMenu_LWExpandedPerkTree]
+strExpandedMenuOption="Habilidades"
+strExpandedTooltip="Árbol de mejoras ampliado"
+ExpandedListItemDescription="Botón de prueba del árbol del árbol de mejoras ampliado"
+
+[UIScreenListener_Armory_MainMenu_LW_LWExpandedPerkTree]
+strExpandedMenuOption="Habilidades"
+strExpandedTooltip="Árbol de mejoras ampliado"
+ExpandedListItemDescription="Botón de prueba del árbol del árbol de mejoras ampliado"
+
+[UITacticalHUD_AbilityContainer_LWExtended]
+strChangePageTitle="Habilidades adicionales"
+strChangePageDesc="Ver habilidades adicionales que puedes activar. Puedes usar la tecla \"x\" para ver las habilidades adicionales."
+
+[UIArmory_MainMenu_LW]
+m_strNoWeaponUpgradesTooltip="NO HAY MEJORAS DE ARMA DISPONIBLES"
+
+[X2Ability_PerkPackAbilitySet2]
+TrojanVirus="Virus troyano"
+TrojanVirusTriggered="<XGParam:StrValue0/!UnitName/> ha activado el virus troyano."
+
+[X2Effect_Savior]
+strSavior_WorldMessage="Salvador: curación de <XGParam:IntValue0/> de salud adicional."
+
+[X2Item_DenseSmokeGrenade]
+DenseSmokeGrenadeEffectDisplayName="Humo denso"
+DenseSmokeGrenadeEffectDisplayDesc="El humo denso concede una bonificación defensiva adicional a esta unidad."
+
+[X2Ability_PerkPackAbilitySet]
+LocCoveringFire="Fuego de cobertura"
+LocCoveringFireMalus="Esta unidad ha sido el objetivo de una guardia con el talento Fuego de cobertura, lo que le confiere -10 para apuntar durante el resto del turno."
+; LWOTC translated
+LocSoulStealBuff="Robo de alma ablativo"
+LocSoulStealBuffHelpText="Robo de alma otorga puntos de defensa ablativos cuando se cura en exceso."
+; End translated
+
+; LWOTC Needs Translation
+[X2Effect_RegenerationPCT]
+HealedMessage="+<Heal/> Puntos de salud regenerados."
+
+[X2StatusEffects_LW]
+MaimedFriendlyName="Mutilado"
+MaimedFriendlyDesc="La movilidad de la unidad se reduce a cero, por lo que no puede moverse. Todavía es factible disparar y realizar otras habilidades sin movimiento."
+; End translated

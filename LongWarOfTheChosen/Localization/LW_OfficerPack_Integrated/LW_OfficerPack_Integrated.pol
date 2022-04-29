@@ -1,0 +1,93 @@
+[UIArmory_LWOfficerPromotion]
+strLeadershipButton="Zobacz historię dowództwa"
+strLeadershipDialogueTitle="Misje pod tym oficerem"
+strLeadershipDialogueData="<XGParam:StrValue0/>: <XGParam:IntValue0/>"
+
+[UIScreenListener_Armory_Promotion_LWOfficerPack]
+strOfficerMenuOption="Zdolności oficera"
+
+[UIScreenListener_Armory_MainMenu_LWOfficerPack]
+strOfficerMenuOption="Zdolności oficera"
+OfficerListItemDescription="Pokaż poznane zdolności oficera."
+
+[UIScreenListener_Facility_Academy_LWOfficerPack]
+strOfficerTrainButton="Szkolenie oficera"
+
+[UIScreenListener_SquadSelect_LWOfficerPack]
+strAutoFillLabel="AUTOUZUPEŁNIANIE"
+strAutoFillTooltip="Automatyczne uzupełnianie drużyny."
+
+
+[UITacticalHUD_MouseControls_LWOfficerPack]
+strCommandRangeToggleTooltip="Kliknij, żeby przełączyć zasięg dowodzenia."
+
+[X2StrategyElement_LW_OTS_OfficerStaffSlot]
+;strOTSLocationDisplayString=<XGParam:StrValue0/> Training
+
+;[UIArmory_LWOfficerMenu]
+;m_strSelectAbility=SELECT Officer ABILITY:
+;m_strAbilityHeader=Officer ABILITIES:
+;m_strConfirmAbilityTitle=CONFIRM ABILITY SELECTION
+;m_strConfirmAbilityText=You can't remove or change abilities. Are you sure you want to learn <XGParam:StrValue0/>?
+;m_strAbilityLockedTitle=LOCKED
+;m_strAbilityLockedDescription=Get more combat experience to learn new abilities.
+
+[UIArmory_LWOfficerPromotion]
+m_strSelectAbility="WYBIERZ ZDOLNOŚĆ:"
+m_strAbilityHeader="ZDOLNOŚCI:"
+m_strConfirmAbilityTitle="ZATWIERDŹ WYBÓR ZDOLNOŚCI"
+m_strConfirmAbilityText="Nie możesz usuwać ani zmieniać zdolności. Na pewno chcesz się nauczyć: <XGParam:StrValue0/>?"
+m_strAbilityLockedTitle="ZABLOKOWANE"
+m_strAbilityLockedDescription="Zdobądź więcej doświadczenia w walce, żeby nauczyć się nowych zdolności."
+
+[LWOfficerUtilities]
+LWOfficerRankNames[0]="Podoficer"
+LWOfficerRankNames[1]="Podporucznik"
+LWOfficerRankNames[2]="Porucznik"
+LWOfficerRankNames[3]="Kapitan"
+LWOfficerRankNames[4]="Major"
+LWOfficerRankNames[5]="Podpułkownik"
+LWOfficerRankNames[6]="Pułkownik"
+LWOfficerRankNames[7]="Przywódca polowy"
+
+LWOfficerShortNames[0]="Podoficer"
+LWOfficerShortNames[1]="Ppor."
+LWOfficerShortNames[2]="Por."
+LWOfficerShortNames[3]="Kpt."
+LWOfficerShortNames[4]="Mjr"
+LWOfficerShortNames[5]="Ppłk."
+LWOfficerShortNames[6]="Płk."
+LWOfficerShortNames[7]="Dow."
+
+
+[UIFacility_LWOfficerSlot]
+m_strTrainOfficerDialogTitle="SZKOLENIE OFICERA"
+m_strTrainOfficerDialogText="Żołnierz posiadający wystarczająco wysoki stopień może przejść specjalne szkolenie w szkole działań partyzanckich i zostać oficerem. Podczas szkolenia będzie niedostępny.\n\nUWAGA: tylko najwyższy rangą oficer w drużynie będzie w stanie korzystać ze swoich zdolności w czasie misji, więc dobrze się zastanów, kogo awansujesz.\n\nCzy chcesz kontynuować?"
+m_strStopTrainOfficerDialogTitle="PRZERWAĆ SZKOLENIE OFICERA?"
+m_strStopTrainOfficerDialogText="Czy %UNITNAME ma przerwać szkolenie?\n\nUWAGA: stracisz wszystkie postępy szkolenia oficerskiego."
+
+[UIAlert_LWOfficerTrainingComplete]
+m_strTrainingCompleteLabel="SZKOLENIE OFICERSKIE ZAKOŃCZONE"
+m_strTrainingComplete="<XGParam:StrValue0/> kończy szkolenie. Możesz zobaczyć i przydzielić nowe zdolności, zapoznając się z żołnierzem w zbrojowni."
+m_strViewSoldier="ZOBACZ ŻOŁNIERZA"
+m_strNewAbilityLabel="NOWA ZDOLNOŚĆ"
+
+[UIPersonnel_ListItem_SquadSelect_LWOfficerPack]
+strOfficerAlreadySelectedStatus="Uwaga: oficer został już wybrany"
+
+[UIStrategyScreenListener_LWOfficerPack]
+strCommandingOfficerTooltipTitle="Oficer dowodzący"
+strCommandingOfficerTooltip="Może korzystać ze wszystkich zdolności oficera."
+strSubordinateOfficerTooltipTitle="Podległy oficer"
+strSubordinateOfficerTooltip="Nie może korzystać ze zdolności oficera podczas misji."
+
+[X2Ability_OfficerAbilitySet]
+strIntervention_WorldMessage="Interwencja: -<XGPARAM:IntValue0> j. informacji"
+strCollector_WorldMessage="Kolekcjoner: +1 informacji"
+FocussedFriendlyName="Ogień skoncentrowany"
+FocussedFriendlyDesc="Cele wskazane dla ognia skoncentrowanego są łatwiejsze dla wrogów do trafienia i zranienia."
+
+[X2Effect_Scavenger]
+;the string shown in world message for scavenged items
+m_strScavengerLoot="Zebrano: <XGParam:StrValue0/!ItemName/> (<XGParam:IntValue0/>)."
+

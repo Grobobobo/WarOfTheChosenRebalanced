@@ -1,0 +1,7 @@
+
+[X2Ability_LWAlienAbilities]
+strBayonetChargePenalty="Obrona centuriona spada o <XGParam:IntValue1/> na następującą liczbę tur: <XGParam:IntValue0/>."
+
+[X2Effect_WarCry]
+strWarCryFriendlyDesc="Otrzymuje premię do celności, mobilności i woli."
+

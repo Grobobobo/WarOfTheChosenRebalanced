@@ -1,0 +1,33 @@
+[T_Guerilla_Ops_Recover_Item_Central_01 SoundNodeWave]
+SpokenText="Nous savons qu'une banque de données d'ADVENT contenant des fichiers sur leurs dernières opérations a été dérobée par la résistance locale. Malheureusement, les extraterrestres ont rapidement repris le site en abattant tout le monde à vue. Nous avons là une chance inespérée de perturber leur projet. Récupérez les données."
+
+[T_Guerilla_Ops_Recover_Item_Central_02 SoundNodeWave]
+SpokenText="La résistance locale opérant dans le secteur a réussi à s'emparer d'une banque de données d'ADVENT contenant des fichiers sur l'opération en cours que nous avons remarquée. Les extraterrestres n'ont pas tardé à réagir. Ils ont envahi le site, récupéré les données et tué tous ceux qu'ils trouvaient. Cela ne doit pas nous arrêter. Récupérez les données."
+
+[T_Guerilla_Ops_Recover_Item_Central_03 SoundNodeWave]
+SpokenText="Un groupe de résistants opérant dans le secteur a pris de vitesse des forces d'ADVENT de passage ; ils sont tombés sur une banque de données contenant des fichiers sur l'opération extraterrestre. Malheureusement, des renforts ennemis ont envahi le site et toutes les communications avec les résistants locaux sont coupées. Nous devons aller sécuriser la zone."
+
+[T_Guerilla_Ops_Recover_Item_Central_04 SoundNodeWave]
+SpokenText="Un groupe de la résistance locale opérant dans ce secteur a réussi à coincer une patrouille d'ADVENT et découvert qu'elle transportait une banque de données. D'après ce qu'on sait, elle contiendrait des données critiques sur le projet des extraterrestres que nous avons découvert. Malheureusement, leurs renforts sont vite arrivés sur le site et nous avons perdu tout contact avec les résistants. Nous allons sécuriser la zone. Récupérez les données."
+
+[AssaultAlienBase_TacIntro SoundNodeWave]
+SpokenText="Menace 1-5: infiltrez et inspectez la zone. Attendez-vous à une résistance importante. Neutralisez tous les contacts hostiles."
+
+[T_AssaultNetworkTower_Central_01 SoundNodeWave]
+SpokenText="Commandant, l'attaque se fera en deux temps. Nous commencerons par pirater la tour d'ADVENT pour couper leur réseau. Nous devrons agir vite. L'objectif sera de prendre le contrôle des données, car Shen a préparé une petite surprise qui devrait les occuper un moment. Vous verrouillerez la zone, sécuriserez la proximité immédiate et neutraliserez les forces adverses qui protègent la cible. Si tout se passe bien, ils ne verront rien venir."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_01 SoundNodeWave]
+SpokenText="Nos reconnaissances à distance indiquent que les forces d'ADVENT gardent une banque de données dans une des installations de cette région. D'après nos infos, elle contient des données sensibles sur leur dernière opération et nous allons nous en emparer. Récupérez ces données à tout prix."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_02 SoundNodeWave]
+SpokenText="Le Dr Tygan surveille les déplacements d'une banque de données d'ADVENT contenant des informations sur la dernière opération des extraterrestres, et il a réussi à la localiser dans une base de cette région. Tygan pense que nous pouvons récupérer son contenu en éliminant les forces hostiles qui la protègent."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_03 SoundNodeWave]
+SpokenText="Nous avons localisé une banque de données d'ADVENT via leur réseau, dans une installation de cette région. Pour autant qu'on sache, elle contient des données sensibles sur leur dernière opération. Nous allons nous emparer de ces données, mais l'ennemi résistera et les forces de sécurité du secteur ne nous lâcheront pas."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_04 SoundNodeWave]
+SpokenText="Un de nos contacts dans la résistance nous a signalé qu'une patrouille d'ADVENT garde une banque de données dans cette région. Elle pourrait contenir des fichiers sensibles sur leur dernière opération. Nous ne pouvons pas laisser passer cette chance de ralentir leur projet, nous allons donc nous en emparer."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_05 SoundNodeWave]
+SpokenText="Nous venons d'apprendre que la résistance a réussi à localiser une banque de données d'ADVENT dans cette zone, qui contient des données sensibles sur leur dernière opération. Nous allons nous en emparer et couper court à leur progression."
+

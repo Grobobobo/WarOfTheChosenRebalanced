@@ -1,0 +1,24 @@
+; SMG item localization 
+; this includes schematics, as of 13 Oct 2015 update
+; this includes ability descriptor, as of 5 Jan 2016 update
+
+[SMG_CV X2WeaponTemplate]
+FriendlyName="サブマシンガン"
+FriendlyNamePlural="サブマシンガン"
+BriefSummary="標準的なアサルトライフルよりも軽くて潜伏性に優れている武器を望むなら、サブマシンガンがうってつけだが、攻撃力と遠距離命中率では劣っている。"
+TacticalText="<Bullet/>メイン武器を撃った兵士は特別な訓練を受けていない限りターン終了となる。\n<Bullet/>アドヴェントから回収したアップグレードを使い、サブマシンガンの性能を強化せよ。\n<Bullet/>サブマシンガン型の武器は、アサルトライフルと比較して機動力、近距離命中率、潜伏性に優れているが、攻撃力、装填数、遠距離命中率では劣る。"
+AbilityDescName="サブマシンガン"
+
+[SMG_MG X2WeaponTemplate]
+FriendlyName="スタッターマグ"
+FriendlyNamePlural="スタッターマグ"
+BriefSummary="スタッターマグは磁力ライフルの軽量版で、サブマシンガンと似た役割を持つ武器である。携行する兵士は攻撃力、装填数、遠距離命中率と引き替えに機動力と隠蔽性を得る。"
+TacticalText="<Bullet/>メイン武器を撃った兵士は特別な訓練を受けていない限りターン終了となる。\n<Bullet/>アドヴェントから回収したアップグレードを使い、スタッターマグの性能を強化せよ。\n<Bullet/>サブマシンガン型の武器は、アサルトライフルと比較して機動力、近距離命中率、潜伏性に優れているが、攻撃力、装填数、遠距離命中率では劣る。"
+AbilityDescName="サブマシンガン"
+
+[SMG_BM X2WeaponTemplate]
+FriendlyName="スクラムガン"
+FriendlyNamePlural="スクラムガン"
+BriefSummary="スクラムガンはサブマシンガンやスタッターマグと同様の小型メイン武器である。コンパクトなので機動性や潜伏性に優れているが、攻撃力と遠距離における命中率に難がある。それでも、これが強力な個人用火器であることに変わりはない。"
+TacticalText="<Bullet/>メイン武器を撃った兵士はターン終了となる。\n<Bullet/>アドヴェントから回収したアップグレードを使い、スクラムガンの性能を強化せよ。\n<Bullet/>サブマシンガン型の武器は、アサルトライフルと比較して機動力、近距離命中率、潜伏性に優れているが、攻撃力、装填数、遠距離命中率では劣る。<br/><Bullet/>プラズマ兵器は、攻撃対象への以後の攻撃に追加の1ダメージを与える。"
+AbilityDescName="サブマシンガン"

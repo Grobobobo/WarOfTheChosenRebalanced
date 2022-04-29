@@ -1,0 +1,14 @@
+[RedFog_LW X2AbilityTemplate]
+LocFriendlyName="Brouillard rouge"
+LocLongDescription="Les unités blessées ont des stats réduites."
+LocHelpText="Les unités blessées ont des stats réduites."
+LocFlyOverText="Brouillard rouge"
+LocPromotionPopupText="REDFOGLOCPROMOTIONPOPUPTEXT"
+
+[XComGame.UIShellDifficulty]
+[UIShellDifficulty]
+m_arrDifficultyDescStrings[0]="Une difficulté adaptée aux joueurs découvrant XCOM ou les jeux de simulation tactique. <br/><br/>Les paramètres de Long War peuvent être réglés via un menu d'options une fois la campagne lancée."
+m_arrDifficultyDescStrings[1]="Un défi approprié pour les joueurs connaissant déjà un peu XCOM. <br/><br/>Les paramètres de Long War peuvent être réglés via un menu d'options une fois la campagne lancée."
+m_arrDifficultyDescStrings[2]="Un défi de taille, réservé aux joueurs de Long War les plus aguerris.<br/><br/>Les paramètres de Long War peuvent être réglés via un menu d'options une fois la campagne lancée."
+m_arrDifficultyDescStrings[3]="Une campagne brutale, sans concession.<br/><br/>Les paramètres de Long War peuvent être réglés via un menu d'options une fois la campagne lancée."
+m_strTutorialOnImpossible="L'initiation ne sera pas disponible dans Long War. <br><br/><font color='#9acbcb'>Les paramètres de Long War peuvent être réglés via un menu d'options une fois la campagne lancée.</font>"

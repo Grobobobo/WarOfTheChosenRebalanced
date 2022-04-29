@@ -1,0 +1,444 @@
+[XComMultiplayerTacticalUI]
+MutonM2_LW="<Bullet/> Мутон-центурион обладает всеми способностями обычного мутона, а также способен издавать боевой клич, повышающий боевую эффективность его союзников. Он вооружен штыком и безжалостно атакует противников, оказавшихся от него на расстоянии рывка.\n<Bullet/> В отличие от мутонов эпохи вторжения, эти гибридные подвиды смертельно опасны в ближнем бою.\n<Bullet/> Центурионы способы контратаковать своих противников в рукопашной схватке\n<Bullet/> Они также могут добивать обездвиженных противников; ни в коем случае не позволяйте вражеским мутонам приближаться к вашим оглушенным бойцам\n<Bullet/> Они также могут вести огонь на подавление, а их боевая броня обеспечивает великолепную защиту"
+MutonM3_LW="<Bullet/>"
+
+DroneM1="<Bullet/>Дрон-охранник - дешевый разведчик, предназначенный в основном для подавления гражданского населения."
+
+[CorpseDrone X2ItemTemplate]
+FriendlyName="Обломки дрона"
+FriendlyNamePlural="Обломки дрона"
+BriefSummary="Судя по обломкам этого легкого автономного беспилотника, он предназначался для наблюдения и управления толпой."
+
+[CorpseMutonElite X2ItemTemplate]
+FriendlyName="труп мутона-гвардейца"
+FriendlyNamePlural="трупы мутонов-гвардейцев"
+BriefSummary="Эти пришельцы находятся на вершине внутренней иерархии мутонов. В отличие от центурионов, у них наблюдаются значительные генетические модификации по сравнению со стандартными мутонами, с которыми мы уже сталкивались."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; NEW ABILITIES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[WarCry X2AbilityTemplate]
+LocFriendlyName="Боевой клич"
+LocLongDescription="Дает значительный бонус к меткости, силе воли и мобильности остальным мутонам и бонусы поменьше другим разумным инопланетянам и войскам \"Адвента\". Перезарядка 6 ходов."
+LocHelpText="Дает бонус другим мутонам и некоторым видам инопланетян."
+LocFlyOverText="Боевой клич"
+LocPromotionPopupText="<Bullet/> Дает значительный бонус к меткости, силе воли и мобильности остальным мутонам и бонусы поменьше другим разумным инопланетянам и войскам \"Адвента\".<br/><Bullet/> Перезарядка 6 ходов.<br/>"
+
+[BayonetCharge X2AbilityTemplate]
+LocFriendlyName="Выпад штыком"
+LocLongDescription="В ближнем бою позволяет атаковать цель в пределах рывка. Перезарядка 4 хода."
+LocHelpText="Позволяет атаковать в ближнем бою на расстоянии рывка."
+LocFlyOverText="Выпад штыком"
+LocPromotionPopupText="<Bullet/> Позволяет атаковать в ближнем бою цель в пределах рывка.<br/><Bullet/> Перезарядка 4 хода.<br/>"
+
+[Beastmaster_LW X2AbilityTemplate]
+LocFriendlyName="Повелитель зверей"
+LocLongDescription="Не получает урон от берсерков."
+LocHelpText="Не получает урон от берсерков."
+LocFlyOverText="Повелитель зверей"
+LocPromotionPopupText="<Bullet/> Не получает урон от берсерков.<br/>"
+
+[MassMindSpin X2AbilityTemplate]
+LocFriendlyName="Массовое помутнение разума"
+LocFlyOverText="Массовое помутнение разума"
+LocLongDescription="Способность \"Помутнение разума\" применяется против нескольких целей в конусе поражения."
+LocHelpText="Псионическая атака нескольких целей одновременно, которая может вызвать различные негативные состояния, включая контроль над сознанием."
+LocPromotionPopupText="<Bullet/> Псионическая атака нескольких целей одновременно, которая может вызвать различные негативные состояния, включая контроль над сознанием."
+LocMissMessage="Сопротивление \"Помутнению разума\"!"
+
+[LWDroneShock X2AbilityTemplate]
+LocFriendlyName="Шокер дрона"
+LocLongDescription="Эффект, предназначенный для подавления мирного населения, наносит минимальный урон и дезориентирует или оглушает цель."
+LocHelpText="Оружие наносит минимальный урон, но снижает боеспособность цели."
+LocFlyOverText="Шокер дрона"
+LocPromotionPopupText="<Bullet/> Эффект, предназначенный для подавления мирного населения, наносит минимальный урон и дезориентирует или оглушает цель.<br/>"
+
+[LWDroneRepair X2AbilityTemplate]
+LocFriendlyName="Ремонт"
+LocFlyOverText="Ремонт"
+LocHelpText="Ремонт ближайшего механического бойца."
+LocLongDescription="Ремонт ближайшего механического бойца."
+LocPromotionPopupText="<Bullet/> Ремонт ближайшего механического бойца."
+
+[LWDroneMeleeStun X2AbilityTemplate]
+LocFriendlyName="Оглушение"
+LocFlyOverText="Оглушение"
+LocHelpText="Попытка оглушить противника на дистанции рукопашной атаки."
+LocLongDescription="Попытка оглушить противника на дистанции рукопашной атаки."
+LocPromotionPopupText="<Bullet/> Попытка оглушить противника на дистанции рукопашной атаки."
+LocMissMessage="Промах!"
+
+[PersonalShield X2AbilityTemplate]
+LocFriendlyName="Личный щит"
+LocFlyOverText="Личный щит"
+LocHelpText="Добавляет 5 единиц временной брони. Перезарядка 5 ходов."
+LocLongDescription="Добавляет 5 единиц временной брони. Перезарядка 5 ходов."
+LocPromotionPopupText="<Bullet/> Добавляет 5 единиц временной брони.<br/><Bullet/> Перезарядка 5 ходов.<br/><Bullet/> Тратит одно действие, не заканчивает ход.<br/>"
+
+[MassReanimation_LW X2AbilityTemplate]
+LocFriendlyName="Массовая реанимация"
+LocFlyOverText="Массовая реанимация"
+LocHelpText="Реанимирует всех мертвых существ поблизости, превращая их в зомби."
+LocLongDescription="Реанимирует всех мертвых существ поблизости, превращая их в зомби."
+LocPromotionPopupText="<Bullet/> Реанимирует всех мертвых существ поблизости, превращая их в зомби."
+
+[ReadyForAnything X2AbilityTemplate]
+LocFriendlyName="Полная готовность"
+LocFlyOverText="Наблюдение: полная готовность."
+LocHelpText="Активирует режим \"наблюдения\" после стандартного выстрела из основного оружия."
+LocLongDescription="Активирует режим \"наблюдения\" после стандартного выстрела из основного оружия."
+LocPromotionPopupText="<Bullet/> Активирует режим \"наблюдения\" после стандартного выстрела из основного оружия."
+
+[ReadyForAnythingFlyover X2AbilityTemplate]
+LocFriendlyName="Полная готовность"
+LocFlyOverText="Наблюдение: полная готовность."
+LocHelpText="Активирует режим \"наблюдения\" после стандартного выстрела из основного оружия."
+LocLongDescription="Активирует режим \"наблюдения\" после стандартного выстрела из основного оружия."
+LocPromotionPopupText="<Bullet/> Активирует режим \"наблюдения\" после стандартного выстрела из основного оружия."
+
+[RepairServos X2AbilityTemplate]
+LocFriendlyName="Борьба за выживание"
+LocFlyOverText="Борьба за выживание"
+LocLongDescription="После получения урона добавляются 2 ед. брони до конца следующего хода."
+LocHelpText="После получения урона добавляются 2 ед. брони до конца следующего хода."
+LocPromotionPopupText="<Bullet/> При попадании ваша броня становится прочнее. После получения урона добавляются 2 ед. брони до конца следующего хода.<br/><Bullet/> Последующие попадания продлевают таймер.<br/>"
+
+[RepairServosPassive X2AbilityTemplate]
+LocFriendlyName="Борьба за выживание"
+LocFlyOverText="Борьба за выживание"
+LocLongDescription="После получения урона добавляются 2 ед. брони до конца следующего хода."
+LocHelpText="После получения урона добавляются 2 ед. брони до конца следующего хода."
+LocPromotionPopupText="<Bullet/> После получения урона добавляются 2 ед. брони до конца следующего хода.<br/><Bullet/> Последующие попадания продлевают таймер.<br/>"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; MutonM2_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[X2Ability_MutonM2_Abilities]
+strBayonetChargePenalty="Центурион получает штраф к защите: <XGParam:IntValue1/> на <XGParam:IntValue0/> ход(а)."
+
+[MutonM2_LW X2CharacterTemplate]
+strCharacterName="Мутон-центурион"
+
+[MutonM2_LW_Wpn X2WeaponTemplate]
+FriendlyName="Винтовка центуриона"
+BriefSummary="Нам удалось заполучить разнообразные образцы пехотного вооружения. Это наиболее часто встречающийся образец, недалеко ушедший от винтовки, которой пользовались 20 лет назад. Хотя он, несомненно, уступает магнитным технологиям \"Адвента\", мы сможем доработать его при помощи трофейных материалов."
+TacticalText="<Bullet/> Выстрел из основного оружия всегда завершает ход солдата\n<Bullet/> Если солдат расходует оба действия на стрельбу, будут сделаны три выстрела со сниженной точностью, но с более высокой эффективностью в целом\n<Bullet/> Используйте улучшения, добытые в боях с противником, чтобы повысить эффективность винтовки"
+
+[MutonM2_LWGrenade X2GrenadeTemplate]
+FriendlyName="Граната пришельцев"
+FriendlyNamePlural="Гранаты пришельцев"
+BriefSummary="У каждого мутона-центуриона есть одна мощная плазменная граната."
+TacticalText="<Bullet/> Граната большой мощности."
+ThrownAbilityName="Бросьте гранату пришельцев"
+ThrownAbilityHelpText="Бросьте гранату пришельцев в цель."
+LaunchedAbilityName="Выстрелите гранатой пришельцев"
+LaunchedAbilityHelpText="Выстрелите гранатой пришельцев в цель. Повреждает броню."
+
+[MutonM2_LW_MeleeAttack X2WeaponTemplate]
+FriendlyName="Штык"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; MutonM3_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[MutonM3_LW X2CharacterTemplate]
+strCharacterName="Мутон-гвардеец"
+
+[MutonM3_LW_Wpn X2WeaponTemplate]
+FriendlyName="Плазмопушка гвардейца"
+
+[MutonM3_LWGrenade X2GrenadeTemplate]
+FriendlyName="Граната пришельцев"
+FriendlyNamePlural="Гранаты пришельцев"
+BriefSummary="У каждого мутона-гвардейца есть мощная плазменная граната."
+TacticalText="<Bullet/> Граната большой мощности."
+ThrownAbilityName="Бросьте гранату пришельцев"
+ThrownAbilityHelpText="Бросьте гранату пришельцев в цель."
+LaunchedAbilityName="Выстрелите гранатой пришельцев"
+LaunchedAbilityHelpText="Выстрелите гранатой пришельцев в цель. Повреждает броню."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Naja ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[NajaM1 X2CharacterTemplate]
+strCharacterName="Найя"
+
+[NajaM2 X2CharacterTemplate]
+strCharacterName="Найя Серпенс"
+
+[NajaM3 X2CharacterTemplate]
+strCharacterName="Найя-гвардеец"
+
+[NajaM1_WPN X2WeaponTemplate]
+FriendlyName="Снайперская винтовка найи"
+
+[NajaM2_WPN X2WeaponTemplate]
+FriendlyName="Снайперская винтовка найи"
+
+[NajaM3_WPN X2WeaponTemplate]
+FriendlyName="Снайперская винтовка найи"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Sidewinder ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[SidewinderM1 X2CharacterTemplate]
+strCharacterName="Гремучник"
+
+[SidewinderM2 X2CharacterTemplate]
+strCharacterName="Гремучник Серпенс"
+
+[SidewinderM3 X2CharacterTemplate]
+strCharacterName="Гремучник-гвардеец"
+
+[SidewinderM1_WPN X2WeaponTemplate]
+FriendlyName="Гиперпистолет гремучника"
+
+[SidewinderM2_WPN X2WeaponTemplate]
+FriendlyName="Гиперпистолет гремучника"
+
+[SidewinderM3_WPN X2WeaponTemplate]
+FriendlyName="Гиперпистолет гремучника"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Viper ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ViperM2_LW X2CharacterTemplate]
+strCharacterName="Вайпер Серпенс"
+
+[ViperM3_LW X2CharacterTemplate]
+strCharacterName="Вайпер-гвардеец"
+
+[ViperM2_LW_WPN X2WeaponTemplate]
+FriendlyName="Лучевая винтовка"
+
+[ViperM3_LW_WPN X2WeaponTemplate]
+FriendlyName="Лучевая винтовка"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; ArchonM2_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ArchonM2_LW X2CharacterTemplate]
+strCharacterName="Великий архонт"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; SectoidM2_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[SectoidM2_LW X2CharacterTemplate]
+strCharacterName="Командир сектоидов"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvGunnerM1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvGunnerM1 X2CharacterTemplate]
+strCharacterName="Пулеметчик \"Адвента\""
+
+[AdvGunnerM1_WPN X2WeaponTemplate]
+FriendlyName="Автомаг"
+
+[AdvGunnerM2 X2CharacterTemplate]
+strCharacterName="Тяжелый пулеметчик \"Адвента\""
+
+[AdvGunnerM2_WPN X2WeaponTemplate]
+FriendlyName="Автомаг"
+
+[AdvGunnerM3 X2CharacterTemplate]
+strCharacterName="Элитный пулеметчик \"Адвента\""
+
+[AdvGunnerM3_WPN X2WeaponTemplate]
+FriendlyName="Автомаг"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvSentryM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvSentryM1 X2CharacterTemplate]
+strCharacterName="Часовой \"Адвента\""
+
+[AdvSentryM1_WPN X2WeaponTemplate]
+FriendlyName="Магнитная винтовка \"Адвента\""
+
+[AdvSentryM2 X2CharacterTemplate]
+strCharacterName="Страж \"Адвента\""
+
+[AdvSentryM2_WPN X2WeaponTemplate]
+FriendlyName="Магнитная винтовка \"Адвента\""
+
+[AdvSentryM3 X2CharacterTemplate]
+strCharacterName="Хранитель \"Адвента\""
+
+[AdvSentryM3_WPN X2WeaponTemplate]
+FriendlyName="Магнитная винтовка \"Адвента\""
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvGrenadierM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvGrenadierM1 X2CharacterTemplate]
+strCharacterName="Инженер \"Адвента\""
+
+[AdvGrenadierM1_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="Гранатомет \"Адвента\""
+
+[AdvGrenadierM2 X2CharacterTemplate]
+strCharacterName="Гранатометчик \"Адвента\""
+
+[AdvGrenadierM2_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="Гранатомет \"Адвента\""
+
+[AdvGrenadierM3 X2CharacterTemplate]
+strCharacterName="Тяжелый гранатометчик \"Адвента\""
+
+[AdvGrenadierM3_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="Гранатомет \"Адвента\""
+
+[AdvGrenadierFlashbangGrenade X2GrenadeTemplate]
+FriendlyName="Свето-шумовая граната"
+FriendlyNamePlural="Свето-шумовые гранаты"
+BriefSummary="Свето-шумовая граната дезориентирует врагов в очень большом радиусе, серьезно снижая боеспособность."
+TacticalText="<Bullet/> Свето-шумовые гранаты не наносят урон, но ошеломляют и дезориентируют противника в пределах большого радиуса.<br><Bullet/> Не действуют на союзников."
+ThrownAbilityName="Бросок свето-шумовой гранаты"
+ThrownAbilityHelpText="Дезориентирует всех противников в зоне поражения."
+LaunchedAbilityname="Выстрел свето-шумовой гранатой"
+LaunchedAbilityHelpText="Дезориентирует всех противников в зоне поражения."
+
+[AdvGrenadierFireGrenade X2GrenadeTemplate]
+FriendlyName="Зажигательная граната"
+FriendlyNamePlural="Зажигательные гранаты"
+BriefSummary="Зажигательная граната представляет собой следующую ступень развития импровизированного оружия, годами использовавшегося Сопротивлением. Большинство целей в зоне взрыва загорятся и будут получать урон каждый ход."
+TacticalText="<Bullet/> Зажигательные гранаты наносят урон всем целям в радиусе поражения и поджигают всех, кто может гореть.\n<Bullet/> Они наносят больший урон при взрыве, чем все остальные гранаты.\n<Bullet/> Некоторые враги, особенно металлические, неуязвимы для огня и не загораются."
+ThrownAbilityName="Бросок зажигательной гранаты"
+ThrownAbilityHelpText="Поджигает указанную область и всех, кто находится в зоне поражения."
+LaunchedAbilityname="Выстрел зажигательной гранатой"
+LaunchedAbilityHelpText="Поджигает указанную область и всех, кто находится в зоне поражения."
+
+[AdvGrenadierAcidGrenade X2GrenadeTemplate]
+FriendlyName="Кислотная граната"
+FriendlyNamePlural="Кислотные гранаты"
+BriefSummary="Добавив едкий химический состав в стандартные осколочные гранаты, мы создали оружие, эффективно уничтожающее броню противника. Пораженные цели продолжают получать урон, пока кислота разъедает все, к чему прикасается."
+TacticalText="<Bullet/> Кислотные гранаты уничтожают броню эффективнее осколочных гранат.<br><Bullet/> Враги, находящиеся под воздействием кислоты, получают урон в течение нескольких ходов."
+ThrownAbilityName="Бросок кислотной гранаты"
+ThrownAbilityHelpText="Образует лужи кислоты, наносящие урон."
+LaunchedAbilityname="Выстрел кислотной гранатой"
+LaunchedAbilityHelpText="Образует лужи кислоты, наносящие урон."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvRocketeerM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvRocketeerM1 X2CharacterTemplate]
+strCharacterName="Ракетчик \"Адвента\""
+
+[AdvRocketeerM2 X2CharacterTemplate]
+strCharacterName="Тяжелый ракетчик \"Адвента\""
+
+[AdvRocketeerM3 X2CharacterTemplate]
+strCharacterName="Элитный ракетчик \"Адвента\""
+
+[AdvRocketeerM1_RocketLauncher X2WeaponTemplate]
+FriendlyName="Ракетомет \"Адвента\""
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecM3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMec_M3_LW X2CharacterTemplate]
+strCharacterName="Сверхтяжелый МЭК"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; DroneM1-2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[LWDroneM1 X2CharacterTemplate]
+strCharacterName="Дрон-наблюдатель \"Адвента\""
+
+[LWDroneM2 X2CharacterTemplate]
+strCharacterName="Дрон-охотник \"Адвента\""
+
+[LWDroneM1_WPN X2WeaponTemplate]
+FriendlyName="Шокер дрона"
+
+[LWDroneM2_WPN X2WeaponTemplate]
+FriendlyName="Электрошокер дрона"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecArcherM1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMECArcherM1 X2CharacterTemplate]
+strCharacterName="МЭК \"Лучник\""
+
+[AdvMECArcher_WPN X2WeaponTemplate]
+FriendlyName="Мини-пушка МЭКа"
+
+[AdvMECArcher_Shoulder_WPN X2WeaponTemplate]
+FriendlyName="Ракетная артиллерия"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecArcherM2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMECArcherM2 X2CharacterTemplate]
+strCharacterName="МЭК \"Длинный лук\""
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Chryssalid Soldier ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ChryssalidSoldier X2CharacterTemplate]
+strCharacterName="Криссалид-солдат"
+
+[ChryssalidSoldierSlash X2AbilityTemplate]
+LocFriendlyName="Удар криссалида-солдата"
+LocLongDescription="Атаки в ближнем бою наносят огромный урон."
+LocHelpText="Атаки в ближнем бою наносят огромный урон."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Hive Queen ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[HiveQueen X2CharacterTemplate]
+strCharacterName="Королева роя"
+
+[HiveQueenSlash X2AbilityTemplate]
+LocFriendlyName="Мощный удар криссалида"
+LocLongDescription="Атаки в ближнем бою наносят огромный урон."
+LocHelpText="Атаки в ближнем бою наносят огромный урон."
+
+;;;;;;;;;;;;;;;;;;;;;;;;; Additional ADVENT Trooper types ;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvSergeantM1 X2CharacterTemplate]
+strCharacterName="Сержант \"Адвента\""
+AbilityDescName="Магнитная винтовка"
+
+[AdvSergeantM1_WPN X2WeaponTemplate]
+FriendlyName="Магнитная винтовка \"Адвента\""
+AbilityDescName="Магнитная винтовка"
+
+[AdvSergeantM2 X2CharacterTemplate]
+strCharacterName="Ст. сержант \"Адвента\""
+AbilityDescName="Магнитная винтовка"
+
+[AdvSergeantM2_WPN X2WeaponTemplate]
+FriendlyName="Магнитная винтовка \"Адвента\""
+AbilityDescName="Магнитная винтовка"
+
+[AdvShockTroop X2CharacterTemplate]
+strCharacterName="Штурмовик \"Адвента\""
+AbilityDescName="Магнитная винтовка"
+
+[AdvShockTroop_WPN X2WeaponTemplate]
+FriendlyName="Магнитная винтовка \"Адвента\""
+AbilityDescName="Магнитная винтовка"
+
+[AdvCommando X2CharacterTemplate]
+strCharacterName="Коммандо \"Адвента\""
+AbilityDescName="Магнитная винтовка"
+
+[AdvCommando_WPN X2WeaponTemplate]
+FriendlyName="Магнитная винтовка \"Адвента\""
+AbilityDescName="Магнитная винтовка"
+
+[AdvVanguard X2CharacterTemplate]
+strCharacterName="Передовой боец \"Адвента\""
+AbilityDescName="Магнитная винтовка"
+
+[AdvVanguard_WPN X2WeaponTemplate]
+FriendlyName="Магнитная винтовка \"Адвента\""
+AbilityDescName="Магнитная винтовка"
+
+[AdvScout X2CharacterTemplate]
+strCharacterName="Разведчик \"Адвента\""
+AbilityDescName="Магнитная винтовка"
+
+[AdvScout_WPN X2WeaponTemplate]
+FriendlyName="Магнитная винтовка \"Адвента\""
+AbilityDescName="Магнитная винтовка"
+
+[AdvGeneralM1_LW X2CharacterTemplate]
+strCharacterName="Генерал \"Адвента\""
+AbilityDescName="Магнитная винтовка"
+
+[AdvGeneralM1_LW_WPN X2WeaponTemplate]
+FriendlyName="Магнитная винтовка \"Адвента\""
+AbilityDescName="Магнитная винтовка"
+
+[AdvGeneralM2_LW X2CharacterTemplate]
+strCharacterName="Генерал \"Адвента\""
+AbilityDescName="Магнитная винтовка"
+
+[AdvGeneralM2_LW_WPN X2WeaponTemplate]
+FriendlyName="Магнитная винтовка \"Адвента\""
+AbilityDescName="Магнитная винтовка"

@@ -1,0 +1,63 @@
+[XComGameState_LWPerkPackOptions]
+PerkPackTabName="СПОСОБНОСТИ"
+
+ViewLockedPerksMod="Показывать недоступные способности"
+ViewLockedPerksModTooltip="Включите, чтобы разрешить просмотр недоступных способностей (не раскрывает дерево пси-способностей солдата)."
+
+BaseGamePerkUIMod="Использовать базовый интерфейс способностей"
+BaseGamePerkUIModTooltip="Включите, чтобы использовать интерфейс способностей в два столбца из базовой игры при повышении уровня (или использовать интерфейс из другой модификации вместо него)."
+
+DefaultTacticalAbilityContainerMod="Использовать базовый интерфейс способностей в бою"
+DefaultTacticalAbilityContainerModTooltip="При использовании этой модификации у солдата может быть более 15 активных способностей. Иконки способностей размещаются на страницах, которые игроки могут менять во время боя. Включите эту настройку, чтобы отключить этот функционал (например, для использования другой модификации)."
+
+NumDisplayedAbilitiesMod="Количество способностей в тактическом интерфейсе"
+NumDisplayedAbilitiesModTooltip="Количество способностей, отображаемых на одной странице тактического интерфейса. Не работает, если включена настройка «Использовать базовый интерфейс способностей в бою»."
+
+[UIScreenListener_Armory_MainMenu_LWExpandedPerkTree]
+strExpandedMenuOption="Способности"
+strExpandedTooltip="Расширенное дерево способностей"
+ExpandedListItemDescription="Тестовая кнопка расширенного дерева способностей"
+
+[UIScreenListener_Armory_MainMenu_LW_LWExpandedPerkTree]
+strExpandedMenuOption="Способности"
+strExpandedTooltip="Расширенное дерево способностей"
+ExpandedListItemDescription="Тестовая кнопка расширенного дерева способностей"
+
+[UITacticalHUD_AbilityContainer_LWExtended]
+strChangePageTitle="Дополнительные навыки"
+strChangePageDesc="Просмотреть дополнительные навыки которые можно использовать. Так же вы можете нажать 'x' чтобы видеть навыки."
+
+[UIArmory_MainMenu_LW]
+m_strNoWeaponUpgradesTooltip="УЛУЧШЕНИЕ ОРУЖИЯ НЕДОСТУПНО"
+
+[X2Ability_PerkPackAbilitySet2]
+TrojanVirus="Троян"
+TrojanVirusTriggered="<XGParam:StrValue0/!UnitName/> активирует троян."
+
+[X2Effect_Savior]
+strSavior_WorldMessage="Спаситель: восстанавливается дополнительно <XGParam:IntValue0/> здоровья."
+
+[X2Effect_LWHolotarget]
+HoloTargetEffectName="Голографическая метка"
+
+[X2Item_DenseSmokeGrenade]
+DenseSmokeGrenadeEffectDisplayName="Густой дым"
+DenseSmokeGrenadeEffectDisplayDesc="Густой дым дополнительно увеличивает защиту этого солдата."
+
+[X2Ability_PerkPackAbilitySet]
+LocCoveringFire="Огневая поддержка"
+LocCoveringFireMalus="По этому юниту был произведен выстрел из режима наблюдения со способностью \"Огневая поддержка\", дающий штраф -10 к меткости до конца хода."
+
+; LWOTC Translated
+LocSoulStealBuff="Кража души: щит"
+LocSoulStealBuffHelpText="Кража души дает дополнительные единицы щита, если украдено болше ОЗ, чем надо для лечения"
+; End Translation
+
+; LWOTC Translated
+[X2Effect_RegenerationPCT]
+HealedMessage="+<Heal/> ОЗ восстановлено"
+
+[X2StatusEffects_LW]
+MaimedFriendlyName="Покалечен"
+MaimedFriendlyDesc="Мобильность этого бойца снижена до 0, он не может двигаться. Одако стрельба и прочие действия без движения возможны."
+; End Translation

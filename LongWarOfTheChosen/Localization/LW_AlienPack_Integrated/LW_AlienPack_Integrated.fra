@@ -1,0 +1,7 @@
+
+[X2Ability_LWAlienAbilities]
+strBayonetChargePenalty="Défense du Centurion -<XGParam:IntValue1/> pendant <XGParam:IntValue0/> tour(s)."
+
+[X2Effect_WarCry]
+strWarCryFriendlyDesc="Bonus en visée, mobilité et volonté"
+

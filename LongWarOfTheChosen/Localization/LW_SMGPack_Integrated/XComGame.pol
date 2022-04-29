@@ -1,0 +1,24 @@
+; SMG item localization 
+; this includes schematics, as of 13 Oct 2015 update
+; this includes ability descriptor, as of 5 Jan 2016 update
+
+[SMG_CV X2WeaponTemplate]
+FriendlyName="PM"
+FriendlyNamePlural="PM"
+BriefSummary="Pistolety maszynowe są lżejsze i łatwiejsze do ukrycia niż zwykły karabin szturmowy, ale niestety dysponują mniejszą niż on siłą rażenia i celnością przy większych odległościach."
+TacticalText="<Bullet/> Oddanie strzału z broni głównej żołnierza zawsze kończy jego turę, jeśli nie przeszedł odpowiedniego szkolenia.\n<Bullet/> Używaj ulepszeń zdobytych na jednostkach ADVENT-u, żeby zwiększyć taktyczną przydatność pistoletu maszynowego.\n<Bullet/> Broń przypominająca pistolety maszynowe daje premie do mobilności, celności w walce na krótki dystans i do ukrywania się, porównywalne z karabinami szturmowymi. Zadaje jednak mniejsze obrażenia, ma mniejszy zapas amunicji i otrzymuje kary do celności przy większych odległościach."
+AbilityDescName="PM"
+
+[SMG_MG X2WeaponTemplate]
+FriendlyName="Terkot"
+FriendlyNamePlural="Terkoty"
+BriefSummary="Terkot to lekka wersja karabinu magnetycznego pełniąca podobną rolę do pistoletu maszynowego. Większe premie do mobilności i ukrycia się uzyskano kosztem siły rażenia, pojemności magazynka i celności przy większych odległościach."
+TacticalText="<Bullet/> Oddanie strzału z broni głównej żołnierza zawsze kończy jego turę, jeśli nie przeszedł odpowiedniego szkolenia.\n<Bullet/> Używaj ulepszeń zdobytych na jednostkach ADVENT-u, żeby zwiększyć taktyczną przydatność terkota.\n<Bullet/> Broń przypominająca pistolety maszynowe daje premie do mobilności, celności w walce na krótki dystans i do ukrywania się, porównywalne z karabinami szturmowymi. Zadaje jednak mniejsze obrażenia, ma mniejszy zapas amunicji i otrzymuje kary do celności przy większych odległościach."
+AbilityDescName="PM"
+
+[SMG_BM X2WeaponTemplate]
+FriendlyName="Znikacz"
+FriendlyNamePlural="Znikacze"
+BriefSummary="Znikacz, podobnie jak PM i Terkot, to mniejsza broń główna dająca premie do mobilności i ukrywania się, ale zadająca mniejsze obrażenia i mająca kary do celności na większych dystansach. Mimo swoich wad stanowi potężną broń osobistą."
+TacticalText="<Bullet/> Oddanie strzału z broni głównej żołnierza zawsze kończy jego turę.\n<Bullet/> Używaj ulepszeń zdobytych na jednostkach ADVENT-u, żeby zwiększyć taktyczną przydatność znikacza.\n<Bullet/> Broń przypominająca pistolety maszynowe daje premie do mobilności, celności w walce na krótki dystans i do ukrywania się, porównywalne z karabinami szturmowymi. Zadaje jednak mniejsze obrażenia, ma mniejszy zapas amunicji i otrzymuje kary do celności przy większych odległościach.<br/><Bullet/> Broń plazmowa powoduje, że cel otrzymuje dodatkowy 1 punkt obrażeń od każdego kolejnego udanego trafienia."
+AbilityDescName="PM"

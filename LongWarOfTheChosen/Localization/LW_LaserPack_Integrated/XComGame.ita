@@ -1,0 +1,34 @@
+[AssaultRifle_LS X2WeaponTemplate]
+FriendlyName="Fucile laser"
+FriendlyNamePlural="Fucili laser"
+BriefSummary="Il fucile laser emette una serie di scariche luminose da un microsecondo, in grado di distruggere i legami chimici nei bersagli."
+TacticalText="<Bullet/> Sparare con l'arma primaria pone sempre fine al turno di un soldato, se questi non ha ricevuto addestramenti speciali.\n<Bullet/> Usa i potenziamenti recuperati dai nemici ADVENT per migliorare l'efficacia tattica del fucile laser.\n<Bullet/> L'alta emissione di energia di queste armi laser è dovuta all'integrazione delle tecnologie aliene nelle armi precedenti alla guerra che abbiamo scoperto.\n<Bullet/> I laser ricevono Mira bonus."
+AbilityDescName="fucile d'assalto"
+
+[SMG_LS X2WeaponTemplate]
+FriendlyName="Stengun laser"
+FriendlyNamePlural="Stengun laser"
+BriefSummary="Una versione leggera del fucile laser, con un ruolo analogo al fucile mitragliatore. Cede potenza, munizioni e precisione sulla distanza in cambio di mobilità e occultamento per il soldato."
+TacticalText="<Bullet/> Sparare con l'arma primaria pone sempre fine al turno di un soldato, se questi non ha ricevuto addestramenti speciali.\n<Bullet/> Usa i potenziamenti recuperati dai nemici per migliorare l'efficacia tattica della Stengun. \n<Bullet/> Le armi in stile fucile mitragliatore offrono mobilità bonus, precisione negli scontri ravvicinati e occultamento, rispetto ai fucili d'assalto, ma infliggono meno danni, hanno meno munizioni e subiscono penalità alla Precisione sulla lunga distanza.\n<Bullet/> I laser ricevono Mira bonus."
+AbilityDescName="Fucile mitragliatore"
+
+[Cannon_LS X2WeaponTemplate]
+FriendlyName="Cannone laser"
+FriendlyNamePlural="Cannoni laser"
+BriefSummary="La tecnologia laser, combinata con un sistema di raffreddamento migliorato, ci permetterà di sviluppare una versione a fuoco rapido del cannone, con un volume di fuoco molto più letale."
+TacticalText="<Bullet/> Il cannone laser è una versione più potente, ma altrettanto portatile, del cannone convenzionale.\n<Bullet/> Usa i potenziamenti recuperati dai nemici per migliorare l'efficacia tattica del cannone magnetico.\n<Bullet/> I laser ricevono Mira bonus."
+AbilityDescName="cannone"
+
+[Shotgun_LS X2WeaponTemplate]
+FriendlyName="Laser a dispersione"
+FriendlyNamePlural="Laser a dispersione"
+BriefSummary="Il laser a dispersione applica la tecnologia del laser per ottenere effetti da fucile a pompa. La diffusione del raggio lo rende più efficace a distanza ravvicinata."
+TacticalText="<Bullet/> Le armi in stile shotgun sono estremamente efficaci a distanza ravvicinata, ma perdono rapidamente precisione con l'aumentare della distanza.\n<Bullet/> Usa i potenziamenti recuperati dai nemici per migliorare l'efficacia tattica del laser a dispersione.\n<Bullet/> I laser ricevono Mira bonus."
+AbilityDescName="fucile a pompa"
+
+[SniperRifle_LS X2WeaponTemplate]
+FriendlyName="Lancia laser"
+FriendlyNamePlural="Lance laser"
+BriefSummary="Una versione a lunga gittata del fucile laser. La lancia laser incorpora condensatori ad altissima capacità energetica, che danno vita a un'arma laser ad alta precisione per i colpi a lunga distanza."
+TacticalText="<Bullet/> I fucili di precisione richiedono sempre entrambe le azioni, per sparare.\n<Bullet/> Meno efficaci da vicino, letali sulla distanza.\n<Bullet/> Usa i potenziamenti recuperati dai nemici per migliorare l'efficacia tattica della lancia laser.\n<Bullet/> I laser ricevono Mira bonus."
+AbilityDescName="fucile di precisione"

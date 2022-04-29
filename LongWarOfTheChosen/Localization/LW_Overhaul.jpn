@@ -1,0 +1,616 @@
+[XComGameState_LWOverhaulOptions]
+LWOverhaulTabName="LONG WAR (LWOTC)"
+GrazeBandWidthMod="かすり幅"
+GrazeBandWidthModTooltip="かすり傷を与えるために、必要な距離を決定する"
+GrazeBandValue="値：<XGParam:IntValue0>"
+PauseOnRecruitMod="新メンバー参加時に一時停止"
+PauseOnRecruitModTooltip="解放区に新たにレブルや兵士が加わったときにジオスケープを一時停止させる"
+
+[UIScreenListener_ShellDifficulty]
+strIncompatibleModsTitle="モッドが重複"
+strIncompatibleModsText="MODの重複を検出しました：\n%modnames%\nこれらのMODは本MODに含まれているため、ランチャーで無効にする必要があります。このままロードすると、パフォーマンスが低下したりゲームの動作が不安定になったりする可能性があります。実行は自己責任となることをご了承ください。"
+
+[UIMission_LWCustomMission]
+m_strMissionDifficulty_start="基本的な敵の活動"
+
+[ProtectRegionEarly X2LWAlienActivityTemplate]
+ActivityName="ProtectRegion1Activity"
+ActivityObjectives[0]="手がかりを見つける"
+
++MissionDescriptions=(MissionFamily="Recover_LW", Description="アドヴェントの活動を示す手がかりらしきものを発見した。調査が必要だ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="アドヴェントの活動を示す手がかりらしきものを発見した。調査が必要だ。", MissionIndex=0)
+
+[ProtectRegionMid X2LWAlienActivityTemplate]
+ActivityName="ProtectRegion2Activity"
+ActivityObjectives[0]="解放：亡命者を救出する"
+
++MissionDescriptions=(MissionFamily="Extract_LW", Description="アドヴェントからの亡命者を助け出せ。この地域のエイリアンの弱点について、重要な情報を入手できる。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="レジスタンスのシンパに、この地域のエイリアンの弱点について重大な情報を持つ者がいるようだ。", MissionIndex=0)
+
+[ProtectRegion X2LWAlienActivityTemplate]
+ActivityName="ProtectRegion3Activity"
+ActivityObjectives[0]="解放：アドヴェントの作戦を妨害する"
+ActivityObjectives[1]="解放：ネットワーク・タワーを破壊する"
+ActivityObjectives[2]="解放：アドヴェントの基地を襲撃する"
+
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="レジスタンス通信施設のネットワークに干渉するアドヴェントの装置があるようだ。破壊しなければならない。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Neutralize_LW", Description="アドヴェントの政府関係者の居場所を突き止めた。この地域の敵の作戦に対して進言をしている人物だ。始末しなければならない。", MissionIndex=0)
+
++MissionDescriptions=(MissionFamily="AssaultNetworkTower_LW", Description="我々の勝利は近づいている。中心地にあるやつらの通信ハブを破壊する時が来た。", MissionIndex=1)
+
++MissionDescriptions=(MissionFamily="AssaultAlienBase_LW", Description="この地域におけるアドヴェントの作戦に混乱が生じている。地域の軍司令部を襲撃するなら今だ。この地域をやつらの支配から解き放て。", MissionIndex=2)
+
+[Counterinsurgency X2LWAlienActivityTemplate]
+ActivityName="CounterinsurgencyActivity"
+ActivityObjectives[0]="レジスタンスのデータ漏えいを阻止する"
+ActivityObjectives[1]="レジスタンス解放区を防衛する"
+
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="アドヴェントがこの地域にある我々の本部を調査している。解放区に危機が迫っているかもしれない。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Terror_LW", Description="敵部隊が解放区に接近中。急行して、解放区とそこにいる人々を守れ。", MissionIndex=1)
++MissionDescriptions=(MissionFamily="Defend_LW", Description="敵部隊が解放区に接近中。急行して、解放区とそこにいる人々を守れ。", MissionIndex=1)
+
+[ReinforceActivity X2LWAlienActivityTemplate]
+ActivityName="ReinforceActivity"
+ActivityObjectives[0]="アドヴェントの増援を待ち伏せする"
++MissionDescriptions=(MissionFamily="SupplyLineRaid_LW", Description="我々の作戦に反応して、アドヴェントがこの地域に兵を侵攻させた。", MissionIndex=0)
+
+[COINResearch X2LWAlienActivityTemplate]
+ActivityName="COINResearchActivity"
+ActivityObjectives[0]="アドヴェントの軍事的研究開発を阻止する"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="エイリアンの軍事研究計画を阻止する好機だ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="エイリアンの軍事研究計画を阻止する好機だ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="エイリアンの軍事研究計画を阻止する好機だ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Neutralize_LW", Description="アドヴェントの政府関係者を始末して、エイリアンの軍事研究計画を阻止する好機だ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="囚われた科学者を救出する好機だ。現在科学者は、エイリアンの軍事研究計画を進めるために労働を強いられている。", MissionIndex=0)
+
+[COINOps X2LWAlienActivityTemplate]
+ActivityName="COINOpsActivity"
+ActivityObjectives[0]="アドヴェントの対反乱作戦室を襲撃する"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="アドヴェントがレジスタンスとXCOMを妨害する動きを見せているが、それを叩く機会を得た。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="アドヴェントがレジスタンスとXCOMを妨害する動きを見せているが、それを叩く機会を得た。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="アドヴェントがレジスタンスとXCOMを妨害する動きを見せているが、それを叩く機会を得た。", MissionIndex=0)
+
+[BuildResearchFacility X2LWAlienActivityTemplate]
+ActivityName="BuildResearchFacilityActivity"
+ActivityObjectives[0]="アドヴェントの建設ユニットを待ち伏せする"
++MissionDescriptions=(MissionFamily="SupplyLineRaid_LW", Description="エイリアンがこの地域に新しい研究施設を建設しようとしている。建設ユニットを攻撃して阻止しろ。", MissionIndex=0)
+
+[RegionalAvatarResearch X2LWAlienActivityTemplate]
+ActivityObjectives[0]="エイリアンの研究施設を襲撃する"
++MissionDescriptions=(MissionFamily="Sabotage_LW", Description="エイリアンの重要な研究施設を発見した。焼き払ってしまえ。", MissionIndex=0)
+
+[ScheduledOffworldReinforcements X2LWAlienActivityTemplate]
+ActivityName="ScheduledOffworldReinforcementsActivity"
+ActivityObjectives[0]="手がかりを見つける"
+ActivityObjectives[1]="UFOのアーティファクトを回収する"
+
++MissionDescriptions=(MissionFamily="Recover_LW", Description="アドヴェントの活動を示す手がかりらしきものを発見した。調査が必要だ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="アドヴェントの活動を示す手がかりらしきものを発見した。調査が必要だ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="無防備な状態のUFOを地上に確認した。", MissionIndex=1)
+
+[EmergencyOffworldReinforcements X2LWAlienActivityTemplate]
+ActivityName="EmergencyOffworldReinforcementsActivity"
+ActivityObjectives[0]="手がかりを見つける"
+ActivityObjectives[1]="UFOのアーティファクトを回収する"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="アドヴェントの活動を示す手がかりらしきものを発見。調査が必要だ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="アドヴェントの活動を示す手がかりらしきものを発見。調査が必要だ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="無防備な状態のUFOを地上に確認した。", MissionIndex=1)
+
+[SuperEmergencyOffworldReinforcements X2LWAlienActivityTemplate]
+ActivityName="SuperEmergencyOffworldReinforcementsActivity"
+ActivityObjectives[0]="手がかりを見つける"
+ActivityObjectives[1]="UFOのアーティファクトを回収する"
+
++MissionDescriptions=(MissionFamily="Recover_LW", Description="アドヴェントの活動を示す手がかりらしきものを発見。調査が必要だ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="アドヴェントの活動を示す手がかりらしきものを発見。調査が必要だ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="アドヴェントの捕虜を発見した。敵の活動を知る手がかりになるかもしれない。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="無防備な状態のUFOを地上に確認した。", MissionIndex=1)
+
+[Invasion X2LWAlienActivityTemplate]
+ActivityName="InvasionActivity"
+ActivityObjectives[0]="アドヴェントの前進部隊を待ち伏せする"
+ActivityObjectives[1]="臨時政府を防衛する"
+
++MissionDescriptions=(MissionFamily="SupplyLineRaid_LW", Description="この地域に侵入したアドヴェントの部隊を発見した。なんとしても奴らを止めなければならない。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Invasion_LW", Description="アドヴェントがこの地域に侵攻し、臨時政府を襲撃している。人々を守れなければ、この地域は再びやつらの手に落ちてしまう。", MissionIndex=1)
+
+[Foothold X2LWAlienActivityTemplate]
+ActivityName="FootholdActivity"
+ActivityObjectives[0]="UFOアサルトキャリアを襲撃する"
+ActivityObjectives[1]="臨時政府を防衛する"
+
++MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="エイリアンたちは地球への足がかりを取り戻そうとしている。着陸したアサルトキャリアを襲撃して食い止めるのだ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Invasion_LW", Description="エイリアンがこの地域に侵攻し、臨時政府を襲撃している。人々を守れなければ、この地域は再びやつらの手に落ちてしまう。", MissionIndex=1)
+
+[Propaganda X2LWAlienActivityTemplate]
+ActivityName="PropagandaActivity"
+ActivityObjectives[0]="アドヴェントの注意を引く"
++MissionDescriptions=(MissionFamily="SabotageCC_LW", Description="都市の中央部はエイリアンの守りが比較的薄い。モニュメントを叩いてやつらにメッセージを送れ。アドヴェントが反応を示すだろう。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Neutralize_LW", Description="近いうちにアドヴェントの上層部の警備が比較的薄くなる瞬間があるようだ。始末する好機だが、アドヴェントが気づかない訳がない。", MissionIndex=0)
+
+[ProtectResearch X2LWAlienActivityTemplate]
+ActivityName="ProtectResearchActivity"
+ActivityObjectives[0]="手がかりを見つける"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="アドヴェントの活動を示す手がかりらしきものを発見。調査が必要だ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="アドヴェントの活動を示す手がかりらしきものを発見。調査が必要だ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="アドヴェントの装置がレジスタンスの通信を邪魔しているようだ。この装置を壊せば、新たな情報源やデータが手に入るかもしれない。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="アドヴェントの捕虜を発見した。敵の活動を知る手がかりになるかもしれない。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Extract_LW", Description="アドヴェントの施設からの脱走者がいるようだ。敵の活動を知る手がかりになるかもしれない。この人物を救出しよう。", MissionIndex=0)
+
+[ProtectData X2LWAlienActivityTemplate]
+ActivityName="ProtectDataActivity"
+ActivityObjectives[0]="手がかりを見つける"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="アドヴェントの活動を示す手がかりらしきものを発見。調査が必要だ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="アドヴェントの活動を示す手がかりらしきものを発見。調査が必要だ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="アドヴェントの装置がレジスタンスの通信を邪魔しているようだ。この装置を壊せば、新たな情報源やデータが手に入るかもしれない。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="アドヴェントの捕虜を発見した。敵の活動を知る手がかりになるかもしれない。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Extract_LW", Description="アドヴェントの施設からの脱走者がいるようだ。敵の活動を知る手がかりになるかもしれない。この人物を救出しよう。", MissionIndex=0)
+
+[TroopManeuvers X2LWAlienActivityTemplate]
+ActivityName="TroopManeuversActivity"
+ActivityObjectives[0]="敵の戦力を削ぐ"
++MissionDescriptions=(MissionFamily="TroopManeuvers_LW", Description="アドヴェントの戦闘ユニットが奇襲に対して無防備な状態にある。")
+
+[HighValuePrisoner X2LWAlienActivityTemplate]
+ActivityName="HighValuePrisonerActivity"
+ActivityObjectives[0]="捕虜となっている要人を解放する"
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="アドヴェントに拘束されている要人の居場所を特定した。束の間のチャンスを利用し、その人物を解放しろ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Extract_LW", Description="アドヴェントの施設からの脱走者の情報をつかんだ。レジスタンスに力を貸してくれるかもしれない。束の間のチャンスを利用し、その人物を助け出せ。", MissionIndex=0)
+
+[PoliticalPrisoners X2LWAlienActivityTemplate]
+ActivityName="PoliticalPrisonersActivity"
+ActivityObjectives[0]="捕獲されたレブルを解放する"
++MissionDescriptions=(MissionFamily="Jailbreak_LW", Description="レジスタンスのメンバーが厳重に警備されている施設内に拘束されている。束の間のチャンスを利用し、救出しろ。", MissionIndex=0)
+
+[IntelRaid X2LWAlienActivityTemplate]
+ActivityName="IntelRaidActivity"
+ActivityObjectives[0]="レジスタンスのデータを守る"
++MissionDescriptions=(MissionFamily="IntelRaid_LW", Description="レジスタンスの収集部隊がアドヴェントに発見された。アドヴェントの攻撃部隊から味方とハードウェアを守らなければならない。")
+
+[SupplyConvoy X2LWAlienActivityTemplate]
+ActivityName="SupplyConvoyActivity"
+ActivityObjectives[0]="レジスタンスのデータを守る"
++MissionDescriptions=(MissionFamily="SupplyConvoy_LW", Description="アドヴェントの部隊がレジスタンスの補給車両団を襲撃しようとしている。味方と物資を守らなければならない。")
+
+[RecruitRaid X2LWAlienActivityTemplate]
+ActivityName="RecruitRaidActivity"
+ActivityObjectives[0]="レジスタンスのデータを守る"
++MissionDescriptions=(MissionFamily="RecruitRaid_LW", Description="ユニットを採用中のレジスタンスがアドヴェントの偵察部隊と遭遇した。ただちに人員を撤収させる必要がある。")
+
+[Snare X2LWAlienActivityTemplate]
+ActivityName="SnareActivity"
+ActivityObjectives[0]="手がかりを見つける"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="アドヴェントの活動を示す手がかりらしきものを発見。調査が必要だ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="アドヴェントの活動を示す手がかりらしきものを発見。調査が必要だ。", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="アドヴェントの捕虜を発見した。敵の活動を知る手がかりになるかもしれない。", MissionIndex=0)
+
+[DebugMission X2LWAlienActivityTemplate]
+ActivityObjectives[0]="DEBUG Mission"
+
+[Rendezvous X2LWAlienActivityTemplate]
+ActivityName="RendezvousActivity"
+ActivityObjectives[0]="Dummy mission"
+ActivityObjectives[1]="アドヴェントの部隊を待ち伏せする"
++MissionDescriptions=(MissionFamily="Rendezvous_LW", Description="Dummy mission", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rendezvous_LW", Description="Hunt for Faceless spies and their ADVENT contacts near this Haven.", MissionIndex=1)
+
+[X2Item_LWGauntlet]
+PrimaryRangeLabel="ロケット範囲"
+PrimaryRadiusLabel="ロケット半径範囲"
+SecondaryRangeLabel="火炎放射器範囲"
+SecondaryRadiusLabel="火炎放射器半径範囲"
+
+[LWGauntlet_CV X2MultiWeaponTemplate]
+FriendlyName="ガントレット"
+FriendlyNamePlural="ガントレット"
+BriefSummary="この火炎放射器とミニロケットランチャーの合体作は、特殊兵が様々な戦闘状況に対応できるように考案された。"
+TacticalText="<Bullet/>XCOMガントレットは、ミニロケットランチャーと火炎放射器を備える高度な装備である。<br/><Bullet/>ロケットランチャーには最初からロケットが1弾装填されており、半径3タイルが有効範囲となる。<br/><Bullet/>ターゲットは目視範囲内で定める。<br/><Bullet/>ロケットによるダメージは、着弾点から離れるほど低下する。<br/><Bullet/>火炎放射器は短射程の武器であり、円錐状の効果範囲内にいる複数の敵にダメージをもたらす。<br/><Bullet/>火炎放射器には2つの爆薬が用意されているが、アップグレードしなければ機械ユニットにはダメージを与えることができない。<br/><Bullet/>どちらのガントレットアビリティも行動値1を消費し、使用者のターンは終了する。<br/><Bullet/> ロケット弾の命中精度は射手の命中率、ターゲットまでの距離、同ターンでの行動値消費有無に影響される。命中精度の低いロケット弾は高い分散値を持ち、ターゲットからより離れた距離に着弾する可能性が高まる。ロケット弾の最大分散値はポップアップに表示され、ターゲットにカーソルを合わせた場合は着弾地点に対する分散値（平均）が表示される。"
+AbilityDescName="ガントレット"
+
+[LWGauntlet_MG X2MultiWeaponTemplate]
+FriendlyName="ガントレット・マーク2"
+FriendlyNamePlural="ガントレット・マーク2"
+BriefSummary="マーク2のガントレット兵器の威力はマーク1に勝る。"
+TacticalText="<Bullet/>XCOMガントレットは、ミニロケットランチャーと火炎放射器を備える高度な装備である。<br/><Bullet/>ロケットランチャーには最初からロケットが1弾装填されており、半径3タイルが有効範囲となる。<br/><Bullet/>ターゲットは目視範囲内で定める。<br/><Bullet/>ロケットによるダメージは、着弾点から離れるほど低下する。<br/><Bullet/>火炎放射器は短射程の武器であり、円錐状の効果範囲内にいる複数の敵にダメージをもたらす。<br/><Bullet/>火炎放射器には2つの爆薬が用意されているが、アップグレードしなければ機械ユニットにはダメージを与えることができない。<br/><Bullet/>どちらのガントレットアビリティも行動値1を消費し、使用者のターンは終了する。<br/><Bullet/> ロケット弾の命中精度は射手の命中率、ターゲットまでの距離、同ターンでの行動値消費有無に影響される。命中精度の低いロケット弾は高い分散値を持ち、ターゲットからより離れた距離に着弾する可能性が高まる。ロケット弾の最大分散値はポップアップに表示され、ターゲットにカーソルを合わせた場合は着弾地点に対する分散値（平均）が表示される。"
+AbilityDescName="ガントレット"
+
+[LWGauntlet_CG X2MultiWeaponTemplate]
+FriendlyName="ガントレット・マーク3"
+FriendlyNamePlural="ガントレット・マーク3"
+BriefSummary="マーク3のガントレットは、マーク1やマーク2よりも威力が高い。"
+TacticalText="<Bullet/>XCOMガントレットは、ミニロケットランチャーと火炎放射器を備える高度な装備である。<br/><Bullet/>ロケットランチャーには最初からロケットが1弾装填されており、半径3タイルが有効範囲となる。<br/><Bullet/>ターゲットは目視範囲内で定める。<br/><Bullet/>ロケットによるダメージは、着弾点から離れるほど低下する。<br/><Bullet/>火炎放射器は短射程の武器であり、円錐状の効果範囲内にいる複数の敵にダメージをもたらす。<br/><Bullet/>火炎放射器には2つの爆薬が用意されているが、アップグレードしなければ機械ユニットにはダメージを与えることができない。<br/><Bullet/>どちらのガントレットアビリティも行動値1を消費し、使用者のターンは終了する。<br/><Bullet/> ロケット弾の命中精度は射手の命中率、ターゲットまでの距離、同ターンでの行動値消費有無に影響される。命中精度の低いロケット弾は高い分散値を持ち、ターゲットからより離れた距離に着弾する可能性が高まる。ロケット弾の最大分散値はポップアップに表示され、ターゲットにカーソルを合わせた場合は着弾地点に対する分散値（平均）が表示される。"
+AbilityDescName="ガントレット"
+
+[LWGauntlet_BM X2MultiWeaponTemplate]
+FriendlyName="ブラスターガントレット"
+FriendlyNamePlural="ブラスターガントレット"
+BriefSummary="改良型ガントレット兵器は広範囲にダメージを与える。また、ミニロケットはターゲットへの誘導機能を有している。"
+TacticalText="<Bullet/>改良型ガントレットに備わるブラスターランチャーは、高度なテクノロジーを用いたロケットを発射する。ロケットは遮へい物を迂回してターゲットを追尾する。\n<Bullet/>アップグレードされた火炎放射器は円錐形の狭い範囲に多大なダメージをもたらし、敵ターゲットに留まらず、その周囲にもダメージを与える。<Bullet/>ロケットによるダメージは、着弾点から離れるほど低下する。<br/><Bullet/>火炎放射器は短射程の武器であり、円錐状の効果範囲内にいる複数の敵にダメージをもたらす。<br/><Bullet/>火炎放射器には2つの爆薬が用意されているが、アップグレードしなければ機械ユニットにはダメージを与えることができない。<br/><Bullet/>どちらのガントレットアビリティも行動値1を消費し、使用者のターンは終了する。<br/><Bullet/> ロケット弾の命中精度は射手の命中率、ターゲットまでの距離、同ターンでの行動値消費有無に影響される。命中精度の低いロケット弾は高い分散値を持ち、ターゲットからより離れた距離に着弾する可能性が高まる。ロケット弾の最大分散値はポップアップに表示され、ターゲットにカーソルを合わせた場合は着弾地点に対する分散値（平均）が表示される。"
+AbilityDescName="ガントレット"
+
+[UISquadSelect_InfiltrationPanel]
+strInfiltrationTitle="潜入合計："
+strBaseInfiltrationTitle="基地への潜入："
+strSquadSizeTitle="部隊規模修正："
+strCovertnessTitle="アビリティと装備修正："
+strMissionTimeTitle="ミッションの期限："
+strDaysAndHours="<XGParam:IntValue0>日、<XGParam:IntValue1>時間"
+strMinusDaysAndHours="-<XGParam:IntValue0>日、<XGParam:IntValue1>時間"
+strPlusDaysAndHours="+<XGParam:IntValue0>日,  <XGParam:IntValue1>時間"
+strMissionIndefinite="無期限"
+
+[UIScreenListener_DropShipBriefing_MissionStart]
+strLaunchingInfiltration="間もなく接触"
+
+[UIUtilities_Text_LW]
+m_strHelp="ヘルプ"
+
+[X2Ability_LW_GearAbilities]
+strWeight="小型アイテムの重さ"
+AblativeHPLabel="磨耗HP"
+
+[X2Ability_LW_TechnicalAbilitySet]
+strMaxScatter="\n最大拡散距離（タイル）："
+
+[XComGameState_LWListenerManager]
+ResistanceHQBodyText="レジスタンス解放区の情報にアクセスする"
+
+[X2LWAbilitiesModTemplate]
+strCritReductionFromConditionalToHit="命中"
+
+[X2EventListener_Missions]
+m_strClearSquad="部隊をクリア"
+m_strTooltipClearSquad="部隊から全ての兵士を外す。"
+
+m_strAutofillSquad="部隊自動補充"
+m_strTooltipAutofillSquad="部隊の空いた枠に自動的に兵士を補充する。"
+
+[X2EventListener_StrategyMap]
+strTimeRemainingHoursOnly="<XGParam:IntValue0>時間"
+strTimeRemainingDaysAndHours="<XGParam:IntValue1>日、<XGParam:IntValue0>時間"
+
+[X2EventListener_Soldiers]
+OnLiaisonDuty="解放区のアドバイザー"
+OnInfiltrationMission="潜入中"
+UnitAlreadyInSquad="別の部隊に参加済みのユニットです"
+UnitInSquad="部隊に参加済みのユニットです"
+RankTooLow="階級が低すぎる"
+CannotModifyOnMissionSoldierTooltip="ミッションに出撃中の兵士は改造できません"
+
+[X2Effect_LWHolotarget]
+HoloTargetEffectName="ホロターゲット"
+
+[XComGameState_LWPersistentSquad]
++DefaultSquadNames="Menace"
++DefaultSquadNames="Voodoo"
++DefaultSquadNames="Swordsman"
++DefaultSquadNames="Super Six"
++DefaultSquadNames="Hussar"
++DefaultSquadNames="Dragoons"
++DefaultSquadNames="Devils"
++DefaultSquadNames="Feral"
++DefaultSquadNames="Spearhead"
++DefaultSquadNames="Victory"
++DefaultSquadNames="Sandman"
++DefaultSquadNames="Tornado"
++DefaultSquadNames="Volunteers"
++DefaultSquadNames="Grizzly"
++DefaultSquadNames="Keystone"
++DefaultSquadNames="Screaming Eagles"
++DefaultSquadNames="Hitman"
++DefaultSquadNames="Assassin"
++DefaultSquadNames="Raptor"
++DefaultSquadNames="Moccasin"
++DefaultSquadNames="Vega"
++DefaultSquadNames="Roughnecks"
++DefaultSquadNames="Marauders"
++DefaultSquadNames="Black Watch"
++DefaultSquadNames="Blackguards"
++DefaultSquadNames="Kiryu-Kai"
++DefaultSquadNames="Trident"
++DefaultSquadNames="Timberwolf"
+
++TempSquadNames="Alpha"
++TempSquadNames="Bravo"
++TempSquadNames="Charlie"
++TempSquadNames="Delta"
++TempSquadNames="Echo"
++TempSquadNames="Foxtrot"
++TempSquadNames="Golf"
++TempSquadNames="Hotel"
++TempSquadNames="India"
++TempSquadNames="Juliet"
++TempSquadNames="Kilo"
++TempSquadNames="Lima"
++TempSquadNames="Mike"
++TempSquadNames="November"
++TempSquadNames="Oscar"
++TempSquadNames="Papa"
++TempSquadNames="Quebec"
++TempSquadNames="Romeo"
++TempSquadNames="Sierra"
++TempSquadNames="Tango"
++TempSquadNames="Uniform"
++TempSquadNames="Victor"
++TempSquadNames="Yankee"
++TempSquadNames="Zulu"
+
+
+BackupSquadName="XCOM部隊<XGParam:StrValue0>"
+BackupTempSquadName="臨時編成部隊<XGParam:StrValue0>"
+
+[UIScreenListener_LivingQuarters]
++m_strSquadSelection="部隊のベースキャンプ"
+
+[UIScreenListener_Alert]
+m_strNewRebelsAvailableTitle="新たなレジスタンスの人員を獲得した"
+m_strNewRebelsAvailable="レジスタンス解放区にて任務の発令を待機中：%REGION"
+m_strHelpBMGoodsDescription="コマンダー、ブラックマーケットで新たな科学者、技術者、ベテラン兵士を採用できるようになった！"
+
+m_strInvasionTitle="アドヴェントの侵略"
+m_strInvasionLabel="襲撃されている解放地域"
+m_strInvasionBody="すでに解放された地域を、アドヴェントが再び征服しようとしている。敵は臨時政府の本部に大規模攻撃を仕掛ける気だ！"
+m_strInvasionFlare="緊急通信"
+m_strInvasionConfirm="侵略地域を表示"
+
+m_strRepeatResearch="研究を繰り返す"
+
+[UIScreenListener_ArmoryWeaponUpgrade_LW]
+strStripWeaponUpgradesButton="武器アップグレードの解除"
+strStripWeaponUpgradesTooltip="武器のアップグレードとカスタマイズをすべて解除し、全体の所持品に戻します"
+strStripWeaponUpgradeDialogueTitle="全アップグレード解除の確認"
+strStripWeaponUpgradeDialogueText="この武器のアップグレードをすべて解除し、武器を共通プールに戻します。よろしいですか？"
+
+[UIPersonnel_SquadBarracks]
+strSquadBarrackTitle="部隊：<XGParam:StrValue0>"
+strUnassignedSoldierTitle="未配属の兵士"
+strEdit="表示"
+strSelect="選択"
+strSquad="部隊"
+strRenameSquad="部隊名変更"
+strEditBiography="履歴を編集"
+strDeleteSquad="部隊を削除"
+strAddSquad="部隊を編成"
+strViewUnassigned="配属済みの兵士"
+strViewSquad="部隊の兵士"
+strDeleteSquadConfirm="部隊を削除する"
+strDeleteSquadConfirmDesc="この部隊を本当に削除しますか？"
+strMissions="ミッション：<XGParam:IntValue0>"
+strDefaultSquadBiography="<XGParam:StrValue0>を使用"
+
+[UISquadContainer]
+DefaultSquadTitle="部隊"
+
+[UISquadListItem]
+sSquadOnMission="ミッション中"
+sSquadAvailable="利用可能"
+sCovertness="ステルス: <XGParam:IntValue0>"
+
+[UIScreenListener_SquadSelect_LW]
+strSave="セーブ"
+strSquad="部隊"
+strStart="開始"
+strInfiltration="潜入"
+
+[UIScreenListener_SkyrangerArrives_LW]
+strLaunchInfiltration="潜入を開始する"
+strAbortInfiltration="潜入を中止する"
+strContinueInfiltration="潜入を続ける"
+
+[XComGameState_LWSquadManager]
+LabelBarracks_SquadManagement="部隊管理"
+TooltipBarracks_SquadManagement="部隊を管理する"
+
+[UIStrategyMapItem_Mission_LW]
+strRecon="潜入"
+
+[UIMission_LWLaunchDelayedMission]
+m_strMission="潜入"
+m_strOptions="潜入オプション"
+m_strImageGreeble="秘匿通信"
+m_strWait="待機"
+m_strAbort="中止"
+m_strBoostInfiltration="潜入の支援"
+m_strAlreadyBoostedInfiltration="部隊<XGParam:StrValue0>の、潜入率が向上した"
+m_strInsufficentIntelForBoostInfiltration="情報が不足しています。"
+m_strBoostInfiltrationDescription="<XGParam:StrValue0>を消費して、このミッションにおける部隊の潜入率を<XGParam:IntValue1>%向上させることができます。この効果は遡及的です。情報を消費しますか？"
+m_strViewSquad="部隊を表示"
+m_strInfiltrationStatusExpiring="潜入<XGParam:IntValue0>%/100%まであと<XGParam:IntValue1>日<XGParam:IntValue2>時間"
+m_strInfiltrationStatusMissionEnding="潜入<XGParam:IntValue0>%/発射まであと<XGParam:IntValue1>日<XGParam:IntValue2>時間"
+m_strInfiltrationStatusNonExpiring="潜入<XGParam:IntValue0>%"
+m_strInfiltrationConsequence="敵の態勢：<XGParam:StrValue0>"
+m_strMustLaunchMission="ミッションがまもなく期限切れ：開始もしくは中止する必要がある"
+m_strInsuffientInfiltrationToLaunch="ミッションを開始するには、最低でも潜入を<XGParam:IntValue0>%にする必要がある。"
+
+; these need to be coordinated in length with the  in LW_InfiltrationSettings.ini : AlertModifierAtInfiltration
++m_strAlertnessModifierDescriptions[0]="難攻不落"
++m_strAlertnessModifierDescriptions[1]="難攻不落"
++m_strAlertnessModifierDescriptions[2]="難攻不落"
++m_strAlertnessModifierDescriptions[3]="要塞状態"
++m_strAlertnessModifierDescriptions[4]="要塞状態"
++m_strAlertnessModifierDescriptions[5]="要塞状態"
++m_strAlertnessModifierDescriptions[6]="警戒状態"
++m_strAlertnessModifierDescriptions[7]="警戒状態"
++m_strAlertnessModifierDescriptions[8]="警戒状態"
++m_strAlertnessModifierDescriptions[9]="防備状態"
++m_strAlertnessModifierDescriptions[10]="防備状態"
++m_strAlertnessModifierDescriptions[11]="防備状態"
++m_strAlertnessModifierDescriptions[12]="通常状態"
++m_strAlertnessModifierDescriptions[13]="無防備状態"
++m_strAlertnessModifierDescriptions[14]="無防備状態"
++m_strAlertnessModifierDescriptions[15]="無防備状態"
+
+[UIMission_LWCustomMission]
++m_strUrgent="セキュリティ侵害"
++m_strRendezvousMission="合流地点"
++m_strRendezvousDesc="**<XGParam:StrValue0/!WorldRegionName>のレジスタンス解放区から不正シグナルを検知した** 解放区のアドバイザーおよび志願兵が、スパイとアドヴェントの者たちを合流地点付近で捕らえ、排除するだろう。"
+
+m_strInvasionMission="Invasion"
+m_strInvasionWarning="要注意"
+m_strInvasionDesc="アドヴェントの軍勢が<XGParam:StrValue0/!WorldRegionName/>の侵略に乗り出した！ 放っておけばこの地域は再びアドヴェントに支配されてしまう。ただちにうって出よう。"
+
+[UIStrategyMapItem_Region_LW]
+m_strOutpostTitle="解放区：<XGParam:StrValue0>"
+m_strAlertLevel="アドヴェントの強さ：<XGParam:IntValue0>"
+m_strLiberatedRegion="解放された地域"
+m_strStaffingPinText="S:<XGParam:IntValue0> I:<XGParam:IntValue1> R:<XGParam:IntValue2>"
+m_strStaffingPinTextMore="H:<XGParam:IntValue0>"
+m_strMonthlyRegionalIncome="+§<XGParam:IntValue0> (+§<XGParam:IntValue1>)"
+
+[XComGameState_LWOutpostManager]
+LabelCQ_ResistanceManagement="レジスタンス管理"
+TooltipCQ_ResistanceManagement="各地域のレジスタンス解放区を管理する"
+
+[UIResistanceManagement_LW]
+m_strTitle="レジスタンスの概要"
+m_strLabel="レジスタンス解放区と接触中…"
+m_strRegionLabel="地域"
+m_strStrength="アドヴェントの強さ"
+m_strAdviserLabel="HA"
+m_strIncomeLabel="収入"
+m_strRebelCountLabel="解放区"
+m_strADVENTUnitSingular="軍団"
+m_strADVENTUnitPlural="軍団"
+
+m_strGlobalAlert="世界全体でのアドヴェントの強さ："
+m_strGlobalInsurgency="•世界全体での レジスタンスの脅威:"
+m_strAvatarPenalty="• アヴァターの進行状況の遅延: <XGParam:IntValue0/>%"
+m_strThreatVeryLow="小"
+m_strThreatLow="防備状態"
+m_strThreatMedium="中"
+m_strThreatHigh="大"
+m_strThreatVeryHigh="特大"
+m_strLiberated="解放済み"
+
+[UIOutpostManagement]
+m_strTitle="解放区管理"
+m_strLabel="解放区管理に関するUIのプレースホルダー…"
+m_strName="名称"
+m_strMission="ミッション"
+m_strBuildRadioRelay="無線中継器を建設する"
+m_strLiaisonTitle="解放区のアドバイザー"
+; 0=Alert, 1=Vigilance, 2=Force
+m_strRegionalInfo="アドヴェントの強さ：<XGParam:IntValue0/>"
+m_strResistanceMecs="レジスタンスのMEC：<XGParam:IntValue0/>"
+m_strProhibited="禁止"
+m_strCannotChangeLiaisonTitle="アドバイザー変更不可"
+m_strCannotChangeLiaison="地域でミッションが進行しているため、今はアドバイザーを変更できない"
+
+[UIScreenListener_TacticalHUD]
+strEvacRequestTitle="撤収要請が発令"
+strEvacRequestSubtitle="スカイレンジャー到着までのターン数"
+
+[LWRebelJob_DefaultJobSet]
+strRebelRecruited="%UNITを%REGIONで解放区に採用した"
+strSoldierRecruited="%UNITと%REGIONで接触したため、採用できるようになった"
+strStaffRecruited="%TITLE%UNITを%REGIONから採用した"
+
+;; REBEL JOB TEMPLATES
+[NoJob LWRebelJobTemplate]
+strJobName="なし"
+
+[Resupply LWRebelJobTemplate]
+strJobName="補給"
+
+[Recruit LWRebelJobTemplate]
+strJobName="新兵"
+
+[Intel LWRebelJobTemplate]
+strJobName="情報"
+
+[Hiding LWRebelJobTemplate]
+strJobName="潜伏"
+
+[RebelJobMissions LWRebelJobTemplate]
+strJobName="ミッション"
+
+[UIScreenListener_ResistanceReport]
+m_strStaffingHelp="ブラックマーケットに新しいスタッフを採用する"
+
+;;HELP TEMPLATES
+[ResistanceManagement_Help LWHelpTemplate]
+m_strHelpTitle="レジスタンス管理"
+m_strHelpText="レジスタンス管理画面では、XCOMから世界各地のレジスタンス組織の優先順位を指示できる。画面上には、XCOMと接触済みのレジスタンス解放区が現在の勢力や活動状況とともに表示されており、各地域を選択して解放区管理画面に移動すれば、その地域におけるレジスタンスの優先事項を設定できる。レジスタンスの概要画面で、地域名の側面に並ぶ印は該当地域の解放進行状況を表す。"
+m_strHelpButtonTooltip="レジスタンス管理のヘルプ"
+
+[OutpostManagement_Help LWHelpTemplate]
+m_strHelpTitle="解放区管理"
+m_strHelpText="このパネルから、レジスタンス解放区で待機している人員に任務を割り振り、アドヴェントとの戦いに協力させることができる。またコマンダーは、XCOMのフォトフレームをクリックで選択して、解放区との連絡役を務めるアドバイザーに指名できる。兵士のアドバイザーは採用や内部の防衛について、科学者のアドバイザーは情報収集、技術者のアドバイザーは物資の獲得を手助けしてくれる。詳しい手順は、コマンダーの営舎にあるXCOMデータベースで、レジスタンス解放区に関する項目を参照すること。"
+m_strHelpButtonTooltip="解放区管理のヘルプ"
+
+[Personnel_SquadBarracks_Help LWHelpTemplate]
+m_strHelpTitle="部隊管理"
+m_strHelpText="部隊管理画面から、ミッションに出撃させるXCOM部隊の編成および管理ができる。部隊とは、事前に編成した兵士グループを指し、部隊選択画面から、行動値1を消費して兵士をミッションに参加させることができる。注意事項は以下のとおり。<br/><Bullet/>各部隊に参加できる兵士は最大10名。編成した部隊は、ミッション開始直前に部隊選択画面で選択できる。<br/><Bullet/>能力的に問題があったり、負傷中や訓練中であったりといった理由で出撃させたくない兵士がいる場合は、控えの兵士と適宜入れ替えることができる。<br/><Bullet/>ミッション開始直前の段階で、部隊に参加していない兵士を集めて一から部隊を編成することもできる。この部隊はジオスケープでの識別用に名前をつけることができるが、ミッションが終了すると自動的に解散する。<br/><Bullet/>兵士の所属をある部隊（臨時編成の部隊を除く）から別の部隊へと移動させたい場合は、先に現在の所属部隊から外す必要がある。"
+m_strHelpButtonTooltip="部隊管理のヘルプ"
+
+[SquadSelect_Help LWHelpTemplate]
+m_strHelpTitle="部隊の潜入"
+m_strHelpText="多くのミッションは、強力なアドヴェント軍との遭遇を回避するため、部隊は任務地への潜入を試みなければならない。部隊の規模を調節したり、ステルス系のアビリティや装備を持つ兵士を組み込んだりすることで、コマンダーは潜入時のプランを立てる。詳しい手順は、コマンダーの営舎にあるXCOMデータベースで、潜入に関する項目を参照すること。"
+m_strHelpButtonTooltip="潜入のヘルプ"
+
+[X2StrategyElement_DefaultStaffSlots_LW]
+m_strLiaisonLocation="解放区のアドバイザー：<XGParam:StrValue0>"
+
+[X2StrategyElement_MissionSiteDescriptions_LW]
+; This goes in front of a city name in invasion missions, e.g. "Free Chicago"
+m_strLiberatedCityPrefix="解放"
+
+[XComGameState_LWOutPost]
+m_strProhibitedJobAlert="アドヴェントの襲撃のため、<XGParam:StrValue1/>では<XGParam:IntValue0/>日間レジスタンスのメンバーを<XGParam:StrValue0/>の仕事に割り当てることができない。この仕事に就いていたレジスタンスは、今は全員身を隠している。"
+m_strProhibitedJobEnded="<XGParam:StrValue1/>の仕事に割り当てられた<XGParam:StrValue0/>のレジスタンスのメンバーが生産活動を再開した。"
+
+[X2StrategyElement_DefaultAlienActivities]
+m_strInsufficientRebels="他の地域と接触を図るには、解放区に<XGParam:IntValue0/>人以上のレブルが必要。"
+
+[UIScreenListener_Alert]
+m_strInvasionTitle="アドヴェントの侵略"
+m_strInvasionLabel="襲撃されている解放地域"
+m_strInvasionBody="すでに解放された地域を、アドヴェントが再び征服しようとしている。敵は臨時政府の本部に大規模攻撃を仕掛ける気だ！"
+m_strInvasionFlare="緊急通信"
+m_strInvasionConfirm="侵略地域を表示"
+
+[UIUtilities_LW]
+m_strStripWeaponUpgrades=全武器アップグレードの解除
+m_strStripWeaponUpgradesLower=全武器アップグレードの解除
+m_strStripWeaponUpgradesConfirm=全武器アップグレードの解除確認
+m_strStripWeaponUpgradesConfirmDesc=ミッション参加中の兵士の装備を除く、全武器アップグレードの解除確認。解除されたアップグレードは全ての兵士が即時装備可能になる。
+m_strTooltipStripWeapons=ミッション参加中の兵士を除く、全兵士の全武器アップグレードの解除
+
+m_strVIPCaptureReward=(VIP 捕獲のみ)
+
+m_strInfiltrationMission="潜入ミッション"
+m_strQuickResponseMission="即応ミッション"
+m_strFixedEvacLocation="固定撤収地点"
+m_strFlareEvac="フレアによる撤収地点設置"
+m_strDelayedEvac="撤収遅延"
+m_strNoEvac="非撤収型"
+m_strMaxSquadSize="最大部隊サイズ"
+m_strConcealedStart="潜伏状態開始"
+m_strRevealedStart="発見状態開始"
+m_strObjectiveTimer="目標時刻:"
+m_strExtractionTimer="撤収時刻:"
+m_strEvacTimer="スカイレンジャー到着時刻:"
+m_strGetCorpses="全回収"
+m_strSweepObjective="殲滅"
+m_strEvacRequired="要撤収"
+m_strTurnSingular="ターン"
+m_strTurnPlural="ターン"
+m_strMinimumInfiltration="必要ミッション潜入時間 <XGParam:IntValue0>%"
+m_strYellowAlert="高次警戒"
+
+m_sAverageScatterText="± <XGParam:StrValue0/> タイル"
+
+m_strAllHandsToHangar=総員戦闘配置
+m_strAllHandsToHangarConfirm=総員戦闘配置確認
+m_strAllHandsToHangarConfirmDesc=総員戦闘配置は、ゲリラ戦訓練施設、先進戦闘センターでの全兵士の訓練を中止させ、このミッションへの参加を可能にします。なお、中止された訓練は再開する必要があります。サイキック・ラボでの訓練は影響を受けません。
+m_strTooltipAllHandsToHangar=全兵士のゲリラ戦訓練施設、先進戦闘センターでの訓練を中止する
+
+m_strPrevHaven="前 解放区"
+m_strNextHaven="次 解放区"
+
+[Logistics X2LWAlienActivityTemplate]
+ActivityObjectives[0]="アドヴェントの物資を奪取せよ"
++MissionDescriptions=(MissionFamily="SmashnGrab_LW", Description="我々が入手して使うことのできる敵の重要な物資の場所をレジスタンスが察知した", MissionIndex=0)
+
+[UICovertActionReport_LW]
+strCovertActionFailed="失敗"

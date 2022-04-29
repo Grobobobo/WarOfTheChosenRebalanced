@@ -1,0 +1,428 @@
+[XComMultiplayerTacticalUI]
+MutonM2_LW="<Bullet/> Muton centurion może robić to, co zwykły muton, a także wydawać okrzyk bojowy, który zwiększa parametry pobliskich sojuszników. Ponadto potrafi on wykonać szarżę z bagnetem na wroga znajdującego się w zasięgu sprintu.\n<Bullet/> W przeciwieństwie do mutonów z czasów inwazji nowe hybrydowe mutony są bardzo skuteczne w walce w zwarciu.\n<Bullet/> Zdolność kontrataku umożliwia im zaatakowanie każdego, kto będzie walczyć z nimi wręcz.\n<Bullet/> Mutony mogą też dokonać egzekucji nieprzytomnych wrogów; nie możesz pozwolić, żeby wrogi muton zbliżył się do którejś z twoich ogłuszonych jednostek.\n<Bullet/> Są również w stanie kłaść ogień zaporowy ze swoich karabinów, a ich pancerz bojowy zapewnia dobrą ochronę."
+MutonM3_LW="<Bullet/>"
+
+DroneM1="<Bullet/> Dron \"Obrońca\" to tania jednostka zwiadowcza służąca głównie do kontroli cywilnych tłumów."
+
+[CorpseDrone X2ItemTemplate]
+FriendlyName="Wrak drona"
+FriendlyNamePlural="Wraki dronów"
+BriefSummary="Z wraku tego lekkiego, autonomicznego poduszkowca ochrony można wywnioskować, że jego głównym zadaniem było monitorowanie cywilów i kontrola tłumów."
+
+[CorpseMutonElite X2ItemTemplate]
+FriendlyName="Zwłoki elitarnego mutona"
+FriendlyNamePlural="Zwłoki elitarnych mutonów"
+BriefSummary="Ci obcy znajdują się na szczycie wewnętrznej hierarchii mutonów. W przeciwieństwie do centurionów, otrzymali oni znacznie poważniejsze modyfikacje genetyczne, podobne do tych, które występują u zwykłych mutonów."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; NEW ABILITIES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[WarCry X2AbilityTemplate]
+LocFriendlyName="Okrzyk bojowy"
+LocLongDescription="Zapewnia duże premie do celności, woli i mobilności innym mutonom oraz mniejsze premie inteligentnym obcym i ADVENT-owi. Czas odnawiania wynosi 6 tur."
+LocHelpText="Daje premie innym mutonom i niektórym pozostałym obcym."
+LocFlyOverText="Okrzyk bojowy"
+LocPromotionPopupText="<Bullet/> Zapewnia duże premie do celności, woli i mobilności innym mutonom oraz mniejsze premie inteligentnym obcym i ADVENT-owi.<br/><Bullet/> Czas odnawiania wynosi 6 tur.<br/>"
+
+[BayonetCharge X2AbilityTemplate]
+LocFriendlyName="Szarża z bagnetem"
+LocLongDescription="Pozwala wykonać atak wręcz w dowolnym miejscu znajdującym się w zasięgu sprintu. Odnawianie trwa 4 tury."
+LocHelpText="Pozwala wykonać atak wręcz w dowolnym miejscu znajdującym się w zasięgu sprintu."
+LocFlyOverText="Szarża z bagnetem"
+LocPromotionPopupText="<Bullet/> Pozwala wykonać atak wręcz wszędzie w zasięgu sprintu.<br/><Bullet/> Odnawianie trwa 4 tury.<br/>"
+
+[Beastmaster_LW X2AbilityTemplate]
+LocFriendlyName="Władca zwierząt"
+LocLongDescription="Całkowita odporność na obrażenia zadawane przez berserkerów."
+LocHelpText="Całkowita odporność na obrażenia zadawane przez berserkerów."
+LocFlyOverText="Władca zwierząt"
+LocPromotionPopupText="<Bullet/> Całkowita odporność na obrażenia zadawane przez berserkerów.<br/>"
+
+[MassMindSpin X2AbilityTemplate]
+LocFriendlyName="Masowe otumanienie"
+LocFlyOverText="Masowe otumanienie"
+LocLongDescription="Masowe otumanienie celów na obszarze w kształcie stożka."
+LocHelpText="Przeprowadzenie osłabiającego ataku psionicznego na kilka celów. Może on spowodować różne negatywne skutki, w tym kontrolę umysłu."
+LocPromotionPopupText="<Bullet/> Przeprowadzenie osłabiającego ataku psionicznego na kilka celów. Może on spowodować różne negatywne skutki, w tym kontrolę umysłu."
+LocMissMessage="Otumanienie powstrzymane!"
+
+[LWDroneShock X2AbilityTemplate]
+LocFriendlyName="Wstrząs drona"
+LocLongDescription="Służy do pacyfikacji cywilów. Zadaje niewielkie obrażenia i tylko wprowadza cel w dezorientację."
+LocHelpText="Ta broń zadaje niewielkie obrażenia i osłabia cel."
+LocFlyOverText="Wstrząs drona"
+LocPromotionPopupText="<Bullet/> Służy do pacyfikacji cywilów. Zadaje niewielkie obrażenia i tylko wprowadza cel w dezorientację.<br/>"
+
+[LWDroneRepair X2AbilityTemplate]
+LocFriendlyName="Naprawa"
+LocFlyOverText="Naprawa"
+LocHelpText="Naprawa pobliskiej mechanicznej jednostki."
+LocLongDescription="Naprawa pobliskiej mechanicznej jednostki."
+LocPromotionPopupText="<Bullet/> Naprawa pobliskiej mechanicznej jednostki."
+
+[LWDroneMeleeStun X2AbilityTemplate]
+LocFriendlyName="Paralizator"
+LocFlyOverText="Paralizator"
+LocHelpText="Próba ogłuszenia celu w zasięgu walki wręcz."
+LocLongDescription="Próba ogłuszenia celu w zasięgu walki wręcz."
+LocPromotionPopupText="<Bullet/> Próba ogłuszenia celu w zasięgu walki wręcz."
+LocMissMessage="Pudło!"
+
+[PersonalShield X2AbilityTemplate]
+LocFriendlyName="Tarcza osobista"
+LocFlyOverText="Tarcza osobista"
+LocHelpText="Zapewnia 5 punktów pancerza ablacyjnego. Odnawianie trwa 5 tur."
+LocLongDescription="Zapewnia 5 punktów pancerza ablacyjnego. Odnawianie trwa 5 tur."
+LocPromotionPopupText="<Bullet/> Zapewnia 5 punktów pancerza ablacyjnego.<br/><Bullet/> Odnawianie trwa 5 tur.<br/><Bullet/> Zużywa jedną akcję i nie kończy tury.<br/>"
+
+[MassReanimation_LW X2AbilityTemplate]
+LocFriendlyName="Masowe ożywienie"
+LocFlyOverText="Masowe ożywienie"
+LocHelpText="Ożywienie wszystkich pobliskich zwłok i zamiana ich w zombie."
+LocLongDescription="Ożywienie wszystkich pobliskich zwłok i zamiana ich w zombie."
+LocPromotionPopupText="<Bullet/> Ożywienie wszystkich pobliskich zwłok i zamiana ich w zombie."
+
+[ReadyForAnything X2AbilityTemplate]
+LocFriendlyName="Pełna gotowość"
+LocFlyOverText="Warta: pełna gotowość"
+LocHelpText="Przejście do trybu warty po oddaniu zwykłego strzału z broni głównej."
+LocLongDescription="Przejście do trybu warty po oddaniu zwykłego strzału z broni głównej."
+LocPromotionPopupText="<Bullet/> Przejście do trybu warty po oddaniu zwykłego strzału z broni głównej."
+
+[ReadyForAnythingFlyover X2AbilityTemplate]
+LocFriendlyName="Pełna gotowość"
+LocFlyOverText="Warta: pełna gotowość"
+LocHelpText="Przejście do trybu warty po oddaniu zwykłego strzału z broni głównej."
+LocLongDescription="Przejście do trybu warty po oddaniu zwykłego strzału z broni głównej."
+LocPromotionPopupText="<Bullet/> Przejście do trybu warty po oddaniu zwykłego strzału z broni głównej."
+
+[RepairServos X2AbilityTemplate]
+LocFriendlyName="Ograniczenie szkód"
+LocFlyOverText="Ograniczenie szkód"
+LocLongDescription="Po odniesieniu obrażeń otrzymasz dwa punkty pancerza do końca następnej tury."
+LocHelpText="Po odniesieniu obrażeń otrzymasz dwa punkty pancerza do końca następnej tury."
+LocPromotionPopupText="<Bullet/> Twój pancerz zostaje wzmocniony na pewien czas po uderzeniu. Po odniesieniu obrażeń otrzymasz dwa punkty pancerza do końca następnej tury.<br/><Bullet/> Otrzymanie kilku trafień w kolejnych turach wydłuża czas działania zdolności.<br/>"
+
+[RepairServosPassive X2AbilityTemplate]
+LocFriendlyName="Ograniczenie szkód"
+LocFlyOverText="Ograniczenie szkód"
+LocLongDescription="Po odniesieniu obrażeń otrzymasz dwa punkty pancerza do końca następnej tury."
+LocHelpText="Po odniesieniu obrażeń otrzymasz dwa punkty pancerza do końca następnej tury."
+LocPromotionPopupText="<Bullet/> Po odniesieniu obrażeń otrzymasz dwa punkty pancerza do końca następnej tury.<br/><Bullet/> Otrzymanie kilku trafień w kolejnych turach wydłuża czas działania zdolności.<br/>"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; MutonM2_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[X2Ability_MutonM2_Abilities]
+strBayonetChargePenalty="Obrona Centuriona spada do <XGParam:IntValue1/> na następującą liczbę tur: <XGParam:IntValue0/>."
+
+[MutonM2_LW X2CharacterTemplate]
+strCharacterName="Muton centurion"
+
+[MutonM2_LW_Wpn X2WeaponTemplate]
+FriendlyName="Karabin centuriona"
+BriefSummary="XCOM zdobył wiele rodzajów standardowej broni osobistej piechoty. To najpopularniejsza wersja, zbliżona do karabinu używanego dwadzieścia lat temu. Nie dorównuje technologii magnetycznej ADVENT-u, ale można ją ulepszyć, korzystając z elementów zdobycznego uzbrojenia, gdy odblokuje się już standardowe podejście techniczne."
+TacticalText="<Bullet/> Oddanie strzału z broni głównej żołnierza zawsze kończy jego turę.\n<Bullet/> Jeżeli żołnierz strzeli, mając dostępne obie akcje, padną trzy strzały o mniejszej celności, ale większej łącznej skuteczności.\n<Bullet/> Używaj ulepszeń zdobytych na wrogach, żeby zwiększyć taktyczną przydatność karabinu szturmowego."
+
+[MutonM2_LWGrenade X2GrenadeTemplate]
+FriendlyName="Granat obcych"
+FriendlyNamePlural="Granaty obcych"
+BriefSummary="Każdy muton centurion ma przy sobie jeden granat plazmowy o dużej sile rażenia."
+TacticalText="<Bullet/> Pojedynczy granat o dużej sile rażenia."
+ThrownAbilityName="Rzuć granat obcych"
+ThrownAbilityHelpText="Rzuć granat obcych we wskazane miejsce."
+LaunchedAbilityName="Wystrzel granat obcych"
+LaunchedAbilityHelpText="Wystrzel granat obcych we wskazane miejsce. Niszczy pancerz."
+
+[MutonM2_LW_MeleeAttack X2WeaponTemplate]
+FriendlyName="Bagnet"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; MutonM3_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[MutonM3_LW X2CharacterTemplate]
+strCharacterName="Elitarny muton"
+
+[MutonM3_LW_Wpn X2WeaponTemplate]
+FriendlyName="Elitarne działko plazmowe"
+
+[MutonM3_LWGrenade X2GrenadeTemplate]
+FriendlyName="Granat obcych"
+FriendlyNamePlural="Granaty obcych"
+BriefSummary="Każdy elitarny muton posiada jeden granat plazmowy o dużej sile rażenia."
+TacticalText="<Bullet/> Pojedynczy granat o dużej sile rażenia."
+ThrownAbilityName="Rzuć granat obcych"
+ThrownAbilityHelpText="Rzuć granat obcych we wskazane miejsce."
+LaunchedAbilityName="Wystrzel granat obcych"
+LaunchedAbilityHelpText="Wystrzel granat obcych we wskazane miejsce. Niszczy pancerz."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Naja ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[NajaM1 X2CharacterTemplate]
+strCharacterName="Kobra"
+
+[NajaM2 X2CharacterTemplate]
+strCharacterName="Kobra serpens"
+
+[NajaM3 X2CharacterTemplate]
+strCharacterName="Elitarna kobra"
+
+[NajaM1_WPN X2WeaponTemplate]
+FriendlyName="Karabin snajperski kobry"
+
+[NajaM2_WPN X2WeaponTemplate]
+FriendlyName="Karabin snajperski kobry"
+
+[NajaM3_WPN X2WeaponTemplate]
+FriendlyName="Karabin snajperski kobry"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Sidewinder ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[SidewinderM1 X2CharacterTemplate]
+strCharacterName="Grzechotnik"
+
+[SidewinderM2 X2CharacterTemplate]
+strCharacterName="Grzechotnik serpens"
+
+[SidewinderM3 X2CharacterTemplate]
+strCharacterName="Elitarny grzechotnik"
+
+[SidewinderM1_WPN X2WeaponTemplate]
+FriendlyName="Znikacz grzechotnika"
+
+[SidewinderM2_WPN X2WeaponTemplate]
+FriendlyName="Znikacz grzechotnika"
+
+[SidewinderM3_WPN X2WeaponTemplate]
+FriendlyName="Znikacz grzechotnika"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Viper ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ViperM2_LW X2CharacterTemplate]
+strCharacterName="Żmija serpens"
+
+[ViperM3_LW X2CharacterTemplate]
+strCharacterName="Elitarna żmija"
+
+[ViperM2_LW_WPN X2WeaponTemplate]
+FriendlyName="Karabin wiązkowy"
+
+[ViperM3_LW_WPN X2WeaponTemplate]
+FriendlyName="Karabin wiązkowy"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; ArchonM2_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ArchonM2_LW X2CharacterTemplate]
+strCharacterName="Wielki archon"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; SectoidM2_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[SectoidM2_LW X2CharacterTemplate]
+strCharacterName="Dowódca sektoidów"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvGunnerM1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvGunnerM1 X2CharacterTemplate]
+strCharacterName="Artylerzysta ADVENT-u"
+
+[AdvGunnerM1_WPN X2WeaponTemplate]
+FriendlyName="Automag"
+
+[AdvGunnerM2 X2CharacterTemplate]
+strCharacterName="Ciężki artylerzysta ADVENT-u"
+
+[AdvGunnerM2_WPN X2WeaponTemplate]
+FriendlyName="Automag"
+
+[AdvGunnerM3 X2CharacterTemplate]
+strCharacterName="Elitarny artylerzysta ADVENT-u"
+
+[AdvGunnerM3_WPN X2WeaponTemplate]
+FriendlyName="Automag"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvSentryM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvSentryM1 X2CharacterTemplate]
+strCharacterName="Wartownik ADVENT-u"
+
+[AdvSentryM1_WPN X2WeaponTemplate]
+FriendlyName="Karabin magnetyczny ADVENT-u"
+
+[AdvSentryM2 X2CharacterTemplate]
+strCharacterName="Obrońca ADVENT-u"
+
+[AdvSentryM2_WPN X2WeaponTemplate]
+FriendlyName="Karabin magnetyczny ADVENT-u"
+
+[AdvSentryM3 X2CharacterTemplate]
+strCharacterName="Strażnik ADVENT-u"
+
+[AdvSentryM3_WPN X2WeaponTemplate]
+FriendlyName="Karabin magnetyczny ADVENT-u"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvGrenadierM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvGrenadierM1 X2CharacterTemplate]
+strCharacterName="Technik ADVENT-u"
+
+[AdvGrenadierM1_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="Granatnik ADVENT-u"
+
+[AdvGrenadierM2 X2CharacterTemplate]
+strCharacterName="Grenadier ADVENT-u"
+
+[AdvGrenadierM2_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="Granatnik ADVENT-u"
+
+[AdvGrenadierM3 X2CharacterTemplate]
+strCharacterName="Ciężki grenadier ADVENT-u"
+
+[AdvGrenadierM3_GrenadeLauncher X2WeaponTemplate]
+FriendlyName="Granatnik ADVENT-u"
+
+[AdvGrenadierFlashbangGrenade X2GrenadeTemplate]
+FriendlyName="Granat błyskowy"
+FriendlyNamePlural="Granaty błyskowe"
+BriefSummary="Granat błyskowy oszałamia i dezorientuje wrogów na bardzo dużym obszarze, nakładając na nich też znaczącą karę do działań ofensywnych."
+TacticalText="<Bullet/> Granaty błyskowe nie zadają obrażeń, ale dezorientują i oszałamiają wrogów na dużym obszarze.<br><Bullet/> Sojusznicy z drużyny unikną negatywnych efektów ich działania."
+ThrownAbilityName="Rzuć granat błyskowy"
+ThrownAbilityHelpText="Dezorientuje wszystkich wrogów w polu rażenia."
+LaunchedAbilityname="Wystrzel granat błyskowy"
+LaunchedAbilityHelpText="Dezorientuje wszystkich wrogów w polu rażenia."
+
+[AdvGrenadierFireGrenade X2GrenadeTemplate]
+FriendlyName="Granat zapalający"
+FriendlyNamePlural="Granaty zapalające"
+BriefSummary="Granat zapalający to techniczne rozwinięcie improwizowanej broni zapalającej używanej od lat przez ruch oporu. Po wybuchu większość celów stanie w płomieniach i będzie odnosić dalsze obrażenia od ognia."
+TacticalText="<Bullet/> Granaty zapalające zadają obrażenia wszystkim znajdującym się w polu rażenia jednostkom i powodują \"zapłon\" każdej podatnej na ogień.\n<Bullet/> Wybuchające granaty zapalające zadają większe obrażenia niż inne rodzaje granatów.\n<Bullet/> Niektórzy wrogowie, szczególnie ci z metalu, nie zostaną objęci efektem \"zapłonu\"."
+ThrownAbilityName="Rzuć granat zapalający"
+ThrownAbilityHelpText="Powoduje pożar na obszarze w obrębie celu, podpalając znajdujące się tam jednostki."
+LaunchedAbilityname="Wystrzel granat zapalający"
+LaunchedAbilityHelpText="Powoduje pożar na obszarze w obrębie celu, podpalając znajdujące się tam jednostki."
+
+[AdvGrenadierAcidGrenade X2GrenadeTemplate]
+FriendlyName="Granat kwasowy"
+FriendlyNamePlural="Granaty kwasowe"
+BriefSummary="Dodając substancję żrącą do naszych zwykłych granatów odłamkowych, stworzyliśmy niewielki ładunek wybuchowy, który bardzo skutecznie niszczy pancerze wrogów. Substancja powoli przeżera każdą powierzchnię, na którą zostanie nałożona. Trafione nią cele będą odnosić dodatkowe obrażenia."
+TacticalText="<Bullet/> Granaty kwasowe zdzierają pancerz skuteczniej niż zwykłe granaty odłamkowe.<br><Bullet/> Wrogowie poparzeni kwasem będą odnosić dodatkowe obrażenia przez kilka tur."
+ThrownAbilityName="Rzuć granat kwasowy"
+ThrownAbilityHelpText="Tworzy kałuże kwasu, które zadają obrażenia jednostkom."
+LaunchedAbilityname="Wystrzel granat kwasowy"
+LaunchedAbilityHelpText="Tworzy kałuże kwasu, które zadają obrażenia jednostkom."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvRocketeerM1-3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvRocketeerM1 X2CharacterTemplate]
+strCharacterName="Rakietnik ADVENT-u"
+
+[AdvRocketeerM2 X2CharacterTemplate]
+strCharacterName="Ciężki rakietnik ADVENT-u"
+
+[AdvRocketeerM3 X2CharacterTemplate]
+strCharacterName="Elitarny rakietnik ADVENT-u"
+
+[AdvRocketeerM1_RocketLauncher X2WeaponTemplate]
+FriendlyName="Wyrzutnia rakiet ADVENT-u"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecM3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMec_M3_LW X2CharacterTemplate]
+strCharacterName="Superciężki MEC"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; DroneM1-2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[LWDroneM1 X2CharacterTemplate]
+strCharacterName="Dron monitorujący ADVENT-u"
+
+[LWDroneM2 X2CharacterTemplate]
+strCharacterName="Dron łowczy ADVENT-u"
+
+[LWDroneM1_WPN X2WeaponTemplate]
+FriendlyName="Wstrząs drona"
+
+[LWDroneM2_WPN X2WeaponTemplate]
+FriendlyName="Elektrowstrząs drona"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecArcherM1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMECArcherM1 X2CharacterTemplate]
+strCharacterName="MEC łucznik"
+
+[AdvMECArcher_WPN X2WeaponTemplate]
+FriendlyName="Minimag MEC-a"
+
+[AdvMECArcher_Shoulder_WPN X2WeaponTemplate]
+FriendlyName="Artyleria rakietowa"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecArcherM2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvMECArcherM2 X2CharacterTemplate]
+strCharacterName="Potężny MEC łucznik"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Chryssalid Soldier ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ChryssalidSoldier X2CharacterTemplate]
+strCharacterName="Chryzalid-żołnierz"
+
+[ChryssalidSoldierSlash X2AbilityTemplate]
+LocFriendlyName="Cięcie chryzalida żołnierza"
+LocLongDescription="Twoje ataki tnące zadają duże obrażenia."
+LocHelpText="Twoje ataki tnące zadają duże obrażenia."
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; Hive Queen ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[HiveQueen X2CharacterTemplate]
+strCharacterName="Królowa roju"
+
+[HiveQueenSlash X2AbilityTemplate]
+LocFriendlyName="Lepsze cięcie chryzalida"
+LocLongDescription="Twoje ataki tnące zadają mnóstwo obrażeń."
+LocHelpText="Twoje ataki tnące zadają mnóstwo obrażeń."
+
+;;;;;;;;;;;;;;;;;;;;;;;;; Additional ADVENT Trooper types ;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AdvSergeantM1 X2CharacterTemplate]
+strCharacterName="Sierżant ADVENT-u"
+
+[AdvSergeantM1_WPN X2WeaponTemplate]
+FriendlyName="Karabin magnetyczny ADVENT-u"
+
+[AdvSergeantM2 X2CharacterTemplate]
+strCharacterName="Starszy sierżant ADVENT-u"
+
+[AdvSergeantM2_WPN X2WeaponTemplate]
+FriendlyName="Karabin magnetyczny ADVENT-u"
+
+[AdvShockTroop X2CharacterTemplate]
+strCharacterName="Uderzeniowiec ADVENT-u"
+
+[AdvShockTroop_WPN X2WeaponTemplate]
+FriendlyName="Karabin magnetyczny ADVENT-u"
+
+[AdvCommando X2CharacterTemplate]
+strCharacterName="Komandos ADVENT-u"
+
+[AdvCommando_WPN X2WeaponTemplate]
+FriendlyName="Karabin magnetyczny ADVENT-u"
+
+[AdvVanguard X2CharacterTemplate]
+strCharacterName="Gwardzista ADVENT-u"
+
+[AdvVanguard_WPN X2WeaponTemplate]
+FriendlyName="Karabin magnetyczny ADVENT-u"
+
+[AdvScout X2CharacterTemplate]
+strCharacterName="Zwiadowca ADVENT-u"
+
+[AdvScout_WPN X2WeaponTemplate]
+FriendlyName="Karabin magnetyczny ADVENT-u"
+
+[AdvGeneralM1_LW X2CharacterTemplate]
+strCharacterName="Generał ADVENT-u"
+
+[AdvGeneralM1_LW_WPN X2WeaponTemplate]
+FriendlyName="Karabin magnetyczny ADVENT-u"
+
+[AdvGeneralM2_LW X2CharacterTemplate]
+strCharacterName="Generał ADVENT-u"
+
+[AdvGeneralM2_LW_WPN X2WeaponTemplate]
+FriendlyName="Karabin magnetyczny ADVENT-u"

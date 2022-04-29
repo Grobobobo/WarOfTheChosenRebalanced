@@ -1,0 +1,33 @@
+[T_Guerilla_Ops_Recover_Item_Central_01 SoundNodeWave]
+SpokenText="정찰대에 따르면, 최근 작전에 극히 중요한 파일을 보관 중인 어드밴트 데이터 저장 장치가 이 지역 저항군에 의해 빼앗겼다고 합니다.  안타깝게도 외계인들은 신속하게 지역을 탈환하고, 마주치는 모든 것들을 소탕해 버렸습니다. 하지만 이건 저들의 프로젝트에 타격을 줄 절호의 기회입니다. 기밀을 회수하십시오."
+
+[T_Guerilla_Ops_Recover_Item_Central_02 SoundNodeWave]
+SpokenText="이 지역 저항군이 어드밴트 데이터 저장 장치를 손에 넣었는데, 우리가 알아낸 외계인 작전에 관련된 파일이 들어있다고 합니다. 외계인들도 만만치 않아서, 지역을 제압하여 데이터를 되찾고, 보이는 사람들을 모두 죽이고 있습니다. 즉시 출동해서 기밀을 회수하십시오."
+
+[T_Guerilla_Ops_Recover_Item_Central_03 SoundNodeWave]
+SpokenText="이 지역에서 활동 중인 저항군이 지나가는 어드밴트 부대를 급습했는데, 외계인 작전에 관한 중대한 파일이 담긴 데이터 저장 장치를 얻게 되었습니다. 안타깝게도 적의 지원군이 지역을 소탕해 버렸고, 지역 저항군으로부터는 아무런 연락도 없습니다. 지금 출동해 지역을 확보하고 기밀을 찾으십시오."
+
+[T_Guerilla_Ops_Recover_Item_Central_04 SoundNodeWave]
+SpokenText="이 지역에서 활동 중인 저항군 요원 부대가 어드밴트 정찰대를 급습하여 그들이 운반 중이던 데이터 저장 장치를 발견했습니다. 들은 바로는 이것이 우리가 알아낸 외계인 계획에 대한 중대한 데이터를 담고 있다고 합니다. 안타깝게도 외계인의 지원군이 신속하게 출동하여 저항군으로부터의 모든 연락이 끊겼습니다. 지금 출동해 지역을 확보하고 기밀을 회수하십시오."
+
+[AssaultAlienBase_TacIntro SoundNodeWave]
+SpokenText="메나스 1-5: 잠입해서 지역을 조사하십시오. 격렬한 저항이 예상됩니다. 모든 적군을 처치하십시오."
+
+[T_AssaultNetworkTower_Central_01 SoundNodeWave]
+SpokenText="사령관님, 두 차례의 공격을 할 예정입니다. 우선은 어드밴트 타워의 심장부를 해킹해 네트워크를 교란해야 합니다. 하지만 이를 위해서는 서둘러야 합니다.  데이터를 확보하면, 셴이 그들의 주의를 충분히 끌 만한 깜짝 선물을 준비할 것입니다. 시설을 장악하고, 주변 지역을 확보하고, 목표물을 지키는 적 경비 부대를 제거하십시오 작전대로라면 그들은 우리의 공격을 예상하지 못할 겁니다."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_01 SoundNodeWave]
+SpokenText="원거리 정찰대 보고에 의하면, 어드밴트 군이 이 지역 시설 중 한 곳에 데이터 저장 장치를 보유하고 있다고 합니다.  알아낸 바로는 저장 장치에 외계인의 최신 작전에 중요한 데이터가 들어 있다고 합니다. 지금 바로 출동해야 합니다. 기밀을 반드시 탈취하십시오."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_02 SoundNodeWave]
+SpokenText="타이건 박사가 외계인의 최신 계획에 핵심적인 정보를 담은 어드밴트 데이터 저장 장치의 위치를 추적해 온 결과, 이 지역의 시설 중 한 곳에 있다는 사실을 알아냈습니다. 적 경비대만 섬멸한다면, 내용물을 회수할 수 있을 거라 합니다."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_03 SoundNodeWave]
+SpokenText="외계인 네트워크를 통해 어드밴트 데이터 저장 장치가 이 지역 시설에 있다는 것을 알아냈습니다.  알아낸 바에 따르면, 이 저장 장치는 외계인의 최신 작전에 중요한 정보를 담고 있습니다. 즉시 출동해 기밀을 확보해야 합니다. 단, 적 경비대의 저항도 만만치 않을 것입니다"
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_04 SoundNodeWave]
+SpokenText="저항군 연락병이 전하길, 보안 데이터 저장 장치를 실은 어드밴트 순찰대를 발견했는데, 장치 내부에 외계인의 최신 작전과 관련된 중요한 파일이 담겨있다고 합니다. 적의 활동을 막을 좋은 기회를 놓칠 수는 없습니다. 즉시 출동해서 기밀을 탈취해야 합니다."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_05 SoundNodeWave]
+SpokenText="저항군에게 연락이 왔는데, 한 요원이 이 지역에서 어드밴트 데이터 저장 장치의 위치를 찾았다 합니다. 장치 내부엔 외계인의 최신 작전과 관련된 중요한 데이터가 들어 있다고 합니다. 즉시 출동하여 데이터를 탈취하고 그들의 작전을 막아야 합니다."
+

@@ -1,0 +1,33 @@
+[T_Guerilla_Ops_Recover_Item_Central_01 SoundNodeWave]
+SpokenText="Der Aufklärung zufolge wurde ein ADVENT-Datenarchiv mit wichtigen Daten über ihren letzten Einsatz vom lokalen Widerstand gestohlen. Leider konnten die Aliens es schnell zurückerobern und dabei alle töten, die sie vorfanden. Diese Chance, ihr Projekt zu stören, dürfen wir uns nicht entgehen lassen. Bergen Sie die Daten."
+
+[T_Guerilla_Ops_Recover_Item_Central_02 SoundNodeWave]
+SpokenText="Lokale Widerstandstruppen konnten hier ein ADVENT-Datenarchiv übernehmen, in dem sich Dateien zum Alien-Einsatz befinden, den wir erfasst haben. Die Aliens wollten es aber nicht hergeben, haben das Gebiet überrannt, die Daten geborgen und alle getötet, die sie vorfanden. Das hält uns jedoch nicht auf. Holen Sie uns die Daten."
+
+[T_Guerilla_Ops_Recover_Item_Central_03 SoundNodeWave]
+SpokenText="Ein Widerstandsteam, das in diesem Gebiet operierte, hat sich ADVENT-Truppen vorgeknöpft und ist dabei auf ein Datenarchiv mit wichtigen Dateien zum Alien-Einsatz gestoßen. Leider konnten feindliche Verstärkungen das Gebiet überrennen und den lokalen Widerstand zum Schweigen bringen. Wir gehen rein, um das Gebiet zu sichern. Finden Sie die Daten!"
+
+[T_Guerilla_Ops_Recover_Item_Central_04 SoundNodeWave]
+SpokenText="Eine Gruppe lokaler Widerstandskämpfer hat in diesem Gebiet eine ADVENT-Patrouille überfallen und dabei ein Datenarchiv gefunden. Anscheinend befinden sich in dem Ding wichtige Dateien zu dem Alien-Projekt, von dem wir gehört haben. Leider konnten die Aliens schnell Verstärkung schicken. Wir haben jeden Kontakt zum Widerstand verloren. Wir gehen rein und sichern das Gebiet. Bergen Sie die Daten."
+
+[AssaultAlienBase_TacIntro SoundNodeWave]
+SpokenText="Menace 1-5, Infiltrieren und untersuchen Sie das Gebiet. Rechnen Sie mit schwerem Widerstand und neutralisieren Sie alle Feinde."
+
+[T_AssaultNetworkTower_Central_01 SoundNodeWave]
+SpokenText="Commander, das wird ein zweistufiger Angriff: Zuerst hacken wir das Herz des ADVENT-Turms und legen ihr Netzwerk lahm - aber wir müssen uns beeilen. Wenn wir die Kontrolle über diese Daten erlangen können, bereitet Shen eine Überraschung für sie vor, um ihre Aufmerksamkeit zu erringen. Sichern Sie das Gebiet und eliminieren Sie alle feindlichen Sicherheitskräfte, die das Ziel bewachen. Wenn es gut läuft, sehen sie uns nicht mal kommen."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_01 SoundNodeWave]
+SpokenText="Die Fernaufklärung hat herausgefunden, dass ADVENT-Truppen ein ungeschütztes Datenarchiv in einer ihrer Einrichtungen in diesem Gebiet aufbewahren. Es enthält anscheinend wichtige Daten zum aktuellen Alien-Einsatz, also werden wir es uns holen. Holen Sie uns diese Daten."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_02 SoundNodeWave]
+SpokenText="Dr. Tygan hat die Bewegungen eines ADVENT-Datenarchivs verfolgt, in dem wichtige Informationen zum aktuellen Projekt der Aliens gespeichert sind. Es ist ihm gelungen, das Archiv bis zu einer ihrer Einrichtungen in diesem Gebiet zurückzuverfolgen. Tygan meint, dass wir den Inhalt bergen können, wenn wir alle Feinde ausschalten, die das Ding beschützen."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_03 SoundNodeWave]
+SpokenText="Wir haben über das ADVENT-Netzwerk die Position eines ihrer Datenarchive erfahren. Es befindet sich in einer Einrichtung in dieser Region. Wie es aussieht, enthält es wichtige Dateien zum aktuellen Alien-Einsatz. Wir holen uns diese Daten, aber rechnen Sie mit Widerstand von Sicherheitskräften in diesem Gebiet."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_04 SoundNodeWave]
+SpokenText="Einer unserer Widerstandskontakte hat uns auf eine ADVENT-Patrouille hingewiesen, die in diesem Gebiet ein sicheres Datenarchiv lagert. Die Daten darin könnten wichtig für den aktuellen Einsatz der Aliens sein. Wir dürfen uns die Gelegenheit zur Verlangsamung ihrer Fortschritte nicht entgehen lassen, also holen wir uns diese Daten."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_05 SoundNodeWave]
+SpokenText="Wir haben vom Widerstand erfahren, dass einer ihrer Kämpfer in diesem Gebiet ein ADVENT-Datenarchiv gefunden hat, in dem Informationen zum aktuellen Alien-Einsatz gespeichert sind. Wir gehen rein, um uns die Daten zu holen und ihren Fortschritt aufzuhalten."
+

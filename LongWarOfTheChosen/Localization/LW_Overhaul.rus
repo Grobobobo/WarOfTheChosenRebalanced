@@ -1,0 +1,652 @@
+[XComGameState_LWOverhaulOptions]
+LWOverhaulTabName="LONG WAR (LWOTC)"
+GrazeBandWidthMod="Диапазон \"царапины\""
+GrazeBandWidthModTooltip="Определяет, насколько близко выстрел должен быть к попаданию, чтобы считаться \"царапиной\""
+GrazeBandValue="Значение: <XGParam:IntValue0>"
+PauseOnRecruitMod="Пауза при найме"
+PauseOnRecruitModTooltip="Приостанавливает время на глобусе, когда в убежище нанимают нового солдата или повстанца"
+
+[UIScreenListener_ShellDifficulty]
+strIncompatibleModsTitle="ОБНАРУЖЕНЫ ДУБЛИКАТЫ МОДИФИКАЦИЙ"
+strIncompatibleModsText="Замечены дубликаты модификаций:\n%modnames%\nЭти модификации вошли в данную модификацию и должны быть отключены при запуске игры. Продолжив, вы рискуете столкнуться с такими проблемами, как низкая производительность и нестабильная работа."
+
+[UIMission_LWCustomMission]
+m_strMissionDifficulty_start="БАЗОВАЯ АКТИВНОСТЬ ПРОТИВНИКА"
+
+[ProtectRegionEarly X2LWAlienActivityTemplate]
+ActivityName="ProtectRegion1Activity"
+ActivityObjectives[0]="Начните освобождение региона"
+
++MissionDescriptions=(MissionFamily="Recover_LW", Description="Мы нашли потенциальную улику, касающуюся действий \"Адвента\". Нужно провести расследование.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="Мы нашли потенциальную улику, касающуюся действий \"Адвента\". Нужно провести расследование.", MissionIndex=0)
+
+[ProtectRegionMid X2LWAlienActivityTemplate]
+ActivityName="ProtectRegion2Activity"
+ActivityObjectives[0]="Освобождение: спасите перебежчика"
+
++MissionDescriptions=(MissionFamily="Extract_LW", Description="Мы можем эвакуировать перебежчика из \"Адвента\", обладающего ключевой информацией о слабых местах пришельцев в этом регионе.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="Нам стало известно о стороннике Сопротивления, обладающем важными подробностями о слабых местах пришельцев в этом регионе.", MissionIndex=0)
+
+[ProtectRegion X2LWAlienActivityTemplate]
+ActivityName="ProtectRegion3Activity"
+ActivityObjectives[0]="Освобождение: помешайте действиям \"Адвента\""
+ActivityObjectives[1]="Освобождение: уничтожьте сетевую вышку"
+ActivityObjectives[2]="Освобождение: атакуйте базу \"Адвента\""
+
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="Нам стало известно, что устройство \"Адвента\" создает помехи в коммуникационной сети Сопротивления. Мы должны его уничтожить.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Neutralize_LW", Description="Наши действия помогли выявить сотрудника \"Адвента\", руководящего действиями врага в этом регионе. Его необходимо нейтрализовать.", MissionIndex=0)
+
++MissionDescriptions=(MissionFamily="AssaultNetworkTower_LW", Description="Мы одерживаем победу за победой в этом регионе. Настало время уничтожить центр связи в столице.", MissionIndex=1)
+
++MissionDescriptions=(MissionFamily="AssaultAlienBase_LW", Description="Пока \"Адвент\" приводит свои дела в порядок, мы можем атаковать региональный военный штаб и освободить регион из-под вражеского контроля.", MissionIndex=2)
+
+[Counterinsurgency X2LWAlienActivityTemplate]
+ActivityName="CounterinsurgencyActivity"
+ActivityObjectives[0]="Предотвратите утечки данных Сопротивления"
+ActivityObjectives[1]="Защитите убежище Сопротивления"
+
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="\"Адвент\" расследует наши действия в этом регионе. Убежище может оказаться в опасности.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Terror_LW", Description="Силы противника приближаются к убежищу. Мы должны защитить его и людей внутри.", MissionIndex=1)
++MissionDescriptions=(MissionFamily="Defend_LW", Description="Силы противника приближаются к убежищу. Мы должны защитить его и людей внутри.", MissionIndex=1)
+
+[ReinforceActivity X2LWAlienActivityTemplate]
+ActivityName="ReinforceActivity"
+ActivityObjectives[0]="Перехватите подкрепление \"Адвента\""
++MissionDescriptions=(MissionFamily="SupplyLineRaid_LW", Description="Мы обнаружили в этом регионе перемещение сил \"Адвента\" в ответ на наши действия.", MissionIndex=0)
+
+[COINResearch X2LWAlienActivityTemplate]
+ActivityName="COINResearchActivity"
+ActivityObjectives[0]="Помешайте военным разработкам \"Адвента\""
++MissionDescriptions=(MissionFamily="Recover_LW", Description="Мы нашли удачный момент, чтобы не позволить пришельцам завершить военный исследовательский проект.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="Мы нашли удачный момент, чтобы не позволить пришельцам завершить военный исследовательский проект.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="Мы нашли удачный момент, чтобы не позволить пришельцам завершить военный исследовательский проект.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Neutralize_LW", Description="Мы нашли удачный момент, чтобы ликвидировать сотрудника \"Адвента\" и не позволить пришельцам завершить военный исследовательский проект.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="Мы нашли удачный момент, чтобы спасти пленного ученого, которого заставляют работать на военном исследовательском проекте.", MissionIndex=0)
+
+[COINOps X2LWAlienActivityTemplate]
+ActivityName="COINOpsActivity"
+ActivityObjectives[0]="Атакуйте контрразведку \"Адвента\""
++MissionDescriptions=(MissionFamily="Recover_LW", Description="\"Адвент\" проводит операцию, стремясь помешать действиям Сопротивления и XCOM. У нас есть шанс остановить их.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="\"Адвент\" проводит операцию, стремясь помешать действиям Сопротивления и XCOM. У нас есть шанс остановить их.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="\"Адвент\" проводит операцию, стремясь помешать действиям Сопротивления и XCOM. У нас есть шанс остановить их.", MissionIndex=0)
+
+[BuildResearchFacility X2LWAlienActivityTemplate]
+ActivityName="BuildResearchFacilityActivity"
+ActivityObjectives[0]="Устройте засаду на строительную бригаду \"Адвента\""
++MissionDescriptions=(MissionFamily="SupplyLineRaid_LW", Description="Нам стало известно о планах пришельцев создать в этом регионе новую исследовательскую станцию. Мы можем устроить засаду на строительную бригаду и смешать их планы.", MissionIndex=0)
+
+[RegionalAvatarResearch X2LWAlienActivityTemplate]
+ActivityObjectives[0]="Атакуйте научную лабораторию пришельцев"
++MissionDescriptions=(MissionFamily="Sabotage_LW", Description="Мы обнаружили важную научную лабораторию пришельцев. Сровняем ее с землей.", MissionIndex=0)
+
+[ScheduledOffworldReinforcements X2LWAlienActivityTemplate]
+ActivityName="ScheduledOffworldReinforcementsActivity"
+ActivityObjectives[0]="Найдите вражеские пути подкреплений"
+ActivityObjectives[1]="Заберите артефакты с НЛО"
+
++MissionDescriptions=(MissionFamily="Recover_LW", Description="Мы нашли потенциальную улику, касающуюся действий \"Адвента\". Нужно провести расследование.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="Мы нашли потенциальную улику, касающуюся действий \"Адвента\". Нужно провести расследование.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="Наша разведка обнаружила уязвимый НЛО, находящийся на земле.", MissionIndex=1)
+
+[EmergencyOffworldReinforcements X2LWAlienActivityTemplate]
+ActivityName="EmergencyOffworldReinforcementsActivity"
+ActivityObjectives[0]="Найдите вражеские пути подкреплений"
+ActivityObjectives[1]="Заберите артефакты с НЛО"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="Мы нашли потенциальную улику, касающуюся действий \"Адвента\". Нужно провести расследование.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="Мы нашли потенциальную улику, касающуюся действий \"Адвента\". Нужно провести расследование.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="Наша разведка обнаружила уязвимый НЛО, находящийся на земле.", MissionIndex=1)
+
+[SuperEmergencyOffworldReinforcements X2LWAlienActivityTemplate]
+ActivityName="SuperEmergencyOffworldReinforcementsActivity"
+ActivityObjectives[0]="Найдите вражеские пути подкреплений"
+ActivityObjectives[1]="Заберите артефакты с НЛО"
+
++MissionDescriptions=(MissionFamily="Recover_LW", Description="Мы нашли потенциальную улику, касающуюся действий \"Адвента\". Нужно провести расследование.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="Мы нашли потенциальную улику, касающуюся действий \"Адвента\". Нужно провести расследование.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="Мы обнаружили пленника \"Адвента\", возможно, способного пролить свет на планы врага.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="Наша разведка обнаружила уязвимый НЛО, находящийся на земле.", MissionIndex=1)
+
+[Invasion X2LWAlienActivityTemplate]
+ActivityName="InvasionActivity"
+ActivityObjectives[0]="Устройте засаду на авангард \"Адвента\""
+ActivityObjectives[1]="Защитите временное правительство"
+
++MissionDescriptions=(MissionFamily="SupplyLineRaid_LW", Description="Мы засекли силы \"Адвента\", проникнувшие в этот регион. Необходимо остановить их продвижение.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Invasion_LW", Description="\"Адвент\" наступает и атакует временное правительство в этом регионе. Защитите наших людей, или регион снова окажется под властью врага.", MissionIndex=1)
+
+[Foothold X2LWAlienActivityTemplate]
+ActivityName="FootholdActivity"
+ActivityObjectives[0]="Нападите на десантный НЛО"
+ActivityObjectives[1]="Защитите временное правительство"
+
++MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="Пришельцы пытаются закрепиться на Земле. Мы можем остановить их, если нанесем удар по десантному кораблю, когда тот приземлится.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Invasion_LW", Description="Пришельцы наступают и атакуют временное правительство в этом регионе. Защитите наших людей, или регион снова окажется под властью врага.", MissionIndex=1)
+
+[Propaganda X2LWAlienActivityTemplate]
+ActivityName="PropagandaActivity"
+ActivityObjectives[0]="Привлеките внимание \"Адвента\""
++MissionDescriptions=(MissionFamily="SabotageCC_LW", Description="Пришельцы оставили центр города относительно незащищенным. Мы можем нанести удар по одному из памятников в качестве меры устрашения, но \"Адвент\" наверняка отреагирует на угрозу.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Neutralize_LW", Description="Нам стало известно, что в ближайшем будущем высокопоставленный чиновник в администрации \"Адвента\" на короткое время останется без охраны. Мы можем его ликвидировать, но \"Адвент\", несомненно, отреагирует.", MissionIndex=0)
+
+[ProtectResearch X2LWAlienActivityTemplate]
+ActivityName="ProtectResearchActivity"
+ActivityObjectives[0]="Найдите руководителя объекта"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="Мы нашли потенциальную улику, касающуюся действий \"Адвента\". Нужно провести расследование.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="Мы нашли потенциальную улику, касающуюся действий \"Адвента\". Нужно провести расследование.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="Мы обнаружили устройство, с помощью которого \"Адвент\" глушит связь Сопротивления. Если его уничтожить, мы сможем выйти на новые источники разведданных.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="Мы обнаружили пленника \"Адвента\", возможно, способного пролить свет на планы врага.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Extract_LW", Description="Нам стало известно о человеке, которому удалось сбежать из комплекса \"Адвента\". Он может рассказать много важного о действиях врага. Его нужно эвакуировать.", MissionIndex=0)
+
+[ProtectData X2LWAlienActivityTemplate]
+ActivityName="ProtectDataActivity"
+ActivityObjectives[0]="Найдите улику"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="Мы нашли потенциальную улику, касающуюся действий \"Адвента\". Нужно провести расследование.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="Мы нашли потенциальную улику, касающуюся действий \"Адвента\". Нужно провести расследование.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="Мы обнаружили устройство, с помощью которого \"Адвент\" глушит связь Сопротивления. Если его уничтожить, мы сможем выйти на новые источники разведданных.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="Мы обнаружили пленника \"Адвента\", возможно, способного пролить свет на планы врага.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Extract_LW", Description="Нам стало известно о человеке, которому удалось сбежать из комплекса \"Адвента\". Он может рассказать много важного о действиях врага. Его нужно эвакуировать.", MissionIndex=0)
+
+[TroopManeuvers X2LWAlienActivityTemplate]
+ActivityName="TroopManeuversActivity"
+ActivityObjectives[0]="Уменьшите силу врага"
++MissionDescriptions=(MissionFamily="TroopManeuvers_LW", Description="Одно из подразделений \"Адвента\" уязвимо для внезапной атаки.")
+
+[HighValuePrisoner X2LWAlienActivityTemplate]
+ActivityName="HighValuePrisonerActivity"
+ActivityObjectives[0]="Освободите важного пленника"
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="Нам стало известно, где \"Адвент\" держит важного пленника. У нас есть немного времени, чтобы освободить его.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Extract_LW", Description="Нам стало известно, что из тюрьмы \"Адвента\" сбежал человек, способный помочь Сопротивлению. У нас есть кратковременная возможность вывезти его в безопасное место.", MissionIndex=0)
+
+[PoliticalPrisoners X2LWAlienActivityTemplate]
+ActivityName="PoliticalPrisonersActivity"
+ActivityObjectives[0]="Освободите пленных повстанцев"
++MissionDescriptions=(MissionFamily="Jailbreak_LW", Description="Нескольких участников Сопротивления держат в плену в защищенном комплексе. Нам выпала возможность освободить их.", MissionIndex=0)
+
+[IntelRaid X2LWAlienActivityTemplate]
+ActivityName="IntelRaidActivity"
+ActivityObjectives[0]="Защитите агентов Сопротивления"
++MissionDescriptions=(MissionFamily="IntelRaid_LW", Description="Команда сборщиков Сопротивления была обнаружена \"Адвентом\". Мы должны защитить людей и оборудование от вражеской группы захвата.")
+
+[SupplyConvoy X2LWAlienActivityTemplate]
+ActivityName="SupplyConvoyActivity"
+ActivityObjectives[0]="Защитите агентов Сопротивления"
++MissionDescriptions=(MissionFamily="SupplyConvoy_LW", Description="Силы \"Адвента\" движутся наперерез конвою снабжения Сопротивления. Мы должны защитить людей и ресурсы.")
+
+[RecruitRaid X2LWAlienActivityTemplate]
+ActivityName="RecruitRaidActivity"
+ActivityObjectives[0]="Защитите агентов Сопротивления"
++MissionDescriptions=(MissionFamily="RecruitRaid_LW", Description="Рекрутеры Сопротивления наткнулись на патруль \"Адвента\". Нужно немедленно эвакуировать наш персонал.")
+
+[Snare X2LWAlienActivityTemplate]
+ActivityName="SnareActivity"
+ActivityObjectives[0]="Найдите улику"
++MissionDescriptions=(MissionFamily="Recover_LW", Description="Мы нашли потенциальную улику, касающуюся действий \"Адвента\". Нужно провести расследование.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Hack_LW", Description="Мы нашли потенциальную улику, касающуюся действий \"Адвента\". Нужно провести расследование.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rescue_LW", Description="Мы обнаружили пленника \"Адвента\", возможно, способного пролить свет на планы врага.", MissionIndex=0)
+
+[DebugMission X2LWAlienActivityTemplate]
+ActivityObjectives[0]="DEBUG Mission"
+
+[Rendezvous X2LWAlienActivityTemplate]
+ActivityName="RendezvousActivity"
+ActivityObjectives[0]="Dummy mission"
+ActivityObjectives[1]="Устройте засаду на силы \"Адвента\""
++MissionDescriptions=(MissionFamily="Rendezvous_LW", Description="Dummy mission", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Rendezvous_LW", Description="Выследите шпионов-безликих и их союзников из \"Адвента\" вблизи этого убежища.", MissionIndex=1)
+
+[X2Item_LWGauntlet]
+PrimaryRangeLabel="Дальность ракеты"
+PrimaryRadiusLabel="Радиус ракеты"
+SecondaryRangeLabel="Дальность огнемета"
+SecondaryRadiusLabel="Радиус огнемета"
+
+[LWGauntlet_CV X2MultiWeaponTemplate]
+FriendlyName="\"Перчатка\""
+FriendlyNamePlural="\"Перчатки\""
+BriefSummary="Эта комбинация из огнемета и мини-ракетомета была разработана, чтобы позволить нашим разрушителям решать различные проблемы в бою."
+TacticalText="<Bullet/> \"Перчатка\" - продвинутое устройство, оснащенное миниатюрным ракетометом и огнеметом.<br/><Bullet/> Ракетомет изначально обладает одним зарядом и радиусом поражения в три клетки.<br/><Bullet/> Вести огонь можно по любой цели в зоне видимости.<br/><Bullet/> Урон от ракет уменьшается по мере удаления от точки попадания.<br/><Bullet/> Огнемет - оружие малой дальности, наносящее урон в конической зоне поражения.<br/><Bullet/> Огнемет ограничен двумя зарядами и не наносит урон механическим целям при отсутствии улучшений.<br/><Bullet/> Использование любой способности \"перчатки\" требует одно действие и заканчивает ход.<br/><Bullet/> На точность ракет влияет меткость солдата, дистанция выстрела и количество оставшихся очков действия на текущем ходу. Низкие показатели меткости приводят к большему допустимому разбросу и ракета будет иметь шансы отклонится от целевой клетки на большее расстояние. Максимальный радиус разлета указан во всплывающем меню, в то время как число возле курсора наведения отображает среднее значение разброса для выстрела по данной области."
+AbilityDescName="\"перчатка\""
+
+[LWGauntlet_MG X2MultiWeaponTemplate]
+FriendlyName="\"Перчатка\" МК2"
+FriendlyNamePlural="\"Перчатки\" МК2"
+BriefSummary="Оружие, установленное на \"перчатке\" МК2, мощнее своих предшественников."
+TacticalText="<Bullet/> \"Перчатка\" - продвинутое устройство, оснащенное миниатюрным ракетометом и огнеметом.<br/><Bullet/> Ракетомет изначально обладает одним зарядом и радиусом поражения в три клетки.<br/><Bullet/> Вести огонь можно по любой цели в зоне видимости.<br/><Bullet/> Урон от ракет уменьшается по мере удаления от точки попадания.<br/><Bullet/> Огнемет - оружие малой дальности, наносящее урон в конической зоне поражения.<br/><Bullet/> Огнемет ограничен двумя зарядами и не наносит урон механическим целям при отсутствии улучшений.<br/><Bullet/> Использование любой способности \"перчатки\" требует одно действие и заканчивает ход.<br/><Bullet/> На точность ракет влияет меткость солдата, дистанция выстрела и количество оставшихся очков действия на текущем ходу. Низкие показатели меткости приводят к большему допустимому разбросу и ракета будет иметь шансы отклонится от целевой клетки на большее расстояние. Максимальный радиус разлета указан во всплывающем меню, в то время как число возле курсора наведения отображает среднее значение разброса для выстрела по данной области."
+AbilityDescName="\"перчатка\""
+
+[LWGauntlet_CG X2MultiWeaponTemplate]
+FriendlyName="\"Перчатка\" МК3"
+FriendlyNamePlural="\"Перчатки\" МК3"
+BriefSummary="\"Перчатка\" МК3 наносит больше урона, чем предыдущие образцы."
+TacticalText="<Bullet/> \"Перчатка\" - продвинутое устройство, оснащенное миниатюрным ракетометом и огнеметом.<br/><Bullet/> Ракетомет изначально обладает одним зарядом и радиусом поражения в три клетки.<br/><Bullet/> Вести огонь можно по любой цели в зоне видимости.<br/><Bullet/> Урон от ракет уменьшается по мере удаления от точки попадания.<br/><Bullet/> Огнемет - оружие малой дальности, наносящее урон в конической зоне поражения.<br/><Bullet/> Огнемет ограничен двумя зарядами и не наносит урон механическим целям при отсутствии улучшений.<br/><Bullet/> Использование любой способности \"перчатки\" требует одно действие и заканчивает ход.<br/><Bullet/> На точность ракет влияет меткость солдата, дистанция выстрела и количество оставшихся очков действия на текущем ходу. Низкие показатели меткости приводят к большему допустимому разбросу и ракета будет иметь шансы отклонится от целевой клетки на большее расстояние. Максимальный радиус разлета указан во всплывающем меню, в то время как число возле курсора наведения отображает среднее значение разброса для выстрела по данной области."
+AbilityDescName="\"перчатка\""
+
+[LWGauntlet_BM X2MultiWeaponTemplate]
+FriendlyName="Бластерная \"перчатка\""
+FriendlyNamePlural="Бластерные \"перчатки\""
+BriefSummary="Оружие в улучшенной \"перчатке\" наносит огромный урон, а микроракеты способны наводиться на цель."
+TacticalText="<Bullet/> Бластерная установка, входящая в конструкцию улучшенной \"перчатки\", выпускает высокотехнологичную ракету, способную огибать преграды.\n<Bullet/> Улучшенный огнемет наносит большой урон в конусе как врагам, так и предметам окружения.<br/><Bullet/> Урон от ракет уменьшается по мере удаления от точки попадания.<br/><Bullet/> Огнемет - оружие малой дальности, наносящее урон в конической зоне поражения.<br/><Bullet/> Огнемет ограничен двумя зарядами и не наносит урон механическим целям при отсутствии улучшений.<br/><Bullet/> Использование любой способности \"перчатки\" требует одно действие и заканчивает ход.<br/><Bullet/> На точность ракет влияет меткость солдата, дистанция выстрела и количество оставшихся очков действия на текущем ходу. Низкие показатели меткости приводят к большему допустимому разбросу и ракета будет иметь шансы отклонится от целевой клетки на большее расстояние. Максимальный радиус разлета указан во всплывающем меню, в то время как число возле курсора наведения отображает среднее значение разброса для выстрела по данной области."
+AbilityDescName="\"перчатка\""
+
+[UISquadSelect_InfiltrationPanel]
+
+;LWOTC Translated
+
+UpToText="До"
+ExpectedActivityTextStr="Ожидаемая активность"
+BoostedActivityText="Ожидаемая активность (с ускорением)"
+BoostTextPre="С"
+BoostTextPost="Ускорение"
+
+;End Translated
+
+strInfiltrationTitle="ИТОГОВОЕ ПРОНИКНОВЕНИЕ:"
+strBaseInfiltrationTitle="Базовое проникновение:"
+strSquadSizeTitle="Влияние размера отряда:"
+strCovertnessTitle="Влияние способностей и <br/><Bullet/> экипировки:"
+strMissionTimeTitle="Доступность задания:"
+strDaysAndHours="<XGParam:IntValue0> дн., <XGParam:IntValue1> ч."
+strMinusDaysAndHours="- <XGParam:IntValue0> дн., <XGParam:IntValue1> ч."
+strPlusDaysAndHours="+ <XGParam:IntValue0> дн., <XGParam:IntValue1> ч."
+strMissionIndefinite="Неопределенный срок"
+
+[UIScreenListener_DropShipBriefing_MissionStart]
+strLaunchingInfiltration="КОНТАКТ В БЛИЖАЙШЕЕ ВРЕМЯ"
+
+[UIUtilities_Text_LW]
+m_strHelp="Помощь"
+
+[X2Ability_LW_GearAbilities]
+strWeight="Малый вес предмета"
+AblativeHPLabel="Временные ОЗ"
+
+[X2Ability_LW_TechnicalAbilitySet]
+strMaxScatter="\nМакс. разброс (в клетках):"
+
+[XComGameState_LWListenerManager]
+ResistanceHQBodyText="Доступ к информации убежища Сопротивления"
+
+[X2LWAbilitiesModTemplate]
+strCritReductionFromConditionalToHit="Меткость"
+
+[X2EventListener_Missions]
+m_strClearSquad="ОЧИСТИТЬ ОТРЯД"
+m_strTooltipClearSquad="Убрать всех солдат из отряда."
+
+m_strAutofillSquad="СОБРАТЬ ОТРЯД АВТОМАТИЧЕСКИ"
+m_strTooltipAutofillSquad="Автоматически заполнить свободные позиции в отряде."
+
+[X2EventListener_StrategyMap]
+strTimeRemainingHoursOnly="<XGParam:IntValue0> ч."
+strTimeRemainingDaysAndHours="<XGParam:IntValue1> дн., <XGParam:IntValue0> ч."
+
+; LWOTC Translated
+strDarkEventExpiredTitle="Событие прошло"
+strDarkEventExpiredText="прошло"
+; End Translated
+
+[X2EventListener_Soldiers]
+OnLiaisonDuty="Сов. убежища"
+OnInfiltrationMission="Проникновение..."
+UnitAlreadyInSquad="Солдат в другом отряде"
+UnitInSquad="Солдат уже в отряде"
+RankTooLow="Недостаточно высокое звание"
+CannotModifyOnMissionSoldierTooltip="Невозможно изменить настройки солдата, находящегося на задании"
+
+[X2Effect_LWHolotarget]
+HoloTargetEffectName="В голографическом прицеле"
+
+[XComGameState_LWPersistentSquad]
++DefaultSquadNames="Угроза"
++DefaultSquadNames="Вуду"
++DefaultSquadNames="Мечник"
++DefaultSquadNames="Супершесть"
++DefaultSquadNames="Гусары"
++DefaultSquadNames="Драгуны"
++DefaultSquadNames="Дьяволята"
++DefaultSquadNames="Дикие"
++DefaultSquadNames="Острие копья"
++DefaultSquadNames="Победа"
++DefaultSquadNames="Морфей"
++DefaultSquadNames="Торнадо"
++DefaultSquadNames="Добровольцы"
++DefaultSquadNames="Гризли"
++DefaultSquadNames="Опора"
++DefaultSquadNames="Парящие орлы"
++DefaultSquadNames="Леон"
++DefaultSquadNames="Убийца"
++DefaultSquadNames="Хищник"
++DefaultSquadNames="Гадюка"
++DefaultSquadNames="Вега"
++DefaultSquadNames="Крепкие парни"
++DefaultSquadNames="Мародеры"
++DefaultSquadNames="Черная стража"
++DefaultSquadNames="Разбойники"
++DefaultSquadNames="Кирю-Кай"
++DefaultSquadNames="Трезубец"
++DefaultSquadNames="Дикий волк"
+
++TempSquadNames="Альфа"
++TempSquadNames="Браво"
++TempSquadNames="Чарли"
++TempSquadNames="Дельта"
++TempSquadNames="Эхо"
++TempSquadNames="Фокстрот"
++TempSquadNames="Гольф"
++TempSquadNames="Отель"
++TempSquadNames="Индия"
++TempSquadNames="Джульетта"
++TempSquadNames="Кило"
++TempSquadNames="Лима"
++TempSquadNames="Майк"
++TempSquadNames="Ноябрь"
++TempSquadNames="Оскар"
++TempSquadNames="Папа"
++TempSquadNames="Квебек"
++TempSquadNames="Ромео"
++TempSquadNames="Сьерра"
++TempSquadNames="Танго"
++TempSquadNames="Юниформ"
++TempSquadNames="Виктор"
++TempSquadNames="Янки"
++TempSquadNames="Зулус"
+
+
+BackupSquadName="Отряд XCom \"<XGParam:StrValue0>\""
+BackupTempSquadName="Временный отряд \"<XGParam:StrValue0>\""
+
+[UIScreenListener_LivingQuarters]
++m_strSquadSelection="КАЗАРМА ОТРЯДА"
+
+[UIScreenListener_Alert]
+m_strNewRebelsAvailableTitle="ДОСТУПЕН НОВЫЙ ПЕРСОНАЛ СОПРОТИВЛЕНИЯ"
+m_strNewRebelsAvailable="Ожидание назначения в убежище Сопротивления: %REGION"
+m_strHelpBMGoodsDescription="Шеф, на черном рынке можно нанять новых ученых, инженеров и опытных солдат."
+
+m_strInvasionTitle="ВТОРЖЕНИЕ \"АДВЕНТА\""
+m_strInvasionLabel="АТАКОВАН ОСВОБОЖДЕННЫЙ РЕГИОН"
+m_strInvasionBody="Шеф, \"Адвент\" пытается отбить освобожденный регион. Они ведут массивное наступление на штаб временного правительства!"
+m_strInvasionFlare="ЭКСТРЕННОЕ СООБЩЕНИЕ"
+m_strInvasionConfirm="ПОКАЗАТЬ ЗОНУ ВТОРЖЕНИЯ"
+
+m_strRepeatResearch="ПОВТОРИТЬ ИССЛЕДОВАНИЕ"
+
+[UIScreenListener_ArmoryWeaponUpgrade_LW]
+strStripWeaponUpgradesButton="Снять улучшения оружия"
+strStripWeaponUpgradesTooltip="Снять с оружия все улучшения и персонализацию и вернуть его в общий инвентарь"
+strStripWeaponUpgradeDialogueTitle="ПОДТВЕРДИТЬ СНЯТИЕ УЛУЧШЕНИЙ"
+strStripWeaponUpgradeDialogueText="Вы действительно хотите снять все улучшения с этого оружия и вернуть его в общий инвентарь?"
+
+[UIPersonnel_SquadBarracks]
+strSquadBarrackTitle="ОТРЯД: <XGParam:StrValue0>"
+strUnassignedSoldierTitle="СОЛДАТЫ БЕЗ НАЗНАЧЕНИЯ"
+strEdit="ПОКАЗАТЬ"
+strSelect="ВЫБРАТЬ"
+strSquad="ОТРЯД"
+strRenameSquad="ПЕРЕИМЕНОВАТЬ ОТРЯД"
+strEditBiography="ИЗМЕНИТЬ ИСТОРИЮ"
+strDeleteSquad="УДАЛИТЬ ОТРЯД"
+strAddSquad="СОЗДАТЬ ОТРЯД"
+strViewUnassigned="НАЗНАЧИТЬ СОЛДАТ"
+strViewSquad="СОЛДАТЫ В ОТРЯДЕ"
+strDeleteSquadConfirm="ПОДТВЕРДИТЬ УДАЛЕНИЕ ОТРЯДА"
+strDeleteSquadConfirmDesc="Удалить этот отряд?"
+strMissions="Задания: <XGParam:IntValue0>"
+strDefaultSquadBiography="Активация: <XGParam:StrValue0>"
+
+[UISquadContainer]
+DefaultSquadTitle="ОТРЯД"
+
+[UISquadListItem]
+sSquadOnMission="НА ЗАДАНИИ"
+sSquadAvailable="ДОСТУПЕН"
+sCovertness="Скрытность: <XGParam:IntValue0>"
+
+[UIScreenListener_SquadSelect_LW]
+; LWOTC Translated
+strAreaOfOperations="Местность операции:"
+; End Translated
+strSave="Сохранить"
+strSquad="Отряд"
+strStart="Начало"
+strInfiltration="Проникновение"
+
+[UIScreenListener_SkyrangerArrives_LW]
+strLaunchInfiltration="НАЧАТЬ ПРОНИКНОВЕНИЕ"
+strAbortInfiltration="ПРЕРВАТЬ ПРОНИКНОВЕНИЕ"
+strContinueInfiltration="ПРОДОЛЖИТЬ ПРОНИКНОВЕНИЕ"
+
+[XComGameState_LWSquadManager]
+LabelBarracks_SquadManagement="Управление отрядами"
+TooltipBarracks_SquadManagement="Управление постоянными отрядами"
+
+[UIStrategyMapItem_Mission_LW]
+strRecon="Проникновение"
+
+[UIMission_LWLaunchDelayedMission]
+m_strMission="ПРОНИКНОВЕНИЕ"
+m_strOptions="НАСТРОЙКИ ПРОНИКНОВЕНИЯ"
+m_strImageGreeble="ШИФРОВАННОЕ СООБЩЕНИЕ"
+m_strWait="ОЖИДАНИЕ"
+m_strAbort="ПРЕРВАТЬ"
+m_strBoostInfiltration="УСКОРИТЬ ПРОНИКНОВЕНИЕ"
+m_strAlreadyBoostedInfiltration="Отряд <XGParam:StrValue0> уже ускорил проникновение"
+m_strInsufficentIntelForBoostInfiltration="Недостаточно данных"
+m_strBoostInfiltrationDescription="Вы можете потратить <XGParam:StrValue0>, чтобы увеличить скорость проникновения отряда на <XGParam:IntValue1>% для этого задания. Ускорение затрагивает также уже потраченное время. Хотите потратить данные?"
+m_strViewSquad="ПОКАЗАТЬ ОТРЯД"
+m_strInfiltrationStatusExpiring="Проникновение: <XGParam:IntValue0>% / <XGParam:IntValue1> дн. <XGParam:IntValue2> ч. до 100%"
+m_strInfiltrationStatusMissionEnding="Проникновение: <XGParam:IntValue0>% / <XGParam:IntValue1> дн. <XGParam:IntValue2> ч. до начала"
+m_strInfiltrationStatusNonExpiring="Проникновение: <XGParam:IntValue0>%"
+m_strInfiltrationConsequence="Уровень готовности: <XGParam:StrValue0>"
+m_strMustLaunchMission="Время на исходе: нужно начать или прервать"
+m_strInsuffientInfiltrationToLaunch="Для начала задания необходимо проникновение хотя бы на <XGParam:IntValue0>%"
+
+; these need to be coordinated in length with the  in LW_InfiltrationSettings.ini : AlertModifierAtInfiltration
++m_strAlertnessModifierDescriptions[0]="Непреодолимый"
++m_strAlertnessModifierDescriptions[1]="Непреодолимый"
++m_strAlertnessModifierDescriptions[2]="Непреодолимый"
++m_strAlertnessModifierDescriptions[3]="Усиленный"
++m_strAlertnessModifierDescriptions[4]="Усиленный"
++m_strAlertnessModifierDescriptions[5]="Усиленный"
++m_strAlertnessModifierDescriptions[6]="Активный"
++m_strAlertnessModifierDescriptions[7]="Активный"
++m_strAlertnessModifierDescriptions[8]="Активный"
++m_strAlertnessModifierDescriptions[9]="Настороженный"
++m_strAlertnessModifierDescriptions[10]="Настороженный"
++m_strAlertnessModifierDescriptions[11]="Настороженный"
++m_strAlertnessModifierDescriptions[12]="Обычный"
++m_strAlertnessModifierDescriptions[13]="Уязвимый"
++m_strAlertnessModifierDescriptions[14]="Уязвимый"
++m_strAlertnessModifierDescriptions[15]="Уязвимый"
+
+[UIMission_LWCustomMission]
++m_strUrgent="ДЫРА В БЕЗОПАСНОСТИ"
++m_strRendezvousMission="ТАЙНАЯ ВСТРЕЧА"
++m_strRendezvousDesc="**В убежище Сопротивления в регионе <XGParam:StrValue0/!WorldRegionName> замечены недружественные переговоры** Советник и добровольцы из убежища должны выследить и ликвидировать шпиона и его союзников из \"Адвента\" на месте встречи."
+
+m_strInvasionMission="ВТОРЖЕНИЕ"
+m_strInvasionWarning="ТРЕВОГА"
+m_strInvasionDesc="Силы \"Адвента\" начали вторжение, их цель - <XGParam:StrValue0/!WorldRegionName/>! Мы должны немедленно отреагировать, иначе власть в регионе вернется к \"Адвенту\"."
+
+[UIStrategyMapItem_Region_LW]
+m_strOutpostTitle="Убежище: <XGParam:StrValue0>"
+m_strAlertLevel="Сила \"Адвента\": <XGParam:IntValue0> (Бд.:<XGParam:IntValue2> Тех.ур.:<XGParam:IntValue1>)"
+m_strLiberatedRegion="Регион освобожден"
+m_strStaffingPinText="М:<XGParam:IntValue0> Д:<XGParam:IntValue1> Р:<XGParam:IntValue2>"
+m_strStaffingPinTextMore="К:<XGParam:IntValue0>"
+m_strMonthlyRegionalIncome="+§<XGParam:IntValue0> (+§<XGParam:IntValue1>)"
+
+[XComGameState_LWOutpostManager]
+LabelCQ_ResistanceManagement="Управление Сопротивлением"
+TooltipCQ_ResistanceManagement="Управление региональными убежищами"
+
+[UIResistanceManagement_LW]
+m_strTitle="ОБЗОР СОПРОТИВЛЕНИЯ"
+m_strLabel="СВЯЗЬ С УБЕЖИЩАМИ СОПРОТИВЛЕНИЯ..."
+m_strRegionLabel="РЕГИОН"
+m_strStrength="СИЛА \"АДВЕНТА\""
+m_strAdviserLabel="Советник"
+m_strIncomeLabel="ДОХОД"
+m_strRebelCountLabel="УБЕЖИЩЕ"
+m_strADVENTUnitSingular="Легион"
+m_strADVENTUnitPlural="Легионы"
+
+m_strGlobalAlert="Глобальная сила \"Адвента\":"
+m_strGlobalInsurgency="• Глобальная угроза Сопротивления:"
+m_strAvatarPenalty="• Прогресс проекта \"Аватар\" замедлен на <XGParam:IntValue0/>%"
+m_strThreatVeryLow="Низкая"
+m_strThreatLow="Настороженный"
+m_strThreatMedium="Повышенная"
+m_strThreatHigh="Критическая"
+m_strThreatVeryHigh="Высокая"
+m_strLiberated="Освобожден"
+m_strResistanceManagementLevels="<XGParam:IntValue0> (Бд.:<XGParam:IntValue1>)"
+
+[UIOutpostManagement]
+m_strTitle="УПРАВЛЕНИЕ УБЕЖИЩЕМ"
+m_strLabel="Временный интерфейс для управления убежищем..."
+m_strName="Имя"
+m_strMission="Задание"
+m_strBuildRadioRelay="Постройте радиоретранслятор"
+m_strLiaisonTitle="Советник убежища"
+m_strEditLoadout="Оснащение советника"														
+; 0=Alert, 1=Vigilance, 2=Force
+m_strRegionalInfo="Сила \"Адвента\": <XGParam:IntValue0/>"
+m_strResistanceMecs="МЭКи Сопротивления: <XGParam:IntValue0/>"
+m_strProhibited="Недоступно"
+m_strCannotChangeLiaisonTitle="Нельзя сменить советника"
+m_strCannotChangeLiaison="Сменить советника в этот момент невозможно: в регионе проходят операции"
+
+[UIScreenListener_TacticalHUD]
+strEvacRequestTitle="Запрошена эвакуация"
+strEvacRequestSubtitle="Ходов до прибытия \"Рейнджера\""
+
+[LWRebelJob_DefaultJobSet]
+strRebelRecruited="%UNIT назначается в убежище в регионе %REGION"
+strSoldierRecruited="%UNIT выходит на контакт в регионе %REGION: возможен наём"
+strStaffRecruited="%TITLE %UNIT: наём в регионе %REGION"
+
+;; REBEL JOB TEMPLATES
+[NoJob LWRebelJobTemplate]
+strJobName="Нет"
+
+[Resupply LWRebelJobTemplate]
+strJobName="Материалы"
+
+[Recruit LWRebelJobTemplate]
+strJobName="Поиск рекрутов"
+
+[Intel LWRebelJobTemplate]
+strJobName="Разведданные"
+
+[Hiding LWRebelJobTemplate]
+strJobName="Конспирация"
+
+[RebelJobMissions LWRebelJobTemplate]
+strJobName="Задания"
+
+[UIScreenListener_ResistanceReport]
+m_strStaffingHelp="Новый персонал ждет вас на черном рынке"
+
+;;HELP TEMPLATES
+[ResistanceManagement_Help LWHelpTemplate]
+m_strHelpTitle="Управление Сопротивлением"
+m_strHelpText="Панель управления Сопротивлением позволяет руководить действиями ячеек по всему миру. При установлении контакта с новыми убежищами Сопротивления они появятся на этом экране вместе с описанием их действий и эффективности. Выберите регион, чтобы перейти на экран управления убежищем и изменить приоритеты Сопротивления в этом регионе. На экране обзора сопротивления, одна или две точки возле имени региона отображают прогресс по его освобождению."
+m_strHelpButtonTooltip="Справка по управлению Сопротивлением"
+
+[OutpostManagement_Help LWHelpTemplate]
+m_strHelpTitle="Управление убежищем"
+m_strHelpText="Эта панель позволяет направить участников Сопротивления из конкретного убежища на задания, помогающие XCOM в борьбе с \"Адвентом\". Также здесь можно назначить члена XCOM в качестве советника, щелкнув по рамке изображения. Советники-солдаты помогают вести поиск новобранцев и поддерживать безопасность, ученые - собирать разведданные, а инженеры - собирать материалы. Более полную информацию об этих механиках вы найдете в разделе \"Убежище Сопротивления\" архивов XCOM в каюте шефа."
+m_strHelpButtonTooltip="Справка по управлению убежищем"
+
+[Personnel_SquadBarracks_Help LWHelpTemplate]
+m_strHelpTitle="Управление отрядами"
+m_strHelpText="Панель управления отрядами позволяет создавать и изменять отряды, отправляющиеся на задание. Отряды - это сформированные заранее группы солдат, которые можно послать на задание из экрана выбора отряда одним действием. Отряд собирается по следующим правилам:<br/><Bullet/> В отряд можно назначить до 10 человек; выбрать отряд можно в окне выбора отряда непосредственно перед заданием.<br/><Bullet/> Если член отряда ранен, тренируется или просто не готов идти в бой, его можно временно заменить любым свободным солдатом непосредственно перед заданием.<br/><Bullet/> Кроме того, можно собрать отряд целиком из незанятых солдат (также прямо перед заданием); такой отряд получит название для его опознания на глобусе, но будет расформирован после завершения задания.<br/><Bullet/> Чтобы солдат мог быть назначен из одного постоянного отряда в другой, его сперва нужно удалить из текущего отряда."
+m_strHelpButtonTooltip="Справка по управлению отрядами"
+
+[SquadSelect_Help LWHelpTemplate]
+m_strHelpTitle="Проникновение отряда"
+m_strHelpText="Многие задания требуют времени на проникновение в зону действий в обход наиболее опасных сил \"Адвента\". Время проникновения зависит от размера отряда и наличия у солдат особых способностей и снаряжения. Более полную информацию об этих механиках вы найдете в разделе \"Проникновение\" архивов XCOM в каюте шефа."
+m_strHelpButtonTooltip="Справка по проникновению"
+
+[X2StrategyElement_DefaultStaffSlots_LW]
+m_strLiaisonLocation="Советник убежища: <XGParam:StrValue0>"
+
+[X2StrategyElement_MissionSiteDescriptions_LW]
+; This goes in front of a city name in invasion missions, e.g. "Free Chicago"
+m_strLiberatedCityPrefix="Свободный город"
+
+[XComGameState_LWOutPost]
+m_strProhibitedJobAlert="Из-за рейда \"Адвента\" в регионе <XGParam:StrValue1/> члены Сопротивления не могут быть назначены на работу \"<XGParam:StrValue0/>\" в ближайшие <XGParam:IntValue0/> дн. Все повстанцы, выполнявшие эту работу, вынуждены перейти в режим конспирации."
+m_strProhibitedJobEnded="Члены Сопротивления в регионе <XGParam:StrValue0/>, занятые работой \"<XGParam:StrValue1/>\", снова продуктивно трудятся."
+;LWOTC translated
+m_strRetributionEnded="Члены сопротивления в регионе <XGParam:StrValue0/> поправились от возмездия Избранного"
+;End translated
+
+[X2StrategyElement_DefaultAlienActivities]
+m_strInsufficientRebels="Требуется как минимум <XGParam:IntValue0/> повстанцев в убежище, чтобы установить контакт с соседями"
+
+[UIScreenListener_Alert]
+m_strInvasionTitle="ВТОРЖЕНИЕ \"АДВЕНТА\""
+m_strInvasionLabel="АТАКОВАН ОСВОБОЖДЕННЫЙ РЕГИОН"
+m_strInvasionBody="Шеф, \"Адвент\" пытается отбить освобожденный регион. Они ведут массивное наступление на штаб временного правительства!"
+m_strInvasionFlare="ЭКСТРЕННОЕ СООБЩЕНИЕ"
+m_strInvasionConfirm="ПОКАЗАТЬ ЗОНУ ВТОРЖЕНИЯ"
+
+[UIUtilities_LW]
+m_strStripWeaponUpgrades=СНЯТЬ ВСЕ МОДИФИКАЦИИ ОРУЖИЯ
+m_strStripWeaponUpgradesLower=Снять Все Модификации Оружия
+m_strStripWeaponUpgradesConfirm=ПОДТВЕРДИТЕ СНЯТИЕ ВСЕХ МОДИФИКАЦИЙ
+m_strStripWeaponUpgradesConfirmDesc=Подтвердить снятие модификаций со всего основного оружия у солдат, которые не выбраны для текущей миссии. Это снаряжение немедленно станет доступно для экипировки.
+m_strTooltipStripWeapons=Снять все модификации оружия у всех солдат, которые не выбраны для текущей миссии.
+
+m_strVIPCaptureReward=(Только захват ВИПа)
+
+m_strInfiltrationMission="Миссия проникновения"
+m_strQuickResponseMission="Миссия быстрого реагирования"
+m_strFixedEvacLocation="Фиксированная точка эвакуации"
+m_strFlareEvac="Эвакуация по запросу"
+m_strDelayedEvac="Эвакуация с задержкой"
+m_strNoEvac="Без эвакуации"
+m_strMaxSquadSize="Максимальный размер отряда"
+m_strConcealedStart="Старт в скрытности"
+m_strRevealedStart="Старт без скрытности"
+m_strObjectiveTimer="Время на цель:"
+m_strExtractionTimer="Время на эвакуацию:"
+m_strEvacTimer="До прибытия Рейнжера:"
+m_strGetCorpses="Сбор всех трофеев"
+m_strSweepObjective="Зачистка"
+m_strEvacRequired="Необходима эвакуация"
+m_strTurnSingular="Ход"
+m_strTurnPlural="Ходов"
+m_strMinimumInfiltration="Требует <XGParam:IntValue0>% проникновения"
+m_strYellowAlert="Противник в повышенной готовности"
+
+m_sAverageScatterText="± <XGParam:StrValue0/> клеток"
+
+m_strAllHandsToHangar=ОСВОБОДИТЬ ВСЕХ БОЙЦОВ
+m_strAllHandsToHangarConfirm=ПОДТВЕРДИТЕ ОСВОБОЖДЕНИЕ ВСЕХ БОЙЦОВ
+m_strAllHandsToHangarConfirmDesc=Освобождает всех доступных бойцов находящихся на тренировках в партизанской школе, центре подготовки или госпитале и делает их доступными для выбора на миссию. Тренировка прервется и её необходимо будет начать заново. Подготовка псиоников не прерывается.
+m_strTooltipAllHandsToHangar=Освободить всех бойцов находящихся на тренировках в партизанской школе, центре подготовки и госпитале.
+
+m_strPrevHaven="ПРЕД. УБЕЖИЩЕ"
+m_strNextHaven="СЛЕД. УБЕЖИЩЕ"
+
+[Logistics X2LWAlienActivityTemplate]
+ActivityObjectives[0]="Захватить набор ресурсов \"Адвента\""
++MissionDescriptions=(MissionFamily="SmashnGrab_LW", Description="Сопротивление обнаружило расположение ценных ресурсов противника которые мы можем заполучить для своих потребностей.", MissionIndex=0)
+
+; LWOTC Translated
+[UIListener_CampaignStartMenu]
+strDisabledTutorialTooltip="Обучение отключено с модификацией Long War of The Chosen"
+strDisabledNarrativeContentTooltip="Покинутые и заблудшие отключены с модификацией Long War of The Chosen"
+strDisabledPrecisionExplosivesTooltip="Высокоточная взрывчатка отключена с модификацией Long War of the Chosen"
+; End Translated
+
+[UICovertActionReport_LW]
+strCovertActionFailed="ПРОВАЛ"
+
+[UIScreenListener_ViewObjectives]
+; LWOTC Translated
+ScrollObjectiveDescriptionStr="Развернуть описание задания"
+; End Translated

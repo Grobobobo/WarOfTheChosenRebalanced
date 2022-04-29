@@ -1,0 +1,14 @@
+[RedFog_LW X2AbilityTemplate]
+LocFriendlyName="Nebbia rossa"
+LocLongDescription="Le unità ferite hanno statistiche ridotte."
+LocHelpText="Le unità ferite hanno statistiche ridotte."
+LocFlyOverText="Nebbia rossa"
+LocPromotionPopupText="REDFOGLOCPROMOTIONPOPUPTEXT"
+
+[XComGame.UIShellDifficulty]
+[UIShellDifficulty]
+m_arrDifficultyDescStrings[0]="Adatto a chi non conosce i giochi tattici o XCOM in generale.<br/><br/>Le opzioni di Long War possono essere impostate da un menu delle opzioni dopo l'inizio della campagna."
+m_arrDifficultyDescStrings[1]="Una sfida adatta ai giocatori che conoscono XCOM.<br/><br/>Le opzioni di Long War possono essere impostate da un menu delle opzioni dopo l'inizio della campagna."
+m_arrDifficultyDescStrings[2]="Una sfida formidabile per gli esperti di XCOM 2.<br/><br/>Le opzioni di Long War possono essere impostate da un menu delle opzioni dopo l'inizio della campagna."
+m_arrDifficultyDescStrings[3]="Una sfida brutale e una campagna che non perdona.<br/><br/>Le opzioni di Long War possono essere impostate da un menu delle opzioni dopo l'inizio della campagna."
+m_strTutorialOnImpossible="Il tutorial non sarà attivo per Long War.<br/><br/><font color='#9acbcb'>Le opzioni di Long War possono essere impostate da un menu delle opzioni dopo l'inizio della campagna.</font>"

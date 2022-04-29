@@ -1,0 +1,14 @@
+[RedFog_LW X2AbilityTemplate]
+LocFriendlyName="赤い霧"
+LocLongDescription="負傷したユニットの能力値が低下する。"
+LocHelpText="負傷したユニットの能力値が低下する。"
+LocFlyOverText="赤い霧"
+LocPromotionPopupText="REDFOGLOCPROMOTIONPOPUPTEXT"
+
+[XComGame.UIShellDifficulty]
+[UIShellDifficulty]
+m_arrDifficultyDescStrings[0]="XCOMのようなタクティカル・ゲームを初めてプレイする場合に最適な難易度です。<br/>Long Warのオプションは、キャンペーン開始後にオプションメニューから設定できます。"
+m_arrDifficultyDescStrings[1]="XCOMに慣れたプレイヤー向きです。<br/><br/>Long Warのオプションは、キャンペーン開始後にオプションメニューから設定できます。"
+m_arrDifficultyDescStrings[2]="経験豊かなLong Warrior以外にはお勧めできない、手強い難易度です。<br/><br/>Long Warのオプションは、キャンペーン開始後にオプションメニューから設定できます。"
+m_arrDifficultyDescStrings[3]="手強く、容赦のない難易度です。<br/><br/>Long Warのオプションは、キャンペーン開始後にオプションメニューから設定できます。"
+m_strTutorialOnImpossible="Long Warではチュートリアルが無効になります。<br><br/><font color='#9acbcb'>Long Warのオプションは、キャンペーン開始後にオプションメニューから設定できます。</font>"

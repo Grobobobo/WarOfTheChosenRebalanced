@@ -1,0 +1,34 @@
+[AssaultRifle_LS X2WeaponTemplate]
+FriendlyName="Karabin laserowy"
+FriendlyNamePlural="Karabiny laserowe"
+BriefSummary="Karabin laserowy emituje serię mikrosekundowych strumieni światła, które niszczą wiązania chemiczne ostrzelanego celu."
+TacticalText="<Bullet/> Oddanie strzału z broni głównej żołnierza kończy jego turę, jeśli nie przeszedł on specjalnego szkolenia.\n<Bullet/> Używaj ulepszeń zdobytych na jednostkach ADVENT-u, żeby zwiększyć skuteczność taktyczną karabinów laserowych.\n<Bullet/> Duża energia wytwarzana przez te karabiny laserowe została uzyskana dzięki zastosowaniu technologii obcych w zdobytym przedwojennym uzbrojeniu.\n<Bullet/> Lasery otrzymują premię to celności."
+AbilityDescName="karabin szturmowy"
+
+[SMG_LS X2WeaponTemplate]
+FriendlyName="Sten laserowy"
+FriendlyNamePlural="Steny laserowe"
+BriefSummary="Lekka wersja karabinu laserowego pełniąca podobną rolę do pistoletu maszynowego. Większe premie do mobilności i ukrywania się uzyskano kosztem siły rażenia, pojemności magazynka i celności przy większych odległościach."
+TacticalText="<Bullet/> Oddanie strzału z broni głównej żołnierza zawsze kończy jego turę, jeśli nie przeszedł odpowiedniego szkolenia.\n<Bullet/> Używaj ulepszeń zdobytych na jednostkach ADVENT-u, żeby zwiększyć taktyczną przydatność stena.\n<Bullet/> W porównaniu z karabinami szturmowymi broń przypominająca pistolety maszynowe daje premie do mobilności, celności w walce na krótki dystans i do ukrywania się. Zadaje jednak mniejsze obrażenia, ma mniejszy zapas amunicji i otrzymuje kary do celności przy większych odległościach.\n<Bullet/> Lasery otrzymują premię to celności."
+AbilityDescName="PM"
+
+[Cannon_LS X2WeaponTemplate]
+FriendlyName="Działko laserowe"
+FriendlyNamePlural="Działka laserowe"
+BriefSummary="Technologia broni laserowej połączona z ulepszonym układem chłodzenia pozwoli nam korzystać z szybkostrzelnej wersji działka, dysponującej o wiele większą siłą rażenia."
+TacticalText="<Bullet/> Działko laserowe to potężniejsza, ale równie poręczna wersja zwykłego działka.\n<Bullet/> Użyj ulepszeń zdobytych od wrogów, żeby zwiększyć taktyczną skuteczność działka laserowego.\n<Bullet/> Lasery otrzymują premię to celności."
+AbilityDescName="działko"
+
+[Shotgun_LS X2WeaponTemplate]
+FriendlyName="Promień rozpryskowy"
+FriendlyNamePlural="Promień rozpryskowy"
+BriefSummary="Promień rozpryskowy to laser o działaniu podobnym do strzelby; jest najskuteczniejszy z niewielkiej odległości, ponieważ promień ulega szybkiemu rozproszeniu."
+TacticalText="<Bullet/> Broń przypominająca strzelbę jest niezwykle skuteczna w walce z bliska, ale jej celność gwałtownie spada wraz z dystansem.\n<Bullet/> Używaj ulepszeń odebranych wrogom, żeby zwiększyć skuteczność taktyczną promienia rozpryskowego.\n<Bullet/> Lasery otrzymują premię to celności."
+AbilityDescName="strzelba"
+
+[SniperRifle_LS X2WeaponTemplate]
+FriendlyName="Lanca laserowa"
+FriendlyNamePlural="Lance laserowe"
+BriefSummary="Lanca laserowa to dłuższa wersja karabinu laserowego, wyposażona w szybkie, wysokoenergetyczne kondensatory gwarantujące świetną precyzję na duże odległości."
+TacticalText="Strzał z karabinu snajperskiego zawsze wymaga wydania obu akcji.\n<Bullet/> Są one mniej celne z bliska, ale zabójczo skuteczne z dużej odległości.\n<Bullet/> Używaj ulepszeń zdobytych od wrogów, żeby zwiększyć skuteczność taktyczną lancy laserowej.\n<Bullet/> Lasery otrzymują premię to celności."
+AbilityDescName="karabin snajperski"

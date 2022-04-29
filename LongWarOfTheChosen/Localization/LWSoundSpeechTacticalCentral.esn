@@ -1,0 +1,33 @@
+[T_Guerilla_Ops_Recover_Item_Central_01 SoundNodeWave]
+SpokenText="Sabemos que la resistencia robó en esta zona un depósito de datos de ADVENT con archivos críticos para su última operación. Por desgracia, los alienígenas recuperaron rápidamente el lugar y eliminaron cuantos se encontraron a su paso. No podemos desperdiciar esta oportunidad de frustrar sus planes. Recuperen los recursos."
+
+[T_Guerilla_Ops_Recover_Item_Central_02 SoundNodeWave]
+SpokenText="Las fuerzas de la resistencia locales se apoderaron de un depósito de datos de ADVENT con archivos relacionados con la operación alienígena. Los alienígenas no estaban dispuestos a dejarlo pasar. Invadieron la zona, recuperaron los datos y mataron a todo aquel que encontraron en su camino. No vamos a permitir que eso nos detenga. Recuperen los recursos."
+
+[T_Guerilla_Ops_Recover_Item_Central_03 SoundNodeWave]
+SpokenText="Un equipo de la resistencia que opera en esta zona sorprendió a unos agentes de ADVENT y, al parecer, encontró un depósito de datos con archivos críticos para la operación alienígena. Por desgracia, los refuerzos enemigos invadieron el lugar y se han interrumpido las comunicaciones con los agentes locales. Nos disponemos a asegurar la zona y encontrar los recursos."
+
+[T_Guerilla_Ops_Recover_Item_Central_04 SoundNodeWave]
+SpokenText="Un grupo de agentes de la resistencia local que opera en la zona tendió una emboscada a una patrulla de ADVENT que transportaba un depósito de datos. Según cuentan, el depósito parece contener datos críticos para el proyecto alienígena que descubrimos. Por desgracia, los refuerzos alienígenas acudieron de inmediato. Hemos perdido el contacto con las fuerzas de la resistencia. Nos disponemos a asegurar la zona. Recuperen los recursos."
+
+[AssaultAlienBase_TacIntro SoundNodeWave]
+SpokenText="Menace 1-5: Infíltrense e investiguen la zona. Esperen mucha resistencia y neutralicen a todos los enemigos."
+
+[T_AssaultNetworkTower_Central_01 SoundNodeWave]
+SpokenText="Comandante, este será un asalto doble. Primero piratearemos el núcleo de la torre de ADVENT e interferiremos su red, pero debemos ir rápido. Si podemos hacernos con el control de esos datos, Shen está preparándoles una sorpresita que sin duda llamará su atención. Tómenlo, aseguren la zona circundante y acaben con todas las fuerzas enemigas que vigilan el objetivo. Si todo va bien, ni nos verán llegar."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_01 SoundNodeWave]
+SpokenText="El reconocimiento remoto sugiere que las fuerzas de ADVENT tienen un depósito de datos desprotegido en una de las instalaciones de la zona. Por lo que sabemos, el depósito contiene datos vitales para la última operación alienígena, así que nos haremos con ella por la fuerza. Recuperen esos recursos a toda costa."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_02 SoundNodeWave]
+SpokenText="El Dr. Tygan ha seguido los movimientos de un depósito de datos de ADVENT que contiene información crítica para el último proyecto alienígena y ha podido determinar que se encuentra en una de las instalaciones de la zona. Tygan cree que podremos recuperar el contenido si logramos eliminar a las fuerzas enemigas que lo protegen."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_03 SoundNodeWave]
+SpokenText="Hemos rastreado la posición de un depósito de datos de ADVENT a través de su red hasta unas instalaciones situadas en esta región. Por lo que sabemos, contiene datos críticos para la última operación alienígena. Iremos a por esos recursos, pero imaginamos que las fuerzas de seguridad de la zona no nos lo pondrán fácil."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_04 SoundNodeWave]
+SpokenText="Uno de nuestros contactos de la resistencia nos ha informado de que una patrulla de ADVENT guarda un depósito de datos seguros en esta zona y, al parecer, los archivos son críticos para la última operación alienígena. No podemos dejar pasar esta oportunidad de frustrar sus planes, así que vamos a recuperar esos recursos."
+
+[T_Guerilla_Ops_Recover_Item_Advent_Building_Central_05 SoundNodeWave]
+SpokenText="La resistencia acaba de informarnos de que uno de sus agentes ha localizado en la zona un depósito de datos de ADVENT con información crítica sobre la última operación alienígena. Vamos a hacernos con esos datos y a detener sus progresos antes de que puedan llegar más lejos."
+

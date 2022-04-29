@@ -1,0 +1,93 @@
+[UIArmory_LWOfficerPromotion]
+strLeadershipButton="リーダーシップの履歴を表示"
+strLeadershipDialogueTitle="このオフィサー指揮下でのミッション"
+strLeadershipDialogueData="<XGParam:StrValue0/> : <XGParam:IntValue0/>"
+
+[UIScreenListener_Armory_Promotion_LWOfficerPack]
+strOfficerMenuOption="オフィサーのアビリティ"
+
+[UIScreenListener_Armory_MainMenu_LWOfficerPack]
+strOfficerMenuOption="オフィサーのアビリティ"
+OfficerListItemDescription="訓練済みのオフィサーのアビリティを見る。"
+
+[UIScreenListener_Facility_Academy_LWOfficerPack]
+strOfficerTrainButton="オフィサー訓練"
+
+[UIScreenListener_SquadSelect_LWOfficerPack]
+strAutoFillLabel="部隊オートフィル"
+strAutoFillTooltip="自動的に分隊の人数を最大にする"
+
+
+[UITacticalHUD_MouseControls_LWOfficerPack]
+strCommandRangeToggleTooltip="クリックすると指揮範囲を表示"
+
+[X2StrategyElement_LW_OTS_OfficerStaffSlot]
+;strOTSLocationDisplayString=<XGParam:StrValue0/> Training
+
+;[UIArmory_LWOfficerMenu]
+;m_strSelectAbility=SELECT Officer ABILITY:
+;m_strAbilityHeader=Officer ABILITIES:
+;m_strConfirmAbilityTitle=CONFIRM ABILITY SELECTION
+;m_strConfirmAbilityText=You can't remove or change abilities. Are you sure you want to learn <XGParam:StrValue0/>?
+;m_strAbilityLockedTitle=LOCKED
+;m_strAbilityLockedDescription=Get more combat experience to learn new abilities.
+
+[UIArmory_LWOfficerPromotion]
+m_strSelectAbility="アビリティを選択："
+m_strAbilityHeader="アビリティ："
+m_strConfirmAbilityTitle="アビリティ選択の確認"
+m_strConfirmAbilityText="いったん修得したアビリティを解除したり変更することはできません。本当に「<XGParam:StrValue0/>」を修得しますか？"
+m_strAbilityLockedTitle="ロック"
+m_strAbilityLockedDescription="戦闘経験を積むことで新たなアビリティを修得していく。"
+
+[LWOfficerUtilities]
+LWOfficerRankNames[0]="下士官"
+LWOfficerRankNames[1]="少尉"
+LWOfficerRankNames[2]="中尉"
+LWOfficerRankNames[3]="大尉"
+LWOfficerRankNames[4]="少佐"
+LWOfficerRankNames[5]="中佐"
+LWOfficerRankNames[6]="大佐"
+LWOfficerRankNames[7]="大隊長"
+
+LWOfficerShortNames[0]="下士官"
+LWOfficerShortNames[1]="2Lt"
+LWOfficerShortNames[2]="1Lt"
+LWOfficerShortNames[3]="Capt"
+LWOfficerShortNames[4]="Maj"
+LWOfficerShortNames[5]="LtC"
+LWOfficerShortNames[6]="Col"
+LWOfficerShortNames[7]="Cmdr"
+
+
+[UIFacility_LWOfficerSlot]
+m_strTrainOfficerDialogTitle="オフィサー訓練"
+m_strTrainOfficerDialogText="一定以上の階級の兵士はゲリラ戦訓練施設で専門的な訓練を受け、オフィサーになることができますが、訓練中は戦闘に参加できません。\n\n注意：同じ部隊に複数のオフィサーがいる場合、アビリティは最も階級の高いオフィサーしか使用できないため、昇進させる兵士を決める際は注意が必要です。\n\n続行しますか？"
+m_strStopTrainOfficerDialogTitle="オフィサーの訓練を中止しますか？"
+m_strStopTrainOfficerDialogText="%UNITNAMEの訓練を中止しますか？\n\n注意：これまでのオフィサーの訓練は無駄になります。"
+
+[UIAlert_LWOfficerTrainingComplete]
+m_strTrainingCompleteLabel="オフィサーの訓練完了"
+m_strTrainingComplete="<XGParam:StrValue0/>が訓練を完了した。武器庫で兵士を閲覧し、新しいアビリティの確認と割り当てが可能だ。"
+m_strViewSoldier="兵士を見る"
+m_strNewAbilityLabel="新たなアビリティ"
+
+[UIPersonnel_ListItem_SquadSelect_LWOfficerPack]
+strOfficerAlreadySelectedStatus="注意: オフィサーはすでに選択されています"
+
+[UIStrategyScreenListener_LWOfficerPack]
+strCommandingOfficerTooltipTitle="司令官"
+strCommandingOfficerTooltip="すべてのオフィサー用アビリティを使用可能。"
+strSubordinateOfficerTooltipTitle="下士官"
+strSubordinateOfficerTooltip="ミッション中はオフィサー用アビリティを使用不可能。"
+
+[X2Ability_OfficerAbilitySet]
+strIntervention_WorldMessage="インターベンション：-<XGPARAM:IntValue0>情報"
+strCollector_WorldMessage="収集家：情報+1"
+FocussedFriendlyName="集中攻撃"
+FocussedFriendlyDesc="集中攻撃の対象になったターゲットは、敵の攻撃が当たりやすくなり、受けるダメージが増える。"
+
+[X2Effect_Scavenger]
+;the string shown in world message for scavenged items
+m_strScavengerLoot="（<XGParam:IntValue0/>） <XGParam:StrValue0/!ItemName/>を回収。"
+

@@ -1,4 +1,4 @@
-# Long War of the Chosen Rebalanced (LWOTC-R)
+# War of the Chosen Rebalancee (WOTC-R)
 
 This is a fundamental rebalance of Long War of the Chosen, with the following design goals:
 

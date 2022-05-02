@@ -16,12 +16,6 @@ var localized string GrazeBandWidthMod;
 var localized string GrazeBandWidthModTooltip;
 var localized string GrazeBandValue;
 
-// ***** PAUSE ON RECRUIT ***** //
-var bool PauseOnRecruit;
-var bool PauseOnRecruit_Cached;
-var localized string PauseOnRecruitMod;
-var localized string PauseOnRecruitModTooltip;
-
 // ========================================================
 // PROTOTYPE DEFINITIONS 
 // ========================================================
@@ -40,7 +34,6 @@ function string GetTabText()
 function InitModOptions()
 {
 	GrazeBandWidth_Cached = GrazeBandWidth;
-    PauseOnRecruit_Cached = PauseOnRecruit;
 }
 
 //returns the number of MechaItems set -- this is the number that will be enabled in the calling UIScreen
@@ -48,10 +41,6 @@ function int SetModOptionsEnabled(out array<UIMechaListItem> m_arrMechaItems)
 {
 	local int ButtonIdx;
 
-    // Pause on recruit
-    m_arrMechaItems[ButtonIdx].UpdateDataCheckbox(PauseOnRecruitMod, "", PauseOnRecruit_Cached, UpdatePauseOnRecruit);
-    m_arrMechaItems[ButtonIdx].BG.SetTooltipText(PauseOnRecruitModTooltip, , , 10, , , , 0.0f);
-    ButtonIdx++;
 
 	// Graze band setting: --------------------------------------------
 	m_arrMechaItems[ButtonIdx].UpdateDataSlider(GrazeBandWidthMod, "", GrazeBandToPctFloat(GrazeBandWidth_Cached), , UpdateGrazeBand);
@@ -66,9 +55,6 @@ function int SetModOptionsEnabled(out array<UIMechaListItem> m_arrMechaItems)
 function bool HasAnyValueChanged()
 {
 	if(GrazeBandWidth != GrazeBandWidth_Cached)
-        return true;
-
-    if (PauseOnRecruit != PauseOnRecruit_Cached)
         return true;
 
 	return false; 
@@ -88,7 +74,6 @@ function ApplyModSettings()
 	NewGameState.AddStateObject(UpdatedOptions);
 
 	UpdatedOptions.GrazeBandWidth = GrazeBandWidth_Cached;
-    UpdatedOptions.PauseOnRecruit = PauseOnRecruit_Cached;
 
 	if  (`TACTICALRULES != none && `TACTICALRULES.TacticalGameIsInPlay())
 		`TACTICALRULES.SubmitGameState(NewGameState);
@@ -100,7 +85,6 @@ function ApplyModSettings()
 function RestorePreviousModSettings()
 {
 	GrazeBandWidth_Cached = GrazeBandWidth;
-    PauseOnRecruit_Cached = PauseOnRecruit;
 }
 
 function bool CanResetModSettings() { return true; }
@@ -109,7 +93,6 @@ function bool CanResetModSettings() { return true; }
 function ResetModSettings()
 {
 	GrazeBandWidth_Cached = default.GrazeBandWidth;
-    PauseOnRecruit_Cached = default.PauseOnRecruit;
 }
 
 // ========================================================
@@ -174,16 +157,7 @@ public function UpdateGrazeBand(UISlider SliderControl)
 		`SOUNDMGR.PlaySoundEvent("Play_MenuSelect");
 }
 
-// Pause on recruit
-function UpdatePauseOnRecruit(UICheckbox Checkbox)
-{
-    PauseOnRecruit_Cached = Checkbox.bChecked;
-    `SOUNDMGR.PlaySoundEvent("Play_MenuSelect");
-}
-
-
 defaultProperties
 {
 	GrazeBandWidth=10
-    PauseOnRecruit=false
 }

@@ -43,7 +43,7 @@ struct Mission_Reinforcements_Modifiers_Struct_LW
 		ReinforcementsCap=10
 		QueueOffset=0
 		ForcedReinforcementsTurn=-1
-		ReinforcementsTrigger=eReinforcementsTrigger_RedAlert
+		ReinforcementsTrigger=eReinforcementsTrigger_ExternalTrigger
 		CavalryOnly=false
 		CavalryAbsoluteTurn=28
 		CavalryWinTurn=12

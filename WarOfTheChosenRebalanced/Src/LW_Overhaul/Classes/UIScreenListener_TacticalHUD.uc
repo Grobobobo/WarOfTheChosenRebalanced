@@ -21,7 +21,6 @@ event OnInit(UIScreen Screen)
 
 	ThisObj = self;
 	EventMgr = `XEVENTMGR;
-	EventMgr.RegisterForEvent(ThisObj, 'OnTacticalBeginPlay', OnTacticalBeginPlay, ELD_OnStateSubmitted);
 
 	// Event management for evac zones.
 	EventMgr.RegisterForEvent(ThisObj, 'PlayerTurnBegun', OnTurnBegun, ELD_OnStateSubmitted);
@@ -38,29 +37,6 @@ event OnInit(UIScreen Screen)
 	// Used for when a campaign is loaded from a save in tactical.
 	if (`LWOVERHAULOPTIONS == none)
 		class'XComGameState_LWOverhaulOptions'.static.CreateModSettingsState_ExistingCampaign(class'XComGameState_LWOverhaulOptions');
-}
-
-function EventListenerReturn OnTacticalBeginPlay(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
-{
-	local XComGameState_MissionSite Mission;
-	local XComGameStateHistory History;
-	local XComGameState_HeadquartersXCom XComHQ;
-	local Object ThisObj;
-
-	History = `XCOMHISTORY;
-	XComHQ = `XCOMHQ;
-
-	Mission = XComGameState_MissionSite(History.GetGameStateForObjectID(XComHQ.MissionRef.ObjectID));
-
-	// Hack for tactical quick launch: Set up our pod manager & reinforcements. This is usually done by DLCInfo.OnPreMission, which is not
-	// called for TQL.
-	SetUpForTQL(History);
-
-	class 'LWTacticalMissionUnitSpawner'.static.SpawnUnitsForMission(Mission);
-
-	ThisObj = self;
-	`XEVENTMGR.UnRegisterFromEvent(ThisObj, EventID);
-	return ELR_NoInterrupt;
 }
 
 // Update/refresh the evac timer.
@@ -179,27 +155,6 @@ function EventListenerReturn OnTileDataChanged(Object EventData, Object EventSou
 	}
 
 	return ELR_NoInterrupt;
-}
-
-function SetUpForTQL(XComGameStateHistory History)
-{
-	local XComGameState_BattleData BattleData;
-	local XComGameState_LWPodManager PodManager;
-	local XComGameState_LWReinforcements Reinforcements;
-	local XComGameState NewGameState;
-	
-	BattleData = XComGameState_BattleData(History.GetSingleGameStateObjectForClass(class'XComGameState_BattleData'));
-	if (BattleData.bIsTacticalQuickLaunch)
-	{
-		NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Create Pod Manager for TQL");
-		PodManager = XComGameState_LWPodManager(NewGameState.CreateStateObject(class'XComGameState_LWPodManager'));
-		NewGameState.AddStateObject(PodManager);
-		PodManager.OnBeginTacticalPlay(NewGameState);
-		Reinforcements = XComGameState_LWReinforcements(NewGameState.CreateStateObject(class'XComGameState_LWReinforcements'));
-		NewGameState.AddStateObject(Reinforcements);
-		Reinforcements.Reset();
-		`TACTICALRULES.SubmitGameState(NewGameState);
-	}
 }
 
 defaultProperties

@@ -1630,7 +1630,6 @@ static function X2CharacterTemplate CreateTemplate_AdvPurifier(name TemplateName
 	CharTemplate.Abilities.AddItem('DarkEventAbility_SealedArmor');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_UndyingLoyalty');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
-	CharTemplate.strBehaviorTree = "AdvPurifier::CharacterRoot"; // new config behavior tree parsing means we could use the group instead
 
 	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'XPACK_NarrativeMoments.X2_XP_CEN_T_First_Seen_Adv_Purifier_M1');
 

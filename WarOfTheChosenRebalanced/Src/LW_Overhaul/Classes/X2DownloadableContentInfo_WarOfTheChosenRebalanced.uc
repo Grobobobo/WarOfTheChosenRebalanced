@@ -482,7 +482,7 @@ static event OnPreMission(XComGameState StartGameState, XComGameState_MissionSit
 	ResetDelayedEvac(StartGameState);
 	ResetReinforcements(StartGameState);
 	OverrideDestructibleHealths(StartGameState);
-	MaybeAddChosenToMission(StartGameState, MissionState);
+	//MaybeAddChosenToMission(StartGameState, MissionState);
 	if (class'XComGameState_AlienRulerManager' != none)
 	{
 		OverrideAlienRulerSpawning(StartGameState, MissionState);
@@ -1531,73 +1531,73 @@ static function OverrideAlienRulerSpawning(XComGameState StartState, XComGameSta
 // The main purpose of this function is to ensure that any attempts by vanilla
 // to add Chosen to the mission are blocked and Chosen are added to the HQ
 // tactical tags if the alien activity manager has set them up.
-static function MaybeAddChosenToMission(XComGameState StartState, XComGameState_MissionSite MissionState)
-{
-	local XComGameStateHistory History;
-	local XComGameState_HeadquartersXCom XComHQ;
-	local XComGameState_HeadquartersAlien AlienHQ;
-	local array<XComGameState_AdventChosen> AllChosen;
-	local XComGameState_AdventChosen ChosenState;
-	local name ChosenSpawningTag, ChosenSpawningTagLWOTC, ChosenSpawningTagRemove;
-	local bool HasRulerOnMission;
-	local array <name> SpawningTags;
+// static function MaybeAddChosenToMission(XComGameState StartState, XComGameState_MissionSite MissionState)
+// {
+// 	local XComGameStateHistory History;
+// 	local XComGameState_HeadquartersXCom XComHQ;
+// 	local XComGameState_HeadquartersAlien AlienHQ;
+// 	local array<XComGameState_AdventChosen> AllChosen;
+// 	local XComGameState_AdventChosen ChosenState;
+// 	local name ChosenSpawningTag, ChosenSpawningTagLWOTC, ChosenSpawningTagRemove;
+// 	local bool HasRulerOnMission;
+// 	local array <name> SpawningTags;
 
-	// Certain missions should just use vanilla Chosen behaviour, like the Chosen
-	// Avenger Defense
-	if (default.SKIP_CHOSEN_OVERRIDE_MISSION_TYPES.Find(MissionState.GeneratedMission.Mission.sType) != INDEX_NONE)
-	{
-		return;
-	}
+// 	// Certain missions should just use vanilla Chosen behaviour, like the Chosen
+// 	// Avenger Defense
+// 	if (default.SKIP_CHOSEN_OVERRIDE_MISSION_TYPES.Find(MissionState.GeneratedMission.Mission.sType) != INDEX_NONE)
+// 	{
+// 		return;
+// 	}
 
-	// Don't allow Chosen on the mission if there is already a Ruler
-	if (class'XComGameState_AlienRulerManager' != none && class'LWDLCHelpers'.static.IsAlienRulerOnMission(MissionState))
-	{
-		HasRulerOnMission = true;
-	}
+// 	// Don't allow Chosen on the mission if there is already a Ruler
+// 	if (class'XComGameState_AlienRulerManager' != none && class'LWDLCHelpers'.static.IsAlienRulerOnMission(MissionState))
+// 	{
+// 		HasRulerOnMission = true;
+// 	}
 
-	History = `XCOMHISTORY;
-	foreach History.IterateByClassType(class'XComGameState_HeadquartersAlien', AlienHQ)
-	{
-		break;
-	}
+// 	History = `XCOMHISTORY;
+// 	foreach History.IterateByClassType(class'XComGameState_HeadquartersAlien', AlienHQ)
+// 	{
+// 		break;
+// 	}
 
-	if (AlienHQ.bChosenActive)
-	{
-		XComHQ = `XCOMHQ;
-		AllChosen = AlienHQ.GetAllChosen(, true);
+// 	if (AlienHQ.bChosenActive)
+// 	{
+// 		XComHQ = `XCOMHQ;
+// 		AllChosen = AlienHQ.GetAllChosen(, true);
 
-		foreach AllChosen(ChosenState)
-		{
-			ChosenSpawningTag = ChosenState.GetMyTemplate().GetSpawningTag(ChosenState.Level);
-			ChosenSpawningTagLWOTC = class'Helpers_LW'.static.GetChosenActiveMissionTag(ChosenState);
+// 		foreach AllChosen(ChosenState)
+// 		{
+// 			ChosenSpawningTag = ChosenState.GetMyTemplate().GetSpawningTag(ChosenState.Level);
+// 			ChosenSpawningTagLWOTC = class'Helpers_LW'.static.GetChosenActiveMissionTag(ChosenState);
 
-			// Remove All vanilla chosen tags if they are attached to this mission. This is the only
-			// place that should add Chosen tactical mission tags to the XCOM HQ. This
-			// basically prevents the base game and other mods from adding Chosen to missions.
-			SpawningTags = ChosenState.GetMyTemplate().ChosenProgressionData.SpawningTags;
-			foreach SpawningTags(ChosenSpawningTagRemove)
-			{
-				XComHQ.TacticalGameplayTags.RemoveItem(ChosenSpawningTagRemove);
-			}
+// 			// Remove All vanilla chosen tags if they are attached to this mission. This is the only
+// 			// place that should add Chosen tactical mission tags to the XCOM HQ. This
+// 			// basically prevents the base game and other mods from adding Chosen to missions.
+// 			SpawningTags = ChosenState.GetMyTemplate().ChosenProgressionData.SpawningTags;
+// 			foreach SpawningTags(ChosenSpawningTagRemove)
+// 			{
+// 				XComHQ.TacticalGameplayTags.RemoveItem(ChosenSpawningTagRemove);
+// 			}
 
-			// Now add the appropriate tactical gameplay tag for this Chosen if the
-			// corresponding LWOTC-specific one is in the mission's tactical tags.
-			if (!HasRulerOnMission && !ChosenState.bDefeated &&
-				MissionState.TacticalGameplayTags.Find(ChosenSpawningTagLWOTC) != INDEX_NONE)
-			{
-				XComHQ.TacticalGameplayTags.AddItem(ChosenSpawningTag);
-			}
-		}
-	}
+// 			// Now add the appropriate tactical gameplay tag for this Chosen if the
+// 			// corresponding LWOTC-specific one is in the mission's tactical tags.
+// 			if (!HasRulerOnMission && !ChosenState.bDefeated &&
+// 				MissionState.TacticalGameplayTags.Find(ChosenSpawningTagLWOTC) != INDEX_NONE)
+// 			{
+// 				XComHQ.TacticalGameplayTags.AddItem(ChosenSpawningTag);
+// 			}
+// 		}
+// 	}
 
-	foreach History.IterateByClassType(class'XComGameState_AdventChosen', ChosenState)
-	{
-		if (ChosenState.bDefeated)
-		{
-			ChosenState.PurgeMissionOfTags(MissionState);
-		}
-	}
-}
+// 	foreach History.IterateByClassType(class'XComGameState_AdventChosen', ChosenState)
+// 	{
+// 		if (ChosenState.bDefeated)
+// 		{
+// 			ChosenState.PurgeMissionOfTags(MissionState);
+// 		}
+// 	}
+// }
 
 
 // WOTC TODO: Perhaps this is supposed to honour the SpawnSizeOverride parameter somehow. Seems to work
@@ -1826,10 +1826,8 @@ static function SetUpGateCrasherCrew(XComGameState StartState)
 		XComHQ.AddToCrew(StartState, NewSoldierState);
 		NewSoldierState.m_RecruitDate = GameTime.CurrentTime; // AddToCrew does this, but during start state creation the StrategyRuleset hasn't been created yet
 
-		if(XComHQ.Squad.Length < class'X2StrategyGameRulesetDataStructures'.static.GetMaxSoldiersAllowedOnMission())
-		{
-			XComHQ.Squad.AddItem(NewSoldierState.GetReference());
-		}
+		XComHQ.Squad.AddItem(NewSoldierState.GetReference());
+
 	}
 
 }

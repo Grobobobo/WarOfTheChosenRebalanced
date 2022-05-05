@@ -943,12 +943,6 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 	local X2Effect_RemoveEffects 			RemoveEffects;
 	local X2Effect_InstantReactionTime		DodgeBonus;
 	local X2Effect_Formidable				FormidableEffect;
-	// WOTC TODO: Trying this out. Should be put somewhere more appropriate.
-	if (Template.DataName == 'ReflexShotModifier')
-	{
-		`Log("TRACE: Using AbilityTemplateManager to get 'StandardShot'");
-		Template.LocFriendlyName = class'X2AbilityTemplateManager'.static.GetAbilityTemplateManager().FindAbilityTemplate('StandardShot').LocFriendlyName;
-	}
 
 	if (Template.DataName == 'CivilianPanicked')
 	{
@@ -1416,11 +1410,6 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 		}
 	}
 
-	if (Template.DataName == 'StandardShot')
-	{
-		`LOG ("Adding ReflexShotModifier to StandardShot");
-		Template.AdditionalAbilities.AddItem('ReflexShotModifier');
-	}
 
 	// Gives names to unnamed effects so they can later be referenced)
 	switch (Template.DataName)
@@ -3703,7 +3692,7 @@ function RewireTechTree(X2StrategyElementTemplate Template, int Difficulty)
 				TechTemplate.PointsToComplete = TechTable[i].ResearchPointCost;
 				TechTemplate.Requirements.RequiredScienceScore=TechTable[i].RequiredScienceScore;
 				TechTemplate.Requirements.RequiredEngineeringScore=TechTable[i].RequiredEngineeringScore;
-				if (TechTable[i].RequiredScienceScore == 99999)
+				if (TechTable[i].RequiredScienceScore >= 99999)
 				{
 					TechTemplate.Requirements.bVisibleIfPersonnelGatesNotMet = false;
 				}
@@ -3900,8 +3889,6 @@ function ReconfigFacilities(X2StrategyElementTemplate Template, int Difficulty)
 		//	FacilityTemplate.SoldierUnlockTemplates.AddItem('LightningStrikeUnlock');
 		//	FacilityTemplate.SoldierUnlockTemplates.AddItem('IntegratedWarfareUnlock');
 		//	FacilityTemplate.SoldierUnlockTemplates.AddItem('StayWithMeUnlock');
-			FacilityTemplate.SoldierUnlockTemplates.AddItem('Infiltration1Unlock');
-			FacilityTemplate.SoldierUnlockTemplates.AddItem('Infiltration2Unlock');
 			FacilityTemplate.SoldierUnlockTemplates.AddItem('XTP1');
 			FacilityTemplate.SoldierUnlockTemplates.AddItem('XTP2');
 			FacilityTemplate.SoldierUnlockTemplates.AddItem('XTP3');

@@ -5,22 +5,9 @@
 //  PURPOSE: Miscellaneous helper routines.
 //---------------------------------------------------------------------------------------
 
-class Utilities_LW extends Object dependson(X2StrategyElement_DefaultAlienActivities) config(LW_Overhaul);
-
-var config array<float> REFLEX_ACTION_CHANCE_YELLOW;
-var config array<float> REFLEX_ACTION_CHANCE_GREEN;
-var config float REFLEX_ACTION_CHANCE_REDUCTION;
-
-var config array<float> LOW_INFILTRATION_MODIFIER_ON_REFLEX_ACTIONS;
-var config array<float> HIGH_INFILTRATION_MODIFIER_ON_REFLEX_ACTIONS;
-
-var config array<string> RETALIATION_MISSION_TYPES;
+class Utilities_LW extends Object config(LW_Overhaul);
 
 const CA_FAILURE_RISK_MARKER = "CovertActionRisk_Failure";
-
-const OffensiveReflexAction = 'OffensiveReflexActionPoint_LW';
-const DefensiveReflexAction = 'DefensiveReflexActionPoint_LW';
-const NoReflexActionUnitValue = 'NoReflexAction_LW';
 
 function static XComGameState_Unit CreateProxyUnit(XComGameState_Unit OriginalUnit, Name ProxyTemplateName, bool GiveAbilities, XComGameState NewGameState, optional Name Loadout)
 {
@@ -152,64 +139,6 @@ function static string CurrentMissionFamily()
     }
 
     return GeneratedMission.Mission.MissionFamily;
-}
-
-function static bool GetMissionSettings(XComGameState_MissionSite MissionSite, out MissionSettings_LW Settings)
-{
-    local name MissionName;
-	local string MissionFamilyName;
-	local int idx;
-
-    // Retreive the mission type and family names.
-	MissionName = MissionSite.GeneratedMission.Mission.MissionName;
-	MissionFamilyName = MissionSite.GeneratedMission.Mission.MissionFamily;
-	if(MissionFamilyName == "")
-		MissionFamilyName = MissionSite.GeneratedMission.Mission.sType;
-
-    // First look for a settings match using the mission name.
-    idx = class'X2StrategyElement_DefaultAlienActivities'.default.MissionSettings.Find('MissionOrFamilyName', MissionName);
-	if(idx != -1)
-    {
-		Settings = class'X2StrategyElement_DefaultAlienActivities'.default.MissionSettings[idx];
-        return true;
-    }
-
-    // Failing that, look for the family name.
-	idx = class'X2StrategyElement_DefaultAlienActivities'.default.MissionSettings.Find('MissionOrFamilyName', name(MissionFamilyName));
-	if(idx != -1)
-	{
-		Settings = class'X2StrategyElement_DefaultAlienActivities'.default.MissionSettings[idx];
-        return true;
-    }
-
-    // Neither
-    `redscreen("GetMissionSettings: No entry for " $ MissionName $ " / " $ MissionFamilyName);
-    return false;
-}
-
-// Determines whether the given mission is a retaliation of some sort
-// (could be full, mini or invasion).
-function static bool IsMissionRetaliation(StateObjectReference MissionRef)
-{
-	local XComGameState_MissionSite MissionState;
-
-	MissionState = XComGameState_MissionSite(`XCOMHISTORY.GetGameStateForObjectID(MissionRef.ObjectID));
-	if (MissionState == none)
-	{
-		`REDSCREEN("Object reference passed to IsMissionRetaliation() is not a mission site");
-		return false;
-	}
-	return default.RETALIATION_MISSION_TYPES.Find(MissionState.GeneratedMission.Mission.sType) != INDEX_NONE;
-}
-
-// Determines whether the currently active mission is a retaliation with
-// civilians on it.
-function static bool CurrentMissionIsRetaliation()
-{
-    local String MissionType;
-
-    MissionType = CurrentMissionType();
-    return (MissionType == "Terror_LW" || MissionType == "Invasion_LW" || MissionType=="Defend_LW");
 }
 
 // Delegates to `X2StrategyGameRulesetDataStructures.GetMaxSoldiersAllowedOnMission()`, but
@@ -440,236 +369,6 @@ static function array<X2EquipmentTemplate> GetCompleteDefaultLoadout(XComGameSta
 	return completedefaultloadout;
 }
 
-// Create a soldier proxy for the given rebel, set them as on-mission, and give them a loadout. All done within the
-// provided game state.
-function static XComGameState_Unit CreateRebelSoldier(StateObjectReference RebelRef, StateObjectReference OutpostRef, XComGameState NewGameState, optional name Loadout)
-{
-    local XComGameState_LWOutpost Outpost;
-    local XComGameState_Unit Proxy;
-    local Name TemplateName;
-	local int LaserChance, MagChance, CoilChance, iRand;
-	local string LoadoutStr;
-
-    Outpost = XComGameState_LWOutpost(`XCOMHISTORY.GetGameStateForObjectID(OutpostRef.ObjectID));
-    switch(Outpost.GetRebelLevel(RebelRef))
-    {
-        case 0:
-            TemplateName = 'RebelSoldierProxy';
-            break;
-        case 1:
-            TemplateName = 'RebelSoldierProxyM2';
-            break;
-        case 2:
-            TemplateName = 'RebelSoldierProxyM3';
-            break;
-        default:
-            `Redscreen("CreateRebelSoldier: Unsupported rebel level " $ Outpost.GetRebelLevel(RebelRef));
-            TemplateName = 'RebelSoldierProxy';
-    }
-
-    Proxy = CreateRebelProxy(RebelRef, OutpostRef, TemplateName, true, NewGameState);
-    Proxy.SetSoldierClassTemplate('LWS_RebelSoldier');
-
-	LaserChance = 0;
-	MagChance = 0;
-	CoilChance = 0;
-
-    if (Loadout == '')
-	{
-        LoadoutStr = "RebelSoldier";
-		if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MagnetizedWeapons') && class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('AdvancedLasers'))
-		{
-			LaserChance += (20 + 10 * (Outpost.GetRebelLevel(RebelRef) + 1)); // 30/40/50
-		}
-		if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('GaussWeapons') && class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('AdvancedLasers'))
-		{
-			LaserChance += (20 + 10 * (Outpost.GetRebelLevel(RebelRef) + 1)); // 60/80/100
-		}
-		if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('Coilguns') && class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('GaussWeapons'))
-		{
-			if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('AdvancedLasers'))
-			{
-				LaserChance = 100;
-			}
-			MagChance += (20 + 10 * (Outpost.GetRebelLevel(RebelRef) + 1)); //30/40/50
-		}
-		if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('AdvancedCoilguns') && class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('GaussWeapons'))
-		{
-			MagChance += (20 + 10 * (Outpost.GetRebelLevel(RebelRef) + 1)); //60/80/100
-		}
-		if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('PlasmaRifle'))
-		{
-			if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('GaussWeapons'))
-			{	
-				MagChance = 100;
-			}
-			CoilChance += (20 + 10 * (Outpost.GetRebelLevel(RebelRef) + 1)); //30/40/50
-		}
-		// All plasma weapon related research
-		if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('HeavyPlasma') && 
-			class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('AlloyCannon') && 
-			class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('PlasmaSniper') && 
-			class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('AdvancedCoilguns'))
-		{
-			CoilChance += (20 + 10 * (Outpost.GetRebelLevel(RebelRef) + 1)); //60/80/100
-		}
-		
-		if (`SYNC_RAND_STATIC(100) < CoilChance)
-		{
-			LoadoutStr $= "4";
-		}
-		else if (`SYNC_RAND_STATIC(100) < MagChance)
-		{
-			LoadoutStr $= "3";
-		}
-		else
-		{
-			if (`SYNC_RAND_STATIC(100) < LaserChance)
-			{
-				LoadoutStr $= "2";
-			}
-		}
-		iRand = `SYNC_RAND_STATIC(100);
-		if (iRand < 20)
-		{
-			LoadoutStr $= "SMG";
-		}
-		else if (iRand < 40)
-		{
-			LoadoutStr $= "Shotgun";
-		}
-			
-		//`LWTRACE ("Rebel Loadout" @ LoadoutStr);
-		Loadout = name(LoadOutStr);
-	}
-		
-    ApplyLoadout(Proxy, Loadout, NewGameState);
-
-    return Proxy;
-}
-
-// Create a rebel proxy for the given unit and set them on mission in the given
-// game state. Does not copy over abilities, so this can be used to create
-// civilian rebels in the required missions
-// (retaliations/invasions/jailbreaks/defends/recruitraids) without redscreens
-// regarding trying to add abilities without a primary weapon equipped.
-function static XComGameState_Unit CreateRebelProxy(StateObjectReference RebelRef,
-                                                    StateObjectReference OutpostRef,
-                                                    Name TemplateName,
-                                                    bool GiveAbilities,
-                                                    XComGameState NewGameState)
-{
-    local XComGameStateHistory History;
-    local XComGameState_LWOutpost Outpost;
-    local XComGameState_Unit Unit;
-	local XComGameState_Unit Proxy;
-
-    History = `XCOMHISTORY;
-    Outpost = XComGameState_LWOutpost(NewGameState.GetGameStateForObjectID(OutpostRef.ObjectID));
-    if (Outpost == none)
-    {
-        Outpost = XComGameState_LWOutpost(NewGameState.CreateStateObject(class'XComGameState_LWOutpost', OutpostRef.ObjectID));
-        NewGameState.AddStateObject(Outpost);
-    }
-
-    Unit = XComGameState_Unit(History.GetGameStateForObjectID(RebelRef.ObjectID));
-	`LWTrace("Creating proxy for " $ Unit.GetFullName() $ " with template " $ TemplateName);
-	
-	Proxy = CreateProxyUnit(Unit, TemplateName, GiveAbilities, NewGameState);
-	
-    NewGameState.AddStateObject(Proxy);
-    Outpost.SetRebelProxy(Unit.GetReference(), Proxy.GetReference());
-    Outpost.SetRebelOnMission(Unit.GetReference());
-
-    return Proxy;
-}
-
-// Create a soldier proxy for the given rebel, set them as on-mission, and give them a loadout. Must be called from within
-// a tactical mission: this function will add them to the mission via a UnitAdded tactical change.
-function static XComGameState_Unit AddRebelSoldierToMission(StateObjectReference RebelRef, StateObjectReference OutpostRef, out TTile Tile, optional name Loadout)
-{
-    local XComGameStateContext_TacticalGameRule NewGameStateContext;
-    local XComGameState NewGameState;
-    local XComGameState_Unit Proxy;
-    local XComGameState_Player Player;
-    local X2TacticalGameRuleset Rules;
-    local XComGameStateHistory History;
-
-    Rules = `TACTICALRULES;
-    History = `XCOMHISTORY;
-    NewGameStateContext = class'XComGameStateContext_TacticalGameRule'.static.BuildContextFromGameRule(eGameRule_UnitAdded);
-    NewGameState = History.CreateNewGameState(true, NewGameStateContext);
-    Proxy = CreateRebelSoldier(RebelRef, OutpostRef, NewGameState, Loadout);
-    Proxy.SetVisibilityLocation(Tile);
-    Player = FindPlayer(eTeam_XCom);
-    Proxy.SetControllingPlayer(Player.GetReference());
-    class'Helpers_LW'.static.AddUnitToXComGroup(NewGameState, Proxy, Player, History);
-
-    Rules.InitializeUnitAbilities(NewGameState, Proxy);
-    class'XGUnit'.static.CreateVisualizer(NewGameState, Proxy, Player, none);
-    XComGameStateContext_TacticalGameRule(NewGameState.GetContext()).UnitRef = Proxy.GetReference();
-	Rules.SubmitGameState(NewGameState);
-    Proxy.OnBeginTacticalPlay(NewGameState);
-    return Proxy;
-}
-
-// Create a (usually civilian) proxy for the given rebel, set them as
-// on-mission. Must be called from within a tactical mission. This function
-// will add them to the given game state (if provided), which should be within
-// a XComGameStateContext_TacticalGameRule context for eGameRule_UnitAdded. If
-// no game state is provided one is created and submitted internal to this
-// function.
-//
-// May provide both a template to use for the proxy (generally 'Rebel' or
-// 'FacelessRebelProxy'), and optionally can provide a team to assign them to.
-function static XComGameState_Unit AddRebelToMission(StateObjectReference RebelRef,
-                                                     StateObjectReference OutpostRef,
-                                                     Name TemplateName,
-                                                     out TTile Tile,
-                                                     optional ETeam team = eTeam_XCom,
-                                                     optional XComGameState NewGameState)
-{
-    local XComGameStateContext_TacticalGameRule NewGameStateContext;
-    local XComGameState_Unit Proxy;
-    local XComGameState_Player Player;
-    local X2TacticalGameRuleset Rules;
-    local XComGameStateHistory History;
-    local bool SubmitGameState;
-
-    Rules = `TACTICALRULES;
-    History = `XCOMHISTORY;
-
-    if (NewGameState == none)
-    {
-        NewGameStateContext = class'XComGameStateContext_TacticalGameRule'.static.BuildContextFromGameRule(eGameRule_UnitAdded);
-        NewGameState = History.CreateNewGameState(true, NewGameStateContext);
-        SubmitGameState = true;
-    }
-
-    // These rebels are civvies, but give them their abilities anyway (some are defensive).
-    Proxy = CreateRebelProxy(RebelRef, OutpostRef, TemplateName, true, NewGameState);
-    Proxy.SetVisibilityLocation(Tile);
-    Player = FindPlayer(Team);
-    Proxy.SetControllingPlayer(Player.GetReference());
-    class'Helpers_LW'.static.AddUnitToXComGroup(NewGameState, Proxy, Player, History);
-
-    if (Team == eTeam_Alien)
-    {
-        XGAIPlayer(XGBattle_SP(`BATTLE).GetAIPlayer()).AddNewSpawnAIData(NewGameState);
-    }
-
-    Rules.InitializeUnitAbilities(NewGameState, Proxy);
-    class'XGUnit'.static.CreateVisualizer(NewGameState, Proxy, Player, none);
-    XComGameStateContext_TacticalGameRule(NewGameState.GetContext()).UnitRef = Proxy.GetReference();
-
-    if (SubmitGameState)
-    {
-	    Rules.SubmitGameState(NewGameState);
-    }
-    Proxy.OnBeginTacticalPlay(NewGameState);
-    return Proxy;
-}
-
 /* Find the number of enemies that were on the original mission schedule.
  * If the mission was an RNF-only mission then it returns 8 + the region alert
  * the mission is in.
@@ -678,20 +377,14 @@ function static XComGameState_Unit AddRebelToMission(StateObjectReference RebelR
 {
 	local int OrigMissionAliens;
 	local array<X2CharacterTemplate> UnitTemplatesThatWillSpawn;
-	local XComGameState_WorldRegion Region;
-	local XComGameState_WorldRegion_LWStrategyAI RegionAI;
-	local XComGameStateHistory History;
 
-	History = `XCOMHISTORY;
 
 	MissionState.GetShadowChamberMissionInfo(OrigMissionAliens, UnitTemplatesThatWillSpawn);
 
 	// Handle missions built primarily around RNFs by granting a minimum alien count
 	if (OrigMissionAliens <= 6)
 	{
-		Region = XComGameState_WorldRegion(History.GetGameStateForObjectID(MissionState.Region.ObjectID));
-		RegionAI = class'XComGameState_WorldRegion_LWStrategyAI'.static.GetRegionalAI(Region);
-		OrigMissionAliens = 7 + RegionAI.LocalAlertLevel;
+		OrigMissionAliens = 9;
 	}
 
 	return OrigMissionAliens;
@@ -839,24 +532,6 @@ static function GetAbilityIconColor(
 	{
 		BackgroundColor = class'LWTemplateMods'.default.ICON_COLOR_1; // white
 	}
-}
-
-// Returns the force level maintained by LWOTC rather than the one from
-// the alien HQ, since those two force levels may differ.
-static function int GetLWForceLevel()
-{
-	local XComGameStateHistory History;
-	local XComGameState_WorldRegion RegionState;
-	
-	History = `XCOMHISTORY;
-
-	// Get the first region since all regions have the same force level
-	foreach History.IterateByClassType(class'XComGameState_WorldRegion', RegionState)
-	{
-		break;
-	}
-
-	return class'XComGameState_WorldRegion_LWStrategyAI'.static.GetRegionalAI(RegionState).LocalForceLevel;
 }
 
 static function bool IsOnStrategyMap()

@@ -137,11 +137,6 @@ function int GetGrazeBand()
 	return GrazeBandWidth;
 }
 
-function bool GetPauseOnRecruit()
-{
-    return PauseOnRecruit;
-}
-
 // ========================================================
 // GRAZE BAND 
 // ========================================================

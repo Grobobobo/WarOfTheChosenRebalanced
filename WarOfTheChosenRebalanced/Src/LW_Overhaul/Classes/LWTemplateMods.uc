@@ -1696,15 +1696,6 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 		Template.AbilityTargetConditions.AddItem(NotHaywiredCondition);
 	}
 
-	if (Template.DataName == 'Evac')
-	{
-		// Only mastered mind-controlled enemies can evac. Insert this one first, as it will return
-		// 'AA_AbilityUnavailable' if they can't use the ability, so it will be hidden on any MC'd
-		// alien instead of being shown but disabled when they aren't in an evac zone due to that
-		// condition returning a different code.
-		Template.AbilityShooterConditions.InsertItem(0, new class'X2Condition_MasteredEnemy');
-	}
-
 	switch (Template.DataName)
 	{
 		case 'OverwatchShot':
@@ -1801,19 +1792,6 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 		}
 	}
 	
-	// Yellow alert scamper ability table. Search these abilities for an X2AbilityCost_ActionPoints
-	// and add the special 'ReflexActionPoint_LW' to the list of valid action points that can be used
-	// for these actions. These special action points are awarded to some units during a scamper, and
-	// they will only be able to use the abilities configured here.
-	if (OffensiveReflexAbilities.Find(Template.DataName) >= 0)
-	{
-		AddReflexActionPoint(Template, class'Utilities_LW'.const.OffensiveReflexAction);
-	}
-
-	if (DefensiveReflexAbilities.Find(Template.DataName) >= 0)
-	{
-		AddReflexActionPoint(Template, class'Utilities_LW'.const.DefensiveReflexAction);
-	}
 
 	if (DoubleTapAbilities.Find(Template.DataName) >= 0)
 	{
@@ -2105,11 +2083,6 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 	local bool bApplyToUnit;
 	local int k;
 
-	if (class'X2Effect_TransferMecToOutpost'.default.VALID_FULLOVERRIDE_TYPES_TO_TRANSFER_TO_OUTPOST.Find(Template.DataName) >= 0)
-	{
-		`Log("Adding evac to " $ Template.DataName);
-		Template.Abilities.AddItem('Evac');
-	}
 	
 	if(Template.bCanTakeCover && !Template.bIsSoldier && !Template.bIsCivilian)
 	{
@@ -3669,17 +3642,6 @@ function RewireTechTree(X2StrategyElementTemplate Template, int Difficulty)
 				break;
 		}
 		
-		if (TechTemplate.DataName == 'Tech_AlienFacilityLead')
-		{
-			TechTemplate.ResearchCompletedFn = class'X2StrategyElement_DefaultAlienActivities'.static.FacilityLeadCompleted;
-			TechTemplate.Requirements.SpecialRequirementsFn = none; // remove the base-game requirement, since it is now handled elsewhere
-			TechTemplate.RepeatPointsIncrease = default.ALIEN_FACILITY_LEAD_RP_INCREMENT;
-			TechTemplate.Cost.ResourceCosts.Length = 0;
-			Resources.ItemTemplateName = 'Intel';
-			Resources.Quantity = default.ALIEN_FACILITY_LEAD_INTEL;
-			TechTemplate.Cost.ResourceCosts.AddItem(Resources);
-		}
-
 		if (TechTemplate.DataName == 'ResistanceRadio')
 		{
 			TechTemplate.ResearchCompletedFn = ActivateContinentBonuses;
@@ -4183,18 +4145,13 @@ function bool DelayGrenades(XComGameState_PointOfInterest POIState)
 function ModifyPOIs (X2StrategyElementTemplate Template, int Difficulty)
 {
 	local X2PointOfInterestTemplate POITemplate;
-	local X2MissionSiteDescriptionTemplate MissionSiteDescription;
 
 	POITemplate = X2PointofInterestTemplate(Template);
 	if (POITemplate != none)
 	{
 		switch (POITemplate.DataName)
 		{
-			case 'POI_FacilityLead':
-			case 'POI_GuerillaOp':
 			case 'POI_HeavyWeapon':
-			case 'POI_SupplyRaid':
-			case 'POI_IncreaseIncome':
 				POITemplate.CanAppearFn = DisablePOI;
 				break;
 			case 'POI_GrenadeAmmo':
@@ -4202,14 +4159,6 @@ function ModifyPOIs (X2StrategyElementTemplate Template, int Difficulty)
 				break;
 			default:
 				break;
-		}
-	}
-	MissionSiteDescription = X2MissionSiteDescriptionTemplate(Template);
-	if (MissionSiteDescription != none)
-	{
-		if (MissionSiteDescription.DataName == 'CityCenter')
-		{
-			MissionSiteDescription.GetMissionSiteDescriptionFn = class'X2StrategyElement_MissionSiteDescriptions_LW'.static.GetCityCenterMissionSiteDescription_LW;
 		}
 	}
 }
@@ -4234,14 +4183,6 @@ function ModifyHackRewards (X2HackRewardTemplate Template, int Difficulty)
 		if (HackRewardTemplate.DataName == 'PriorityData_T1' || HackRewardTemplate.DataName == 'PriorityData_T2')
 		{
 			HackRewardTemplate.ApplyHackRewardFn = none;
-		}
-		if (HackRewardTemplate.DataName == 'ResistanceBroadcast_T1')
-		{
-			HackRewardTemplate.ApplyHackRewardFn = class'X2HackReward_LWOverhaul'.static.ApplyResistanceBroadcast_LW_1;
-		} 
-		if (HackRewardTemplate.DataName == 'ResistanceBroadcast_T2')
-		{
-			HackRewardTemplate.ApplyHackRewardFn = class'X2HackReward_LWOverhaul'.static.ApplyResistanceBroadcast_LW_2;
 		}
 	}
 }

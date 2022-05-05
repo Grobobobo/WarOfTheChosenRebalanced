@@ -127,7 +127,6 @@ function Reset()
 function Initialize()
 {
 	local XComGameState_MissionSite MissionState;
-	local XComGameState_LWAlienActivity CurrentActivity;
 	local int k;
 	local Mission_Reinforcements_Modifiers_Struct_LW EmptyReinfRules;
 	local float BaseTimerLength, CurrentTimerLength;
@@ -146,7 +145,6 @@ function Initialize()
 	ReinfRules = EmptyReinfRules;
 
 	MissionState = XComGameState_MissionSite(`XCOMHISTORY.GetGameStateForObjectID(`XCOMHQ.MissionRef.ObjectID));
-	CurrentActivity = class'XComGameState_LWAlienActivityManager'.static.FindAlienActivityByMission(MissionState);
 
 	// Get the deets for this particular mission type
 	for (k = 0; k < default.MISSION_REINFORCEMENT_MODIFIERS.length; k++)
@@ -155,15 +153,8 @@ function Initialize()
 		{
 			ReinfRules = default.MISSION_REINFORCEMENT_MODIFIERS[k];
 		}
-		// Activity setting overrides mission setting
-		if (CurrentActivity != none &&
-			default.MISSION_REINFORCEMENT_MODIFIERS[k].ActivityName == CurrentActivity.GetMyTemplateName())
-		{
-			ReinfRules = default.MISSION_REINFORCEMENT_MODIFIERS[k];
-			break;
-		}
 	}
-	Count = Max (ReinfRules.QueueOffset + GetQueueOffSetModifier(), 0);
+	Count = ReinfRules.QueueOffset;
 
 	// Work out how many more or fewer turns there are compared to the default
 	// and use this to initialise the timer-based bucket modifier
@@ -192,34 +183,6 @@ function int GetCurrentTimer()
     }
 
     return Timer.TimerValue;
-}
-
-function int GetQueueOffsetModifier()
-{
-	local XComGameState_MissionSite			MissionState;
-	local XComGameState_LWPersistentSquad	SquadState;
-	local XComGameState_BattleData			BattleData;
-	local int idx;
-	local InfiltrationQueueModifierStruct	InfiltrationQueueModifier;
-
-	BattleData = XComGameState_BattleData(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_BattleData'));
-	MissionState = XComGameState_MissionSite(`XCOMHISTORY.GetGameStateForObjectID(BattleData.m_iMissionID));
-    if (MissionState == none)
-    {
-       return 0;
-    }
-	SquadState = `LWSQUADMGR.GetSquadOnMission(MissionState.GetReference());
-	if (`LWSQUADMGR.IsValidInfiltrationMission(MissionState.GetReference()))
-	{
-		foreach default.QUEUE_MODIFIER(InfiltrationQueueModifier, idx)
-		{
-			if (InfiltrationQueueModifier.Infiltration > SquadState.CurrentInfiltration)
-			{
-				return InfiltrationQueueModifier.Modifier;
-			}
-		}
-	}
-	return 0;
 }
 
 
@@ -306,24 +269,9 @@ function bool ReachedTurnThreshhold (int Threshhold, optional bool CheckWin = fa
 function bool CanAddToBucket()
 {
 	local XComGameState_Player PlayerState;
-	local XComGameState_MissionSite MissionState;
-	local XComGameState_WorldREgion Region;
-	local XComGameState_WorldRegion_LWStrategyAI RegionalAI;
 
 	if (Disabled)
 	{
-		return false;
-	}
-
-	MissionState = XComGameState_MissionSite(`XCOMHISTORY.GetGameStateForObjectID(`XCOMHQ.MissionRef.ObjectID));
-	Region = MissionState.GetWorldRegion();
-	RegionalAI = class'XComGameState_WorldRegion_LWStrategyAI'.static.GetRegionalAI(Region);
-	if (RegionalAI.bLiberated)
-	{
-		if (class'Utilities_LW'.static.CurrentMissionType() != "Defend_LW" &&
-		    class'Utilities_LW'.static.CurrentMissionType() != "SupplyConvoy_LW" &&
-		    class'Utilities_LW'.static.CurrentMissionType() != "Invasion_LW" &&
-		    class'Utilities_LW'.static.CurrentMissionType() != "CovertEscape_LW")
 		return false;
 	}
 
@@ -409,9 +357,6 @@ function int CheckForReinforcements()
 	PlayerState = class'Utilities_LW'.static.FindPlayer(eTeam_XCom);
 	if (CanAddToBucket())
 	{
-	    TmpValue = GetIncreaseFromRegion();
-		`LWTrace("LWRNF: Adding " $ TmpValue $ " to reinforcement bucket from region status");
-		BucketFiller += TmpValue;
 
 		TmpValue = GetIncreaseFromDarkEvents();
 		`LWTrace("LWRNF: Adding " $ TmpValue $ " to reinforcement bucket from dark events");
@@ -570,40 +515,6 @@ function bool ForceReinforcementsByTurn(int Turn)
 		return true;
 	}
 	return false;
-}
-
-function float GetIncreaseFromRegion()
-{
-    //local XComGameState_BattleData BattleData;
-	local XComGameState_MissionSite MissionState;
-	local XComGameState_WorldRegion Region;
-	local XComGameState_WorldRegion_LWStrategyAI RegionalAI;
-    local int AlertLevel;
-    local float Modifier;
-    local float AlertMod;
-
-    //BattleData = XComGameState_BattleData(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_BattleData'));
-
-	MissionState = XComGameState_MissionSite(`XCOMHISTORY.GetGameStateForObjectID(`XCOMHQ.MissionRef.ObjectID));
-	Region = MissionState.GetWorldRegion();
-	RegionalAI = class'XComGameState_WorldRegion_LWStrategyAI'.static.GetRegionalAI(Region);
-
-	AlertLevel = Min(RegionalAI.LocalAlertLevel, ALERT_MODIFIER.Length);	
-	// TODO: This is a super hack to ensure that ambush missions don't have varying
-	// difficulties of reinforcements based on where they run, because the player
-	// has no knowledge of where the covert action will run.
-	if (MissionState.GeneratedMission.Mission.sType == "CovertEscape_LW")
-	{
-		AlertLevel = AMBUSH_MISSION_REGION_ALERT_LEVEL;
-	}
-
-    AlertMod = ALERT_MODIFIER[AlertLevel];
-
-    // Randomize the alert-based level.
-    AlertMod = Lerp(AlertMod * (1.0 - ALERT_RANDOM_FACTOR), AlertMod * (1.0 + ALERT_RANDOM_FACTOR), `SYNC_FRAND());
-    Modifier += AlertMod;
-
-    return Modifier;
 }
 
 function float GetIncreaseFromDarkEvents()

@@ -25,7 +25,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	local array<X2DataTemplate> Templates;
 
 	Templates.AddItem(CreateObjectivesListeners());
-	Templates.AddItem(CreateSquadListeners());
+	//Templates.AddItem(CreateSquadListeners());
 	Templates.AddItem(CreateMissionStateListeners());
 	Templates.AddItem(CreateMissionPrepListeners());
 	Templates.AddItem(CreateMiscellaneousListeners());
@@ -37,25 +37,25 @@ static function array<X2DataTemplate> CreateTemplates()
 /// Strategy ///
 ////////////////
 
-static function CHEventListenerTemplate CreateSquadListeners()
-{
-	local CHEventListenerTemplate Template;
+// static function CHEventListenerTemplate CreateSquadListeners()
+// {
+// 	local CHEventListenerTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'CHEventListenerTemplate', Template, 'MissionSquadListeners');
-	Template.AddCHEvent('rjSquadSelect_AllowAutoFilling', DisableSquadAutoFill, ELD_Immediate);
-	Template.AddCHEvent('UISquadSelect_NavHelpUpdate', OverrideSquadSelectButtons, ELD_Immediate);
+// 	`CREATE_X2TEMPLATE(class'CHEventListenerTemplate', Template, 'MissionSquadListeners');
+// 	Template.AddCHEvent('rjSquadSelect_AllowAutoFilling', DisableSquadAutoFill, ELD_Immediate);
+// 	Template.AddCHEvent('UISquadSelect_NavHelpUpdate', OverrideSquadSelectButtons, ELD_Immediate);
 
-	Template.RegisterInStrategy = true;
+// 	Template.RegisterInStrategy = true;
 
-	return Template;
-}
+// 	return Template;
+// }
 
 static function CHEventListenerTemplate CreateMissionStateListeners()
 {
 	local CHEventListenerTemplate Template;
 
 	`CREATE_X2TEMPLATE(class'CHEventListenerTemplate', Template, 'MissionStateListeners');
-	Template.AddCHEvent('SitRepCheckAdditionalRequirements', IsSitRepValidForMission, ELD_Immediate);
+	//Template.AddCHEvent('SitRepCheckAdditionalRequirements', IsSitRepValidForMission, ELD_Immediate);
 	Template.AddCHEvent('OverridePlotValidForMission', IsPlotValidForMission, ELD_Immediate);
 
 	Template.RegisterInStrategy = true;
@@ -86,10 +86,6 @@ static function CHEventListenerTemplate CreateMissionPrepListeners()
 
 	`CREATE_X2TEMPLATE(class'CHEventListenerTemplate', Template, 'MissionPrepListeners');
 	Template.AddCHEvent('OverrideEncounterZoneAnchorPoint', DisableAutoAdjustingPatrolZones, ELD_Immediate);
-	Template.AddCHEvent('OverridePatrolBehavior', DisableDefaultPatrolBehavior, ELD_Immediate);
-	Template.AddCHEvent('SpawnReinforcementsComplete', OnSpawnReinforcementsComplete, ELD_OnStateSubmitted);
-	Template.AddCHEvent('ChosenSpawnReinforcementsComplete', OnSpawnReinforcementsComplete, ELD_OnStateSubmitted);
-	Template.AddCHEvent('OnTacticalBeginPlay', DisableInterceptAIBehavior, ELD_Immediate);
 	Template.AddCHEvent('OnTacticalBeginPlay', ChangeLostSpawningBehavior, ELD_Immediate);
 
 	Template.RegisterInTactical = true;
@@ -283,36 +279,36 @@ static function UISquadSelect GetSquadSelect()
 	return none;
 }
 
-static protected function EventListenerReturn IsSitRepValidForMission(
-	Object EventData,
-	Object EventSource,
-	XComGameState GameState,
-	Name EventID,
-	Object CallbackData)
-{
-	local XComLWTuple Tuple;
-	local X2SitRepTemplate SitRepTemplate;
-	local XComGameState_MissionSite MissionState;
+// static protected function EventListenerReturn IsSitRepValidForMission(
+// 	Object EventData,
+// 	Object EventSource,
+// 	XComGameState GameState,
+// 	Name EventID,
+// 	Object CallbackData)
+// {
+// 	local XComLWTuple Tuple;
+// 	local X2SitRepTemplate SitRepTemplate;
+// 	local XComGameState_MissionSite MissionState;
 	
-	Tuple = XComLWTuple(EventData);
-	if (Tuple == none)
-		return ELR_NoInterrupt;
+// 	Tuple = XComLWTuple(EventData);
+// 	if (Tuple == none)
+// 		return ELR_NoInterrupt;
 
-	SitRepTemplate = X2SitRepTemplate(EventSource);
-	if (SitRepTemplate == none)
-		return ELR_NoInterrupt;
+// 	SitRepTemplate = X2SitRepTemplate(EventSource);
+// 	if (SitRepTemplate == none)
+// 		return ELR_NoInterrupt;
 
-	MissionState = XComGameState_MissionSite(Tuple.Data[1].o);
-	if (MissionState == none)
-	{
-		`REDSCREEN("Invalid data sent as mission state in SitRepCheckAdditionalRequirements event");
-		return ELR_NoInterrupt;
-	}
+// 	MissionState = XComGameState_MissionSite(Tuple.Data[1].o);
+// 	if (MissionState == none)
+// 	{
+// 		`REDSCREEN("Invalid data sent as mission state in SitRepCheckAdditionalRequirements event");
+// 		return ELR_NoInterrupt;
+// 	}
 
-	Tuple.Data[0].b = class'X2StrategyElement_LWMissionSources'.static.SitRepMeetsAdditionalRequirements(SitRepTemplate, MissionState);
+// 	Tuple.Data[0].b = class'X2StrategyElement_LWMissionSources'.static.SitRepMeetsAdditionalRequirements(SitRepTemplate, MissionState);
 
-	return ELR_NoInterrupt;
-}
+// 	return ELR_NoInterrupt;
+// }
 
 // Overrides plot selection for troop columns so tunnels can't be picked
 static protected function EventListenerReturn IsPlotValidForMission(
@@ -380,77 +376,6 @@ static function EventListenerReturn DisableAutoAdjustingPatrolZones(
 	return ELR_NoInterrupt;
 }
 
-// Override AI intercept/patrol behavior. The base game uses a function to control pod movement.
-//
-// For the overhaul mod we will not use either upthrottling or the 'intercept' behavior if XCOM passes
-// the pod along the LoP. Instead we will use the pod manager to control movement. But we still want pods
-// with no jobs to patrol as normal.
-static function EventListenerReturn DisableDefaultPatrolBehavior(
-	Object EventData,
-	Object EventSource,
-	XComGameState NewGameState,
-	Name InEventID,
-	Object CallbackData)
-{
-	local XComLWTuple Tuple;
-	local XComGameState_AIGroup Group;
-
-	Tuple = XComLWTuple(EventData);
-	if (Tuple == none)
-		return ELR_NoInterrupt;
-
-	// Sanity check. This should not happen.
-	if (Tuple.Id != 'OverridePatrolBehavior')
-	{
-		`REDSCREEN("Received unexpected event ID in DisableDefaultPatrolBehavior() event handler");
-		return ELR_NoInterrupt;
-	}
-
-	Group = XComGameState_AIGroup(EventSource);
-
-	if (Group != none && `LWPODMGR.PodHasJob(Group) || `LWPODMGR.GroupIsInYellowAlert(Group))
-	{
-		// This pod has a job, or is in yellow alert. Don't let the base game alter its alert.
-		// For pods with jobs, we want the game to use the throttling beacon we have set for them.
-		// For yellow alert pods, either they have a job, in which case they should go where that job
-		// says they should, or they should be investigating their yellow alert cause.
-		Tuple.Data[0].b = true;
-	}
-	else
-	{
-		// No job. Let the base game patrol, but don't try to use the intercept mechanic.
-		Tuple.Data[0].b = false;
-	}
-
-	return ELR_NoInterrupt;
-}
-
-// A RNF pod has spawned. Mark the units with a special marker to indicate they shouldn't be eligible for
-// reflex actions this turn.
-static function EventListenerReturn OnSpawnReinforcementsComplete (
-	Object EventData,
-	Object EventSource,
-	XComGameState GameState,
-	Name InEventID,
-	Object CallbackData)
-{
-	local XComGameState_Unit Unit;
-	local XComGameState NewGameState;
-	local XComGameState_AIReinforcementSpawner Spawner;
-	local int i;
-
-	Spawner = XComGameState_AIReinforcementSpawner(EventSource);
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Prevent RNF units from getting yellow actions");
-	for (i = 0; i < Spawner.SpawnedUnitIDs.Length; ++i)
-	{
-		Unit = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', Spawner.SpawnedUnitIDs[i]));
-		Unit.SetUnitFloatValue(class'Utilities_LW'.const.NoReflexActionUnitValue, 1, eCleanup_BeginTurn);
-	}
-
-	`TACTICALRULES.SubmitGameState(NewGameState);
-
-	return ELR_NoInterrupt;
-}
 
 // Disable the "intercept player" AI behaviour for all missions by setting a new
 // WOTC property on the battle data object. This can probably still be overridden
@@ -480,38 +405,6 @@ static function EventListenerReturn DisableInterceptAIBehavior(Object EventData,
 	}
 
 	return ELR_NoInterrupt;
-}
-
-// A BuildVisualization function that ensures that alien pack enemies have their
-// pawns updated via X2Action_CustomizeAlienPackRNFs.
-static function CustomizeAliens_BuildVisualization(XComGameState VisualizeGameState)
-{
-	local XComGameState_Unit UnitState;
-	local VisualizationActionMetadata EmptyMetadata, ActionMetadata;
-	local XComGameState_Unit_AlienCustomization AlienCustomization;
-
-	if (VisualizeGameState.GetNumGameStateObjects() > 0)
-	{
-		foreach VisualizeGameState.IterateByClassType( class'XComGameState_Unit', UnitState )
-		{
-			AlienCustomization = class'XComGameState_Unit_AlienCustomization'.static.GetCustomizationComponent(UnitState);
-			if (AlienCustomization == none)
-			{
-				continue;
-			}
-			
-			ActionMetadata = EmptyMetadata;
-			ActionMetadata.StateObject_OldState = UnitState;
-			ActionMetadata.StateObject_NewState = UnitState;
-
-			ActionMetadata.VisualizeActor = UnitState.GetVisualizer();
-
-			class'X2Action_CustomizeAlienPackRNFs'.static.AddToVisualizationTree(
-				ActionMetadata,
-				VisualizeGameState.GetContext(),
-				false);
-		}
-	}
 }
 
 static function EventListenerReturn LW2OnPlayerTurnBegun(Object EventData, Object EventSource, XComGameState GameState, Name InEventID, Object CallbackData)

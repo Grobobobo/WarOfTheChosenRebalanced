@@ -20,8 +20,6 @@ static function array<X2DataTemplate> CreateTemplates()
 	// DarkEvents.AddItem(CreateHavenInfiltrationTemplate());
 	DarkEvents.AddItem(CreateAirPatrolsTemplate());
 	DarkEvents.AddItem(CreateRuralCheckpointsLWTemplate());
-	DarkEvents.AddItem(CreatePreRevealMinorBreakthrough());
-	DarkEvents.AddItem(CreatePreRevealMajorBreakthrough());
 
 
 	//DarkEvents.AddItem(CreateFirewallsTemplate());
@@ -650,124 +648,6 @@ static function GenericSettings (out X2DarkEventTemplate Template)
 	Template.MinWeight = 1;
 	Template.OnActivatedFn = ActivateTacticalDarkEvent;
     Template.OnDeactivatedFn = DeactivateTacticalDarkEvent;
-}
-
-// This only pops before first objective is finished
-static function X2DataTemplate CreatePreRevealMinorBreakthrough()
-{
-	local X2DarkEventTemplate Template;
-
-	`CREATE_X2TEMPLATE(class'X2DarkEventTemplate', Template, 'DarkEvent_MinorBreakthrough2');
-	Template.Category = "DarkEvent";
-	Template.ImagePath = "img:///UILibrary_StrategyImages.X2StrategyMap.DarkEvent_Avatar";
-	Template.bRepeatable = true;
-	Template.bTactical = false;
-	Template.bLastsUntilNextSupplyDrop = false;
-	Template.MaxSuccesses = 0;
-	Template.MinActivationDays = 15;
-	Template.MaxActivationDays = 20;
-	Template.MinDurationDays = 0;
-	Template.MaxDurationDays = 0;
-	Template.bInfiniteDuration = false;
-	Template.StartingWeight = 10;
-	Template.MinWeight = 1;
-	Template.MaxWeight = 10;
-	Template.WeightDeltaPerPlay = 0;
-	Template.WeightDeltaPerActivate = -2;
-	Template.MutuallyExclusiveEvents.AddItem('DarkEvent_MajorBreakthrough');
-	Template.MutuallyExclusiveEvents.AddItem('DarkEvent_MajorBreakthrough2');
-	Template.MutuallyExclusiveEvents.AddItem('DarkEvent_MinorBreakthrough');
-	Template.bNeverShowObjective = true;
-
-	Template.OnActivatedFn = ActivateMinorBreakthroughMod;
-	Template.CanActivateFn = CanActivateMinorBreakthrough2;
-	Template.CanCompleteFn = CanCompleteMinorBreakthrough;
-	Template.GetSummaryFn = GetMinorBreakthroughSummary2;
-	Template.GetPreMissionTextFn = GetMinorBreakthroughPreMissionText2;
-
-	return Template;
-}
-
-function ActivateMinorBreakthroughMod(XComGameState NewGameState, StateObjectReference InRef, optional bool bReactivate = false)
-{
-	`LWACTIVITYMGR.AddDoomToRandomFacility(NewGameState, GetMinorBreakthroughDoom(), default.MinorBreakthroughDoomLabel);
-}
-
-function bool CanActivateMinorBreakthrough2(XComGameState_DarkEvent DarkEventState)
-{
-	// Add condition that avatar project is not revealed
-	return (!AtFirstMonth() && !AtMaxDoom() && !class'XComGameState_HeadquartersXCom'.static.IsObjectiveCompleted('S0_RevealAvatarProject'));
-}
-
-function string GetMinorBreakthroughSummary2(string strSummaryText)
-{
-	local XGParamTag ParamTag;
-
-	ParamTag = XGParamTag(`XEXPANDCONTEXT.FindTag("XGParam"));
-	ParamTag.StrValue0 = GetBlocksString(GetMinorBreakthroughDoom());
-	return `XEXPAND.ExpandString(strSummaryText);
-}
-
-function string GetMinorBreakthroughPreMissionText2(string strPreMissionText)
-{
-	local XGParamTag ParamTag;
-
-	ParamTag = XGParamTag(`XEXPANDCONTEXT.FindTag("XGParam"));
-	ParamTag.StrValue0 = GetBlocksString(GetMinorBreakthroughDoom());
-	return `XEXPAND.ExpandString(strPreMissionText);
-}
-
-static function X2DataTemplate CreatePreRevealMajorBreakthrough()
-{
-	local X2DarkEventTemplate Template;
-
-	`CREATE_X2TEMPLATE(class'X2DarkEventTemplate', Template, 'DarkEvent_MajorBreakthrough2');
-	Template.Category = "DarkEvent";
-	Template.ImagePath = "img:///UILibrary_StrategyImages.X2StrategyMap.DarkEvent_Avatar2";
-	Template.bRepeatable = true;
-	Template.bTactical = false;
-	Template.bLastsUntilNextSupplyDrop = false;
-	Template.MaxSuccesses = 0;
-	Template.MinActivationDays = 21;
-	Template.MaxActivationDays = 28;
-	Template.MinDurationDays = 0;
-	Template.MaxDurationDays = 0;
-	Template.bInfiniteDuration = false;
-	Template.StartingWeight = 6;
-	Template.MinWeight = 1;
-	Template.MaxWeight = 6;
-	Template.WeightDeltaPerPlay = 0;
-	Template.WeightDeltaPerActivate = -2;
-	Template.MutuallyExclusiveEvents.AddItem('DarkEvent_MinorBreakthrough');
-	Template.MutuallyExclusiveEvents.AddItem('DarkEvent_MajorBreakthrough');
-	Template.MutuallyExclusiveEvents.AddItem('DarkEvent_MinorBreakthrough2');
-	Template.bNeverShowObjective = true;
-
-	Template.OnActivatedFn = ActivateMajorBreakthroughMod;
-	Template.CanActivateFn = CanActivateMajorBreakthrough2;
-	Template.CanCompleteFn = CanCompleteMajorBreakthrough;
-	Template.GetSummaryFn = GetMajorBreakthroughSummary2;
-	Template.GetPreMissionTextFn = GetMajorBreakthroughPreMissionText2;
-
-	return Template;
-}
-
-function ActivateMajorBreakthroughMod(XComGameState NewGameState, StateObjectReference InRef, optional bool bReactivate = false)
-{
-	`LWACTIVITYMGR.AddDoomToRandomFacility(NewGameState, GetMajorBreakthroughDoom(), default.MajorBreakthroughDoomLabel);
-}
-
-function bool CanActivateMajorBreakthrough2(XComGameState_DarkEvent DarkEventState)
-{
-	local XComGameStateHistory History;
-	local XComGameState_HeadquartersResistance ResistanceHQ;
-
-	History = `XCOMHISTORY;
-	ResistanceHQ = XComGameState_HeadquartersResistance(History.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersResistance'));
-
-	// Add condition that avatar project is not revealed
-
-	return (ResistanceHQ.NumMonths >= 2 && !AtMaxDoom() && !class'XComGameState_HeadquartersXCom'.static.IsObjectiveCompleted('S0_RevealAvatarProject'));
 }
 
 function string GetMajorBreakthroughSummary2(string strSummaryText)

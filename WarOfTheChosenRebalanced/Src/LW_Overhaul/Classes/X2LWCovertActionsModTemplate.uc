@@ -43,7 +43,7 @@ static function UpdateCovertActions(X2StrategyElementTemplate Template, int Diff
 		case 'CovertAction_GatherSupplies':
 		case 'CovertAction_GatherIntel':
 		case 'CovertAction_FormSoldierBond':
-		case 'CovertAction_ResistanceMec':
+		//case 'CovertAction_ResistanceMec':
 			ConfigureEasyCovertAction(CATemplate);
 			break;
 		case 'CovertAction_RecruitScientist':
@@ -130,7 +130,7 @@ static function UpdateCovertActions(X2StrategyElementTemplate Template, int Diff
 }
 
 // Adds a chance of failure to easy covert actions and resets the staff slots.
-static function ConfigureEasyCovertAction(X2CovertActionTemplate Template, optional bool ApplyFailureRisk = true)
+static function ConfigureEasyCovertAction(X2CovertActionTemplate Template, optional bool ApplyFailureRisk = false)
 {
 	// Make failure the first risk in the list.
 	if (ApplyFailureRisk)
@@ -148,7 +148,7 @@ static function ConfigureEasyCovertAction(X2CovertActionTemplate Template, optio
 }
 
 // Adds a chance of failure to easy covert actions and resets the staff slots.
-static function ConfigureModerateCovertAction(X2CovertActionTemplate Template, optional bool ApplyFailureRisk = true)
+static function ConfigureModerateCovertAction(X2CovertActionTemplate Template, optional bool ApplyFailureRisk = false)
 {
 
 	// Make failure the first risk in the list.
@@ -167,7 +167,7 @@ static function ConfigureModerateCovertAction(X2CovertActionTemplate Template, o
 }
 
 // Adds a chance of failure to easy covert actions and resets the staff slots.
-static function ConfigureHardCovertAction(X2CovertActionTemplate Template, optional bool ApplyFailureRisk = true)
+static function ConfigureHardCovertAction(X2CovertActionTemplate Template, optional bool ApplyFailureRisk = false)
 {
 	// Make failure the first risk in the list.
 	if (ApplyFailureRisk)

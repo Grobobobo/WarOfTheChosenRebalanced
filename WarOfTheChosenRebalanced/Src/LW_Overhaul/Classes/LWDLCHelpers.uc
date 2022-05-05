@@ -319,14 +319,6 @@ static function bool IsUnitOnMission(XComGameState_Unit UnitState)
 			{
 				return true;
 			}
-			if (`LWSQUADMGR.UnitIsOnMission(UnitState.GetReference()))
-			{
-				return true;
-			}
-			if (`LWOUTPOSTMGR.IsUnitAHavenLiaison(UnitState.GetReference()))
-			{
-				return true;
-			}
 			break;
 		default:
 			return UnitState.GetStatus() == eStatus_CovertAction;

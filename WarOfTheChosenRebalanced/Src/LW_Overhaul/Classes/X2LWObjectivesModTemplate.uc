@@ -22,10 +22,10 @@ static function UpdateObjectives(X2StrategyElementTemplate Template, int Difficu
 			`LWTrace("X2LWObjectivesModTemplate - removing proving grounds objective");
 			ObjectiveTemplate.Steps.RemoveItem('T1_M2_S1_BuildProvingGrounds');
 			break;
-		case 'T5_M2_CompleteBroadcastTheTruthMission':
-			`LWTrace("X2LWObjectivesModTemplate - updating Broadcast the Truth objective");
-			ObjectiveTemplate.AssignObjectiveFn = CreateBroadcastTheTruthMission_LW;
-			break;
+		// case 'T5_M2_CompleteBroadcastTheTruthMission':
+		// 	`LWTrace("X2LWObjectivesModTemplate - updating Broadcast the Truth objective");
+		// 	ObjectiveTemplate.AssignObjectiveFn = CreateBroadcastTheTruthMission_LW;
+		// 	break;
 		case 'XP3_M0_NonLostAndAbandoned':
 			`LWTrace("X2LWObjectivesModTemplate - removing the SpawnFirstPOI objective");
 			ObjectiveTemplate.NextObjectives.RemoveItem('XP3_M2_SpawnFirstPOI');

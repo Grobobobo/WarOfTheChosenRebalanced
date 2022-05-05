@@ -307,65 +307,6 @@ CannotModifyOnMissionSoldierTooltip="Cannot modify soldier currently on mission"
 ReasonClassAbilityPickedAtRank="Already picked a class ability at this rank"
 ; End Translation
 
-[XComGameState_LWPersistentSquad]
-+DefaultSquadNames="Menace"
-+DefaultSquadNames="Voodoo"
-+DefaultSquadNames="Swordsman"
-+DefaultSquadNames="Super Six"
-+DefaultSquadNames="Hussar"
-+DefaultSquadNames="Dragoons"
-+DefaultSquadNames="Devils"
-+DefaultSquadNames="Feral"
-+DefaultSquadNames="Spearhead"
-+DefaultSquadNames="Victory"
-+DefaultSquadNames="Sandman"
-+DefaultSquadNames="Tornado"
-+DefaultSquadNames="Volunteers"
-+DefaultSquadNames="Grizzly"
-+DefaultSquadNames="Keystone"
-+DefaultSquadNames="Screaming Eagles"
-+DefaultSquadNames="Hitman"
-+DefaultSquadNames="Assassin"
-+DefaultSquadNames="Raptor"
-+DefaultSquadNames="Moccasin"
-+DefaultSquadNames="Vega"
-+DefaultSquadNames="Roughnecks"
-+DefaultSquadNames="Marauders"
-+DefaultSquadNames="Black Watch"
-+DefaultSquadNames="Blackguards"
-+DefaultSquadNames="Kiryu-Kai"
-+DefaultSquadNames="Trident"
-+DefaultSquadNames="Timberwolf"
-
-+TempSquadNames="Alpha"
-+TempSquadNames="Bravo"
-+TempSquadNames="Charlie"
-+TempSquadNames="Delta"
-+TempSquadNames="Echo"
-+TempSquadNames="Foxtrot"
-+TempSquadNames="Golf"
-+TempSquadNames="Hotel"
-+TempSquadNames="India"
-+TempSquadNames="Juliet"
-+TempSquadNames="Kilo"
-+TempSquadNames="Lima"
-+TempSquadNames="Mike"
-+TempSquadNames="November"
-+TempSquadNames="Oscar"
-+TempSquadNames="Papa"
-+TempSquadNames="Quebec"
-+TempSquadNames="Romeo"
-+TempSquadNames="Sierra"
-+TempSquadNames="Tango"
-+TempSquadNames="Uniform"
-+TempSquadNames="Victor"
-+TempSquadNames="Yankee"
-+TempSquadNames="Zulu"
-
-
-BackupSquadName="XCom Squad <XGParam:StrValue0>"
-BackupTempSquadName="Temporary Squad <XGParam:StrValue0>"
-
 [UIScreenListener_LivingQuarters]
 +m_strSquadSelection="SQUAD BARRACKS"
 
@@ -492,9 +433,6 @@ m_strStaffingPinText="S:<XGParam:IntValue0> I:<XGParam:IntValue1> R:<XGParam:Int
 m_strStaffingPinTextMore="H:<XGParam:IntValue0>"
 m_strMonthlyRegionalIncome="+§<XGParam:IntValue0> (+§<XGParam:IntValue1>)"
 
-[XComGameState_LWOutpostManager]
-LabelCQ_ResistanceManagement="Resistance Management"
-TooltipCQ_ResistanceManagement="Manage Regional Resistance Havens"
 
 [UIResistanceManagement_LW]
 m_strTitle="RESISTANCE OVERVIEW"
@@ -596,15 +534,6 @@ m_strLiaisonLocation="Haven Adviser: <XGParam:StrValue0>"
 [X2StrategyElement_MissionSiteDescriptions_LW]
 ; This goes in front of a city name in invasion missions, e.g. "Free Chicago"
 m_strLiberatedCityPrefix="Free"
-
-[XComGameState_LWOutPost]
-m_strProhibitedJobAlert="Because of an ADVENT raid, Resistance members cannot be assigned to the <XGParam:StrValue0/> job for <XGParam:IntValue0/> days in <XGParam:StrValue1/>. All Resistance personnel on that job have gone into hiding."
-m_strProhibitedJobEnded="Resistance members in <XGParam:StrValue0/> assigned to the <XGParam:StrValue1/> job will now be productive again."
-;LWOTC needs translation
-m_strRetributionEnded="Resistance members in <XGParam:StrValue0/> have recovered from one of the Chosen's retributions"
-;End translation
-[X2StrategyElement_DefaultAlienActivities]
-m_strInsufficientRebels="Need at least <XGParam:IntValue0/> rebels in Haven to make contact with neighbors"
 
 [UIScreenListener_Alert]
 m_strInvasionTitle=ADVENT INVASION

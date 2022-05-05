@@ -280,65 +280,6 @@ CannotModifyOnMissionSoldierTooltip="현재 임무에 투입된 병사는 수정
 [X2Effect_LWHolotarget]
 HoloTargetEffectName="홀로그램 조준됨"
 
-[XComGameState_LWPersistentSquad]
-+DefaultSquadNames="메나스"
-+DefaultSquadNames="부두"
-+DefaultSquadNames="검술사"
-+DefaultSquadNames="슈퍼 식스"
-+DefaultSquadNames="후사르"
-+DefaultSquadNames="드라군"
-+DefaultSquadNames="데빌"
-+DefaultSquadNames="페랄"
-+DefaultSquadNames="스피어헤드"
-+DefaultSquadNames="승리"
-+DefaultSquadNames="잠귀신"
-+DefaultSquadNames="토네이도"
-+DefaultSquadNames="지원자"
-+DefaultSquadNames="회색곰"
-+DefaultSquadNames="키스톤"
-+DefaultSquadNames="비명 독수리"
-+DefaultSquadNames="암살자"
-+DefaultSquadNames="어쌔신"
-+DefaultSquadNames="랩터"
-+DefaultSquadNames="모카신"
-+DefaultSquadNames="Vega"
-+DefaultSquadNames="망나니"
-+DefaultSquadNames="약탈자"
-+DefaultSquadNames="블랙 워치"
-+DefaultSquadNames="블랙가드"
-+DefaultSquadNames="키류 카이"
-+DefaultSquadNames="트라이던트"
-+DefaultSquadNames="팀버울프"
-
-+TempSquadNames="알파"
-+TempSquadNames="브라보"
-+TempSquadNames="찰리"
-+TempSquadNames="델타"
-+TempSquadNames="메아리"
-+TempSquadNames="폭스트롯"
-+TempSquadNames="골프"
-+TempSquadNames="호텔"
-+TempSquadNames="인도"
-+TempSquadNames="줄리엣"
-+TempSquadNames="킬로"
-+TempSquadNames="리마"
-+TempSquadNames="마이크"
-+TempSquadNames="노벰버"
-+TempSquadNames="오스카"
-+TempSquadNames="파파"
-+TempSquadNames="퀘벡"
-+TempSquadNames="로미오"
-+TempSquadNames="시에라"
-+TempSquadNames="탱고"
-+TempSquadNames="유니폼"
-+TempSquadNames="빅토르"
-+TempSquadNames="양키"
-+TempSquadNames="줄루"
-
-
-BackupSquadName="XCOM 분대 <XGParam:StrValue0>"
-BackupTempSquadName="임시 분대 <XGParam:StrValue0>"
-
 [UIScreenListener_LivingQuarters]
 +m_strSquadSelection="분대 병영"
 
@@ -457,9 +398,6 @@ m_strStaffingPinText="S:<XGParam:IntValue0> I:<XGParam:IntValue1> R:<XGParam:Int
 m_strStaffingPinTextMore="H:<XGParam:IntValue0>"
 m_strMonthlyRegionalIncome="+§<XGParam:IntValue0> (+§<XGParam:IntValue1>)"
 
-[XComGameState_LWOutpostManager]
-LabelCQ_ResistanceManagement="저항군 관리"
-TooltipCQ_ResistanceManagement="저항군 피난처 관리"
 
 [UIResistanceManagement_LW]
 m_strTitle="저항군 개요"
@@ -558,9 +496,6 @@ m_strLiberatedCityPrefix="해방된"
 [XComGameState_LWOutPost]
 m_strProhibitedJobAlert="어드밴트 습격 때문에 <XGParam:IntValue0/>일 동안 저항군 대원들을 <XGParam:StrValue1/>의 <XGParam:StrValue0/> 작업에 투입할 수 없습니다. 해당 작업을 수행하던 저항군 인원들은 잠복하기 시작했습니다."
 m_strProhibitedJobEnded="<XGParam:StrValue0/>의 저항군 대원들은 <XGParam:StrValue1/> 작업에 투입되어 이제 다시 성과를 낼 수 있습니다."
-
-[X2StrategyElement_DefaultAlienActivities]
-m_strInsufficientRebels="인근 지역과 접촉하려면 피난처에 최소 <XGParam:IntValue0/>명의 반란군이 필요함"
 
 [UIScreenListener_Alert]
 m_strInvasionTitle="어드밴트 침략"

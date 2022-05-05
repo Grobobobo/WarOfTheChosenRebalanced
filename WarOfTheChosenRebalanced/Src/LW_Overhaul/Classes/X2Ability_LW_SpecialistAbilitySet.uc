@@ -346,7 +346,6 @@ static function X2AbilityTemplate AddHackRewardControlRobot_Permanent()
 	local X2AbilityTrigger_EventListener    Listener;
 	local X2Effect_MindControl              ControlEffect;
 	local bool								bInfiniteDuration;
-	local X2Effect_TransferMecToOutpost		Effect;
 	local X2Effect_PersistentStatChange		Buff;
 	local X2Effect_RemoveEffects			RemoveEffects;
 
@@ -371,15 +370,6 @@ static function X2AbilityTemplate AddHackRewardControlRobot_Permanent()
 	ControlEffect.bRemoveWhenSourceDies = false; // added for ID 1733 -- mind control effect is no longer lost when source unit dies or evacs
 	ControlEffect.EffectRemovedVisualizationFn = none; // No visualization of this effect being removed (which happens when the unit evacs or dies)
 	Template.AddTargetEffect(ControlEffect);
-
-	// Save MEC effect
-	Effect = new class'X2Effect_TransferMecToOutpost';
-	Effect.BuildPersistentEffect(1, true, false, true, eGameRule_PlayerTurnBegin); // for ID 1733, changed parameter 3 to falso, so effect is no longer lost when source unit dies or evacs
-	Effect.SetDisplayInfo(ePerkBuff_Penalty, Template.LocFriendlyName, Template.GetMyLongDescription(), "img:///UILibrary_PerkIcons.UIPerk_hack_reward", true,,Template.AbilitySourceName);
-	Effect.bRemoveWhenTargetDies = true;
-	Effect.bUseSourcePlayerState = true;
-	Effect.bPersistThroughTacticalGameEnd=true;
-	Template.AddTargetEffect(Effect);
 
 	Buff = new class'X2Effect_PersistentStatChange';
 	Buff.BuildPersistentEffect (1, true, true);

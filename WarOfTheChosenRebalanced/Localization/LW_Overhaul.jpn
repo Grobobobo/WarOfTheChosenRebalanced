@@ -280,65 +280,6 @@ CannotModifyOnMissionSoldierTooltip="ミッションに出撃中の兵士は改�
 [X2Effect_LWHolotarget]
 HoloTargetEffectName="ホロターゲット"
 
-[XComGameState_LWPersistentSquad]
-+DefaultSquadNames="Menace"
-+DefaultSquadNames="Voodoo"
-+DefaultSquadNames="Swordsman"
-+DefaultSquadNames="Super Six"
-+DefaultSquadNames="Hussar"
-+DefaultSquadNames="Dragoons"
-+DefaultSquadNames="Devils"
-+DefaultSquadNames="Feral"
-+DefaultSquadNames="Spearhead"
-+DefaultSquadNames="Victory"
-+DefaultSquadNames="Sandman"
-+DefaultSquadNames="Tornado"
-+DefaultSquadNames="Volunteers"
-+DefaultSquadNames="Grizzly"
-+DefaultSquadNames="Keystone"
-+DefaultSquadNames="Screaming Eagles"
-+DefaultSquadNames="Hitman"
-+DefaultSquadNames="Assassin"
-+DefaultSquadNames="Raptor"
-+DefaultSquadNames="Moccasin"
-+DefaultSquadNames="Vega"
-+DefaultSquadNames="Roughnecks"
-+DefaultSquadNames="Marauders"
-+DefaultSquadNames="Black Watch"
-+DefaultSquadNames="Blackguards"
-+DefaultSquadNames="Kiryu-Kai"
-+DefaultSquadNames="Trident"
-+DefaultSquadNames="Timberwolf"
-
-+TempSquadNames="Alpha"
-+TempSquadNames="Bravo"
-+TempSquadNames="Charlie"
-+TempSquadNames="Delta"
-+TempSquadNames="Echo"
-+TempSquadNames="Foxtrot"
-+TempSquadNames="Golf"
-+TempSquadNames="Hotel"
-+TempSquadNames="India"
-+TempSquadNames="Juliet"
-+TempSquadNames="Kilo"
-+TempSquadNames="Lima"
-+TempSquadNames="Mike"
-+TempSquadNames="November"
-+TempSquadNames="Oscar"
-+TempSquadNames="Papa"
-+TempSquadNames="Quebec"
-+TempSquadNames="Romeo"
-+TempSquadNames="Sierra"
-+TempSquadNames="Tango"
-+TempSquadNames="Uniform"
-+TempSquadNames="Victor"
-+TempSquadNames="Yankee"
-+TempSquadNames="Zulu"
-
-
-BackupSquadName="XCOM部隊<XGParam:StrValue0>"
-BackupTempSquadName="臨時編成部隊<XGParam:StrValue0>"
-
 [UIScreenListener_LivingQuarters]
 +m_strSquadSelection="部隊のベースキャンプ"
 
@@ -457,9 +398,6 @@ m_strStaffingPinText="S:<XGParam:IntValue0> I:<XGParam:IntValue1> R:<XGParam:Int
 m_strStaffingPinTextMore="H:<XGParam:IntValue0>"
 m_strMonthlyRegionalIncome="+§<XGParam:IntValue0> (+§<XGParam:IntValue1>)"
 
-[XComGameState_LWOutpostManager]
-LabelCQ_ResistanceManagement="レジスタンス管理"
-TooltipCQ_ResistanceManagement="各地域のレジスタンス解放区を管理する"
 
 [UIResistanceManagement_LW]
 m_strTitle="レジスタンスの概要"
@@ -558,9 +496,6 @@ m_strLiberatedCityPrefix="解放"
 [XComGameState_LWOutPost]
 m_strProhibitedJobAlert="アドヴェントの襲撃のため、<XGParam:StrValue1/>では<XGParam:IntValue0/>日間レジスタンスのメンバーを<XGParam:StrValue0/>の仕事に割り当てることができない。この仕事に就いていたレジスタンスは、今は全員身を隠している。"
 m_strProhibitedJobEnded="<XGParam:StrValue1/>の仕事に割り当てられた<XGParam:StrValue0/>のレジスタンスのメンバーが生産活動を再開した。"
-
-[X2StrategyElement_DefaultAlienActivities]
-m_strInsufficientRebels="他の地域と接触を図るには、解放区に<XGParam:IntValue0/>人以上のレブルが必要。"
 
 [UIScreenListener_Alert]
 m_strInvasionTitle="アドヴェントの侵略"

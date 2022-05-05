@@ -7,8 +7,6 @@
 `define LWTrace(msg,cond,tag) `Log(`msg, `cond, 'LWTrace')
 
 
-`define LWSQUADMGR class'XComGameState_LWSquadManager'.static.GetSquadManager()
-
 `define LWOVERHAULOPTIONS class'XComGameState_LWOverhaulOptions'.static.GetLWOverhaulOptions()
 
 /* Pod Manager tracing */

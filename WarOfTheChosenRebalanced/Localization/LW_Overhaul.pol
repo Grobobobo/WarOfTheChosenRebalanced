@@ -280,65 +280,6 @@ CannotModifyOnMissionSoldierTooltip="Nie można modyfikować żołnierza wykonuj
 [X2Effect_LWHolotarget]
 HoloTargetEffectName="Na celowniku holograficznym"
 
-[XComGameState_LWPersistentSquad]
-+DefaultSquadNames="Widmo"
-+DefaultSquadNames="Voodoo"
-+DefaultSquadNames="Fechmistrz"
-+DefaultSquadNames="Super Szóstka"
-+DefaultSquadNames="Huzar"
-+DefaultSquadNames="Dragoni"
-+DefaultSquadNames="Diabły"
-+DefaultSquadNames="Dzicy"
-+DefaultSquadNames="Grot"
-+DefaultSquadNames="Zwycięstwo"
-+DefaultSquadNames="Dziadek"
-+DefaultSquadNames="Tornado"
-+DefaultSquadNames="Ochotnicy"
-+DefaultSquadNames="Grizzly"
-+DefaultSquadNames="Zwornik"
-+DefaultSquadNames="Głos Orła"
-+DefaultSquadNames="Likwidator"
-+DefaultSquadNames="Zabójca"
-+DefaultSquadNames="Raptor"
-+DefaultSquadNames="Mokasyn"
-+DefaultSquadNames="Vega"
-+DefaultSquadNames="Zbiry"
-+DefaultSquadNames="Maruderzy"
-+DefaultSquadNames="Czarna Straż"
-+DefaultSquadNames="Szubrawcy"
-+DefaultSquadNames="Kiryu-Kai"
-+DefaultSquadNames="Trójząb"
-+DefaultSquadNames="Szare Wilki"
-
-+TempSquadNames="Alpha"
-+TempSquadNames="Bravo"
-+TempSquadNames="Charlie"
-+TempSquadNames="Delta"
-+TempSquadNames="Echo"
-+TempSquadNames="Foxtrot"
-+TempSquadNames="Golf"
-+TempSquadNames="Hotel"
-+TempSquadNames="Indie"
-+TempSquadNames="Juliet"
-+TempSquadNames="Kilo"
-+TempSquadNames="Lima"
-+TempSquadNames="Mike"
-+TempSquadNames="November"
-+TempSquadNames="Oscar"
-+TempSquadNames="Papa"
-+TempSquadNames="Quebec"
-+TempSquadNames="Romeo"
-+TempSquadNames="Sierra"
-+TempSquadNames="Tango"
-+TempSquadNames="Uniform"
-+TempSquadNames="Victor"
-+TempSquadNames="Yankee"
-+TempSquadNames="Zulu"
-
-
-BackupSquadName="Drużyna XCOML <XGParam:StrValue0>"
-BackupTempSquadName="Tymczasowa drużyna: <XGParam:StrValue0>"
-
 [UIScreenListener_LivingQuarters]
 +m_strSquadSelection="KOSZARY DRUŻYNY"
 
@@ -457,9 +398,6 @@ m_strStaffingPinText="Z:<XGParam:IntValue0> I:<XGParam:IntValue1> R:<XGParam:Int
 m_strStaffingPinTextMore="U:<XGParam:IntValue0>"
 m_strMonthlyRegionalIncome="+§<XGParam:IntValue0> (+§<XGParam:IntValue1>)"
 
-[XComGameState_LWOutpostManager]
-LabelCQ_ResistanceManagement="Zarządzanie ruchem oporu"
-TooltipCQ_ResistanceManagement="Zarządzaj regionalnymi kryjówkami ruchu oporu"
 
 [UIResistanceManagement_LW]
 m_strTitle="PRZEGLĄD RUCHU OPORU"
@@ -559,9 +497,6 @@ m_strLiberatedCityPrefix="(Wyzwolone)"
 [XComGameState_LWOutPost]
 m_strProhibitedJobAlert="Z powodu ataku ADVENT-u członkom ruchu oporu w regionie o nazwie <XGParam:StrValue1/> przez <XGParam:IntValue0/> dni nie można przypisać zadań następującego typu: <XGParam:StrValue0/>. Wszyscy członkowie ruchu oporu wykonujący zadanie tego typu ukrywają się."
 m_strProhibitedJobEnded="Region: <XGParam:StrValue0/> - rebelianci wracają do realizacji wyznaczonych zadań (typ zadania: <XGParam:StrValue1/>)."
-
-[X2StrategyElement_DefaultAlienActivities]
-m_strInsufficientRebels="Potrzeba co najmniej <XGParam:IntValue0/> rebeliantów w kryjówce, aby nawiązać kontakt z sąsiadami"
 
 [UIScreenListener_Alert]
 m_strInvasionTitle="INWAZJA ADVENT-U"

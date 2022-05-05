@@ -61,15 +61,8 @@ static function EventListenerReturn OnAddMissionEncountersToUnits(Object EventDa
 	local StateObjectReference UnitRef;
 	local XComGameState_Unit UnitState;
 	local array<XComGameState_Unit> UnitStates;
-	local UnitValue Value, TestValue, Value2;
-	local float MissionWeight, UnitShare, MissionExperienceWeighting, UnitShareDivisor;
-	local bool TBFInEffect;
-	local int TrialByFireKills, KillsNeededForLevelUp, WeightedBonusKills, idx;
-	local XComGameState_Unit_LWOfficer OfficerState;
-	local X2MissionSourceTemplate MissionSource;
-	local bool PlayerWonMission;
-	local MissionSettings_LW Settings;
-	local XComGameState_LWOutpost Outpost;
+	local UnitValue Value, TestValue;
+	local float MissionWeight, UnitShare, UnitShareDivisor;
 
 	`LWTRACE ("OnAddMissionEncountersToUnits triggered");
 
@@ -118,66 +111,7 @@ static function EventListenerReturn OnAddMissionEncountersToUnits(Object EventDa
 		}
 	}
 
-	// Include the adviser if they were on this mission too
-	if (class'Utilities_LW'.static.GetMissionSettings(MissionState, Settings))
-	{
-		if (Settings.RestrictsLiaison)
-		{
-			Outpost = `LWOUTPOSTMGR.GetOutpostForRegion(MissionState.GetWorldRegion());
-			UnitRef = Outpost.GetLiaison();
-			if (UnitRef.ObjectID > 0)
-			{
-				UnitState = XComGameState_Unit(NewGameState.CreateStateObject(class'XComGameState_Unit', UnitRef.ObjectID));
-				if (UnitState.IsSoldier())
-				{
-					NewGameState.AddStateObject(UnitState);
-					UnitStates.AddItem(UnitState);
-					// Set the liaison as not ranked up. This is handled in DistributeTacticalGameEndXp but only
-					// for members of the squad.
-					if (!class'X2ExperienceConfig'.default.bUseFullXpSystem)
-					{
-						UnitState.bRankedUp = false;
-					}
-				}
-				else
-				{
-					NewGameState.PurgeGameStateForObjectID(UnitState.ObjectID);
-				}
-			}
-		}
-	}
 
-	PlayerWonMission = true;
-	MissionSource = MissionState.GetMissionSource();
-	if(MissionSource.WasMissionSuccessfulFn != none)
-	{
-		PlayerWonMission = MissionSource.WasMissionSuccessfulFn(BattleState);
-	}
-
-
-	TBFInEffect = false;
-
-	if (PlayerWonMission)
-	{
-		foreach UnitStates(UnitState)
-		{
-			if (UnitState.IsSoldier() && !UnitState.IsDead() && !UnitState.bCaptured)
-			{
-				if (class'LWOfficerUtilities'.static.IsOfficer(UnitState))
-				{
-					if (class'LWOfficerUtilities'.static.IsHighestRankOfficerinSquad(UnitState))
-					{
-						OfficerState = class'LWOfficerUtilities'.static.GetOfficerComponent(UnitState);
-						if (OfficerState.HasOfficerAbility('TrialByFire'))
-						{
-							TBFInEffect = true;
-							`LWTRACE ("TBFInEffect set from" @ UnitState.GetLastName());
-						}
-					}
-				}
-			}
-		}
-	}
 
 	UnitShareDivisor = UnitStates.Length;
 
@@ -213,53 +147,6 @@ static function EventListenerReturn OnAddMissionEncountersToUnits(Object EventDa
 		UnitState.GetUnitValue('MissionExperience', TestValue);
 		`LWTRACE("MissionXP: PreXp=" $ Value.fValue $ ", PostXP=" $ TestValue.fValue $ ", UnitShare=" $ UnitShare $ ", Unit=" $ UnitState.GetFullName());
 
-		if (TBFInEffect)
-		{
-			if (class'LWOfficerUtilities'.static.IsOfficer(UnitState))
-			{
-				if (class'LWOfficerUtilities'.static.IsHighestRankOfficerinSquad(UnitState))
-				{
-					`LWTRACE (UnitState.GetLastName() @ "is the TBF officer.");
-					continue;
-				}
-			}
-
-			if (UnitState.GetRank() < class'LW_OfficerPack_Integrated.X2Ability_OfficerAbilitySet'.default.TRIAL_BY_FIRE_RANK_CAP)
-			{
-				idx = default.CLASS_MISSION_EXPERIENCE_WEIGHTS.Find('SoldierClass', UnitState.GetSoldierClassTemplateName());
-				if (idx != -1)
-					MissionExperienceWeighting = default.CLASS_MISSION_EXPERIENCE_WEIGHTS[idx].MissionExperienceWeight;
-				else
-					MissionExperienceWeighting = default.DEFAULT_MISSION_EXPERIENCE_WEIGHT;
-
-				WeightedBonusKills = Round(Value.fValue * MissionExperienceWeighting);
-
-				Value2.fValue = 0;
-				UnitState.GetUnitValue ('OfficerBonusKills', Value2);
-				TrialByFireKills = int(Value2.fValue);
-				KillsNeededForLevelUp = class'X2ExperienceConfig'.static.GetRequiredKills(UnitState.GetRank() + 1);
-				`LWTRACE (UnitState.GetLastName() @ "needs" @ KillsNeededForLevelUp @ "kills to level up. Base kills:" @ UnitState.KillCount @ "Mission Kill-eqivalents:" @  WeightedBonusKills @ "Old TBF Kills:" @ TrialByFireKills);
-
-				// Replace tracking num kills for XP with our own custom kill tracking
-				KillsNeededForLevelUp -= UnitState.GetTotalNumKills();
-
-				if (KillsNeededForLevelUp > 0)
-				{
-					`LWTRACE ("Granting" @ KillsNeededForLevelUp @ "TBF kills to" @ UnitState.GetLastName());
-					TrialByFireKills += KillsNeededForLevelUp;
-					UnitState.SetUnitFloatValue ('OfficerBonusKills', TrialByFireKills, eCleanup_Never);
-					`LWTRACE (UnitState.GetLastName() @ "now has" @ TrialByFireKills @ "total TBF bonus Kills");
-				}
-				else
-				{
-					`LWTRACE (UnitState.GetLastName() @ "already ranking up so TBF has no effect.");
-				}
-			}
-			else
-			{
-				`LWTRACE (UnitState.GetLastName() @ "rank too high for TBF");
-			}
-		}
 	}
 	`GAMERULES.SubmitGameState(NewGameState);
 	return ELR_NoInterrupt;

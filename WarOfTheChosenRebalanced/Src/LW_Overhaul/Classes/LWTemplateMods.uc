@@ -2089,16 +2089,17 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 	{
 		// Give ADVENT the hunker down ability
 		case 'AdvTrooper_Leader':
-		Template.Abilities.AddItem('ChangeForm_Shoggoth');
+			Template.Abilities.AddItem('ChangeForm_Shoggoth');
 		case 'AdvTrooperM1':
 		case 'AdvSergeantM1':
-		Template.Abilities.AddItem('SkirmisherStrike');
+			Template.Abilities.AddItem('SkirmisherStrike');
 		//Template.Abilities.AddItem('Suppression');
 		break;
 		case 'AdvCaptainM1':
-		Template.Abilities.AddItem('Defilade');
-		Template.Abilities.AddItem('ReadyForAnything');
-		Template.Abilities.AddItem('ChangeForm_Shoggoth');
+			Template.Abilities.AddItem('ChangeForm_Shoggoth');
+		case 'AdvGeneralM1':
+			Template.Abilities.AddItem('Defilade');
+			Template.Abilities.AddItem('ReadyForAnything');
 		//Template.Abilities.AddItem('Suppression');
 		break;
 

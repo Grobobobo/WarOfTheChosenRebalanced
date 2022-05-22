@@ -85,34 +85,6 @@ static function string AddFontInfoWithColor(string txt, bool is3DScreen, optiona
 	return "<font size='" $ fontSize $ "' face='" $ fontFace $ "' color='#" $ fontColor $ "'>" $ txt $ "</font>";
 }
 
-static function String GetDifficultyString(XComGameState_MissionSite MissionState, optional int AlertModifier = 0)
-{
-	local string Text, nums;
-	local int Difficulty, LabelsLength, EnemyUnits;
-	local array<X2CharacterTemplate> Dummy;
-
-	MissionState.GetShadowChamberMissionInfo (EnemyUnits, Dummy);
-	Difficulty = Max (1, ((EnemyUnits-4) / 3) + AlertModifier);
-	LabelsLength = class'X2StrategyGameRulesetDataStructures'.default.MissionDifficultyLabels.Length;
-	if(Difficulty >= LabelsLength - 1)
-	{
-		nums = " (" $ ((LabelsLength * 3) + 1) $ "+)";
-		Text = class'X2StrategyGameRulesetDataStructures'.default.MissionDifficultyLabels[LabelsLength - 1] $ nums;
-	}
-	else
-	{
-		nums = " (" $ ((Difficulty * 3) + 4) $ "-" $ ((Difficulty * 3) + 6) $ ")";
-
-		Text = class'X2StrategyGameRulesetDataStructures'.default.MissionDifficultyLabels[Difficulty] $ nums;
-	}
-	if (EnemyUnits <= 0)
-	{
-		Text = class'X2StrategyGameRulesetDataStructures'.default.MissionDifficultyLabels[0] $ " (???)";
-	}
-
-	return Caps(Text);
-}
-
 // Strips up to 50 html tags and what's between them from a string
 // This doesn't actually work yet (discovered the bug it was trying to fix was caused by a mod), but leaving it here in case we need to come back and fix it later
 static function string StripHTML (String InputString)

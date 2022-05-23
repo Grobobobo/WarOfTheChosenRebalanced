@@ -504,7 +504,7 @@ static function X2DataTemplate CreateTemplate_Sidearm_Coil()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CreatorTemplateName = 'Sidearm_CG_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'Sidearms_CG_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'Sidearm_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;

@@ -70,15 +70,18 @@ static function UpdateWeapons(X2WeaponTemplate WeaponTemplate, int Difficulty)
 		//WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeapons'.default.SHORT_CONVENTIONAL_RANGE;
 		break;
 
-	case 'Sidearm_MG':
+	case 'Sidearms_MG':
 		WeaponTemplate.BaseItem = 'Sidearm_LS';
 		WeaponTemplate.Abilities.AddItem('SprayAndPray');
 		WeaponTemplate.Abilities.RemoveItem('PistolOverwatch');
+		WeaponTemplate.CreatorTemplateName = 'Sidearms_MG_Schematic'; // The schematic which creates this item
+
 		break;
 	case 'Sidearm_BM':
 		WeaponTemplate.BaseItem = 'Sidearm_CG';
 		WeaponTemplate.Abilities.AddItem('SprayAndPray');
 		WeaponTemplate.Abilities.RemoveItem('PistolOverwatch');
+		WeaponTemplate.CreatorTemplateName = 'Sidearms_BM_Schematic';
 		break;
 
 	default:

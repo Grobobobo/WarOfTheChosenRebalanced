@@ -185,7 +185,7 @@ static function X2DataTemplate CreateTemplate_SMG_Magnetic()
 	Template.iPhysicsImpulse = 5;
 
 	//Template.UpgradeItem = 'SMG_BM';
-	Template.CreatorTemplateName = 'SMG_MG_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'LightWeapons_MG_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'SMG_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
@@ -243,7 +243,7 @@ static function X2DataTemplate CreateTemplate_SMG_Beam()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CreatorTemplateName = 'SMG_BM_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'LightWeapons_BM_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'SMG_MG'; // Which item this will be upgraded from
 	Template.CanBeBuilt = false;
 	Template.bInfiniteItem = true;

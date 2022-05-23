@@ -203,7 +203,7 @@ static function X2DataTemplate CreateTemplate_Immolator_MG()
 
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Cannon';
 
-	Template.CreatorTemplateName = 'Cannon_MG_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'Immolator_BM_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'LWImmolator_CV'; // Which item this will be upgraded from
 
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.RangeLabel, , default.FLAMETHROWER_RANGE);

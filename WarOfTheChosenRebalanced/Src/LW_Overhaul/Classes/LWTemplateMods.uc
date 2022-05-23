@@ -3253,10 +3253,31 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				break;
 			case 'Cannon_MG': // replace archetype with non-suppression shaking variant
 				EquipmentTemplate.GameArchetype = "Cannon_NoShake_LW.Archetypes.WP_Cannon_NoShake_MG";
+				Template.CreatorTemplateName = 'HeavyWeapons_MG_Schematic';
 				break;
 			case 'Cannon_BM': // replace archetype with non-suppression shaking variant
 				EquipmentTemplate.GameArchetype = "Cannon_NoShake_LW.Archetypes.WP_Cannon_NoShake_BM";
+				Template.CreatorTemplateName = 'HeavyWeapons_BM_Schematic';
 				break;
+			case 'Shotgun_MG':
+				Template.CreatorTemplateName = 'HeavyWeapons_MG_Schematic';
+				break;
+			case 'Shotgun_BM':
+				Template.CreatorTemplateName = 'HeavyWeapons_BM_Schematic';
+				break;
+			case 'AssaultRifle_MG':
+				Template.CreatorTemplateName = 'GeneralWeapons_MG_Schematic';
+				break;
+			case 'AssaultRifle_BM':
+				Template.CreatorTemplateName = 'GeneralWeapons_BM_Schematic';
+				break;
+			case 'SniperRifle_MG':
+				Template.CreatorTemplateName = 'PrecisionWeapons_MG_Schematic';
+				break;
+			case 'SniperRifle_BM':
+				Template.CreatorTemplateName = 'PrecisionWeapons_BM_Schematic';
+				break;
+
 			default:
 				break;
 		}

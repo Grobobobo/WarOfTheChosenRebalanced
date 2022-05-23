@@ -147,7 +147,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
 
 
-	Template.CreatorTemplateName = 'Bullpup_LS_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'LightWeapons_LS_Schematic'; // The schematic which creates this item
 
 	Template.iPhysicsImpulse = 5;
 	Template.StartingItem = false;
@@ -186,7 +186,7 @@ static function X2DataTemplate CreateBullpup_Coil_Template()
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Shotgun';
 
 
-	Template.CreatorTemplateName = 'Bullpup_CG_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'LightWeapons_CG_Schematic'; // The schematic which creates this item
 
 	Template.iPhysicsImpulse = 5;
 	Template.StartingItem = true;
@@ -200,7 +200,7 @@ static function X2DataTemplate CreateBullpup_Coil_Template()
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('PistolReturnFire');
-	Template.Abilities.AddItem('CoilgunBonusShredAbility');
+	// Template.Abilities.AddItem('CoilgunBonusShredAbility');
 	Template.Requirements.RequiredTechs.AddItem('Coilguns');
 
 	Template.Abilities.AddItem('Bullpup_CV_StatBonus');
@@ -299,7 +299,7 @@ static function X2DataTemplate CreateVektor_Laser()
 	Template.GameArchetype = "LW_StrikeRifle.Archetypes.WP_DMR_LS";
 
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Sniper';
-	Template.CreatorTemplateName = 'VektorRifle_LS_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'PrecisionWeapons_LS_Schematic'; // The schematic which creates this item
 
 	Template.iPhysicsImpulse = 5;
 	Template.StartingItem = false;
@@ -348,7 +348,9 @@ static function X2DataTemplate CreateVektor_Coil()
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('CoilgunBonusShredAbility');
+	// Template.Abilities.AddItem('CoilgunBonusShredAbility');
+
+	Template.CreatorTemplateName = 'PrecisionWeapons_CG_Schematic'; // The schematic which creates this item
 
 	Template.iPhysicsImpulse = 5;
 	Template.StartingItem = false;

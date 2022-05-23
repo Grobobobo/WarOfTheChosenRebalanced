@@ -32,6 +32,14 @@ static function UpdateWeapons(X2WeaponTemplate WeaponTemplate, int Difficulty)
 		// _MG and _BM variants.
 		WeaponTemplate.iTypicalActionCost = 1;
 		break;
+	case 'VektorRifle_MG':
+		Template.CreatorTemplateName = 'PrecisionWeapons_MG_Schematic'; // The schematic which creates this item
+		break;
+
+	case 'VektorRifle_BM':
+		Template.CreatorTemplateName = 'PrecisionWeapons_BM_Schematic'; // The schematic which creates this item
+		break;
+
 	case 'Bullpup_CV':
 		WeaponTemplate.Abilities.AddItem('Bullpup_CV_StatBonus');
 		WeaponTemplate.SetUIStatMarkup("Mobility", eStat_Mobility, class'X2Ability_FactionWeaponAbilities'.default.BULLPUP_CONVENTIONAL_MOBILITY_BONUS);
@@ -41,11 +49,13 @@ static function UpdateWeapons(X2WeaponTemplate WeaponTemplate, int Difficulty)
 		WeaponTemplate.Abilities.AddItem('Bullpup_MG_StatBonus');
 		WeaponTemplate.SetUIStatMarkup("Mobility", eStat_Mobility, class'X2Ability_FactionWeaponAbilities'.default.BULLPUP_MAGNETIC_MOBILITY_BONUS);
 		//WeaponTemplate.RangeAccuracy = class'X2Item_FactionWeapons'.default.SKIRMISHER_SMG_RANGE;
+		Template.CreatorTemplateName = 'LightWeapons_MG_Schematic'; // The schematic which creates this item
 		break;
 	case 'Bullpup_BM':
 		WeaponTemplate.Abilities.AddItem('Bullpup_BM_StatBonus');
 		WeaponTemplate.SetUIStatMarkup("Mobility", eStat_Mobility, class'X2Ability_FactionWeaponAbilities'.default.BULLPUP_BEAM_MOBILITY_BONUS);
 		//WeaponTemplate.RangeAccuracy = class'X2Item_FactionWeapons'.default.SKIRMISHER_SMG_RANGE;
+		Template.CreatorTemplateName = 'LightWeapons_BM_Schematic'; // The schematic which creates this item
 		break;
 	case 'ShardGauntlet_BM':
 		WeaponTemplate.Abilities.AddItem('SupremeFocus');

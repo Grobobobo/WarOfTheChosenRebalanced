@@ -5,19 +5,19 @@ var config float REAPER_DETECTION_RANGE_REDUCTION;
 
 static event OnPostTemplatesCreated()
 {
-	IgnoreSuperConcealmentOnAllMissions();
+	// IgnoreSuperConcealmentOnAllMissions();
   	AllowTwoSoldiersFromEachFaction();
 }
 
-static function IgnoreSuperConcealmentOnAllMissions()
-{
-	local int i;
+// static function IgnoreSuperConcealmentOnAllMissions()
+// {
+// 	local int i;
 
-	for (i = 0; i < `TACTICALMISSIONMGR.arrMissions.length; i++)
-	{
-		`TACTICALMISSIONMGR.arrMissions[i].IgnoreSuperConcealmentDetection = true;
-	}
-}
+// 	for (i = 0; i < `TACTICALMISSIONMGR.arrMissions.length; i++)
+// 	{
+// 		`TACTICALMISSIONMGR.arrMissions[i].IgnoreSuperConcealmentDetection = true;
+// 	}
+// }
 
 //Copy pasted Realitymachina's code
 static function AllowTwoSoldiersFromEachFaction()

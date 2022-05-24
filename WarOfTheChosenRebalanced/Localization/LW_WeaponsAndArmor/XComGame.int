@@ -37,10 +37,24 @@ BriefSummary="A throwing knife made of our most advanced conventional steel allo
 TacticalText="<Bullet/> Throwing a knife will not break Shadow.<br/><Bullet/> Has a <Ability:THROWING_KNIFE_CV_BLEED_CHANCE/>% chance to cause bleeding, which deals <Ability:THROWING_KNIFE_CV_BLEED_DAMAGE/> damage each turn for <Ability:THROWING_KNIFE_CV_BLEED_DURATION/> turn(s)."
 AbilityDescName="throwing knife"
 
+[ThrowingKnife_LS_Secondary X2WeaponTemplate]
+FriendlyName="Refined Throwing Knife"
+FriendlyNamePlural="Refined Throwing Knives"
+BriefSummary="An improved version of a conventional throwing knife."
+TacticalText="<Bullet/> Throwing a knife will not break Shadow.<br/><Bullet/> Has a <Ability:THROWING_KNIFE_MG_BLEED_CHANCE/>% chance to cause bleeding, which deals <Ability:THROWING_KNIFE_MG_BLEED_DAMAGE/> damage each turn for <Ability:THROWING_KNIFE_MG_BLEED_DURATION/> turn(s)."
+AbilityDescName="throwing knife"
+
 [ThrowingKnife_MG_Secondary X2WeaponTemplate]
 FriendlyName="Alloy Throwing Knife"
 FriendlyNamePlural="Alloy Throwing Knives"
 BriefSummary="A throwing knife made of alien alloys."
+TacticalText="<Bullet/> Throwing a knife will not break Shadow.<br/><Bullet/> Has a <Ability:THROWING_KNIFE_MG_BLEED_CHANCE/>% chance to cause bleeding, which deals <Ability:THROWING_KNIFE_MG_BLEED_DAMAGE/> damage each turn for <Ability:THROWING_KNIFE_MG_BLEED_DURATION/> turn(s)."
+AbilityDescName="throwing knife"
+
+[ThrowingKnife_CG_Secondary X2WeaponTemplate]
+FriendlyName="Refined Alloy Throwing Knife"
+FriendlyNamePlural="Alloy Throwing Knives"
+BriefSummary="An improved version of an alloy throwing knife"
 TacticalText="<Bullet/> Throwing a knife will not break Shadow.<br/><Bullet/> Has a <Ability:THROWING_KNIFE_MG_BLEED_CHANCE/>% chance to cause bleeding, which deals <Ability:THROWING_KNIFE_MG_BLEED_DAMAGE/> damage each turn for <Ability:THROWING_KNIFE_MG_BLEED_DURATION/> turn(s)."
 AbilityDescName="throwing knife"
 

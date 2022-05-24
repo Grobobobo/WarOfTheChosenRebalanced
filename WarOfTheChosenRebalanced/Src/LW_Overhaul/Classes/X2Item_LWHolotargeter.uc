@@ -6,17 +6,17 @@
 //---------------------------------------------------------------------------------------
 class X2Item_LWHolotargeter extends X2Item config(GameData_WeaponData);
 
-// ***** UI Image definitions  *****
+//ï¿½*****ï¿½UI Image definitionsï¿½ï¿½*****
 var config string Holotargeter_CV_UIImage;
 var config string Holotargeter_MG_UIImage;
 var config string Holotargeter_BM_UIImage;
 
-// ***** Damage arrays for attack actions  *****
+//ï¿½*****ï¿½Damageï¿½arraysï¿½forï¿½attackï¿½actionsï¿½ï¿½*****
 var config WeaponDamageValue Holotargeter_CONVENTIONAL_BASEDAMAGE;
 var config WeaponDamageValue Holotargeter_MAGNETIC_BASEDAMAGE;
 var config WeaponDamageValue Holotargeter_BEAM_BASEDAMAGE;
 
-// ***** Core properties and variables for weapons *****
+//ï¿½*****ï¿½Core properties and variablesï¿½forï¿½weaponsï¿½*****
 var config int Holotargeter_CONVENTIONAL_AIM;
 var config int Holotargeter_CONVENTIONAL_RADIUS;  // used only for multitargeting ability
 var config int Holotargeter_CONVENTIONAL_CRITCHANCE;
@@ -47,15 +47,6 @@ var config int Holotargeter_BEAM_ISUPPLIES;
 var config int Holotargeter_BEAM_TRADINGPOSTVALUE;
 var config int Holotargeter_BEAM_IPOINTS;
 
-// ***** Schematic properties *****
-var config int Holotargeter_MAGNETIC_SCHEMATIC_SUPPLYCOST;
-var config int Holotargeter_BEAM_SCHEMATIC_SUPPLYCOST;
-
-var config int Holotargeter_MAGNETIC_SCHEMATIC_ALLOYCOST;
-var config int Holotargeter_BEAM_SCHEMATIC_ALLOYCOST;
-
-var config int Holotargeter_MAGNETIC_SCHEMATIC_ELERIUMCOST;
-var config int Holotargeter_BEAM_SCHEMATIC_ELERIUMCOST;
 
 
 static function array<X2DataTemplate> CreateTemplates()
@@ -69,9 +60,6 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateTemplate_Holotargeter_Magnetic());
 	Templates.AddItem(CreateTemplate_Holotargeter_Beam());
 
-	//create two schematics used to upgrade weapons
-	//Templates.AddItem(CreateTemplate_Holotargeter_Magnetic_Schematic());
-	//Templates.AddItem(CreateTemplate_Holotargeter_Beam_Schematic());
 
 	return Templates;
 }
@@ -130,7 +118,7 @@ static function X2DataTemplate CreateTemplate_Holotargeter_Magnetic()
 	Template.WeaponCat = 'holotargeter';
 	Template.WeaponTech = 'magnetic';
 	Template.ItemCat = 'weapon';
-	Template.strImage = default.Holotargeter_MG_UIImage;
+	Template.strImage = "img:///UILibrary_LW_Overhaul.InventoryArt.Inv_Mag_LWHolotargeter";
 	Template.EquipSound = "Secondary_Weapon_Equip_Magnetic";
 	Template.WeaponPanelImage = "_MagneticRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.Tier = 2;
@@ -178,7 +166,7 @@ static function X2DataTemplate CreateTemplate_Holotargeter_Beam()
 	Template.WeaponCat = 'holotargeter';
 	Template.WeaponTech = 'beam';
 	Template.ItemCat = 'weapon';
-	Template.strImage = default.Holotargeter_BM_UIImage;
+	Template.strImage = "img:///UILibrary_LW_Overhaul.InventoryArt.Inv_Beam_LWHolotargeter";
 	Template.EquipSound = "Secondary_Weapon_Equip_Beam";
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.Tier = 4;
@@ -217,89 +205,6 @@ static function X2DataTemplate CreateTemplate_Holotargeter_Beam()
 	return Template;
 }
 
-static function X2DataTemplate CreateTemplate_Holotargeter_Magnetic_Schematic()
-{
-	local X2SchematicTemplate Template;
-	local ArtifactCost Resources, Artifacts;
-
-	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Holotargeter_MG_Schematic');
-
-	Template.ItemCat = 'weapon';
-	Template.strImage = default.Holotargeter_MG_UIImage;
-	Template.CanBeBuilt = true;
-	Template.bOneTimeBuild = true;
-	Template.HideInInventory = true;
-	Template.PointsToComplete = 0;
-	Template.Tier = 1;
-	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
-
-	// Reference Item
-	Template.ReferenceItemTemplate = 'Holotargeter_MG';
-	Template.HideIfPurchased = 'Holotargeter_BM';
-
-	// Requirements
-	Template.Requirements.RequiredTechs.AddItem('MagnetizedWeapons');
-	Template.Requirements.RequiredEngineeringScore = 10;
-	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
-
-	// Cost
-	Resources.ItemTemplateName = 'Supplies';
-	Resources.Quantity = default.Holotargeter_MAGNETIC_SCHEMATIC_SUPPLYCOST;
-	Template.Cost.ResourceCosts.AddItem(Resources);
-
-	Artifacts.ItemTemplateName = 'AlienAlloy';
-	Artifacts.Quantity = default.Holotargeter_MAGNETIC_SCHEMATIC_ALLOYCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-	
-	// only add elerium cost if configured value greater than 0
-	if (default.Holotargeter_MAGNETIC_SCHEMATIC_ELERIUMCOST > 0) {
-		Artifacts.ItemTemplateName = 'EleriumDust';
-		Artifacts.Quantity = default.Holotargeter_MAGNETIC_SCHEMATIC_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
-
-	return Template;
-}
-
-static function X2DataTemplate CreateTemplate_Holotargeter_Beam_Schematic()
-{
-	local X2SchematicTemplate Template;
-	local ArtifactCost Resources, Artifacts;
-
-	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Holotargeter_BM_Schematic');
-
-	Template.ItemCat = 'weapon';
-	Template.strImage = default.Holotargeter_BM_UIImage;
-	Template.CanBeBuilt = true;
-	Template.bOneTimeBuild = true;
-	Template.HideInInventory = true;
-	Template.PointsToComplete = 0;
-	Template.Tier = 3;
-	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
-
-	// Reference Item
-	Template.ReferenceItemTemplate = 'Holotargeter_BM';
-
-	// Requirements
-	Template.Requirements.RequiredTechs.AddItem('PlasmaRifle');
-	Template.Requirements.RequiredEngineeringScore = 20;
-	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
-
-	// Cost
-	Resources.ItemTemplateName = 'Supplies';
-	Resources.Quantity = default.Holotargeter_BEAM_SCHEMATIC_SUPPLYCOST;
-	Template.Cost.ResourceCosts.AddItem(Resources);
-
-	Artifacts.ItemTemplateName = 'AlienAlloy';
-	Artifacts.Quantity = default.Holotargeter_BEAM_SCHEMATIC_ALLOYCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-
-	Artifacts.ItemTemplateName = 'EleriumDust';
-	Artifacts.Quantity = default.Holotargeter_BEAM_SCHEMATIC_ELERIUMCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-
-	return Template;
-}
 
 defaultproperties
 {

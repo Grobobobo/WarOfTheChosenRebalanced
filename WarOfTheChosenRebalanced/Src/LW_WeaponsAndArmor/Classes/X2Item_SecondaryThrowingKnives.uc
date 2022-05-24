@@ -17,16 +17,26 @@ var config int THROWING_KNIFE_ISOUNDRANGE;
 var config int THROWING_KNIFE_IENVIRONMENTDAMAGE;
 
 var config WeaponDamageValue THROWING_KNIFE_CV_BASEDAMAGE;
+var config WeaponDamageValue THROWING_KNIFE_LS_BASEDAMAGE;
 var config WeaponDamageValue THROWING_KNIFE_MG_BASEDAMAGE;
+var config WeaponDamageValue THROWING_KNIFE_CG_BASEDAMAGE;
 var config WeaponDamageValue THROWING_KNIFE_BM_BASEDAMAGE;
 
 var config int THROWING_KNIFE_CV_BLEED_CHANCE;
 var config int THROWING_KNIFE_CV_BLEED_DURATION;
 var config int THROWING_KNIFE_CV_BLEED_DAMAGE;
 
+var config int THROWING_KNIFE_LS_BLEED_CHANCE;
+var config int THROWING_KNIFE_LS_BLEED_DURATION;
+var config int THROWING_KNIFE_LS_BLEED_DAMAGE;
+
 var config int THROWING_KNIFE_MG_BLEED_CHANCE;
 var config int THROWING_KNIFE_MG_BLEED_DURATION;
 var config int THROWING_KNIFE_MG_BLEED_DAMAGE;
+
+var config int THROWING_KNIFE_CG_BLEED_CHANCE;
+var config int THROWING_KNIFE_CG_BLEED_DURATION;
+var config int THROWING_KNIFE_CG_BLEED_DAMAGE;
 
 var config int THROWING_KNIFE_BM_BLEED_CHANCE;
 var config int THROWING_KNIFE_BM_BLEED_DURATION;
@@ -71,6 +81,39 @@ static function X2DataTemplate CreateTemplate_ThrowingKnife_CV_Secondary()
 	return Template;
 }
 
+static function X2DataTemplate CreateTemplate_ThrowingKnife_LS_Secondary()
+{
+	local X2WeaponTemplate Template;
+	local X2Effect_Persistent BleedingEffect;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'ThrowingKnife_LS_Secondary');
+
+	InitializeThrowingKnifeTemplate(Template);
+	Template.WeaponTech = 'laser_LW';
+	Template.strImage = "img:///MusashiCombatKnifeMod_LW.UI.UI_Kunai_CV";
+	// This all the resources; sounds, animations, models, physics, the works.
+	Template.GameArchetype = "MusashiCombatKnifeMod_LW.Archetypes.WP_Kunai";
+	Template.Tier = 2;
+
+	Template.StartingItem = false;
+	Template.bInfiniteItem = true;
+	Template.CanBeBuilt = false;
+
+	Template.BaseDamage = default.THROWING_KNIFE_LS_BASEDAMAGE;
+	Template.BaseItem = 'ThrowingKnife_CV_Secondary'; // Which item this will be upgraded from
+	Template.CreatorTemplateName = 'ThrowingKnife_LS_Schematic'; // The schematic which creates this item
+
+	// Add chance to inflict bleeding
+	BleedingEffect = class'X2StatusEffects'.static.CreateBleedingStatusEffect(
+		default.THROWING_KNIFE_LS_BLEED_DURATION,
+		default.THROWING_KNIFE_LS_BLEED_DAMAGE);
+	BleedingEffect.ApplyChance = default.THROWING_KNIFE_LS_BLEED_CHANCE;
+	Template.BonusWeaponEffects.AddItem(BleedingEffect);
+
+	return Template;
+}
+
+
 static function X2DataTemplate CreateTemplate_ThrowingKnife_MG_Secondary()
 {
 	local X2WeaponTemplate Template;
@@ -88,7 +131,8 @@ static function X2DataTemplate CreateTemplate_ThrowingKnife_MG_Secondary()
 	Template.StartingItem = false;
 	Template.bInfiniteItem = false;
 	Template.CanBeBuilt = true;
-	Template.BaseItem = 'ThrowingKnife_CV_Secondary'; // Which item this will be upgraded from
+	Template.BaseItem = 'ThrowingKnife_LS_Secondary'; // Which item this will be upgraded from
+	Template.CreatorTemplateName = 'ThrowingKnife_MG_Schematic'; // The schematic which creates this item
 
 	Template.BaseDamage = default.THROWING_KNIFE_MG_BASEDAMAGE;
 
@@ -101,6 +145,39 @@ static function X2DataTemplate CreateTemplate_ThrowingKnife_MG_Secondary()
 
 	return Template;
 }
+
+static function X2DataTemplate CreateTemplate_ThrowingKnife_CG_Secondary()
+{
+	local X2WeaponTemplate Template;
+	local X2Effect_Persistent BleedingEffect;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'ThrowingKnife_CG_Secondary');
+
+	InitializeThrowingKnifeTemplate(Template);
+	Template.WeaponTech = 'coilgun_lw';
+	Template.strImage = "img:///MusashiCombatKnifeMod_LW.UI.UI_Kunai_MG";
+	// This all the resources; sounds, animations, models, physics, the works.
+	Template.GameArchetype = "MusashiCombatKnifeMod_LW.Archetypes.WP_Kunai_MG";
+	Template.Tier = 4;
+
+	Template.StartingItem = false;
+	Template.bInfiniteItem = true;
+	Template.CanBeBuilt = true;
+	Template.BaseItem = 'ThrowingKnife_MG_Secondary'; // Which item this will be upgraded from
+	Template.CreatorTemplateName = 'ThrowingKnife_CG_Schematic'; // The schematic which creates this item
+
+	Template.BaseDamage = default.THROWING_KNIFE_CG_BASEDAMAGE;
+
+	// Add chance to inflict bleeding
+	BleedingEffect = class'X2StatusEffects'.static.CreateBleedingStatusEffect(
+		default.THROWING_KNIFE_CG_BLEED_DURATION,
+		default.THROWING_KNIFE_CG_BLEED_DAMAGE);
+	BleedingEffect.ApplyChance = default.THROWING_KNIFE_CG_BLEED_CHANCE;
+	Template.BonusWeaponEffects.AddItem(BleedingEffect);
+
+	return Template;
+}
+
 
 static function X2DataTemplate CreateTemplate_ThrowingKnife_BM_Secondary()
 {
@@ -119,7 +196,8 @@ static function X2DataTemplate CreateTemplate_ThrowingKnife_BM_Secondary()
 	Template.StartingItem = false;
 	Template.bInfiniteItem = false;
 	Template.CanBeBuilt = true;
-	Template.BaseItem = 'ThrowingKnife_MG_Secondary'; // Which item this will be upgraded from
+	Template.BaseItem = 'ThrowingKnife_CG_Secondary'; // Which item this will be upgraded from
+	Template.CreatorTemplateName = 'ThrowingKnife_BM_Schematic'; // The schematic which creates this item
 
 	Template.BaseDamage = default.THROWING_KNIFE_BM_BASEDAMAGE;
 

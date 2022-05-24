@@ -341,12 +341,12 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Magnetic_Schematic()
 	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
 
 	// Reference Item
-	Template.HideIfPurchased = 'CombatKnife_BM';
+	Template.HideIfPurchased = 'CombatKnife_CG';
 	Template.ReferenceItemTemplate = 'CombatKnife_MG';
 
 	// Requirements
 	//Template.Requirements.RequiredTechs.AddItem('MagnetizedWeapons');
-	Template.Requirements.RequiredTechs.AddItem('AutopsyAdventStunLancer');  // same as sword
+	Template.Requirements.RequiredTechs.AddItem('AutopsyMuton');  // same as sword
 	Template.Requirements.RequiredEngineeringScore = 10;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 

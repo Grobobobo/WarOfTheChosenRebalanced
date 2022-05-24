@@ -248,7 +248,7 @@ static function X2DataTemplate CreateAutopsyDroneTemplate()
 	
 	// Instant Requirements. Will become the Cost if the tech is forced to Instant.
 	Artifacts.ItemTemplateName = 'CorpseDrone';
-	Artifacts.Quantity = 20;
+	Artifacts.Quantity = 99;
 	Template.InstantRequirements.RequiredItemQuantities.AddItem(Artifacts);
 
 	// Cost
@@ -279,7 +279,7 @@ static function X2DataTemplate CreateAutopsyBlutonTemplate()
 	
 	// Instant Requirements. Will become the Cost if the tech is forced to Instant.
 	Artifacts.ItemTemplateName = 'CorpseMutonElite';
-	Artifacts.Quantity = 15;
+	Artifacts.Quantity = 99;
 	Template.InstantRequirements.RequiredItemQuantities.AddItem(Artifacts);
 
 	// Cost

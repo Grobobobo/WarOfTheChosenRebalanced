@@ -1463,6 +1463,8 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 		case 'IntheZone':
 		case 'Reaper':
 		case 'Suppression':
+		case 'PistolReturnFire':
+		case 'PrimaryReturnFireShot':
 			SuppressedCondition = new class'X2Condition_UnitEffects';
 			SuppressedCondition.AddExcludeEffect(class'X2Effect_Suppression'.default.EffectName, 'AA_UnitIsSuppressed');
 			SuppressedCondition.AddExcludeEffect(class'X2Effect_AreaSuppression'.default.EffectName, 'AA_UnitIsSuppressed');

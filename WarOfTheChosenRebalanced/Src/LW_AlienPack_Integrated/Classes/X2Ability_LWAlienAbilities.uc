@@ -446,7 +446,7 @@ static function X2AbilityTemplate CreateDroneShockAbility()
 	local X2Condition_Visibility            VisibilityCondition;
 	local X2AbilityTarget_Single            SingleTarget;
 	local array<name>                       SkipExclusions;
-
+	local X2AbilityCost_Ammo				AmmoCost;
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'LWDroneShock');
 	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_lightningfield";
 	Template.Hostility = eHostility_Offensive;
@@ -478,6 +478,11 @@ static function X2AbilityTemplate CreateDroneShockAbility()
 	ActionPointCost.iNumPoints = 1;
 	ActionPointCost.bConsumeAllPoints = true;
 	Template.AbilityCosts.AddItem(ActionPointCost);
+
+	AmmoCost = new class'X2AbilityCost_Ammo';
+	AmmoCost.iAmmo = 1;
+	Template.AbilityCosts.AddItem(AmmoCost);
+
 
 	//  Put holo target effect first because if the target dies from this shot, it will be too late to notify the effect.
 	Template.AddTargetEffect(class'X2Ability_GrenadierAbilitySet'.static.HoloTargetEffect());

@@ -1291,11 +1291,12 @@ static function X2DataTemplate CreateTemplate_LWDrone_WPN(name TemplateName, Wea
 	Template.iIdealRange = default.LWDRONE_IDEALRANGE;
 	Template.RangeAccuracy = class'X2Item_SMGWeapon'.default.MIDSHORT_CONVENTIONAL_RANGE;
 
-	Template.iClipSize = 99;
-	Template.InfiniteAmmo = true;
+	Template.iClipSize = 3;
+	Template.InfiniteAmmo = false;
 	
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('LWDroneShock');
+	Template.Abilities.AddItem('Reload');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWDroneWeapon.Archetypes.WP_DroneBeam";

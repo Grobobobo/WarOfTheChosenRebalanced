@@ -5100,7 +5100,7 @@ PreMissionText="MECs gain Volatile Mix."
 PostMissionSuccessText="MEC Upgrade: Volatile Mix"
 PostMissionFailureText="MEC Upgrade: Volatile Mix"
 
-[DarkEvent_MecReturnFire X2DarkEventTemplate]
+[DarkEvent_MecPrimaryReturnFire X2DarkEventTemplate]
 DisplayName="MEC Upgrade: Return Fire"
 SummaryText="MECs gain Return Fire."
 QuoteText="\"Don't know why we ever thought these things couldn't shoot back.\""

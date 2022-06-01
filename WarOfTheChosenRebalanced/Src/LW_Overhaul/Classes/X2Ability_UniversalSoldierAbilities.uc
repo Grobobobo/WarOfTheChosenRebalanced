@@ -25,7 +25,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddReinforcedUnderlay2());
 	Templates.AddItem(AddReinforcedUnderlay1());
 	Templates.AddItem(AddHunkerDownAbilityNoAnim());
-	
+	Templates.AddItem(AddReloadnoAnimAbility());
+	Templates.AddItem(AmmoTextStatus());
 	
 	return Templates;
 }
@@ -513,4 +514,209 @@ static function X2AbilityTemplate AddHunkerDownAbilityNoAnim(name TemplateName =
 	Template.bDontDisplayInAbilitySummary = true;
 
 	return Template;
+}
+
+static function X2AbilityTemplate AddReloadnoAnimAbility(name TemplateName = 'ReloadNoAnim')
+{
+	local X2AbilityTemplate                 Template;	
+	local X2AbilityCost_ActionPoints        ActionPointCost;
+	local X2Condition_UnitProperty          ShooterPropertyCondition;
+	local X2Condition_AbilitySourceWeapon   WeaponCondition;
+	local X2AbilityTrigger_PlayerInput      InputTrigger;
+	local array<name>                       SkipExclusions;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, TemplateName);
+	
+	Template.bDontDisplayInAbilitySummary = true;
+	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.iNumPoints = 1;
+	ActionPointCost.bConsumeAllPoints = true;
+	Template.AbilityCosts.AddItem(ActionPointCost);
+
+	ShooterPropertyCondition = new class'X2Condition_UnitProperty';	
+	ShooterPropertyCondition.ExcludeDead = true;                    //Can't reload while dead
+	Template.AbilityShooterConditions.AddItem(ShooterPropertyCondition);
+	WeaponCondition = new class'X2Condition_AbilitySourceWeapon';
+	WeaponCondition.WantsReload = true;
+	Template.AbilityShooterConditions.AddItem(WeaponCondition);
+	Template.DefaultKeyBinding = class'UIUtilities_Input'.const.FXS_KEY_R;
+
+	SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.DisorientedName);
+	Template.AddShooterEffectExclusions(SkipExclusions);
+
+	InputTrigger = new class'X2AbilityTrigger_PlayerInput';
+	Template.AbilityTriggers.AddItem(InputTrigger);
+
+	Template.AbilityToHitCalc = default.DeadEye;
+	
+	Template.AbilityTargetStyle = default.SelfTarget;
+	
+	Template.AbilitySourceName = 'eAbilitySource_Standard';
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_ShowIfAvailable;
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_reload";
+	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.RELOAD_PRIORITY;
+	Template.bNoConfirmationWithHotKey = true;
+	Template.bDisplayInUITooltip = false;
+	Template.bDisplayInUITacticalText = false;
+	Template.DisplayTargetHitChance = false;
+	Template.bShowActivation = true;
+	Template.bSkipFireAction = true;
+
+	//Template.ActivationSpeech = 'Reloading';
+
+	Template.BuildNewGameStateFn = ReloadAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+
+	Template.Hostility = eHostility_Neutral;
+
+	Template.CinescriptCameraType = "GenericAccentCam";
+	Template.OverrideAbilityAvailabilityFn = Reload_OverrideAbilityAvailability;
+
+	return Template;	
+}
+
+function Reload_OverrideAbilityAvailability(out AvailableAction Action, XComGameState_Ability AbilityState, XComGameState_Unit OwnerState)
+{
+	if (Action.AvailableCode == 'AA_Success')
+	{
+		if (AbilityState.GetSourceWeapon().Ammo == 0)
+			Action.ShotHUDPriority = class'UIUtilities_Tactical'.const.MUST_RELOAD_PRIORITY;
+	}
+}
+
+simulated function XComGameState ReloadAbility_BuildGameState( XComGameStateContext Context )
+{
+	local XComGameState NewGameState;
+	local XComGameState_Unit UnitState;
+	local XComGameStateContext_Ability AbilityContext;
+	local XComGameState_Ability AbilityState;
+	local XComGameState_Item WeaponState, NewWeaponState;
+	local array<X2WeaponUpgradeTemplate> WeaponUpgrades;
+	local bool bFreeReload;
+	local int i;
+
+	NewGameState = `XCOMHISTORY.CreateNewGameState(true, Context);	
+	AbilityContext = XComGameStateContext_Ability(Context);	
+	AbilityState = XComGameState_Ability(`XCOMHISTORY.GetGameStateForObjectID( AbilityContext.InputContext.AbilityRef.ObjectID ));
+
+	WeaponState = AbilityState.GetSourceWeapon();
+	NewWeaponState = XComGameState_Item(NewGameState.ModifyStateObject(class'XComGameState_Item', WeaponState.ObjectID));
+
+	UnitState = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', AbilityContext.InputContext.SourceObject.ObjectID));	
+
+	//  check for free reload upgrade
+	bFreeReload = false;
+	WeaponUpgrades = WeaponState.GetMyWeaponUpgradeTemplates();
+	for (i = 0; i < WeaponUpgrades.Length; ++i)
+	{
+		if (WeaponUpgrades[i].FreeReloadCostFn != none && WeaponUpgrades[i].FreeReloadCostFn(WeaponUpgrades[i], AbilityState, UnitState))
+		{
+			bFreeReload = true;
+			break;
+		}
+	}
+	if (!bFreeReload)
+		AbilityState.GetMyTemplate().ApplyCost(AbilityContext, AbilityState, UnitState, NewWeaponState, NewGameState);	
+
+	//  refill the weapon's ammo	
+	NewWeaponState.Ammo = NewWeaponState.GetClipSize();
+	
+	return NewGameState;	
+}
+
+static function X2AbilityTemplate AmmoTextStatus()
+{
+	local X2AbilityTemplate					Template;
+	local X2Effect_Persistent				AmmoEffect;
+	local X2Effect_RemoveEffects			RemoveEffect;
+	local X2AbilityTrigger_EventListener	EventListener;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'AmmoTextStatus');
+	Template.IconImage = "img:///UILibrary_XPerkIconPack_LW.UIPerk_ammo_box";
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.bShowActivation = false;
+	Template.bShowPostActivation = true;
+	Template.bSkipFireAction = true;
+	//Template.bIsPassive = true;
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+
+	EventListener = new class'X2AbilityTrigger_EventListener';
+	EventListener.ListenerData.EventID = 'AbilityActivated';
+	EventListener.ListenerData.EventFn = AbilityTriggerEventListener_OutOfAmmo;
+	EventListener.ListenerData.Deferral = ELD_OnStateSubmitted;
+	EventListener.ListenerData.Filter = eFilter_Unit;
+	EventListener.ListenerData.Priority = 40;
+	Template.AbilityTriggers.AddItem(EventListener);
+
+	// UnitValueEffect = new class'X2Effect_SetUnitValue';
+	// UnitValueEffect.UnitName = 'QuickRetreatTimes';
+	// UnitValueEffect.CleanupType = eCleanup_BeginTurn;
+	// UnitValueEffect.NewValueToSet = 1;
+	// Template.AddTargetEffect(UnitValueEffect);
+
+
+	// UnitValue = new class'X2Condition_UnitValue';
+	// UnitValue.AddCheckValue('QuickRetreatTimes', 1, eCheck_LessThan);
+	// Template.AbilityTargetConditions.AddItem(UnitValue);
+
+
+	Template.bCrossClassEligible = false;
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+
+	Template.DefaultSourceItemSlot = eInvSlot_PrimaryWeapon;
+
+	return Template;
+}
+
+
+static function EventListenerReturn AbilityTriggerEventListener_OutOfAmmo(
+	Object EventData,
+	Object EventSource,
+	XComGameState GameState,
+	Name EventID,
+	Object CallbackData)
+{
+	local XComGameStateContext_Ability AbilityContext;
+	local XComGameState_Unit SourceUnit;
+	local XComGameState_Ability AbilityState,TextAbilityState;
+   	local XComGameState_Effect_TemplarFocus FocusState;
+	local XComGameState_Item	PrimaryWeaponState;
+	local XComGameStateHistory History;
+
+	AbilityState = XComGameState_Ability(EventData);
+	History = `XCOMHISTORY;
+
+	AbilityContext = XComGameStateContext_Ability(GameState.GetContext());
+	if (AbilityContext != none && AbilityContext.InterruptionStatus != eInterruptionStatus_Interrupt && AbilityState.GetMyTemplate().Hostility == eHostility_Offensive)
+	{
+		SourceUnit = XComGameState_Unit(GameState.GetGameStateForObjectID(AbilityContext.InputContext.SourceObject.ObjectID));
+		TextAbilityState = XComGameState_Ability(History.GetGameStateForObjectID(SourceUnit.FindAbility('AmmoTextStatus', AbilityContext.InputContext.ItemObject).ObjectID));
+		
+		if (TextAbilityState != none)
+		{
+			if(AbilityContext.InputContext.SourceObject.ObjectID == TextAbilityState.OwnerStateObject.ObjectID)
+			{
+				PrimaryWeaponState = TextAbilityState.GetSourceWeapon();
+				if(PrimaryWeaponState != none)
+				{			
+					//  &&
+					if(PrimaryWeaponState.InventorySlot == eInvSlot_PrimaryWeapon &&
+					SourceUnit.GetTeam() != eTeam_XCOM &&
+					PrimaryWeaponState.Ammo == 0)
+					{
+						TextAbilityState.AbilityTriggerEventListener_Self(EventData, EventSource, GameState, EventID, CallbackData);
+					}
+				}
+			}
+
+
+		}
+	}
+	return ELR_NoInterrupt;
+ 
 }

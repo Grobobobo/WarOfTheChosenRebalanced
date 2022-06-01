@@ -3781,7 +3781,8 @@ static function X2AbilityTemplate AddDamageControlAbility()
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
 	Template.AbilityToHitCalc = default.DeadEye;
     Template.AbilityTargetStyle = default.SelfTarget;
-	Template.bShowActivation = true;
+	Template.bShowActivation = false;
+	Template.bShowPostActivation = true;
 	Template.bSkipFireAction = true;
 	//Template.bIsPassive = true;
 	Template.bDisplayInUITooltip = true;

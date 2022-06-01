@@ -521,6 +521,11 @@ LocFriendlyName="Reload Sawed-Off"
 LocHelpText="Reload your Sawed-Off Shotgun."
 LocFlyOverText="Reloading"
 
+[ReloadNoAnim X2AbilityTemplate]
+LocFriendlyName="Weapon Reload"
+LocHelpText="Reload your primary weapon."
+LocFlyOverText="Reloading"
+
 [BothBarrels X2AbilityTemplate]
 LocFriendlyName="Both Barrels"
 LocLongDescription="Fire both barrels of sawed-off shotgun at nearby enemy, doing double damage."

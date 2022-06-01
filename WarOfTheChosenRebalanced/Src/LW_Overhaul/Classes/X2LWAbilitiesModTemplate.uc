@@ -726,6 +726,12 @@ static function UpdatePurifierFlamethrower(X2AbilityTemplate Template)
 	local X2Condition 								Condition;
 	local X2Condition_Phosphorus PhosphorusCondition;
 	local X2Effect Effect;
+	local X2AbilityCost_Ammo AmmoCost;
+
+	AmmoCost = new class'X2AbilityCost_Ammo';
+	AmmoCost.iAmmo = 1;
+	Template.AbilityCosts.AddItem(AmmoCost);
+
 	StandardAim = new class'X2AbilityToHitCalc_StandardAim';
 	StandardAim.bAllowCrit = false;
 	StandardAim.bGuaranteedHit = true;

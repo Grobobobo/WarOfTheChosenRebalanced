@@ -1296,7 +1296,7 @@ static function X2DataTemplate CreateTemplate_LWDrone_WPN(name TemplateName, Wea
 	
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('LWDroneShock');
-	Template.Abilities.AddItem('Reload');
+	Template.Abilities.AddItem('ReloadNoAnim');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWDroneWeapon.Archetypes.WP_DroneBeam";

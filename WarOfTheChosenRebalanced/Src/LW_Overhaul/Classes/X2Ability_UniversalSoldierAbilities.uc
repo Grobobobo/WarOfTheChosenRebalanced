@@ -627,8 +627,8 @@ simulated function XComGameState ReloadAbility_BuildGameState( XComGameStateCont
 static function X2AbilityTemplate AmmoTextStatus()
 {
 	local X2AbilityTemplate					Template;
-	local X2Effect_Persistent				AmmoEffect;
-	local X2Effect_RemoveEffects			RemoveEffect;
+	//local X2Effect_Persistent				AmmoEffect;
+	//local X2Effect_RemoveEffects			RemoveEffect;
 	local X2AbilityTrigger_EventListener	EventListener;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'AmmoTextStatus');
@@ -687,6 +687,9 @@ static function EventListenerReturn AbilityTriggerEventListener_OutOfAmmo(
    	local XComGameState_Effect_TemplarFocus FocusState;
 	local XComGameState_Item	PrimaryWeaponState;
 	local XComGameStateHistory History;
+	local X2AbilityTemplate AbilityTemplate;
+	local X2AbilityCost Cost;
+	local bool AbilityCostAmmo;
 
 	AbilityState = XComGameState_Ability(EventData);
 	History = `XCOMHISTORY;
@@ -703,13 +706,25 @@ static function EventListenerReturn AbilityTriggerEventListener_OutOfAmmo(
 			{
 				PrimaryWeaponState = TextAbilityState.GetSourceWeapon();
 				if(PrimaryWeaponState != none)
-				{			
-					//  &&
+				{
 					if(PrimaryWeaponState.InventorySlot == eInvSlot_PrimaryWeapon &&
 					SourceUnit.GetTeam() != eTeam_XCOM &&
 					PrimaryWeaponState.Ammo == 0)
 					{
-						TextAbilityState.AbilityTriggerEventListener_Self(EventData, EventSource, GameState, EventID, CallbackData);
+						//Check if the ability state costs ammo, so using it caused the unit to be out of ammo
+						AbilityTemplate = AbilityState.GetMyTemplate();
+						foreach AbilityTemplate.AbilityCosts(Cost)
+						{
+							if(X2AbilityCost_Ammo(Cost) != none)
+							{
+								if(X2AbilityCost_Ammo(Cost).iAmmo > 0)
+								{
+									TextAbilityState.AbilityTriggerEventListener_Self(EventData, EventSource, GameState, EventID, CallbackData);
+									break;
+								}
+							}
+						}
+
 					}
 				}
 			}

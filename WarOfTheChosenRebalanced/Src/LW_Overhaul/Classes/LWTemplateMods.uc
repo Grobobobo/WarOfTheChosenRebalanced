@@ -2449,6 +2449,10 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 	WeaponTemplate = X2WeaponTemplate(Template);
 	if (WeaponTemplate != none)
 	{
+		if(WeaponTemplate.InventorySlot == eInvSlot_PrimaryWeapon)
+		{
+			WeaponTemplate.Abilities.AddItem('AmmoTextStatus');
+		}
 		// Pistols don't have PistolStandardShot because it was originally just an
 		// ability for Sharpshooters. Add it here if the LWOTC pistol slot is enabled.
 		if (WeaponTemplate.WeaponCat == 'pistol' && !class'CHItemSlot_PistolSlot_LW'.default.DISABLE_LW_PISTOL_SLOT)

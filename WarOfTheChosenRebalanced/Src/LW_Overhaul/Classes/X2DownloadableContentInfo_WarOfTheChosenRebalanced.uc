@@ -3156,6 +3156,7 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 	local X2AbilityTemplate AbilityTemplate;
 	local int ImpactCompensationStacks;
 	local int k;
+	local XComGameState_Item PrimaryWeaponState;
 
 	Type = name(InString);
 	switch(Type)
@@ -3233,6 +3234,31 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 			}
 		}
 		return true;
+		case 'MAX_PRIMARY_AMMO':
+			OutString = "0";
+			AbilityState = XComGameState_Ability(ParseObj);
+			if (AbilityState != none)
+			{
+				PrimaryWeaponState = AbilityState.GetSourceWeapon();
+				if(PrimaryWeaponState != none)
+				{
+					Outstring = string(PrimaryWeaponState.GetClipSize());
+				}
+			}
+			return true;
+		case 'CURRENT_PRIMARY_AMMO':
+			OutString = "0";
+			AbilityState = XComGameState_Ability(ParseObj);
+			if (AbilityState != none)
+			{
+				PrimaryWeaponState = AbilityState.GetSourceWeapon();
+				if(PrimaryWeaponState != none)
+				{
+					Outstring = string(PrimaryWeaponState.Ammo);
+				}
+			}
+			return true;
+
 	default:
 		return false;
 	}

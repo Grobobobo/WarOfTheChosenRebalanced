@@ -27,6 +27,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddHunkerDownAbilityNoAnim());
 	Templates.AddItem(AddReloadnoAnimAbility());
 	Templates.AddItem(OutOfAmmoFlyover());
+	Templates.AddItem(AmmoTextStatus());
 	
 	return Templates;
 }
@@ -669,7 +670,7 @@ static function X2AbilityTemplate OutOfAmmoFlyover()
 	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
 
 	Template.DefaultSourceItemSlot = eInvSlot_PrimaryWeapon;
-	Template.AdditionalAbilities.AddItem('AmmoTextState')
+	//Template.AdditionalAbilities.AddItem('AmmoTextStatus');
 
 	return Template;
 }
@@ -687,12 +688,10 @@ static function EventListenerReturn AbilityTriggerEventListener_OutOfAmmo(
 	local XComGameStateContext_Ability AbilityContext;
 	local XComGameState_Unit SourceUnit;
 	local XComGameState_Ability AbilityState,TextAbilityState;
-   	local XComGameState_Effect_TemplarFocus FocusState;
 	local XComGameState_Item	PrimaryWeaponState;
 	local XComGameStateHistory History;
 	local X2AbilityTemplate AbilityTemplate;
 	local X2AbilityCost Cost;
-	local bool AbilityCostAmmo;
 
 	AbilityState = XComGameState_Ability(EventData);
 	History = `XCOMHISTORY;
@@ -754,10 +753,12 @@ static function X2AbilityTemplate AmmoTextStatus()
 	Template.AbilityToHitCalc = default.DeadEye;
 	Template.AbilityTargetStyle = default.SelfTarget;
 	Template.bShowActivation = false;
+	Template.bShowPostActivation = false;
 	//Template.bShowPostActivation = true;
 	Template.bSkipFireAction = true;
 	//Template.bIsPassive = true;
 	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
 
 	EventListener = new class'X2AbilityTrigger_EventListener';
 	EventListener.ListenerData.EventID = 'AbilityActivated';
@@ -768,18 +769,19 @@ static function X2AbilityTemplate AmmoTextStatus()
 	Template.AbilityTriggers.AddItem(EventListener);
 
 	RemoveEffect = new class'X2Effect_RemoveEffects';
-	RemoveEffect.EffectNamesToRemove.AddItem('AmmoStateEffect')
+	RemoveEffect.EffectNamesToRemove.AddItem('AmmoStateEffect');
 	Template.AddTargetEffect(RemoveEffect);
 
 	AmmoEffect = new class'X2Effect_Persistent';
 	AmmoEffect.BuildPersistentEffect(1, true, false, false);
+	AmmoEffect.EffectName = 'AmmoStateEffect';
 	AmmoEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage,,, Template.AbilitySourceName);
-	AmmoEffect.DuplicateResponse = eDupe_Ignore;
+	AmmoEffect.DuplicateResponse = eDupe_Allow;
 	Template.AddTargetEffect(AmmoEffect);
 
 	Template.bCrossClassEligible = false;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
-	//Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
 
 	Template.DefaultSourceItemSlot = eInvSlot_PrimaryWeapon;
 
@@ -810,7 +812,7 @@ static function EventListenerReturn AbilityTriggerEventListener_AmmoState(
 	if (AbilityContext != none && AbilityContext.InterruptionStatus != eInterruptionStatus_Interrupt && AbilityState.GetMyTemplate().Hostility == eHostility_Offensive)
 	{
 		SourceUnit = XComGameState_Unit(GameState.GetGameStateForObjectID(AbilityContext.InputContext.SourceObject.ObjectID));
-		TextAbilityState = XComGameState_Ability(History.GetGameStateForObjectID(SourceUnit.FindAbility('OutOfAmmoFlyover', AbilityContext.InputContext.ItemObject).ObjectID));
+		TextAbilityState = XComGameState_Ability(History.GetGameStateForObjectID(SourceUnit.FindAbility('AmmoTextStatus', AbilityContext.InputContext.ItemObject).ObjectID));
 		
 		if (TextAbilityState != none)
 		{
@@ -820,7 +822,6 @@ static function EventListenerReturn AbilityTriggerEventListener_AmmoState(
 				if(SourceUnit.GetTeam() != eTeam_XCOM)
 				{
 					TextAbilityState.AbilityTriggerEventListener_Self(EventData, EventSource, GameState, EventID, CallbackData);
-					break;
 				}
 			}
 		}

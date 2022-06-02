@@ -2451,7 +2451,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 	{
 		if(WeaponTemplate.InventorySlot == eInvSlot_PrimaryWeapon)
 		{
-			WeaponTemplate.Abilities.AddItem('AmmoTextStatus');
+			WeaponTemplate.Abilities.AddItem('OutOfAmmoFlyover');
 		}
 		// Pistols don't have PistolStandardShot because it was originally just an
 		// ability for Sharpshooters. Add it here if the LWOTC pistol slot is enabled.

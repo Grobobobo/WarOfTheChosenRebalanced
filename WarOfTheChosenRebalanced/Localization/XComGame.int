@@ -6365,7 +6365,7 @@ LocFlyOverText="Whirlwind"
 LocPromotionPopupText="<Bullet/> A soldier can only gain one move per turn with this ability.<br/>"
 ; End Translation
 
-[AmmoTextStatus X2AbilityTemplate]
+[OutOfAmmoFlyover X2AbilityTemplate]
 LocFriendlyName="Out Of Ammo"
 LocLongDescription=""
 LocHelpText=""
@@ -6373,6 +6373,12 @@ LocHelpText=""
 ;LocLongDescription="This unit has <Ability:CURRENT_PRIMARY_AMMO/>/<Ability:MAX_PRIMARY_AMMO/> Primary Weapon Ammo."
 ;LocHelpText="This unit has <Ability:CURRENT_PRIMARY_AMMO/>/<Ability:MAX_PRIMARY_AMMO/> Primary Weapon Ammo."
 LocFlyOverText="Out Of Ammo"
+
+[AmmoTextStatus X2AbilityTemplate]
+LocFriendlyName="Ammo Status"
+LocLongDescription="This unit has <Ability:CURRENT_PRIMARY_AMMO/>/<Ability:MAX_PRIMARY_AMMO/> Primary Weapon Ammo."
+LocHelpText="This unit has <Ability:CURRENT_PRIMARY_AMMO/>/<Ability:MAX_PRIMARY_AMMO/> Primary Weapon Ammo."
+LocFlyOverText="Ammo Status"
 
 [Solace_LW X2AbilityTemplate]
 LocFriendlyName="Solace"

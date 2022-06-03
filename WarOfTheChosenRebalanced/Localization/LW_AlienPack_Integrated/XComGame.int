@@ -517,7 +517,7 @@ FriendlyName="Viper Gatling Rifle"
 
 ;;purifier loc
 
-[AdvPurifier_Leader X2WeaponTemplate]
+[AdvPurifier_Leader X2CharacterTemplate]
 FriendlyName="Advent Gunslinger"
 
 ;;Priest loc

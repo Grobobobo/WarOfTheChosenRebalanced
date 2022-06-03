@@ -643,6 +643,9 @@ static function X2AbilityTemplate OutOfAmmoFlyover()
 	Template.bShowPostActivation = true;
 	Template.bSkipFireAction = true;
 	//Template.bIsPassive = true;
+	Template.bDisplayInUITooltip = false;
+	Template.bDisplayInUITacticalText = false;
+
 	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
 
 	EventListener = new class'X2AbilityTrigger_EventListener';

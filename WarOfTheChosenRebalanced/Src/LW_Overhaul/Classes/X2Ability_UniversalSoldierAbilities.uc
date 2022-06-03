@@ -798,12 +798,9 @@ static function EventListenerReturn AbilityTriggerEventListener_AmmoState(
 	local XComGameStateContext_Ability AbilityContext;
 	local XComGameState_Unit SourceUnit;
 	local XComGameState_Ability AbilityState,TextAbilityState;
-   	local XComGameState_Effect_TemplarFocus FocusState;
 	local XComGameState_Item	PrimaryWeaponState;
 	local XComGameStateHistory History;
 	local X2AbilityTemplate AbilityTemplate;
-	local X2AbilityCost Cost;
-	local bool AbilityCostAmmo;
 
 	AbilityState = XComGameState_Ability(EventData);
 	History = `XCOMHISTORY;

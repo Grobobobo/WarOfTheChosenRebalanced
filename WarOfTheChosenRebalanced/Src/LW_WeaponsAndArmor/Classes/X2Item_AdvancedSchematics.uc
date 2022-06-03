@@ -1456,7 +1456,7 @@ static function X2DataTemplate Sword_LS_Schematic()
 	Template.HideIfPurchased = 'Sword_MG';
 
 	// Requirements
-	Template.Requirements.RequiredTechs.AddItem('AutopsyStunLancer');
+	Template.Requirements.RequiredTechs.AddItem('AutopsyAdventStunLancer');
 	Template.Requirements.RequiredEngineeringScore = 5;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 

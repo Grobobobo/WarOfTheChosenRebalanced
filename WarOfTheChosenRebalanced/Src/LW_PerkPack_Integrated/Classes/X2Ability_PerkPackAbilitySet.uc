@@ -3345,6 +3345,7 @@ static function X2AbilityTemplate AddAreaSuppressionAbility()
 	Template.AdditionalAbilities.AddItem('AreaSuppressionShot_LW');
 	Template.AdditionalAbilities.AddItem('LockdownBonuses');
 	Template.AdditionalAbilities.AddItem('MayhemBonuses');
+	Template.AdditionalAbilities.AddItem('SuppressionDamage');
 
 
 

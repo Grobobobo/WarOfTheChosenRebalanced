@@ -27,7 +27,6 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddHunkerDownAbilityNoAnim());
 	Templates.AddItem(AddReloadnoAnimAbility());
 	Templates.AddItem(OutOfAmmoFlyover());
-	Templates.AddItem(AmmoTextStatus());
 	
 	return Templates;
 }
@@ -735,95 +734,6 @@ static function EventListenerReturn AbilityTriggerEventListener_OutOfAmmo(
 			}
 
 
-		}
-	}
-	return ELR_NoInterrupt;
- 
-}
-
-static function X2AbilityTemplate AmmoTextStatus()
-{
-	local X2AbilityTemplate					Template;
-	local X2Effect_Persistent				AmmoEffect;
-	local X2Effect_RemoveEffects			RemoveEffect;
-	local X2AbilityTrigger_EventListener	EventListener;
-
-	`CREATE_X2ABILITY_TEMPLATE(Template, 'AmmoTextStatus');
-	Template.IconImage = "img:///UILibrary_XPerkIconPack_LW.UIPerk_ammo_box";
-	Template.AbilitySourceName = 'eAbilitySource_Perk';
-	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
-	Template.Hostility = eHostility_Neutral;
-	Template.AbilityToHitCalc = default.DeadEye;
-	Template.AbilityTargetStyle = default.SelfTarget;
-	Template.bShowActivation = false;
-	Template.bShowPostActivation = false;
-	//Template.bShowPostActivation = true;
-	Template.bSkipFireAction = true;
-	//Template.bIsPassive = true;
-	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
-	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
-
-	EventListener = new class'X2AbilityTrigger_EventListener';
-	EventListener.ListenerData.EventID = 'AbilityActivated';
-	EventListener.ListenerData.EventFn = AbilityTriggerEventListener_AmmoState;
-	EventListener.ListenerData.Deferral = ELD_OnStateSubmitted;
-	EventListener.ListenerData.Filter = eFilter_Unit;
-	EventListener.ListenerData.Priority = 40;
-	Template.AbilityTriggers.AddItem(EventListener);
-
-	RemoveEffect = new class'X2Effect_RemoveEffects';
-	RemoveEffect.EffectNamesToRemove.AddItem('AmmoStateEffect');
-	Template.AddTargetEffect(RemoveEffect);
-
-	AmmoEffect = new class'X2Effect_Persistent';
-	AmmoEffect.BuildPersistentEffect(1, true, false, false);
-	AmmoEffect.EffectName = 'AmmoStateEffect';
-	AmmoEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage,,, Template.AbilitySourceName);
-	AmmoEffect.DuplicateResponse = eDupe_Allow;
-	Template.AddTargetEffect(AmmoEffect);
-
-	Template.bCrossClassEligible = false;
-	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
-	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
-
-	Template.DefaultSourceItemSlot = eInvSlot_PrimaryWeapon;
-
-	return Template;
-}
-
-static function EventListenerReturn AbilityTriggerEventListener_AmmoState(
-	Object EventData,
-	Object EventSource,
-	XComGameState GameState,
-	Name EventID,
-	Object CallbackData)
-{
-	local XComGameStateContext_Ability AbilityContext;
-	local XComGameState_Unit SourceUnit;
-	local XComGameState_Ability AbilityState,TextAbilityState;
-	local XComGameState_Item	PrimaryWeaponState;
-	local XComGameStateHistory History;
-	local X2AbilityTemplate AbilityTemplate;
-
-	AbilityState = XComGameState_Ability(EventData);
-	History = `XCOMHISTORY;
-
-	AbilityContext = XComGameStateContext_Ability(GameState.GetContext());
-	if (AbilityContext != none && AbilityContext.InterruptionStatus != eInterruptionStatus_Interrupt && AbilityState.GetMyTemplate().Hostility == eHostility_Offensive)
-	{
-		SourceUnit = XComGameState_Unit(GameState.GetGameStateForObjectID(AbilityContext.InputContext.SourceObject.ObjectID));
-		TextAbilityState = XComGameState_Ability(History.GetGameStateForObjectID(SourceUnit.FindAbility('AmmoTextStatus', AbilityContext.InputContext.ItemObject).ObjectID));
-		
-		if (TextAbilityState != none)
-		{
-			PrimaryWeaponState = TextAbilityState.GetSourceWeapon();
-			if(PrimaryWeaponState != none)
-			{
-				if(SourceUnit.GetTeam() != eTeam_XCOM)
-				{
-					TextAbilityState.AbilityTriggerEventListener_Self(EventData, EventSource, GameState, EventID, CallbackData);
-				}
-			}
 		}
 	}
 	return ELR_NoInterrupt;

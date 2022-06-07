@@ -596,27 +596,35 @@ strCharacterName="Juggernaut"
 
 [Berserker_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
+AbilityDescName="Fist"
 
 [BerserkerM2_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
+AbilityDescName="Fist"
 
 [BerserkerM3_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
+AbilityDescName="Fist"
 
 [BerserkerM4_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
+AbilityDescName="Fist"
 
 [Berserker_Leader_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
+AbilityDescName="Fist"
 
 [Berserker_Leader_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
+AbilityDescName="Fist"
 
 [Berserker_Leader_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
+AbilityDescName="Fist"
 
 [Berserker_Leader_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
+AbilityDescName="Fist"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;; Archon Loc ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

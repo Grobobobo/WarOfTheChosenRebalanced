@@ -7,8 +7,12 @@ LocPromotionPopupText="REDFOGLOCPROMOTIONPOPUPTEXT"
 
 [XComGame.UIShellDifficulty]
 [UIShellDifficulty]
-m_arrDifficultyDescStrings[0]="Appropriate for players new to tactical games or XCOM in general.<br/><br/>Long War options may be set in an Options menu after the campaign begins."
-m_arrDifficultyDescStrings[1]="A challenge appropriate for players familiar with XCOM.<br/><br/>Long War options may be set in an Options menu after the campaign begins."
-m_arrDifficultyDescStrings[2]="A significant challenge for experienced Long Warriors.<br/><br/>Long War options may be set in an Options menu after the campaign begins."
-m_arrDifficultyDescStrings[3]="A brutal and unforgiving campaign.<br/><br/>Long War options may be set in an Options menu after the campaign begins."
+m_arrDifficultyTypeStrings[0]="Commander"
+m_arrDifficultyTypeStrings[1]="Legendary"
+m_arrDifficultyTypeStrings[2]="Beyond Legendary"
+m_arrDifficultyTypeStrings[3]="Impossible"
+m_arrDifficultyDescStrings[0]="Use This difficulty if you found Vanilla Legendary to be too hard."
+m_arrDifficultyDescStrings[1]="This difficulty should be on par with Vanilla Legendary."
+m_arrDifficultyDescStrings[2]="This difficulty should be on par with LWOTC Legendary."
+m_arrDifficultyDescStrings[3]="DO NOT PLAY THIS DIFFICULTY UNLESS YOU HAVE BEATEN THIS MOD ON LOWER DIFFICULTIES. \n This difficulty should be on par with LWR Impossible, and is meant only for the best of the best. Seriously, If you play this difficulty first then complain to me the game is too hard afterwards I will mock you relentlessly."
 m_strTutorialOnImpossible="The Tutorial will not be enabled for Long War.<br><br/><font color='#9acbcb'>Long War options may be set in an Options menu after the campaign begins.</font>"

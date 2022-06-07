@@ -820,17 +820,6 @@ static function X2CharacterTemplate CreateTemplate_AdvMec_LW(name TemplateName)
 	return CharTemplate;
 }
 
-simulated function string GetAdventMatineePrefix(XComGameState_Unit UnitState)
-{
-	if(UnitState.kAppearance.iGender == eGender_Male)
-	{
-		return UnitState.GetMyTemplate().RevealMatineePrefix $ "_Male";
-	}
-	else
-	{
-		return UnitState.GetMyTemplate().RevealMatineePrefix $ "_Female";
-	}
-}
 
 static function X2CharacterTemplate CreateTemplate_Drone(name TemplateName)
 {
@@ -1594,7 +1583,7 @@ static function X2CharacterTemplate CreateTemplate_AdvPurifier_Leader(name Templ
 	CharTemplate.strMatineePackages.AddItem("CIN_Advent");
 	CharTemplate.strMatineePackages.AddItem("CIN_XP_Advent");
 	CharTemplate.RevealMatineePrefix = "CIN_Advent_Purifier";
-	CharTemplate.GetRevealMatineePrefixFn = GetAdventMatineePrefix;
+	CharTemplate.GetRevealMatineePrefixFn = class'X2Character_DefaultCharacters'.static.GetAdventMatineePrefix;
 
 	CharTemplate.UnitSize = 1;
 	

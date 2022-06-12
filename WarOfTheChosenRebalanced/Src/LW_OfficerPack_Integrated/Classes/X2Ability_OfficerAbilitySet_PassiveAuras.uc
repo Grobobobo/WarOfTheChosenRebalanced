@@ -3,11 +3,13 @@
 //  AUTHOR:  Amineri / John Lumpkin (Pavonis Interactive)
 //  PURPOSE: Defines officer ability templates
 //--------------------------------------------------------------------------------------- 
-class X2Ability_OfficerAbilitySet_PassiveAuras extends X2Ability config (LW_OfficerPack);
+class X2Ability_OfficerAbilitySet_PassiveAuras extends XMBAbility config (LW_OfficerPack);
 
 var config int DEFILADE_DEF;
 var config int DEFILADE_WILL;
 var config int DEFILADE_CRIT_DEF;
+
+//var config float DEFILADE_TILE_RANGE;
 
 static function array<X2DataTemplate> CreateTemplates()
 {
@@ -31,95 +33,93 @@ static function array<X2DataTemplate> CreateTemplates()
 	return Templates;
 }
 
-
-//CAPT 1 Defilade adds x% bonus to cover
 static function X2AbilityTemplate AddDefiladeAbility()
 {
-	local X2AbilityTemplate                 Template;
-	local XMBEffect_ConditionalBonus		CritDefEffect;
-	local X2AbilityMultiTarget_AllAllies	MultiTargetStyle;
-	local X2Condition_UnitProperty			MultiTargetProperty,TargetProperty;
-	local X2AbilityTrigger_EventListener  EventListener;
+	local X2AbilityTemplate                     Template;
+	local X2AbilityTrigger_EventListener        EventListener;
+	local X2Condition_UnitProperty              EnemyCondition;
+	local X2Effect_ToHitModifier		DefiladeEffect;
+	local X2Effect_RemoveEffects RemoveEffect;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'Defilade');
 	Template.IconImage = "img:///UILibrary_LW_OfficerPack.LWOfficers_AbilityHitTheDirt"; 
-	Template.AbilitySourceName = class'X2Ability_OfficerAbilitySet'.default.OfficerSourceName; 
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
 	Template.Hostility = eHostility_Neutral;
-	Template.bDisplayInUITooltip = false;
-	Template.bDisplayInUITacticalText = false;
-	Template.DisplayTargetHitChance = false;
 
-	TargetProperty = new class'X2Condition_UnitProperty';
-	TargetProperty.ExcludeDead = true;
-	TargetProperty.ExcludeHostileToSource = true;
-	TargetProperty.ExcludeFriendlyToSource = false;
-	TargetProperty.RequireSquadmates = true;
-	TargetProperty.ExcludePanicked = true;
-	TargetProperty.ExcludeRobotic = true;
-	//TargetProperty.ExcludeStunned = true;
-	Template.AbilityTargetConditions.AddItem(TargetProperty);
-
-
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SimpleSingleTarget;
 	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
-	MultiTargetProperty = new class'X2Condition_UnitProperty';
-	MultiTargetProperty.ExcludeAlive = false;
-    MultiTargetProperty.ExcludeDead = true;
-    MultiTargetProperty.ExcludeHostileToSource = true;
-    MultiTargetProperty.ExcludeFriendlyToSource = false;
-    MultiTargetProperty.RequireSquadmates = true;
-    MultiTargetProperty.ExcludePanicked = true;
-	MultiTargetProperty.ExcludeRobotic = true;
-//	MultiTargetProperty.ExcludeStunned = true;
-	MultiTargetProperty.TreatMindControlledSquadmateAsHostile = true;
-	//MultiTargetProperty.ExcludeUnrevealedAI = true;
 
-	Template.AbilityTargetStyle = default.SelfTarget;
-	MultiTargetStyle = new class'X2AbilityMultiTarget_AllAllies';
-	MultiTargetStyle.bAddPrimaryTargetAsMultiTarget = true;
-	Template.AbilityMultiTargetStyle = MultiTargetStyle;
-/*
-	DefenseBonus = new class'XMBEffect_ConditionalBonus';
-	DefenseBonus.AddToHitAsTargetModifier(-default.DEFILADE_DEF, eHit_Success);
-	DefenseBonus.BuildPersistentEffect(1, true, true, false, eGameRule_PlayerTurnEnd);
-	DefenseBonus.AbilityTargetConditionsAsTarget.AddItem(CoverCondition);
-	DefenseBonus.TargetConditions.AddItem(default.GameplayVisibilityCondition);
-	DefenseBonus.DuplicateResponse = eDupe_Ignore;
-	DefenseBonus.bRemoveWhenSourceDies = true;
-	DefenseBonus.bRemoveWhenTargetDies = true;
-	DefenseBonus.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, true, , Template.AbilitySourceName);
-	DefenseBonus.EffectName = 'DefiladeDef';
 
-	Template.AddMultiTargetEffect(DefenseBonus);
-	*/
-	CritDefEffect = new class'XMBEffect_ConditionalBonus';
-	CritDefEffect.AddToHitAsTargetModifier(-default.DEFILADE_CRIT_DEF, eHit_Crit);
-	CritDefEffect.BuildPersistentEffect(1, true, true, false, eGameRule_PlayerTurnEnd);
-	CritDefEffect.AbilityTargetConditions.AddItem(default.GameplayVisibilityCondition);
-	CritDefEffect.AbilityTargetConditions.AddItem(MultiTargetProperty);
-	CritDefEffect.EffectName = 'DefiladeCritDef';
-	CritDefEffect.DuplicateResponse = eDupe_Ignore;
-	CritDefEffect.bRemoveWhenSourceDies = true;
-	CritDefEffect.bRemoveWhenTargetDies = true;
-	CritDefEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, true, , Template.AbilitySourceName);
-	Template.AddMultiTargetEffect(CritDefEffect);
+	EnemyCondition = new class'X2Condition_UnitProperty';
+	EnemyCondition.ExcludeAlive = false;
+	EnemyCondition.ExcludeDead = true;
+	EnemyCondition.ExcludeHostileToSource = true;
+	EnemyCondition.ExcludeFriendlyToSource = false;
+	EnemyCondition.FailOnNonUnits = true;
+	// EnemyCondition.RequireWithinRange = true;
+	// EnemyCondition.WithinRange = default.DEFILADE_TILE_RANGE *  class'XComWorldData'.const.WORLD_StepSize; // same as Solace for now
 
-	//Just in case
 	EventListener = new class'X2AbilityTrigger_EventListener';
 	EventListener.ListenerData.Deferral = ELD_OnStateSubmitted;
-	EventListener.ListenerData.EventID = 'PlayerTurnBegun';
-	EventListener.ListenerData.EventFn = class'XComGameState_Ability'.static.AbilityTriggerEventListener_Self;
-	EventListener.ListenerData.Filter = eFilter_Player;
+	EventListener.ListenerData.EventID = 'UnitMoveFinished';
+	EventListener.ListenerData.Filter = eFilter_None;
+	EventListener.ListenerData.EventFn = DefiladeCleanseListener;
 	Template.AbilityTriggers.AddItem(EventListener);
+
+	//Remove the ZOC Effect in case it already exists, becuse eDupe_Refresh only refreshes duration and not the entire effect data.
+	//It's important in case of multiple units with Zone of control.
+	RemoveEffect = new class'X2Effect_RemoveEffects';
+	RemoveEffect.EffectNamesToRemove.AddItem('Defilade_LWEffect');
+	//RemoveEffect.TargetConditions.AddItem(EnemyCondition);
+	RemoveEffect.bDoNotVisualize = true;
+	RemoveEffect.bCleanse = true;
+	Template.AddTargetEffect(RemoveEffect);
+
+
+	DefiladeEffect = new class'X2Effect_ToHitModifier';
+	DefiladeEffect.EffectName = 'Defilade_LWEffect';
+	DefiladeEffect.bApplyAsTarget = true;
+	DefiladeEffect.AddEffectHitModifier(eHit_Crit, -default.DEFILADE_CRIT_DEF, Template.LocFriendlyName);
+	DefiladeEffect.DuplicateResponse = eDupe_Ignore;
+	DefiladeEffect.TargetConditions.AddItem(EnemyCondition);
+	DefiladeEffect.TargetConditions.AddItem(default.GameplayVisibilityCondition);
+	DefiladeEffect.BuildPersistentEffect(1, true, true, true);
+	DefiladeEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.LocHelpText, Template.IconImage, true,,Template.AbilitySourceName);
+	DefiladeEffect.bRemoveWhenSourceDies = true;
+	DefiladeEffect.bRemoveWhenSourceDies = true;
+	Template.AddTargetEffect(DefiladeEffect);
+
+	// ToHitModifier = new class'X2Effect_ToHitModifier';
+	// ToHitModifier.BuildPersistentEffect(1, true, true, true);
+	// ToHitModifier.AddEffectHitModifier(eHit_Crit, -default.DEFILADE_CRIT_DEF, Template.LocFriendlyName);
+	// Template.AddTargetEffect(ToHitModifier);
 
 
 	Template.AdditionalAbilities.AddItem('DefiladePassive');
 
 	Template.bSkipFireAction = true;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
-	//Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
 
 	return Template;
+}
+
+
+static function EventListenerReturn DefiladeCleanseListener(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
+{
+	local XComGameState_Unit TargetUnit;
+	local XComGameState_Ability SourceAbilityState;
+
+	SourceAbilityState = XComGameState_Ability(CallbackData);	
+
+	TargetUnit = XComGameState_Unit(EventData);
+
+	SourceAbilityState.AbilityTriggerAgainstSingleTarget(TargetUnit.GetReference(), false);
+	
+
+	return ELR_NoInterrupt;
 }
 
 static function X2AbilityTemplate DefiladePassive()

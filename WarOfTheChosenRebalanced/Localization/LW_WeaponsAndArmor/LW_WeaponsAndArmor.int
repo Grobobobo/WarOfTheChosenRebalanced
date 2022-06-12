@@ -26,100 +26,100 @@ CannotEquipWithCanisterLabel = "Must Unequip Canister First"
 
 [Sidearms_LS_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Laser Sidearms"
+FriendlyName="Laser Sidearms"
 BriefSummary="Upgrades All Sidearms."
 
 [Sidearms_MG_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Mag Sidearms"
+FriendlyName="Mag Sidearms"
 BriefSummary="Upgrades All Sidearms."
 
 [Sidearms_CG_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Coil Sidearms"
+FriendlyName="Coil Sidearms"
 BriefSummary="Upgrades All Sidearms."
 
 [Sidearms_BM_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Beam Sidearms"
+FriendlyName="Beam Sidearms"
 BriefSummary="Upgrades All Sidearms."
 
 [LightWeapons_LS_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Laser Light Weapons"
+FriendlyName="Laser Light Weapons"
 BriefSummary="Upgrades SMG's and Bullpups."
 
 [LightWeapons_MG_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Mag Light Weapons"
+FriendlyName="Mag Light Weapons"
 BriefSummary="Upgrades SMG's and Bullpups."
 
 [LightWeapons_CG_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Coil Light Weapons"
+FriendlyName="Coil Light Weapons"
 BriefSummary="Upgrades SMG's and Bullpups."
 
 [LightWeapons_BM_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Beam Light Weapons"
+FriendlyName="Beam Light Weapons"
 BriefSummary="Upgrades SMG's and Bullpups."
 
 [PrecisionWeapons_LS_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Laser Precision Weapons"
+FriendlyName="Laser Precision Weapons"
 BriefSummary="Upgrades Vektor and Sniper Rifles."
 
 [PrecisionWeapons_MG_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Mag Precision Weapons"
+FriendlyName="Mag Precision Weapons"
 BriefSummary="Upgrades Vektor and Sniper Rifles."
 
 [PrecisionWeapons_CG_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Coil Precision Weapons"
+FriendlyName="Coil Precision Weapons"
 BriefSummary="Upgrades Vektor and Sniper Rifles."
 
 [PrecisionWeapons_BM_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Beam Precision Weapons"
+FriendlyName="Beam Precision Weapons"
 BriefSummary="Upgrades Vektor and Sniper Rifles."
 
 [HeavyWeapons_LS_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Laser Heavy Weapons"
+FriendlyName="Laser Heavy Weapons"
 BriefSummary="Upgrades Cannons and Shotguns."
 
 [HeavyWeapons_MG_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Mag Heavy Weapons"
+FriendlyName="Mag Heavy Weapons"
 BriefSummary="Upgrades Cannons and Shotguns."
 
 [HeavyWeapons_CG_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Coil Heavy Weapons"
+FriendlyName="Coil Heavy Weapons"
 BriefSummary="Upgrades Cannons and Shotguns."
 
 [HeavyWeapons_BM_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Beam Heavy Weapons"
+FriendlyName="Beam Heavy Weapons"
 BriefSummary="Upgrades Cannons and Shotguns."
 
 [GeneralWeapons_LS_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Laser General Weapons"
+FriendlyName="Laser General Weapons"
 BriefSummary="Upgrades Assault Rifles."
 
 [GeneralWeapons_MG_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Mag General Weapons"
+FriendlyName="Mag General Weapons"
 BriefSummary="Upgrades Assault Rifles."
 
 [GeneralWeapons_CG_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Coil General Weapons"
+FriendlyName="Coil General Weapons"
 BriefSummary="Upgrades Assault Rifles."
 
 [GeneralWeapons_BM_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
 BriefSummary="Beam General Weapons"
-BriefSummary="Upgrades Assault Rifles."
+FriendlyName="Upgrades Assault Rifles."

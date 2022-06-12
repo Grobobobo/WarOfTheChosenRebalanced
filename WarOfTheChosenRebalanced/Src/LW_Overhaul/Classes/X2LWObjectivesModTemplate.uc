@@ -86,10 +86,12 @@ static function ShutBradfordUp(X2ObjectiveTemplate Template)
 
 static function ActivateChosen(XComGameState NewGameState, XComGameState_Objective ObjectiveState)
 {
+	local XComGameState_HeadquartersAlien AlienHQ;
+	local array<XComGameState_AdventChosen> AllChosen;
+ 	local XComGameState_AdventChosen ChosenState;
+	local int i;
 	if(!`SecondWaveEnabled('DisableChosen'))
 	{
-		local XComGameState_HeadquartersAlien AlienHQ;
-
 		AlienHQ = XComGameState_HeadquartersAlien(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersAlien'));
 		AlienHQ = XComGameState_HeadquartersAlien(NewGameState.ModifyStateObject(class'XComGameState_HeadquartersAlien', AlienHQ.ObjectID));
 		AlienHQ.OnChosenActivation(NewGameState);
@@ -103,7 +105,7 @@ static function ActivateChosen(XComGameState NewGameState, XComGameState_Objecti
 			ChosenState = XComGameState_AdventChosen(NewGameState.ModifyStateObject(class'XComGameState_AdventChosen', ChosenState.ObjectID));
 			ChosenState.Strengths.length = 0;
 
-			class'X2DownloadableContentInfo_WarOfTheChosenRebalanced'.static.GainNewStrengths(NewGameState, class'XComGameState_AdventChosen'.default.NumStrengthsPerLevel, ChosenState)
+			class'X2DownloadableContentInfo_WarOfTheChosenRebalanced'.static.GainNewStrengths(NewGameState, class'XComGameState_AdventChosen'.default.NumStrengthsPerLevel, ChosenState);
 
 			for(i = ChosenState.Weaknesses.length - 1; i>=0; i--)
 			{

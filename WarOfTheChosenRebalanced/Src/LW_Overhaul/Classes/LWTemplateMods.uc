@@ -2182,7 +2182,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 			Template.Abilities.AddItem('ChangeForm_Shoggoth');
 		case 'AdvPurifierM1':
 			Template.Abilities.AddItem('PhosphorusPassive');
-			Template.strScamperBT = "ScamperRoot_Purifier";
+			//Template.strScamperBT = "ScamperRoot_Purifier";
 			break;
 
 		case 'Chryssalid':

@@ -163,7 +163,6 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(ApexPredator_LW());
 	Templates.AddItem(ApexPredatorPanic_LW());
 	Templates.AddItem(NeutralizingAgents());
-	Templates.AddItem(ZoneOfControl_LW());
 	Templates.AddItem(AddZoCPassive());
 	Templates.AddItem(AddZoCCleanse());
 
@@ -1062,46 +1061,14 @@ static function X2AbilityTemplate ZoneOfControl_LW()
 }
 
 */
-static function X2AbilityTemplate ZoneOfControl_LW()
-{
-	local X2AbilityTemplate             Template;
-	//local X2Effect_ZoneOfControl        Effect;
-	local X2AbilityMultiTarget_AllUnits	TargetStyle;
-	`CREATE_X2ABILITY_TEMPLATE(Template, 'ZoneOfControl_LW');
-
-	Template.IconImage = "img:///UILibrary_WOTC_APA_Class_Pack_LW.perk_ZoneOfControl";
-	Template.AbilitySourceName = 'eAbilitySource_Perk';
-	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
-	Template.Hostility = eHostility_Neutral;
-	Template.bCrossClassEligible = false;
-
-	Template.AbilityToHitCalc = default.DeadEye;
-	Template.AbilityTargetStyle = default.SelfTarget;
-	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
-
-	TargetStyle = new class'X2AbilityMultiTarget_AllUnits';
-	TargetStyle.bAcceptEnemyUnits = true;
-	Template.AbilityMultiTargetStyle = TargetStyle;
-	/*
-	Effect = new class'X2Effect_ZoneOfControl';
-	Effect.ZoC_Distance = default.ZONE_CONTROL_RADIUS_SQ;
-	Effect.BuildPersistentEffect(1, true, false);
-	Effect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,, Template.AbilitySourceName);
-	Template.AddMultiTargetEffect(Effect);
-	*/
-	Template.AdditionalAbilities.AddItem('ZoCCleanse');
-	Template.AdditionalAbilities.AddItem('ZoCPassive');
-
-	Template.bSkipFireAction = true;
-	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
-	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
-
-	return Template;
-}
-
 static function X2AbilityTemplate AddZoCPassive()
 {
-	return PurePassive('ZoCPassive', "img:///UILibrary_WOTC_APA_Class_Pack_LW.perk_ZoneOfControl", , 'eAbilitySource_Perk');
+	local X2AbilityTemplate                     Template;
+
+	Template = PurePassive('ZoneOfControl_LW', "img:///UILibrary_WOTC_APA_Class_Pack_LW.perk_ZoneOfControl", , 'eAbilitySource_Perk');
+	Template.AdditionalAbilities.AddItem('ZoCCleanse');
+	
+	return Template;
 }
 
 static function X2AbilityTemplate AddZoCCleanse()
@@ -1109,7 +1076,7 @@ static function X2AbilityTemplate AddZoCCleanse()
 	local X2AbilityTemplate                     Template;
 	local X2AbilityTrigger_EventListener        EventListener;
 	local X2Condition_UnitProperty              DistanceCondition;
-	local XMBEffect_ConditionalStatChange		ZOCEffect;
+	local X2Effect_PersistentStatChange		ZOCEffect;
 	local X2Effect_RemoveEffects RemoveEffect;
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'ZoCCleanse');
 
@@ -1127,34 +1094,38 @@ static function X2AbilityTemplate AddZoCCleanse()
 	DistanceCondition.WithinRange = Sqrt(default.ZONE_CONTROL_RADIUS_SQ) *  class'XComWorldData'.const.WORLD_StepSize; // same as Solace for now
 	DistanceCondition.ExcludeFriendlyToSource = true;
 	DistanceCondition.ExcludeHostileToSource = false;
+	DistanceCondition.FailOnNonUnits = true;
 
 	EventListener = new class'X2AbilityTrigger_EventListener';
 	EventListener.ListenerData.Deferral = ELD_OnStateSubmitted;
 	EventListener.ListenerData.EventID = 'UnitMoveFinished';
 	EventListener.ListenerData.Filter = eFilter_None;
-	EventListener.ListenerData.EventFn = class'XComGameState_Ability'.static.SolaceCleanseListener;  // keep this, since it's generically just calling the associate ability
+	EventListener.ListenerData.EventFn = ZoCCleanseListener;
 	Template.AbilityTriggers.AddItem(EventListener);
 
 	//Remove the ZOC Effect in case it already exists, becuse eDupe_Refresh only refreshes duration and not the entire effect data.
 	//It's important in case of multiple units with Zone of control.
 	RemoveEffect = new class'X2Effect_RemoveEffects';
 	RemoveEffect.EffectNamesToRemove.AddItem('ZoneOfControl_LWEffect');
-	RemoveEffect.TargetConditions.AddItem(DistanceCondition);
+	//RemoveEffect.TargetConditions.AddItem(DistanceCondition);
+	RemoveEffect.bCleanse = true;
 	RemoveEffect.bDoNotVisualize = true;
 	Template.AddTargetEffect(RemoveEffect);
 
 
-	ZOCEffect = new class'XMBEffect_ConditionalStatChange';
+	ZOCEffect = new class'X2Effect_PersistentStatChange';
 	ZOCEffect.EffectName = 'ZoneOfControl_LWEffect';
+	ZOCEffect.BuildPersistentEffect(1, true, true);
 	ZOCEffect.AddPersistentStatChange(eStat_Mobility, default.ZONE_CONTROL_MOBILITY_PENALTY);
 	ZOCEffect.AddPersistentStatChange(eStat_Offense, default.ZONE_CONTROL_AIM_PENALTY);
 	ZOCEffect.SetDisplayInfo(ePerkBuff_Penalty, Template.LocFriendlyName, Template.LocHelpText, Template.IconImage, true,,Template.AbilitySourceName);
-	ZOCEffect.DuplicateResponse = eDupe_Refresh;
+	ZOCEffect.DuplicateResponse = eDupe_Ignore;
 	ZOCEffect.bRemoveWhenSourceDies = true;
-	ZOCEffect.Conditions.AddItem(DistanceCondition);
+	ZOCEffect.TargetConditions.AddItem(DistanceCondition);
+
 	Template.AddTargetEffect(ZOCEffect);
 
-	Template.AbilityTargetConditions.AddItem(DistanceCondition);
+	//Template.AbilityTargetConditions.AddItem(DistanceCondition);
 
 
 
@@ -1164,6 +1135,23 @@ static function X2AbilityTemplate AddZoCCleanse()
 
 	return Template;
 }
+
+
+static function EventListenerReturn ZoCCleanseListener(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
+{
+	local XComGameState_Unit TargetUnit;
+	local XComGameState_Ability SourceAbilityState;
+
+	SourceAbilityState = XComGameState_Ability(CallbackData);	
+
+	TargetUnit = XComGameState_Unit(EventData);
+
+	SourceAbilityState.AbilityTriggerAgainstSingleTarget(TargetUnit.GetReference(), false);
+	
+
+	return ELR_NoInterrupt;
+}
+
 
 
 static function X2AbilityTemplate ApexPredator_LW()

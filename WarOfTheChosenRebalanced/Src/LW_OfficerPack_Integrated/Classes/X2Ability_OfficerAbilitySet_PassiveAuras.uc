@@ -88,7 +88,6 @@ static function X2AbilityTemplate AddDefiladeAbility()
 	DefiladeEffect.BuildPersistentEffect(1, true, true, true);
 	DefiladeEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.LocHelpText, Template.IconImage, true,,Template.AbilitySourceName);
 	DefiladeEffect.bRemoveWhenSourceDies = true;
-	DefiladeEffect.bRemoveWhenSourceDies = true;
 	Template.AddTargetEffect(DefiladeEffect);
 
 	// ToHitModifier = new class'X2Effect_ToHitModifier';

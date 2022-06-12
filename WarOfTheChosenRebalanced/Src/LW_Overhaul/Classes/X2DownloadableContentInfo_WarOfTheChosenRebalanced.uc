@@ -108,6 +108,7 @@ var config array<int> RULER_POD_SIZE_ALERT_THRESHOLDS;
 
 // Scaling multiplier for the Brute's pawn
 var config float BRUTE_SIZE_MULTIPLIER;
+var config float NEONATE_SIZE_MULTIPLIER;
 
 //Mission names dictating the out of LOS ai behavior
 var config array<string> PASSIVE_MISSION_TYPES;
@@ -1118,15 +1119,14 @@ static function PostReinforcementCreation(out name EncounterName, out PodSpawnIn
 // Increase the size of Lost Brutes (unless WWL is installed)
 static function UpdateAnimations(out array<AnimSet> CustomAnimSets, XComGameState_Unit UnitState, XComUnitPawn Pawn)
 {
-	if (Left(UnitState.GetMyTemplateName(), Len("TheLostBrute")) != "TheLostBrute")
-		return;
-
-	// No need to scale the Brute's pawn size if World War Lost is installed
-	// because we'll be using its dedicated Brute model.
-	if (class'Helpers_LW'.static.IsModInstalled("WorldWarLost"))
-		return;
-
-	Pawn.Mesh.SetScale(default.BRUTE_SIZE_MULTIPLIER);
+	if (Left(UnitState.GetMyTemplateName(), Len("TheLostBrute")) == "TheLostBrute" && class'Helpers_LW'.static.IsModInstalled("WorldWarLost"))
+	{
+		Pawn.Mesh.SetScale(default.BRUTE_SIZE_MULTIPLIER);
+	}
+	else if (UnitState.GetMyTemplateName() == 'NeonateChryssalid_LW')
+	{		
+		Pawn.Mesh.SetScale(default.NEONATE_SIZE_MULTIPLIER);
+	}
 }
 
 // Use SLG hook to add infiltration modifiers to alien units
@@ -2550,13 +2550,13 @@ static function	GainNewStrengths(XComGameState NewGameState, int NumStrengthsPer
 	if(ChosenTemplate.CharacterGroupName == 'ChosenSniper')
 	{
 
-		if(AlienHQ.GetForceLevel() > 14)
+		if(AlienHQ.GetForceLevel() > 12)
 		{
 			ChosenStrengths = default.HUNTER_STRENGTHS_T3;
 			BackupChosenStrengths = default.HUNTER_STRENGTHS_T2;
 			FurtherBackupChosenStrengths = default.HUNTER_STRENGTHS_T1;
 		}
-		else if(AlienHQ.GetForceLevel() > 9)
+		else if(AlienHQ.GetForceLevel() > 3)
 		{
 			ChosenStrengths = default.HUNTER_STRENGTHS_T2;
 			BackupChosenStrengths = default.HUNTER_STRENGTHS_T1;
@@ -2568,13 +2568,13 @@ static function	GainNewStrengths(XComGameState NewGameState, int NumStrengthsPer
 	}
 	if(ChosenTemplate.CharacterGroupName == 'ChosenWarlock')
 	{
-		if(AlienHQ.GetForceLevel() > 14)
+		if(AlienHQ.GetForceLevel() > 12)
 		{
 			ChosenStrengths = default.WARLOCK_STRENGTHS_T3;
 			BackupChosenStrengths = default.WARLOCK_STRENGTHS_T2;
 			FurtherBackupChosenStrengths = default.WARLOCK_STRENGTHS_T1;
 		}
-		else if(AlienHQ.GetForceLevel() > 9)
+		else if(AlienHQ.GetForceLevel() > 3)
 		{
 			ChosenStrengths = default.WARLOCK_STRENGTHS_T2;
 			BackupChosenStrengths = default.WARLOCK_STRENGTHS_T1;
@@ -2586,13 +2586,13 @@ static function	GainNewStrengths(XComGameState NewGameState, int NumStrengthsPer
 	}
 	if(ChosenTemplate.CharacterGroupName == 'ChosenAssassin')
 	{
-		if(AlienHQ.GetForceLevel() > 14)
+		if(AlienHQ.GetForceLevel() > 12)
 		{
 			ChosenStrengths = default.ASSASSIN_STRENGTHS_T3;
 			BackupChosenStrengths = default.ASSASSIN_STRENGTHS_T2;
 			FurtherBackupChosenStrengths = default.ASSASSIN_STRENGTHS_T1;
 		}
-		else if(AlienHQ.GetForceLevel() > 9)
+		else if(AlienHQ.GetForceLevel() > 3)
 		{
 			ChosenStrengths = default.ASSASSIN_STRENGTHS_T2;
 			BackupChosenStrengths = default.ASSASSIN_STRENGTHS_T1;

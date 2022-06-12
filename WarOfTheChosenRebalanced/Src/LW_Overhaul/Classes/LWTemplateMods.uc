@@ -2274,7 +2274,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		Template.Abilities.AddItem('GrazingFire');
 		Template.Abilities.AddItem('WarlockReaction');
 		//Template.Abilities.AddItem('AmmoDump_LW');
-		Template.Abilities.AddItem('ChosenCritImmune');
+//		Template.Abilities.AddItem('ChosenCritImmune');
 		
 		Template.Abilities.AddItem('ChosenLootAbility');
 		Template.Abilities.AddItem('TriggerDamagedTeleport_LW');
@@ -2300,16 +2300,16 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 
 		Template.Abilities.AddItem('HunterReaction');
 		Template.Abilities.AddItem('CombatReadiness');
-		Template.Abilities.AddItem('LowProfile');
+		//Template.Abilities.AddItem('LowProfile');
 		Template.Abilities.AddItem('ChosenKidnap');
-		Template.Abilities.AddItem('ChosenCritImmune');
-		Template.Abilities.AddItem('LongWatch');
+		//Template.Abilities.AddItem('ChosenCritImmune');
+		//Template.Abilities.AddItem('LongWatch');
 		Template.Abilities.AddItem('quickdraw');
 		Template.Abilities.AddItem('ChosenImmuneMelee');
 		
 		Template.Abilities.AddItem('FreeGrenades');
-		Template.Abilities.AddItem('Infighter');
-		Template.Abilities.AddItem('Disabler');
+		//Template.Abilities.AddItem('Infighter');
+		//Template.Abilities.AddItem('Disabler');
 		Template.Abilities.AddItem('ChosenLootAbility');
 		Template.Abilities.AddItem('TriggerDamagedTeleport_LW');
 		Template.Abilities.AddItem('MovingTarget_LW');
@@ -2325,7 +2325,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		Template.Abilities.RemoveItem('ChosenExtractKnowledge');
 		Template.Abilities.RemoveItem('BendingReed');
 
-		Template.Abilities.AddItem('ChosenCritImmune');
+//		Template.Abilities.AddItem('ChosenCritImmune');
 		Template.Abilities.AddItem('CombatReadiness');
 		Template.Abilities.AddItem('ChosenKidnap');
 		Template.Abilities.AddItem('AssassinReaction');
@@ -2335,7 +2335,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		
 		Template.Abilities.AddItem('AssassinSlash_LW');
 		Template.Abilities.AddItem('ImpactCompensation_LW');
-		Template.Abilities.AddItem('Infighter');
+		//Template.Abilities.AddItem('Infighter');
 		Template.Abilities.AddItem('ChosenLootAbility');
 		Template.Abilities.AddItem('Unstoppable_LW');
 		Template.Abilities.AddItem('TriggerDamagedTeleport_LW');

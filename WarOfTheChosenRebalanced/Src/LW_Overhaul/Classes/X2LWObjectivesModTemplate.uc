@@ -26,10 +26,15 @@ static function UpdateObjectives(X2StrategyElementTemplate Template, int Difficu
 		// 	`LWTrace("X2LWObjectivesModTemplate - updating Broadcast the Truth objective");
 		// 	ObjectiveTemplate.AssignObjectiveFn = CreateBroadcastTheTruthMission_LW;
 		// 	break;
-		case 'XP3_M0_NonLostAndAbandoned':
-			`LWTrace("X2LWObjectivesModTemplate - removing the SpawnFirstPOI objective");
-			ObjectiveTemplate.NextObjectives.RemoveItem('XP3_M2_SpawnFirstPOI');
+		// case 'XP3_M0_NonLostAndAbandoned':
+		// 	`LWTrace("X2LWObjectivesModTemplate - removing the SpawnFirstPOI objective");
+		// 	ObjectiveTemplate.NextObjectives.RemoveItem('XP3_M2_SpawnFirstPOI');
+			// break;
+
+		case 'XP1_M0_ActivateChosen':
+			ObjectiveTemplate.CompleteObjectiveFn = ActivateChosen;
 			break;
+
 		case 'CEN_ToDoWarnings':
 			ShutBradfordUp(ObjectiveTemplate);
 			break;
@@ -77,6 +82,43 @@ static function ShutBradfordUp(X2ObjectiveTemplate Template)
 		}
 	}
 }
+
+
+static function ActivateChosen(XComGameState NewGameState, XComGameState_Objective ObjectiveState)
+{
+	if(!`SecondWaveEnabled('DisableChosen'))
+	{
+		local XComGameState_HeadquartersAlien AlienHQ;
+
+		AlienHQ = XComGameState_HeadquartersAlien(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersAlien'));
+		AlienHQ = XComGameState_HeadquartersAlien(NewGameState.ModifyStateObject(class'XComGameState_HeadquartersAlien', AlienHQ.ObjectID));
+		AlienHQ.OnChosenActivation(NewGameState);
+
+		AllChosen = AlienHQ.GetAllChosen();
+
+		//MAKE ABSOLUTELY 100% FULL ON SURE THAT CHOSEN START WITH 0 STRENGTHS BECAUSE THE CONFIGS LIE
+		//ALSO REMOVE ALL WEAKNESSES FROM THEM
+		foreach AllChosen(ChosenState)
+		{
+			ChosenState = XComGameState_AdventChosen(NewGameState.ModifyStateObject(class'XComGameState_AdventChosen', ChosenState.ObjectID));
+			ChosenState.Strengths.length = 0;
+
+			class'X2DownloadableContentInfo_WarOfTheChosenRebalanced'.static.GainNewStrengths(NewGameState, class'XComGameState_AdventChosen'.default.NumStrengthsPerLevel, ChosenState)
+
+			for(i = ChosenState.Weaknesses.length - 1; i>=0; i--)
+			{
+				if(ChosenState.Weaknesses[i] != 'ChosenSkirmisherAdversary' && 
+				ChosenState.Weaknesses[i] != 'ChosenTemplarAdversary' &&
+				ChosenState.Weaknesses[i] != 'ChosenReaperAdversary')
+				{
+					ChosenState.Weaknesses.Remove(i,1);
+				}
+			}
+		}
+	}
+
+}
+
 
 defaultproperties
 {

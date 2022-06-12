@@ -859,18 +859,18 @@ static function EventListenerReturn OnOverrideAbilityIconColor(Object EventData,
 			class'XComGameState_BattleData'.static.HighlightObjectiveAbility(AbilityName, true);
 			return ELR_NoInterrupt;
 			break;
-		case 'MedikitHeal':
-		case 'NanoMedikitHeal':
-		if(UnitState.HasSoldierAbility('Paramedic_LW'))
-		{
-			UnitState.GetUnitValue('ParamedicUses', CountUnitValue);
+		// case 'MedikitHeal':
+		// case 'NanoMedikitHeal':
+		// if(UnitState.HasSoldierAbility('Paramedic_LW'))
+		// {
+		// 	UnitState.GetUnitValue('ParamedicUses', CountUnitValue);
 		
-			if (CountUnitValue.fValue == 0)
-			{
-				IsFree = true;
-			}	
-		}
-		break;
+		// 	if (CountUnitValue.fValue == 0)
+		// 	{
+		// 		IsFree = true;
+		// 	}	
+		// }
+		// break;
 		default: break;
 	}
 

@@ -732,6 +732,11 @@ static function PostEncounterCreation(out name EncounterName, out PodSpawnInfo S
 			`LWTRACE("Don't edit Chryssypods");
 			return;
 		}
+		if (Instr(EncounterName, "ChosenRetaliation_Entrenched") != -1)
+		{
+			`LWTRACE("Don't edit Civilian Pods");
+			return;
+		}
 
 		// Handle vanilla pod construction of one type of alien follower;
 		if (!swap && LeaderCharacterTemplate.bIsAlien && FollowerCharacterTemplate.bIsAlien && CountMembers(FirstFollowerName, SpawnInfo.SelectedCharacterTemplateNames) > 1)

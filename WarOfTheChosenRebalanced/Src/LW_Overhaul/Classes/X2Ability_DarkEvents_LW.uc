@@ -91,6 +91,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateDarkEventAbility('Holotargeting','Gunner'));
 
 	Templates.AddItem(CreateDarkEventAbility('Shredder','Gunner'));
+	Templates.AddItem(CreateDarkEventAbility('Shredder','Muton'));
 	Templates.AddItem(CreateDarkEventAbility('Shredder','Mec'));
 	Templates.AddItem(CreateDarkEventAbility('Shredder','Sectopod'));
 

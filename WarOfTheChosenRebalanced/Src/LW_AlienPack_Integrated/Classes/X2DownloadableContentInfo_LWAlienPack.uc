@@ -66,6 +66,8 @@ static function UpdateForChryssySlashBug()
 		{
 			if (AbilityTargetEffect.IsA('X2Effect_ParthenogenicPoison'))
 			{
+				//Make Lid Poison damage not get increased from the weapon damage
+				X2Effect_ApplyWeaponDamage(X2Effect_ParthenogenicPoison(AbilityTargetEffect).ApplyOnTick[0]).bIgnoreBaseDamage = true;
 				foreach AbilityTargetEffect.TargetConditions(Condition)
 				{
 					UnitProperty = X2Condition_UnitProperty(Condition);

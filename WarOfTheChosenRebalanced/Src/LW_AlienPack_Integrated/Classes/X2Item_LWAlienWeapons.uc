@@ -364,11 +364,19 @@ var config WeaponDamageValue FACELESSM5_LEADER_MELEEATTACK_BASEDAMAGE;
 var config WeaponDamageValue CHRYSSALIDM2_MELEEATTACK_BASEDAMAGE;
 var config WeaponDamageValue CHRYSSALIDM3_MELEEATTACK_BASEDAMAGE;
 var config WeaponDamageValue CHRYSSALIDM4_MELEEATTACK_BASEDAMAGE;
+var config WeaponDamageValue CHRYSSALIDM5_MELEEATTACK_BASEDAMAGE;
+
+var config WeaponDamageValue NEONATECHRYSSALID_MELEEATTACK_BASEDAMAGE;
+var config WeaponDamageValue NEONATECHRYSSALIDM2_MELEEATTACK_BASEDAMAGE;
+var config WeaponDamageValue NEONATECHRYSSALIDM3_MELEEATTACK_BASEDAMAGE;
+var config WeaponDamageValue NEONATECHRYSSALIDM4_MELEEATTACK_BASEDAMAGE;
+var config WeaponDamageValue NEONATECHRYSSALIDM5_MELEEATTACK_BASEDAMAGE;
 
 var config WeaponDamageValue CHRYSSALID_LEADER_MELEEATTACK_BASEDAMAGE;
 var config WeaponDamageValue CHRYSSALIDM2_LEADER_MELEEATTACK_BASEDAMAGE;
 var config WeaponDamageValue CHRYSSALIDM3_LEADER_MELEEATTACK_BASEDAMAGE;
 var config WeaponDamageValue CHRYSSALIDM4_LEADER_MELEEATTACK_BASEDAMAGE;
+var config WeaponDamageValue CHRYSSALIDM5_LEADER_MELEEATTACK_BASEDAMAGE;
 
 static function array<X2DataTemplate> CreateTemplates()
 {
@@ -564,11 +572,19 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateTemplate_GenericMeleeWeapon_LW('ChryssalidM2_WPN', default.CHRYSSALIDM2_MELEEATTACK_BASEDAMAGE));
 	Templates.AddItem(CreateTemplate_GenericMeleeWeapon_LW('ChryssalidM3_WPN', default.CHRYSSALIDM3_MELEEATTACK_BASEDAMAGE));
 	Templates.AddItem(CreateTemplate_GenericMeleeWeapon_LW('ChryssalidM4_WPN', default.CHRYSSALIDM4_MELEEATTACK_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_GenericMeleeWeapon_LW('ChryssalidM5_WPN', default.CHRYSSALIDM5_MELEEATTACK_BASEDAMAGE));
+
+	Templates.AddItem(CreateTemplate_GenericMeleeWeapon_LW('NeonateChryssalid_WPN', default.NEONATECHRYSSALID_MELEEATTACK_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_GenericMeleeWeapon_LW('NeonateChryssalidM2_WPN', default.NEONATECHRYSSALIDM2_MELEEATTACK_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_GenericMeleeWeapon_LW('NeonateChryssalidM3_WPN', default.NEONATECHRYSSALIDM3_MELEEATTACK_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_GenericMeleeWeapon_LW('NeonateChryssalidM4_WPN', default.NEONATECHRYSSALIDM4_MELEEATTACK_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_GenericMeleeWeapon_LW('NeonateChryssalidM5_WPN', default.NEONATECHRYSSALIDM5_MELEEATTACK_BASEDAMAGE));
 
 	Templates.AddItem(CreateTemplate_GenericMeleeWeapon_LW('Chryssalid_Leader_WPN', default.CHRYSSALID_LEADER_MELEEATTACK_BASEDAMAGE));
 	Templates.AddItem(CreateTemplate_GenericMeleeWeapon_LW('ChryssalidM2_Leader_WPN', default.CHRYSSALIDM2_LEADER_MELEEATTACK_BASEDAMAGE));
 	Templates.AddItem(CreateTemplate_GenericMeleeWeapon_LW('ChryssalidM3_Leader_WPN', default.CHRYSSALIDM3_LEADER_MELEEATTACK_BASEDAMAGE));
 	Templates.AddItem(CreateTemplate_GenericMeleeWeapon_LW('ChryssalidM4_Leader_WPN', default.CHRYSSALIDM4_LEADER_MELEEATTACK_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_GenericMeleeWeapon_LW('ChryssalidM4_Leader_WPN', default.CHRYSSALIDM5_LEADER_MELEEATTACK_BASEDAMAGE));
 
 	Templates.AddItem(CreateTemplate_GenericMeleeWeapon_LW('Faceless_WPN', default.FACELESS_MELEEATTACK_BASEDAMAGE));
 	Templates.AddItem(CreateTemplate_GenericMeleeWeapon_LW('FacelessM2_WPN', default.FACELESSM2_MELEEATTACK_BASEDAMAGE));

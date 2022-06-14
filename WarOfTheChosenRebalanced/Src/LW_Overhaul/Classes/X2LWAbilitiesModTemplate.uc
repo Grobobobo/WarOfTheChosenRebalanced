@@ -325,6 +325,9 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'EUBerserkerDevastatingPunch':
 			UpdateLeaderPunch(Template);
 			break;
+		// case 'SpawnChryssalid':
+		// 	ReworkChryssalidSpawning(Template);
+		// 	break
 		default:
 			break;
 
@@ -1977,6 +1980,16 @@ static function UpdateLeaderPunch(X2AbilityTemplate Template)
 	Template.AddTargetEffect(DamageEffect);
 
 }
+
+// static function ReworkChryssalidSpawning(X2AbilityTemplate Template)
+// {
+// 	local X2Effect_TheLostHeadshot				HeadshotEffect;
+// 	local X2Condition_HeadshotEnabled           HeadshotCondition;
+// 	local int									i;
+
+// 	class'Helpers_LW'.static.RemoveAbilityTargetEffects(Template,'X2Effect_SpawnChryssalid');
+// 	Template.AddTargetEffect(new class'X2Effect_SpawnChryssalid_LW');
+// }
 
 
 defaultproperties

@@ -2249,6 +2249,9 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 			Template.Abilities.AddItem('GetUp');
 			Template.Abilities.AddItem('ThreatAssessmentTrigger');
 			break;
+		case 'CivilianMilitia':
+			Template.bDisplayUIUnitFlag=true;
+			break;
 		//Need to rescale the loadouts of these templates, and can't think of a better way since it needs to be by hp basis 
 		default:
 			break;

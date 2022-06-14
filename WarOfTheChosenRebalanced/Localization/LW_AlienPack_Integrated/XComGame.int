@@ -1337,6 +1337,9 @@ strCharacterName="ADVENT Vanguard"
 [Chryssalid_Leader X2CharacterTemplate]
 strCharacterName="Chryssalid Soldier"
 
+[NeonatecHryssalid_LW X2CharacterTemplate]
+strCharacterName="Neonate Chryssalid"
+
 [Chryssalid_Wpn X2WeaponTemplate]
 FriendlyName="Chryssalid Claw"
 FriendlyNamePlural="Chryssalid Claws"
@@ -1350,6 +1353,30 @@ FriendlyName="Chryssalid Claw"
 FriendlyNamePlural="Chryssalid Claws"
 
 [ChryssalidM4_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[ChryssalidM5_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[NeonateChryssalid_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[NeonateChryssalidM2_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[NeonateChryssalidM3_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[NeonateChryssalidM4_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[NeonateChryssalidM5_Wpn X2WeaponTemplate]
 FriendlyName="Chryssalid Claw"
 FriendlyNamePlural="Chryssalid Claws"
 
@@ -1368,6 +1395,11 @@ FriendlyNamePlural="Chryssalid Claws"
 [ChryssalidM4_Leader_Wpn X2WeaponTemplate]
 FriendlyName="Chryssalid Claw"
 FriendlyNamePlural="Chryssalid Claws"
+
+[ChryssalidM5_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
 
 [Andromedon_Leader X2CharacterTemplate]
 strCharacterName="Cybertoid"

@@ -66,7 +66,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateTemplate_AdvGeneric('AdvGeneralM1_LW'));
 	Templates.AddItem(CreateTemplate_PurgePriest('AdvPriest_Leader'));
 	Templates.AddItem(CreateTemplate_Shoggoth());
-	
+	Templates.AddItem(CreateNeonateChryssalid_Template());
+
 	return Templates;
 }
 
@@ -1691,6 +1692,71 @@ static function X2CharacterTemplate CreateTemplate_Shoggoth()
 
 	CharTemplate.Abilities.AddItem('FacelessInit');
 	CharTemplate.Abilities.AddItem('ScythingClaws');
+
+	CharTemplate.strTargetIconImage = class'UIUtilities_Image'.const.TargetIcon_Alien;
+
+	return CharTemplate;
+}
+
+
+static function X2CharacterTemplate CreateNeonateChryssalid_Template()
+{
+	local X2CharacterTemplate CharTemplate;
+	local LootReference Loot;
+
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, 'NeonateChryssalid_LW');
+	CharTemplate.CharacterGroupName = 'NeonChryssalid';
+	CharTemplate.DefaultLoadout = 'Chryssalid_Loadout';
+	CharTemplate.BehaviorClass = class'XGAIBehavior';
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_NeonateChryssalid.ARC_GameUnit_NeonateChryssalid");
+	Loot.ForceLevel = 0;
+	Loot.LootTableName = 'Chryssalid_BaseLoot';
+	CharTemplate.Loot.LootReferences.AddItem(Loot);
+
+	CharTemplate.strMatineePackages.AddItem("CIN_Chryssalid");
+
+	CharTemplate.UnitSize = 1;
+	// Traversal Rules
+	CharTemplate.bCanUse_eTraversal_Normal = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOver = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOnto = true;
+	CharTemplate.bCanUse_eTraversal_ClimbLadder = false;
+	CharTemplate.bCanUse_eTraversal_DropDown = true;
+	CharTemplate.bCanUse_eTraversal_Grapple = false;
+	CharTemplate.bCanUse_eTraversal_Landing = true;
+	CharTemplate.bCanUse_eTraversal_BreakWindow = true;
+	CharTemplate.bCanUse_eTraversal_KickDoor = true;
+	CharTemplate.bCanUse_eTraversal_JumpUp = true;
+	CharTemplate.bCanUse_eTraversal_WallClimb = false;
+	CharTemplate.bCanUse_eTraversal_BreakWall = false;
+	CharTemplate.bAppearanceDefinesPawn = false;
+	CharTemplate.bCanTakeCover = false;
+
+	CharTemplate.bIsAlien = true;
+	CharTemplate.bIsAdvent = false;
+	CharTemplate.bIsCivilian = false;
+	CharTemplate.bIsPsionic = false;
+	CharTemplate.bIsRobotic = false;
+	CharTemplate.bIsSoldier = false;
+	CharTemplate.bIsMeleeOnly = true;
+
+	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeCriticallyWounded = false;
+	CharTemplate.bIsAfraidOfFire = true;
+
+	CharTemplate.bAllowSpawnFromATT = false;
+
+	CharTemplate.AddTemplateAvailablility(CharTemplate.BITFIELD_GAMEAREA_Multiplayer); // Allow in MP!
+	CharTemplate.MPPointValue = CharTemplate.XpKillscore * 10;
+	CharTemplate.strScamperBT = "ChryssalidScamperRoot";
+
+	CharTemplate.Abilities.AddItem('ChryssalidSlash');
+	//CharTemplate.Abilities.AddItem('ChryssalidBurrow');
+//	CharTemplate.Abilities.AddItem('ChyssalidPoison');
+	CharTemplate.Abilities.AddItem('ChryssalidImmunities');
+	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
+
+	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_Cryssalid');
 
 	CharTemplate.strTargetIconImage = class'UIUtilities_Image'.const.TargetIcon_Alien;
 

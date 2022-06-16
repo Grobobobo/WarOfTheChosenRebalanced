@@ -774,6 +774,8 @@ static protected function EventListenerReturn DynamicallyApplyLoadouts(
 	local array<XComGameState_Item> Items;
 	local XComGameState_Item Item;
 	local UnitValue DynamicallyAppliedLoadout;
+	local string LoadoutStr;
+	local int iRand;
 	UnitState = XComGameState_Unit(EventSource);
 
 	Tuple = XComLWTuple(EventData);
@@ -807,7 +809,7 @@ static protected function EventListenerReturn DynamicallyApplyLoadouts(
 						UnitState.ApplyInventoryLoadout(NewGameState,default.LOADOUT_ASSIGNMENTS[FindIndex].UnitLoadoutSets[i].LoadoutName);
 						if(!UnitState.HasLoadout(default.LOADOUT_ASSIGNMENTS[FindIndex].UnitLoadoutSets[i].LoadoutName))
 						{
-							`REDSCREEN("WOTCR: attempted to dynamically assign "$ default.LOADOUT_ASSIGNMENTS[FindIndex].UnitLoadoutSets[i].LoadoutName $ "To " $ UnitState.GetMyTemplateName() $ " But something went wrong");
+							`REDSCREEN("GTO: attempted to dynamically assign "$ default.LOADOUT_ASSIGNMENTS[FindIndex].UnitLoadoutSets[i].LoadoutName $ "To " $ UnitState.GetMyTemplateName() $ " But something went wrong");
 						}
 					}
 					break;
@@ -815,7 +817,60 @@ static protected function EventListenerReturn DynamicallyApplyLoadouts(
 			}
 		}
 	}
-	
+	else if(UnitState.GetMyTemplateName() == 'CivilianMilitia')
+	{
+		UnitState.GetUnitValue('DynamicallyAppliedLoadout',DynamicallyAppliedLoadout );
+
+		if(DynamicallyAppliedLoadout.fValue < 1.0f)
+		{
+			//Clear the loadout before assigning the new one
+			Items = UnitState.GetAllInventoryItems(NewGameState);
+			foreach Items(Item)
+			{
+				UnitState.RemoveItemFromInventory(Item,NewGameState);
+			}
+			UnitState.SetUnitFloatValue('DynamicallyAppliedLoadout', 2.0f);
+
+			LoadoutStr = "MilitiaSoldier";
+			if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaPlasma'))
+			{
+				LoadoutStr $= "5";
+			}
+			else if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaCoil'))
+			{
+				LoadoutStr $= "4";
+			}
+			else if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaMag'))
+			{
+				LoadoutStr $= "3";
+			}
+			else if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaLaser'))
+			{
+				LoadoutStr $= "2";
+			}
+			iRand = `SYNC_RAND_STATIC(100);
+			if (iRand < 15)
+			{
+				LoadoutStr $= "SMG";
+			}
+			else if (iRand < 30)
+			{
+				LoadoutStr $= "Shotgun";
+			}
+			else if (iRand < 45)
+			{
+				LoadoutStr $= "Bullpup";
+			}
+				
+			UnitState.ApplyInventoryLoadout(NewGameState,name(LoadoutStr));
+
+			if(!UnitState.HasLoadout(name(LoadoutStr)))
+			{
+				`REDSCREEN("GTO: attempted to dynamically assign "$ LoadoutStr $ "To " $ UnitState.GetMyTemplateName() $ " But something went wrong");
+			}
+		
+		}
+	}
 	return ELR_NoInterrupt;
 }
 

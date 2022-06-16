@@ -20,6 +20,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateGetUp());
 	Templates.AddItem(AddRebelHPUpgrade('RebelHPUpgrade_T1', default.REBEL_HP_UPGRADE_T1_AMOUNT));
 	Templates.AddItem(AddRebelHPUpgrade('RebelHPUpgrade_T2', default.REBEL_HP_UPGRADE_T2_AMOUNT));
+	//Templates.AddItem(AddRebelAblativeUpgrade('RebelAblativeUpgrade_T2', default.REBEL_HP_UPGRADE_T2_AMOUNT));
 	Templates.AddItem(AddRebelGrenadeUpgrade());
 	Templates.AddItem(QuickReloadAbility());
 	Templates.AddItem(AddReinforcedUnderlay2());

@@ -1145,7 +1145,7 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 	local int i;
 	local XComGameState_MissionSite MissionState;
 	local XComGameState_BattleData	BattleData;
-
+	local X2WeaponTemplate PrimaryWeaponTemplate;
 	if (`XENGINE.IsMultiplayerGame()) { return; }
 
 	CharTemplate = UnitState.GetMyTemplate();
@@ -1209,12 +1209,8 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 
 	switch(CharTemplate.DataName)
 	{
-		case 'Rebel':
-		case 'RebelSoldierProxy':
-		case 'RebelSoldierProxyM2':
-		case 'RebelSoldierProxyM3':
-
-			if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('PoweredArmor'))
+		case 'CivilianMilitia':
+			if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaArmor2'))
 			{
 				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('RebelHPUpgrade_T2');
 
@@ -1223,7 +1219,7 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 				Data.Template = AbilityTemplate;
 				SetupData.AddItem(Data);
 			}
-			else if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('PlatedArmor'))
+			else if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaArmor1'))
 			{
 				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('RebelHPUpgrade_T1');
 				Data = EmptyData;
@@ -1232,14 +1228,83 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 				SetupData.AddItem(Data);
 			}
 			
-			if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('AdvancedGrenades'))
+			if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaAbilities1'))
 			{
-				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('RebelGrenadeUpgrade');
-				Data = EmptyData;
-				Data.TemplateName = 'RebelGrenadeUpgrade';
-				Data.Template = AbilityTemplate;
-				SetupData.AddItem(Data);
+				PrimaryWeaponTemplate = X2WeaponTemplate(UnitState.GetPrimaryWeapon().GetMyTemplate());
+
+				if (PrimaryWeaponTemplate.WeaponCat == 'smg')
+				{
+					AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('HuntersInstinct');
+					Data = EmptyData;
+					Data.TemplateName = 'HuntersInstinct';
+					Data.Template = AbilityTemplate;
+					SetupData.AddItem(Data);
 				}
+				else if(PrimaryWeaponTemplate.WeaponCat == 'shotgun')
+				{
+					AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('Infighter');
+					Data = EmptyData;
+					Data.TemplateName = 'Infighter';
+					Data.Template = AbilityTemplate;
+					SetupData.AddItem(Data);
+				}
+				else if(PrimaryWeaponTemplate.WeaponCat == 'bullpup')
+				{
+					AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('TargetFocus_LW');
+					Data = EmptyData;
+					Data.TemplateName = 'TargetFocus_LW';
+					Data.Template = AbilityTemplate;
+					SetupData.AddItem(Data);
+				}
+				else
+				{
+					AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('Suppression');
+					Data = EmptyData;
+					Data.TemplateName = 'Suppression';
+					Data.Template = AbilityTemplate;
+					SetupData.AddItem(Data);
+
+				}
+			}
+
+			if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaAbilities2'))
+			{
+				PrimaryWeaponTemplate = X2WeaponTemplate(UnitState.GetPrimaryWeapon().GetMyTemplate());
+
+				if (PrimaryWeaponTemplate.WeaponCat == 'smg')
+				{
+					AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('Reposition_LW');
+					Data = EmptyData;
+					Data.TemplateName = 'Reposition_LW';
+					Data.Template = AbilityTemplate;
+					SetupData.AddItem(Data);
+				}
+				else if(PrimaryWeaponTemplate.WeaponCat == 'shotgun')
+				{
+					AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('RunAndGun_LW');
+					Data = EmptyData;
+					Data.TemplateName = 'RunAndGun_LW';
+					Data.Template = AbilityTemplate;
+					SetupData.AddItem(Data);
+				}
+				else if(PrimaryWeaponTemplate.WeaponCat == 'bullpup')
+				{
+					AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('Sentinel_LW');
+					Data = EmptyData;
+					Data.TemplateName = 'Sentinel_LW';
+					Data.Template = AbilityTemplate;
+					SetupData.AddItem(Data);
+				}
+				else
+				{
+					AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('FreeGrenades');
+					Data = EmptyData;
+					Data.TemplateName = 'FreeGrenades';
+					Data.Template = AbilityTemplate;
+					SetupData.AddItem(Data);
+				}
+			}
+
 
 		break;
 		default:

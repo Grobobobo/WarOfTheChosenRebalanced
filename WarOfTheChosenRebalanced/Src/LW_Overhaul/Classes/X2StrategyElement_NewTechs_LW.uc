@@ -140,6 +140,14 @@ static function array<X2DataTemplate> CreateTemplates()
 	Techs.AddItem(CreateLockOnProjectTemplate());
 	Techs.AddItem(CreateFlechetteProjectTemplate());
 	Techs.AddItem(CreatePlasmaEjectorProjectTemplate());
+	Techs.AddItem(CreateMilitiaLaser());
+	Techs.AddItem(CreateMilitiaMag());
+	Techs.AddItem(CreateMilitiaCoil());
+	Techs.AddItem(CreateMilitiaBeam());
+	Techs.AddItem(CreateMilitiaAbilities1());
+	Techs.AddItem(CreateMilitiaAbilities2());
+	Techs.AddItem(CreateMilitiaArmor1());
+	Techs.AddItem(CreateMilitiaArmor2());
 
 	
 	return Techs;
@@ -2378,4 +2386,159 @@ function AddSoldierUnlockTemplate(XComGameState NewGameState, XComGameState_Tech
 	XComHQ = XComGameState_HeadquartersXCom(NewGameState.ModifyStateObject(class'XComGameState_HeadquartersXCom', XComHQ.ObjectID));
 	//XComHQ.SoldierUnlockTemplates.AddItem(UnlockTemplate.DataName);
 	XComHQ.AddSoldierUnlockTemplate(NewGameState, UnlockTemplate, true);
+}
+
+
+static function X2DataTemplate CreateMilitiaLaser()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'MilitiaLaser');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.ResearchTech.TECH_Experimental_Ammo";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateMilitiaMag()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'MilitiaMag');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.ResearchTech.TECH_Experimental_Ammo";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateMilitiaCoil()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'MilitiaCoil');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.ResearchTech.TECH_Experimental_Ammo";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateMilitiaBeam()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'MilitiaBeam');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.ResearchTech.TECH_Experimental_Ammo";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
+}
+
+
+static function X2DataTemplate CreateMilitiaAbilities1()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'MilitiaAbilities1');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.GTS.GTS_SquadSize1";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateMilitiaAbilities2()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'MilitiaAbilities2');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.GTS.GTS_SquadSize2";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
+}
+
+
+static function X2DataTemplate CreateMilitiaArmor1()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'MilitiaArmor1');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.ResearchTech.TECH_ExperimentalArmor";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateMilitiaArmor2()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'MilitiaArmor2');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.ResearchTech.TECH_ExperimentalArmor";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
 }

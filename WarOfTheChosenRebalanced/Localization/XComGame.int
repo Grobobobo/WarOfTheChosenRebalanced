@@ -3768,6 +3768,38 @@ Summary="PCS bonuses are significantly improved."
 DisplayName="Vengeance"
 Summary="The autopsy of the trooper made us remember what they took from us. If a squadmate dies or is critically wounded, gain random tactical bonuses for two turns."
 
+[MilitiaLaser X2TechTemplate]
+DisplayName="Militia Upgrade: Laser Weapons"
+Summary="By improving our mass production capabilities, we can give militia laser weapons, improving the defensive capability of havens."
+
+[MilitiaMag X2TechTemplate]
+DisplayName="Militia Upgrade: Magnetic Weapons"
+Summary="By improving our mass production capabilities, we can give militia magnetic weapons, improving the defensive capability of havens."
+
+[MilitiaCoil X2TechTemplate]
+DisplayName="Militia Upgrade: Coilguns"
+Summary="By improving our mass production capabilities, we can give militia coil weapons, improving the defensive capability of havens."
+
+[MilitiaBeam X2TechTemplate]
+DisplayName="Militia Upgrade: Beam"
+Summary="By improving our mass production capabilities, we can give militia beam weapons, improving the defensive capability of havens."
+
+[MilitiaArmor1 X2TechTemplate]
+DisplayName="Militia Armor I"
+Summary="We can make underlay plating for militia that will boost their survivability."
+
+[MilitiaArmor1 X2TechTemplate]
+DisplayName="Militia Armor II"
+Summary="We can make even better underlay plating for militia that will boost their survivability."
+
+[MilitiaAbilities1 X2TechTemplate]
+DisplayName="Militia Training I"
+Summary="We can make mobile training environments for our militia, similar to our XCOM Training Program. Militia shotgunners gain Infighter, SMG users Hunter's instincts, Riflemen Suppression, and Bullpup users target focus."
+
+[MilitiaAbilities2 X2TechTemplate]
+DisplayName="Militia Training II"
+Summary="We can make even better mobile training environments for our militia, similar to our XCOM Training Program. Militia shotgunners gain Run and gun, SMG users Reposition, Riflemen Grenadier, and Bullpup users sentinel."
+
 
 [PatrolRoutes X2QuestItemTemplate]
 FriendlyName="Data Cache"
@@ -7984,14 +8016,14 @@ LocFlyOverText="Run."
 
 [RebelHPUpgrade_T1 X2AbilityTemplate]
 LocFriendlyName="Alloy Vest"
-LocLongDescription="Researching plated armor has given our resistance soldiers better protection."
+LocLongDescription="Our Militia Soldiers now have better protection."
 LocHelpText="Researching plated armor has given our resistance soldiers better protection."
 LocFlyOverText="Alloy Vest"
 
 [RebelHPUpgrade_T2 X2AbilityTemplate]
 LocFriendlyName="Advanced Alloy Vest"
-LocLongDescription="Researching powered armor has given our resistance soldiers even better protection."
-LocHelpText="Researching powered armor has given our resistance soldiers even better protection."
+LocLongDescription="Our Militia Soldiers now have even better protection."
+LocHelpText="Our Militia Soldiers now have even better protection."
 LocFlyOverText="Advanced Alloy Vest"
 
 [ChosenRifle_XCOM X2WeaponTemplate]

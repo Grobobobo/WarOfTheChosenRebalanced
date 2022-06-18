@@ -948,9 +948,9 @@ static function X2AbilityTemplate ParaMedikitHeal()
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
 	ActionPointCost.iNumPoints = 1;	
 	Template.AbilityCosts.AddItem(ActionPointCost);
-	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_HideSpecificErrors;
-	Template.HideErrors.AddItem('AA_AbilityUnavailable');
-	Template.HideErrors.AddItem('AA_CannotAfford_Charges');
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_ShowIfAvailable;
+	//Template.HideErrors.AddItem('AA_AbilityUnavailable');
+	//Template.HideErrors.AddItem('AA_CannotAfford_Charges');
 
 	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.MEDIKIT_HEAL_PRIORITY;
 
@@ -1038,9 +1038,9 @@ static function X2AbilityTemplate ParaMedikitStabilize()
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
 	ActionPointCost.iNumPoints = 1;	
 	Template.AbilityCosts.AddItem(ActionPointCost);
-	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_HideSpecificErrors;
-	Template.HideErrors.AddItem('AA_AbilityUnavailable');
-	Template.HideErrors.AddItem('AA_CannotAfford_Charges');
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_ShowIfAvailable;
+	//Template.HideErrors.AddItem('AA_AbilityUnavailable');
+	//Template.HideErrors.AddItem('AA_CannotAfford_Charges');
 
 	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.MEDIKIT_HEAL_PRIORITY;
 

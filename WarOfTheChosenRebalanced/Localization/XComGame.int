@@ -3788,7 +3788,7 @@ Summary="By improving our mass production capabilities, we can give militia beam
 DisplayName="Militia Armor I"
 Summary="We can make underlay plating for militia that will boost their survivability."
 
-[MilitiaArmor1 X2TechTemplate]
+[MilitiaArmor2 X2TechTemplate]
 DisplayName="Militia Armor II"
 Summary="We can make even better underlay plating for militia that will boost their survivability."
 
@@ -3799,6 +3799,12 @@ Summary="We can make mobile training environments for our militia, similar to ou
 [MilitiaAbilities2 X2TechTemplate]
 DisplayName="Militia Training II"
 Summary="We can make even better mobile training environments for our militia, similar to our XCOM Training Program. Militia shotgunners gain Run and gun, SMG users Reposition, Riflemen Grenadier, and Bullpup users sentinel."
+
+[TurretFall X2TechTemplate]
+DisplayName="TurretFall"
+Summary="Allows to deploy XCOM turrets in retaliations provided that defense matrix is built."
+CodeName="Titan"
+LongDescription="Commander, this is our craziest project yet: We can install an artillery cannon in avenger that can fire turrets at high velocity from the defense matrix, allowing for an ability to quickly deploy a turret in the field. \nHowever, it needs a beacon to lock onto, and installing one takes time - at best we can only install it in our havens. On top of that, only haven members will have the authority to use the beacon, so they'll need to be kept alive enough to be able to use it. Regardless, this will significantly increase the defense capability of our havens, as costly as it may be. L. Shen."
 
 
 [PatrolRoutes X2QuestItemTemplate]

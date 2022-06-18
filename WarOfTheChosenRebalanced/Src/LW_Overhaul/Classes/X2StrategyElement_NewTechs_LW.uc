@@ -148,6 +148,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Techs.AddItem(CreateMilitiaAbilities2());
 	Techs.AddItem(CreateMilitiaArmor1());
 	Techs.AddItem(CreateMilitiaArmor2());
+	Techs.AddItem(CreateTurretFall());
 
 	
 	return Techs;
@@ -2531,6 +2532,25 @@ static function X2DataTemplate CreateMilitiaArmor2()
 	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'MilitiaArmor2');
 	Template.PointsToComplete = 1000;
 	Template.strImage = "img:///UILibrary_StrategyImages.ResearchTech.TECH_ExperimentalArmor";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTurretFall()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'TurretFall');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventTurret";
 	Template.SortingTier = 2;
 
 	// Requirements

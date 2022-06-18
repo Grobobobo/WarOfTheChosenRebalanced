@@ -1304,6 +1304,14 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 					SetupData.AddItem(Data);
 				}
 			}
+			if(class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('TurretFall'))
+			AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('Interactive_PlaceTurretObject');
+			Data = EmptyData;
+			Data.TemplateName = 'Interactive_PlaceTurretObject';
+			Data.Template = AbilityTemplate;
+			SetupData.AddItem(Data);
+
+			
 
 
 		break;

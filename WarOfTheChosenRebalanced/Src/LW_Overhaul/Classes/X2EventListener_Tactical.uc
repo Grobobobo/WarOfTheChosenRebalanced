@@ -832,7 +832,7 @@ static protected function EventListenerReturn DynamicallyApplyLoadouts(
 			UnitState.SetUnitFloatValue('DynamicallyAppliedLoadout', 2.0f);
 
 			LoadoutStr = "MilitiaSoldier";
-			if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaPlasma'))
+			if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaBeam'))
 			{
 				LoadoutStr $= "5";
 			}

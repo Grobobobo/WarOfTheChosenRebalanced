@@ -832,19 +832,20 @@ static protected function EventListenerReturn DynamicallyApplyLoadouts(
 			UnitState.SetUnitFloatValue('DynamicallyAppliedLoadout', 2.0f);
 
 			LoadoutStr = "MilitiaSoldier";
-			if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaBeam'))
+
+			if (IsProvingGroundProjectResearched('MilitiaBeam'))
 			{
 				LoadoutStr $= "5";
 			}
-			else if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaCoil'))
+			else if (IsProvingGroundProjectResearched('MilitiaCoil'))
 			{
 				LoadoutStr $= "4";
 			}
-			else if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaMag'))
+			else if (IsProvingGroundProjectResearched('MilitiaMag'))
 			{
 				LoadoutStr $= "3";
 			}
-			else if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaLaser'))
+			else if (IsProvingGroundProjectResearched('MilitiaLaser'))
 			{
 				LoadoutStr $= "2";
 			}
@@ -874,6 +875,29 @@ static protected function EventListenerReturn DynamicallyApplyLoadouts(
 	return ELR_NoInterrupt;
 }
 
+static function bool IsProvingGroundProjectResearched(name TechName)
+{
+	local XComGameState_HeadquartersXCom XComHQ;
+	local array<StateObjectReference>  CompletedProjects;
+	local StateObjectReference TechReference;
+	local XComGameState_Tech TechState;
+
+	XComHQ = `XCOMHQ;
+
+	CompletedProjects = XComHQ.GetCompletedProvingGroundTechs();
+
+	foreach CompletedProjects(TechReference)
+	{
+		TechState = XComGameState_Tech(`XCOMHISTORY.GetGameStateForObjectID(TechReference.ObjectID));
+		if (TechState.GetMyTemplateName() == TechName)
+		{
+			return true;
+		}
+	}
+
+	return false;
+
+}
 
 static function CHEventListenerTemplate CreateUIFocusOverride()
 {

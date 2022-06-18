@@ -46,10 +46,9 @@ function name GetUnitToSpawnName(const out EffectAppliedData ApplyEffectParamete
 	{
 		return 'XCOMTurretM2';
 	}
-	else if (XComHQ.TacticalGameplayTags.Find('AvengerDefenseTurrets') != INDEX_NONE)
-	{
-		return 'XCOMTurretM1';
-	}
+
+	return 'XCOMTurretM1';
+	
 }
 
 defaultproperties

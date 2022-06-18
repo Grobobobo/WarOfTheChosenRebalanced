@@ -3807,6 +3807,12 @@ CodeName="Titan"
 LongDescription="Commander, this is our craziest project yet: We can install an artillery cannon in avenger that can fire turrets at high velocity from the defense matrix, allowing for an ability to quickly deploy a turret in the field. \nHowever, it needs a beacon to lock onto, and installing one takes time - at best we can only install it in our havens. On top of that, only haven members will have the authority to use the beacon, so they'll need to be kept alive enough to be able to use it. Regardless, this will significantly increase the defense capability of our havens, as costly as it may be. L. Shen."
 
 
+[Interactive_PlaceTurretObject X2AbilityTemplate]
+LocFriendlyName="TurretFall"
+LocLongDescription="Deploy an XCOM turret at given location."
+LocHelpText="Deploy an XCOM turret at given location."
+
+
 [PatrolRoutes X2QuestItemTemplate]
 FriendlyName="Data Cache"
 FriendlyNamePlural="Data Caches"

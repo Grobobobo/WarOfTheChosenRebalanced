@@ -760,7 +760,7 @@ static function X2AbilityTemplate AddPlaceTurretAbility()
 	local X2Condition_UnitProperty			UnitPropertyCondition;
 	local X2Condition_Visibility			VisibilityCondition;
 	local X2AbilityCost_SharedCharges		ChargeCost;
-
+	local X2AbilityCooldown_LocalAndGlobal	Cooldown;
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'Interactive_PlaceTurretObject');
 
 	Template.IconImage = "img:///UILibrary_Common.TargetIcons.target_turret_bg";
@@ -796,14 +796,15 @@ static function X2AbilityTemplate AddPlaceTurretAbility()
 	ActionPointCost.bConsumeAllPoints = true;
 	Template.AbilityCosts.AddItem(ActionPointCost);
 
-	Cooldown = new class'X2AbilityCooldown';
+	Cooldown = new class'X2AbilityCooldown_LocalAndGlobal';
 	Cooldown.iNumTurns = default.TURRETFALL_COOLDOWN;
+	Cooldown.NumGlobalTurns = default.TURRETFALL_COOLDOWN;
 	Template.AbilityCooldown = Cooldown;
 
 	//Add Charges
 	Charges = new class'X2AbilityCharges_DefenseMatrix';
-	Charges.InitialCharges = default.InitialTurretCharges;
-	Charges.ExtraCharges = default.ExtraTurretCharges;
+	Charges.InitialCharges = default.TURRETFALL_INITIAL_CHARGES;
+	Charges.ExtraCharges = default.TURRETFALL_EXTRA_CHARGES;
 	Template.AbilityCharges = Charges;
 
     ChargeCost = new class'X2AbilityCost_SharedCharges';
@@ -914,6 +915,7 @@ simulated function SpawnTurret_BuildVisualization(XComGameState VisualizeGameSta
 
 	DelayAction = X2Action_Delay(class'X2Action_Delay'.static.AddToVisualizationTree(MimicBeaconTrack, Context, false, CommonParent));
 	DelayAction.Duration = 1.92f;
+	DelayAction.bIgnoreZipMode = true;
 
 	SpawnMimicBeaconEffect.AddSpawnVisualizationsToTracks_Parent(Context, SpawnedUnit, MimicBeaconTrack, MimicSourceUnit, DelayAction);
 

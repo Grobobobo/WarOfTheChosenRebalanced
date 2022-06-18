@@ -1210,7 +1210,7 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 	switch(CharTemplate.DataName)
 	{
 		case 'CivilianMilitia':
-			if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaArmor2'))
+			if (class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('MilitiaArmor2'))
 			{
 				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('RebelHPUpgrade_T2');
 
@@ -1219,7 +1219,7 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 				Data.Template = AbilityTemplate;
 				SetupData.AddItem(Data);
 			}
-			else if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaArmor1'))
+			else if (class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('MilitiaArmor1'))
 			{
 				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('RebelHPUpgrade_T1');
 				Data = EmptyData;
@@ -1228,7 +1228,7 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 				SetupData.AddItem(Data);
 			}
 			
-			if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaAbilities1'))
+			if (class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('MilitiaAbilities1'))
 			{
 				PrimaryWeaponTemplate = X2WeaponTemplate(UnitState.GetPrimaryWeapon().GetMyTemplate());
 
@@ -1267,7 +1267,7 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 				}
 			}
 
-			if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('MilitiaAbilities2'))
+			if (class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('MilitiaAbilities2'))
 			{
 				PrimaryWeaponTemplate = X2WeaponTemplate(UnitState.GetPrimaryWeapon().GetMyTemplate());
 
@@ -1304,12 +1304,14 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 					SetupData.AddItem(Data);
 				}
 			}
-			if(class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('TurretFall'))
-			AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('Interactive_PlaceTurretObject');
-			Data = EmptyData;
-			Data.TemplateName = 'Interactive_PlaceTurretObject';
-			Data.Template = AbilityTemplate;
-			SetupData.AddItem(Data);
+			if(class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('TurretFall'))
+			{
+				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('Interactive_PlaceTurretObject');
+				Data = EmptyData;
+				Data.TemplateName = 'Interactive_PlaceTurretObject';
+				Data.Template = AbilityTemplate;
+				SetupData.AddItem(Data);
+			}
 
 			
 

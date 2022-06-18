@@ -3491,6 +3491,8 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			WeaponUpgradeTemplate.FreeKillFn = none;
 			WeaponUpgradeTemplate.GetBonusAmountFn = none;
 			//Abilities are caught elsewhere
+			WeaponUpgradeTemplate.BonusAbilities.AddItem('SuppressorBonus');
+
 			WeaponUpgradeTemplate.bInfiniteItem = true;
 		}
 		//make them mutually exclusive

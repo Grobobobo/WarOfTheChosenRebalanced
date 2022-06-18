@@ -507,6 +507,15 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 		case 'HAIR_TRIGGER_CRIT_BONUS':
 			OutString = string(class'X2Ability_PerkPackAbilitySet'.default.HAIR_TRIGGER_CRIT_BONUS);
 			return true;
+		case 'SUPPRESSOR_AIM_BONUS':
+			OutString = string(class'X2Ability_PerkPackAbilitySet'.default.SUPPRESSOR_AIM_BONUS);
+			return true;
+		case 'SUPPRESSOR_CRIT_BONUS':
+			OutString = string(class'X2Ability_PerkPackAbilitySet'.default.SUPPRESSOR_CRIT_BONUS);
+			return true;
+		case 'SUPPRESSOR_DEFENSE_BONUS':
+			OutString = string(class'X2Ability_PerkPackAbilitySet'.default.SUPPRESSOR_DEFENSE_BONUS);
+			return true;
 		case 'KILLER_INSTINCT_CRIT_DAMAGE_BONUS_PCT':
 			OutString = string(int(class'X2Effect_KillerInstinct'.default.KILLER_INSTINCT_CRIT_DAMAGE_BONUS_PCT));
 			return true;

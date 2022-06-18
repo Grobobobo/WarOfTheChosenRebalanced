@@ -1325,9 +1325,9 @@ LootTooltip="This weapon upgrade, when installed, grants the Steady Weapon abili
 [FreeKillUpgrade_Bsc X2WeaponUpgradeTemplate]
 FriendlyName="Suppressor"
 FriendlyNamePlural="Suppressors"
-BriefSummary="Reduces weapon noise and the soldier's impact on mission infiltration time."
-TinySummary="Reduces mission infiltration time"
-LootTooltip="This weapon upgrade, when installed, will reduce the time the soldier requires to infiltrate during a mission. It also reduces weapon noise during combat."
+BriefSummary="Gain +<Ability:SUPPRESSOR_DEFENSE_BONUS/> Defense. Your first shot in the mission gains +<Ability:SUPPRESSOR_AIM_BONUS/> aim and +<Ability:SUPPRESSOR_CRIT_BONUS/> crit."
+TinySummary="Boosts defense and first shot power"
+LootTooltip="This weapon upgrade, when installed, will increase the soldier's defense, and make his first shot in the mission more powerful."
 
 [FreeKillUpgrade_Adv X2WeaponUpgradeTemplate]
 FriendlyName="Advanced Suppressor"

@@ -148,6 +148,10 @@ var config int HYPERREACTIVE_PUPILS_CRIT_BONUS;
 var config int HAIR_TRIGGER_AIM_BONUS;
 var config int HAIR_TRIGGER_CRIT_BONUS;
 
+var config int SUPPRESSOR_AIM_BONUS;
+var config int SUPPRESSOR_CRIT_BONUS;
+var config int SUPPRESSOR_DEFENSE_BONUS;
+
 var localized string LocCoveringFire;
 var localized string LocCoveringFireMalus;
 var localized string LocSoulStealBuff;
@@ -254,6 +258,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddMerciless());
 	Templates.AddItem(SuppressionDamage());
 	Templates.AddItem(BulletWizardDamage());
+	Templates.AddItem(AddSuppressorBonusAbility());
+	Templates.AddItem(RemoveSuppressorBonus());
 	
 	
 	return Templates;
@@ -5140,4 +5146,139 @@ static function bool AbilityTriggerAgainstSingleTarget(int AbilityID, StateObjec
 		}
 	}
 	return false;
+}
+
+static function X2AbilityTemplate AddSuppressorBonusAbility()
+{
+	local X2AbilityTemplate						Template;	
+	local X2Effect_ToHitModifier			AimAndCritBonus;
+	local X2Effect_PersistentStatChange DefensiveEffect;
+	local X2Condition_PrimaryWeapon	PrimaryWeaponCondition;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'SuppressorBonus');
+	Template.IconImage = "img:///UILibrary_XPerkIconPack_LW.UIPerk_stealth_pistol";
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.Hostility = eHostility_Neutral;
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
+	Template.AbilityToHitCalc = default.DeadEye;
+    Template.AbilityTargetStyle = default.SelfTarget;
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+	Template.bCrossClassEligible = true;
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
+	Template.bShowActivation = true;
+	Template.bSkipFireAction = true;
+
+
+	PrimaryWeaponCondition = new class'X2Condition_PrimaryWeapon';
+	PrimaryWeaponCondition.RequirePrimary = true;
+
+	AimAndCritBonus = new class'X2Effect_ToHitModifier';
+	AimAndCritBonus.BuildPersistentEffect(1,true,true,false);
+	AimAndCritBonus.AddEffectHitModifier(eHit_Crit, default.SUPPRESSOR_CRIT_BONUS, Template.LocFriendlyName);
+	AimAndCritBonus.AddEffectHitModifier(eHit_Success, default.SUPPRESSOR_AIM_BONUS, Template.LocFriendlyName);
+	AimAndCritBonus.SetDisplayInfo (ePerkBuff_Passive,Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,false,, Template.AbilitySourceName); 
+	AimAndCritBonus.EffectName='SuppressorBonus_LW';
+	AimAndCritBonus.TargetConditions.AddItem(PrimaryWeaponCondition);
+	Template.AddTargetEffect(AimAndCritBonus);
+
+
+	Template.DefaultSourceItemSlot = eInvSlot_PrimaryWeapon;
+
+	DefensiveEffect = new class'X2Effect_PersistentStatChange';
+	DefensiveEffect.AddPersistentStatChange(eStat_Defense, default.SUPPRESSOR_DEFENSE_BONUS);
+	DefensiveEffect.BuildPersistentEffect(1,true,true,false);
+	DefensiveEffect.SetDisplayInfo (ePerkBuff_Passive,Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,true,, Template.AbilitySourceName); 
+	Template.AddTargetEffect(DefensiveEffect);
+
+	Template.AdditionalAbilities.AddItem('RemoveSuppressorBonus');
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	//Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;  
+
+	Return Template;
+}
+
+
+static function X2AbilityTemplate RemoveSuppressorBonus()
+{
+	local X2AbilityTemplate						Template;
+	local X2AbilityTrigger_EventListener		EventListener;
+	local X2Effect_RemoveEffects				RemoveEffect;
+	local X2Condition_UnitEffects				RequireEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'RemoveSuppressorBonus');	
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.IconImage = "img:///UILibrary_XPerkIconPack_LW.UIPerk_stealth_pistol";
+	Template.Hostility = eHostility_Neutral;
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
+	Template.AbilityToHitCalc = default.DeadEye;
+    Template.AbilityTargetStyle = default.SelfTarget;
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+
+	EventListener = new class'X2AbilityTrigger_EventListener';
+	EventListener.ListenerData.EventID = 'AbilityActivated';
+	EventListener.ListenerData.EventFn = AbilityTriggerEventListener_SuppressorBonus;
+	EventListener.ListenerData.Deferral = ELD_OnStateSubmitted;
+	EventListener.ListenerData.Filter = eFilter_Unit;
+	Template.AbilityTriggers.AddItem(EventListener);
+
+	Template.bShowActivation = true;
+	Template.bSkipFireAction = true;
+
+	RequireEffect = new class'X2Condition_UnitEffects';
+    RequireEffect.AddRequireEffect('SuppressorBonus_LW', 'AA_EvasiveEffectPresent');
+	Template.AbilityTargetConditions.AddItem(RequireEffect);
+
+	RemoveEffect = new class'X2Effect_RemoveEffects';
+	RemoveEffect.EffectNamesToRemove.AddItem('SuppressorBonus_LW');
+	Template.AddTargetEffect(RemoveEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+
+	Return Template;
+}
+
+static function EventListenerReturn AbilityTriggerEventListener_SuppressorBonus(
+	Object EventData,
+	Object EventSource,
+	XComGameState GameState,
+	Name EventID,
+	Object CallbackData)
+{
+	local XComGameStateContext_Ability AbilityContext;
+	local XComGameState_Unit SourceUnit;
+	local XComGameState_Ability AbilityState,TextAbilityState;
+	local XComGameState_Item	PrimaryWeaponState;
+	local XComGameStateHistory History;
+
+	AbilityState = XComGameState_Ability(EventData);
+	History = `XCOMHISTORY;
+
+	AbilityContext = XComGameStateContext_Ability(GameState.GetContext());
+	if (AbilityContext != none && AbilityContext.InterruptionStatus != eInterruptionStatus_Interrupt && AbilityState.GetMyTemplate().Hostility == eHostility_Offensive)
+	{
+		SourceUnit = XComGameState_Unit(GameState.GetGameStateForObjectID(AbilityContext.InputContext.SourceObject.ObjectID));
+		TextAbilityState = XComGameState_Ability(History.GetGameStateForObjectID(SourceUnit.FindAbility('RemoveSuppressorBonus', AbilityContext.InputContext.ItemObject).ObjectID));
+		
+		if (TextAbilityState != none)
+		{
+			if(AbilityContext.InputContext.SourceObject.ObjectID == TextAbilityState.OwnerStateObject.ObjectID)
+			{
+				PrimaryWeaponState = AbilityState.GetSourceWeapon();
+				if(PrimaryWeaponState != none)
+				{
+					if(PrimaryWeaponState.InventorySlot == eInvSlot_PrimaryWeapon)
+					{
+						TextAbilityState.AbilityTriggerEventListener_Self(EventData, EventSource, GameState, EventID, CallbackData);
+					}
+				}
+			}
+
+
+		}
+	}
+	return ELR_NoInterrupt;
+ 
 }

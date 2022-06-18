@@ -357,12 +357,14 @@ LocLongDescription="Gain +<Ability:HYPERREACTIVE_PUPILS_AIM_BONUS/> aim and +<Ab
 LocHelpText="Gain +<Ability:HYPERREACTIVE_PUPILS_AIM_BONUS/> aim and +<Ability:HYPERREACTIVE_PUPILS_CRIT_BONUS/> crit for your next shot with your primary weapon after a miss."
 LocPromotionPopupText="<Bullet/> Bonus applies until the next time you hit a target or the mission ends.<br/><Bullet/> Area-of-Effect-based shots do not induce the bonus.<br/>"
 
-[SteadyWeapon X2AbilityTemplate]
-LocFriendlyName="Steady Weapon"
-LocFlyOverText="Steady Weapon"
-LocLongDescription="Gain +20 aim on your next shot with your primary weapon. Multiple uses will stack bonus. Bonus is lost if you use actions or are wounded."
-LocHelpText="Gain +20 aim on your next shot with your primary weapon. Multiple uses will stack bonus. Bonus is lost if you use actions or are wounded."
-LocPromotionPopupText="<Bullet/> Gain +20 aim on your next shot with your primary weapon. Bonus is lost if you use actions or are wounded.<br/><Bullet/> Cannot Steady Weapon when suppressed.<br/><Bullet/> Effect will persist through multiple turns if you do nothing.<br/><Bullet/> Using Steady Weapon over multiple consecutive turns will allow the bonus to stack."
+[SuppressorBonus X2AbilityTemplate]
+LocFriendlyName="Suppressor"
+LocFlyOverText="Suppressor"
+LocLongDescription="Gain +<Ability:SUPPRESSOR_DEFENSE_BONUS/> Defense. Your first shot in the mission gains +<Ability:SUPPRESSOR_AIM_BONUS/> aim and +<Ability:SUPPRESSOR_CRIT_BONUS/> crit."
+LocHelpText="Gain +<Ability:SUPPRESSOR_DEFENSE_BONUS/> Defense. Your first shot in the mission gains +<Ability:SUPPRESSOR_AIM_BONUS/> aim and +<Ability:SUPPRESSOR_CRIT_BONUS/> crit."
+
+[RemoveSuppressorBonus X2AbilityTemplate]
+LocFriendlyName="Suppressor Bonus Lost"
 
 [LockedOn X2AbilityTemplate]
 LocFriendlyName="Locked On"

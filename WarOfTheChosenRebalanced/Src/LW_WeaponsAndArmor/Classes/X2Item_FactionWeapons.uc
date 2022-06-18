@@ -409,7 +409,7 @@ static function X2DataTemplate CreateTemplate_Sidearm_Laser()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CreatorTemplateName = 'Sidearm_LS_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'Sidearms_LS_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'Sidearm_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;

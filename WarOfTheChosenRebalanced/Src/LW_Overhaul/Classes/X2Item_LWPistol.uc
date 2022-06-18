@@ -139,7 +139,7 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser_Schematic()
 	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
 
 	// Reference Item
-	Template.ReferenceItemTemplate = 'LWPistol_LS';
+	Template.ReferenceItemTemplate = 'Sidearms_MG_Schematic';
 	Template.HideIfPurchased = 'LWPistol_MG';
 
 	// Requirements
@@ -208,7 +208,7 @@ static function X2DataTemplate CreateTemplate_LWPistol_Coil()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CreatorTemplateName = 'Pistol_CG_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'Sidearms_CG_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'Pistol_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;

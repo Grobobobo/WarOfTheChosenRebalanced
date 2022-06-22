@@ -2273,8 +2273,8 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 
 		Template.Abilities.AddItem('CombatReadiness');
 		Template.Abilities.AddItem('ChosenKidnap');
-		Template.Abilities.AddItem('CloseCombatSpecialist');
-		Template.Abilities.AddItem('GrazingFire');
+		//Template.Abilities.AddItem('CloseCombatSpecialist');
+		//Template.Abilities.AddItem('GrazingFire');
 		Template.Abilities.AddItem('WarlockReaction');
 		//Template.Abilities.AddItem('AmmoDump_LW');
 //		Template.Abilities.AddItem('ChosenCritImmune');

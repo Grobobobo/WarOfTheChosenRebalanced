@@ -32,7 +32,7 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	Templates.AddItem(CreateDarkEventAbility('CloseCombatSpecialist','Captain'));
 	Templates.AddItem(CreateDarkEventAbility('CloseCombatSpecialist','Drone'));
-	Templates.AddItem(CreateDarkEventAbility('CloseCombatSpecialist','Andromdedon'));
+	Templates.AddItem(CreateDarkEventAbility('CloseCombatSpecialist','Andromedon'));
 
 	Templates.AddItem(CreateDarkEventAbility('CombatAwareness','Gunner'));
 	Templates.AddItem(CreateDarkEventAbility('CombatAwareness','Sentry'));
@@ -227,7 +227,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateDarkEventAbility('HardTarget','Archon'));
 	Templates.AddItem(CreateDarkEventAbility('HardTarget','Gatekeeper'));
 
-	Templates.AddItem(CreateDarkEventAbility('SuperDuperRobot','AndromdedonRobot'));
+	Templates.AddItem(CreateDarkEventAbility('SuperDuperRobot','AndromedonRobot'));
 
 	Templates.AddItem(CreateDarkEventAbility('Defilade','Gatekeeper'));
 

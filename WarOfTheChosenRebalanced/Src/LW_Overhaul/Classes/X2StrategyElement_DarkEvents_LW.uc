@@ -210,12 +210,12 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ReadyForAnything','Shieldbearer',ViperM4,default.T4_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Sprinter','Andromdedon',AndromedonAppeared,default.T3_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('VolatileMix','Andromdedon',AndromedonAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Sprinter','Andromedon',AndromedonAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('VolatileMix','Andromedon',AndromedonAppeared,default.T3_UPGRADES_WEIGHT));
 
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CloseCombatSpecialist','Andromdedon',LancerM4,default.T4_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('SuperDuperRobot','AndromdedonRobot',LancerM4,default.T4_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CloseCombatSpecialist','Andromedon',LancerM4,default.T4_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('SuperDuperRobot','AndromedonRobot',LancerM4,default.T4_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CoolUnderPressure','Archon',ArchonAppeared,default.T3_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('HardTarget','Archon',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));

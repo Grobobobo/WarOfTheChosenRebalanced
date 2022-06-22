@@ -2508,37 +2508,6 @@ static function UpdateSecureStorage()
 }
 function bool CanActivateWeaponLockers()
 {
-	local XComGameStateHistory History;
-	local XComGameState_HeadquartersXCom XComHQ;
-	local XComGameState_Item ItemState;
-	local StateObjectReference ItemRef;
-	local X2WeaponUpgradeTemplate UpgradeTemplate;
-	local int NumUpgrades, MinMods;
-
-	MinMods = `ScaleStrategyArrayInt(class'X2StrategyElement_DefaultSabotages'.default.MinWeaponLockersMods);
-	
-	NumUpgrades = 10;
-	History = `XCOMHISTORY;
-	XComHQ = XComGameState_HeadquartersXCom(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersXCom'));
-
-	foreach XComHQ.Inventory(ItemRef)
-	{
-		ItemState = XComGameState_Item(History.GetGameStateForObjectID(ItemRef.ObjectID));
-
-		if(ItemState != none)
-		{
-			UpgradeTemplate = X2WeaponUpgradeTemplate(ItemState.GetMyTemplate());
-
-			if(UpgradeTemplate != none)
-			{
-				NumUpgrades++;
-				if(NumUpgrades >= MinMods)
-				{
-					return true;
-				}
-			}
-		}
-	}
 	return false;
 }
 function bool CanActivateLabStorage()

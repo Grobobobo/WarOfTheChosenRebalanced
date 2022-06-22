@@ -56,7 +56,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		UpdateTotalCombat(Template);
 		break;
 	case 'Salvo':
-		UpdateSalvo(Template);
+		//UpdateSalvo(Template);
 		break;
 
 	case 'CombatPresence':

@@ -929,7 +929,7 @@ LocPromotionPopupText="<Bullet/> Explosives mean all grenades and rockets."
 [XComGame.Salvo X2AbilityTemplate]
 [Salvo X2AbilityTemplate]
 LocFriendlyName="Salvo"
-LocLongDescription="Throwing or Launching Grenades and Rockets no longer ends turn. Your rockets and Grenades receive an additional use. Gain +<Ability:SALVO_MOBILITY/> Mobility."
+LocLongDescription="Throwing or Launching Grenades and Rockets no longer ends turn, and your rocket cooldown is decreased by 1."
 LocHelpText="Throwing or Launching Grenades and Rockets no longer ends turn. Your rockets and Grenades receive an additional use. Gain +<Ability:SALVO_MOBILITY/> Mobility."
 LocFlyOverText="Salvo"
 LocPromotionPopupText="<Bullet/> Items like BattleScanners count as grenades.<br/>"

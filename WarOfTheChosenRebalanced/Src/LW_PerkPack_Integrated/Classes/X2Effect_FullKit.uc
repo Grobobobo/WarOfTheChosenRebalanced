@@ -33,26 +33,19 @@ simulated protected function OnEffectAdded(const out EffectAppliedData ApplyEffe
 			if((X2GrenadeTemplate(WeaponTemplate) != none && EXCLUDED_GRENADE_TYPES.Find(WeaponTemplate.DataName) == -1 ) || INCLUDED_WEAPON_TYPES.Find(WeaponTemplate.DataName) != -1 )
 			{
 				BonusAmmo = 0;
-				if (WeaponTemplate != none)
+				if (WeaponTemplate != none && WeaponTemplate.bMergeAmmo)
 				{
-					if(WeaponTemplate.bMergeAmmo)
-					{
-						if (ItemState.InventorySlot == eInvSlot_Utility)
-							BonusAmmo += default.FULL_KIT_BONUS;
-
-						for (InnerIdx = Idx + 1; InnerIdx < UnitState.InventoryItems.Length; ++InnerIdx)
-						{
-							ItemInnerIter = XComGameState_Item(History.GetGameStateForObjectID(UnitState.InventoryItems[InnerIdx].ObjectID));
-							if (ItemInnerIter != none && ItemInnerIter.GetMyTemplate() == WeaponTemplate)
-							{
-								if (ItemInnerIter.InventorySlot == eInvSlot_Utility)
-									BonusAmmo += default.FULL_KIT_BONUS;
-							}
-						}
-					}
-					else //Otherwise just add ammo without merging
-					{
+					if (ItemState.InventorySlot == eInvSlot_Utility)
 						BonusAmmo += default.FULL_KIT_BONUS;
+
+					for (InnerIdx = Idx + 1; InnerIdx < UnitState.InventoryItems.Length; ++InnerIdx)
+					{
+						ItemInnerIter = XComGameState_Item(History.GetGameStateForObjectID(UnitState.InventoryItems[InnerIdx].ObjectID));
+						if (ItemInnerIter != none && ItemInnerIter.GetMyTemplate() == WeaponTemplate)
+						{
+							if (ItemInnerIter.InventorySlot == eInvSlot_Utility)
+								BonusAmmo += default.FULL_KIT_BONUS;
+						}
 					}
 				}
 				if(BonusAmmo > 0)

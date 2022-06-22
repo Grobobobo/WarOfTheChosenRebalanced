@@ -1142,7 +1142,7 @@ static function X2DataTemplate Immolator_CV_Schematic()
 	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
 
 	// Reference Item
-	Template.ReferenceItemTemplate = 'LWImmollator_CV';
+	Template.ReferenceItemTemplate = 'LWImmolator_CV';
 	Template.HideIfPurchased = 'LWImmollator_MG';
 
 	// Requirements

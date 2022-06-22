@@ -13,13 +13,13 @@ static function array<X2DataTemplate> CreateTemplates()
 {
     local array<X2DataTemplate> DarkEvents;
 
-	`LWTrace("  >> X2StrategyElement_DarkEvents_LW.CreateTemplates()");
+	//`LWTrace("  >> X2StrategyElement_DarkEvents_LW.CreateTemplates()");
 	
-	DarkEvents.AddItem(CreateCounterintelligenceSweepTemplate());
-	DarkEvents.AddItem(CreateRuralPropagandaBlitzTemplate());
+	//DarkEvents.AddItem(CreateCounterintelligenceSweepTemplate());
+	//DarkEvents.AddItem(CreateRuralPropagandaBlitzTemplate());
 	// DarkEvents.AddItem(CreateHavenInfiltrationTemplate());
-	DarkEvents.AddItem(CreateAirPatrolsTemplate());
-	DarkEvents.AddItem(CreateRuralCheckpointsLWTemplate());
+	//DarkEvents.AddItem(CreateAirPatrolsTemplate());
+	//DarkEvents.AddItem(CreateRuralCheckpointsLWTemplate());
 
 
 	//DarkEvents.AddItem(CreateFirewallsTemplate());

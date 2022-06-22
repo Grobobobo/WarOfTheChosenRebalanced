@@ -1971,6 +1971,7 @@ static function MakeStunLanceWorkWhenBurning(X2AbilityTemplate Template)
 static function UpdateLeaderPunch(X2AbilityTemplate Template)
 {
 	local X2Effect_ApplyWeaponDamage DamageEffect;
+	local X2AbilityTarget_MovingMelee	MeleeTarget;
 
 	class'Helpers_LW'.static.RemoveAbilityTargetEffects(Template,'X2Effect_ImmediateAbilityActivation');
 	class'Helpers_LW'.static.RemoveAbilityTargetEffects(Template,'X2Effect_ApplyWeaponDamage');
@@ -1978,6 +1979,11 @@ static function UpdateLeaderPunch(X2AbilityTemplate Template)
 
 	DamageEffect = new class'X2Effect_ApplyWeaponDamage';
 	Template.AddTargetEffect(DamageEffect);
+
+	MeleeTarget = new class'X2AbilityTarget_MovingMelee';
+	MeleeTarget.MovementRangeAdjustment = MovementRangeAdjustment;
+	Template.AbilityTargetStyle = MeleeTarget;
+
 
 }
 

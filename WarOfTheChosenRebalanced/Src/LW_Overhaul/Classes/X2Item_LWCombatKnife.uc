@@ -265,7 +265,7 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Coil()
 	
 	Template.GameArchetype = "LW_CombatKnifeLWOTC.Archetypes.WP_CombatKnife_CV";
 
-	Template.CreatorTemplateName = 'CombatKnife_BM_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'CombatKnife_CG_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'CombatKnife_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;

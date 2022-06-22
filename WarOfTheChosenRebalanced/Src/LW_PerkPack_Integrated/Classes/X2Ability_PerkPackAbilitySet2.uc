@@ -24,7 +24,7 @@ var config int PHANTOM_COOLDOWN;
 var config int PHANTOM_CHARGES;
 var config int CONCEAL_BONUS_CHARGES;
 var config float REAPER_PCT_DMG_REDUCTION;
-var config int SERIAL_PCT_DMG_REDUCTION;
+var config float SERIAL_PCT_DMG_REDUCTION;
 
 var config int SPRAY_AND_PRAY_DODGE;
 var config int STOCK_SPRAY_AND_PRAY_DODGE;

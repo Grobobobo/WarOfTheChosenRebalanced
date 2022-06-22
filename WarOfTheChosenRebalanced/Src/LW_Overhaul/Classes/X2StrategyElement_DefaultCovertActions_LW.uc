@@ -12,7 +12,7 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	CovertActions.AddItem(CreateEnemyCorpsesTemplate());
 	CovertActions.AddItem(CreateIntenseTrainingTemplate());
-	CovertActions.AddItem(CreateLiberationIntelTemplate());
+	//CovertActions.AddItem(CreateLiberationIntelTemplate());
 
 	return CovertActions;
 }

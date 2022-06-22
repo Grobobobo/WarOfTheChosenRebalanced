@@ -181,6 +181,45 @@ var config int GREMLIN_BEAM_SUPPLYCOST;
 var config int GREMLIN_BEAM_ALLOYCOST;
 var config int GREMLIN_BEAM_ELERIUMCOST;
 
+
+var config int MEDIUM_PLATED_SUPPLYCOST;
+var config int MEDIUM_PLATED_ALLOYCOST;
+var config int MEDIUM_PLATED_ELERIUMCOST;
+var config name MEDIUM_PLATED_CORPSE_NAME;
+var config int MEDIUM_PLATED_CORPSE_COST;
+
+var config int LIGHT_PLATED_SUPPLYCOST;
+var config int LIGHT_PLATED_ALLOYCOST;
+var config int LIGHT_PLATED_ELERIUMCOST;
+var config name LIGHT_PLATED_CORPSE_NAME;
+var config int LIGHT_PLATED_CORPSE_COST;
+
+var config int HEAVY_PLATED_SUPPLYCOST;
+var config int HEAVY_PLATED_ALLOYCOST;
+var config int HEAVY_PLATED_ELERIUMCOST;
+var config name HEAVY_PLATED_CORPSE_NAME;
+var config int HEAVY_PLATED_CORPSE_COST;
+
+var config int MEDIUM_POWERED_SUPPLYCOST;
+var config int MEDIUM_POWERED_ALLOYCOST;
+var config int MEDIUM_POWERED_ELERIUMCOST;
+var config name MEDIUM_POWERED_CORPSE_NAME;
+var config int MEDIUM_POWERED_CORPSE_COST;
+
+var config int LIGHT_POWERED_SUPPLYCOST;
+var config int LIGHT_POWERED_ALLOYCOST;
+var config int LIGHT_POWERED_ELERIUMCOST;
+var config name LIGHT_POWERED_CORPSE_NAME;
+var config int LIGHT_POWERED_CORPSE_COST;
+
+var config int HEAVY_POWERED_SUPPLYCOST;
+var config int HEAVY_POWERED_ALLOYCOST;
+var config int HEAVY_POWERED_ELERIUMCOST;
+var config name HEAVY_POWERED_CORPSE_NAME;
+var config int HEAVY_POWERED_CORPSE_COST;
+
+
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Weapons;
@@ -241,6 +280,14 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	Weapons.AddItem(Gremlin_MG_Schematic());
 	Weapons.AddItem(Gremlin_BM_Schematic());
+
+	Weapons.AddItem(LightPlatedArmor_Schematic());
+	Weapons.AddItem(MediumPlatedArmor_Schematic());
+	Weapons.AddItem(HeavyPlatedArmor_Schematic());
+
+	Weapons.AddItem(LightPoweredArmor_Schematic());
+	Weapons.AddItem(MediumPoweredArmor_Schematic());
+	Weapons.AddItem(HeavyPoweredArmor_Schematic());
 
 	return Weapons;
 }
@@ -2211,3 +2258,279 @@ static function X2DataTemplate Gremlin_BM_Schematic()
 
 	return Template;
 }
+
+static function X2DataTemplate MediumPlatedArmor_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local ArtifactCost Resources, Artifacts;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'MediumPlatedArmor_Schematic');
+
+	Template.ItemCat = 'armor';
+	Template.strImage = "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_Predator_Armor";
+	Template.PointsToComplete = 0;
+	Template.Tier = 1;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'MediumPlatedArmor';
+	Template.HideIfPurchased = 'MediumPoweredArmor';
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('PlatedArmor');
+	Template.Requirements.RequiredEngineeringScore = 10;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.MEDIUM_PLATED_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Artifacts.ItemTemplateName = 'AlienAlloy';
+	Artifacts.Quantity = default.MEDIUM_PLATED_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Artifacts);
+
+	// only add elerium cost if configured value greater than 0
+	if (default.MEDIUM_PLATED_ELERIUMCOST > 0) {
+		Artifacts.ItemTemplateName = 'EleriumDust';
+		Artifacts.Quantity = default.MEDIUM_PLATED_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Artifacts);
+	}
+	Artifacts.ItemTemplateName = default.MEDIUM_PLATED_CORPSE_NAME;
+	Artifacts.Quantity = default.MEDIUM_PLATED_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
+	return Template;
+}
+
+
+static function X2DataTemplate LightPlatedArmor_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local ArtifactCost Resources, Artifacts;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'LightPlatedArmor_Schematic');
+
+	Template.ItemCat = 'armor';
+	Template.strImage = "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_Spider_Suit";
+	Template.PointsToComplete = 0;
+	Template.Tier = 1;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'LightPlatedArmor';
+	Template.HideIfPurchased = 'LightPoweredArmor';
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('SpiderSuit');
+	Template.Requirements.RequiredEngineeringScore = 10;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.LIGHT_PLATED_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Artifacts.ItemTemplateName = 'AlienAlloy';
+	Artifacts.Quantity = default.LIGHT_PLATED_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Artifacts);
+
+	// only add elerium cost if configured value greater than 0
+	if (default.LIGHT_PLATED_ELERIUMCOST > 0) {
+		Artifacts.ItemTemplateName = 'EleriumDust';
+		Artifacts.Quantity = default.LIGHT_PLATED_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Artifacts);
+	}
+
+	Artifacts.ItemTemplateName = default.LIGHT_PLATED_CORPSE_NAME;
+	Artifacts.Quantity = default.LIGHT_PLATED_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
+
+
+	return Template;
+}
+
+static function X2DataTemplate HeavyPlatedArmor_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local ArtifactCost Resources, Artifacts;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'HeavyPlatedArmor_Schematic');
+
+	Template.ItemCat = 'armor';
+	Template.strImage = "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_Hammer_Armor";
+	Template.PointsToComplete = 0;
+	Template.Tier = 1;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'HeavyPlatedArmor';
+	Template.HideIfPurchased = 'HeavyPoweredArmor';
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('EXOSuit');
+	Template.Requirements.RequiredEngineeringScore = 10;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.HEAVY_PLATED_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Artifacts.ItemTemplateName = 'AlienAlloy';
+	Artifacts.Quantity = default.HEAVY_PLATED_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Artifacts);
+
+	// only add elerium cost if configured value greater than 0
+	if (default.HEAVY_PLATED_ELERIUMCOST > 0) {
+		Artifacts.ItemTemplateName = 'EleriumDust';
+		Artifacts.Quantity = default.HEAVY_PLATED_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Artifacts);
+	}
+
+	Artifacts.ItemTemplateName = default.HEAVY_PLATED_CORPSE_NAME;
+	Artifacts.Quantity = default.HEAVY_PLATED_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
+
+
+	return Template;
+}
+
+
+
+static function X2DataTemplate MediumPoweredArmor_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local ArtifactCost Resources, Artifacts;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'MediumPoweredArmor_Schematic');
+
+	Template.ItemCat = 'armor';
+	Template.strImage = "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_Warden_Armor";
+	Template.PointsToComplete = 0;
+	Template.Tier = 2;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'MediumPoweredArmor';
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('PoweredArmor');
+	Template.Requirements.RequiredEngineeringScore = 20;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.MEDIUM_POWERED_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Artifacts.ItemTemplateName = 'AlienAlloy';
+	Artifacts.Quantity = default.MEDIUM_POWERED_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Artifacts);
+
+	// only add elerium cost if configured value greater than 0
+	if (default.MEDIUM_POWERED_ELERIUMCOST > 0) {
+		Artifacts.ItemTemplateName = 'EleriumDust';
+		Artifacts.Quantity = default.MEDIUM_POWERED_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Artifacts);
+	}
+
+	Artifacts.ItemTemplateName = default.MEDIUM_POWERED_CORPSE_NAME;
+	Artifacts.Quantity = default.MEDIUM_POWERED_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
+
+
+	return Template;
+}
+
+static function X2DataTemplate LightPoweredArmor_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local ArtifactCost Resources, Artifacts;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'LightPoweredArmor_Schematic');
+
+	Template.ItemCat = 'armor';
+	Template.strImage = "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_WraithSuit";
+	Template.PointsToComplete = 0;
+	Template.Tier = 2;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'LightPoweredArmor';
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('WraithSuit');
+	Template.Requirements.RequiredEngineeringScore = 20;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.LIGHT_POWERED_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Artifacts.ItemTemplateName = 'AlienAlloy';
+	Artifacts.Quantity = default.LIGHT_POWERED_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Artifacts);
+
+	// only add elerium cost if configured value greater than 0
+	if (default.LIGHT_POWERED_ELERIUMCOST > 0) {
+		Artifacts.ItemTemplateName = 'EleriumDust';
+		Artifacts.Quantity = default.LIGHT_POWERED_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Artifacts);
+	}
+
+	Artifacts.ItemTemplateName = default.LIGHT_POWERED_CORPSE_NAME;
+	Artifacts.Quantity = default.LIGHT_POWERED_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
+
+
+	return Template;
+}
+
+static function X2DataTemplate HeavyPoweredArmor_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local ArtifactCost Resources, Artifacts;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'HeavyPoweredArmor_Schematic');
+
+	Template.ItemCat = 'armor';
+	Template.strImage = "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_Marauder_Armor";
+	Template.PointsToComplete = 0;
+	Template.Tier = 2;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'HeavyPoweredArmor';
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('WARsuit');
+	Template.Requirements.RequiredEngineeringScore = 20;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.HEAVY_POWERED_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Artifacts.ItemTemplateName = 'AlienAlloy';
+	Artifacts.Quantity = default.HEAVY_POWERED_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Artifacts);
+
+	// only add elerium cost if configured value greater than 0
+	if (default.HEAVY_POWERED_ELERIUMCOST > 0) {
+		Artifacts.ItemTemplateName = 'EleriumDust';
+		Artifacts.Quantity = default.HEAVY_POWERED_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Artifacts);
+	}
+
+	Artifacts.ItemTemplateName = default.HEAVY_POWERED_CORPSE_NAME;
+	Artifacts.Quantity = default.HEAVY_POWERED_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
+
+
+	return Template;
+}
+
+
+
+
+
+

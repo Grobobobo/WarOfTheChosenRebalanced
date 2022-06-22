@@ -3062,6 +3062,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				break;
 
 				case 'HeavyPlatedArmor':
+				ArmorTemplate.CreatorTemplateName = 'HeavyPlatedArmor_Schematic';
 				ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
 				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 4);
 				ArmorTemplate.Abilities.AddItem('ExoskeletonServos');
@@ -3069,6 +3070,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				break;
 
 				case 'HeavyPoweredArmor':
+				ArmorTemplate.CreatorTemplateName = 'HeavyPoweredArmor_Schematic';
 				ArmorTemplate.Abilities.AddItem('Warden_Plating_Ability');
 				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 5);
 				ArmorTemplate.Abilities.AddItem('ExoskeletonServos');
@@ -3076,6 +3078,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				break;
 
 				case 'LightPlatedArmor':
+				ArmorTemplate.CreatorTemplateName = 'LightPlatedArmor_Schematic';
 				ArmorTemplate.bAddsUtilitySlot = true;
 				ArmorTemplate.Abilities.AddItem('Spider_Plating_Ability');
 				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 1);
@@ -3083,6 +3086,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 
 
 				case 'LightPoweredArmor':
+				ArmorTemplate.CreatorTemplateName = 'LightPoweredArmor_Schematic';
 				ArmorTemplate.Abilities.AddItem('Wraith_Plating_Ability');
 				ArmorTemplate.bAddsUtilitySlot = true;
 				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 2);

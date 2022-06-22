@@ -617,7 +617,7 @@ static function X2DataTemplate PrecisionWeapons_Laser_Schematic()
 	Template.HideIfPurchased = 'SniperRifle_MG';
 
 	// Requirements
-	Template.Requirements.RequiredTechs.AddItem('LaserWeapons');
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
 	Template.Requirements.RequiredEngineeringScore = 5;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
@@ -660,7 +660,7 @@ static function X2DataTemplate PrecisionWeapons_Mag_Schematic()
 	Template.HideIfPurchased = 'SniperRifle_CG';
 
 	// Requirements
-	Template.Requirements.RequiredTechs.AddItem('MagnetizedWeapons');
+	Template.Requirements.RequiredTechs.AddItem('GaussWeapons');
 	Template.Requirements.RequiredEngineeringScore = 10;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
@@ -705,7 +705,7 @@ static function X2DataTemplate PrecisionWeapons_Coil_Schematic()
 	Template.HideIfPurchased = 'SniperRifle_BM';
 
 	// Requirements
-	Template.Requirements.RequiredTechs.AddItem('CoilGuns');
+	Template.Requirements.RequiredTechs.AddItem('AdvancedCoilGuns');
 	Template.Requirements.RequiredEngineeringScore = 15;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
@@ -793,7 +793,7 @@ static function X2DataTemplate HeavyWeapons_Laser_Schematic()
 	Template.HideIfPurchased = 'Cannon_MG';
 
 	// Requirements
-	Template.Requirements.RequiredTechs.AddItem('LaserWeapons');
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
 	Template.Requirements.RequiredEngineeringScore = 5;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
@@ -836,7 +836,7 @@ static function X2DataTemplate HeavyWeapons_Mag_Schematic()
 	Template.HideIfPurchased = 'Cannon_CG';
 
 	// Requirements
-	Template.Requirements.RequiredTechs.AddItem('MagnetizedWeapons');
+	Template.Requirements.RequiredTechs.AddItem('GaussWeapons');
 	Template.Requirements.RequiredEngineeringScore = 10;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
@@ -881,7 +881,7 @@ static function X2DataTemplate HeavyWeapons_Coil_Schematic()
 	Template.HideIfPurchased = 'Cannon_BM';
 
 	// Requirements
-	Template.Requirements.RequiredTechs.AddItem('CoilGuns');
+	Template.Requirements.RequiredTechs.AddItem('AdvancedCoilGuns');
 	Template.Requirements.RequiredEngineeringScore = 15;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 

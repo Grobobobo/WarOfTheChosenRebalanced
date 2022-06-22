@@ -1981,7 +1981,7 @@ static function UpdateLeaderPunch(X2AbilityTemplate Template)
 	Template.AddTargetEffect(DamageEffect);
 
 	MeleeTarget = new class'X2AbilityTarget_MovingMelee';
-	MeleeTarget.MovementRangeAdjustment = MovementRangeAdjustment;
+	MeleeTarget.MovementRangeAdjustment = 1;
 	Template.AbilityTargetStyle = MeleeTarget;
 
 

@@ -755,7 +755,7 @@ static function X2AbilityTemplate AddPlaceTurretAbility()
 	local X2AbilityTarget_Cursor			CursorTarget;
 	local X2AbilityMultiTarget_Radius		RadiusMultiTarget;
 	local X2Effect_SpawnTurretScaled_XCom	SpawnTurretObj_XCom;
-	local X2Condition_GameplayTag			GameplayTags;
+//	local X2Condition_GameplayTag			GameplayTags;
 	local X2AbilityCharges_DefenseMatrix	Charges;
 	local X2Condition_UnitProperty			UnitPropertyCondition;
 	local X2Condition_Visibility			VisibilityCondition;

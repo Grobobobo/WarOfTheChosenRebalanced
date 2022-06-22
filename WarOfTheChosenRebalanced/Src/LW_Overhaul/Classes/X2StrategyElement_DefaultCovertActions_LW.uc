@@ -11,7 +11,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	local array<X2DataTemplate> CovertActions;
 
 	CovertActions.AddItem(CreateEnemyCorpsesTemplate());
-	CovertActions.AddItem(CreateIntenseTrainingTemplate());
+	//CovertActions.AddItem(CreateIntenseTrainingTemplate());
 	//CovertActions.AddItem(CreateLiberationIntelTemplate());
 
 	return CovertActions;

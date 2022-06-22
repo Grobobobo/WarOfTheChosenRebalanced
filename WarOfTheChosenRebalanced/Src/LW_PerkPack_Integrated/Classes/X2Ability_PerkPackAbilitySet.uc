@@ -5180,7 +5180,7 @@ static function X2AbilityTemplate AddSuppressorBonusAbility()
 	AimAndCritBonus.AddEffectHitModifier(eHit_Success, default.SUPPRESSOR_AIM_BONUS, Template.LocFriendlyName);
 	AimAndCritBonus.SetDisplayInfo (ePerkBuff_Passive,Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,false,, Template.AbilitySourceName); 
 	AimAndCritBonus.EffectName='SuppressorBonus_LW';
-	AimAndCritBonus.TargetConditions.AddItem(PrimaryWeaponCondition);
+	AimAndCritBonus.ToHitConditions.AddItem(PrimaryWeaponCondition);
 	Template.AddTargetEffect(AimAndCritBonus);
 
 

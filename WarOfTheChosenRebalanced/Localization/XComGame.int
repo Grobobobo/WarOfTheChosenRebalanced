@@ -5466,7 +5466,7 @@ PreMissionText="Sectopods gain Shredder."
 PostMissionSuccessText="Sectopod Upgrade: Shredder"
 PostMissionFailureText="Sectopod Upgrade: Shredder"
 
-[DarkEvent_SectopodReturnFire X2DarkEventTemplate]
+[DarkEvent_SectopodPrimaryReturnFire X2DarkEventTemplate]
 DisplayName="Sectopod Upgrade: Return Fire"
 SummaryText="Sectopods gain Return Fire."
 QuoteText="\"Noone can oppose us, and the glory we bring to humanity.\""

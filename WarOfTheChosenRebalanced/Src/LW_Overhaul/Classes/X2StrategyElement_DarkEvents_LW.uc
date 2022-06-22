@@ -221,7 +221,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('HardTarget','Archon',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Shredder','Sectopod',SectopodAppeared,default.T3_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ReturnFire','Sectopod',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('PrimaryReturnFire','Sectopod',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Defilade','Gatekeeper',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
 /*

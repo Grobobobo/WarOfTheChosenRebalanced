@@ -614,15 +614,15 @@ AbilityDescName="Fist"
 FriendlyName="Berserker Fists"
 AbilityDescName="Fist"
 
-[Berserker_Leader_MeleeAttack X2WeaponTemplate]
+[BerserkerM2_Leader_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
 AbilityDescName="Fist"
 
-[Berserker_Leader_MeleeAttack X2WeaponTemplate]
+[BerserkerM3_Leader_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
 AbilityDescName="Fist"
 
-[Berserker_Leader_MeleeAttack X2WeaponTemplate]
+[BerserkerM4_Leader_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
 AbilityDescName="Fist"
 

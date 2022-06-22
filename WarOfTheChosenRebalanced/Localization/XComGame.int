@@ -3768,6 +3768,10 @@ Summary="PCS bonuses are significantly improved."
 DisplayName="Vengeance"
 Summary="The autopsy of the trooper made us remember what they took from us. If a squadmate dies or is critically wounded, gain random tactical bonuses for two turns."
 
+[LightningStrikeProject X2TechTemplate]
+DisplayName="Lightning Strike"
+Summary="The autopsy of the spectre has given as insights as to how deploy more quickly. Out Soldiers gain +3 mobility for the first turn of battle while the squad remains concealed."
+
 [MilitiaLaser X2TechTemplate]
 DisplayName="Militia Upgrade: Laser Weapons"
 Summary="By improving our mass production capabilities, we can give militia laser weapons, improving the defensive capability of havens."

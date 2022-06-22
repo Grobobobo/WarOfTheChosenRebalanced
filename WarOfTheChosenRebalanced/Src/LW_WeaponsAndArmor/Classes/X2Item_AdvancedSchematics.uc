@@ -1944,21 +1944,19 @@ static function X2DataTemplate ThrowingKnife_CG_Schematic()
 
 	// Cost
 	Resources.ItemTemplateName = 'Supplies';
-    Resources.Quantity = default.THROWINGKNIFE_BEAM_SUPPLYCOST;
+    Resources.Quantity = default.THROWINGKNIFE_COIL_SUPPLYCOST;
 	Template.Cost.ResourceCosts.AddItem(Resources);
 
 	Resources.ItemTemplateName = 'AlienAlloy';
-    Resources.Quantity = default.THROWINGKNIFE_BEAM_ALLOYCOST;
+    Resources.Quantity = default.THROWINGKNIFE_COIL_ALLOYCOST;
 	Template.Cost.ResourceCosts.AddItem(Resources);
 
-    if( default.THROWINGKNIFE_BEAM_ELERIUMCOST > 0)
+    if( default.THROWINGKNIFE_COIL_ELERIUMCOST > 0)
     {
         Resources.ItemTemplateName = 'EleriumDust';
-        Resources.Quantity = default.THROWINGKNIFE_LASER_ELERIUMCOST;
+        Resources.Quantity = default.THROWINGKNIFE_COIL_ELERIUMCOST;
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
-
-
 	return Template;
 }
 
@@ -1989,17 +1987,17 @@ static function X2DataTemplate ThrowingKnife_BM_Schematic()
 
 	// Cost
 	Resources.ItemTemplateName = 'Supplies';
-    Resources.Quantity = default.THROWINGKNIFE_COIL_SUPPLYCOST;
+    Resources.Quantity = default.THROWINGKNIFE_BEAM_SUPPLYCOST;
 	Template.Cost.ResourceCosts.AddItem(Resources);
 
 	Resources.ItemTemplateName = 'AlienAlloy';
-    Resources.Quantity = default.THROWINGKNIFE_COIL_ALLOYCOST;
+    Resources.Quantity = default.THROWINGKNIFE_BEAM_ALLOYCOST;
 	Template.Cost.ResourceCosts.AddItem(Resources);
 
-    if( default.THROWINGKNIFE_COIL_ELERIUMCOST > 0)
+    if( default.THROWINGKNIFE_BEAM_ELERIUMCOST > 0)
     {
         Resources.ItemTemplateName = 'EleriumDust';
-        Resources.Quantity = default.THROWINGKNIFE_LASER_ELERIUMCOST;
+        Resources.Quantity = default.THROWINGKNIFE_BEAM_ELERIUMCOST;
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
 

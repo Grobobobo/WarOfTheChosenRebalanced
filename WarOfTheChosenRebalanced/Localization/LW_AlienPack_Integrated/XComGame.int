@@ -91,9 +91,15 @@ LocPromotionPopupText="<Bullet/> Grants 5 points of ablative armor.<br/><Bullet/
 [MassReanimation_LW X2AbilityTemplate]
 LocFriendlyName="Mass Reanimate"
 LocFlyOverText="Mass Reanimate"
-LocHelpText="Reanimate all nearby dead organics, turning them into zombies."
-LocLongDescription="Reanimate all nearby dead organics, turning them into zombies."
+LocHelpText="Reanimate all nearby dead organics, turning them into zombies. Killing (and not stunning/disorienting) the unit will kill the zombies."
+LocLongDescription="Reanimate all nearby dead organics, turning them into zombies. Killing (and not stunning/disorienting) the unit will kill the zombies."
 LocPromotionPopupText="<Bullet/> Reanimate all nearby dead organics, turning them into zombies."
+
+[PsiReanimation X2AbilityTemplate]
+LocFriendlyName="Psi Reanimation"
+LocLongDescription="Raise a dead soldier, civilian, or ADVENT soldier as a Psionic zombie. Killing (and not stunning/disorienting) the unit will kill the zombies."
+LocHelpText="Raise a dead soldier, civilian, or ADVENT soldier as a Psionic zombie. Killing (and not stunning/disorienting) the unit will kill the zombies."
+LocFlyOverText="Psi Reanimation"
 
 [ReadyForAnything X2AbilityTemplate]
 LocFriendlyName="Ready For Anything"

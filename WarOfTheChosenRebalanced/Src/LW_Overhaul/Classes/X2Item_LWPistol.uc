@@ -109,7 +109,7 @@ static function X2DataTemplate CreateTemplate_LWPistol_Laser()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CreatorTemplateName = 'Pistol_LS_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'Sidearms_LS_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'Pistol_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;

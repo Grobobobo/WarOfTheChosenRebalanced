@@ -23,6 +23,7 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	Templates.AddItem(CreateMiscellaneousListeners());
 	Templates.AddItem(CreateCampaignStartListeners());
+	Templates.AddItem(CreateMissionSiteListeners());
 
 	return Templates;
 }
@@ -59,6 +60,18 @@ static function CHEventListenerTemplate CreateCampaignStartListeners()
 	`CREATE_X2TEMPLATE(class'CHEventListenerTemplate', Template, 'CampaignStartListeners');
 	Template.AddCHEvent('OverrideAllowStartingRegionLink', AllowOutOfContinentStartingRegionLinks, ELD_Immediate, GetListenerPriority());
 	Template.RegisterInCampaignStart = true;
+
+	return Template;
+}
+
+static function CHEventListenerTemplate CreateMissionSiteListeners()
+{
+	local CHEventListenerTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'CHEventListenerTemplate', Template, 'MissionSiteListeners');
+	Template.AddCHEvent('StrategyMapMissionSiteSelected', OnMissionSiteSelected, ELD_Immediate, GetListenerPriority());
+
+	Template.RegisterInStrategy = true;
 
 	return Template;
 }
@@ -472,6 +485,27 @@ static function EventListenerReturn AllowOutOfContinentStartingRegionLinks(
 	// A starting region can be linked to any other neighbouring region.
 	// No restrictions.
 	Tuple.Data[1].b = true;
+
+	return ELR_NoInterrupt;
+}
+
+static function EventListenerReturn OnMissionSiteSelected(Object EventData, Object EventSource, XComGameState NewGameState, Name InEventID, Object CallbackData)
+{
+	local XComGameState_MissionSite		MissionSite;
+	local XComHQPresentationLayer       HQPres;
+	local UIMission_ChosenAmbush_LW     Screen;
+
+	MissionSite = XComGameState_MissionSite(EventData);
+	if(MissionSite == none)
+		return ELR_NoInterrupt;
+
+	if (MissionSite.IsA('XComGameState_MissionSiteChosenAmbush_LW'))
+	{
+		HQPres = `HQPRES;
+		Screen = HQPres.Spawn(class'UIMission_ChosenAmbush_LW', HQPres);
+		Screen.MissionRef.ObjectID = MissionSite.ObjectID;
+		`SCREENSTACK.Push(Screen);
+	}
 
 	return ELR_NoInterrupt;
 }

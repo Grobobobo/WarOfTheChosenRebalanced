@@ -8810,9 +8810,13 @@ LocPromotionPopupText=""
 
 [SteadFast X2AbilityTemplate]
 LocFriendlyName="Mayhem"
-LocLongDescription="Gain <Ability:STEADFAST_SHIELD_HP/> Ablative HP. Your Suppression is no longer removed by recieving damage. Your primary weapon's clip size is increased by 2. Flush and suppression shots deal +<Ability:MAYHEM_DAMAGE_BONUS_PCT/>% damage."
-LocHelpText="Gain <Ability:STEADFAST_SHIELD_HP/> Ablative HP. Your Suppression is no longer removed by recieving damage. Your primary weapon's clip size is increased by 2. Flush and suppression shots deal +<Ability:MAYHEM_DAMAGE_BONUS_PCT/>% damage."
+LocLongDescription="Gain <Ability:STEADFAST_SHIELD_HP/> Ablative HP. Removes the damage penalty for Walk fire and Suppression, and your Suppression is no longer removed by receiving damage. Your primary weapon's clip size is increased by 2."
+LocHelpText="Gain <Ability:STEADFAST_SHIELD_HP/> Ablative HP. Removes the damage penalty for Walk fire and Suppression, and your Suppression is no longer removed by receiving damage. Your primary weapon's clip size is increased by 2."
 LocPromotionPopupText="Units with impact will still remove it."
+
+;LocLongDescription="Gain <Ability:STEADFAST_SHIELD_HP/> Ablative HP. Your Suppression is no longer removed by receiving damage. Your primary weapon's clip size is increased by 2. Flush and suppression shots deal +<Ability:MAYHEM_DAMAGE_BONUS_PCT/>% damage."
+;LocHelpText="Gain <Ability:STEADFAST_SHIELD_HP/> Ablative HP. Your Suppression is no longer removed by receiving damage. Your primary weapon's clip size is increased by 2. Flush and suppression shots deal +<Ability:MAYHEM_DAMAGE_BONUS_PCT/>% damage."
+;LocPromotionPopupText="Units with impact will still remove it."
 
 [Brawler2 X2AbilityTemplate]
 LocFriendlyName="Brawler"

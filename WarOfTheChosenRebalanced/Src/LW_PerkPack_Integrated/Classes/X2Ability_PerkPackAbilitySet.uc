@@ -3011,7 +3011,7 @@ static function X2AbilityTemplate SuppressionDamage()
 {
     local X2AbilityTemplate						Template;
 	local X2Effect_AbilityDamageMult			DamagePenalty;
-
+	local X2Condition_OwnerDoesNotHaveAbility	DoesNotHaveAbilityCondition;
     `CREATE_X2ABILITY_TEMPLATE (Template, 'SuppressionDamage');
     Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_momentum";
     Template.AbilitySourceName = 'eAbilitySource_Perk';
@@ -3021,12 +3021,16 @@ static function X2AbilityTemplate SuppressionDamage()
     Template.AbilityTargetStyle = default.SelfTarget;
     Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
 
+	DoesNotHaveAbilityCondition = new class 'X2Condition_OwnerDoesNotHaveAbility';
+	DoesNotHaveAbilityCondition.AbilityName = 'SteadFast';
+
 	DamagePenalty = new class'X2Effect_AbilityDamageMult';
 	DamagePenalty.Penalty = true;
 	DamagePenalty.Mult = true;
 	DamagePenalty.DamageMod = default.SUPPRESSION_DAMAGE_PENALTY;
 	DamagePenalty.ActiveAbility = 'SuppressionShot_LW';
     DamagePenalty.BuildPersistentEffect(1, true, false, false);
+	DamagePenalty.TargetConditions.AddItem(DoesNotHaveAbilityCondition);
     Template.AddTargetEffect(DamagePenalty);
 
 	DamagePenalty = new class'X2Effect_AbilityDamageMult';
@@ -3035,6 +3039,7 @@ static function X2AbilityTemplate SuppressionDamage()
 	DamagePenalty.DamageMod = default.SUPPRESSION_DAMAGE_PENALTY;
 	DamagePenalty.ActiveAbility = 'AreaSuppressionShot_LW';
     DamagePenalty.BuildPersistentEffect(1, true, false, false);
+	DamagePenalty.TargetConditions.AddItem(DoesNotHaveAbilityCondition);
     Template.AddTargetEffect(DamagePenalty);
 
     Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;

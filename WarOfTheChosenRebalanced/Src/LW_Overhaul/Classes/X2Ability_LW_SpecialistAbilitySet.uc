@@ -524,13 +524,13 @@ static function X2AbilityTemplate AddRescueProtocol()
 	UnitPropertyCondition.TreatMindControlledSquadmateAsHostile = true;
 	UnitPropertyCondition.ExcludeAlive = false;
     UnitPropertyCondition.ExcludeHostileToSource = true;
-    UnitPropertyCondition.RequireSquadmates = true;
+    UnitPropertyCondition.RequireSquadmates = false;
     UnitPropertyCondition.ExcludePanicked = true;
 	UnitPropertyCondition.ExcludeRobotic = false;
 	UnitPropertyCondition.ExcludeStunned = true;
 	UnitPropertyCondition.ExcludeNoCover = false;
 	UnitPropertyCondition.FailOnNonUnits = true;
-	UnitPropertyCondition.ExcludeCivilian = false;
+	UnitPropertyCondition.ExcludeCivilian = true;
 	UnitPropertyCondition.ExcludeTurret = true;
 	Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);
 

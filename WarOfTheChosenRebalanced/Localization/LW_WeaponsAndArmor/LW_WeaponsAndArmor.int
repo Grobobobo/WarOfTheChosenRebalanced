@@ -121,5 +121,5 @@ BriefSummary="Upgrades Assault Rifles."
 
 [GeneralWeapons_BM_Schematic X2SchematicTemplate_LW]
 m_strClassLabel="SQUAD"
-BriefSummary="Beam General Weapons"
-FriendlyName="Upgrades Assault Rifles."
+FriendlyName="Beam General Weapons"
+BriefSummary="Upgrades Assault Rifles."

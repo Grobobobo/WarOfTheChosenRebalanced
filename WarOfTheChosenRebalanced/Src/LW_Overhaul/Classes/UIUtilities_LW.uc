@@ -47,6 +47,9 @@ var localized string m_strStripWeaponUpgradesConfirmDesc;
 var localized string m_strTooltipStripWeapons;
 var localized string m_strVIPCaptureReward;
 
+var localized string m_sAverageScatterText1;
+var localized string m_sAverageScatterText2;
+
 // Initiate the process of taking a unit's picture. May immediately return the picture if it's available, or return none if the
 // picture isn't yet available but will be taken asynchronously. The provided callback will be invoked when the picture is ready, and
 // the caller should call FinishUnitPicture() when the callback is invoked.
@@ -289,6 +292,86 @@ simulated static function bool AddBtnToNavigatorAndSelect(UIScreen TheScreen, UI
 	return SelectionSet;
 }
 
+static function string GetHTMLAverageScatterValueText(float value, optional int places = 2)
+{
+	local string FloatString, TempString;
+	local int i;
+	local float TempFloat, TestFloat;
+
+	TempFloat = value;
+	for (i=0; i< places; i++)
+	{
+		TempFloat *= 10.0;
+	}
+	TempFloat = Round(TempFloat);
+	for (i=0; i< places; i++)
+	{
+		TempFloat /= 10.0;
+	}
+
+	TempString = string(TempFloat);
+	for (i = InStr(TempString, ".") + 1; i < Len(TempString) ; i++)
+	{
+		FloatString = Left(TempString, i);
+		TestFloat = float(FloatString);
+		if (TempFloat ~= TestFloat)
+		{
+			break;
+		}
+	}
+
+	if (Right(FloatString, 1) == ".")
+	{
+		FloatString $= "0";
+	}
+
+	return class'UIUtilities_Text'.static.GetColoredText(FloatString $ " / ", eUIState_Bad, class'UIUtilities_Text'.const.BODY_FONT_SIZE_3D);
+}
+
+static function string GetHTMLMaximumScatterValueText(float value, optional int places = 2)
+{
+	local string FloatString, TempString;
+	local int i;
+	local float TempFloat, TestFloat;
+
+	TempFloat = value;
+	for (i=0; i< places; i++)
+	{
+		TempFloat *= 10.0;
+	}
+	TempFloat = Round(TempFloat);
+	for (i=0; i< places; i++)
+	{
+		TempFloat /= 10.0;
+	}
+
+	TempString = string(TempFloat);
+	for (i = InStr(TempString, ".") + 1; i < Len(TempString) ; i++)
+	{
+		FloatString = Left(TempString, i);
+		TestFloat = float(FloatString);
+		if (TempFloat ~= TestFloat)
+		{
+			break;
+		}
+	}
+
+	if (Right(FloatString, 1) == ".")
+	{
+		FloatString $= "0";
+	}
+
+	return class'UIUtilities_Text'.static.GetColoredText(FloatString, eUIState_Bad, class'UIUtilities_Text'.const.BODY_FONT_SIZE_3D);
+}
+
+static function string GetHTMLTilesText1()
+{
+	return class'UIUtilities_Text'.static.GetColoredText(default.m_sAverageScatterText1, eUIState_Bad, class'UIUtilities_Text'.const.BODY_FONT_SIZE_3D);
+}
+static function string GetHTMLTilesText2()
+{
+	return class'UIUtilities_Text'.static.GetColoredText(default.m_sAverageScatterText2, eUIState_Bad, class'UIUtilities_Text'.const.BODY_FONT_SIZE_3D);
+}
 defaultproperties
 {
 	PlotTypes[0]="Duel"

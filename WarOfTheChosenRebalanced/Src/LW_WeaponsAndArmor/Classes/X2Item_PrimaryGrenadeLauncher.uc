@@ -126,7 +126,7 @@ static function X2GrenadeLauncherTemplate CreatePrimaryGrenadeLauncher_BM()
 
 	`CREATE_X2TEMPLATE(class'X2GrenadeLauncherTemplate', Template, 'PrimaryGrenadeLauncher_BM');
 
-	Template.strImage = "img:///WP_BeamGrenadeLauncher.UI.BeamLauncher";
+	Template.strImage = "img:///WP_BeamGrenadeLauncher_LW.UI.BeamLauncher";
 	Template.EquipSound = "Secondary_Weapon_Equip_Beam";
 
 	Template.iSoundRange = default.BEAMGRENADELAUNCHER_ISOUNDRANGE;

@@ -1727,6 +1727,8 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 			case 'Firestorm':                   // Quickburn
 			case 'LWRocketLauncher':            // Salvo
 			case 'LWBlasterLauncher':           // Salvo
+			case 'IRI_FireRocketLauncher':      // Salvo
+			case 'IRI_FireRocket':           	// Salvo
 			case 'RocketLauncher':              // Salvo
 			case 'ConcussionRocket':            // Salvo
 			case 'ShredderGun':                 // Salvo

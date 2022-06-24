@@ -5151,12 +5151,12 @@ static function bool AbilityTriggerAgainstSingleTarget(int AbilityID, StateObjec
 static function X2AbilityTemplate AddSuppressorBonusAbility()
 {
 	local X2AbilityTemplate						Template;	
-	local X2Effect_ToHitModifier			AimAndCritBonus;
+	local X2Effect_SuppressorBonus			AimAndCritBonus;
 	local X2Effect_PersistentStatChange DefensiveEffect;
 	local X2Condition_PrimaryWeapon	PrimaryWeaponCondition;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'SuppressorBonus');
-	Template.IconImage = "img:///UILibrary_XPerkIconPack_LW.UIPerk_stealth_pistol";
+	Template.IconImage = "img:///UILibrary_XPerkIconPack_LW.UIPerk_stealth_rifle";
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
 	Template.Hostility = eHostility_Neutral;
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
@@ -5174,13 +5174,12 @@ static function X2AbilityTemplate AddSuppressorBonusAbility()
 	PrimaryWeaponCondition = new class'X2Condition_PrimaryWeapon';
 	PrimaryWeaponCondition.RequirePrimary = true;
 
-	AimAndCritBonus = new class'X2Effect_ToHitModifier';
+	AimAndCritBonus = new class'X2Effect_SuppressorBonus';
 	AimAndCritBonus.BuildPersistentEffect(1,true,true,false);
-	AimAndCritBonus.AddEffectHitModifier(eHit_Crit, default.SUPPRESSOR_CRIT_BONUS, Template.LocFriendlyName);
-	AimAndCritBonus.AddEffectHitModifier(eHit_Success, default.SUPPRESSOR_AIM_BONUS, Template.LocFriendlyName);
+	AimAndCritBonus.CritBonus = default.SUPPRESSOR_CRIT_BONUS;
+	AimAndCritBonus.AimBonus = default.SUPPRESSOR_AIM_BONUS;
 	AimAndCritBonus.SetDisplayInfo (ePerkBuff_Passive,Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,false,, Template.AbilitySourceName); 
 	AimAndCritBonus.EffectName='SuppressorBonus_LW';
-	AimAndCritBonus.ToHitConditions.AddItem(PrimaryWeaponCondition);
 	Template.AddTargetEffect(AimAndCritBonus);
 
 
@@ -5209,7 +5208,7 @@ static function X2AbilityTemplate RemoveSuppressorBonus()
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'RemoveSuppressorBonus');	
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
-	Template.IconImage = "img:///UILibrary_XPerkIconPack_LW.UIPerk_stealth_pistol";
+	Template.IconImage = "img:///UILibrary_XPerkIconPack_LW.UIPerk_stealth_rifle";
 	Template.Hostility = eHostility_Neutral;
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
 	Template.AbilityToHitCalc = default.DeadEye;

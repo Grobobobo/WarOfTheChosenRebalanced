@@ -19,7 +19,7 @@ var config int MaxCivilianSpawnDistanceSq;
 
 static function SpawnUnitsForMission(XComGameState_MissionSite Mission)
 {
-	local XComGameStateHistory History;
+//	local XComGameStateHistory History;
 
 		switch (class'Utilities_LW'.static.CurrentMissionType())
 		{

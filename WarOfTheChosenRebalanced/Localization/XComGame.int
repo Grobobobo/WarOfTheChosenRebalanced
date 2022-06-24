@@ -482,6 +482,15 @@ LocFlyOverText="Combatives"
 LocPromotionPopupText="<Bullet/> You will parry any grazed melee attack against you and counterattack with your melee weapon.<br/><Bullet/> Combatives grant +<Ability:COUNTERATTACK_DODGE_AMOUNT_LW/> dodge against first melee attack against you in a turn.<br/>"
 ; End Translation
 
+[CombativesStats X2AbilityTemplate]
+LocFriendlyName="Combatives"
+LocLongDescription="You may sometimes parry melee attacks and counterattack with your melee weapon. Also your melee attack gain <Ability:CUTTHROAT_BONUS_CRIT_CHANCE/> bonus critical chance."
+LocHelpText="You may sometimes parry melee attacks and counterattack with your melee weapon."
+LocFlyOverText="Combatives"
+; LWOTC needs translation
+LocPromotionPopupText="<Bullet/> You will parry any grazed melee attack against you and counterattack with your melee weapon.<br/><Bullet/> Combatives grant +<Ability:COUNTERATTACK_DODGE_AMOUNT_LW/> dodge against first melee attack against you in a turn.<br/>"
+; End Translation
+
 [Flush X2AbilityTemplate]
 LocFriendlyName="Flush"
 LocLongDescription="Special shot but has +<Ability:FLUSH_AIM_BONUS/> to hit that does -35% damage, confers dodge penalties and forces target to change position if it hits."

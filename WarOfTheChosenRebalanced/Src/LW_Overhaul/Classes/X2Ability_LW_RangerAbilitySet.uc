@@ -19,6 +19,8 @@ var config int SPRINTER_MOBILITY;
 
 var config int TD_SHIELD_HP;
 var config int TD_CRIT_DEF;
+
+var config array<name> TAKETHIS_VIABLE_CHARACTERS;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -407,17 +409,18 @@ static function X2AbilityTemplate AddPassSidearm()
 	local X2AbilityCost_ActionPoints			ActionPointCost;
 	local X2Condition_UnitProperty				UnitPropertyCondition;
 	local X2AbilityTarget_Single				SingleTarget;
-	local X2AbilityCharges_TakeThisCharge		Charges;
+	local X2AbilityCharges	Charges;
 	local X2AbilityCost_Charges					ChargeCost;
 	local X2Condition_UnitInventory				TargetWeaponCondition;
-	local X2Effect_TemporaryItem				TemporaryItemEffect;
+	local X2Effect_TakeThis				TemporaryItemEffect;
 	local X2Effect_PersistentStatChange			StatEffect;
-	local X2Condition_AbilityProperty			ShooterAbilityCondition;
+	local X2Condition_Character					AllowedUnitCondition;
+//	local X2Condition_AbilityProperty			ShooterAbilityCondition;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'TakeThis');
 	Template.IconImage = "img:///UILibrary_LW_Overhaul.LW_AbilityTakeThis";
-	//Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_ShowIfAvailable;
-	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_HideSpecificErrors;
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_ShowIfAvailable;
+	//Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_HideSpecificErrors;
 	Template.Hostility = eHostility_Neutral;
 	Template.AbilityToHitCalc = default.DeadEye;
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
@@ -434,14 +437,15 @@ static function X2AbilityTemplate AddPassSidearm()
 	ActionPointCost.bConsumeAllPoints = false;
     Template.AbilityCosts.AddItem(ActionPointCost);
 
-	Charges = new class'X2AbilityCharges_TakeThisCharge';
+	Charges = new class'X2AbilityCharges';
+	Charges.InitialCharges = 1;
 	Template.AbilityCharges = Charges;
 
 	ChargeCost = new class'X2AbilityCost_Charges';
 	ChargeCost.NumCharges = 1;
 	Template.AbilityCosts.AddItem(ChargeCost);
 
-	Template.HideErrors.AddItem('AA_CannotAfford_Charges');
+	//Template.HideErrors.AddItem('AA_CannotAfford_Charges');
 
 	Template.AddShooterEffectExclusions();
 
@@ -457,37 +461,52 @@ static function X2AbilityTemplate AddPassSidearm()
 	UnitPropertyCondition.IsImpaired = false;
 	UnitPropertyCondition.RequireSquadmates = true;
 	UnitPropertyCondition.ExcludeNonCivilian = true;
-	UnitPropertyCondition.WithinRange = 96;	// 1 adjacent tile
+	UnitPropertyCondition.WithinRange = 144;	// 1.5 adjacent tile
 	Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);
 
-	ShooterAbilityCondition = new class'X2Condition_AbilityProperty';
-	ShooterAbilityCondition.OwnerHasSoldierAbilities.AddItem ('PistolStandardShot');
-	ShooterAbilityCondition.TargetMustBeInValidTiles = false;
-	Template.AbilityShooterConditions.AddItem(ShooterAbilityCondition);
+	// ShooterAbilityCondition = new class'X2Condition_AbilityProperty';
+	// ShooterAbilityCondition.OwnerHasSoldierAbilities.AddItem ('PistolStandardShot');
+	// ShooterAbilityCondition.TargetMustBeInValidTiles = false;
+	// Template.AbilityShooterConditions.AddItem(ShooterAbilityCondition);
 
 	TargetWeaponCondition = new class 'X2Condition_UnitInventory';
 	TargetWeaponCondition.ExcludeWeaponCategory = 'pistol';
-	TargetWeaponCondition.RelevantSlot = eInvSlot_Utility;
+	TargetWeaponCondition.RelevantSlot = eInvSlot_PrimaryWeapon;
 	Template.AbilityTargetConditions.AddItem (TargetWeaponCondition);
 	
-	TemporaryItemEffect = new class'X2Effect_TemporaryItem';
+	TargetWeaponCondition = new class 'X2Condition_UnitInventory';
+	TargetWeaponCondition.ExcludeWeaponCategory = 'sidearm';
+	TargetWeaponCondition.RelevantSlot = eInvSlot_PrimaryWeapon;
+	Template.AbilityTargetConditions.AddItem (TargetWeaponCondition);
+
+	TargetWeaponCondition = new class 'X2Condition_UnitInventory';
+	TargetWeaponCondition.ExcludeWeaponCategory = 'sawedoffshotgun';
+	TargetWeaponCondition.RelevantSlot = eInvSlot_PrimaryWeapon;
+	Template.AbilityTargetConditions.AddItem (TargetWeaponCondition);
+
+	TemporaryItemEffect = new class'X2Effect_TakeThis';
 	TemporaryItemEffect.EffectName = 'TakeThisEffect';
-	TemporaryItemEffect.ItemName = 'Pistol_CV';
+	//TemporaryItemEffect.bOverrideInventorySlot = true;
+	//TemporaryItemEffect.InventorySlotOverride = eInvSlot_PrimaryWeapon;
 	TemporaryItemEffect.bIgnoreItemEquipRestrictions = true;
 	TemporaryItemEffect.BuildPersistentEffect(1, true, false);
 	TemporaryItemEffect.DuplicateResponse = eDupe_Ignore;
 	Template.AddTargetEffect(TemporaryItemEffect);
 
+	AllowedUnitCondition = new class'X2Condition_Character';
+	AllowedUnitCondition.IncludeCharacterTemplates = default.TAKETHIS_VIABLE_CHARACTERS;
+	Template.AbilityTargetConditions.AddItem(AllowedUnitCondition);
+
 	//simulated function SetDisplayInfo(X2TacticalGameRulesetDataStructures.EPerkBuffCategory BuffCat, string strName, string strDesc, string strIconLabel, optional bool DisplayInUI, optional string strStatusIcon, optional name opAbilitySource)
 
-	StatEffect = new class 'X2Effect_PersistentStatChange';
-	StatEffect.AddPersistentStatChange (eStat_Offense, 50);
-	StatEffect.AddPersistentStatChange (eStat_SightRadius, 15);
-	StatEffect.AddPersistentStatChange (eStat_DetectionRadius, 9);
-	StatEffect.AddPersistentStatChange (eStat_Mobility, -1);
-	StatEffect.BuildPersistentEffect (1, true, false, false);
-	StatEffect.SetDisplayInfo(ePerkBuff_Passive, class'X2TacticalGameRulesetDataStructures'.default.m_aCharStatLabels[eStat_Offense], Template.GetMyLongDescription(), Template.IconImage, false);
-	Template.AddTargetEffect(StatEffect);
+	// StatEffect = new class 'X2Effect_PersistentStatChange';
+	// StatEffect.AddPersistentStatChange (eStat_Offense, 80);
+	// StatEffect.AddPersistentStatChange (eStat_SightRadius, 15);
+	// StatEffect.AddPersistentStatChange (eStat_DetectionRadius, 9);
+	// StatEffect.AddPersistentStatChange (eStat_Mobility, 0);
+	// StatEffect.BuildPersistentEffect (1, true, false, false);
+	// StatEffect.SetDisplayInfo(ePerkBuff_Passive, class'X2TacticalGameRulesetDataStructures'.default.m_aCharStatLabels[eStat_Offense], Template.GetMyLongDescription(), Template.IconImage, false);
+	// Template.AddTargetEffect(StatEffect);
 
 	Template.bShowActivation = true;
 	Template.bSkipFireAction = true;

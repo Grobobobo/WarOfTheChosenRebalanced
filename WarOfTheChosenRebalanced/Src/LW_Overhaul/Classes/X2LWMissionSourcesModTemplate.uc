@@ -33,6 +33,9 @@ static function UpdateMissionSources(X2StrategyElementTemplate Template, int Dif
 			SourceTemplate.OnSuccessFn = RetaliationOnSuccess_LW;
 			SourceTemplate.OnFailureFn = RetaliationOnFailure_LW;
 			SourceTemplate.OnExpireFn = RetaliationOnExpire_LW;
+		case 'MissionSource_Council':
+			SourceTemplate.OnSuccessFn = CouncilOnSuccess;
+
 
 			break;
 		default:
@@ -245,6 +248,43 @@ static function RetaliationOnExpire_LW(XComGameState NewGameState, XComGameState
 	class'XComGameState_HeadquartersResistance'.static.RecordResistanceActivity(NewGameState, 'ResAct_RetaliationsFailed');	
 }
 
+
+static function CouncilOnSuccess(XComGameState NewGameState, XComGameState_MissionSite MissionState)
+{
+	local array<int> ExcludeIndices;
+
+	ExcludeIndices = GetCouncilExcludeRewards(MissionState);
+	MissionState.bUsePartialSuccessText = (ExcludeIndices.Length > 0);
+	class'X2StrategyElement_DefaultMissionSources'.static.GiveRewards(NewGameState, MissionState, ExcludeIndices);
+	class'X2StrategyElement_DefaultMissionSources'.static.SpawnPointOfInterest(NewGameState, MissionState);
+	MissionState.RemoveEntity(NewGameState);
+	class'XComGameState_HeadquartersResistance'.static.RecordResistanceActivity(NewGameState, 'ResAct_CouncilMissionsCompleted');
+}
+
+
+static function array<int> GetCouncilExcludeRewards(XComGameState_MissionSite MissionState)
+{
+	local XComGameStateHistory History;
+	local XComGameState_BattleData BattleData;
+	local array<int> ExcludeIndices;
+	local int idx;
+
+	History = `XCOMHISTORY;
+	BattleData = XComGameState_BattleData(History.GetSingleGameStateObjectForClass(class'XComGameState_BattleData'));
+	`assert(BattleData.m_iMissionID == MissionState.ObjectID);
+
+	for(idx = 0; idx < BattleData.MapData.ActiveMission.MissionObjectives.Length; idx++)
+	{
+		if(BattleData.MapData.ActiveMission.MissionObjectives[idx].ObjectiveName == 'Capture' &&
+		   !BattleData.MapData.ActiveMission.MissionObjectives[idx].bCompleted)
+		{
+			ExcludeIndices.AddItem(0);
+			ExcludeIndices.AddItem(1);
+		}
+	}
+
+	return ExcludeIndices;
+}
 
 defaultproperties
 {

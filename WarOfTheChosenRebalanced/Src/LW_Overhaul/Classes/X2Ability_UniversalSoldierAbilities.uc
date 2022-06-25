@@ -10,6 +10,8 @@ var config int GETUP_DISORIENT_CHANCE;
 var config float STOCKSTRIKE_MAXHPDAMAGE;
 var config int REBEL_HP_UPGRADE_T1_AMOUNT;
 var config int REBEL_HP_UPGRADE_T2_AMOUNT;
+var config int REBEL_SHIELDHP_UPGRADE_T1_AMOUNT;
+var config int REBEL_SHIELDHP_UPGRADE_T2_AMOUNT;
 var config int QUICK_RELOAD_COOLDOWN;
 
 var config int TURRETFALL_COOLDOWN;
@@ -22,8 +24,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	`LWTrace("  >> X2Ability_PerkPackAbilitySet.UniversalSoldierAbilities()");
 	Templates.AddItem(CreateStockStrike());
 	Templates.AddItem(CreateGetUp());
-	Templates.AddItem(AddRebelHPUpgrade('RebelHPUpgrade_T1', default.REBEL_HP_UPGRADE_T1_AMOUNT));
-	Templates.AddItem(AddRebelHPUpgrade('RebelHPUpgrade_T2', default.REBEL_HP_UPGRADE_T2_AMOUNT));
+	Templates.AddItem(AddRebelHPUpgrade('RebelHPUpgrade_T1', default.REBEL_HP_UPGRADE_T1_AMOUNT, default.REBEL_SHIELDHP_UPGRADE_T1_AMOUNT));
+	Templates.AddItem(AddRebelHPUpgrade('RebelHPUpgrade_T2', default.REBEL_HP_UPGRADE_T2_AMOUNT, default.REBEL_SHIELDHP_UPGRADE_T2_AMOUNT));
 	//Templates.AddItem(AddRebelAblativeUpgrade('RebelAblativeUpgrade_T2', default.REBEL_HP_UPGRADE_T2_AMOUNT));
 	Templates.AddItem(AddRebelGrenadeUpgrade());
 	Templates.AddItem(QuickReloadAbility());
@@ -185,7 +187,7 @@ static function X2AbilityTemplate CreateGetUp()
 }
 
 
-static function X2AbilityTemplate AddRebelHPUpgrade(name TemplateName, int HPamount)
+static function X2AbilityTemplate AddRebelHPUpgrade(name TemplateName, int HPamount, int ShieldHPamount)
 {
 	local X2AbilityTemplate						Template;
 	local X2Effect_PersistentStatChange			StatEffect;
@@ -203,6 +205,7 @@ static function X2AbilityTemplate AddRebelHPUpgrade(name TemplateName, int HPamo
 
 	StatEffect = new class'X2Effect_PersistentStatChange';
 	StatEffect.AddPersistentStatChange(eStat_HP, float(HPamount));
+	StatEffect.AddPersistentStatChange(eStat_ShieldHP, float(ShieldHPamount));
 	StatEffect.BuildPersistentEffect(1, true, false, false);
 	StatEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
 	Template.AddTargetEffect(StatEffect);

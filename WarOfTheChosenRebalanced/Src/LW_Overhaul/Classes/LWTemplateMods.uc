@@ -2101,9 +2101,14 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		break;
 		case 'AdvCaptainM1':
 			Template.Abilities.AddItem('ChangeForm_Shoggoth');
+			Template.Abilities.AddItem('Defilade');
+			Template.Abilities.AddItem('ReadyForAnything');
+			break;
 		case 'AdvGeneralM1':
 			Template.Abilities.AddItem('Defilade');
 			Template.Abilities.AddItem('ReadyForAnything');
+			Template.Abilities.AddItem('Formidable');
+			Template.Abilities.AddItem('Fortified');
 		//Template.Abilities.AddItem('Suppression');
 		break;
 
@@ -2254,6 +2259,15 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		case 'CivilianMilitia':
 			Template.bDisplayUIUnitFlag=true;
 			break;
+		case 'FriendlyVIPCivilian':
+			Template.CharacterBaseStats[eStat_HP] = 8;
+			Template.CharacterBaseStats[eStat_Offense] = 80;
+			Template.CharacterBaseStats[eStat_Mobility] = 15;
+			Template.CharacterBaseStats[eStat_SightRadius]=27;
+			Template.CharacterBaseStats[eStat_DetectionRadius]=12;
+			Template.CanFlankUnits = true;
+			break;
+
 		//Need to rescale the loadouts of these templates, and can't think of a better way since it needs to be by hp basis 
 		default:
 			break;
@@ -2491,6 +2505,10 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		{
 			WeaponTemplate.Abilities.AddItem('SMG_LS_StatBonus');
 		}
+		if(WeaponTemplate.WeaponCat == 'sawedoffshotgun')
+		{
+			WeaponTemplate.Abilities.AddItem('TakeThis');
+		}
 		if (WeaponTemplate.WeaponCat == 'vektor_rifle')
 		{
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MID_LONG_ALL_RANGE;
@@ -2512,7 +2530,12 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		WeaponTemplate.WeaponCat == 'sidearm' ||
 		WeaponTemplate.WeaponCat == 'smg' 
 		)
-		{
+		{		
+			if(WeaponTemplate.WeaponCat == 'sidearm')
+			{
+				WeaponTemplate.Abilities.AddItem('TakeThis');
+			}
+
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MIDSHORT_ALL_RANGE;
 		}
 		if (WeaponTemplate.WeaponCat == 'shotgun')
@@ -3243,14 +3266,18 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				X2WeaponTemplate(EquipmentTemplate).CreatorTemplateName = 'Sidearms_MG_Schematic';
 				X2WeaponTemplate(EquipmentTemplate).InventorySlot = eInvSlot_Pistol;
 				X2WeaponTemplate(EquipmentTemplate).Abilities.RemoveItem('PistolOverwatch');
+				X2WeaponTemplate(EquipmentTemplate).Abilities.AddItem('TakeThis');
+				
 				break;
 			case 'Pistol_BM':
 				X2WeaponTemplate(EquipmentTemplate).CreatorTemplateName = 'Sidearms_BM_Schematic';
 				X2WeaponTemplate(EquipmentTemplate).InventorySlot = eInvSlot_Pistol;
 				X2WeaponTemplate(EquipmentTemplate).Abilities.RemoveItem('PistolOverwatch');
+				X2WeaponTemplate(EquipmentTemplate).Abilities.AddItem('TakeThis');
+
 				break;
 			case 'Pistol_CV':
-
+				X2WeaponTemplate(EquipmentTemplate).Abilities.AddItem('TakeThis');
 			case 'TLE_Pistol_CV':
 			case 'TLE_Pistol_MG':
 			case 'TLE_Pistol_BM':

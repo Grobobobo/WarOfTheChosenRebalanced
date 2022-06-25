@@ -572,8 +572,8 @@ LocPromotionPopUpText="<Bullet/> Sprinter provides 2 bonus mobility."
 
 [TakeThis X2AbilityTemplate]
 LocFriendlyName="You'll Need This"
-LocLongDescription="Pass a spare pistol to a civilian ally."
-LocHelpText="Pass a spare pistol to a nearby civilian ally."
+LocLongDescription="Pass a spare copy of this sidearm to a friendly VIP, and give them various combat abilities."
+LocHelpText="Pass a spare copy of this sidearm to a friendly VIP, and give them various combat abilities."
 LocPromotionPopupText="<Bullet/> Anytime you equip a pistol (of any technology level), you carry a spare conventional pistol that you can hand to any adjacent civilian ally who does not already have a pistol.<br/><Bullet/> The spare pistol does not impose a weight penalty on this soldier, but the ally will incur a one-mobility penalty when receiving the sidearm.<br/><Bullet/> Note: This ability will not appear in your Tactical ability icons unless you can use it."
 
 ;;;;;;;;;;;;;;;;;;;;  SHARPSHOOTER ABILITIES ;;;;;;;;;;;;;;;;;;;;;;;
@@ -6960,7 +6960,7 @@ Description="The area of operations is much larger than normal, so it will proba
 ; LWOTC Needs Translation (2)
 
 [StealthMission X2SitRepTemplate]
-FriendlyName="Stealth Mission"
+FriendlyName="Ambush Opportunity"
 Description="The Concealment does not break at the start of the 2nd turn for this mission."
 ; End Translation (2)
 
@@ -9281,3 +9281,9 @@ RewardDetails="Gain additional Covert Actions."
 MindControlFriendlyDesc="Mentally controlled by an opposing unit. Mind Controlled units take 1 less action per turn."
 
 HackedUnitFriendlyDesc="This unit has been compromised by XCOM. Hacked units take 1 less action per turn."
+
+[Council_Neutralize X2MissionFlavorTextTemplate]
+FlavorText="MISSING FLAVOR TEXT"
+CouncilSpokesmanSuccessText="Commander, you've done the Resistance a great service by bringing back the ADVENT VIP alive, allowing us to gain some important Intel and Supplies."
+CouncilSpokesmanPartialSuccessText="Commander, while we are pleased that your team was able to neutralize the ADVENT VIP, we won't gain any significant rewards from a corpse."
+CouncilSpokesmanFailureText="Failing to neutralize the ADVENT VIP will make it tough on the Resistance in the coming weeks, but we still believe in you, Commander."

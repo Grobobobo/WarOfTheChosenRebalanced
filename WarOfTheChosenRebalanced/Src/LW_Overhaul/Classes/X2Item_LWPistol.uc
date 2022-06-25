@@ -97,6 +97,7 @@ static function X2DataTemplate CreateTemplate_LWPistol_Laser()
 	Template.InventorySlot = eInvSlot_SecondaryWeapon;
 	// PistolStandardShot is added by LWTemplateMods
 	Template.Abilities.AddItem('PistolOverwatch');
+	Template.Abilities.AddItem('TakeThis');
 	Template.Abilities.AddItem('PistolOverwatchShot');
 	Template.Abilities.AddItem('PistolReturnFire');
 	Template.Abilities.AddItem('HotLoadAmmo');
@@ -200,6 +201,7 @@ static function X2DataTemplate CreateTemplate_LWPistol_Coil()
 	Template.Abilities.AddItem('PistolReturnFire');
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('Reload');
+	Template.Abilities.AddItem('TakeThis');
 
 	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotMagA');
 	

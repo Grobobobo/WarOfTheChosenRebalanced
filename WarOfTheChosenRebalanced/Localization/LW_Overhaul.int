@@ -142,23 +142,6 @@ strStripWeaponUpgradesTooltip="Strip all upgrades and customization and return w
 strStripWeaponUpgradeDialogueTitle="CONFIRM STRIP UPGRADES"
 strStripWeaponUpgradeDialogueText="Are you sure you want to strip all upgrades from this weapon and return it to the common pool?"
 
-[UIPersonnel_SquadBarracks]
-strSquadBarrackTitle="SQUAD: <XGParam:StrValue0>"
-strUnassignedSoldierTitle="UNASSIGNED SOLDIERS"
-strEdit="VIEW"
-strSelect="SELECT"
-strSquad="SQUAD"
-strRenameSquad="RENAME SQUAD"
-strEditBiography="EDIT HISTORY"
-strDeleteSquad="DELETE SQUAD"
-strAddSquad="CREATE SQUAD"
-strViewUnassigned="ASSIGN SOLDIERS"
-strViewSquad="SQUAD SOLDIERS"
-strDeleteSquadConfirm="CONFIRM DELETE SQUAD"
-strDeleteSquadConfirmDesc="Are you sure you want to delete this squad?"
-strMissions="Missions: <XGParam:IntValue0>"
-strDefaultSquadBiography="Activated <XGParam:StrValue0>"
-
 [UISquadContainer]
 DefaultSquadTitle=SQUAD
 

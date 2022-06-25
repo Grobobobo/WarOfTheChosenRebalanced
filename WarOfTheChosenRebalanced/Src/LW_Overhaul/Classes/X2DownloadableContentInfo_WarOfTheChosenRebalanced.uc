@@ -45,8 +45,6 @@ var config array<ChosenStrengthWeighted> HUNTER_STRENGTHS_T3;
 // behaviour.
 var config array<string> SKIP_CHOSEN_OVERRIDE_MISSION_TYPES;
 
-var config array<MinimumInfilForConcealEntry> MINIMUM_INFIL_FOR_CONCEAL;
-
 struct ArchetypeToHealth
 {
 	var string ArchetypeName;
@@ -548,6 +546,10 @@ static function PostSitRepCreation(out GeneratedMissionData GeneratedMission, op
 	{
 		GeneratedMission.SitReps.RemoveItem('TheLost');
 		GeneratedMission.SitReps.RemoveItem('TheHorde');
+	}
+	if (class'X2EventListener_Tactical'.default.STEALTH_MISSION_NAMES.Find(GeneratedMission.Mission.MissionName) != INDEX_NONE)
+    {
+		GeneratedMission.SitReps.AddItem('StealthMission');
 	}
 }
 
@@ -1210,24 +1212,6 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 	switch(CharTemplate.DataName)
 	{
 		case 'CivilianMilitia':
-			if (class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('MilitiaArmor2'))
-			{
-				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('RebelHPUpgrade_T2');
-
-				Data = EmptyData;
-				Data.TemplateName = 'RebelHPUpgrade_T2';
-				Data.Template = AbilityTemplate;
-				SetupData.AddItem(Data);
-			}
-			else if (class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('MilitiaArmor1'))
-			{
-				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('RebelHPUpgrade_T1');
-				Data = EmptyData;
-				Data.TemplateName = 'RebelHPUpgrade_T1';
-				Data.Template = AbilityTemplate;
-				SetupData.AddItem(Data);
-			}
-			
 			if (class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('MilitiaAbilities1'))
 			{
 				PrimaryWeaponTemplate = X2WeaponTemplate(UnitState.GetPrimaryWeapon().GetMyTemplate());
@@ -1312,7 +1296,25 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 				Data.Template = AbilityTemplate;
 				SetupData.AddItem(Data);
 			}
+			case 'FriendlyVIPCivilian':
+			if (class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('MilitiaArmor2'))
+			{
+				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('RebelHPUpgrade_T2');
 
+				Data = EmptyData;
+				Data.TemplateName = 'RebelHPUpgrade_T2';
+				Data.Template = AbilityTemplate;
+				SetupData.AddItem(Data);
+			}
+			else if (class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('MilitiaArmor1'))
+			{
+				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('RebelHPUpgrade_T1');
+				Data = EmptyData;
+				Data.TemplateName = 'RebelHPUpgrade_T1';
+				Data.Template = AbilityTemplate;
+				SetupData.AddItem(Data);
+			}
+			break;
 			
 
 

@@ -83,103 +83,153 @@ var config int GENERALWEAPONS_BEAM_ELERIUMCOST;
 var config int IMMOLATOR_CV_SUPPLYCOST;
 var config int IMMOLATOR_CV_ALLOYCOST;
 var config int IMMOLATOR_CV_ELERIUMCOST;
+var config name IMMOLATOR_CV_CORPSE_NAME;
+var config int IMMOLATOR_CV_CORPSE_COST;
 
 var config int IMMOLATOR_MG_SUPPLYCOST;
 var config int IMMOLATOR_MG_ALLOYCOST;
 var config int IMMOLATOR_MG_ELERIUMCOST;
+var config name IMMOLATOR_MG_CORPSE_NAME;
+var config int IMMOLATOR_MG_CORPSE_COST;
 
 var config int IMMOLATOR_BM_SUPPLYCOST;
 var config int IMMOLATOR_BM_ALLOYCOST;
 var config int IMMOLATOR_BM_ELERIUMCOST;
+var config name IMMOLATOR_BM_CORPSE_NAME;
+var config int IMMOLATOR_BM_CORPSE_COST;
 
 var config int WRISTBLADE_LASER_SUPPLYCOST;
 var config int WRISTBLADE_LASER_ALLOYCOST;
 var config int WRISTBLADE_LASER_ELERIUMCOST;
+var config name WRISTBLADE_LASER_CORPSE_NAME;
+var config int WRISTBLADE_LASER_CORPSE_COST;
 
 var config int WRISTBLADE_MAG_SUPPLYCOST;
 var config int WRISTBLADE_MAG_ALLOYCOST;
 var config int WRISTBLADE_MAG_ELERIUMCOST;
+var config name WRISTBLADE_MAG_CORPSE_NAME;
+var config int WRISTBLADE_MAG_CORPSE_COST;
 
 var config int WRISTBLADE_COIL_SUPPLYCOST;
 var config int WRISTBLADE_COIL_ALLOYCOST;
 var config int WRISTBLADE_COIL_ELERIUMCOST;
+var config name WRISTBLADE_COIL_CORPSE_NAME;
+var config int WRISTBLADE_COIL_CORPSE_COST;
 
 var config int WRISTBLADE_BEAM_SUPPLYCOST;
 var config int WRISTBLADE_BEAM_ALLOYCOST;
 var config int WRISTBLADE_BEAM_ELERIUMCOST;
+var config name WRISTBLADE_BEAM_CORPSE_NAME;
+var config int WRISTBLADE_BEAM_CORPSE_COST;
 
 var config int SWORD_LASER_SUPPLYCOST;
 var config int SWORD_LASER_ALLOYCOST;
 var config int SWORD_LASER_ELERIUMCOST;
+var config name SWORD_LASER_CORPSE_NAME;
+var config int SWORD_LASER_CORPSE_COST;
 
 var config int SWORD_MAG_SUPPLYCOST;
 var config int SWORD_MAG_ALLOYCOST;
 var config int SWORD_MAG_ELERIUMCOST;
+var config name SWORD_MAG_CORPSE_NAME;
+var config int SWORD_MAG_CORPSE_COST;
 
 var config int SWORD_COIL_SUPPLYCOST;
 var config int SWORD_COIL_ALLOYCOST;
 var config int SWORD_COIL_ELERIUMCOST;
+var config name SWORD_COIL_CORPSE_NAME;
+var config int SWORD_COIL_CORPSE_COST;
 
 var config int SWORD_BEAM_SUPPLYCOST;
 var config int SWORD_BEAM_ALLOYCOST;
 var config int SWORD_BEAM_ELERIUMCOST;
+var config name SWORD_BEAM_CORPSE_NAME;
+var config int SWORD_BEAM_CORPSE_COST;
 
 var config int COMBATKNIFE_LASER_SUPPLYCOST;
 var config int COMBATKNIFE_LASER_ALLOYCOST;
 var config int COMBATKNIFE_LASER_ELERIUMCOST;
+var config name COMBATKNIFE_LASER_CORPSE_NAME;
+var config int COMBATKNIFE_LASER_CORPSE_COST;
 
 var config int COMBATKNIFE_MAG_SUPPLYCOST;
 var config int COMBATKNIFE_MAG_ALLOYCOST;
 var config int COMBATKNIFE_MAG_ELERIUMCOST;
+var config name COMBATKNIFE_MAG_CORPSE_NAME;
+var config int COMBATKNIFE_MAG_CORPSE_COST;
 
 var config int COMBATKNIFE_COIL_SUPPLYCOST;
 var config int COMBATKNIFE_COIL_ALLOYCOST;
 var config int COMBATKNIFE_COIL_ELERIUMCOST;
+var config name COMBATKNIFE_COIL_CORPSE_NAME;
+var config int COMBATKNIFE_COIL_CORPSE_COST;
 
 var config int COMBATKNIFE_BEAM_SUPPLYCOST;
 var config int COMBATKNIFE_BEAM_ALLOYCOST;
 var config int COMBATKNIFE_BEAM_ELERIUMCOST;
+var config name COMBATKNIFE_BEAM_CORPSE_NAME;
+var config int COMBATKNIFE_BEAM_CORPSE_COST;
 
 var config int THROWINGKNIFE_LASER_SUPPLYCOST;
 var config int THROWINGKNIFE_LASER_ALLOYCOST;
 var config int THROWINGKNIFE_LASER_ELERIUMCOST;
+var config name THROWINGKNIFE_LASER_CORPSE_NAME;
+var config int THROWINGKNIFE_LASER_CORPSE_COST;
 
 var config int THROWINGKNIFE_MAG_SUPPLYCOST;
 var config int THROWINGKNIFE_MAG_ALLOYCOST;
 var config int THROWINGKNIFE_MAG_ELERIUMCOST;
+var config name THROWINGKNIFE_MAG_CORPSE_NAME;
+var config int THROWINGKNIFE_MAG_CORPSE_COST;
 
 var config int THROWINGKNIFE_COIL_SUPPLYCOST;
 var config int THROWINGKNIFE_COIL_ALLOYCOST;
 var config int THROWINGKNIFE_COIL_ELERIUMCOST;
+var config name THROWINGKNIFE_COIL_CORPSE_NAME;
+var config int THROWINGKNIFE_COIL_CORPSE_COST;
 
 var config int THROWINGKNIFE_BEAM_SUPPLYCOST;
 var config int THROWINGKNIFE_BEAM_ALLOYCOST;
 var config int THROWINGKNIFE_BEAM_ELERIUMCOST;
+var config name THROWINGKNIFE_BEAM_CORPSE_NAME;
+var config int THROWINGKNIFE_BEAM_CORPSE_COST;
 
 
 var config int HOLOTARGETER_MAG_SUPPLYCOST;
 var config int HOLOTARGETER_MAG_ALLOYCOST;
 var config int HOLOTARGETER_MAG_ELERIUMCOST;
+var config name HOLOTARGETER_MAG_CORPSE_NAME;
+var config int HOLOTARGETER_MAG_CORPSE_COST;
 
 var config int HOLOTARGETER_BEAM_SUPPLYCOST;
 var config int HOLOTARGETER_BEAM_ALLOYCOST;
 var config int HOLOTARGETER_BEAM_ELERIUMCOST;
+var config name HOLOTARGETER_BEAM_CORPSE_NAME;
+var config int HOLOTARGETER_BEAM_CORPSE_COST;
 
 var config int ARCTHROWER_MAG_SUPPLYCOST;
 var config int ARCTHROWER_MAG_ALLOYCOST;
 var config int ARCTHROWER_MAG_ELERIUMCOST;
+var config name ARCTHROWER_MAG_CORPSE_NAME;
+var config int ARCTHROWER_MAG_CORPSE_COST;
 
 var config int ARCTHROWER_BEAM_SUPPLYCOST;
 var config int ARCTHROWER_BEAM_ALLOYCOST;
 var config int ARCTHROWER_BEAM_ELERIUMCOST;
+var config name ARCTHROWER_BEAM_CORPSE_NAME;
+var config int ARCTHROWER_BEAM_CORPSE_COST;
 
 var config int GREMLIN_MAG_SUPPLYCOST;
 var config int GREMLIN_MAG_ALLOYCOST;
 var config int GREMLIN_MAG_ELERIUMCOST;
+var config name GREMLIN_MAG_CORPSE_NAME;
+var config int GREMLIN_MAG_CORPSE_COST;
 
 var config int GREMLIN_BEAM_SUPPLYCOST;
 var config int GREMLIN_BEAM_ALLOYCOST;
 var config int GREMLIN_BEAM_ELERIUMCOST;
+var config name GREMLIN_BEAM_CORPSE_NAME;
+var config int GREMLIN_BEAM_CORPSE_COST;
 
 
 var config int MEDIUM_PLATED_SUPPLYCOST;
@@ -1176,7 +1226,7 @@ static function X2DataTemplate GeneralWeapons_Beam_Schematic()
 static function X2DataTemplate Immolator_CV_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+		local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Immolator_CV_Schematic');
 
@@ -1212,6 +1262,9 @@ static function X2DataTemplate Immolator_CV_Schematic()
         Resources.Quantity = default.IMMOLATOR_CV_ELERIUMCOST;
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
+	Artifacts.ItemTemplateName = default.IMMOLATOR_CV_CORPSE_NAME;
+	Artifacts.Quantity = default.IMMOLATOR_CV_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
 
 	return Template;
 }
@@ -1219,7 +1272,7 @@ static function X2DataTemplate Immolator_CV_Schematic()
 static function X2DataTemplate Immolator_MG_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+		local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Immolator_MG_Schematic');
 
@@ -1256,6 +1309,9 @@ static function X2DataTemplate Immolator_MG_Schematic()
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
 
+	Artifacts.ItemTemplateName = default.IMMOLATOR_MG_CORPSE_NAME;
+	Artifacts.Quantity = default.IMMOLATOR_MG_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
 
 	return Template;
 }
@@ -1264,7 +1320,7 @@ static function X2DataTemplate Immolator_MG_Schematic()
 static function X2DataTemplate Immolator_BM_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+		local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Immolator_BM_Schematic');
 
@@ -1301,6 +1357,9 @@ static function X2DataTemplate Immolator_BM_Schematic()
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
 
+	Artifacts.ItemTemplateName = default.IMMOLATOR_BM_CORPSE_NAME;
+	Artifacts.Quantity = default.IMMOLATOR_BM_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
 
 	return Template;
 }
@@ -1308,7 +1367,7 @@ static function X2DataTemplate Immolator_BM_Schematic()
 static function X2DataTemplate WristBlade_LS_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+	local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'WristBlade_LS_Schematic');
 
@@ -1346,6 +1405,9 @@ static function X2DataTemplate WristBlade_LS_Schematic()
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
 
+	Artifacts.ItemTemplateName = default.WRISTBLADE_LASER_CORPSE_NAME;
+	Artifacts.Quantity = default.WRISTBLADE_LASER_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
 
 	return Template;
 }
@@ -1353,7 +1415,7 @@ static function X2DataTemplate WristBlade_LS_Schematic()
 static function X2DataTemplate WristBlade_MG_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+	local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'WristBlade_MG_Schematic');
 
@@ -1387,10 +1449,13 @@ static function X2DataTemplate WristBlade_MG_Schematic()
     if( default.WRISTBLADE_MAG_ELERIUMCOST > 0)
     {
         Resources.ItemTemplateName = 'EleriumDust';
-        Resources.Quantity = default.WRISTBLADE_LASER_ELERIUMCOST;
+        Resources.Quantity = default.WRISTBLADE_MAG_ELERIUMCOST;
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
 
+	Artifacts.ItemTemplateName = default.WRISTBLADE_MAG_CORPSE_NAME;
+	Artifacts.Quantity = default.WRISTBLADE_MAG_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
 
 	return Template;
 }
@@ -1399,7 +1464,7 @@ static function X2DataTemplate WristBlade_MG_Schematic()
 static function X2DataTemplate WristBlade_CG_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+		local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'WristBlade_CG_Schematic');
 
@@ -1423,20 +1488,23 @@ static function X2DataTemplate WristBlade_CG_Schematic()
 
 	// Cost
 	Resources.ItemTemplateName = 'Supplies';
-    Resources.Quantity = default.WRISTBLADE_BEAM_SUPPLYCOST;
+    Resources.Quantity = default.WRISTBLADE_COIL_SUPPLYCOST;
 	Template.Cost.ResourceCosts.AddItem(Resources);
 
 	Resources.ItemTemplateName = 'AlienAlloy';
-    Resources.Quantity = default.WRISTBLADE_BEAM_ALLOYCOST;
+    Resources.Quantity = default.WRISTBLADE_COIL_ALLOYCOST;
 	Template.Cost.ResourceCosts.AddItem(Resources);
 
     if( default.WRISTBLADE_BEAM_ELERIUMCOST > 0)
     {
         Resources.ItemTemplateName = 'EleriumDust';
-        Resources.Quantity = default.WRISTBLADE_LASER_ELERIUMCOST;
+        Resources.Quantity = default.WRISTBLADE_COIL_ELERIUMCOST;
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
 
+	Artifacts.ItemTemplateName = default.WRISTBLADE_COIL_CORPSE_NAME;
+	Artifacts.Quantity = default.WRISTBLADE_COIL_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
 
 	return Template;
 }
@@ -1445,7 +1513,7 @@ static function X2DataTemplate WristBlade_CG_Schematic()
 static function X2DataTemplate WristBlade_BM_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+	local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'WristBlade_BM_Schematic');
 
@@ -1468,19 +1536,23 @@ static function X2DataTemplate WristBlade_BM_Schematic()
 
 	// Cost
 	Resources.ItemTemplateName = 'Supplies';
-    Resources.Quantity = default.WRISTBLADE_COIL_SUPPLYCOST;
+    Resources.Quantity = default.WRISTBLADE_BEAM_SUPPLYCOST;
 	Template.Cost.ResourceCosts.AddItem(Resources);
 
 	Resources.ItemTemplateName = 'AlienAlloy';
-    Resources.Quantity = default.WRISTBLADE_COIL_ALLOYCOST;
+    Resources.Quantity = default.WRISTBLADE_BEAM_ALLOYCOST;
 	Template.Cost.ResourceCosts.AddItem(Resources);
 
     if( default.WRISTBLADE_COIL_ELERIUMCOST > 0)
     {
         Resources.ItemTemplateName = 'EleriumDust';
-        Resources.Quantity = default.WRISTBLADE_LASER_ELERIUMCOST;
+        Resources.Quantity = default.WRISTBLADE_BEAM_ELERIUMCOST;
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
+
+	Artifacts.ItemTemplateName = default.WRISTBLADE_BEAM_CORPSE_NAME;
+	Artifacts.Quantity = default.WRISTBLADE_BEAM_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
 
 	return Template;
 }
@@ -1488,7 +1560,7 @@ static function X2DataTemplate WristBlade_BM_Schematic()
 static function X2DataTemplate Sword_LS_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+		local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Sword_LS_Schematic');
 
@@ -1523,6 +1595,10 @@ static function X2DataTemplate Sword_LS_Schematic()
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
 
+	Artifacts.ItemTemplateName = default.SWORD_LASER_CORPSE_NAME;
+	Artifacts.Quantity = default.SWORD_LASER_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
+
 	return Template;
 }
 
@@ -1530,7 +1606,7 @@ static function X2DataTemplate Sword_LS_Schematic()
 static function X2DataTemplate Sword_MG_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+		local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Sword_MG_Schematic');
 
@@ -1565,13 +1641,17 @@ static function X2DataTemplate Sword_MG_Schematic()
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
 
+	Artifacts.ItemTemplateName = default.SWORD_MAG_CORPSE_NAME;
+	Artifacts.Quantity = default.SWORD_MAG_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
+
 	return Template;
 }
 
 static function X2DataTemplate Sword_CG_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+		local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Sword_CG_Schematic');
 
@@ -1606,13 +1686,18 @@ static function X2DataTemplate Sword_CG_Schematic()
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
 
+	Artifacts.ItemTemplateName = default.SWORD_COIL_CORPSE_NAME;
+	Artifacts.Quantity = default.SWORD_COIL_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
+
+
 	return Template;
 }
 
 static function X2DataTemplate Sword_BM_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+		local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Sword_BM_Schematic');
 
@@ -1646,6 +1731,10 @@ static function X2DataTemplate Sword_BM_Schematic()
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
 
+	Artifacts.ItemTemplateName = default.SWORD_BEAM_CORPSE_NAME;
+	Artifacts.Quantity = default.SWORD_BEAM_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
+
 	return Template;
 }
 
@@ -1653,7 +1742,7 @@ static function X2DataTemplate Sword_BM_Schematic()
 static function X2DataTemplate CombatKnife_LS_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+		local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'CombatKnife_LS_Schematic');
 
@@ -1690,6 +1779,10 @@ static function X2DataTemplate CombatKnife_LS_Schematic()
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
 
+	Artifacts.ItemTemplateName = default.COMBATKNIFE_LASER_CORPSE_NAME;
+	Artifacts.Quantity = default.COMBATKNIFE_LASER_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
+
 
 	return Template;
 }
@@ -1697,7 +1790,7 @@ static function X2DataTemplate CombatKnife_LS_Schematic()
 static function X2DataTemplate CombatKnife_MG_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+		local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'CombatKnife_MG_Schematic');
 
@@ -1730,10 +1823,13 @@ static function X2DataTemplate CombatKnife_MG_Schematic()
     if( default.COMBATKNIFE_MAG_ELERIUMCOST > 0)
     {
         Resources.ItemTemplateName = 'EleriumDust';
-        Resources.Quantity = default.COMBATKNIFE_LASER_ELERIUMCOST;
+        Resources.Quantity = default.COMBATKNIFE_MAG_ELERIUMCOST;
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
 
+	Artifacts.ItemTemplateName = default.COMBATKNIFE_MAG_CORPSE_NAME;
+	Artifacts.Quantity = default.COMBATKNIFE_MAG_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
 
 	return Template;
 }
@@ -1742,7 +1838,7 @@ static function X2DataTemplate CombatKnife_MG_Schematic()
 static function X2DataTemplate CombatKnife_CG_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+		local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'CombatKnife_CG_Schematic');
 
@@ -1765,20 +1861,23 @@ static function X2DataTemplate CombatKnife_CG_Schematic()
 
 	// Cost
 	Resources.ItemTemplateName = 'Supplies';
-    Resources.Quantity = default.COMBATKNIFE_BEAM_SUPPLYCOST;
+    Resources.Quantity = default.COMBATKNIFE_COIL_SUPPLYCOST;
 	Template.Cost.ResourceCosts.AddItem(Resources);
 
 	Resources.ItemTemplateName = 'AlienAlloy';
-    Resources.Quantity = default.COMBATKNIFE_BEAM_ALLOYCOST;
+    Resources.Quantity = default.COMBATKNIFE_COIL_ALLOYCOST;
 	Template.Cost.ResourceCosts.AddItem(Resources);
 
-    if( default.COMBATKNIFE_BEAM_ELERIUMCOST > 0)
+    if( default.COMBATKNIFE_COIL_ELERIUMCOST > 0)
     {
         Resources.ItemTemplateName = 'EleriumDust';
-        Resources.Quantity = default.COMBATKNIFE_LASER_ELERIUMCOST;
+        Resources.Quantity = default.COMBATKNIFE_COIL_ELERIUMCOST;
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
 
+	Artifacts.ItemTemplateName = default.COMBATKNIFE_COIL_CORPSE_NAME;
+	Artifacts.Quantity = default.COMBATKNIFE_COIL_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
 
 	return Template;
 }
@@ -1787,7 +1886,7 @@ static function X2DataTemplate CombatKnife_CG_Schematic()
 static function X2DataTemplate CombatKnife_BM_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+		local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'CombatKnife_BM_Schematic');
 
@@ -1819,9 +1918,13 @@ static function X2DataTemplate CombatKnife_BM_Schematic()
     if( default.COMBATKNIFE_BEAM_ELERIUMCOST > 0)
     {
         Resources.ItemTemplateName = 'EleriumDust';
-        Resources.Quantity = default.COMBATKNIFE_LASER_ELERIUMCOST;
+        Resources.Quantity = default.COMBATKNIFE_BEAM_ELERIUMCOST;
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
+
+	Artifacts.ItemTemplateName = default.COMBATKNIFE_BEAM_CORPSE_NAME;
+	Artifacts.Quantity = default.COMBATKNIFE_BEAM_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
 
 	return Template;
 }
@@ -1829,7 +1932,7 @@ static function X2DataTemplate CombatKnife_BM_Schematic()
 static function X2DataTemplate ThrowingKnife_LS_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+		local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'ThrowingKnife_LS_Schematic');
 
@@ -1867,6 +1970,9 @@ static function X2DataTemplate ThrowingKnife_LS_Schematic()
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
 
+	Artifacts.ItemTemplateName = default.THROWINGKNIFE_LASER_CORPSE_NAME;
+	Artifacts.Quantity = default.THROWINGKNIFE_LASER_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
 
 	return Template;
 }
@@ -1874,7 +1980,7 @@ static function X2DataTemplate ThrowingKnife_LS_Schematic()
 static function X2DataTemplate ThrowingKnife_MG_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+		local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'ThrowingKnife_MG_Schematic');
 
@@ -1912,6 +2018,9 @@ static function X2DataTemplate ThrowingKnife_MG_Schematic()
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
 
+	Artifacts.ItemTemplateName = default.THROWINGKNIFE_MAG_CORPSE_NAME;
+	Artifacts.Quantity = default.THROWINGKNIFE_MAG_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
 
 	return Template;
 }
@@ -1920,7 +2029,7 @@ static function X2DataTemplate ThrowingKnife_MG_Schematic()
 static function X2DataTemplate ThrowingKnife_CG_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+		local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'ThrowingKnife_CG_Schematic');
 
@@ -1957,6 +2066,11 @@ static function X2DataTemplate ThrowingKnife_CG_Schematic()
         Resources.Quantity = default.THROWINGKNIFE_COIL_ELERIUMCOST;
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
+
+	Artifacts.ItemTemplateName = default.THROWINGKNIFE_COIL_CORPSE_NAME;
+	Artifacts.Quantity = default.THROWINGKNIFE_COIL_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
+
 	return Template;
 }
 
@@ -1964,7 +2078,7 @@ static function X2DataTemplate ThrowingKnife_CG_Schematic()
 static function X2DataTemplate ThrowingKnife_BM_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources;
+		local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'ThrowingKnife_BM_Schematic');
 
@@ -2000,6 +2114,10 @@ static function X2DataTemplate ThrowingKnife_BM_Schematic()
         Resources.Quantity = default.THROWINGKNIFE_BEAM_ELERIUMCOST;
         Template.Cost.ResourceCosts.AddItem(Resources);
     }
+
+	Artifacts.ItemTemplateName = default.THROWINGKNIFE_BEAM_CORPSE_NAME;
+	Artifacts.Quantity = default.THROWINGKNIFE_BEAM_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
 
 	return Template;
 }
@@ -2046,6 +2164,10 @@ static function X2DataTemplate Holotargeter_MG_Schematic()
 		Template.Cost.ResourceCosts.AddItem(Artifacts);
 	}
 
+	Artifacts.ItemTemplateName = default.HOLOTARGETER_MAG_CORPSE_NAME;
+	Artifacts.Quantity = default.HOLOTARGETER_MAG_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
+
 	return Template;
 }
 
@@ -2086,6 +2208,10 @@ static function X2DataTemplate Holotargeter_BM_Schematic()
 	Artifacts.Quantity = default.HOLOTARGETER_BEAM_ELERIUMCOST;
 	Template.Cost.ResourceCosts.AddItem(Artifacts);
 
+	Artifacts.ItemTemplateName = default.HOLOTARGETER_BEAM_CORPSE_NAME;
+	Artifacts.Quantity = default.HOLOTARGETER_BEAM_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
+
 	return Template;
 }
 
@@ -2111,7 +2237,7 @@ static function X2DataTemplate Arcthrower_MG_Schematic()
 	Template.HideIfPurchased = 'Arcthrower_BM';
 
 	// Requirements
-	Template.Requirements.RequiredTechs.AddItem('MagnetizedWeapons');
+	Template.Requirements.RequiredTechs.AddItem('AutopsyAdventMec');
 	Template.Requirements.RequiredEngineeringScore = 10;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
@@ -2130,6 +2256,10 @@ static function X2DataTemplate Arcthrower_MG_Schematic()
 		Artifacts.Quantity = default.ARCTHROWER_MAG_SUPPLYCOST;
 		Template.Cost.ResourceCosts.AddItem(Artifacts);
 	}
+
+	Artifacts.ItemTemplateName = default.ARCTHROWER_MAG_CORPSE_NAME;
+	Artifacts.Quantity = default.ARCTHROWER_MAG_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
 
 	return Template;
 }
@@ -2154,7 +2284,7 @@ static function X2DataTemplate Arcthrower_BM_Schematic()
 	Template.ReferenceItemTemplate = 'Arcthrower_BM';
 
 	// Requirements
-	Template.Requirements.RequiredTechs.AddItem('PlasmaRifle');
+	Template.Requirements.RequiredTechs.AddItem('AutopsySectopod');
 	Template.Requirements.RequiredEngineeringScore = 20;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
@@ -2173,6 +2303,10 @@ static function X2DataTemplate Arcthrower_BM_Schematic()
 		Artifacts.Quantity = default.ARCTHROWER_BEAM_ELERIUMCOST;
 		Template.Cost.ResourceCosts.AddItem(Artifacts);
 	}
+
+	Artifacts.ItemTemplateName = default.ARCTHROWER_BEAM_CORPSE_NAME;
+	Artifacts.Quantity = default.ARCTHROWER_BEAM_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
 
 	return Template;
 }
@@ -2215,6 +2349,10 @@ static function X2DataTemplate Gremlin_MG_Schematic()
 		Template.Cost.ResourceCosts.AddItem(Artifacts);
 	}
 
+	Artifacts.ItemTemplateName = default.GREMLIN_MAG_CORPSE_NAME;
+	Artifacts.Quantity = default.GREMLIN_MAG_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
+
 	return Template;
 }
 
@@ -2253,6 +2391,10 @@ static function X2DataTemplate Gremlin_BM_Schematic()
 		Artifacts.Quantity = default.GREMLIN_BEAM_ELERIUMCOST;
 		Template.Cost.ResourceCosts.AddItem(Artifacts);
 	}
+
+	Artifacts.ItemTemplateName = default.GREMLIN_BEAM_CORPSE_NAME;
+	Artifacts.Quantity = default.GREMLIN_BEAM_CORPSE_COST;
+	Template.Cost.ArtifactCosts.AddItem(Artifacts);
 
 	return Template;
 }

@@ -42,32 +42,32 @@ static function array<X2DataTemplate> CreateTemplates()
 	Techs.AddItem(CreateAutopsyDroneTemplate());
 	Techs.AddItem(CreateAutopsyBlutonTemplate());
 
-	Techs.AddItem(CreateBasicResearchTemplate());
-	Techs.AddItem(CreateBasicEngineeringTemplate());
+	// Techs.AddItem(CreateBasicResearchTemplate());
+	// Techs.AddItem(CreateBasicEngineeringTemplate());
 
-	Techs.AddItem(CreateRenderTech ('RenderEleriumCore', "img:///UILibrary_StrategyImages.ScienceIcons.IC_Elerium", 'EleriumCore', 500, 'HybridMaterials'));
-	Techs.AddItem(CreateRenderTech ('RenderSectoidCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsySectoid", 'CorpseSectoid', 600, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderViperCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyViper", 'CorpseViper', 600, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderMutonCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyMuton", 'CorpseMuton', 600, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderBerserkerCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyBerserker", 'CorpseBerserker', 600, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderArchonCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyArchon", 'CorpseArchon', 650, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderGatekeeperCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyGatekeeper", 'CorpseGatekeeper', 1000, 'AlienBiotech', 'EleriumCore'));
-	Techs.AddItem(CreateRenderTech ('RenderAndromedonCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAndromedon", 'CorpseAndromedon', 800, 'AlienBiotech', 'EleriumCore'));
-	Techs.AddItem(CreateRenderTech ('RenderFacelessCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyFaceless", 'CorpseFaceless', 600, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderChryssalidCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyCryssalid", 'CorpseChryssalid', 600, 'AlienBiotech')); 
-	Techs.AddItem(CreateRenderTech ('RenderAdventTrooperCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventTrooper", 'CorpseAdventTrooper', 500, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderAdventStunLancerCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventStunLancer", 'CorpseAdventStunLancer', 500, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderAdventShieldbearerCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventShieldbearer", 'CorpseAdventShieldbearer', 500, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderMECWreck', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyMEC", 'CorpseAdventMEC', 600, 'HybridMaterials'));
-	Techs.AddItem(CreateRenderTech ('RenderTurretWreck', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventTurret", 'CorpseAdventTurret', 500, 'HybridMaterials'));
-	Techs.AddItem(CreateRenderTech ('RenderSectopodWreck', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsySextopod", 'CorpseSectopod', 1200, 'HybridMaterials', 'EleriumCore'));
-	Techs.AddItem(CreateRenderTech ('RenderAdventOfficerCorpse', "img:///UILibrary_StrategyImages.ResearchTech.GOLDTECH_Advent_Officer", 'CorpseAdventOfficer', 500, 'AutopsyAdventOfficer'));
-	Techs.AddItem(CreateRenderTech ('RenderAdventPriestCorpse', "img:///UILibrary_XPACK_StrategyImages.IC_Priest", 'CorpseAdventPriest', 600, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderAdventPurifierCorpse', "img:///UILibrary_XPACK_StrategyImages.IC_Purifier", 'CorpseAdventPurifier', 600, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderSpectreCorpse', "img:///UILibrary_XPACK_StrategyImages.IC_Spectre", 'CorpseSpectre', 600, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderEleriumCore', "img:///UILibrary_StrategyImages.ScienceIcons.IC_Elerium", 'EleriumCore', 500, 'HybridMaterials'));
+	// Techs.AddItem(CreateRenderTech ('RenderSectoidCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsySectoid", 'CorpseSectoid', 600, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderViperCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyViper", 'CorpseViper', 600, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderMutonCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyMuton", 'CorpseMuton', 600, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderBerserkerCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyBerserker", 'CorpseBerserker', 600, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderArchonCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyArchon", 'CorpseArchon', 650, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderGatekeeperCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyGatekeeper", 'CorpseGatekeeper', 1000, 'AlienBiotech', 'EleriumCore'));
+	// Techs.AddItem(CreateRenderTech ('RenderAndromedonCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAndromedon", 'CorpseAndromedon', 800, 'AlienBiotech', 'EleriumCore'));
+	// Techs.AddItem(CreateRenderTech ('RenderFacelessCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyFaceless", 'CorpseFaceless', 600, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderChryssalidCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyCryssalid", 'CorpseChryssalid', 600, 'AlienBiotech')); 
+	// Techs.AddItem(CreateRenderTech ('RenderAdventTrooperCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventTrooper", 'CorpseAdventTrooper', 500, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderAdventStunLancerCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventStunLancer", 'CorpseAdventStunLancer', 500, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderAdventShieldbearerCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventShieldbearer", 'CorpseAdventShieldbearer', 500, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderMECWreck', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyMEC", 'CorpseAdventMEC', 600, 'HybridMaterials'));
+	// Techs.AddItem(CreateRenderTech ('RenderTurretWreck', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventTurret", 'CorpseAdventTurret', 500, 'HybridMaterials'));
+	// Techs.AddItem(CreateRenderTech ('RenderSectopodWreck', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsySextopod", 'CorpseSectopod', 1200, 'HybridMaterials', 'EleriumCore'));
+	// Techs.AddItem(CreateRenderTech ('RenderAdventOfficerCorpse', "img:///UILibrary_StrategyImages.ResearchTech.GOLDTECH_Advent_Officer", 'CorpseAdventOfficer', 500, 'AutopsyAdventOfficer'));
+	// Techs.AddItem(CreateRenderTech ('RenderAdventPriestCorpse', "img:///UILibrary_XPACK_StrategyImages.IC_Priest", 'CorpseAdventPriest', 600, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderAdventPurifierCorpse', "img:///UILibrary_XPACK_StrategyImages.IC_Purifier", 'CorpseAdventPurifier', 600, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderSpectreCorpse', "img:///UILibrary_XPACK_StrategyImages.IC_Spectre", 'CorpseSpectre', 600, 'AlienBiotech'));
 
-	Techs.AddItem(CreateRenderTech ('RenderAdventDroneWreck', "img:///UILibrary_LW_Overhaul.LW_IC_AutopsyDrone", 'CorpseDrone', 300, 'HybridMaterials'));
-	Techs.AddItem(CreateRenderTech ('RenderBlutonCorpse', "img:///UILibrary_LW_Overhaul.IC_AutopsyBluton", 'CorpseMutonElite', 700, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderAdventDroneWreck', "img:///UILibrary_LW_Overhaul.LW_IC_AutopsyDrone", 'CorpseDrone', 300, 'HybridMaterials'));
+	// Techs.AddItem(CreateRenderTech ('RenderBlutonCorpse', "img:///UILibrary_LW_Overhaul.IC_AutopsyBluton", 'CorpseMutonElite', 700, 'AlienBiotech'));
 
 	//O so many LW Overhaul Proving Grounds Projects
 	Techs.AddItem(CreateHazMatVestProjectTemplate());

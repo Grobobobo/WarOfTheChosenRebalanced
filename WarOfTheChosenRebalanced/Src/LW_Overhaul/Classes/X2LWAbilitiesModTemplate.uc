@@ -230,6 +230,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'SniperStandardFire':
 		case 'StandardShot':
 		case 'PistolStandardShot':
+		case 'GunslingerShot':
 		case 'OverwatchShot':
 		case 'PistolOverwatchShot':
 		case 'LongWatchShot':

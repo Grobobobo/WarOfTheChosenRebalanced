@@ -264,7 +264,7 @@ function array<name> GatherAbilitiesForItem(X2EquipmentTemplate EquipmentTemplat
 		{
 			EquipmentAbilities.AddItem('Disabler');
 			EquipmentAbilities.AddItem('Gunslinger');
-			EquipmentAbilities.AddItem('QuickDrawPrimary');
+			EquipmentAbilities.AddItem('QuickDraw');
 		}
 		else if(X2WeaponTemplate(EquipmentTemplate).WeaponCat == 'sidearm')
 		{

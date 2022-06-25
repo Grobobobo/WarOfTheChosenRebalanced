@@ -171,7 +171,7 @@ static function X2WeaponTemplate CreateTemplate_AdvPurifierFlamethrower(name Tem
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	
 	Template.ItemCat = 'weapon';
-	Template.WeaponCat = 'shotgun';
+	Template.WeaponCat = 'lwchemthrower';
 	Template.WeaponTech = 'conventional';
 	Template.strImage = "img:///UILibrary_XPACK_StrategyImages.Inv_Advent_Flamethrower";
 	Template.EquipSound = "Conventional_Weapon_Equip";
@@ -213,7 +213,7 @@ static function X2WeaponTemplate CreateTemplate_AdvPurifierFlamethrower_Leader(n
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	
 	Template.ItemCat = 'weapon';
-	Template.WeaponCat = 'shotgun';
+	Template.WeaponCat = 'lwchemthrower';
 	Template.WeaponTech = 'conventional';
 	Template.strImage = "img:///UILibrary_XPACK_StrategyImages.Inv_Advent_Flamethrower";
 	Template.EquipSound = "Conventional_Weapon_Equip";

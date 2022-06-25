@@ -55,7 +55,7 @@ static function XComGameState_Unit AddStrategyUnitToBoardAtLocation(XComGameStat
 	local StateObjectReference ItemReference;
 	local XComGameState_Item ItemState;
 	local array<XComGameState_Item> Items;
-	local XComGameState_Item Item, UpdatedItem, PrimaryWeapon;
+	local XComGameState_Item Item, UpdatedItem;
 	local XComGameState_Unit UpdatedUnit;
 	local X2WeaponTemplate WeaponTemplate;
 	if(Unit == none)

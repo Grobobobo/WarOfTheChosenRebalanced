@@ -60,7 +60,6 @@ var config array <Mission_Reinforcements_Modifiers_Struct_LW> MISSION_REINFORCEM
 
 var config array<int>TURN_COUNT_FOR_CAVALRY_AFTER_VICTORY_MOD;
 var config array<int>TURN_COUNT_TO_CAVALRY_ALL_CASES_MOD;
-var config array<InfiltrationQueueModifierStruct>QUEUE_MODIFIER;
 
 // Amount to add to the level per-turn when the 'RapidResponse' Dark Event is active, indexed
 // by difficulty setting.

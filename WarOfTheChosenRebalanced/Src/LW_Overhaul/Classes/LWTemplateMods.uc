@@ -2266,6 +2266,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 			Template.CharacterBaseStats[eStat_SightRadius]=27;
 			Template.CharacterBaseStats[eStat_DetectionRadius]=12;
 			Template.CanFlankUnits = true;
+			Template.Abilities.AddItem('TacticalSense');
 			break;
 
 		//Need to rescale the loadouts of these templates, and can't think of a better way since it needs to be by hp basis 

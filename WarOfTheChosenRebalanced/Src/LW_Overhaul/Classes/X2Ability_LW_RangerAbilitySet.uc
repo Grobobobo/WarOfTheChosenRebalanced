@@ -471,24 +471,24 @@ static function X2AbilityTemplate AddPassSidearm()
 
 	TargetWeaponCondition = new class 'X2Condition_UnitInventory';
 	TargetWeaponCondition.ExcludeWeaponCategory = 'pistol';
-	TargetWeaponCondition.RelevantSlot = eInvSlot_PrimaryWeapon;
+	TargetWeaponCondition.RelevantSlot = eInvSlot_Pistol;
 	Template.AbilityTargetConditions.AddItem (TargetWeaponCondition);
 	
 	TargetWeaponCondition = new class 'X2Condition_UnitInventory';
 	TargetWeaponCondition.ExcludeWeaponCategory = 'sidearm';
-	TargetWeaponCondition.RelevantSlot = eInvSlot_PrimaryWeapon;
+	TargetWeaponCondition.RelevantSlot = eInvSlot_Pistol;
 	Template.AbilityTargetConditions.AddItem (TargetWeaponCondition);
 
 	TargetWeaponCondition = new class 'X2Condition_UnitInventory';
 	TargetWeaponCondition.ExcludeWeaponCategory = 'sawedoffshotgun';
-	TargetWeaponCondition.RelevantSlot = eInvSlot_PrimaryWeapon;
+	TargetWeaponCondition.RelevantSlot = eInvSlot_Pistol;
 	Template.AbilityTargetConditions.AddItem (TargetWeaponCondition);
 
 	TemporaryItemEffect = new class'X2Effect_TakeThis';
 	TemporaryItemEffect.EffectName = 'TakeThisEffect';
 	//TemporaryItemEffect.bOverrideInventorySlot = true;
 	//TemporaryItemEffect.InventorySlotOverride = eInvSlot_PrimaryWeapon;
-	TemporaryItemEffect.bIgnoreItemEquipRestrictions = true;
+	//TemporaryItemEffect.bIgnoreItemEquipRestrictions = true;
 	TemporaryItemEffect.BuildPersistentEffect(1, true, false);
 	TemporaryItemEffect.DuplicateResponse = eDupe_Ignore;
 	Template.AddTargetEffect(TemporaryItemEffect);

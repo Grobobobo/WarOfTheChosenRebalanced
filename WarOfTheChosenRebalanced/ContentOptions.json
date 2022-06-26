@@ -22,6 +22,7 @@
         "Obj_LWNeutralizeTarget",
         "Obj_LWTerror",
         "Obj_RecoverItem_LW",
+        "Obj_NeutralizeFieldCommander_LW",
         "Obj_RecruitRaid_LW",
         "Obj_Rendezvous_LW",
         "Obj_SabotageCC_LW",

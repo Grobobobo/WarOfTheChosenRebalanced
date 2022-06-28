@@ -1956,7 +1956,7 @@ static function X2AbilityTemplate WeaponHandlingShortRange()
 
 	Effect = new class'X2Effect_ModifyRangePenalties';
 	Effect.RangePenaltyMultiplier = default.WEAPONHANDLING_SHORTRANGE_MULTIPLIER;
-	Effect.BaseRange = 10;
+	Effect.BaseRange = 13;
 	Effect.bShortRange = true;
 	Effect.ApplicableWeaponCats = default.WEAPONHANDLING_SHORTRANGE_WEAPON_CATS;
 

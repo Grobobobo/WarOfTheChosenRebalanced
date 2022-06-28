@@ -33,7 +33,7 @@ simulated function BuildMissionPanel()
 simulated function string GetModifiedRewardString()
 {
 	local XComGameState_MissionSite MissionState;
-	local string RewardString, OldCaptureRewardString, NewCaptureRewardString;
+	local string RewardString;
 
 	MissionState = GetMission();
 	RewardString = GetRewardString();

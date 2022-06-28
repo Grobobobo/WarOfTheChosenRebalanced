@@ -1021,7 +1021,7 @@ FriendlyName="ADVENT Rocket Launcher"
 ;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecM3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 [AdvMec_Leader X2CharacterTemplate]
-strCharacterName="Superheavy MEC"
+strCharacterName="Heavy MEC"
 
 [AdvMEC_M3_Wpn X2WeaponTemplate]
 FriendlyName="ADVENT Mag Cannon"

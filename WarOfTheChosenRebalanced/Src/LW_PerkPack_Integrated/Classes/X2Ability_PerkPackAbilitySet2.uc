@@ -23,8 +23,8 @@ var config float PHANTOM_DETECTION_RANGE_REDUCTION;
 var config int PHANTOM_COOLDOWN;
 var config int PHANTOM_CHARGES;
 var config int CONCEAL_BONUS_CHARGES;
-var config float REAPER_PCT_DMG_REDUCTION;
-var config float SERIAL_PCT_DMG_REDUCTION;
+var config array<float> REAPER_PCT_DMG_REDUCTION;
+var config array<float> SERIAL_PCT_DMG_REDUCTION;
 
 var config int SPRAY_AND_PRAY_DODGE;
 var config int STOCK_SPRAY_AND_PRAY_DODGE;
@@ -1530,6 +1530,17 @@ static function X2AbilityTemplate ShotgunFireControl()
 	return Template;
 }
 
+static function X2AbilityTemplate CreateIronWill()
+{
+	local X2AbilityTemplate		Template;
+
+	Template = PurePassive('IronWill', "img:///UILibrary_XPerkIconPack_LW.UIPerk_mind_cycle", , 'eAbilitySource_Perk');
+
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+
+	return Template;
+}
 static function X2AbilityTemplate AddSilentTakedown_LW()
 {
 	local X2AbilityTemplate                 Template;

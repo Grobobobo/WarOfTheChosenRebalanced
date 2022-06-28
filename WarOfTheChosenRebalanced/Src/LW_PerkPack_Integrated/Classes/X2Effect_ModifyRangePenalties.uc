@@ -9,6 +9,7 @@ var float RangePenaltyMultiplier;
 var bool bShowNamedModifier;
 var int BaseRange;
 var bool bShortRange, bLongRange;
+var array<name> ApplicableWeaponCats;
 
 function GetToHitModifiers(XComGameState_Effect EffectState, XComGameState_Unit Attacker, XComGameState_Unit Target, XComGameState_Ability AbilityState, class<X2AbilityToHitCalc> ToHitType, bool bMelee, bool bFlanking, bool bIndirectFire, out array<ShotModifierInfo> ShotModifiers)
 {
@@ -21,8 +22,8 @@ function GetToHitModifiers(XComGameState_Effect EffectState, XComGameState_Unit 
 		return;
 
 	SourceWeapon = AbilityState.GetSourceWeapon();	
-	
-	if (Attacker != none && Target != none && SourceWeapon != none)
+
+	if (Attacker != none && Target != none && SourceWeapon != none && X2WeaponTemplate(SourceWeapon.GetMyTemplate()).InventorySlot == eInvSlot_PrimaryWeapon && ApplicableWeaponCats.Find(X2WeaponTemplate(SourceWeapon.GetMyTemplate()).WeaponCat) != INDEX_NONE)
 	{
 		WeaponTemplate = X2WeaponTemplate(SourceWeapon.GetMyTemplate());
 
@@ -33,6 +34,8 @@ function GetToHitModifiers(XComGameState_Effect EffectState, XComGameState_Unit 
 				return;
 			if (Tiles > BaseRange && !bLongRange)
 				return;
+			if (Tiles > 17)
+				return;
 
 			if (WeaponTemplate.RangeAccuracy.Length > 0)
 			{
@@ -41,13 +44,13 @@ function GetToHitModifiers(XComGameState_Effect EffectState, XComGameState_Unit 
 				else  //  if this tile is not configured, use the last configured tile					
 					Modifier = WeaponTemplate.RangeAccuracy[WeaponTemplate.RangeAccuracy.Length-1];
 
-				if (BaseRange > 0)
-				{
-					if (BaseRange < WeaponTemplate.RangeAccuracy.Length)
-						Modifier -= WeaponTemplate.RangeAccuracy[BaseRange];
-					else  //  if this tile is not configured, use the last configured tile					
-						Modifier -= WeaponTemplate.RangeAccuracy[WeaponTemplate.RangeAccuracy.Length-1];
-				}
+				// if (BaseRange > 0)
+				// {
+				// 	if (BaseRange < WeaponTemplate.RangeAccuracy.Length)
+				// 		Modifier -= WeaponTemplate.RangeAccuracy[BaseRange];
+				// 	else  //  if this tile is not configured, use the last configured tile					
+				// 		Modifier -= WeaponTemplate.RangeAccuracy[WeaponTemplate.RangeAccuracy.Length-1];
+				// }
 			}
 		}
 	

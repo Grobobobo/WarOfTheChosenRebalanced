@@ -80,7 +80,11 @@ var config int SS_PIERCE;
 
 var config int SS_AIM_BONUS;
 
-var config float WEAPONHANDLING_MULTIPLIER;
+var config float WEAPONHANDLING_SHORTRANGE_MULTIPLIER;
+var config float WEAPONHANDLING_LONGRANGE_MULTIPLIER;
+
+var config array<name> WEAPONHANDLING_SHORTRANGE_WEAPON_CATS;
+var config array<name> WEAPONHANDLING_LONGRANGE_WEAPON_CATS;
 
 var config float APEX_PREDATOR_PANIC_RADIUS;
 var config int APEX_PREDATOR_BASE_PANIC_CHANCE;
@@ -190,7 +194,10 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(Disassembly());
 	Templates.AddItem(DisassemblyPassive());
 	Templates.AddItem(ShootingSharp());
-	Templates.AddItem(WeaponHandling());
+	Templates.AddItem(WeaponHandlingShortRange());
+	Templates.AddItem(WeaponHandlingLongRange());
+
+	
 	Templates.AddItem(AimingAssist());
 	Templates.AddItem(TargetFocus());
 	
@@ -1943,19 +1950,35 @@ static function X2AbilityTemplate DisassemblyPassive()
 	return Template;
 }
 
-static function X2AbilityTemplate WeaponHandling()
+static function X2AbilityTemplate WeaponHandlingShortRange()
 {
 	local X2Effect_ModifyRangePenalties Effect;
 
 	Effect = new class'X2Effect_ModifyRangePenalties';
-	Effect.RangePenaltyMultiplier = default.WEAPONHANDLING_MULTIPLIER;
-	Effect.BaseRange = 18;
+	Effect.RangePenaltyMultiplier = default.WEAPONHANDLING_SHORTRANGE_MULTIPLIER;
+	Effect.BaseRange = 10;
 	Effect.bShortRange = true;
-	Effect.AbilityTargetConditions.AddItem(default.MatchingWeaponCondition);
+	Effect.ApplicableWeaponCats = default.WEAPONHANDLING_SHORTRANGE_WEAPON_CATS;
 
-	return Passive('WeaponHandling_LW', "img:///UILibrary_SOHunter_LW.UIPerk_point_blank", false, Effect);
+	//Effect.AbilityTargetConditions.AddItem(default.MatchingWeaponCondition);
+
+	return Passive('WeaponHandling_ShortRange', "img:///UILibrary_SOHunter_LW.UIPerk_point_blank", false, Effect);
 }
 
+static function X2AbilityTemplate WeaponHandlingLongRange()
+{
+	local X2Effect_ModifyRangePenalties Effect;
+
+	Effect = new class'X2Effect_ModifyRangePenalties';
+	Effect.RangePenaltyMultiplier = default.WEAPONHANDLING_LONGRANGE_MULTIPLIER;
+	Effect.BaseRange = 10;
+	Effect.bShortRange = false;
+	Effect.bLongRange = true;
+	Effect.ApplicableWeaponCats = default.WEAPONHANDLING_LONGRANGE_WEAPON_CATS;
+	//Effect.AbilityTargetConditions.AddItem(default.MatchingWeaponCondition);
+
+	return Passive('WeaponHandling_LongRange', "img:///UILibrary_SOHunter_LW.UIPerk_point_blank", false, Effect);
+}
 static function X2AbilityTemplate ShootingSharp()
 {
 	local XMBEffect_ConditionalBonus ShootingEffect;
@@ -3256,6 +3279,10 @@ static function X2AbilityTemplate MovingTarget()
 
 	// Create a conditional bonus
 	Effect = new class'X2Effect_MovingTarget_LW';
+	Effect.MovingTargetStartingDefensePenalty = 0;
+	Effect.MovingTargetStartingDodgePenalty = 0;
+	Effect.MovingTargetBonusDefensePerShot = default.MOVING_TARGET_DEFENSE;
+	Effect.MovingTargetBonusDodgePerShot = default.MOVING_TARGET_DEFENSE;
 
 	// Create the template using a helper function
 	return Passive('MovingTarget_LW', "img:///UILibrary_PerkIcons.UIPerk_lightningreflexes", false, Effect);

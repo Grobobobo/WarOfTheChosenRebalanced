@@ -394,8 +394,10 @@ static private function bool GetScatterParams(const XComGameState_Ability Abilit
 	local X2WeaponTemplate		WeaponTemplate;
 	local bool					UnitMoved;
 	local int i;
+	local XComGameState_Effect	EffectState;
+	local StateObjectReference EffectRef;
+	local X2Effect_Persistent	EffectTemplate;
 
-	
 	AbilityName = AbilityState.GetMyTemplateName();
 
 	SourceWeapon = AbilityState.GetSourceWeapon();
@@ -408,6 +410,16 @@ static private function bool GetScatterParams(const XComGameState_Ability Abilit
 
 			if (default.EXCLUDE_WEAPON.Find(WeaponName) != INDEX_NONE) return false;
 
+			foreach UnitState.AffectedByEffects(EffectRef)
+			{
+				//No Scatter if the unit is steadied
+				EffectState = XComGameState_Effect(`XCOMHISTORY.GetGameStateForObjectID(EffectRef.ObjectID));
+				EffectTemplate = EffectState.GetX2Effect();
+				if (EffectTemplate.IsA('X2Effect_SteadyWeapon'))
+				{
+					return false;
+				}
+			}
 			WeaponCat = WeaponTemplate.WeaponCat;
 		}
 		//	Don't need to be a weapon template to have Item Cat

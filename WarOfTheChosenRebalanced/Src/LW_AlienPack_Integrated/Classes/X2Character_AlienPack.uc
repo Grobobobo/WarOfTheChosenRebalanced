@@ -120,7 +120,7 @@ static function X2CharacterTemplate CreateTemplate_MutonCenturion(name TemplateN
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 
@@ -194,7 +194,7 @@ static function X2CharacterTemplate CreateTemplate_MutonElite_LW(name TemplateNa
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 
@@ -276,7 +276,7 @@ static function X2CharacterTemplate CreateTemplate_Sidewinder(name TemplateName)
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 
@@ -349,7 +349,7 @@ static function X2CharacterTemplate CreateTemplate_Sidewinder_Leader(name Templa
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 
@@ -434,7 +434,7 @@ static function X2CharacterTemplate CreateTemplate_Archon_LW(name TemplateName)
 
 	CharTemplate.bAllowSpawnFromATT = false;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 
@@ -505,7 +505,7 @@ static function X2CharacterTemplate CreateTemplate_Sectoid_LW(name TemplateName)
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 
@@ -583,7 +583,7 @@ static function X2CharacterTemplate CreateTemplate_Viper_LW(name TemplateName)
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 
@@ -668,7 +668,7 @@ static function X2CharacterTemplate CreateTemplate_AdvGunner(name TemplateName)
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Counterattack');
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 
@@ -736,7 +736,7 @@ static function X2CharacterTemplate CreateTemplate_AdvSentry(name TemplateName)
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 	
@@ -801,7 +801,7 @@ static function X2CharacterTemplate CreateTemplate_AdvMec_LW(name TemplateName)
 	CharTemplate.bIsSoldier = false;
 
 	CharTemplate.bAllowSpawnFromATT = true;
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 	CharTemplate.bFacesAwayFromPod = true;
@@ -879,7 +879,7 @@ static function X2CharacterTemplate CreateTemplate_Drone(name TemplateName)
 	CharTemplate.bIsRobotic = true;
 	CharTemplate.bIsSoldier = false;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = false;
 
@@ -949,7 +949,7 @@ static function X2CharacterTemplate CreateTemplate_ChryssalidSoldier(name Templa
 	CharTemplate.bIsSoldier = false;
 	CharTemplate.bIsMeleeOnly = true;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 
@@ -1015,7 +1015,7 @@ static function X2CharacterTemplate CreateTemplate_HiveQueen()
 	CharTemplate.bIsSoldier = false;
 	CharTemplate.bIsMeleeOnly = true;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 
@@ -1129,7 +1129,7 @@ static function X2CharacterTemplate CreateTemplate_AdvGeneric(name TemplateName)
 	CharTemplate.bIsPsionic = false;
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 	CharTemplate.bAllowSpawnFromATT = true;
@@ -1182,7 +1182,7 @@ static function X2CharacterTemplate CreateTemplate_Andromedon_Leader(name Templa
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = false;
 
@@ -1253,7 +1253,7 @@ static function X2CharacterTemplate CreateTemplate_AndromedonRobot_Leader(name T
 
 	CharTemplate.bAllowSpawnFromATT = false;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = false;
 	
@@ -1319,7 +1319,7 @@ static function X2CharacterTemplate CreateTemplate_AndromedonRobot_Leader(name T
 	CharTemplate.bIsSoldier = false;
 	CharTemplate.bIsMeleeOnly = true;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = false;
 	CharTemplate.AcquiredPhobiaTemplate = 'FearOfMutons';
@@ -1389,7 +1389,7 @@ static function X2CharacterTemplate CreateTemplate_AdvStunLancer_Leader(name Tem
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 	CharTemplate.AcquiredPhobiaTemplate = 'FearOfStunLancers';
@@ -1464,7 +1464,7 @@ static function X2CharacterTemplate CreateTemplate_AdvShieldBearer(name Template
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 
@@ -1540,7 +1540,7 @@ static function X2CharacterTemplate CreateTemplate_PurgePriest(name TemplateName
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = false;
 	
@@ -1612,7 +1612,7 @@ static function X2CharacterTemplate CreateTemplate_AdvPurifier_Leader(name Templ
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = false;
 
@@ -1680,7 +1680,7 @@ static function X2CharacterTemplate CreateTemplate_Shoggoth()
 	CharTemplate.bIsSoldier = false;
 	CharTemplate.bIsMeleeOnly = true;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 
@@ -1740,7 +1740,7 @@ static function X2CharacterTemplate CreateNeonateChryssalid_Template()
 	CharTemplate.bIsSoldier = false;
 	CharTemplate.bIsMeleeOnly = true;
 
-	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeTerrorist = true;
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 

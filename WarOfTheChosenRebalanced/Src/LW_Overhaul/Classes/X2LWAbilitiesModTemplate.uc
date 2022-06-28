@@ -156,7 +156,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'TemplarBladestormAttack':
 			MakeBladestormNotTriggerOnItsTurn(Template);
 			Template.PostActivationEvents.AddItem('BladestormActivated');
-			Template.AdditionalAbilities.AddItem('CoolUnderPressure');
+//			Template.AdditionalAbilities.AddItem('CoolUnderPressure');
 			break;
 
 		case 'Bind':
@@ -298,6 +298,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'EverVigilant':
 			Template.AdditionalAbilities.Removeitem('EverVigilantTrigger');
 			Template.AdditionalAbilities.AddItem('NewEverVigilantTrigger');
+			Template.AdditionalAbilities.AddItem('CoolUnderPressure');
 			break;
 		case 'SectopodLightningField':
 			class'Helpers_LW'.static.MakeFreeAction(Template);
@@ -325,6 +326,9 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 			break;
 		case 'EUBerserkerDevastatingPunch':
 			UpdateLeaderPunch(Template);
+			break;
+		case 'SkirmisherAmbush':
+			UpdateWaylay(Template);
 			break;
 		// case 'SpawnChryssalid':
 		// 	ReworkChryssalidSpawning(Template);
@@ -1987,6 +1991,17 @@ static function UpdateLeaderPunch(X2AbilityTemplate Template)
 
 
 }
+
+static function UpdateWaylay(X2AbilityTemplate Template)
+{
+	local X2Effect_Sentinel_LW PersistentEffect;
+
+	PersistentEffect = new class'X2Effect_Sentinel_LW';
+	PersistentEffect.BuildPersistentEffect(1, true, false);
+	PersistentEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,, Template.AbilitySourceName);
+	Template.AddTargetEffect(PersistentEffect);
+}
+
 
 // static function ReworkChryssalidSpawning(X2AbilityTemplate Template)
 // {

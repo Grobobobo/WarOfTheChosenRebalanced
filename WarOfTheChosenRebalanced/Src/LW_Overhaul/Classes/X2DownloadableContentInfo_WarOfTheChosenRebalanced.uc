@@ -2845,9 +2845,14 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 		case 'RAPID_TARGETING_COOLDOWN_LW':
 			OutString = string(class'X2Ability_LW_SharpshooterAbilitySet'.default.RAPID_TARGETING_COOLDOWN);
 			return true;
-
 		case 'BURNOUT_RADIUS_LW':
 			OutString = Repl(string(class'X2Ability_LW_TechnicalAbilitySet'.default.BURNOUT_RADIUS), "0", "");
+			return true;
+		case 'FIRE_AND_STEEL_DAMAGE_BONUS':
+			OutString = string(class'X2Ability_LW_TechnicalAbilitySet'.default.FIRE_AND_STEEL_DAMAGE_BONUS);
+			return true;
+		case 'FIRE_AND_STEEL_MOBILITY':
+			OutString = string(class'X2Ability_LW_TechnicalAbilitySet'.default.FIRE_AND_STEEL_MOBILITY);
 			return true;
 		case 'HIGH_PRESSURE_CHARGES_LW':
 			Outstring = string(class'X2Ability_LW_TechnicalAbilitySet'.default.FLAMETHROWER_HIGH_PRESSURE_CHARGES);
@@ -3096,6 +3101,9 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 			return true;
 		case 'ARTERIAL_STRIKE_PRIMARY_BLEED':
 			Outstring = string(class'X2Ability_LW_ChosenAbilities'.default.ARTERIAL_STRIKE_PRIMARY_BLEED);
+			return true;
+		case 'EXO_SERVOS_MOB':
+			Outstring = string(class'X2Ability_LW_ChosenAbilities'.default.EXO_SERVOS_MOB);
 			return true;
 		case 'ARTERIAL_STRIKE_BLEED_INCREASE':
 			Outstring = string(class'X2Ability_LW_ChosenAbilities'.default.ARTERIAL_STRIKE_BLEED_INCREASE);

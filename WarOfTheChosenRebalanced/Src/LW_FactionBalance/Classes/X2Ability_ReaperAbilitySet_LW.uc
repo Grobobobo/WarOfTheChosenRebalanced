@@ -31,6 +31,8 @@ var config int DisablingShotBaseStunActions;
 var config int DisablingShotCritStunActions;
 var config float DisablingShotDamagePenalty;
 
+var config array<name> VALID_ITZ_ABILITIES;
+
 var config array<name> CHEAPSHOT_ABILITYNAMES;
 var config float CHEAPSHOT_BONUS_DAMAGE;
 static function array<X2DataTemplate> CreateTemplates()
@@ -57,6 +59,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddChargeBattery());
 	Templates.AddItem(AddParamedic());
 	Templates.AddItem(AddCheapShotAbility());
+	Templates.AddItem(InTheZone_LW());
+	Templates.AddItem(InTheZonePassive_LW());
 	
 	Templates.AddItem(ParaMedikitHeal());
 	Templates.AddItem(ParaMedikitStabilize());
@@ -373,6 +377,72 @@ static function X2AbilityTemplate AddClaymoreDisorient()
 	return Template;
 }
 
+
+
+static function X2AbilityTemplate InTheZone_LW()
+{
+	local X2AbilityTemplate                 Template;		
+	local X2AbilityCost_ActionPoints        ActionPointCost;	
+	local X2Condition_UnitProperty          ShooterPropertyCondition;	
+//	local X2Condition_UnitProperty          TargetUnitPropertyCondition;	
+	//local X2Condition_Visibility            TargetVisibilityCondition;
+//	local X2AbilityTarget_Single            SingleTarget;
+	local X2AbilityTrigger_Placeholder		UseTrigger;
+	local X2Effect_InTheZone				ITZEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'InTheZone_LW');
+	
+	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.bFreeCost = true;
+	Template.AbilityCosts.AddItem(ActionPointCost);
+	
+	Template.AbilitySourceName = 'eAbilitySource_Standard';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.IconImage = "img:///UILibrary_XPerkIconPack_LW.UIPerk_sniper_cycle";
+	Template.Hostility = eHostility_Neutral;
+
+	//Can't evaluate stimuli while dead
+	ShooterPropertyCondition = new class'X2Condition_UnitProperty';	
+	ShooterPropertyCondition.ExcludeDead = true;                    	
+	Template.AbilityShooterConditions.AddItem(ShooterPropertyCondition);
+
+
+	//Always applied when triggered
+	Template.AbilityToHitCalc = default.DeadEye;
+
+	//Single target ability
+	Template.AbilityTargetStyle = default.SelfTarget;
+
+	//Triggered by persistent effect from Trojan
+	UseTrigger = new class'X2AbilityTrigger_Placeholder';
+	Template.AbilityTriggers.AddItem(UseTrigger);
+	
+	ITZEffect = new class 'X2Effect_InTheZone';
+	ITZEffect.ApplicableAbilities = default.VALID_ITZ_ABILITIES;
+	ITZEffect.BuildPersistentEffect (1, false, true /*Remove on Source Death*/,, eGameRule_PLayerTurnBegin);
+	ITZEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
+	Template.AddTargetEffect (ITZEffect);
+
+	Template.ActivationSpeech = 'Banish';
+	//Template.bShowPostActivation = true;
+	Template.bSkipFireAction = true;
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization; // no visualization on application on purpose -- it would be fighting with the hacking stuff
+
+	Template.AdditionalAbilities.AddItem('InTheZonePassive_LW');
+
+	return Template;	
+}
+
+static function X2AbilityTemplate InTheZonePassive_LW()
+{
+	local X2AbilityTemplate Template;
+
+	Template = PurePassive('InTheZonePassive_LW', "img:///UILibrary_XPerkIconPack_LW.UIPerk_sniper_cycle", true);
+
+	return Template;
+}
 // Copied and modified from HomingMineDetonation_MergeVisualization
 //
 // Makes sure the disorient effect and flyover appear after the Claymore explosion.

@@ -937,7 +937,6 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 	local X2Condition_AbilityProperty		AbilityCondition;
 	local name 								 AbilityName;
 	local X2Effect_SharpshooterAim_LW   	AimEffect;
-	local X2AbilityCooldown_Shared			CooldownShared;
 	local X2AbilityMultiTarget_Cone			ConeMultiTarget;
 	local X2AbilityCooldown_AllInstances 	AllInstancesCooldown;
 	local X2Effect_RemoveEffects 			RemoveEffects;
@@ -1311,13 +1310,13 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 		}
 		if (Template.DataName == 'Deadeye')
 		{
-			Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_ShowIfAvailable;
-			CooldownShared = new class'X2AbilityCooldown_Shared';
-			CooldownShared.iNumTurns = class'X2Ability_SharpshooterAbilitySet'.default.DEADEYE_COOLDOWN;
-			CooldownShared.SharingCooldownsWith.AddItem('DeadeyeSnapShot');
-			Template.AbilityCooldown = CooldownShared;
+			// Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_ShowIfAvailable;
+			// CooldownShared = new class'X2AbilityCooldown_Shared';
+			// CooldownShared.iNumTurns = class'X2Ability_SharpshooterAbilitySet'.default.DEADEYE_COOLDOWN;
+			// CooldownShared.SharingCooldownsWith.AddItem('DeadeyeSnapShot');
+			// Template.AbilityCooldown = CooldownShared;
 		
-			Template.AdditionalAbilities.AddItem('DeadeyeSnapShot');
+			// Template.AdditionalAbilities.AddItem('DeadeyeSnapShot');
 		}
 		for (k = 0; k < Template.AbilityCosts.length; k++)
 		{
@@ -2144,6 +2143,8 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 			Loot.ForceLevel = 0;
 			Loot.LootTableName = 'Faceless_BaseLoot';
 			Template.Loot.LootReferences.AddItem(Loot);
+		case 'Civilian':
+			Template.Abilities.AddItem('ShadowStep');
 			break;
 		case 'Gatekeeper':
 		case 'GatekeeperM2':
@@ -2167,23 +2168,26 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 			break;
 
 
-		case 'AdvMec_M1':
-		case 'AdvMec_Leader':
-			Template.Abilities.AddItem('DamageControl');
-			Template.Abilities.AddItem('AbsorptionFields');
+			case 'AdvMec_Leader':
+				Template.Abilities.AddItem('UnstoppableGunfire');
+
+			case 'AdvMec_M1':
+				Template.Abilities.AddItem('TandemWarheads');
+				Template.Abilities.AddItem('DamageControl');
+				Template.Abilities.AddItem('AbsorptionFields');
 			break;
 		case 'Sectoid':
 			Template.Abilities.RemoveItem('VulnerabilityMelee');
 			break;
 		case 'AdvShielbearerM2':
-		Template.Abilities.AddItem('FreeGrenades');
+			Template.Abilities.AddItem('FreeGrenades');
 		break;	
 	
 		case 'Berserker':
 		case 'Berserker_Leader':
-		Template.DefaultLoadout='Berserker_Loadout';
-		Template.Abilities.AddItem('AbsorptionFields');
-		Template.Abilities.AddItem('BerserkerBladestorm');
+			Template.DefaultLoadout='Berserker_Loadout';
+			Template.Abilities.AddItem('AbsorptionFields');
+			Template.Abilities.AddItem('BerserkerBladestorm');
 		break;
 		case 'AdvPurifier_Leader':
 			Template.Abilities.AddItem('ChangeForm_Shoggoth');
@@ -2484,6 +2488,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		|| WeaponTemplate.WeaponCat == 'vektor_rifle'
 		|| WeaponTemplate.WeaponCat == 'bullpup'
 		|| WeaponTemplate.WeaponCat == 'smg'
+		|| WeaponTemplate.WeaponCat == 'grenade_launcher'
 		)
 		{
 			WeaponTemplate.Abilities.AddItem('Stock_LW_Bsc_Ability');
@@ -3085,12 +3090,15 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				ArmorTemplate.Abilities.AddItem('LightKevlarArmorStats');
 				ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LW_GearAbilities'.default.LIGHT_KEVLAR_MOBILITY_BONUS);
 				ArmorTemplate.strImage = "img:///UILibrary_HeavyAndLightKevlarArmors.LightArmor";
+				ArmorTemplate.Abilities.AddItem('Light_Kevlar_Plating_Ability');
+				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.LIGHT_KEVLAR_PLATING_HP);
+
 				break;
 
 				case 'HeavyPlatedArmor':
 				ArmorTemplate.CreatorTemplateName = 'HeavyPlatedArmor_Schematic';
 				ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
-				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 4);
+				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.PREDATOR_PLATING_HP);
 				ArmorTemplate.Abilities.AddItem('ExoskeletonServos');
 				ArmorTemplate.bHeavyWeapon = false;
 				break;
@@ -3098,7 +3106,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				case 'HeavyPoweredArmor':
 				ArmorTemplate.CreatorTemplateName = 'HeavyPoweredArmor_Schematic';
 				ArmorTemplate.Abilities.AddItem('Warden_Plating_Ability');
-				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 5);
+				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.WARDEN_PLATING_HP);
 				ArmorTemplate.Abilities.AddItem('ExoskeletonServos');
 				ArmorTemplate.bHeavyWeapon = false;
 				break;
@@ -3107,7 +3115,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				ArmorTemplate.CreatorTemplateName = 'LightPlatedArmor_Schematic';
 				ArmorTemplate.bAddsUtilitySlot = true;
 				ArmorTemplate.Abilities.AddItem('Spider_Plating_Ability');
-				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 1);
+				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.SPIDER_PLATING_HP);
 				break;
 
 
@@ -3115,7 +3123,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				ArmorTemplate.CreatorTemplateName = 'LightPoweredArmor_Schematic';
 				ArmorTemplate.Abilities.AddItem('Wraith_Plating_Ability');
 				ArmorTemplate.bAddsUtilitySlot = true;
-				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 2);
+				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.WRAITH_PLATING_HP);
 				break;
 
 				case 'KevlarArmor':
@@ -3124,7 +3132,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				case 'TemplarArmor':
 					ArmorTemplate.Abilities.AddItem('Kevlar_Plating_Ability');
 					ArmorTemplate.bAddsUtilitySlot = true;
-					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 3);
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.KEVLAR_PLATING_HP);
 					break;
 
 				// Let all soldier armors provide an extra utility slot
@@ -3134,7 +3142,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				case 'PoweredTemplarArmor':
 					ArmorTemplate.bAddsUtilitySlot = true;
 					ArmorTemplate.Abilities.AddItem('Warden_Plating_Ability');
-					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 5);
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.WARDEN_PLATING_HP);
 					break;
 				
 				case 'PlatedReaperArmor':
@@ -3144,7 +3152,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				case 'MediumPlatedArmor':
 					ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
 					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.MEDIUM_PLATED_MITIGATION_AMOUNT);
-					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 4);
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.PREDATOR_PLATING_HP);
 					break;
 
 				case 'SparkArmor':
@@ -3440,12 +3448,14 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		if (WeaponUpgradeTemplate.DataName == 'AimUpgrade_Bsc')
 		{
 			WeaponUpgradeTemplate.bInfiniteItem = true;
+			WeaponUpgradeTemplate.BonusAbilities.AddItem ('WeaponHandling_LongRange');			
 		}
 
 		//specific alterations
 		if (WeaponUpgradeTemplate.DataName == 'Critupgrade_bsc')
 		{
 			WeaponUpgradeTemplate.bInfiniteItem = true;
+			WeaponUpgradeTemplate.BonusAbilities.AddItem ('WeaponHandling_ShortRange');			
 		}
 		if (WeaponUpgradeTemplate.DataName == 'AimUpgrade_Adv')
 		{

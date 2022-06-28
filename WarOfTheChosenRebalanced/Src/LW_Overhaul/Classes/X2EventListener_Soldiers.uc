@@ -66,6 +66,7 @@ static function CHEventListenerTemplate CreateStatusListeners()
 	`CREATE_X2TEMPLATE(class'CHEventListenerTemplate', Template, 'SoldierStatusListeners');
 	Template.AddCHEvent('OverridePersonnelStatusTime', OnOverridePersonnelStatusTime, ELD_Immediate);
 	Template.AddCHEvent('DSLShouldShowPsi', OnShouldShowPsi, ELD_Immediate);
+	Template.AddCHEvent('OverrideInjuryClearingFatigueBehavior', SeperateInjuryAndFatigueTimes, ELD_Immediate);
 
 
 	Template.RegisterInStrategy = true;
@@ -275,6 +276,38 @@ static function EventListenerReturn OnShouldShowPsi(Object EventData, Object Eve
 
 	return ELR_NoInterrupt;
 }
+
+
+static function EventListenerReturn SeperateInjuryAndFatigueTimes(Object EventData, Object EventSource, XComGameState NewGameState, Name InEventID, Object CallbackData)
+{
+	local XComGameState_Unit UnitState;
+	local XComLWTuple Tuple;
+
+	Tuple = XComLWTuple(EventData);
+	if (Tuple == none)
+	{
+		`REDSCREEN("SeperateInjuryAndFatigueTimes event triggered with invalid event data.");
+		return ELR_NoInterrupt;
+	}
+
+	UnitState = XComGameState_Unit(EventSource);
+	if (UnitState == none)
+	{
+		`REDSCREEN("SeperateInjuryAndFatigueTimes event triggered with invalid source data.");
+		return ELR_NoInterrupt;
+	}
+
+	if (Tuple.Id != 'OverrideInjuryClearingFatigueBehavior')
+	{
+		return ELR_NoInterrupt;
+	}
+	
+
+	Tuple.Data[0].b = true;
+	
+	return ELR_NoInterrupt;
+}
+
 
 static function EventListenerReturn OnCheckForPsiPromotion(
 	Object EventData,

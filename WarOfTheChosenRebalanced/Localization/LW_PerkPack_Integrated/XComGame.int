@@ -387,8 +387,8 @@ LocPromotionPopupText="<Bullet/> Gain +<Ability:LOCKEDON_AIM_BONUS/> aim and +<A
 [Sentinel_LW X2AbilityTemplate]
 LocFriendlyName="Sentinel"
 LocFlyOverText="Sentinel"
-LocLongDescription="When in overwatch, you may take two reaction shots. Grants Cool Under Pressure."
-LocHelpText="When in overwatch, you may take two reaction shots. Grants Cool Under Pressure."
+LocLongDescription="When in overwatch, you may take an additional reaction shot."
+LocHelpText="When in overwatch, you may take an additional reaction shot."
 LocPromotionPopupText="<Bullet/> Reaction shots may be at one or multiple targets, depending on alien movement.<br/>"
 
 [RapidReaction X2AbilityTemplate]
@@ -397,6 +397,13 @@ LocFlyOverText="Rapid Reaction"
 LocLongDescription="When in overwatch, you may take three reaction shots."
 LocHelpText="When in overwatch, you may take three reaction shots."
 LocPromotionPopupText="<Bullet/> When in overwatch, you may take three reaction shots."
+
+[SkirmisherAmbush X2AbilityTemplate]
+LocFriendlyName="Waylay"
+LocLongDescription="When entering Overwatch, you can take as many ADDITIONAL shots as you have remaining actions."
+LocHelpText="When entering Overwatch, you can take as many ADDITIONAL shots as you have remaining actions."
+LocFlyoverText="Waylay"
+LocPromotionPopupText="<Bullet/> Trigger an ambush with a squadmate to devastate the enemy with Waylay.<br/><Bullet/> Waylay is also limited by your remaining ammo.<br/>"
 
 [Sentinel X2AbilityTemplate]
 LocFriendlyName="Guardian"
@@ -980,7 +987,7 @@ LocPromotionPopupText="<Bullet/> Map items (chests, workstations, etc.) can be h
 [XComGame.EverVigilant X2AbilityTemplate]
 [EverVigilant X2AbilityTemplate]
 LocFriendlyName="Ever Vigilant"
-LocLongDescription="If you spend all of your actions on moves, you are granted an automatic overwatch shot at the end of the turn."
+LocLongDescription="If you spend all of your actions on moves, you are granted an automatic overwatch shot at the end of the turn. Grants Cool Under Pressure."
 LocHelpText="Automatically activate Overwatch if you did nothing but move this turn."
 LocFlyOverText="Overwatch: Ever Vigilant"
 LocPromotionPopupText="<Bullet/> Ever Vigilant enables an extremely mobile style of play for the soldier.<br/><Bullet/> Any action other than moving will invalidate Ever Vigilant.<br/>"

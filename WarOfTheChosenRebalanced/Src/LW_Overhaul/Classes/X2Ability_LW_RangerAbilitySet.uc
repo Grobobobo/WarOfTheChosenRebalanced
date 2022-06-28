@@ -413,7 +413,7 @@ static function X2AbilityTemplate AddPassSidearm()
 	local X2AbilityCost_Charges					ChargeCost;
 	local X2Condition_UnitInventory				TargetWeaponCondition;
 	local X2Effect_TakeThis				TemporaryItemEffect;
-	local X2Effect_PersistentStatChange			StatEffect;
+//	local X2Effect_PersistentStatChange			StatEffect;
 	local X2Condition_Character					AllowedUnitCondition;
 //	local X2Condition_AbilityProperty			ShooterAbilityCondition;
 

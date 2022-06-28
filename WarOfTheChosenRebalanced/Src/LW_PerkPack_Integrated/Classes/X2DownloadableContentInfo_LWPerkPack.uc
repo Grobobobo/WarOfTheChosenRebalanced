@@ -198,7 +198,7 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 			Outstring = string(int(class'X2Ability_PerkPackAbilitySet2'.default.SAA_MAX_DR * 100));
 			return true;
 		case 'REAPER_PCT_DMG_REDUCTION':
-			Outstring = string(int(class'X2Ability_PerkPackAbilitySet2'.default.REAPER_PCT_DMG_REDUCTION * 100));
+			Outstring = string(int(class'X2Ability_PerkPackAbilitySet2'.default.REAPER_PCT_DMG_REDUCTION[0] * 100)) $ "/" $ string(int(class'X2Ability_PerkPackAbilitySet2'.default.REAPER_PCT_DMG_REDUCTION[1] * 100))  $ "/" $ string(int(class'X2Ability_PerkPackAbilitySet2'.default.REAPER_PCT_DMG_REDUCTION[2] * 100)) $ "/" $ string(int(class'X2Ability_PerkPackAbilitySet2'.default.REAPER_PCT_DMG_REDUCTION[3] * 100));
 			return true;
 		case 'BRAWLER2_WOUND_REDUCTION':
 			Outstring = string(int(class'X2Ability_PerkPackAbilitySet2'.default.BRAWLER2_WOUND_REDUCTION * 100));
@@ -320,8 +320,11 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 		case 'BRUTALITY_PANIC_CHANCE':
 			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.BRUTALITY_PANIC_CHANCE);	
 			return true;
-		case 'WPN_HANDLING_MODIFIER':
-			OutString = string(int(class'X2Ability_XMBPerkAbilitySet'.default.WEAPONHANDLING_MULTIPLIER * -100));	
+		case 'WEAPONHANDLING_SHORTRANGE_MULTIPLIER':
+			OutString = string(int(class'X2Ability_XMBPerkAbilitySet'.default.WEAPONHANDLING_SHORTRANGE_MULTIPLIER * -100));	
+			return true;
+		case 'WEAPONHANDLING_LONGRANGE_MULTIPLIER':
+			OutString = string(int(class'X2Ability_XMBPerkAbilitySet'.default.WEAPONHANDLING_LONGRANGE_MULTIPLIER * -100));	
 			return true;
 		case 'ZONE_CONTROL_AIM_PENALTY':
 			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.ZONE_CONTROL_AIM_PENALTY);

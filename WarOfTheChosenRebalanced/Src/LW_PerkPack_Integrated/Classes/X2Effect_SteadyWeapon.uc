@@ -4,6 +4,8 @@ var int Aim_Bonus;
 var int Crit_Bonus;
 var int Upgrade_Empower_Bonus;
 
+var array<name> ITZ_Triggers;
+
 function RegisterForEvents(XComGameState_Effect EffectGameState)
 {
 	local X2EventManager EventMgr;
@@ -36,13 +38,18 @@ simulated protected function OnEffectAdded(const out EffectAppliedData ApplyEffe
 
 static function EventListenerReturn SteadyWeaponActionListener(Object EventData, Object EventSource, XComGameState GameState, name EventID, Object CallbackData)
 {
-	local XComGameState_Ability AbilityState;
+	local XComGameState_Ability AbilityState, ITZAbilityState;
 	local XComGameState_Effect EffectState;
 	local XComGameStateContext_EffectRemoved RemoveContext;
 	local XComGameState NewGameState;
 	local X2AbilityCost Cost;
 	local bool CostlyAction;
+	local AvailableAction Action;
+	local AvailableTarget Target;
+	local XComGameState_Unit SourceUnit;
+	local XComGameStateHistory History;
 
+	History = `XCOMHISTORY;
 	AbilityState = XComGameState_Ability(EventData);
 	EffectState = XComGameState_Effect(CallbackData);
 	if (AbilityState != none && EffectState != none)
@@ -68,11 +75,29 @@ static function EventListenerReturn SteadyWeaponActionListener(Object EventData,
 			{
 				if (AbilityState.GetMyTemplateName() == 'SteadyWeapon' || AbilityState.GetMyTemplateName() == 'Stock_LW_Bsc_Ability' ||  AbilityState.GetMyTemplateName() == 'Stock_LW_Adv_Ability' ||  AbilityState.GetMyTemplateName() == 'Stock_LW_Sup_Ability')
 					return ELR_NoInterrupt;
-
 				if (!EffectState.bRemoved)
 				{								
 					RemoveContext = class'XComGameStateContext_EffectRemoved'.static.CreateEffectRemovedContext(EffectState);
-					NewGameState = `XCOMHISTORY.CreateNewGameState(true, RemoveContext);
+					NewGameState = History.CreateNewGameState(true, RemoveContext);
+
+					if(default.ITZ_Triggers.Find(AbilityState.GetMyTemplateName()) != INDEX_NONE && AbilityState.SourceWeapon == EffectState.ApplyEffectParameters.ItemStateObjectRef)
+					{
+						SourceUnit = XComGameState_Unit(History.GetGameStateForObjectID(EffectState.ApplyEffectParameters.SourceStateObjectRef.ObjectID));
+						Action.AbilityObjectRef = SourceUnit.FindAbility('InTheZone_LW');
+						if (Action.AbilityObjectRef.ObjectID != 0)
+						{
+							ITZAbilityState = XComGameState_Ability(History.GetGameStateForObjectID(Action.AbilityObjectRef.ObjectID));
+							if (ITZAbilityState != none)
+							{
+								Action.AvailableCode = 'AA_Success';
+								Target.PrimaryTarget = EffectState.ApplyEffectParameters.SourceStateObjectRef;
+								Action.AvailableTargets.AddItem(Target);
+								class'XComGameStateContext_Ability'.static.ActivateAbility(Action, 0,, ,,,GameState.HistoryIndex);
+							}
+						}					
+					}
+
+
 					EffectState.RemoveEffect(NewGameState, GameState);
 					`TACTICALRULES.SubmitGameState(NewGameState);
 					return ELR_NoInterrupt;
@@ -129,4 +154,7 @@ function GetToHitModifiers(XComGameState_Effect EffectState, XComGameState_Unit 
 defaultproperties
 {
 	EffectName="SteadyWeapon"
+	ITZ_Triggers(0)="StandardShot"
+	ITZ_Triggers(1)="SniperStandardFire"
+
 }

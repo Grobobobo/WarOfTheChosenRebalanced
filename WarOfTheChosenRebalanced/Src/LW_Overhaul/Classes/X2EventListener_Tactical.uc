@@ -624,6 +624,7 @@ static protected function EventListenerReturn RollForPerTurnWillLoss(
 	local XComGameState_HeadquartersXCom XComHQ;
 	local StateObjectReference SquadRef;
 	local XComGameState_Unit SquadUnit;
+	local WillEventRollData WillRollData;
 
 	History = `XCOMHISTORY;
 	XComHQ = XComGameState_HeadquartersXCom(History.GetSingleGameStateObjectForClass(class' XComGameState_HeadquartersXCom'));
@@ -646,12 +647,18 @@ static protected function EventListenerReturn RollForPerTurnWillLoss(
 			continue;
 		}
 
+		WillRollData = default.PerTurnWillRollData;
+		if(SquadUnit.HasSoldierAbility('IronWill') && WillRollData.MinimumWillLoss > 0)
+		{
+			WillRollData.MinimumWillLoss -= 1;
+		}
+
 		// Unit should lose Will this turn, so do it
-		if (class'XComGameStateContext_WillRoll'.static.ShouldPerformWillRoll(default.PerTurnWillRollData, SquadUnit))
+		if (class'XComGameStateContext_WillRoll'.static.ShouldPerformWillRoll(WillRollData, SquadUnit))
 		{
 			`LWTrace("Performing Will roll at end of turn");
 			WillRollContext = class'XComGameStateContext_WillRoll'.static.CreateWillRollContext(SquadUnit, 'PlayerTurnEnd',, false);
-			WillRollContext.DoWillRoll(default.PerTurnWillRollData);
+			WillRollContext.DoWillRoll(WillRollData);
 			WillRollContext.Submit();
 		}
 	}

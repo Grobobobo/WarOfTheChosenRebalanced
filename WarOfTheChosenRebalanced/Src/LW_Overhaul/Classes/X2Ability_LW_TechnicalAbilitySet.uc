@@ -46,6 +46,8 @@ var config WeaponDamageValue BUNKER_BUSTER_DAMAGE_VALUE;
 var config float BUNKER_BUSTER_RADIUS_METERS;
 var config int BUNKER_BUSTER_ENV_DAMAGE;
 var config int FIRE_AND_STEEL_DAMAGE_BONUS;
+var config int FIRE_AND_STEEL_MOBILITY;
+
 var config int CONCUSSION_ROCKET_RADIUS_TILES;
 var config int CONCUSSION_ROCKET_TARGET_WILL_MALUS_DISORIENT;
 var config int CONCUSSION_ROCKET_TARGET_WILL_MALUS_STUN;
@@ -841,7 +843,7 @@ static function X2AbilityTemplate CreateFireandSteelAbility()
 {
 	local X2AbilityTemplate                 Template;
 	local X2Effect_BonusWeaponDOT			DamageEffect;
-
+	local X2Effect_PersistentStatChange		StatEffect;
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'FireandSteel');
 	Template.IconImage = "img:///UILibrary_LW_Overhaul.LW_AbilityFireandSteel";
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
@@ -860,6 +862,18 @@ static function X2AbilityTemplate CreateFireandSteelAbility()
 	Template.AddTargetEffect(DamageEffect);
 	Template.bCrossClassEligible = false;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+
+	StatEffect = new class'X2Effect_PersistentStatChange';
+	StatEffect.AddPersistentStatChange(eStat_Mobility, float(default.FIRE_AND_STEEL_MOBILITY));
+	//StatEffect.AddPersistentStatChange(eStat_Offense, float(default.TOTAL_COMBAT_AIM));
+	StatEffect.BuildPersistentEffect(1, true, false, false);
+	StatEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
+	Template.AddTargetEffect(StatEffect);
+	Template.bCrossClassEligible = true;
+
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.FIRE_AND_STEEL_MOBILITY);
+
 	return Template;
 }
 

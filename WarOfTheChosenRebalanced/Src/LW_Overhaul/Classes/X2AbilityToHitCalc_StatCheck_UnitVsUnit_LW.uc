@@ -2,7 +2,7 @@ class X2AbilityToHitCalc_StatCheck_UnitVsUnit_LW extends X2AbilityToHitCalc_Stat
 
 DefaultProperties
 {
-	AttackerStat = eStat_Will
+	AttackerStat = eStat_PsiOffense
 	DefenderStat = eStat_Will
-    BaseValue = 65
+    BaseValue = 50
 }

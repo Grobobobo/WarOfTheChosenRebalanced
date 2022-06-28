@@ -44,6 +44,9 @@ static function X2DataTemplate CreateTemplate_Sword_Laser()
 	Template.GameArchetype = "WP_Sword_BM.WP_Sword_BM";
 	Template.Tier = 4;
 
+
+	Template.CreatorTemplateName = 'Sword_LS_Schematic';
+
 	Template.iRadius = 1;
 	Template.NumUpgradeSlots = 2;
 	Template.InfiniteAmmo = true;
@@ -98,7 +101,8 @@ static function X2DataTemplate CreateTemplate_Sword_Coil()
 	Template.iEnvironmentDamage = default.RANGERSWORD_COIL_IENVIRONMENTDAMAGE;
 	Template.BaseDamage.DamageType='Melee';
 
-	
+	Template.CreatorTemplateName = 'Sword_CG_Schematic';
+
 	Template.CanBeBuilt = false;
 	Template.bInfiniteItem = true;
 

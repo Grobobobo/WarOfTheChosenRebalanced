@@ -17,6 +17,11 @@ simulated protected function OnEffectAdded(const out EffectAppliedData ApplyEffe
 	local XComGameState_Unit UnitState;
 	local XComGameState_Ability AbilityState;
 	local int i;
+    local XComGameState_Unit SourceUnit;
+    local UnitValue CurrentHeatValue;
+	
+    SourceUnit = XComGameState_Unit(`XCOMHISTORY.GetGameStateForObjectID(ApplyEffectParameters.SourceStateObjectRef.ObjectID));
+	SourceUnit.GetUnitValue(class'X2Ability_SkirmisherAbilitySet_LW'.default.HEATSINK_CURRENT_NAME, CurrentHeatValue);
 
 	History = `XCOMHISTORY;
 	UnitState = XComGameState_Unit(kNewTargetState);
@@ -26,7 +31,7 @@ simulated protected function OnEffectAdded(const out EffectAppliedData ApplyEffe
 		if (AbilityState != none && AbilityState.iCooldown > 0)
 		{
 			AbilityState = XComGameState_Ability(NewGameState.ModifyStateObject(AbilityState.Class, AbilityState.ObjectID));
-			AbilityState.iCooldown -= default.OVERRIDE_REDUCTION;
+			AbilityState.iCooldown = AbilityState.iCooldown - (default.OVERRIDE_REDUCTION + int(CurrentHeatValue.fValue / class'X2Ability_SkirmisherAbilitySet_LW'.default.MANUAL_OVERRIDE_COOLDOWN_REDUCTION_DIVISOR));
 			if (AbilityState.iCooldown < 0)
 			AbilityState.iCooldown = 0;
 		}

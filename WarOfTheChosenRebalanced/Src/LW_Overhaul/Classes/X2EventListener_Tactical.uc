@@ -962,6 +962,10 @@ static protected function EventListenerReturn HideFocusOnAssaults(
 {
 	local XComLWTuple Tuple;
 	local XComGameState_Unit Unit;
+	local UnitValue						CurrentHeatLevel, MaxHeatLevel;
+	local int							CurrentHeat, MaxHeat;
+	local string						TooltipLong, TooltipShort, Icon;
+	local string						BarColor;
 
 
 	Unit = XComGameState_Unit(EventSource);
@@ -975,6 +979,27 @@ static protected function EventListenerReturn HideFocusOnAssaults(
 	{
 		// Hide focus on assaults
 		Tuple.Data[0].b = false;
+	}
+	else if (Unit.HasSoldierAbility('Heatsink_LW'))
+	{
+		BarColor = "bf1e2e"; // Red from Skirmisher's Faction Logo --> Brighter red: ff0909
+		TooltipLong = class'X2Ability_SkirmisherAbilitySet_LW'.default.strHeatLevelDesc;
+		TooltipShort = class'X2Ability_SkirmisherAbilitySet_LW'.default.strHeatLevelName;
+		Icon = "img:///UILibrary_WOTC_APA_Skirmisher_LW.FocusIcon_Skirmisher";
+
+		Unit.GetUnitValue(class'X2Ability_SkirmisherAbilitySet_LW'.default.HEATSINK_MAX_NAME, MaxHeatLevel);
+		MaxHeat = MaxHeatLevel.fValue;
+
+		Unit.GetUnitValue(class'X2Ability_SkirmisherAbilitySet_LW'.default.HEATSINK_CURRENT_NAME, CurrentHeatLevel);
+		CurrentHeat = CurrentHeatLevel.fValue;
+						
+		Tuple.Data[0].b = true;
+		Tuple.Data[1].i = CurrentHeat;
+		Tuple.Data[2].i = MaxHeat;
+		Tuple.Data[3].s = BarColor;
+		Tuple.Data[4].s = Icon;
+		Tuple.Data[5].s = TooltipLong;
+		Tuple.Data[6].s = TooltipShort;
 	}
 
 	return ELR_NoInterrupt;

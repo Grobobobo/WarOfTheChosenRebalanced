@@ -373,9 +373,9 @@ static function UpdateSalvo(X2AbilityTemplate Template)
 
 static function UpdateCombatPresence(X2AbilityTemplate Template)
 {
-	local X2AbilityCooldown	Cooldown;
+	local X2AbilityCooldown_CombatPresence	Cooldown;
 
-	Cooldown = new class'X2AbilityCooldown';
+	Cooldown = new class'X2AbilityCooldown_CombatPresence';
 	Cooldown.iNumTurns = default.COMBAT_PRESENCE_COOLDOWN;
 	Template.AbilityCooldown = Cooldown;
 }

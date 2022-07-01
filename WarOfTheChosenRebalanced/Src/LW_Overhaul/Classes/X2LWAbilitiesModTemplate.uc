@@ -152,7 +152,6 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 			ReplaceImplacableEffect(Template);
 			break;
 		case 'BladestormAttack':
-		case 'RetributionAttack':
 		case 'TemplarBladestormAttack':
 			MakeBladestormNotTriggerOnItsTurn(Template);
 			Template.PostActivationEvents.AddItem('BladestormActivated');
@@ -329,6 +328,17 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 			break;
 		case 'SkirmisherAmbush':
 			UpdateWaylay(Template);
+			break;
+		case 'Micromissiles':
+		case 'MicroMissileFuse':
+			MakeMicroMissilesDestroyLoot(Template);
+			break;
+		case 'RetributionAttack':
+			MakeBladestormNotTriggerOnItsTurn(Template);
+			Template.PostActivationEvents.AddItem('BladestormActivated');
+		case 'SkirmisherFleche':
+		case 'SkirmisherPostAbilityMelee':
+			AddRipjackRuptureEffects(Template);
 			break;
 		// case 'SpawnChryssalid':
 		// 	ReworkChryssalidSpawning(Template);
@@ -1965,6 +1975,20 @@ static function UpdateReload(X2AbilityTemplate Template)
 	}
 }
 
+static function MakeMicroMissilesDestroyLoot(X2AbilityTemplate Template)
+{
+	local X2Effect Effect;
+
+	foreach Template.AbilityMultiTargetEffects(Effect)
+	{
+		if (Effect.IsA('X2Effect_ApplyWeaponDamage'))
+		{
+			X2Effect_ApplyWeaponDamage(Effect).bExplosiveDamage = true;
+		}
+	}
+}
+
+
 static function MakeStunLanceWorkWhenBurning(X2AbilityTemplate Template)
 {
 	local array<name> SkipExclusions;
@@ -2000,6 +2024,44 @@ static function UpdateWaylay(X2AbilityTemplate Template)
 	PersistentEffect.BuildPersistentEffect(1, true, false);
 	PersistentEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,, Template.AbilitySourceName);
 	Template.AddTargetEffect(PersistentEffect);
+}
+
+static function AddRipjackRuptureEffects(X2AbilityTemplate Template)
+{
+	local X2AbilityTemplateManager							AbilityTemplateMgr;
+	local array<X2AbilityTemplate>							AbilityTemplateArray;
+	local X2AbilityTemplate									AbilityTemplate;
+	local X2Effect_ApplyWeaponDamage						RuptureEffect;
+	local X2Condition_RipAndTearRupture_LW			HeatValueCondition;
+	local X2Condition_UnitProperty							OrganicTargetCondition;
+	local X2Condition_AbilityProperty	AbilityCondition;
+	// EffectCondition = new class'X2Condition_WOTC_APA_EffectRequirement';
+	// EffectCondition.RequiredEffectNames.AddItem('WOTC_APA_RipAndTearShredEffect');
+	// EffectCondition.bCheckSourceUnit = true;
+
+	AbilityCondition = new class'X2Condition_AbilityProperty';
+	AbilityCondition.OwnerHasSoldierAbilities.AddItem('RipAndTear_LW');
+	//Effect.TargetConditions.AddItem(AbilityCondition);
+
+	HeatValueCondition = new class'X2Condition_RipAndTearRupture_LW';
+
+	OrganicTargetCondition = new class'X2Condition_UnitProperty';
+	OrganicTargetCondition.ExcludeRobotic = true;
+	OrganicTargetCondition.ExcludeOrganic = false;
+	OrganicTargetCondition.FailOnNonUnits = true;
+
+	RuptureEffect = new class'X2Effect_ApplyWeaponDamage';
+	RuptureEffect.bIgnoreBaseDamage = true;
+	RuptureEffect.EffectDamageValue.Rupture = class'X2Ability_SkirmisherAbilitySet_LW'.default.RIP_AND_TEAR_RUPTURE;
+	RuptureEffect.TargetConditions.AddItem(AbilityCondition);
+	RuptureEffect.TargetConditions.AddItem(HeatValueCondition);
+	RuptureEffect.TargetConditions.AddItem(OrganicTargetCondition);
+
+
+	//Make the justice/wrath attack not a guaranteed hit for the LULZ and better damage preview
+	X2AbilityToHitCalc_StandardAim(Template.AbilityToHitCalc).bGuaranteedHit = false;
+
+	Template.AddTargetEffect(RuptureEffect);
 }
 
 

@@ -6476,7 +6476,7 @@ LocPromotionPopupText="<Bullet/> Learn officer abilities in half the time."
 [DoubleTap2 X2AbilityTemplate]
 LocFriendlyName="Double Tap"
 LocFlyOverText="Double Tap"
-LocLongDescription="Activate to fire a standard shot and gain a second action restricted to an additional shot or overwatching."
+LocLongDescription="Activate to fire a standard shot and gain a second action restricted to an additional standard shot or overwatching."
 LocHelpText="Fire a standard shot and gain a bonus shot or overwatch action."
 ; LWOTC Needs Translation
 LocPromotionPopupText="<Bullet/> Activate to fire a standard shot and gain a second action restricted to several different shooting abilities or overwatch.<br/><Bullet/> Double Tap has a <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
@@ -6516,16 +6516,16 @@ TacticalText="<Bullet/> Plasma weapons cause targets to take 1 additional damage
 
 ; LWOTC Needs Translation
 [Skirmisher X2SoldierClassTemplate]
-AbilityTreeTitles[0]="Judge"
+AbilityTreeTitles[0]="Hussar"
 AbilityTreeTitles[1]="Tactician"
-AbilityTreeTitles[2]="Hussar"
-AbilityTreeTitles[4]="Pistols"
+AbilityTreeTitles[2]="Judge"
+;AbilityTreeTitles[4]="Pistols"
 
 [Reaper X2SoldierClassTemplate]
 AbilityTreeTitles[0]="Marksman"
 AbilityTreeTitles[1]="Backstabber"
 AbilityTreeTitles[2]="Survivalist"
-AbilityTreeTitles[4]="Pistols"
+;AbilityTreeTitles[4]="Pistols"
 ; End Translation
 
 ; LWOTC Needs Translation
@@ -6599,9 +6599,9 @@ LocPromotionPopupText="<Bullet/> You can trigger the Charge ability by placing t
 ; LWOTC Needs Translation (2)
 [SkirmisherFleche X2AbilityTemplate]
 LocFriendlyName="Reckoning"
-LocLongDescription="Attack any enemy within blue movement range with your <Ability:BOUND_WEAPON_NAME/>. This attack does not end the turn."
-LocHelpText="Attack any enemy within blue movement range with your <Ability:BOUND_WEAPON_NAME/>. This attack does not end the turn."
-LocPromotionPopupText="<Bullet/> You can trigger the Charge ability by placing the movement cursor over an enemy and right-clicking (as with Fleche on Shinobis).<br/><Bullet/> Charge costs 1 action point and is non-turn ending. <br/><Bullet/> Charge has a <Ability:RECKONING_LW_COOLDOWN/> turn cooldown.<br/>"
+LocLongDescription="Attack any enemy within movement range with your <Ability:BOUND_WEAPON_NAME/>. Deals +<Ability:RECKONING_BONUS_DAMAGE_PER_HEAT/>% damage per heat, but removes all of it no use."
+LocHelpText="Attack any enemy within movement range with your <Ability:BOUND_WEAPON_NAME/>. Deals additional +<Ability:RECKONING_BONUS_DAMAGE_PER_HEAT/>% damage per heat, but removes all of it no use."
+LocPromotionPopupText=""
 ; End Translation (2)
 
 ; LWOTC Needs Translation (3)
@@ -6770,14 +6770,14 @@ LocPromotionPopupText="<Bullet/> Judgement can be triggered by melee and area of
 ; LWOTC Needs Translation (2)
 [ManualOverride_LW X2AbilityTemplate]
 LocFriendlyName="Manual Override"
-LocLongDescription="Lowers all ability cooldowns on a selected ally soldier by up to <Ability:OVERRIDE_REDUCTION/> turns."
-LocHelpText="Lowers all ability cooldowns on a selected ally soldier by up to <Ability:OVERRIDE_REDUCTION/> turns."
+LocLongDescription="Lowers all ability cooldowns on a selected ally soldier by up to <Ability:OVERRIDE_REDUCTION/> (+ 1 per <Ability:MANUAL_OVERRIDE_COOLDOWN_REDUCTION_DIVISOR/> heat levels) turns."
+LocHelpText="Lowers all ability cooldowns on a selected ally soldier by up to <Ability:OVERRIDE_REDUCTION/> (+ 1 per <Ability:MANUAL_OVERRIDE_COOLDOWN_REDUCTION_DIVISOR/> heat levels) turns."
 LocPromotionPopupText="<Bullet/> Use the allies' abilities early and often to take full advantage of Manual Override.<br/><Bullet/> Costs 1 action.<br/><Bullet/> Manual Override has a <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
 ; End Translation (2)
 
 [Battlelord X2AbilityTemplate]
-LocLongDescription="After you or one of your allies in a line of sight takes damage, take an immediate action. No action points will be refunded (e.g. from Hit and Run)."
-LocHelpText="After you or one of your allies in a line of sight takes damage, take an immediate action. No action points will be refunded (e.g. from Hit and Run)."
+LocLongDescription="After you or one of your allies in a line of sight takes damage, take an immediate action. No action points will be refunded (e.g. from Implacable)."
+LocHelpText="After you or one of your allies in a line of sight takes damage, take an immediate action. No action points will be refunded (e.g. from Implacable)."
 LocPromotionPopupText="<Bullet/> Battlelord can allow the Skirmisher to prevail in the most dire of circumstances.<br/><Bullet/> Battlelord has a <Ability:SelfCooldown_LW/> turn cooldown.<br/><Bullet/> Turns from the Lost and enemy pod reveals do not grant the immediate action.<br/><Bullet/> Abilities that refund action points, like Implacable and Hit and Run, will not work during Battlelord."
 
 [TemplarGrazingFire X2AbilityTemplate]

@@ -2511,7 +2511,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		{
 			WeaponTemplate.Abilities.AddItem('SMG_LS_StatBonus');
 		}
-		if(WeaponTemplate.WeaponCat == 'sawedoffshotgun')
+		if(WeaponTemplate.WeaponCat == 'sawedoffshotgun' || WeaponTemplate.WeaponCat == 'pistol' || WeaponTemplate.WeaponCat == 'sidearm')
 		{
 			WeaponTemplate.Abilities.AddItem('TakeThis');
 		}
@@ -2520,9 +2520,8 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MID_LONG_ALL_RANGE;
 		}
 		if (WeaponTemplate.WeaponCat == 'rifle' ||
-		 WeaponTemplate.WeaponCat == 'arcthrower' ||
-		 WeaponTemplate.WeaponCat == 'pistol' 
-		 )
+		 WeaponTemplate.WeaponCat == 'arcthrower'
+		)
 		{
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MEDIUM_ALL_RANGE;
 		}
@@ -2533,21 +2532,19 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			WeaponTemplate.SetUIStatMarkup("Mobility", eStat_Mobility, class'X2Ability_LW_GearAbilities'.default.HEAVY_WEAPONS_MOB_PENALTY);
 		}
 		if (WeaponTemplate.WeaponCat == 'bullpup'||
-		WeaponTemplate.WeaponCat == 'sidearm' ||
+		WeaponTemplate.WeaponCat == 'pistol' ||
 		WeaponTemplate.WeaponCat == 'smg' 
 		)
 		{		
-			if(WeaponTemplate.WeaponCat == 'sidearm')
-			{
-				WeaponTemplate.Abilities.AddItem('TakeThis');
-			}
-
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MIDSHORT_ALL_RANGE;
 		}
-		if (WeaponTemplate.WeaponCat == 'shotgun')
+		if (WeaponTemplate.WeaponCat == 'shotgun' || WeaponTemplate.WeaponCat == 'sidearm')
 		{
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.SHORT_ALL_RANGE;
-			WeaponTemplate.Abilities.AddItem('ShotgunFireControl');
+			if (WeaponTemplate.WeaponCat == 'shotgun')
+			{
+				WeaponTemplate.Abilities.AddItem('ShotgunFireControl');
+			}
 		}
 
 		if (WeaponTemplate.DataName == 'Medikit')

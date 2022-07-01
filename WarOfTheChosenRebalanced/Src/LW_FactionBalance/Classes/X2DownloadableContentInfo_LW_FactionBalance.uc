@@ -139,9 +139,48 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 	case 'RECKONING_LW_COOLDOWN':
 		OutString = string(class'X2Ability_SkirmisherAbilitySet_LW'.default.RECKONING_LW_COOLDOWN);
 		return true;
-	case 'RECKONING_LW_SLASH_COOLDOWN':
-		OutString = string(class'X2Ability_SkirmisherAbilitySet_LW'.default.RECKONING_LW_SLASH_COOLDOWN);
+	case 'HEATSINK_MAX_CHARGES':
+		OutString = string(class'X2Ability_SkirmisherAbilitySet_LW'.default.HEATSINK_MAX_CHARGES);
 		return true;
+	case 'HEATSINK_GAIN_DIRECT_SHOT':
+		OutString = string(class'X2Ability_SkirmisherAbilitySet_LW'.default.HEATSINK_GAIN_DIRECT_SHOT);
+		return true;
+	case 'HEATSINK_CRIT_CHANCE_BONUS':
+		OutString = string(class'X2Ability_SkirmisherAbilitySet_LW'.default.HEATSINK_CRIT_CHANCE_BONUS);
+		return true;
+	case 'HEATSINK_AIM_BONUS':
+		OutString = string(class'X2Ability_SkirmisherAbilitySet_LW'.default.HEATSINK_AIM_BONUS);
+		return true;
+	case 'FIRE_FURY_MOBILITY_BONUS':
+		OutString = string(class'X2Ability_SkirmisherAbilitySet_LW'.default.FIRE_FURY_MOBILITY_BONUS);
+		return true;
+	case 'FIRE_FURY_MOBILITY_BONUS_CHARGE_DIVISOR':
+		OutString = string(class'X2Ability_SkirmisherAbilitySet_LW'.default.FIRE_FURY_MOBILITY_BONUS_CHARGE_DIVISOR);
+		return true;
+	case 'THERMAL_REGULATORS_RETAIN_HEAT_CHANCE_I':
+		TrimTrailingZerosFromFloat(class'X2Ability_SkirmisherAbilitySet_LW'.default.THERMAL_REGULATORS_RETAIN_HEAT_CHANCE_I, OutString);
+		return true;
+	case 'THERMAL_REGULATORS_RETAIN_HEAT_CHANCE_II':
+		TrimTrailingZerosFromFloat(class'X2Ability_SkirmisherAbilitySet_LW'.default.THERMAL_REGULATORS_RETAIN_HEAT_CHANCE_II, OutString);
+		return true;
+	case 'THERMAL_REGULATORS_RETAIN_HEAT_CHANCE_III':
+		TrimTrailingZerosFromFloat(class'X2Ability_SkirmisherAbilitySet_LW'.default.THERMAL_REGULATORS_RETAIN_HEAT_CHANCE_III, OutString);
+		return true;
+	case 'HEATSINK_LOSS_ON_DAMAGE':
+		OutString = string(class'X2Ability_SkirmisherAbilitySet_LW'.default.HEATSINK_LOSS_ON_DAMAGE);
+		return true;
+	case 'RECKONING_BONUS_DAMAGE_PER_HEAT':
+		OutString = string(int(class'X2Ability_SkirmisherAbilitySet_LW'.default.RECKONING_BONUS_DAMAGE_PER_HEAT) * 100);
+		return true;
+	case 'OVERCLOCKING_MAX_HEAT_BONUS':
+		OutString = string(class'X2Ability_SkirmisherAbilitySet_LW'.default.OVERCLOCKING_MAX_HEAT_BONUS);
+		return true;
+	case 'COMBAT_PRESENCE_COOLDOWN_REDUCTION_DIVISOR':
+		OutString = string(class'X2Ability_SkirmisherAbilitySet_LW'.default.COMBAT_PRESENCE_COOLDOWN_REDUCTION_DIVISOR);
+		return true;
+	case 'MANUAL_OVERRIDE_COOLDOWN_REDUCTION_DIVISOR':
+		OutString = string(class'X2Ability_SkirmisherAbilitySet_LW'.default.MANUAL_OVERRIDE_COOLDOWN_REDUCTION_DIVISOR);
+		return true;	
 	case 'REND_FLECHE_BONUS_DAMAGE_PER_TILES':
 		TempFloat = 1 / class'X2Ability_TemplarAbilitySet_LW'.default.BONUS_REND_DAMAGE_PER_TILE;
 		TempFloat = Round(TempFloat * 10.0) / 10.0;
@@ -200,6 +239,9 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 	case 'BATTLEFIELD_AWARENESS_COOLDOWN':
 		OutString = string(class'X2Ability_SkirmisherAbilitySet_LW'.default.BATTLEFIELD_AWARENESS_COOLDOWN);
 		return true;
+	case 'BATTLEFIELD_AWARENESS_DODGE_PER_HEAT':
+		OutString = string(int(class'X2Ability_SkirmisherAbilitySet_LW'.default.BATTLEFIELD_AWARENESS_DODGE_PER_HEAT));
+		return true;
 	case 'JUDGEMENT_LW_APPLYCHANCE':
 		OutString = string(class'X2Ability_SkirmisherAbilitySet'.default.JUDGMENT_APPLYCHANCEATTACKVAL + class'X2AbilityToHitCalc_PanicCheck'.default.BaseValue);
 		return true;
@@ -221,6 +263,16 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 	}
 
 	return false;
+}
+
+simulated static function TrimTrailingZerosFromFloat(float InputValue, out string text)
+{
+	text = string(InputValue);
+
+	while ((Len(text) > 0) && (InStr(text, "0", true) == Len(text) - 1))
+		text = left(text, Len(text) - 1);
+	while ((Len(text) > 0) && (InStr(text, ".", true) == Len(text) - 1))
+		text = left(text, Len(text) - 1);
 }
 
 static function bool AbilityTagExpandHandler_CH(string InString, out string OutString, Object ParseObj, Object StrategyParseObj, XComGameState GameState)

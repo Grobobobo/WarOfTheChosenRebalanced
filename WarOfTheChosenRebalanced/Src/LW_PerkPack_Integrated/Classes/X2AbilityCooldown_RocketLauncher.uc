@@ -9,7 +9,7 @@ class X2AbilityCooldown_RocketLauncher extends X2AbilityCooldown_Shared;
 
 simulated function int GetNumTurns(XComGameState_Ability kAbility, XComGameState_BaseObject AffectState, XComGameState_Item AffectWeapon, XComGameState NewGameState)
 {
-	if (XComGameState_Unit(AffectState).HasSoldierAbility('Salvo'))
+	if (XComGameState_Unit(AffectState).HasSoldierAbility('ShockAndAwe'))
 		return iNumTurns - 1;
 
 	return iNumTurns;

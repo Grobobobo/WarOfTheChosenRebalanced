@@ -2264,6 +2264,9 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 			Template.bDisplayUIUnitFlag=true;
 			break;
 		case 'FriendlyVIPCivilian':
+		case 'Soldier_VIP':
+		case 'Scientist_VIP':
+		case 'Engineer_VIP':
 			Template.CharacterBaseStats[eStat_HP] = 8;
 			Template.CharacterBaseStats[eStat_Offense] = 80;
 			Template.CharacterBaseStats[eStat_Mobility] = 15;
@@ -3272,18 +3275,18 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				X2WeaponTemplate(EquipmentTemplate).CreatorTemplateName = 'Sidearms_MG_Schematic';
 				X2WeaponTemplate(EquipmentTemplate).InventorySlot = eInvSlot_Pistol;
 				X2WeaponTemplate(EquipmentTemplate).Abilities.RemoveItem('PistolOverwatch');
-				X2WeaponTemplate(EquipmentTemplate).Abilities.AddItem('TakeThis');
+			//	X2WeaponTemplate(EquipmentTemplate).Abilities.AddItem('TakeThis');
 				
 				break;
 			case 'Pistol_BM':
 				X2WeaponTemplate(EquipmentTemplate).CreatorTemplateName = 'Sidearms_BM_Schematic';
 				X2WeaponTemplate(EquipmentTemplate).InventorySlot = eInvSlot_Pistol;
 				X2WeaponTemplate(EquipmentTemplate).Abilities.RemoveItem('PistolOverwatch');
-				X2WeaponTemplate(EquipmentTemplate).Abilities.AddItem('TakeThis');
+				//X2WeaponTemplate(EquipmentTemplate).Abilities.AddItem('TakeThis');
 
 				break;
 			case 'Pistol_CV':
-				X2WeaponTemplate(EquipmentTemplate).Abilities.AddItem('TakeThis');
+				//X2WeaponTemplate(EquipmentTemplate).Abilities.AddItem('TakeThis');
 			case 'TLE_Pistol_CV':
 			case 'TLE_Pistol_MG':
 			case 'TLE_Pistol_BM':

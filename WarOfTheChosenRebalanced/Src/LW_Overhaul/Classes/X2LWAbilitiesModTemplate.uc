@@ -2028,8 +2028,8 @@ static function UpdateWaylay(X2AbilityTemplate Template)
 
 static function AddRipjackRuptureEffects(X2AbilityTemplate Template)
 {
-	local X2AbilityTemplateManager							AbilityTemplateMgr;
-	local array<X2AbilityTemplate>							AbilityTemplateArray;
+//	local X2AbilityTemplateManager							AbilityTemplateMgr;
+//	local array<X2AbilityTemplate>							AbilityTemplateArray;
 	local X2AbilityTemplate									AbilityTemplate;
 	local X2Effect_ApplyWeaponDamage						RuptureEffect;
 	local X2Condition_RipAndTearRupture_LW			HeatValueCondition;

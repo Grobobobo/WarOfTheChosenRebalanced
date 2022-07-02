@@ -459,7 +459,7 @@ static function X2AbilityTemplate AddPassSidearm()
 	UnitPropertyCondition.RequireWithinRange = true;
 	UnitPropertyCondition.IsPlayerControlled = true;
 	UnitPropertyCondition.IsImpaired = false;
-	UnitPropertyCondition.RequireSquadmates = true;
+	UnitPropertyCondition.RequireSquadmates = false;
 	UnitPropertyCondition.ExcludeNonCivilian = true;
 	UnitPropertyCondition.WithinRange = 144;	// 1.5 adjacent tile
 	Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);

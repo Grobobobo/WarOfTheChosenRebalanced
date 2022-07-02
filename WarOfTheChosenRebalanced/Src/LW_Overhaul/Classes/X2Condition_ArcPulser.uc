@@ -3,7 +3,7 @@ class X2Condition_ArcPulser extends X2Condition;
 event name CallMeetsConditionWithSource(XComGameState_BaseObject kTarget, XComGameState_BaseObject kSource) 
 {
 	local XComGameState_Unit	Target, Source;
-	local int					Range;
+//	local int					Range;
 
 	Target = XComGameState_Unit(kTarget);
 	Source = XComGameState_Unit(kSource);

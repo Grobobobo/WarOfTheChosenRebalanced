@@ -35,6 +35,8 @@ var config array<name> VALID_ITZ_ABILITIES;
 
 var config array<name> CHEAPSHOT_ABILITYNAMES;
 var config float CHEAPSHOT_BONUS_DAMAGE;
+var config int DEATH_DEALER_BONUS_DAMAGE_ON_CRIT;
+var config int DEATH_DEALER_BONUS_AIM;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;

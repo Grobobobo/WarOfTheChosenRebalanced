@@ -2484,7 +2484,7 @@ static function X2AbilityTemplate AddOverexertion()
 	// Icon Properties
 	Template.DisplayTargetHitChance = false;
 	Template.AbilitySourceName = 'eAbilitySource_Perk';                                       // color of the icon
-	Template.IconImage = "img:///UILibrary_XPerkIconPack_LW.UIPerk_loot_move";
+	Template.IconImage = "img:///UILibrary_XPerkIconPack_LW.UIPerk_move_cycle";
 	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_LIEUTENANT_PRIORITY;
 	Template.Hostility = eHostility_Neutral;
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;

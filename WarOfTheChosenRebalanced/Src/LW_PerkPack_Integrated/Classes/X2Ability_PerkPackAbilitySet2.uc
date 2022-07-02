@@ -97,6 +97,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(ShotgunFireControl());
 	Templates.AddItem(AddBrawler2());
 	Templates.AddItem(AddShockAbsorbentArmor());
+	Templates.AddItem(CreateIronWill());
+	
 	//Passives for dictating AI behaviors out of LOS
 	return Templates;
 }

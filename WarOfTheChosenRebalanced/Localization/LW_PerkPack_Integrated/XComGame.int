@@ -945,8 +945,8 @@ LocPromotionPopupText="<Bullet/> Explosives mean all grenades and rockets."
 [XComGame.Salvo X2AbilityTemplate]
 [Salvo X2AbilityTemplate]
 LocFriendlyName="Salvo"
-LocLongDescription="Throwing or Launching Grenades and Rockets no longer ends turn, and your rocket cooldown is decreased by 1."
-LocHelpText="Throwing or Launching Grenades and Rockets no longer ends turn. Your rockets and Grenades receive an additional use. Gain +<Ability:SALVO_MOBILITY/> Mobility."
+LocLongDescription="Throwing or Launching Grenades and Rockets no longer ends turn. Your Grenades and items in utility slot gain +1 charge. You can throw grenades <Ability:SALVO_BONUS_RANGE/> tiles further."
+LocHelpText=""
 LocFlyOverText="Salvo"
 LocPromotionPopupText="<Bullet/> Items like BattleScanners count as grenades.<br/>"
 
@@ -1008,9 +1008,9 @@ LocFlyOverText="Phantom"
 LocPromotionPopupText="<Bullet/> 2 charges, <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
 
 [Stealth_LW X2AbilityTemplate]
-LocFriendlyName="Conceal"
-LocLongDescription="Gain Additional 2 charges of phantom."
-LocHelpText="Gain Additional 2 charges of phantom."
+LocFriendlyName="Shadow Meld"
+LocLongDescription="Killing a unit with your primary weapon grants an additional Phantom charge."
+LocHelpText="Killing a unit with your primary weapon grants an additional Phantom charge."
 LocFlyOverText="Conceal"
 LocPromotionPopupText=""
 

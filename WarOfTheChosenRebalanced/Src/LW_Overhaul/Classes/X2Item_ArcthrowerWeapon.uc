@@ -6,17 +6,17 @@
 //---------------------------------------------------------------------------------------
 class X2Item_ArcthrowerWeapon extends X2Item config(GameData_WeaponData);
 
-// ***** UI Image definitions  *****
+//ï¿½*****ï¿½UI Image definitionsï¿½ï¿½*****
 var config string Arcthrower_CV_UIImage;
 var config string Arcthrower_MG_UIImage;
 var config string Arcthrower_BM_UIImage;
 
-// ***** Damage arrays for attack actions  *****
+//ï¿½*****ï¿½Damageï¿½arraysï¿½forï¿½attackï¿½actionsï¿½ï¿½*****
 var config WeaponDamageValue Arcthrower_CONVENTIONAL_BASEDAMAGE;
 var config WeaponDamageValue Arcthrower_MAGNETIC_BASEDAMAGE;
 var config WeaponDamageValue Arcthrower_BEAM_BASEDAMAGE;
 
-// ***** Core properties and variables for weapons *****
+//ï¿½*****ï¿½Core properties and variablesï¿½forï¿½weaponsï¿½*****
 var config int Arcthrower_CONVENTIONAL_AIM;
 var config int Arcthrower_CONVENTIONAL_CRITCHANCE;
 var config int Arcthrower_CONVENTIONAL_ICLIPSIZE;
@@ -44,7 +44,7 @@ var config int Arcthrower_BEAM_ISUPPLIES;
 var config int Arcthrower_BEAM_TRADINGPOSTVALUE;
 var config int Arcthrower_BEAM_IPOINTS;
 
-// ***** Schematic properties *****
+//ï¿½*****ï¿½Schematic propertiesï¿½*****
 var config int Arcthrower_MAGNETIC_SCHEMATIC_SUPPLYCOST;
 var config int Arcthrower_BEAM_SCHEMATIC_SUPPLYCOST;
 
@@ -114,7 +114,7 @@ static function X2DataTemplate CreateTemplate_Arcthrower_Conventional()
 	
 	Template.DamageTypeTemplateName = 'Electrical';
 
-	Template.Abilities.AddItem('Electroshock');
+	//Template.Abilities.AddItem('Electroshock');
 
 	return Template;
 }
@@ -158,7 +158,7 @@ static function X2DataTemplate CreateTemplate_Arcthrower_Magnetic()
 	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Electrical';
-	Template.Abilities.AddItem('Electroshock');
+	//Template.Abilities.AddItem('Electroshock');
 
 	return Template;
 }
@@ -202,7 +202,7 @@ static function X2DataTemplate CreateTemplate_Arcthrower_Beam()
 	Template.bInfiniteItem = true;
 
 	Template.DamageTypeTemplateName = 'Electrical';
-	Template.Abilities.AddItem('Electroshock');
+	//Template.Abilities.AddItem('Electroshock');
 
 	return Template;
 }

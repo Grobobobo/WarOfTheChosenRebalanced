@@ -29,6 +29,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddRescueProtocol());
 	Templates.AddItem(AddHackRewardGreaterShutdownRobot());
 	Templates.AddItem(AddHackRewardGreaterShutdownTurret());
+	Templates.AddItem(AddTotalCombat2());
 	
 	return Templates;
 }
@@ -570,6 +571,17 @@ static function X2AbilityTemplate AddRescueProtocol()
 	Template.BuildVisualizationFn = class'X2Ability_SpecialistAbilitySet'.static.GremlinSingleTarget_BuildVisualization;
 
 	Template.ChosenActivationIncreasePerUse = class'X2AbilityTemplateManager'.default.NonAggressiveChosenActivationIncreasePerUse;
+
+	return Template;
+}
+
+static function X2AbilityTemplate AddTotalCombat2()
+{
+	local X2AbilityTemplate Template;
+
+	Template = PurePassive('TotalCombat2', "img:///UILibrary_XPACK_Common.PerkIcons.UIPerk_totalCombat", true);
+	//Template.AdditionalAbilities.AddItem('ElectroShock');
+
 
 	return Template;
 }

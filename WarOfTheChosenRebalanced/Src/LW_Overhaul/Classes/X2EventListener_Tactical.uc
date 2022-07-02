@@ -1263,9 +1263,9 @@ static function EventListenerReturn OverrideReserveActionPoints(Object EventData
 	local bool IsSuppression;
 	local DamageResult Result;
 	local XComGameStateContext_Ability AbilityContext;
-	local XComGameStateHistory History;
+	//local XComGameStateHistory History;
 
-	History = `XCOMHISTORY;
+	//History = `XCOMHISTORY;
 
 	UnitState = XcomGameState_Unit(EventSource);
 	Tuple = XComLWTuple(EventData);
@@ -1288,8 +1288,8 @@ static function EventListenerReturn OverrideReserveActionPoints(Object EventData
 	//Check if the source unit has an ability that allows breaking overwatches
 	if(AbilityContext != none)
 	{
-		SourceUnit = XComGameState_Unit(History.GetGameStateForObjectID(AbilityContext.InputContext.SourceObject.ObjectID));
-		if(SourceUnit.HasSoldierAbility('Impact') && Result.DamageAmount > 0)
+		SourceUnit = XComGameState_Unit(GameState.GetGameStateForObjectID(AbilityContext.InputContext.SourceObject.ObjectID));
+		if(SourceUnit.HasSoldierAbility('Impact'))
 		{
 			Tuple.Data[0].b = true;
 			return ELR_NoInterrupt;

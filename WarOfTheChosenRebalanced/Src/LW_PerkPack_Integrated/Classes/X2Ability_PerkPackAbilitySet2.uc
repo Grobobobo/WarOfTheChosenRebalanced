@@ -1292,8 +1292,8 @@ static function X2AbilityTemplate AddNewPhantom()
 
 	Charges = new class'X2AbilityCharges_BonusCharges';
 	Charges.InitialCharges = default.PHANTOM_CHARGES;
-	Charges.BonusAbility = 'Stealth_LW';
-	Charges.BonusChargesCount = default.CONCEAL_BONUS_CHARGES;
+	//Charges.BonusAbility = 'Stealth_LW';
+	//Charges.BonusChargesCount = default.CONCEAL_BONUS_CHARGES;
 	Template.AbilityCharges = Charges;
 
 
@@ -1352,11 +1352,25 @@ static function X2AbilityTemplate AddPhantomTrigger()
 	local X2Effect_AddChargesToAbility 				AmmoEffect;
 	local X2Condition_UnitProperty		UnitPropertyCondition;
 	local X2Condition_PrimaryWeapon PrimaryWeaponCondition;
+	local X2Condition_AbilityProperty OwnerAbilityConidition;
+
 
 	AmmoEffect = new class'X2Effect_AddChargesToAbility';
 	AmmoEffect.ExtraChargesAmount = 1;
 	AmmoEffect.AbilityName = 'Phantom_LW';
+
+
 	Template = SelfTargetTrigger('PhantomChargesTrigger_LW', "img:///UILibrary_PerkIcons.UIPerk_phantom", false, AmmoEffect, 'KillMail');
+
+
+
+	AmmoEffect = new class'X2Effect_AddChargesToAbility';
+	AmmoEffect.ExtraChargesAmount = 1;
+	AmmoEffect.AbilityName = 'Phantom_LW';
+
+	OwnerAbilityConidition = new class'X2Condition_AbilityProperty';
+	OwnerAbilityConidition.OwnerHasSoldierAbilities.AddItem('Stealth_LW');
+	AmmoEffect.TargetConditions.AddItem(OwnerAbilityConidition);
 
 	PrimaryWeaponCondition = new class'X2Condition_PrimaryWeapon';
 	PrimaryWeaponCondition.RequirePrimary = true;

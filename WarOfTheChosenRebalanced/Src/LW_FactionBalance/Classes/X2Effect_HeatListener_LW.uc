@@ -96,7 +96,7 @@ static function EventListenerReturn UpdateHeatEffects(Object EventData, Object E
 
 	if (NewUnitState.HasSoldierAbility('FireAndFury_LW'))
 	{
-		StatAmount = (int(NewHeat) / class'X2Ability_SkirmisherAbilitySet_LW'.default.FIRE_FURY_MOBILITY_BONUS_CHARGE_DIVISOR) * class'X2Ability_SkirmisherAbilitySet_LW'.default.FIRE_FURY_MOBILITY_BONUS;
+		StatAmount = (NewHeat / class'X2Ability_SkirmisherAbilitySet_LW'.default.FIRE_FURY_MOBILITY_BONUS_CHARGE_DIVISOR) * class'X2Ability_SkirmisherAbilitySet_LW'.default.FIRE_FURY_MOBILITY_BONUS;
 		NewStatChange.StatType = eStat_Mobility;
 		NewStatChange.StatAmount = StatAmount;
 		NewStatChange.ModOp = MODOP_Addition;
@@ -279,7 +279,7 @@ static function EventListenerReturn RemoveHeatOnHit(Object EventData, Object Eve
 
 			if (NewUnitState.HasSoldierAbility('FireAndFury_LW'))
 			{
-				StatAmount = (int(NewHeat) / class'X2Ability_SkirmisherAbilitySet_LW'.default.FIRE_FURY_MOBILITY_BONUS_CHARGE_DIVISOR) * class'X2Ability_SkirmisherAbilitySet_LW'.default.FIRE_FURY_MOBILITY_BONUS;
+				StatAmount = (NewHeat / class'X2Ability_SkirmisherAbilitySet_LW'.default.FIRE_FURY_MOBILITY_BONUS_CHARGE_DIVISOR) * class'X2Ability_SkirmisherAbilitySet_LW'.default.FIRE_FURY_MOBILITY_BONUS;
 				NewStatChange.StatType = eStat_Mobility;
 				NewStatChange.StatAmount = StatAmount;
 				NewStatChange.ModOp = MODOP_Addition;

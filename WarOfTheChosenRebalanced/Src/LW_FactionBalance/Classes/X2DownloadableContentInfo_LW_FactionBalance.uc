@@ -260,8 +260,14 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 	case 'TOTAL_COMBAT_AIM':
 		OutString = string(class'X2LWModTemplate_SkirmisherAbilities'.default.TOTAL_COMBAT_AIM);
 		return true;
+	case 'TOTAL_COMBAT_SHRED':
+		OutString = string(class'X2LWModTemplate_SkirmisherAbilities'.default.TOTAL_COMBAT_SHRED);
+		return true;
 	case 'TOTAL_COMBAT_BONUS_RANGE':
 		OutString = string(class'X2LWModTemplate_SkirmisherAbilities'.default.TOTAL_COMBAT_BONUS_RANGE);
+		return true;
+	case 'SALVO_BONUS_RANGE':
+		OutString = string(class'X2LWModTemplate_SkirmisherAbilities'.default.SALVO_BONUS_RANGE);
 		return true;
 	case 'SALVO_MOBILITY':
 		OutString = string(class'X2LWModTemplate_SkirmisherAbilities'.default.SALVO_MOBILITY);

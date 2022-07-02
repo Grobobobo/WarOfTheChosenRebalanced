@@ -652,7 +652,7 @@ LocPromotionPopupText="<Bullet/> The Arc Thrower is effective anywhere in the so
 ; LWOTC Needs Translation (2)
 [EMPulser X2AbilityTemplate]
 LocFriendlyName="Arc Pulser"
-LocLongDescription="Fire your Arc Thrower to incapacitate a target and damage mechanical enemies."
+LocLongDescription="Your arc Thrower is no longer turn ending, and disorients biological units on miss. Allows the arc thrower to target mechanical units as its primary target, dealing heavy armor-piercing damage to it, and reducing its hack defense."
 LocHelpText="Fire your Arc Pulser."
 LocFlyOverText="Arc Pulser"
 LocPromotionPopupText="<Bullet/> The Arc Thrower is effective anywhere in the soldier's sight range.<br/><Bullet/> Requires one action and ends the soldier's turn when fired.<br/><Bullet/> Can use every other turn.<br/><Bullet/> Damage to mechanical units increases as arc thrower technology improves.<br/><Bullet/> Reduces enemy hack defense by <Ability:EMPULSER_HACK_DEFENSE_CHANGE_LW/>.<br/>"
@@ -694,10 +694,10 @@ LocPromotionPopupText="<Bullet/> Medium-range, cone-based shotgun attack.<br/><B
 [ChainLightning X2AbilityTemplate]
 LocFriendlyName="Chain Lightning"
 ; LWOTC Needs Translation (3)
-LocLongDescription="Upgrades the standard stun ability to be able to chain up to 2 other targets within 6 tiles of each other, disorienting them."
-LocHelpText="Upgrades the standard stun ability to be able to chain up to 2 other targets within 6 tiles of each other, disorienting them."
+LocLongDescription="Upgrades the standard stun ability to be able to chain up to 2 other targets within 5 tiles of each other, disorienting them."
+LocHelpText="Upgrades the standard stun ability to be able to chain up to 2 other targets within 5 tiles of each other, disorienting them."
 LocFlyOverText="Chain Lightning"
-LocPromotionPopupText="<Bullet/> Fires the Arc Thrower at a target in vision, with the arc chaining up to 2 times to other targets within 6 tiles of each other.<br/><Bullet/> Replaces standard stun ability.<br/><Bullet/> Chain Lightning has a <Ability:SelfCooldown_LW/> turn cooldown.<br/><Bullet/> Cannot be used from concealment."
+LocPromotionPopupText="<Bullet/> Fires the Arc Thrower at a target in vision, with the arc chaining up to 2 times to other targets within 5 tiles of each other.<br/><Bullet/> Replaces standard stun ability.<br/><Bullet/> Chain Lightning has a <Ability:SelfCooldown_LW/> turn cooldown.<br/><Bullet/> Cannot be used from concealment."
 ; End Translation (3)
 
 [Leadership X2AbilityTemplate]
@@ -8690,6 +8690,12 @@ LocLongDescription="Throwing or Launching grenades no longer ends the turn and g
 LocHelpText="Throwing a grenade no longer ends the turn and grenades have no cooldown. You can throw grenades <Ability:TOTAL_COMBAT_BONUS_RANGE/> tiles further. Gain <Ability:TOTAL_COMBAT_AIM/> aim and <Ability:TOTAL_COMBAT_AIM/> grenade accuracy. Grants +1 charge per grenade item in a utility slot."
 LocPromotionPopupText="<Bullet/> Total Combat adds even more flexibility to the <Ability:ClassName/>'s turns, allowing actions to be taken exactly when needed.<br/><Bullet/> Items like Battlescanners count as grenades.<br/><Bullet/> Removes the cooldown for grenades.<br/>"
 
+[TotalCombat2 X2AbilityTemplate]
+LocFriendlyName="Total Combat"
+LocLongDescription="Gain <Ability:TOTAL_COMBAT_AIM/> aim and <Ability:TOTAL_COMBAT_AIM/> grenade accuracy. Your grenades can shred +1 armor. You can throw grenades <Ability:TOTAL_COMBAT_BONUS_RANGE/> tiles further."
+LocHelpText=""
+LocPromotionPopupText=""
+
 [Reaper X2AbilityTemplate]
 LocFriendlyName="Reaper"
 LocLongDescription="Each melee kill grants an extra action, but further melee attacks this turn have reduced damage for each chained kill. Removes the \"once per turn\" restriction from whirlwind."
@@ -8702,8 +8708,8 @@ LocPromotionPopupText="<Bullet/> Reaper Is a passive.<br/><Bullet/> The damage i
 [PackMaster_LW X2AbilityTemplate]
 LocFriendlyName="PackMaster"
 LocFlyOverText="PackMaster"
-LocLongDescription="Grants +1 charge to every utility item and grenade equipped."
-LocHelpText="Grants +1 charge to every utility item and grenade equipped."
+LocLongDescription="Grants +1 charge to every utility item and grenade equipped. Reduces the arc thrower cooldown by 1."
+LocHelpText="Grants +1 charge to every utility item and grenade equipped. Reduces the arc thrower cooldown by 1."
 ;LWOTC needs translation(2)
 LocPromotionPopupText="<Bullet/> Grants +1 charge to every utility item equipped.<br/><Bullet/> Applies to the grenade slot as well as the standard utility slots, but not other slots.<br/><Bullet/> Extra grenades provided by Smoker and Flashbanger abilities do not get extra charges.<br/>"
 ;End Translation(2)

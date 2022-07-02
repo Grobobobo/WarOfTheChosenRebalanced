@@ -18,7 +18,11 @@ var config int REFLEX_CRIT_DEF;
 var config int TOTAL_COMBAT_BONUS_RANGE;
 var config int TOTAL_COMBAT_MOBILITY;
 var config int TOTAL_COMBAT_AIM;
+var config int TOTAL_COMBAT_SHRED;
+
 var config int SALVO_MOBILITY;
+var config int SALVO_BONUS_RANGE;
+
 static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 {
 	switch (Template.DataName)
@@ -54,6 +58,9 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		break;
 	case 'TotalCombat':
 		UpdateTotalCombat(Template);
+		break;
+	case 'TotalCombat2':
+		UpdateTotalCombat2(Template);
 		break;
 	case 'Salvo':
 		//UpdateSalvo(Template);
@@ -345,28 +352,67 @@ static function UpdateTotalCombat(X2AbilityTemplate Template)
 
 }
 
-
-static function UpdateSalvo(X2AbilityTemplate Template)
+static function UpdateTotalCombat2(X2AbilityTemplate Template)
 {
+	local X2Effect_TotalCombatRange	BombardEffect;
 	local X2Effect_PersistentStatChange StatEffect;
-	local X2Effect_FullKit				FullKitEffect;
+	//local X2Effect_FullKit				FullKitEffect;
+	local X2Effect_HEATGrenades		HEATEffect;
 
+	BombardEffect = new class 'X2Effect_TotalCombatRange';
+	BombardEffect.BuildPersistentEffect (1, true, false);
+	BombardEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
+	Template.AddTargetEffect (BombardEffect);
 	
 	StatEffect = new class'X2Effect_PersistentStatChange';
-	StatEffect.AddPersistentStatChange(eStat_Mobility, float(default.SALVO_MOBILITY));
-	//StatEffect.AddPersistentStatChange(eStat_Offense, float(default.TOTAL_COMBAT_AIM));
+	//StatEffect.AddPersistentStatChange(eStat_Mobility, float(default.TOTAL_COMBAT_MOBILITY));
+	StatEffect.AddPersistentStatChange(eStat_Offense, float(default.TOTAL_COMBAT_AIM));
 	StatEffect.BuildPersistentEffect(1, true, false, false);
 	StatEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
 	Template.AddTargetEffect(StatEffect);
 	Template.bCrossClassEligible = true;
 
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.SALVO_MOBILITY);
+	//Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.TOTAL_COMBAT_MOBILITY);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.AimLabel, eStat_Offense, default.TOTAL_COMBAT_AIM);
+
+	HEATEffect = new class 'X2Effect_HEATGrenades';
+	HEATEffect.Pierce = 0;
+	HEATEffect.Shred = default.TOTAL_COMBAT_SHRED;
+	HEATEffect.BuildPersistentEffect (1, true, false);
+	HEATEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
+	Template.AddTargetEffect (HEATEffect);
+
+	// FullKitEffect = new class 'X2Effect_FullKit';
+	// FullKitEffect.BuildPersistentEffect (1, true, false);
+	// FullKitEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
+	// Template.AddTargetEffect (FullKitEffect);
+
+}
+
+static function UpdateSalvo(X2AbilityTemplate Template)
+{
+	//local X2Effect_PersistentStatChange StatEffect;
+	local X2Effect_FullKit				FullKitEffect;
+
+	
+	// StatEffect = new class'X2Effect_PersistentStatChange';
+	// StatEffect.AddPersistentStatChange(eStat_Mobility, float(default.SALVO_MOBILITY));
+	// //StatEffect.AddPersistentStatChange(eStat_Offense, float(default.TOTAL_COMBAT_AIM));
+	// StatEffect.BuildPersistentEffect(1, true, false, false);
+	// StatEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
+	// Template.AddTargetEffect(StatEffect);
+	// Template.bCrossClassEligible = true;
+
+	// Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.SALVO_MOBILITY);
 	//Template.SetUIStatMarkup(class'XLocalizedData'.default.AimLabel, eStat_Offense, default.TOTAL_COMBAT_AIM);
+
 
 	FullKitEffect = new class 'X2Effect_FullKit';
 	FullKitEffect.BuildPersistentEffect (1, true, false);
 	FullKitEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
 	Template.AddTargetEffect (FullKitEffect);
+
+	
 
 }
 

@@ -2113,7 +2113,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 
 		case 'Muton_Leader':
 		case 'MutonM2_Leader':
-			Template.Abilities.AddItem('TotalCombat');
+			Template.Abilities.AddItem('Salvo');
 			Template.CharacterGroupName = 'Muton_Leader';
 		case 'Muton':
 		case 'MutonM2_LW':

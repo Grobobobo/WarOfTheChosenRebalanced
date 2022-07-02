@@ -1285,6 +1285,7 @@ static function X2AbilityTemplate Concentration()
 	Effect = new class'XMBEffect_ChangeHitResultForAttacker';
 	Effect.EffectName = 'Concentration';
     Effect.IncludeHitResults.AddItem(eHit_Graze);
+    Effect.IncludeHitResults.AddItem(eHit_CounterAttack);
 	Effect.NewResult = eHit_Success;
 
 	// Create the template using a helper function

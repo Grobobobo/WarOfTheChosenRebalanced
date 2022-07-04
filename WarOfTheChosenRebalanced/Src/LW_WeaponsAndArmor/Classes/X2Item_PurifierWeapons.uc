@@ -145,6 +145,7 @@ static function X2DataTemplate CreateTemplate_AdvPurifierPistol_Leader_WPN(name 
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('PistolReturnFire');
 	Template.Abilities.AddItem('ReturnFire');
+	Template.Abilities.AddItem('LightningHands');
 
 	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotMagA');
 	

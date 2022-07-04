@@ -63,7 +63,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		UpdateTotalCombat2(Template);
 		break;
 	case 'Salvo':
-		//UpdateSalvo(Template);
+		UpdateSalvo(Template);
 		break;
 
 	case 'CombatPresence':
@@ -393,6 +393,7 @@ static function UpdateSalvo(X2AbilityTemplate Template)
 {
 	//local X2Effect_PersistentStatChange StatEffect;
 	local X2Effect_FullKit				FullKitEffect;
+	local X2Effect_SalvoRange				BombardEffect;
 
 	
 	// StatEffect = new class'X2Effect_PersistentStatChange';
@@ -406,6 +407,10 @@ static function UpdateSalvo(X2AbilityTemplate Template)
 	// Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.SALVO_MOBILITY);
 	//Template.SetUIStatMarkup(class'XLocalizedData'.default.AimLabel, eStat_Offense, default.TOTAL_COMBAT_AIM);
 
+	BombardEffect = new class 'X2Effect_SalvoRange';
+	BombardEffect.BuildPersistentEffect (1, true, false);
+	BombardEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
+	Template.AddTargetEffect (BombardEffect);
 
 	FullKitEffect = new class 'X2Effect_FullKit';
 	FullKitEffect.BuildPersistentEffect (1, true, false);

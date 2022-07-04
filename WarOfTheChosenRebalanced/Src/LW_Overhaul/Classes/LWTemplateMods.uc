@@ -1457,6 +1457,9 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 		case 'ShredstormCannon':
 		case 'BladestormAttack':
 		case 'TemplarBladestormAttack':
+		case 'BerserkerBladestormAttack':
+		case 'LostBladestormAttack':
+		case 'RetributionAttack':
 		case 'Grapple':
 		case 'GrapplePowered':
 		case 'IntheZone':
@@ -2162,7 +2165,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 			break;
 		
 		case 'AdvPriest_Leader':
-			Template.Abilities.AddItem('ChangeForm_Shoggoth');
+		//	Template.Abilities.AddItem('ChangeForm_Shoggoth');
 		case 'AdvPriestM1':
 			Template.Abilities.RemoveItem('Sustain');
 			break;

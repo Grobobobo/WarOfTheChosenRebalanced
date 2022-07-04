@@ -72,7 +72,7 @@ var config int SIDEWINDER_FOCUS3MOBILITY;
 var config int SIDEWINDER_FOCUS3AIM;
 var config int SIDEWINDER_FOCUS3CRIT;
 
-var config int SHOGGOTH_SPAWN_CHANCE_PER_HIT;
+var config float SHOGGOTH_SPAWN_CHANCE_PER_HIT;
 
 var localized string strBayonetChargePenalty;
 
@@ -2145,11 +2145,22 @@ static function EventListenerReturn ShoggothListener(Object EventData, Object Ev
 {
 	local XComGameState_Ability AbilityState;
 	local int Roll;
+	local XComGameStateContext_Ability AbilityContext;
+	local XComGameState_Ability TriggerAbilityState;
+	local XComGameState_Unit  TargetUnit;
+	local float Chance;
 
+	AbilityContext = XComGameStateContext_Ability(GameState.GetContext());
+
+	TriggerAbilityState = XComGameState_Ability(CallbackData);
+
+	TargetUnit = XComGameState_Unit(`XCOMHISTORY.GetGameStateForObjectID(AbilityContext.InputContext.PrimaryTarget.ObjectID,,GameState.GetContext().GetFirstStateInEventChain().HistoryIndex - 1));
 
 	AbilityState = XComGameState_Ability(CallbackData);
 
 	Roll = `SYNC_RAND_STATIC(100);
+
+	Chance = default.SHOGGOTH_SPAWN_CHANCE_PER_HIT * TargetUnit.GetCurrentStat(eStat_HP) / TargetUnit.GetMaxStat(eStat_HP);
 
 	if( Roll < default.SHOGGOTH_SPAWN_CHANCE_PER_HIT)
 	{

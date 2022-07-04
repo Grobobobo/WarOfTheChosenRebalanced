@@ -399,7 +399,7 @@ static function X2AbilityTemplate CreateStilettoRoundsAbility()
 	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
 
 	Effect = new class'X2Effect_StilettoRounds';
-	Effect.BonusDmg = class'X2Item_LWUtilityItems'.default.STILETTO_ALIEN_DMG;
+	Effect.BonusDmg = class'X2Item_LWUtilityItems'.default.STILETTO_DMGMOD;
 	Effect.BuildPersistentEffect (1, true, false, false);
 	Effect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true, , Template.AbilitySourceName);
 	Template.AddTargetEffect (Effect);

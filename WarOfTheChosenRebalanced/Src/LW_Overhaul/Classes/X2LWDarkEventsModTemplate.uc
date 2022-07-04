@@ -61,7 +61,7 @@ static function UpdateDarkEvents(X2StrategyElementTemplate Template, int Difficu
 		case 'DarkEvent_LoyaltyAmongThieves_Warlock':   // balancing around that.
 		case 'DarkEvent_AlloyPadding':
 		case 'DarkEvent_RapidResponse':
-
+		case 'DarkEvent_ResistanceInformant':
 			// Remove these from play
 			DETemplate.StartingWeight = 0;
 			DETemplate.MinWeight = 0;

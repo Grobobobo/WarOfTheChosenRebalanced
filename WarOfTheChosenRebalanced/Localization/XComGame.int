@@ -1531,8 +1531,8 @@ TacticalText="<Bullet/> Grants 5 ablative armor points.<br/><Bullet/> These hit 
 [StilettoRounds X2AmmoTemplate]
 FriendlyName="Stiletto Rounds"
 FriendlyNamePlural="Stiletto Rounds"
-BriefSummary="Does +1 damage to all targets and +2 damage to nonrobotic aliens."
-TacticalText="<Bullet/> Does +2 damage to nonrobotic aliens.<br/><Bullet/> Only one ammo enhancement may be equipped at a time."
+BriefSummary="Does +1 damage to conventional tier weapons."
+TacticalText="<Bullet/> The bonus only applies when using a conventional tier weapon.<br/><Bullet/> Only one ammo enhancement may be equipped at a time."
 
 [FlechetteRounds X2AmmoTemplate]
 FriendlyName="Flechette Rounds"
@@ -4758,7 +4758,7 @@ PostMissionFailureText="Drone Upgrade: Close Combat Specialist"
 
 [DarkEvent_DroneParalyzingBlows X2DarkEventTemplate]
 DisplayName="Drone Upgrade: Paralyzing Blows"
-SummaryText="Drones gain Paralyzing Blows, causing their stuns to last longer."
+SummaryText="Drones gain Paralyzing Blows, causing their primary weapon attacks to stun for 1 additional action."
 QuoteText="\"Are you sure he's getting back up?\""
 QuoteTextAuthor="- Unidentified Corporal"
 PreMissionText="Drones gain Paralyzing Blows."
@@ -4805,7 +4805,7 @@ PostMissionFailureText="Stun Lancer Upgrade: Bladestorm"
 
 [DarkEvent_StunLancerParalyzingBlows X2DarkEventTemplate]
 DisplayName="Stun Lancer Upgrade: Paralyzing Blows"
-SummaryText="Stun Lancers gain Paralyzing Blows, causing their stuns to last longer."
+SummaryText="Stun Lancers gain Paralyzing Blows, causing their primary weapon attacks to stun."
 QuoteText="\"Caught wind of some new doctrine. They are being told to administer repeated stuns.\""
 QuoteTextAuthor="- Central Officer Bradford"
 PreMissionText="Stun Lancers gain Paralyzing Blows."
@@ -5430,7 +5430,7 @@ PreMissionText="Andromedon gain Volatile Mix."
 PostMissionSuccessText="Andromedon Upgrade: Volatile Mix"
 PostMissionFailureText="Andromedon Upgrade: Volatile Mix"
 
-[DarkEvent_AndromedonSuperDuperRobot X2DarkEventTemplate]
+[DarkEvent_AndromedonRobotSuperDuperRobot X2DarkEventTemplate]
 DisplayName="Andromedon Upgrade: Super Duper Robot"
 SummaryText="Andromedons gain Super Duper Robot, massively enhancing their robotic form."
 QuoteText="\"Seems ADVENT's putting a lot more faith into the autonomous system than the pilot itself.\""
@@ -8813,13 +8813,13 @@ LocPromotionPopupText="Once per turn, throwing a grenade is a free action."
 
 [ParalyzingBlowsPassive X2AbilityTemplate]
 LocFriendlyName="Paralyzing Blows"
-LocLongDescription="Melee Attacks now Stun For 1 more action."
+LocLongDescription="Primary weapon Attacks now Stun For 1 more action."
 LocHelpText="Melee Attacks now Stun For 1 more action."
 LocPromotionPopupText="Melee Attacks now Stun For 1 more action."
 
 [ParalyzingBlows X2AbilityTemplate]
 LocFriendlyName="Paralyzing Blows"
-LocLongDescription="Melee Attacks now Stun For 1 more action."
+LocLongDescription="Primary weapon Attacks now Stun For 1 more action."
 LocHelpText="Melee Attacks now Stun For 1 more action."
 LocPromotionPopupText="Melee Attacks now Stun For 1 more action."
 

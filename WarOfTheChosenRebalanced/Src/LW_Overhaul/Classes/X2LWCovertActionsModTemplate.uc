@@ -138,8 +138,9 @@ static function ConfigureEasyCovertAction(X2CovertActionTemplate Template, optio
 
 		// If a covert action can't fail, then it shouldn't be possible
 		// to ambush it, because ambush also provides a chance to fail
-		AddAmbushRisk(Template);
 	}
+	AddAmbushRisk(Template);
+
 	AddStaffSlots(Template, 2);
 
 	// Add an optional cost slot to counter capture if it's a risk.
@@ -157,8 +158,8 @@ static function ConfigureModerateCovertAction(X2CovertActionTemplate Template, o
 
 		// If a covert action can't fail, then it shouldn't be possible
 		// to ambush it, because ambush also provides a chance to fail
-		AddAmbushRisk(Template);
 	}
+	AddAmbushRisk(Template);
 	AddStaffSlots(Template, 3);
 
 	// Add an optional cost slot to counter capture if it's a risk.
@@ -175,8 +176,9 @@ static function ConfigureHardCovertAction(X2CovertActionTemplate Template, optio
 
 		// If a covert action can't fail, then it shouldn't be possible
 		// to ambush it, because ambush also provides a chance to fail
-		AddAmbushRisk(Template);
 	}
+	AddAmbushRisk(Template);
+
 	AddStaffSlots(Template, 3);
 
 	// Add an optional cost slot to counter capture if it's a risk.

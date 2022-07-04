@@ -62,8 +62,8 @@ static function X2GrenadeLauncherTemplate CreatePrimaryGrenadeLauncher_CV()
 
     Template.Abilities.AddItem('LaunchGrenade');
     Template.Abilities.AddItem('PrimaryGrenadeLauncher_CV');
-    Template.Abilities.AddItem('PrimaryLoadGrenades');
-    Template.Abilities.AddItem('PrimaryLightOrdnance');
+   	Template.Abilities.AddItem('PrimaryLoadGrenades');
+   // Template.Abilities.AddItem('PrimaryLightOrdnance');
 	
 	Template.GameArchetype = "GrimyClassAN_GrenadeLauncher.WP_GrenadeLauncher_CV";
 	
@@ -95,10 +95,6 @@ static function X2GrenadeLauncherTemplate CreatePrimaryGrenadeLauncher_MG()
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.StowedLocation = eSlot_RightHand;
 
-	//Template.Abilities.AddItem('LaunchGrenade');
-	//Template.Abilities.AddItem('PrimaryLoadGrenades');
-	//Template.Abilities.AddItem('PrimaryLightOrdnance');
-
 	Template.IncreaseGrenadeRadius = default.ADVGRENADELAUNCHER_RADIUSBONUS;
 	Template.IncreaseGrenadeRange = default.ADVGRENADELAUNCHER_RANGEBONUS;
 
@@ -111,8 +107,8 @@ static function X2GrenadeLauncherTemplate CreatePrimaryGrenadeLauncher_MG()
 	Template.bInfiniteItem = true;
     Template.Abilities.AddItem('LaunchGrenade');
     Template.Abilities.AddItem('PrimaryGrenadeLauncher_MG');
-    Template.Abilities.AddItem('PrimaryLoadGrenades');
-    Template.Abilities.AddItem('PrimaryLightOrdnance');
+	 Template.Abilities.AddItem('PrimaryLoadGrenades');
+    // Template.Abilities.AddItem('PrimaryLightOrdnance');
 
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.GrenadeRangeBonusLabel, , default.ADVGRENADELAUNCHER_RANGEBONUS);
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.GrenadeRadiusBonusLabel, , default.ADVGRENADELAUNCHER_RADIUSBONUS);
@@ -150,8 +146,8 @@ static function X2GrenadeLauncherTemplate CreatePrimaryGrenadeLauncher_BM()
 	Template.bInfiniteItem = true;
     Template.Abilities.AddItem('LaunchGrenade');
     Template.Abilities.AddItem('PrimaryGrenadeLauncher_BM');
-    Template.Abilities.AddItem('PrimaryLoadGrenades');
-    Template.Abilities.AddItem('PrimaryLightOrdnance');
+	Template.Abilities.AddItem('PrimaryLoadGrenades');
+    // Template.Abilities.AddItem('PrimaryLightOrdnance');
 
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.GrenadeRangeBonusLabel, , default.BEAMGRENADELAUNCHER_RANGEBONUS);
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.GrenadeRadiusBonusLabel, , default.BEAMGRENADELAUNCHER_RADIUSBONUS);

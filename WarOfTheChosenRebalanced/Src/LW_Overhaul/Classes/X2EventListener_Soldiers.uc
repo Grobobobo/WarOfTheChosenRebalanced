@@ -27,6 +27,8 @@ var config array<CustomAbilityCost> CUSTOM_ABILITY_COSTS;
 var config array<int> FACTION_ABILITY_COSTS;
 var config float BASE_ABILITY_COST_MODIFIER;
 
+var config array<int> INITIAL_PROMOTION_ABILITY_POINTS;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -85,6 +87,7 @@ static function CHEventListenerTemplate CreatePromotionListeners()
 	Template.AddCHEvent('CPS_OverrideCanPurchaseAbility', OverrideCanPurchaseAbility, ELD_Immediate);
 	Template.AddCHEvent('CPS_OverrideAbilityPointCost', OverrideAbilityPointCost, ELD_Immediate);
 	Template.AddCHEvent('CPS_AbilityPurchased', UpdateAbilityCostMultiplier, ELD_Immediate);
+	Template.AddCHEvent('UnitRankUp', OverrideAPGain, ELD_OnStateSubmitted);
 
 	Template.RegisterInStrategy = true;
 
@@ -117,6 +120,7 @@ static function CHEventListenerTemplate CreateTacticalListeners()
 	Template.AddCHEvent('OverrideBleedoutChance', OnOverrideBleedOutChance, ELD_Immediate);
 	Template.AddCHEvent('OverrideCollectorActivation', OverrideCollectorActivation, ELD_Immediate);
 	Template.AddCHEvent('OverrideScavengerActivation', OverrideScavengerActivation, ELD_Immediate);
+	
 	Template.AddCHEvent('SerialKiller', OnSerialKill, ELD_OnStateSubmitted);
 	Template.RegisterInTactical = true;
 
@@ -365,6 +369,51 @@ static function EventListenerReturn OverridePromotionUIClass(
 	}
 }
 
+//Makes the resistance heroes have normal AP growths instead of whatever the fuck they get
+static function EventListenerReturn OverrideAPGain(
+	Object EventData,
+	Object EventSource,
+	XComGameState GameState,
+	Name InEventID,
+	Object CallbackData)
+{
+	local XComGameState_Unit UnitState;
+	local XComGameState NewGameState;
+	local UnitValue FreePromotionValue;
+
+
+
+	UnitState = XComGameState_Unit(EventData);
+
+	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Change AP Gain");
+	UnitState = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', UnitState.ObjectID));
+
+	UnitState.GetUnitValue('GTO_FreePromotionAP',FreePromotionValue);
+	//Redundant checks because I don't want to spam gamestates in the strategy
+	if(FreePromotionValue.fValue < 1.0f || UnitState.IsResistanceHero())
+	{
+		NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Change AP Gain");
+
+	//Add Some starting AP to soldiers
+		if(FreePromotionValue.fValue < 1.0f)
+		{
+			UnitState.AbilityPoints = UnitState.AbilityPoints + default.INITIAL_PROMOTION_ABILITY_POINTS[UnitState.Comint];
+			UnitState.SetUnitFloatValue('GTO_FreePromotionAP', 2.0f, eCleanup_Never);
+
+		}
+		if( UnitState.IsResistanceHero())
+		{
+			UnitState.AbilityPoints = UnitState.AbilityPoints + UnitState.GetBaseSoldierAPAmount(UnitState.Comint);
+			UnitState.AbilityPoints = UnitState.AbilityPoints - UnitState.GetResistanceHeroAPAmount(UnitState.GetSoldierRank(), UnitState.ComInt);
+		}
+		`GAMERULES.SubmitGameState(NewGameState);
+	}
+
+
+	return ELR_NoInterrupt;
+
+}
+
 // This function makes sure that the camera is placed in the right place
 // on the After Action screen when a unit is being promoted from there.
 // It basically sets the promotion blueprint tag to the hero one for all
@@ -430,7 +479,15 @@ static function EventListenerReturn OverrideCanPurchaseAbility(
 	{
 		if (`XCOMHQ.HasFacilityByName('RecoveryCenter'))
 		{
-			Tuple.Data[13].b = true;
+			if(Tuple.Data[12].b)
+			{
+				Tuple.Data[13].b = true;
+			}
+			else
+			{
+				Tuple.Data[13].b = false;
+				Tuple.Data[14].i = 3;   // Reason: Not enough AP
+			}
 		}
 		else
 		{
@@ -498,6 +555,7 @@ static function EventListenerReturn OverrideAbilityPointCost(
 
 	if (UnitState.HasPurchasedPerkAtRank(Rank, ClassAbilityRankCount) && Branch < ClassAbilityRankCount)
 	{
+		AbilityCost = Max(0,40 - class'X2StrategyGameRulesetDataStructures'.default.AbilityPointCosts[Rank]); 
 		// Increase cost of this perk by current ability cost modifier
 		UnitState.GetUnitValue('LWOTC_AbilityCostModifier', AbilityCostModifier);
 		if (AbilityCostModifier.fValue == 0)

@@ -1,6 +1,6 @@
-# War of the Chosen Rebalancee (WOTC-R)
+# Grobo's Tactical Overhaul (GTO)
 
-This is a fundamental rebalance of Long War of the Chosen, with the following design goals:
+This is a massive MegaOverhaul of XCOM 2 War of the Chosen, meant to be a pretty much complete package with the following design goals:
 
 1.  Significantly lower the reliance on alpha striking (more 3-4 + turn engagements than 1-2 turn ones)
 2.  Eliminate the need to manage pod activations
@@ -12,15 +12,17 @@ This is a fundamental rebalance of Long War of the Chosen, with the following de
 
 
 ## Current State
-Currently the Mod is in alpha, in a playable but feature incomplete and unpolished state.
+Currently the Mod is in beta, in a playable but feature incomplete, unbalanced and unpolished state.
 
 Particularly, the not-implemented features (In this case: Not rebalanced/redesigned yet) so far include:
 * Psi ops
-* Sparks
+* MECS (instead of sparks)
+* Compatibility with Covert Infiltration
+* Resistance Orders
+* Negative Traits
 * Alien Hunters DLC
-* The Chosen (should disable them in Second Wave options)
 
-Also, Gotcha again overwatch indicators are unreliable for now.
+Also, Gotcha again overwatch indicators are unreliable for now. I plan on creating a version that matches the new OW behavior.
 
 ## Features
 
@@ -45,19 +47,19 @@ Here's a headline list of features of this mod
 
 ### Cover
 * Cover Defense is further increased to 40/55 from 30/45 - significantly raising the value of cover
-* Base Flanking crit bonus increased to 50% from 40%
+* Base Flanking crit bonus increased to 60% from 40%
 
 ### Ammo management
 * Reload is now turn ending
 * Pistols and autopistols no longer carry any mobility penalty
-* Sawed-off can now be equipped in a pistol slot 
+* Sawed-off can now be equipped in a pistol slot
 
 ### Attachments
 * Attachments now only have 1 tier, and supply is infinite as soon as you research Modular Weapons (do so early)
 * All weapons now start with only 1 attachment slot, and can gain 2 more slots by researching proving ground projects
 
 Attachments have been rebalanced to:
-* Scope - Gain 5 aim
+* Scope - Gain 5 aim, and decrease 
 * Laser sight - Gain 10 crit
 
 * Hair trigger - After a miss, gain +25 aim
@@ -81,6 +83,16 @@ Similar to LWR overwatch rules, except it doesn't have covering fire by default.
 
 These changes make suppression far more effective at locking down units, and far less effective at killing them.
 
+### Injury and Fatigue
+
+* Significantly Decreased the recovery time for light and medium soldier wounds
+
+* Will will no longer drop on enemy sightings - Instead, it drops a set amount per turn
+
+* Significantly Increased the recovery Time for shaken soldiers
+
+* Injury and Fatigue times are now seperate - In vanilla recovering from injuries made you remove fatigue instantly, which made fatigue irrelevant with lower wound times.
+
 ### Soldiers
 
 * All soldiers now start as squaddies - Eliminates the boring rookie phase where your toolset was severely limited
@@ -96,6 +108,8 @@ These changes make suppression far more effective at locking down units, and far
 * Soldier HP, Aim and Will growths have been completely removed - Makes sure cover is just as important early game as it is late
 
 * All soldier classes (except templars) now have access to the following "Universal" primary weapon categories: Assault rifle, Shotgun, SMG, Bullpup, Vektor, Grenade launcher
+
+
 
 ##### Classes
 
@@ -182,9 +196,6 @@ More detailed enemy changes can be found here, I'll just present some more impor
 
 #### Spectres
 * Shadowbind is no longer a dash move
-
-#### Codex
-* Gains Evasive
 
 #### Andromedons
 * Primary Weapon now has short range
@@ -458,19 +469,19 @@ LMG_ALL_RANGE[24] = -20
 LMG_ALL_RANGE[25] = -24
 LMG_ALL_RANGE[26] = -100
 
-MID_LONG_ALL_RANGE[0] = -48
-MID_LONG_ALL_RANGE[1] = -48
-MID_LONG_ALL_RANGE[2] = -44
-MID_LONG_ALL_RANGE[3] = -40
-MID_LONG_ALL_RANGE[4] = -36
-MID_LONG_ALL_RANGE[5] = -32
-MID_LONG_ALL_RANGE[6] = -28
-MID_LONG_ALL_RANGE[7] = -24
-MID_LONG_ALL_RANGE[8] = -20
-MID_LONG_ALL_RANGE[9] = -16
-MID_LONG_ALL_RANGE[10] = -12
-MID_LONG_ALL_RANGE[11] = -8
-MID_LONG_ALL_RANGE[12] = -4
+MID_LONG_ALL_RANGE[0] = -30
+MID_LONG_ALL_RANGE[1] = -30
+MID_LONG_ALL_RANGE[2] = -27
+MID_LONG_ALL_RANGE[3] = -24
+MID_LONG_ALL_RANGE[4] = -21
+MID_LONG_ALL_RANGE[5] = -18
+MID_LONG_ALL_RANGE[6] = -15
+MID_LONG_ALL_RANGE[7] = -12
+MID_LONG_ALL_RANGE[8] = -9
+MID_LONG_ALL_RANGE[9] = -6
+MID_LONG_ALL_RANGE[10] = -3
+MID_LONG_ALL_RANGE[11] = 0
+MID_LONG_ALL_RANGE[12] = 0
 MID_LONG_ALL_RANGE[13] = 0
 MID_LONG_ALL_RANGE[14] = 0
 MID_LONG_ALL_RANGE[15] = 0
@@ -530,31 +541,31 @@ MEDIUM_ALL_RANGE[25] = -100
 
 SAWED_OFF_RANGE[0]=60
 SAWED_OFF_RANGE[1]=60
-SAWED_OFF_RANGE[2]=30
-SAWED_OFF_RANGE[3]=15
-SAWED_OFF_RANGE[4]=0
-SAWED_OFF_RANGE[5]=-30
-SAWED_OFF_RANGE[6]=-60
+SAWED_OFF_RANGE[2]=20
+SAWED_OFF_RANGE[3]=0
+SAWED_OFF_RANGE[4]=-30
+SAWED_OFF_RANGE[5]=-60
+SAWED_OFF_RANGE[6]=-90
 SAWED_OFF_RANGE[7]=-100
 
 MIDSHORT_ALL_RANGE[0] = 45
 MIDSHORT_ALL_RANGE[1] = 45
-MIDSHORT_ALL_RANGE[2] = 40
-MIDSHORT_ALL_RANGE[3] = 35
-MIDSHORT_ALL_RANGE[4] = 30
-MIDSHORT_ALL_RANGE[5] = 25
-MIDSHORT_ALL_RANGE[6] = 20
-MIDSHORT_ALL_RANGE[7] = 17
-MIDSHORT_ALL_RANGE[8] = 14
-MIDSHORT_ALL_RANGE[9] = 11
-MIDSHORT_ALL_RANGE[10] = 9
-MIDSHORT_ALL_RANGE[11] = 6
-MIDSHORT_ALL_RANGE[12] = 3
-MIDSHORT_ALL_RANGE[13] = 0
-MIDSHORT_ALL_RANGE[14] = -4
-MIDSHORT_ALL_RANGE[15] = -8
-MIDSHORT_ALL_RANGE[16] = -12
-MIDSHORT_ALL_RANGE[17] = -17
+MIDSHORT_ALL_RANGE[2] = 35
+MIDSHORT_ALL_RANGE[3] = 25
+MIDSHORT_ALL_RANGE[4] = 15
+MIDSHORT_ALL_RANGE[5] = 10
+MIDSHORT_ALL_RANGE[6] = 7
+MIDSHORT_ALL_RANGE[7] = 3
+MIDSHORT_ALL_RANGE[8] = 0
+MIDSHORT_ALL_RANGE[9] = 0
+MIDSHORT_ALL_RANGE[10] = 0
+MIDSHORT_ALL_RANGE[11] = 0
+MIDSHORT_ALL_RANGE[12] = -3
+MIDSHORT_ALL_RANGE[13] = -6
+MIDSHORT_ALL_RANGE[14] = -9
+MIDSHORT_ALL_RANGE[15] = -12
+MIDSHORT_ALL_RANGE[16] = -16
+MIDSHORT_ALL_RANGE[17] = -19
 MIDSHORT_ALL_RANGE[18] = -22
 MIDSHORT_ALL_RANGE[19] = -30
 MIDSHORT_ALL_RANGE[20] = -45
@@ -566,23 +577,23 @@ MIDSHORT_ALL_RANGE[25] = -100
 
 SHORT_ALL_RANGE[0] = 60
 SHORT_ALL_RANGE[1] = 60
-SHORT_ALL_RANGE[2] = 50
-SHORT_ALL_RANGE[3] = 42
-SHORT_ALL_RANGE[4] = 34
-SHORT_ALL_RANGE[5] = 26
-SHORT_ALL_RANGE[6] = 18
-SHORT_ALL_RANGE[7] = 12
-SHORT_ALL_RANGE[8] = 6
-SHORT_ALL_RANGE[9] = -3
-SHORT_ALL_RANGE[10] = -0
-SHORT_ALL_RANGE[11] = -5
-SHORT_ALL_RANGE[12] = -10
-SHORT_ALL_RANGE[13] = -15
-SHORT_ALL_RANGE[14] = -20
-SHORT_ALL_RANGE[15] = -30
-SHORT_ALL_RANGE[16] = -40
-SHORT_ALL_RANGE[17] = -50
-SHORT_ALL_RANGE[18] = -70
+SHORT_ALL_RANGE[2] = 45
+SHORT_ALL_RANGE[3] = 30
+SHORT_ALL_RANGE[4] = 15
+SHORT_ALL_RANGE[5] = 8
+SHORT_ALL_RANGE[6] = 4
+SHORT_ALL_RANGE[7] = 0
+SHORT_ALL_RANGE[8] = 0
+SHORT_ALL_RANGE[9] = -4
+SHORT_ALL_RANGE[10] = -8
+SHORT_ALL_RANGE[11] = -16
+SHORT_ALL_RANGE[12] = -32
+SHORT_ALL_RANGE[13] = -40
+SHORT_ALL_RANGE[14] = -48
+SHORT_ALL_RANGE[15] = -60
+SHORT_ALL_RANGE[16] = -70
+SHORT_ALL_RANGE[17] = -80
+SHORT_ALL_RANGE[18] = -90
 SHORT_ALL_RANGE[19] = -100
 SHORT_ALL_RANGE[20] = -100
 SHORT_ALL_RANGE[21] = -100
@@ -591,19 +602,19 @@ SHORT_ALL_RANGE[23] = -100
 SHORT_ALL_RANGE[24] = -100
 SHORT_ALL_RANGE[25] = -100
  
-LONG_ALL_RANGE[0] = -60
-LONG_ALL_RANGE[1] = -60
-LONG_ALL_RANGE[2] = -55
-LONG_ALL_RANGE[3] = -50
-LONG_ALL_RANGE[4] = -45
-LONG_ALL_RANGE[5] = -40
-LONG_ALL_RANGE[6] = -35
-LONG_ALL_RANGE[7] = -30
-LONG_ALL_RANGE[8] = -25
-LONG_ALL_RANGE[9] = -20
-LONG_ALL_RANGE[10] = -15
-LONG_ALL_RANGE[11] = -10
-LONG_ALL_RANGE[12] = -5
+LONG_ALL_RANGE[0] = -40
+LONG_ALL_RANGE[1] = -40
+LONG_ALL_RANGE[2] = -36
+LONG_ALL_RANGE[3] = -32
+LONG_ALL_RANGE[4] = -28
+LONG_ALL_RANGE[5] = -24
+LONG_ALL_RANGE[6] = -20
+LONG_ALL_RANGE[7] = -16
+LONG_ALL_RANGE[8] = -12
+LONG_ALL_RANGE[9] = -8
+LONG_ALL_RANGE[10] = -4
+LONG_ALL_RANGE[11] = 0
+LONG_ALL_RANGE[12] = 0
 LONG_ALL_RANGE[13] = 0
 LONG_ALL_RANGE[14] = 0
 LONG_ALL_RANGE[15] = 0
@@ -611,33 +622,28 @@ LONG_ALL_RANGE[16] = 0
 LONG_ALL_RANGE[17] = 0
 LONG_ALL_RANGE[18] = 0
 LONG_ALL_RANGE[19] = 0
-LONG_ALL_RANGE[20] = 0
-LONG_ALL_RANGE[21] = 0
-LONG_ALL_RANGE[22] = 0
-LONG_ALL_RANGE[23] = 0
-LONG_ALL_RANGE[24] = 0
-LONG_ALL_RANGE[25] = -2
-LONG_ALL_RANGE[26] = -4
-LONG_ALL_RANGE[27] = -6
-LONG_ALL_RANGE[28] = -8
-LONG_ALL_RANGE[29] = -10
-LONG_ALL_RANGE[30] = -12
-LONG_ALL_RANGE[31] = -14
-LONG_ALL_RANGE[32] = -16
-LONG_ALL_RANGE[33] = -18
-LONG_ALL_RANGE[34] = -20
-LONG_ALL_RANGE[35] = -22
-LONG_ALL_RANGE[36] = -24
-LONG_ALL_RANGE[37] = -26
-LONG_ALL_RANGE[38] = -28
-LONG_ALL_RANGE[39] = -30
-LONG_ALL_RANGE[40] = -32
-LONG_ALL_RANGE[41] = -34
-LONG_ALL_RANGE[42] = -36
-LONG_ALL_RANGE[43] = -38
-LONG_ALL_RANGE[44] = -40
-LONG_ALL_RANGE[45] = -42
-LONG_ALL_RANGE[46] = -44
+LONG_ALL_RANGE[20] = -2
+LONG_ALL_RANGE[21] = -4
+LONG_ALL_RANGE[22] = -6
+LONG_ALL_RANGE[23] = -8
+LONG_ALL_RANGE[24] = -10
+LONG_ALL_RANGE[25] = -12
+LONG_ALL_RANGE[26] = -14
+LONG_ALL_RANGE[27] = -16
+LONG_ALL_RANGE[28] = -18
+LONG_ALL_RANGE[29] = -20
+LONG_ALL_RANGE[30] = -22
+LONG_ALL_RANGE[31] = -24
+LONG_ALL_RANGE[32] = -26
+LONG_ALL_RANGE[33] = -28
+LONG_ALL_RANGE[34] = -30
+LONG_ALL_RANGE[35] = -32
+LONG_ALL_RANGE[36] = -34
+LONG_ALL_RANGE[37] = -36
+LONG_ALL_RANGE[38] = -38
+LONG_ALL_RANGE[39] = -40
+LONG_ALL_RANGE[40] = -42
+LONG_ALL_RANGE[41] = -44
 ```
 * Notice mid range being much better at longer ranges, and midlong and long ranges having very harsh close range penalties
 
@@ -901,4 +907,3 @@ If you find you can't complete the issue in a reasonable time, please add anothe
 the issue.
 
 All contributions are welcome, but bug fixes are _extremely_ welcome!
-

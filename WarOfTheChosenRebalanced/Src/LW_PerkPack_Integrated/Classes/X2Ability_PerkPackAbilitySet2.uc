@@ -23,8 +23,8 @@ var config float PHANTOM_DETECTION_RANGE_REDUCTION;
 var config int PHANTOM_COOLDOWN;
 var config int PHANTOM_CHARGES;
 var config int CONCEAL_BONUS_CHARGES;
-var config float REAPER_PCT_DMG_REDUCTION;
-var config int SERIAL_PCT_DMG_REDUCTION;
+var config array<float> REAPER_PCT_DMG_REDUCTION;
+var config array<float> SERIAL_PCT_DMG_REDUCTION;
 
 var config int SPRAY_AND_PRAY_DODGE;
 var config int STOCK_SPRAY_AND_PRAY_DODGE;
@@ -97,6 +97,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(ShotgunFireControl());
 	Templates.AddItem(AddBrawler2());
 	Templates.AddItem(AddShockAbsorbentArmor());
+	Templates.AddItem(CreateIronWill());
+	
 	//Passives for dictating AI behaviors out of LOS
 	return Templates;
 }
@@ -1292,8 +1294,8 @@ static function X2AbilityTemplate AddNewPhantom()
 
 	Charges = new class'X2AbilityCharges_BonusCharges';
 	Charges.InitialCharges = default.PHANTOM_CHARGES;
-	Charges.BonusAbility = 'Stealth_LW';
-	Charges.BonusChargesCount = default.CONCEAL_BONUS_CHARGES;
+	//Charges.BonusAbility = 'Stealth_LW';
+	//Charges.BonusChargesCount = default.CONCEAL_BONUS_CHARGES;
 	Template.AbilityCharges = Charges;
 
 
@@ -1352,11 +1354,25 @@ static function X2AbilityTemplate AddPhantomTrigger()
 	local X2Effect_AddChargesToAbility 				AmmoEffect;
 	local X2Condition_UnitProperty		UnitPropertyCondition;
 	local X2Condition_PrimaryWeapon PrimaryWeaponCondition;
+	local X2Condition_AbilityProperty OwnerAbilityConidition;
+
 
 	AmmoEffect = new class'X2Effect_AddChargesToAbility';
 	AmmoEffect.ExtraChargesAmount = 1;
 	AmmoEffect.AbilityName = 'Phantom_LW';
+
+
 	Template = SelfTargetTrigger('PhantomChargesTrigger_LW', "img:///UILibrary_PerkIcons.UIPerk_phantom", false, AmmoEffect, 'KillMail');
+
+
+
+	AmmoEffect = new class'X2Effect_AddChargesToAbility';
+	AmmoEffect.ExtraChargesAmount = 1;
+	AmmoEffect.AbilityName = 'Phantom_LW';
+
+	OwnerAbilityConidition = new class'X2Condition_AbilityProperty';
+	OwnerAbilityConidition.OwnerHasSoldierAbilities.AddItem('Stealth_LW');
+	AmmoEffect.TargetConditions.AddItem(OwnerAbilityConidition);
 
 	PrimaryWeaponCondition = new class'X2Condition_PrimaryWeapon';
 	PrimaryWeaponCondition.RequirePrimary = true;
@@ -1530,6 +1546,17 @@ static function X2AbilityTemplate ShotgunFireControl()
 	return Template;
 }
 
+static function X2AbilityTemplate CreateIronWill()
+{
+	local X2AbilityTemplate		Template;
+
+	Template = PurePassive('IronWill', "img:///UILibrary_XPerkIconPack_LW.UIPerk_mind_cycle", , 'eAbilitySource_Perk');
+
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+
+	return Template;
+}
 static function X2AbilityTemplate AddSilentTakedown_LW()
 {
 	local X2AbilityTemplate                 Template;

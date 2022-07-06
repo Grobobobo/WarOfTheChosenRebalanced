@@ -97,6 +97,7 @@ static function X2DataTemplate CreateTemplate_LWPistol_Laser()
 	Template.InventorySlot = eInvSlot_SecondaryWeapon;
 	// PistolStandardShot is added by LWTemplateMods
 	Template.Abilities.AddItem('PistolOverwatch');
+	Template.Abilities.AddItem('TakeThis');
 	Template.Abilities.AddItem('PistolOverwatchShot');
 	Template.Abilities.AddItem('PistolReturnFire');
 	Template.Abilities.AddItem('HotLoadAmmo');
@@ -109,7 +110,7 @@ static function X2DataTemplate CreateTemplate_LWPistol_Laser()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CreatorTemplateName = 'Pistol_LS_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'Sidearms_LS_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'Pistol_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
@@ -139,7 +140,7 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser_Schematic()
 	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
 
 	// Reference Item
-	Template.ReferenceItemTemplate = 'LWPistol_LS';
+	Template.ReferenceItemTemplate = 'Sidearms_MG_Schematic';
 	Template.HideIfPurchased = 'LWPistol_MG';
 
 	// Requirements
@@ -200,6 +201,7 @@ static function X2DataTemplate CreateTemplate_LWPistol_Coil()
 	Template.Abilities.AddItem('PistolReturnFire');
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('Reload');
+	Template.Abilities.AddItem('TakeThis');
 
 	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotMagA');
 	
@@ -208,7 +210,7 @@ static function X2DataTemplate CreateTemplate_LWPistol_Coil()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CreatorTemplateName = 'Pistol_CG_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'Sidearms_CG_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'Pistol_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;

@@ -64,11 +64,6 @@ static function CHEventListenerTemplate CreateYellowAlertListeners()
 	`LWTrace("Registering evac event listeners");
 
 	`CREATE_X2TEMPLATE(class'CHEventListenerTemplate', Template, 'YellowAlertListeners');
-	Template.AddCHEvent('OverrideSoundRange', OnOverrideSoundRange, ELD_Immediate, GetListenerPriority());
-	//Template.AddCHEvent('OverrideSeesAlertedAllies', DisableSeesAlertedAlliesAlert, ELD_Immediate, GetListenerPriority());
-	Template.AddCHEvent('ProcessReflexMove', OnScamperBegin, ELD_Immediate);
-	Template.AddCHEvent('UnitTakeEffectDamage', OnUnitTookDamage, ELD_OnStateSubmitted);
-	Template.AddCHEvent('OverrideAllowedAlertCause', OnOverrideAllowedAlertCause, ELD_Immediate);
 	Template.AddCHEvent('ShouldCivilianRun', ShouldCivilianRunFromOtherUnit, ELD_Immediate);
 
 	Template.RegisterInTactical = true;
@@ -83,11 +78,9 @@ static function CHEventListenerTemplate CreateMiscellaneousListeners()
 	`LWTrace("Registering miscellaneous tactical event listeners");
 
 	`CREATE_X2TEMPLATE(class'CHEventListenerTemplate', Template, 'MiscellaneousTacticalListeners');
-	Template.AddCHEvent('GetEvacPlacementDelay', OnPlacedDelayedEvacZone, ELD_Immediate, GetListenerPriority());
+	//Template.AddCHEvent('GetEvacPlacementDelay', OnPlacedDelayedEvacZone, ELD_Immediate, GetListenerPriority());
 	Template.AddCHEvent('KilledbyExplosion', OnKilledbyExplosion, ELD_Immediate, GetListenerPriority());
 	Template.AddCHEvent('CleanupTacticalMission', OnCleanupTacticalMission, ELD_Immediate, GetListenerPriority());
-	Template.AddCHEvent('OverrideBodyRecovery', OnOverrideBodyAndLootRecovery, ELD_Immediate);
-	Template.AddCHEvent('OverrideLootRecovery', OnOverrideBodyAndLootRecovery, ELD_Immediate);
 	Template.AddCHEvent('AbilityActivated', OnAbilityActivated, ELD_OnStateSubmitted, GetListenerPriority());
 	Template.AddCHEvent('UnitChangedTeam', ClearUnitStateValues, ELD_Immediate, GetListenerPriority());
 	Template.AddCHEvent('PlayerTurnEnded', RollForPerTurnWillLoss, ELD_OnStateSubmitted, GetListenerPriority());
@@ -134,104 +127,7 @@ static protected function int GetListenerPriority()
 	return default.LISTENER_PRIORITY != -1 ? default.LISTENER_PRIORITY : class'XComGameState_LWListenerManager'.default.DEFAULT_LISTENER_PRIORITY;
 }
 
-// Handles modification of the evac timer based on various conditions, such as
-// infiltration percentage, squad size, etc.
-static function EventListenerReturn OnPlacedDelayedEvacZone(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
-{
-	local LWTuple EvacDelayTuple;
-	local XComGameState_HeadquartersXCom XComHQ;
-	local XComGameState_LWSquadManager SquadMgr;
-	local XComGameState_LWPersistentSquad Squad;
-	local XComGameState_MissionSite MissionState;
-	local XComGameState_LWAlienActivity CurrentActivity;
 
-	EvacDelayTuple = LWTuple(EventData);
-	if(EvacDelayTuple == none)
-		return ELR_NoInterrupt;
-
-	if(EvacDelayTuple.Id != 'DelayedEvacTurns')
-		return ELR_NoInterrupt;
-
-	if(EvacDelayTuple.Data[0].Kind != LWTVInt)
-		return ELR_NoInterrupt;
-
-	XComHQ = `XCOMHQ;
-	SquadMgr = class'XComGameState_LWSquadManager'.static.GetSquadManager();
-	if(SquadMgr == none)
-		return ELR_NoInterrupt;
-
-	Squad = SquadMgr.GetSquadOnMission(XComHQ.MissionRef);
-
-	`LWTRACE("**** Evac Delay Calculations ****");
-	`LWTRACE("Base Delay : " $ EvacDelayTuple.Data[0].i);
-
-	// adjustments based on squad size
-	EvacDelayTuple.Data[0].i += Squad.EvacDelayModifier_SquadSize();
-	`LWTRACE("After Squadsize Adjustment : " $ EvacDelayTuple.Data[0].i);
-
-	// adjustments based on infiltration
-	EvacDelayTuple.Data[0].i += Squad.EvacDelayModifier_Infiltration();
-	`LWTRACE("After Infiltration Adjustment : " $ EvacDelayTuple.Data[0].i);
-
-	// adjustments based on number of active missions engaged with
-	EvacDelayTuple.Data[0].i += Squad.EvacDelayModifier_Missions();
-	`LWTRACE("After NumMissions Adjustment : " $ EvacDelayTuple.Data[0].i);
-
-	MissionState = XComGameState_MissionSite(`XCOMHISTORY.GetGameStateForObjectID(`XCOMHQ.MissionRef.ObjectID));
-	CurrentActivity = class'XComGameState_LWAlienActivityManager'.static.FindAlienActivityByMission(MissionState);
-
-	EvacDelayTuple.Data[0].i += CurrentActivity.GetMyTemplate().MissionTree[CurrentActivity.CurrentMissionLevel].EvacModifier;
-
-	`LWTRACE("After Activity Adjustment : " $ EvacDelayTuple.Data[0].i);
-	
-	return ELR_NoInterrupt;
-
-}
-
-static function EventListenerReturn OnOverrideSoundRange(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
-{
-	local XComLWTuple Tuple;
-	local XComGameState_Item WeaponState;
-	local XComGameState_Ability ActivatedAbilityState;
-	local int SoundRange;
-
-	Tuple = XComLWTuple(EventData);
-	if (Tuple == none)
-		return ELR_NoInterrupt;
-
-	if (Tuple.Id != 'OverrideSoundRange')
-		return ELR_NoInterrupt;
-
-	WeaponState = XComGameState_Item(Tuple.Data[1].o);
-	if (WeaponState == None)
-	{
-		`REDSCREEN("Invalid item state passed to OnOverrideSoundRange");
-		return ELR_NoInterrupt;
-	}
-
-	ActivatedAbilityState = XComGameState_Ability(Tuple.Data[2].o);
-	if (ActivatedAbilityState == None)
-	{
-		`REDSCREEN("Invalid ability state passed to OnOverrideSoundRange");
-		return ELR_NoInterrupt;
-	}
-
-	SoundRange = Tuple.Data[3].i;
-
-	// If the sound comes from ammo, like a grenade fired from a grenade launcher, use
-	// the ammo's sound range instead of the weapon's.
-	if (!WeaponState.SoundOriginatesFromOwnerLocation() && ActivatedAbilityState.GetSourceAmmo() != None)
-	{
-		SoundRange = ActivatedAbilityState.GetSourceAmmo().GetItemSoundRange();
-	}
-	
-	// Apply any sound range modifiers, like those provided by suppressors.
-	SoundRange += ModifySoundRange(WeaponState, ActivatedAbilityState);
-	Tuple.Data[3].i = SoundRange;
-
-	return ELR_NoInterrupt;
-}
-	
 static function EventListenerReturn DisableSeesAlertedAlliesAlert(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
 	local XComLWTuple Tuple;
@@ -249,188 +145,6 @@ static function EventListenerReturn DisableSeesAlertedAlliesAlert(Object EventDa
 	return ELR_NoInterrupt;
 }
 
-// Add extra actions to eligible green- and yellow-alert units.
-static function EventListenerReturn OnScamperBegin(
-	Object EventData,
-	Object EventSource,
-	XComGameState NewGameState,
-	Name InEventID,
-	Object CallbackData)
-{
-	local array<int> AlivePodMembers;
-	local XComGameState_Unit PodLeaderUnit;
-	local XComGameState_Unit PodMember;
-	local XComGameStateHistory History;
-	local XComGameState_AIGroup Group;
-	local bool IsYellow;
-	local float Chance;
-	local UnitValue Value;
-	local XComGameState_MissionSite			MissionSite;
-	local XComGameState_LWPersistentSquad	SquadState;
-	local XComGameState_BattleData			BattleData;
-	local int i, NumSuccessfulReflexActions;
-
-	History = `XCOMHISTORY;
-	Group = XComGameState_AIGroup(EventSource);
-	if (Group == none)
-	{
-		`REDSCREEN("Event source for 'ScamperBegin' is not an XCGS_AIGroup");
-	}
-
-	// Start by getting hold of the members of the pod that are currently
-	// alive + the leader.
-	Group.GetLivingMembers(AlivePodMembers);
-	PodLeaderUnit = XComGameState_Unit(History.GetGameStateForObjectID(AlivePodMembers[0]));
-
-	`LWTrace(GetFuncName() $ ": Processing reflex move for pod leader " $ PodLeaderUnit.GetMyTemplateName());
-
-	// LWOTC: This note is from original LW2. I don't know if the assumptions and reasoning
-	// still hold with WOTC.
-	//
-	// Note: We don't currently support reflex actions on XCOM's turn. Doing so requires
-	// adjustments to how scampers are processed so the units would use their extra action
-	// point. Also note that giving units a reflex action point while it's not their turn
-	// can break stun animations unless those action points are used: see X2Effect_Stunned
-	// where action points are only removed if it's the units turn, and the effect actions
-	// (including the stunned idle anim override) are only visualized if the unit has no
-	// action points left. If the unit has stray reflex actions they haven't used they
-	// will stand back up and perform the normal idle animation (although they are still
-	// stunned and won't act).
-	if (PodLeaderUnit.ControllingPlayer != `TACTICALRULES.GetCachedUnitActionPlayerRef())
-	{
-		`LWTrace(GetFuncName() $ ": Not the alien turn: aborting");
-		return ELR_NoInterrupt;
-	}
-
-	if (PodLeaderUnit.GetCurrentStat(eStat_AlertLevel) <= 1)
-	{
-		// This unit isn't in red alert. If a scampering unit is not in red, this generally means they're a reinforcement
-		// pod. Skip them.
-		`LWTrace(GetFuncName() $ ": Reinforcement unit: aborting");
-		return ELR_NoInterrupt;
-	}
-
-	// Look for the special 'NoReflexAction' unit value. If present, this unit isn't allowed to take an action.
-	// This is typically set on reinforcements on the turn they spawn. But if they spawn out of LoS they are
-	// eligible, just like any other yellow unit, on subsequent turns. Both this check and the one above are needed.
-	PodLeaderUnit.GetUnitValue(class'Utilities_LW'.const.NoReflexActionUnitValue, Value);
- 	if (Value.fValue == 1)
-	{
-		`LWTrace(GetFuncName() $ ": Unit with no reflex action value: aborting");
-		return ELR_NoInterrupt;
-	}
-
-	// Walk backwards through history for this unit until we find a state in which this unit wasn't in red
-	// alert to see if we entered from yellow or from green.
-	IsYellow = class'Utilities_LW'.static.GetPreviousAlertLevel(PodLeaderUnit) == `ALERT_LEVEL_YELLOW;
-	Chance = IsYellow ? class'Utilities_LW'.default.REFLEX_ACTION_CHANCE_YELLOW[`TACTICALDIFFICULTYSETTING]
-			 : class'Utilities_LW'.default.REFLEX_ACTION_CHANCE_GREEN[`TACTICALDIFFICULTYSETTING];
-
-	// if is infiltration mission, get infiltration % and modify yellow and green alert chances by how much you missed 100%, diff modifier, positive boolean
-	BattleData = XComGameState_BattleData(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_BattleData'));
-	MissionSite = XComGameState_MissionSite(`XCOMHISTORY.GetGameStateForObjectID(BattleData.m_iMissionID));
-
-	// Infiltration modifier
-	if (`LWSQUADMGR.IsValidInfiltrationMission(MissionSite.GetReference()))
-	{
-		SquadState = `LWSQUADMGR.GetSquadOnMission(MissionSite.GetReference());
-		if (SquadState.CurrentInfiltration <= 1)
-		{
-			Chance += (1.0 - SquadState.CurrentInfiltration) * class'Utilities_LW'.default.LOW_INFILTRATION_MODIFIER_ON_REFLEX_ACTIONS[`TACTICALDIFFICULTYSETTING];
-		}
-		else
-		{
-			Chance -= (SquadState.CurrentInfiltration - 1.0) * class'Utilities_LW'.default.HIGH_INFILTRATION_MODIFIER_ON_REFLEX_ACTIONS[`TACTICALDIFFICULTYSETTING];
-		}
-	}
-
-	NumSuccessfulReflexActions = 0;
-	for (i = 0; i < AlivePodMembers.Length; ++i)
-	{
-		PodMember = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', AlivePodMembers[i]));
-		NumSuccessfulReflexActions += ProcessReflexActionsForUnit(
-			PodMember,
-			IsYellow,
-			Chance,
-			NumSuccessfulReflexActions);
-	}
-
-	return ELR_NoInterrupt;
-}
-
-static function EventListenerReturn OnUnitTookDamage(
-	Object EventData,
-	Object EventSource,
-	XComGameState GameState,
-	Name InEventID,
-	Object CallbackData)
-{
-	local XComGameState_Unit Unit;
-	local XComGameState NewGameState;
-
-	Unit = XComGameState_Unit(EventSource);
-	if (Unit.ControllingPlayerIsAI() &&
-		Unit.IsInjured() &&
-		`BEHAVIORTREEMGR.IsScampering() &&
-		Unit.ActionPoints.Find(class'Utilities_LW'.const.OffensiveReflexAction) >= 0)
-	{
-		// This unit has taken damage, is scampering, and has an 'offensive' reflex action point. Replace it with
-		// a defensive action point.
-		NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Replacing reflex action for injured unit");
-		Unit = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', Unit.ObjectID));
-		Unit.ActionPoints.RemoveItem(class'Utilities_LW'.const.OffensiveReflexAction);
-		Unit.ActionPoints.AddItem(class'Utilities_LW'.const.DefensiveReflexAction);
-		`TACTICALRULES.SubmitGameState(NewGameState);
-	}
-
-	return ELR_NoInterrupt;
-}
-
-static function EventListenerReturn OnOverrideAllowedAlertCause(
-	Object EventData,
-	Object EventSource,
-	XComGameState NewGameState,
-	Name InEventID,
-	Object CallbackData)
-{
-	local XComLWTuple Tuple;
-	local EAlertCause AlertCause;
-
-	Tuple = XComLWTuple(EventData);
-	if (Tuple == none)
-		return ELR_NoInterrupt;
-
-	// Sanity check. This should not happen.
-	if (Tuple.Id != 'OverrideAllowedAlertCause')
-	{
-		`REDSCREEN("Received unexpected event ID in OnOverrideAllowedAlertCause() event handler");
-		return ELR_NoInterrupt;
-	}
-
-	if (class'Helpers_LW'.static.YellowAlertEnabled())
-	{
-		AlertCause = EAlertCause(Tuple.Data[0].i);
-		switch (AlertCause)
-		{
-			case eAC_DetectedSound:
-			case eAC_DetectedAllyTakingDamage:
-			case eAC_DetectedNewCorpse:
-			case eAC_SeesExplosion:
-			case eAC_SeesSmoke:
-			case eAC_SeesFire:
-			case eAC_AlertedByYell:
-			//case eAC_SeesSpottedUnit:
-			//case eAC_SeesAlertedAllies:
-				Tuple.Data[1].b = true;
-				break;
-
-			default:
-				break;
-		}
-	}
-
-	return ELR_NoInterrupt;
-}
 
 static function EventListenerReturn ShouldCivilianRunFromOtherUnit(
 	Object EventData,
@@ -544,44 +258,6 @@ static function int ModifySoundRange(XComGameState_Item Weapon, XComGameState_Ab
 	return int (FMax (SoundRangeModifier, 0.0));
 }
 
-static function int ProcessReflexActionsForUnit(
-	XComGameState_Unit Unit,
-	bool IsYellowAlert,
-	float Chance,
-	int NumSuccessfulReflexActions)
-{
-	if (class'Utilities_LW'.default.REFLEX_ACTION_CHANCE_REDUCTION > 0 && NumSuccessfulReflexActions > 0)
-	{
-		`LWTrace(GetFuncName() $ ": Reducing reflex chance due to " $ NumSuccessfulReflexActions $ " successes");
-		Chance -= NumSuccessfulReflexActions * class'Utilities_LW'.default.REFLEX_ACTION_CHANCE_REDUCTION;
-	}
-
-	if (`SYNC_FRAND_STATIC() < Chance)
-	{
-		// Award the unit a special kind of action point. These are more restricted than standard action points.
-		// See the 'OffensiveReflexAbilities' and 'DefensiveReflexAbilities' arrays in LW_Overhaul.ini for the list
-		// of abilities that have been modified to allow these action points.
-		//
-		// Damaged units, and units in green (if enabled) get 'defensive' action points. Others get 'offensive' action points.
-		if (Unit.IsInjured() || !IsYellowAlert)
-		{
-			`LWTrace(GetFuncName() $ ": Awarding an extra defensive action point to unit " $ Unit.GetMyTemplateName());
-			Unit.ActionPoints.AddItem(class'Utilities_LW'.const.DefensiveReflexAction);
-		}
-		else
-		{
-			`LWTrace(GetFuncName() $ ": Awarding an extra offensive action point to unit " $ Unit.GetMyTemplateName());
-			Unit.ActionPoints.AddItem(class'Utilities_LW'.const.OffensiveReflexAction);
-		}
-
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
-}
-
 // Prevent Needle grenades from blowing up the corpse.
 static function EventListenerReturn OnKilledByExplosion(Object EventData, Object EventSource, XComGameState NewGameState, Name InEventID, Object CallbackData)
 {
@@ -669,7 +345,7 @@ static function EventListenerReturn OnCleanupTacticalMission(Object EventData, O
 		// X2TacticalGameRuleSet.CleanupTacticalMission().
 		if (Unit.bSpawnedFromAvenger)
 		{
-			if (BattleData.AllTacticalObjectivesCompleted() || (HasAnyTriadObjective(BattleData) && BattleData.AllTriadObjectivesCompleted()))
+			if (BattleData.AllTacticalObjectivesCompleted() || BattleData.AllTriadObjectivesCompleted())
 			{
 				Unit = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', Unit.ObjectID));
 				Unit.RemoveUnitFromPlay();
@@ -681,7 +357,7 @@ static function EventListenerReturn OnCleanupTacticalMission(Object EventData, O
 					Unit.bBodyRecovered = true;
 				}
 			}
-			else if (!BattleData.AllTacticalObjectivesCompleted() && !(HasAnyTriadObjective(BattleData) && BattleData.AllTriadObjectivesCompleted()))
+			else if (!BattleData.AllTacticalObjectivesCompleted() && !BattleData.AllTriadObjectivesCompleted())
 			{
 				// Missions that don't result in recovery of XCOM bodies should ensure that
 				// mind controlled soldiers are captured.
@@ -698,11 +374,7 @@ static function EventListenerReturn OnCleanupTacticalMission(Object EventData, O
 			foreach Unit.AffectedByEffects(EffectRef)
 			{
 				EffectState = XComGameState_Effect(History.GetGameStateForObjectID(EffectRef.ObjectID));
-				if (EffectState.GetX2Effect().EffectName == class'X2Effect_TransferMecToOutpost'.default.EffectName)
-				{
-					X2Effect_TransferMecToOutpost(EffectState.GetX2Effect()).AddMECToOutpostIfValid(EffectState, Unit, NewGameState, AwardWrecks);
-				}
-				else if (EffectState.GetX2Effect().EffectName == class'X2Effect_FieldSurgeon'.default.EffectName)
+				if (EffectState.GetX2Effect().EffectName == class'X2Effect_FieldSurgeon'.default.EffectName)
 				{
 					X2Effect_FieldSurgeon(EffectState.GetX2Effect()).ApplyFieldSurgeon(EffectState, Unit, NewGameState);
 				}
@@ -728,43 +400,6 @@ static function EventListenerReturn OnCleanupTacticalMission(Object EventData, O
     return ELR_NoInterrupt;
 }
 
-// Mark a mission as having body and loot recovery if it has triad objectives
-// and all its triad objectives have been completed.
-static function EventListenerReturn OnOverrideBodyAndLootRecovery(Object EventData, Object EventSource, XComGameState NewGameState, Name InEventID, Object CallbackData)
-{
-	local XComLWTuple Tuple;
-	local XComGameState_BattleData BattleData;
-	
-	Tuple = XComLWTuple(EventData);
-	if (Tuple == none)
-		return ELR_NoInterrupt;
-
-	BattleData = XComGameState_BattleData(EventSource);
-	if (BattleData == none)
-	{
-		`REDSCREEN("BattleData not provided with 'OverrideBodyAndLootRecovery' event");
-		return ELR_NoInterrupt;
-	}
-
-	Tuple.Data[0].b = (HasAnyTriadObjective(BattleData) && BattleData.AllTriadObjectivesCompleted()) || Tuple.Data[0].b;
-
-	return ELR_NoInterrupt;
-}
-
-static function bool HasAnyTriadObjective(XComGameState_BattleData Battle)
-{
-	local int ObjectiveIndex;
-
-	for( ObjectiveIndex = 0; ObjectiveIndex < Battle.MapData.ActiveMission.MissionObjectives.Length; ++ObjectiveIndex )
-	{
-		if( Battle.MapData.ActiveMission.MissionObjectives[ObjectiveIndex].bIsTriadObjective )
-		{
-			return true;
-		}
-	}
-
-	return false;
-}
 
 // Make sure reinforcements arrive in red alert if any aliens on the map are
 // already in red alert.
@@ -900,31 +535,13 @@ static function EventListenerReturn OnAbilityActivated(Object EventData, Object 
 	local XComGameState_LWReinforcements Reinforcements;
 	local XComGameState NewGameState;
 	local XComGameState_Unit UnitState;
-	local float DetectionRadius;
-	local int Modifier;
 
 	//ActivatedAbilityStateContext = XComGameStateContext_Ability(GameState.GetContext());
 	ActivatedAbilityState = XComGameState_Ability(EventData);
 	UnitState = XComGameState_Unit(EventSource);
 	if (ActivatedAbilityState.GetMyTemplate().DataName == 'RedAlert')
 	{
-		`LWTrace("Max detection radius for " $ UnitState.GetMyTemplateName() $ " = " $UnitState.GetMaxStat(eStat_DetectionRadius));
-		`LWTrace("Current detection radius for " $ UnitState.GetMyTemplateName() $ " = " $UnitState.GetCurrentStat(eStat_DetectionRadius));
-		DetectionRadius = UnitState.GetBaseStat(eStat_DetectionRadius);
-
 		NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("On Red Alert Activated");
-		UnitState = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', UnitState.ObjectID));
-
-		Modifier = default.RED_ALERT_DETECTION_DIFFICULTY_MODIFIER[`TACTICALDIFFICULTYSETTING];
-		if (class'Utilities_LW'.static.GetPreviousAlertLevel(UnitState) == `ALERT_LEVEL_YELLOW)
-		{
-			// If the unit was previously in yellow alert, then its detection radius
-			// already has that modifier applied, so don't apply it twice!
-			Modifier -= default.YELLOW_ALERT_DETECTION_DIFFICULTY_MODIFIER[`TACTICALDIFFICULTYSETTING];
-		}
-
-		`LWTrace("[Red Alert] Modifying detection radius for " $ UnitState.GetMyTemplateName() $ " to " $ int(DetectionRadius + Modifier));
-		UnitState.SetBaseMaxStat(eStat_DetectionRadius, int(DetectionRadius + Modifier));
 
 		Reinforcements = XComGameState_LWReinforcements(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_LWReinforcements', true));
 		if (Reinforcements != none && !Reinforcements.RedAlertTriggered)
@@ -942,14 +559,6 @@ static function EventListenerReturn OnAbilityActivated(Object EventData, Object 
 	}
 	else if (ActivatedAbilityState.GetMyTemplate().DataName == 'YellowAlert')
 	{
-		DetectionRadius = UnitState.GetBaseStat(eStat_DetectionRadius);
-
-		NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("On Yellow Alert Activated");
-		UnitState = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', UnitState.ObjectID));
-
-		`LWTrace("[Yellow Alert] Modifying detection radius for " $ UnitState.GetMyTemplateName() $
-			" to " $ int(DetectionRadius + default.YELLOW_ALERT_DETECTION_DIFFICULTY_MODIFIER[`TACTICALDIFFICULTYSETTING]));
-		UnitState.SetBaseMaxStat(eStat_DetectionRadius, int(DetectionRadius + default.YELLOW_ALERT_DETECTION_DIFFICULTY_MODIFIER[`TACTICALDIFFICULTYSETTING]));
 
 		// Clear the stat restoration effect that gets applied when units enter
 		// red or yellow alert, since it overrides the sight radius changes applied
@@ -1015,6 +624,7 @@ static protected function EventListenerReturn RollForPerTurnWillLoss(
 	local XComGameState_HeadquartersXCom XComHQ;
 	local StateObjectReference SquadRef;
 	local XComGameState_Unit SquadUnit;
+	local WillEventRollData WillRollData;
 
 	History = `XCOMHISTORY;
 	XComHQ = XComGameState_HeadquartersXCom(History.GetSingleGameStateObjectForClass(class' XComGameState_HeadquartersXCom'));
@@ -1037,12 +647,18 @@ static protected function EventListenerReturn RollForPerTurnWillLoss(
 			continue;
 		}
 
+		WillRollData = default.PerTurnWillRollData;
+		if(SquadUnit.HasSoldierAbility('IronWill') && WillRollData.MinimumWillLoss > 0)
+		{
+			WillRollData.MinimumWillLoss -= 1;
+		}
+
 		// Unit should lose Will this turn, so do it
-		if (class'XComGameStateContext_WillRoll'.static.ShouldPerformWillRoll(default.PerTurnWillRollData, SquadUnit))
+		if (class'XComGameStateContext_WillRoll'.static.ShouldPerformWillRoll(WillRollData, SquadUnit))
 		{
 			`LWTrace("Performing Will roll at end of turn");
 			WillRollContext = class'XComGameStateContext_WillRoll'.static.CreateWillRollContext(SquadUnit, 'PlayerTurnEnd',, false);
-			WillRollContext.DoWillRoll(default.PerTurnWillRollData);
+			WillRollContext.DoWillRoll(WillRollData);
 			WillRollContext.Submit();
 		}
 	}
@@ -1165,6 +781,8 @@ static protected function EventListenerReturn DynamicallyApplyLoadouts(
 	local array<XComGameState_Item> Items;
 	local XComGameState_Item Item;
 	local UnitValue DynamicallyAppliedLoadout;
+	local string LoadoutStr;
+	local int iRand;
 	UnitState = XComGameState_Unit(EventSource);
 
 	Tuple = XComLWTuple(EventData);
@@ -1198,7 +816,7 @@ static protected function EventListenerReturn DynamicallyApplyLoadouts(
 						UnitState.ApplyInventoryLoadout(NewGameState,default.LOADOUT_ASSIGNMENTS[FindIndex].UnitLoadoutSets[i].LoadoutName);
 						if(!UnitState.HasLoadout(default.LOADOUT_ASSIGNMENTS[FindIndex].UnitLoadoutSets[i].LoadoutName))
 						{
-							`REDSCREEN("WOTCR: attempted to dynamically assign "$ default.LOADOUT_ASSIGNMENTS[FindIndex].UnitLoadoutSets[i].LoadoutName $ "To " $ UnitState.GetMyTemplateName() $ " But something went wrong");
+							`REDSCREEN("GTO: attempted to dynamically assign "$ default.LOADOUT_ASSIGNMENTS[FindIndex].UnitLoadoutSets[i].LoadoutName $ "To " $ UnitState.GetMyTemplateName() $ " But something went wrong");
 						}
 					}
 					break;
@@ -1206,10 +824,87 @@ static protected function EventListenerReturn DynamicallyApplyLoadouts(
 			}
 		}
 	}
-	
+	else if(UnitState.GetMyTemplateName() == 'CivilianMilitia')
+	{
+		UnitState.GetUnitValue('DynamicallyAppliedLoadout',DynamicallyAppliedLoadout );
+
+		if(DynamicallyAppliedLoadout.fValue < 1.0f)
+		{
+			//Clear the loadout before assigning the new one
+			Items = UnitState.GetAllInventoryItems(NewGameState);
+			foreach Items(Item)
+			{
+				UnitState.RemoveItemFromInventory(Item,NewGameState);
+			}
+			UnitState.SetUnitFloatValue('DynamicallyAppliedLoadout', 2.0f);
+
+			LoadoutStr = "MilitiaSoldier";
+
+			if (IsProvingGroundProjectResearched('MilitiaBeam'))
+			{
+				LoadoutStr $= "5";
+			}
+			else if (IsProvingGroundProjectResearched('MilitiaCoil'))
+			{
+				LoadoutStr $= "4";
+			}
+			else if (IsProvingGroundProjectResearched('MilitiaMag'))
+			{
+				LoadoutStr $= "3";
+			}
+			else if (IsProvingGroundProjectResearched('MilitiaLaser'))
+			{
+				LoadoutStr $= "2";
+			}
+			iRand = `SYNC_RAND_STATIC(100);
+			if (iRand < 15)
+			{
+				LoadoutStr $= "SMG";
+			}
+			else if (iRand < 30)
+			{
+				LoadoutStr $= "Shotgun";
+			}
+			else if (iRand < 45)
+			{
+				LoadoutStr $= "Bullpup";
+			}
+				
+			UnitState.ApplyInventoryLoadout(NewGameState,name(LoadoutStr));
+
+			if(!UnitState.HasLoadout(name(LoadoutStr)))
+			{
+				`REDSCREEN("GTO: attempted to dynamically assign "$ LoadoutStr $ "To " $ UnitState.GetMyTemplateName() $ " But something went wrong");
+			}
+		
+		}
+	}
 	return ELR_NoInterrupt;
 }
 
+static function bool IsProvingGroundProjectResearched(name TechName)
+{
+	local XComGameState_HeadquartersXCom XComHQ;
+	local array<StateObjectReference>  CompletedProjects;
+	local StateObjectReference TechReference;
+	local XComGameState_Tech TechState;
+
+	XComHQ = `XCOMHQ;
+
+	CompletedProjects = XComHQ.GetCompletedProvingGroundTechs();
+
+	foreach CompletedProjects(TechReference)
+	{
+		TechState = XComGameState_Tech(`XCOMHISTORY.GetGameStateForObjectID(TechReference.ObjectID));
+		if (TechState.GetMyTemplateName() == TechName)
+		{
+			return true;
+		}
+	}
+
+	return false;
+
+}
 
 static function CHEventListenerTemplate CreateUIFocusOverride()
 {
@@ -1267,6 +962,10 @@ static protected function EventListenerReturn HideFocusOnAssaults(
 {
 	local XComLWTuple Tuple;
 	local XComGameState_Unit Unit;
+	local UnitValue						CurrentHeatLevel, MaxHeatLevel;
+	local int							CurrentHeat, MaxHeat;
+	local string						TooltipLong, TooltipShort, Icon;
+	local string						BarColor;
 
 
 	Unit = XComGameState_Unit(EventSource);
@@ -1280,6 +979,27 @@ static protected function EventListenerReturn HideFocusOnAssaults(
 	{
 		// Hide focus on assaults
 		Tuple.Data[0].b = false;
+	}
+	else if (Unit.HasSoldierAbility('Heatsink_LW'))
+	{
+		BarColor = "bf1e2e"; // Red from Skirmisher's Faction Logo --> Brighter red: ff0909
+		TooltipLong = class'X2Ability_SkirmisherAbilitySet_LW'.default.strHeatLevelDesc;
+		TooltipShort = class'X2Ability_SkirmisherAbilitySet_LW'.default.strHeatLevelName;
+		Icon = "img:///UILibrary_WOTC_APA_Skirmisher_LW.FocusIcon_Skirmisher";
+
+		Unit.GetUnitValue(class'X2Ability_SkirmisherAbilitySet_LW'.default.HEATSINK_MAX_NAME, MaxHeatLevel);
+		MaxHeat = MaxHeatLevel.fValue;
+
+		Unit.GetUnitValue(class'X2Ability_SkirmisherAbilitySet_LW'.default.HEATSINK_CURRENT_NAME, CurrentHeatLevel);
+		CurrentHeat = CurrentHeatLevel.fValue;
+						
+		Tuple.Data[0].b = true;
+		Tuple.Data[1].i = CurrentHeat;
+		Tuple.Data[2].i = MaxHeat;
+		Tuple.Data[3].s = BarColor;
+		Tuple.Data[4].s = Icon;
+		Tuple.Data[5].s = TooltipLong;
+		Tuple.Data[6].s = TooltipShort;
 	}
 
 	return ELR_NoInterrupt;
@@ -1543,9 +1263,9 @@ static function EventListenerReturn OverrideReserveActionPoints(Object EventData
 	local bool IsSuppression;
 	local DamageResult Result;
 	local XComGameStateContext_Ability AbilityContext;
-	local XComGameStateHistory History;
+	//local XComGameStateHistory History;
 
-	History = `XCOMHISTORY;
+	//History = `XCOMHISTORY;
 
 	UnitState = XcomGameState_Unit(EventSource);
 	Tuple = XComLWTuple(EventData);
@@ -1568,8 +1288,8 @@ static function EventListenerReturn OverrideReserveActionPoints(Object EventData
 	//Check if the source unit has an ability that allows breaking overwatches
 	if(AbilityContext != none)
 	{
-		SourceUnit = XComGameState_Unit(History.GetGameStateForObjectID(AbilityContext.InputContext.SourceObject.ObjectID));
-		if(SourceUnit.HasSoldierAbility('Impact') && Result.DamageAmount > 0)
+		SourceUnit = XComGameState_Unit(GameState.GetGameStateForObjectID(AbilityContext.InputContext.SourceObject.ObjectID));
+		if(SourceUnit.HasSoldierAbility('Impact'))
 		{
 			Tuple.Data[0].b = true;
 			return ELR_NoInterrupt;

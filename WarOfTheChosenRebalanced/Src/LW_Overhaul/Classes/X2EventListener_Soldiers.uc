@@ -27,6 +27,8 @@ var config array<CustomAbilityCost> CUSTOM_ABILITY_COSTS;
 var config array<int> FACTION_ABILITY_COSTS;
 var config float BASE_ABILITY_COST_MODIFIER;
 
+var config array<int> INITIAL_PROMOTION_ABILITY_POINTS;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -64,12 +66,10 @@ static function CHEventListenerTemplate CreateStatusListeners()
 	local CHEventListenerTemplate Template;
 
 	`CREATE_X2TEMPLATE(class'CHEventListenerTemplate', Template, 'SoldierStatusListeners');
-	Template.AddCHEvent('OverridePersonnelStatus', OnOverridePersonnelStatus, ELD_Immediate);
 	Template.AddCHEvent('OverridePersonnelStatusTime', OnOverridePersonnelStatusTime, ELD_Immediate);
 	Template.AddCHEvent('DSLShouldShowPsi', OnShouldShowPsi, ELD_Immediate);
+	Template.AddCHEvent('OverrideInjuryClearingFatigueBehavior', SeperateInjuryAndFatigueTimes, ELD_Immediate);
 
-	// Armory Main Menu - disable buttons for On-Mission soldiers
-	Template.AddCHEvent('OnArmoryMainMenuUpdate', UpdateArmoryMainMenuItems, ELD_Immediate);
 
 	Template.RegisterInStrategy = true;
 
@@ -87,6 +87,7 @@ static function CHEventListenerTemplate CreatePromotionListeners()
 	Template.AddCHEvent('CPS_OverrideCanPurchaseAbility', OverrideCanPurchaseAbility, ELD_Immediate);
 	Template.AddCHEvent('CPS_OverrideAbilityPointCost', OverrideAbilityPointCost, ELD_Immediate);
 	Template.AddCHEvent('CPS_AbilityPurchased', UpdateAbilityCostMultiplier, ELD_Immediate);
+	Template.AddCHEvent('UnitRankUp', OverrideAPGain, ELD_OnStateSubmitted);
 
 	Template.RegisterInStrategy = true;
 
@@ -99,7 +100,7 @@ static function CHEventListenerTemplate CreateTrainingListeners()
 
 	`CREATE_X2TEMPLATE(class'CHEventListenerTemplate', Template, 'SoldierTraining');
 	Template.AddCHEvent('OverrideRespecSoldierProjectPoints', OverrideRespecSoldierProjectPoints, ELD_Immediate);
-	Template.AddCHEvent('PsiProjectCompleted', OnPsiProjectCompleted, ELD_Immediate);
+	//Template.AddCHEvent('PsiProjectCompleted', OnPsiProjectCompleted, ELD_Immediate);
 	Template.RegisterInStrategy = true;
 
 	return Template;
@@ -119,6 +120,7 @@ static function CHEventListenerTemplate CreateTacticalListeners()
 	Template.AddCHEvent('OverrideBleedoutChance', OnOverrideBleedOutChance, ELD_Immediate);
 	Template.AddCHEvent('OverrideCollectorActivation', OverrideCollectorActivation, ELD_Immediate);
 	Template.AddCHEvent('OverrideScavengerActivation', OverrideScavengerActivation, ELD_Immediate);
+	
 	Template.AddCHEvent('SerialKiller', OnSerialKill, ELD_OnStateSubmitted);
 	Template.RegisterInTactical = true;
 
@@ -201,121 +203,6 @@ static protected function EventListenerReturn OnOverrideItemMinEquipped(Object E
 	return ELR_NoInterrupt;
 }
 
-// Sets the status string for liaisons and soldiers on missions.
-static protected function EventListenerReturn OnOverridePersonnelStatus(Object EventData, Object EventSource, XComGameState NewGameState, Name InEventID, Object CallbackData)
-{
-	local XComLWTuple				OverrideTuple;
-	local XComGameState_Unit		UnitState;
-    local XComGameState_WorldRegion	WorldRegion;
-	local XComGameState_LWPersistentSquad Squad;
-	local XComGameState_LWSquadManager SquadMgr;
-	local int						HoursToInfiltrate;
-
-	OverrideTuple = XComLWTuple(EventData);
-	if (OverrideTuple == none)
-	{
-		`REDSCREEN("OverridePersonnelStatus event triggered with invalid event data.");
-		return ELR_NoInterrupt;
-	}
-
-	UnitState = XComGameState_Unit(EventSource);
-	if (UnitState == none)
-	{
-		`REDSCREEN("OverridePersonnelStatus event triggered with invalid source data.");
-		return ELR_NoInterrupt;
-	}
-
-	if (OverrideTuple.Id != 'OverridePersonnelStatus')
-	{
-		return ELR_NoInterrupt;
-	}
-
-	SquadMgr = `LWSQUADMGR;
-	if (class'LWDLCHelpers'.static.IsUnitOnMission(UnitState))
-	{
-		// Check if the unit is a liaison or a soldier on a mission.
-		if (`LWOUTPOSTMGR.IsUnitAHavenLiaison(UnitState.GetReference()))
-		{
-			WorldRegion = `LWOUTPOSTMGR.GetRegionForLiaison(UnitState.GetReference());
-			SetStatusTupleData(
-				OverrideTuple,
-				default.OnLiaisonDuty @ "-" @ WorldRegion.GetDisplayName(),
-				"",
-				"",
-				0,
-				eUIState_Warning,
-				true);
-		}
-		else if (SquadMgr.UnitIsOnMission(UnitState.GetReference(), Squad))
-		{
-			HoursToInfiltrate = GetHoursLeftToInfiltrate(Squad);
-			if (HoursToInfiltrate <= 0)
-			{
-				// Show percentage infiltration once we've reached 100%
-				SetStatusTupleData(
-					OverrideTuple,
-					default.OnInfiltrationMission,	// Status
-					"",								// TimeLabel
-					int(Squad.CurrentInfiltration * 100.0) $ "%",
-					0,								// TimeValue
-					eUIState_Warning,
-					false);
-			}
-			else
-			{
-				// Show time left to reach 100% infiltration
-				SetStatusTupleData(
-					OverrideTuple,
-					default.OnInfiltrationMission,	// Status
-					"",								// TimeLabel
-					"",								// TimeLabelOverride
-					HoursToInfiltrate,				// TimeValue
-					eUIState_Warning,
-					false);
-			}
-		}
-	}
-	else if (GetScreenOrChild('UIPersonnel_SquadBarracks') == none)
-	{
-		if (`XCOMHQ.IsUnitInSquad(UnitState.GetReference()) && GetScreenOrChild('UISquadSelect') != none)
-		{
-			SetStatusTupleData(OverrideTuple, class'UIUtilities_Strategy'.default.m_strOnMissionStatus, "", "", 0, eUIState_Highlight, true);
-		}
-		else if (UnitState.IsSoldier() && UnitState.GetRank() < class'XComGameState_LWOutpost'.default.REQUIRED_RANK_FOR_LIAISON_DUTY && GetScreenOrChild('UIPersonnel_Liaison') != none)
-		{
-			SetStatusTupleData(OverrideTuple, default.RankTooLow, "", "", 0, eUIState_Bad, true);
-		}
-		else if (SquadMgr != none && SquadMgr.UnitIsInAnySquad(UnitState.GetReference(), Squad))
-		{
-			if (SquadMgr.LaunchingMissionSquad.ObjectID != Squad.ObjectID)
-			{
-				if (UnitState.GetStatus() != eStatus_Healing && UnitState.GetStatus() != eStatus_Training && UnitState.GetMentalState() != eMentalState_Shaken)
-				{
-					if (GetScreenOrChild('UISquadSelect') != none)
-					{
-						SetStatusTupleData(OverrideTuple, default.UnitAlreadyInSquad, "", "", 0, eUIState_Warning, true);
-					}
-					else if (GetScreenOrChild('UIPersonnel_Liaison') != none)
-					{
-						SetStatusTupleData(OverrideTuple, default.UnitInSquad, "", "", 0, eUIState_Warning, true);
-					}
-				}
-			}
-		}
-	}
-
-	return ELR_NoInterrupt;
-}
-
-static private function int GetHoursLeftToInfiltrate(XComGameState_LWPersistentSquad Squad)
-{
-	local int TotalSecondsForInfiltration;
-
-	TotalSecondsForInfiltration = Squad.GetSecondsRemainingToFullInfiltration();
-
-	return int(TotalSecondsForInfiltration / 3600.0);
-}
-
 static function EventListenerReturn OnOverridePersonnelStatusTime(Object EventData, Object EventSource, XComGameState NewGameState, Name InEventID, Object CallbackData)
 {
 	local XComLWTuple			OverrideTuple;
@@ -394,6 +281,38 @@ static function EventListenerReturn OnShouldShowPsi(Object EventData, Object Eve
 	return ELR_NoInterrupt;
 }
 
+
+static function EventListenerReturn SeperateInjuryAndFatigueTimes(Object EventData, Object EventSource, XComGameState NewGameState, Name InEventID, Object CallbackData)
+{
+	local XComGameState_Unit UnitState;
+	local XComLWTuple Tuple;
+
+	Tuple = XComLWTuple(EventData);
+	if (Tuple == none)
+	{
+		`REDSCREEN("SeperateInjuryAndFatigueTimes event triggered with invalid event data.");
+		return ELR_NoInterrupt;
+	}
+
+	UnitState = XComGameState_Unit(EventSource);
+	if (UnitState == none)
+	{
+		`REDSCREEN("SeperateInjuryAndFatigueTimes event triggered with invalid source data.");
+		return ELR_NoInterrupt;
+	}
+
+	if (Tuple.Id != 'OverrideInjuryClearingFatigueBehavior')
+	{
+		return ELR_NoInterrupt;
+	}
+	
+
+	Tuple.Data[0].b = true;
+	
+	return ELR_NoInterrupt;
+}
+
+
 static function EventListenerReturn OnCheckForPsiPromotion(
 	Object EventData,
 	Object EventSource,
@@ -448,6 +367,51 @@ static function EventListenerReturn OverridePromotionUIClass(
 	{
 		return ELR_NoInterrupt;
 	}
+}
+
+//Makes the resistance heroes have normal AP growths instead of whatever the fuck they get
+static function EventListenerReturn OverrideAPGain(
+	Object EventData,
+	Object EventSource,
+	XComGameState GameState,
+	Name InEventID,
+	Object CallbackData)
+{
+	local XComGameState_Unit UnitState;
+	local XComGameState NewGameState;
+	local UnitValue FreePromotionValue;
+
+
+
+	UnitState = XComGameState_Unit(EventData);
+
+	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Change AP Gain");
+	UnitState = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', UnitState.ObjectID));
+
+	UnitState.GetUnitValue('GTO_FreePromotionAP',FreePromotionValue);
+	//Redundant checks because I don't want to spam gamestates in the strategy
+	if(FreePromotionValue.fValue < 1.0f || UnitState.IsResistanceHero())
+	{
+		NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Change AP Gain");
+
+	//Add Some starting AP to soldiers
+		if(FreePromotionValue.fValue < 1.0f)
+		{
+			UnitState.AbilityPoints = UnitState.AbilityPoints + default.INITIAL_PROMOTION_ABILITY_POINTS[UnitState.Comint];
+			UnitState.SetUnitFloatValue('GTO_FreePromotionAP', 2.0f, eCleanup_Never);
+
+		}
+		if( UnitState.IsResistanceHero())
+		{
+			UnitState.AbilityPoints = UnitState.AbilityPoints + UnitState.GetBaseSoldierAPAmount(UnitState.Comint);
+			UnitState.AbilityPoints = UnitState.AbilityPoints - UnitState.GetResistanceHeroAPAmount(UnitState.GetSoldierRank(), UnitState.ComInt);
+		}
+		`GAMERULES.SubmitGameState(NewGameState);
+	}
+
+
+	return ELR_NoInterrupt;
+
 }
 
 // This function makes sure that the camera is placed in the right place
@@ -515,7 +479,15 @@ static function EventListenerReturn OverrideCanPurchaseAbility(
 	{
 		if (`XCOMHQ.HasFacilityByName('RecoveryCenter'))
 		{
-			Tuple.Data[13].b = true;
+			if(Tuple.Data[12].b)
+			{
+				Tuple.Data[13].b = true;
+			}
+			else
+			{
+				Tuple.Data[13].b = false;
+				Tuple.Data[14].i = 3;   // Reason: Not enough AP
+			}
 		}
 		else
 		{
@@ -583,6 +555,7 @@ static function EventListenerReturn OverrideAbilityPointCost(
 
 	if (UnitState.HasPurchasedPerkAtRank(Rank, ClassAbilityRankCount) && Branch < ClassAbilityRankCount)
 	{
+		AbilityCost = Max(0,40 - class'X2StrategyGameRulesetDataStructures'.default.AbilityPointCosts[Rank]); 
 		// Increase cost of this perk by current ability cost modifier
 		UnitState.GetUnitValue('LWOTC_AbilityCostModifier', AbilityCostModifier);
 		if (AbilityCostModifier.fValue == 0)
@@ -977,18 +950,18 @@ static function EventListenerReturn OnOverrideAbilityIconColor(Object EventData,
 			class'XComGameState_BattleData'.static.HighlightObjectiveAbility(AbilityName, true);
 			return ELR_NoInterrupt;
 			break;
-		case 'MedikitHeal':
-		case 'NanoMedikitHeal':
-		if(UnitState.HasSoldierAbility('Paramedic_LW'))
-		{
-			UnitState.GetUnitValue('ParamedicUses', CountUnitValue);
+		// case 'MedikitHeal':
+		// case 'NanoMedikitHeal':
+		// if(UnitState.HasSoldierAbility('Paramedic_LW'))
+		// {
+		// 	UnitState.GetUnitValue('ParamedicUses', CountUnitValue);
 		
-			if (CountUnitValue.fValue == 0)
-			{
-				IsFree = true;
-			}	
-		}
-		break;
+		// 	if (CountUnitValue.fValue == 0)
+		// 	{
+		// 		IsFree = true;
+		// 	}	
+		// }
+		// break;
 		default: break;
 	}
 
@@ -1071,112 +1044,6 @@ static function EventListenerReturn OverrideScavengerActivation(Object EventData
 	OverrideActivation.Data[0].b = class'Utilities_LW'.static.KillXpIsCapped();
 
 	return ELR_NoInterrupt;
-}
-
-static function EventListenerReturn UpdateArmoryMainMenuItems(Object EventData, Object EventSource, XComGameState NewGameState, Name InEventID, Object CallbackData)
-{
-	local UIList List;
-	local XComGameState_Unit Unit;
-	local UIArmory_MainMenu ArmoryMainMenu;
-	local array<name> ButtonToDisableMCNames;
-	local int idx;
-	local UIListItemString CurrentButton;
-	local XComGameState_StaffSlot StaffSlotState;
-
-	List = UIList(EventData);
-	`assert(List != none);
-
-	ArmoryMainMenu = UIArmory_MainMenu(EventSource);
-	`assert(ArmoryMainMenu != none);
-
-	Unit = XComGameState_Unit(`XCOMHISTORY.GetGameStateForObjectID(ArmoryMainMenu.UnitReference.ObjectID));
-	if (class'LWDLCHelpers'.static.IsUnitOnMission(Unit))
-	{
-		//ButtonToDisableMCNames.AddItem('ArmoryMainMenu_LoadoutButton'); // adding ability to view loadout, but not modifiy it
-
-		// If this unit isn't a haven adviser, or is a haven adviser that is locked, disable loadout
-		// changing. (Allow changing equipment on haven advisers in regions where you can change the
-		// adviser to save some clicks).
-		if (!`LWOUTPOSTMGR.IsUnitAHavenLiaison(Unit.GetReference()) ||
-			`LWOUTPOSTMGR.IsUnitALockedHavenLiaison(Unit.GetReference()))
-		{
-			ButtonToDisableMCNames.AddItem('ArmoryMainMenu_PCSButton');
-			ButtonToDisableMCNames.AddItem('ArmoryMainMenu_WeaponUpgradeButton');
-
-			//update the Loadout button handler to one that locks all of the items
-			CurrentButton = FindButton(0, 'ArmoryMainMenu_LoadoutButton', ArmoryMainMenu);
-			CurrentButton.ButtonBG.OnClickedDelegate = OnLoadoutLocked;
-		}
-
-		// Dismiss is still disabled for all on-mission units, including liaisons.
-		ButtonToDisableMCNames.AddItem('ArmoryMainMenu_DismissButton');
-
-
-		// -------------------------------------------------------------------------------
-		// Disable Buttons:
-		for (idx = 0; idx < ButtonToDisableMCNames.Length; idx++)
-		{
-			CurrentButton = FindButton(idx, ButtonToDisableMCNames[idx], ArmoryMainMenu);
-			if(CurrentButton != none)
-			{
-				CurrentButton.SetDisabled(true, default.CannotModifyOnMissionSoldierTooltip);
-			}
-		}
-
-		return ELR_NoInterrupt;
-	}
-
-	switch (Unit.GetStatus())
-	{
-		case eStatus_PsiTraining:
-		case eStatus_PsiTesting:
-		case eStatus_Training:
-			CurrentButton = FindButton(idx, 'ArmoryMainMenu_DismissButton', ArmoryMainMenu);
-			if (CurrentButton != none)
-			{
-				StaffSlotState = Unit.GetStaffSlot();
-				if (StaffSlotState != none)
-				{
-					CurrentButton.SetDisabled(true, StaffSlotState.GetBonusDisplayString());
-				}
-				else
-				{
-					CurrentButton.SetDisabled(true, "");
-				}
-			}
-			break;
-		default:
-			break;
-	}
-	return ELR_NoInterrupt;
-}
-
-static function UIListItemString FindButton(int DefaultIdx, name ButtonName, UIArmory_MainMenu MainMenu)
-{
-	if(ButtonName == '')
-		return none;
-
-	return UIListItemString(MainMenu.List.GetChildByName(ButtonName, false));
-}
-
-static function OnLoadoutLocked(UIButton kButton)
-{
-	local XComHQPresentationLayer HQPres;
-	local UIArmory_MainMenu MainMenu;
-
-	MainMenu = UIArmory_MainMenu(GetScreenOrChild('UIArmory_MainMenu'));
-	if (MainMenu == none) { return; }
-
-	if (UIListItemString(kButton.ParentPanel) != none && UIListItemString(kButton.ParentPanel).bDisabled)
-	{
-		`XSTRATEGYSOUNDMGR.PlaySoundEvent("Play_MenuClickNegative");
-		return;
-	}
-
-	HQPres = `HQPRES;
-	if( HQPres != none )
-		HQPres.UIArmory_Loadout(MainMenu.UnitReference, default.UNMODIFIABLE_SLOTS_WHILE_ON_MISSION);
-	`XSTRATEGYSOUNDMGR.PlaySoundEvent("Play_MenuSelect");
 }
 
 // Provide images for all the new PCSes LWOTC adds.

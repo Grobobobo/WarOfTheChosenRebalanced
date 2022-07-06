@@ -42,32 +42,32 @@ static function array<X2DataTemplate> CreateTemplates()
 	Techs.AddItem(CreateAutopsyDroneTemplate());
 	Techs.AddItem(CreateAutopsyBlutonTemplate());
 
-	Techs.AddItem(CreateBasicResearchTemplate());
-	Techs.AddItem(CreateBasicEngineeringTemplate());
+	// Techs.AddItem(CreateBasicResearchTemplate());
+	// Techs.AddItem(CreateBasicEngineeringTemplate());
 
-	Techs.AddItem(CreateRenderTech ('RenderEleriumCore', "img:///UILibrary_StrategyImages.ScienceIcons.IC_Elerium", 'EleriumCore', 500, 'HybridMaterials'));
-	Techs.AddItem(CreateRenderTech ('RenderSectoidCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsySectoid", 'CorpseSectoid', 600, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderViperCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyViper", 'CorpseViper', 600, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderMutonCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyMuton", 'CorpseMuton', 600, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderBerserkerCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyBerserker", 'CorpseBerserker', 600, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderArchonCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyArchon", 'CorpseArchon', 650, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderGatekeeperCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyGatekeeper", 'CorpseGatekeeper', 1000, 'AlienBiotech', 'EleriumCore'));
-	Techs.AddItem(CreateRenderTech ('RenderAndromedonCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAndromedon", 'CorpseAndromedon', 800, 'AlienBiotech', 'EleriumCore'));
-	Techs.AddItem(CreateRenderTech ('RenderFacelessCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyFaceless", 'CorpseFaceless', 600, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderChryssalidCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyCryssalid", 'CorpseChryssalid', 600, 'AlienBiotech')); 
-	Techs.AddItem(CreateRenderTech ('RenderAdventTrooperCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventTrooper", 'CorpseAdventTrooper', 500, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderAdventStunLancerCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventStunLancer", 'CorpseAdventStunLancer', 500, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderAdventShieldbearerCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventShieldbearer", 'CorpseAdventShieldbearer', 500, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderMECWreck', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyMEC", 'CorpseAdventMEC', 600, 'HybridMaterials'));
-	Techs.AddItem(CreateRenderTech ('RenderTurretWreck', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventTurret", 'CorpseAdventTurret', 500, 'HybridMaterials'));
-	Techs.AddItem(CreateRenderTech ('RenderSectopodWreck', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsySextopod", 'CorpseSectopod', 1200, 'HybridMaterials', 'EleriumCore'));
-	Techs.AddItem(CreateRenderTech ('RenderAdventOfficerCorpse', "img:///UILibrary_StrategyImages.ResearchTech.GOLDTECH_Advent_Officer", 'CorpseAdventOfficer', 500, 'AutopsyAdventOfficer'));
-	Techs.AddItem(CreateRenderTech ('RenderAdventPriestCorpse', "img:///UILibrary_XPACK_StrategyImages.IC_Priest", 'CorpseAdventPriest', 600, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderAdventPurifierCorpse', "img:///UILibrary_XPACK_StrategyImages.IC_Purifier", 'CorpseAdventPurifier', 600, 'AlienBiotech'));
-	Techs.AddItem(CreateRenderTech ('RenderSpectreCorpse', "img:///UILibrary_XPACK_StrategyImages.IC_Spectre", 'CorpseSpectre', 600, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderEleriumCore', "img:///UILibrary_StrategyImages.ScienceIcons.IC_Elerium", 'EleriumCore', 500, 'HybridMaterials'));
+	// Techs.AddItem(CreateRenderTech ('RenderSectoidCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsySectoid", 'CorpseSectoid', 600, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderViperCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyViper", 'CorpseViper', 600, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderMutonCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyMuton", 'CorpseMuton', 600, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderBerserkerCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyBerserker", 'CorpseBerserker', 600, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderArchonCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyArchon", 'CorpseArchon', 650, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderGatekeeperCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyGatekeeper", 'CorpseGatekeeper', 1000, 'AlienBiotech', 'EleriumCore'));
+	// Techs.AddItem(CreateRenderTech ('RenderAndromedonCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAndromedon", 'CorpseAndromedon', 800, 'AlienBiotech', 'EleriumCore'));
+	// Techs.AddItem(CreateRenderTech ('RenderFacelessCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyFaceless", 'CorpseFaceless', 600, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderChryssalidCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyCryssalid", 'CorpseChryssalid', 600, 'AlienBiotech')); 
+	// Techs.AddItem(CreateRenderTech ('RenderAdventTrooperCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventTrooper", 'CorpseAdventTrooper', 500, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderAdventStunLancerCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventStunLancer", 'CorpseAdventStunLancer', 500, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderAdventShieldbearerCorpse', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventShieldbearer", 'CorpseAdventShieldbearer', 500, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderMECWreck', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyMEC", 'CorpseAdventMEC', 600, 'HybridMaterials'));
+	// Techs.AddItem(CreateRenderTech ('RenderTurretWreck', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventTurret", 'CorpseAdventTurret', 500, 'HybridMaterials'));
+	// Techs.AddItem(CreateRenderTech ('RenderSectopodWreck', "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsySextopod", 'CorpseSectopod', 1200, 'HybridMaterials', 'EleriumCore'));
+	// Techs.AddItem(CreateRenderTech ('RenderAdventOfficerCorpse', "img:///UILibrary_StrategyImages.ResearchTech.GOLDTECH_Advent_Officer", 'CorpseAdventOfficer', 500, 'AutopsyAdventOfficer'));
+	// Techs.AddItem(CreateRenderTech ('RenderAdventPriestCorpse', "img:///UILibrary_XPACK_StrategyImages.IC_Priest", 'CorpseAdventPriest', 600, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderAdventPurifierCorpse', "img:///UILibrary_XPACK_StrategyImages.IC_Purifier", 'CorpseAdventPurifier', 600, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderSpectreCorpse', "img:///UILibrary_XPACK_StrategyImages.IC_Spectre", 'CorpseSpectre', 600, 'AlienBiotech'));
 
-	Techs.AddItem(CreateRenderTech ('RenderAdventDroneWreck', "img:///UILibrary_LW_Overhaul.LW_IC_AutopsyDrone", 'CorpseDrone', 300, 'HybridMaterials'));
-	Techs.AddItem(CreateRenderTech ('RenderBlutonCorpse', "img:///UILibrary_LW_Overhaul.IC_AutopsyBluton", 'CorpseMutonElite', 700, 'AlienBiotech'));
+	// Techs.AddItem(CreateRenderTech ('RenderAdventDroneWreck', "img:///UILibrary_LW_Overhaul.LW_IC_AutopsyDrone", 'CorpseDrone', 300, 'HybridMaterials'));
+	// Techs.AddItem(CreateRenderTech ('RenderBlutonCorpse', "img:///UILibrary_LW_Overhaul.IC_AutopsyBluton", 'CorpseMutonElite', 700, 'AlienBiotech'));
 
 	//O so many LW Overhaul Proving Grounds Projects
 	Techs.AddItem(CreateHazMatVestProjectTemplate());
@@ -140,6 +140,15 @@ static function array<X2DataTemplate> CreateTemplates()
 	Techs.AddItem(CreateLockOnProjectTemplate());
 	Techs.AddItem(CreateFlechetteProjectTemplate());
 	Techs.AddItem(CreatePlasmaEjectorProjectTemplate());
+	Techs.AddItem(CreateMilitiaLaser());
+	Techs.AddItem(CreateMilitiaMag());
+	Techs.AddItem(CreateMilitiaCoil());
+	Techs.AddItem(CreateMilitiaBeam());
+	Techs.AddItem(CreateMilitiaAbilities1());
+	Techs.AddItem(CreateMilitiaAbilities2());
+	Techs.AddItem(CreateMilitiaArmor1());
+	Techs.AddItem(CreateMilitiaArmor2());
+	Techs.AddItem(CreateTurretFall());
 
 	
 	return Techs;
@@ -248,7 +257,7 @@ static function X2DataTemplate CreateAutopsyDroneTemplate()
 	
 	// Instant Requirements. Will become the Cost if the tech is forced to Instant.
 	Artifacts.ItemTemplateName = 'CorpseDrone';
-	Artifacts.Quantity = 20;
+	Artifacts.Quantity = 99;
 	Template.InstantRequirements.RequiredItemQuantities.AddItem(Artifacts);
 
 	// Cost
@@ -279,7 +288,7 @@ static function X2DataTemplate CreateAutopsyBlutonTemplate()
 	
 	// Instant Requirements. Will become the Cost if the tech is forced to Instant.
 	Artifacts.ItemTemplateName = 'CorpseMutonElite';
-	Artifacts.Quantity = 15;
+	Artifacts.Quantity = 99;
 	Template.InstantRequirements.RequiredItemQuantities.AddItem(Artifacts);
 
 	// Cost
@@ -2378,4 +2387,178 @@ function AddSoldierUnlockTemplate(XComGameState NewGameState, XComGameState_Tech
 	XComHQ = XComGameState_HeadquartersXCom(NewGameState.ModifyStateObject(class'XComGameState_HeadquartersXCom', XComHQ.ObjectID));
 	//XComHQ.SoldierUnlockTemplates.AddItem(UnlockTemplate.DataName);
 	XComHQ.AddSoldierUnlockTemplate(NewGameState, UnlockTemplate, true);
+}
+
+
+static function X2DataTemplate CreateMilitiaLaser()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'MilitiaLaser');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.ResearchTech.TECH_Experimental_Ammo";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateMilitiaMag()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'MilitiaMag');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.ResearchTech.TECH_Experimental_Ammo";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateMilitiaCoil()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'MilitiaCoil');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.ResearchTech.TECH_Experimental_Ammo";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateMilitiaBeam()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'MilitiaBeam');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.ResearchTech.TECH_Experimental_Ammo";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
+}
+
+
+static function X2DataTemplate CreateMilitiaAbilities1()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'MilitiaAbilities1');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.GTS.GTS_SquadSize1";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateMilitiaAbilities2()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'MilitiaAbilities2');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.GTS.GTS_SquadSize2";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
+}
+
+
+static function X2DataTemplate CreateMilitiaArmor1()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'MilitiaArmor1');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.ResearchTech.TECH_ExperimentalArmor";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateMilitiaArmor2()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'MilitiaArmor2');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.ResearchTech.TECH_ExperimentalArmor";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTurretFall()
+{
+	local X2TechTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'TurretFall');
+	Template.PointsToComplete = 1000;
+	Template.strImage = "img:///UILibrary_StrategyImages.ScienceIcons.IC_AutopsyAdventTurret";
+	Template.SortingTier = 2;
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem('AdvancedLasers');
+
+	//Template.ResearchCompletedFn = AddSoldierUnlockTemplate;
+
+	//Template.RewardName = 'VultureUnlock';
+
+	return Template;
 }

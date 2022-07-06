@@ -3,16 +3,16 @@ class X2StrategyElement_NukeCovertAction extends X2StrategyElement_DefaultCovert
 var config name RequiredTechForCovertAction;
 var config bool	bRequireFactionSoldier;
 
-static function array<X2DataTemplate> CreateTemplates()
-{
-	local array<X2DataTemplate> Templates;
+// static function array<X2DataTemplate> CreateTemplates()
+// {
+// 	local array<X2DataTemplate> Templates;
 
-	Templates.AddItem(Create_NukeCovertAction());
+// 	//Templates.AddItem(Create_NukeCovertAction());
 
-	Templates.AddItem(Create_NuclearMaterialReward());
+// 	//Templates.AddItem(Create_NuclearMaterialReward());
 
-	return Templates;
-}
+// 	return Templates;
+// }
 
 static function X2DataTemplate Create_NukeCovertAction()
 {

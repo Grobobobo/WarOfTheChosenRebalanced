@@ -184,7 +184,6 @@ function EventListenerReturn OnTileDataChanged(Object EventData, Object EventSou
 function SetUpForTQL(XComGameStateHistory History)
 {
 	local XComGameState_BattleData BattleData;
-	local XComGameState_LWPodManager PodManager;
 	local XComGameState_LWReinforcements Reinforcements;
 	local XComGameState NewGameState;
 	
@@ -192,9 +191,6 @@ function SetUpForTQL(XComGameStateHistory History)
 	if (BattleData.bIsTacticalQuickLaunch)
 	{
 		NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Create Pod Manager for TQL");
-		PodManager = XComGameState_LWPodManager(NewGameState.CreateStateObject(class'XComGameState_LWPodManager'));
-		NewGameState.AddStateObject(PodManager);
-		PodManager.OnBeginTacticalPlay(NewGameState);
 		Reinforcements = XComGameState_LWReinforcements(NewGameState.CreateStateObject(class'XComGameState_LWReinforcements'));
 		NewGameState.AddStateObject(Reinforcements);
 		Reinforcements.Reset();

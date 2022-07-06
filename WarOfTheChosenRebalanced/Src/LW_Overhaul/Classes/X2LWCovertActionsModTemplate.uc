@@ -43,7 +43,7 @@ static function UpdateCovertActions(X2StrategyElementTemplate Template, int Diff
 		case 'CovertAction_GatherSupplies':
 		case 'CovertAction_GatherIntel':
 		case 'CovertAction_FormSoldierBond':
-		case 'CovertAction_ResistanceMec':
+		//case 'CovertAction_ResistanceMec':
 			ConfigureEasyCovertAction(CATemplate);
 			break;
 		case 'CovertAction_RecruitScientist':
@@ -55,7 +55,6 @@ static function UpdateCovertActions(X2StrategyElementTemplate Template, int Diff
 		case 'CovertAction_DelayChosen':
 		case 'CovertAction_ResistanceContact':
 		case 'CovertAction_RecruitRebels':
-		case 'CovertAction_LiberationIntel':
 		case 'CovertAction_SharedAbilityPoints':
 			ConfigureModerateCovertAction(CATemplate);
 			break;
@@ -130,7 +129,7 @@ static function UpdateCovertActions(X2StrategyElementTemplate Template, int Diff
 }
 
 // Adds a chance of failure to easy covert actions and resets the staff slots.
-static function ConfigureEasyCovertAction(X2CovertActionTemplate Template, optional bool ApplyFailureRisk = true)
+static function ConfigureEasyCovertAction(X2CovertActionTemplate Template, optional bool ApplyFailureRisk = false)
 {
 	// Make failure the first risk in the list.
 	if (ApplyFailureRisk)
@@ -139,8 +138,9 @@ static function ConfigureEasyCovertAction(X2CovertActionTemplate Template, optio
 
 		// If a covert action can't fail, then it shouldn't be possible
 		// to ambush it, because ambush also provides a chance to fail
-		AddAmbushRisk(Template);
 	}
+	AddAmbushRisk(Template);
+
 	AddStaffSlots(Template, 2);
 
 	// Add an optional cost slot to counter capture if it's a risk.
@@ -148,7 +148,7 @@ static function ConfigureEasyCovertAction(X2CovertActionTemplate Template, optio
 }
 
 // Adds a chance of failure to easy covert actions and resets the staff slots.
-static function ConfigureModerateCovertAction(X2CovertActionTemplate Template, optional bool ApplyFailureRisk = true)
+static function ConfigureModerateCovertAction(X2CovertActionTemplate Template, optional bool ApplyFailureRisk = false)
 {
 
 	// Make failure the first risk in the list.
@@ -158,8 +158,8 @@ static function ConfigureModerateCovertAction(X2CovertActionTemplate Template, o
 
 		// If a covert action can't fail, then it shouldn't be possible
 		// to ambush it, because ambush also provides a chance to fail
-		AddAmbushRisk(Template);
 	}
+	AddAmbushRisk(Template);
 	AddStaffSlots(Template, 3);
 
 	// Add an optional cost slot to counter capture if it's a risk.
@@ -167,7 +167,7 @@ static function ConfigureModerateCovertAction(X2CovertActionTemplate Template, o
 }
 
 // Adds a chance of failure to easy covert actions and resets the staff slots.
-static function ConfigureHardCovertAction(X2CovertActionTemplate Template, optional bool ApplyFailureRisk = true)
+static function ConfigureHardCovertAction(X2CovertActionTemplate Template, optional bool ApplyFailureRisk = false)
 {
 	// Make failure the first risk in the list.
 	if (ApplyFailureRisk)
@@ -176,8 +176,9 @@ static function ConfigureHardCovertAction(X2CovertActionTemplate Template, optio
 
 		// If a covert action can't fail, then it shouldn't be possible
 		// to ambush it, because ambush also provides a chance to fail
-		AddAmbushRisk(Template);
 	}
+	AddAmbushRisk(Template);
+
 	AddStaffSlots(Template, 3);
 
 	// Add an optional cost slot to counter capture if it's a risk.

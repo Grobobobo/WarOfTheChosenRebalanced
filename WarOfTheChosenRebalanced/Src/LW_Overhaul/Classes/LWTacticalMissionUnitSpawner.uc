@@ -19,72 +19,16 @@ var config int MaxCivilianSpawnDistanceSq;
 
 static function SpawnUnitsForMission(XComGameState_MissionSite Mission)
 {
-	local XComGameState_LWOutpost Outpost;
-	local XComGameState_WorldRegion Region;
-	local XComGameStateHistory History;
-	local XComGameState_MissionSiteRendezvous_LW RendezvousMission;
+//	local XComGameStateHistory History;
 
-	History = `XCOMHISTORY;
-	Region = XComGameState_WorldRegion(History.GetGameStateForObjectID(Mission.Region.ObjectID));
-	Outpost = `LWOUTPOSTMGR.GetOutpostForRegion(Region);
-
-	if (class'Utilities_LW'.static.CurrentMissionIsRetaliation())
-	{
-		if (Mission == None)
-		{
-			// Likely a tactical quicklaunch. Just create some random civvies.
-			CreateNewCivilianUnits();
-		}
-		else
-		{
-			LoadCivilianUnitsFromOutpost(Outpost);
-			LoadResistanceMECsFromOutpost(Outpost, false);
-			// Load the liaison. Soldiers go on XCOM's team, others start in the neutral team.
-			LoadLiaisonFromOutpost(Outpost, Outpost.HasLiaisonOfKind('Soldier') ? eTeam_XCom : eTeam_Neutral);
-		}
-	}
-	else
-	{
 		switch (class'Utilities_LW'.static.CurrentMissionType())
 		{
-		case "Rendezvous_LW":
-			if (Mission != None)
-			{
-				RendezvousMission = XComGameState_MissionSiteRendezvous_LW(Mission);
-				RendezvousMission.SetupFacelessUnits();
-				LoadResistanceMECsFromOutpost(Outpost, false);
-			}
-			break;
-		case "SupplyConvoy_LW":
-			// Supply convoy wants resistance MECs, and spawn them near the objective.
-			LoadResistanceMECsFromOutpost(Outpost, true);
-			if (Outpost.HasLiaisonValidForMission(Mission.GeneratedMission.Mission.sType))
-			{
-				LoadLiaisonFromOutpost(Outpost, eTeam_XCom, true);
-			}
-			LoadRebelsForRebelRaid(Mission);
-			break;
-		case "IntelRaid_LW":
-			LoadRebelsForRebelRaid(Mission);
-			if (Outpost.HasLiaisonValidForMission(Mission.GeneratedMission.Mission.sType))
-			{
-				LoadLiaisonFromOutpost(Outpost, eTeam_XCom, true);
-			}
-			break;
-		case "RecruitRaid_LW":
-			LoadRebelsForRebelRaid(Mission);
-			if (Outpost.HasLiaisonValidForMission(Mission.GeneratedMission.Mission.sType))
-			{
-				LoadLiaisonFromOutpost(Outpost, eTeam_XCom, false);
-			}
-			GiveEvacAbilityToRebels();
-			break;
 		case "CovertEscape_LW":
 		case "CovertEscape_NonPCP_LW":
 			LoadCovertOperatives(Mission);
 			break;
 		}
-	}
+	
 }
 
 static function array<XComGroupSpawn> GetCivilianSpawnLocations()
@@ -210,60 +154,6 @@ static function array<TTile> PickSpawnTiles(array<XComGroupSpawn> SpawnPoints, i
 	return SpawnTiles;
 }
 
-static function LoadCivilianUnitsFromOutpost(XComGameState_LWOutpost Outpost)
-{
-	local int i, WorkingRebels, HidingRebelsforMission;
-	local Name TemplateName;
-	local array<XComGroupSpawn> SpawnPoints;
-	local array<TTile> SpawnTiles;
-	local array<int> RebelsOnMission;
-
-	WorkingRebels = OutPost.Rebels.Length - OutPost.GetNumRebelsOnJob(class'LWRebelJob_DefaultJobSet'.const.HIDING_JOB);
-	HidingRebelsforMission = default.RebelCapOnRetals - WorkingRebels;
-
-	`LWTRACE("Outpost size:" @ OutPost.Rebels.length @ "Working Rebels:" @ string (WorkingRebels) @ "Hiding Rebels appearing on this mission");
-
-	// All rebels with a job go on the mission, plus enough hiding to get us up to the cap
-	for (i = 0; i < Outpost.Rebels.Length; ++i)
-	{
-		if (OutPost.Rebels.Length <= default.RebelCapOnRetals || OutPost.Rebels[i].Job != class'LWRebelJob_DefaultJobSet'.const.HIDING_JOB)
-		{
-			RebelsOnMission.AddItem(i);
-		}
-		else
-		{
-			if (HidingRebelsforMission > 0)
-			{
-				RebelsOnMission.AddItem(i);
-				HidingRebelsforMission -= 1;
-			}
-		}
-	}
-
-	SpawnPoints = GetCivilianSpawnLocations();
-	SpawnTiles = PickSpawnTiles(SpawnPoints, RebelsOnMission.Length);
-
-	// If we found fewer spawn tiles than rebels on mission (which should be extremely rare unless map mods have
-	// lots of parcels with no spawn possibilities) the rebels who don't get a spot get a pass on this mission.
-	if (SpawnTiles.Length < RebelsOnMission.Length)
-	{
-		`Redscreen("Found only " $ SpawnTiles.Length $ " candidates but have " $ RebelsOnMission.Length $ " rebels.");
-		RebelsOnMission.Length = SpawnTiles.Length;
-	}
-	for (i = 0; i < RebelsOnMission.Length; ++i)
-	{
-		if (Outpost.Rebels[RebelsOnMission[i]].IsFaceless)
-		{
-			TemplateName = 'FacelessRebelProxy';
-		}
-		else
-		{
-			TemplateName = 'Rebel';
-		}
-
-		class'Utilities_LW'.static.AddRebelToMission(Outpost.Rebels[RebelsOnMission[i]].Unit, Outpost.GetReference(), TemplateName, SpawnTiles[i], eTeam_Neutral);
-	}
-}
 
 static function bool IsVisibleToAI(out TTile Tile)
 {
@@ -301,103 +191,6 @@ static function bool IsVisibleToAI(out TTile Tile)
 	}
 
 	return VisibilityInfos.Length > 0;
-}
-
-static function LoadResistanceMECsFromOutpost(XComGameState_LWOutpost Outpost, bool SpawnNearObjective)
-{
-	local XComGameStateHistory History;
-	local X2TacticalGameRuleset Rules;
-	local XComGameState_Player PlayerState;
-	local XComGameStateContext_TacticalGameRule NewGameStateContext;
-	local XComGameState NewGameState;
-	local XComGameState_Unit Unit;
-	local XComGameState_Unit ProxyUnit;
-	local StateObjectReference ItemReference;
-	local XComGameState_LWOutpost NewOutpost;
-	local XComGameState_BattleData BattleData;
-	local TTile UnitTile;
-	local TTile RootTile;
-	local int i;
-	local bool FoundTile;
-
-	History = `XCOMHISTORY;
-	Rules = `TACTICALRULES;
-
-	PlayerState = class'Utilities_LW'.static.FindPlayer(eTeam_XCom);
-	BattleData = XComGameState_BattleData(History.GetSingleGameStateObjectForClass(class'XComGameState_BattleData'));
-
-	if (SpawnNearObjective)
-	{
-		`XWORLD.GetFloorTileForPosition(BattleData.MapData.ObjectiveLocation, RootTile);
-	}
-	else
-	{
-		`XWORLD.GetFloorTileForPosition(BattleData.MapData.SoldierSpawnLocation, RootTile);
-	}
-
-	for (i = 0; i < Outpost.ResistanceMecs.Length; ++i)
-	{
-		if (i >= default.MecCap)
-			break;
-
-		// Find a spawn tile near our root (spawn or objective, depending on mission)
-		UnitTile = RootTile;
-		FoundTile = class'Utilities_LW'.static.GetSpawnTileNearTile(UnitTile, 2, 4);
-
-		if (FoundTile)
-		{
-			NewGameStateContext = class'XComGameStateContext_TacticalGameRule'.static.BuildContextFromGameRule(eGameRule_UnitAdded);
-			NewGameState = History.CreateNewGameState(true, NewGameStateContext);
-
-			// Create a proxy for the mec. We need this because the mecs were not added to the start state of the mission, so their inventory
-			// can't be found by the visualizer. We need to create a new unit/inventory proxy for use during the mission.
-			Unit = XComGameState_Unit(History.GetGameStateForObjectID(Outpost.ResistanceMecs[i].Unit.ObjectID));
-			ProxyUnit = class'Utilities_LW'.static.CreateProxyUnit(Unit, 'ResistanceMEC', true, NewGameState, 'ResistanceMecM1_Loadout');
-
-			// Make sure the unit is added to XCOM's initiative group so that it's
-			// controllable by the player
-			class'Helpers_LW'.static.AddUnitToXComGroup(NewGameState, ProxyUnit, PlayerState, History);
-			
-			ProxyUnit.SetVisibilityLocation(UnitTile);
-			ProxyUnit.SetControllingPlayer(PlayerState.GetReference());
-			NewOutpost = XComGameState_LWOutpost(NewGameState.ModifyStateObject(class'XComGameState_LWOutpost', Outpost.ObjectID));
-			NewOutpost.SetMecProxy(Unit.GetReference(), ProxyUnit.GetReference());
-			NewOutpost.SetMecOnMission(Unit.GetReference());
-			// submit it
-			XComGameStateContext_TacticalGameRule(NewGameState.GetContext()).UnitRef = ProxyUnit.GetReference();
-			`TACTICALRULES.SubmitGameState(NewGameState);
-
-			 // make sure the visualizer has been created so self-applied abilities have a target in the world
-			ProxyUnit.FindOrCreateVisualizer(NewGameState);
-
-			// add abilities
-			// Must happen after unit is submitted, or it gets confused about when the unit is in play or not 
-			NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Adding Resistance MEC Unit Abilities");
-			ProxyUnit = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', ProxyUnit.ObjectID));
-
-			// add the items to the gamestate for ammo merging
-			foreach ProxyUnit.InventoryItems(ItemReference)
-			{
-				NewGameState.ModifyStateObject(class'XComGameState_Item', ItemReference.ObjectID);
-			}
-
-			Rules.InitializeUnitAbilities(NewGameState, ProxyUnit);
-
-			`TACTICALRULES.SubmitGameState(NewGameState);
-			ProxyUnit.OnBeginTacticalPlay(NewGameState);
-		}
-	}
-}
-
-static function LoadRebelsForRebelRaid(XComGameState_MissionSite Mission)
-{
-	local XComGameState_MissionSiteRebelRaid_LW RebelRaidMission;
-
-	if (Mission != none)
-	{
-		RebelRaidMission = XComGameState_MissionSiteRebelRaid_LW(Mission);
-		RebelRaidMission.LoadRebels();
-	}
 }
 
 // Loads any covert action operatives into the given Ambush mission.
@@ -447,127 +240,6 @@ static function LoadCovertOperatives(XComGameState_MissionSite MissionState)
 	}
 }
 
-static function LoadLiaisonFromOutpost(XComGameState_LWOutpost Outpost, 
-								ETeam Team,
-								optional bool SpawnAtObjective = false)
-{
-	local XComGameStateHistory History;
-	local X2TacticalGameRuleset Rules;
-	local XComGameState_Player PlayerState;
-	local XComGameStateContext_TacticalGameRule NewGameStateContext;
-	local XComGameState NewGameState;
-	local XComGameState_Unit Unit;
-	local TTile UnitTile;
-	local StateObjectReference ItemReference;
-	local XComGameState_Item ItemState;
-	local XComGameState_BattleData BattleData;
-	local bool FoundTile;
-
-	if (!Outpost.HasLiaison())
-	{
-		return;
-	}
-
-	Rules = `TACTICALRULES;
-	History = `XCOMHISTORY;
-
-	Unit = XComGameState_Unit(History.GetGameStateForObjectID(Outpost.GetLiaison().ObjectID));
-	BattleData = XComGameState_BattleData(History.GetSingleGameStateObjectForClass(class'XComGameState_BattleData'));
-
-	// If we are requested to spawn at the objective, do so. Otherwise, if the adviser
-	// is on XCOM's team it'll start with the squad, and if it's not it'll spawn
-	// at a random location.
-	if (SpawnAtObjective)
-	{
-		`XWORLD.GetFloorTileForPosition(BattleData.MapData.ObjectiveLocation, UnitTile);
-		FoundTile = class'Utilities_LW'.static.GetSpawnTileNearTile(UnitTile, 2, 4);
-	}
-	else if (Team == eTeam_XCom)
-	{
-		`XWORLD.GetFloorTileForPosition(BattleData.MapData.SoldierSpawnLocation, UnitTile);
-		FoundTile = class'Utilities_LW'.static.GetSpawnTileNearTile(UnitTile, 2, 4);
-	}
-	else
-	{
-		FoundTile = GetTileForCivilian(0, UnitTile);
-	}
-
-	if (FoundTile)
-	{
-		NewGameStateContext = class'XComGameStateContext_TacticalGameRule'.static.BuildContextFromGameRule(eGameRule_UnitAdded);
-		NewGameState = History.CreateNewGameState(true, NewGameStateContext);
-		Unit = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', Unit.ObjectID));
-		//Issue #159, this is needed now for loading units from avenger to properly update gamestate.
-		Unit.BeginTacticalPlay(NewGameState);
-
-		PlayerState = class'Utilities_LW'.static.FindPlayer(Team);
-		class'Helpers_LW'.static.AddUnitToXComGroup(NewGameState, Unit, PlayerState, History);
-		
-		// If the adviser is not a soldier, we want it to start on the neutral team.
-		if (!Unit.IsSoldier())
-		{
-			// Work around a problem introduced with the SLG DLC. See the big comment in X2Character_Resistance.EmptyPawnName
-			// about why we use an empty pawn name override for rebel/faceless rebel characters. Unfortunately the engineer and
-			// scientist templates don't have such an override set, so when they have their pictures taken for the adviser slot
-			// in the resistance UI the code introduced in SLG sets their pawn to 'soldier'. This causes them to use the wrong 
-			// anims and hold empty guns in mission. The fix is to force their pawn name back to '' before their visualizer is
-			// created, which works for the same reason as described in EmptyPawnName().
-			Unit.kAppearance.nmPawn = '';
-		}
-
-		Unit.SetControllingPlayer(PlayerState.GetReference());
-		// Set the 'spawned from avenger' flag on soldier liaisons. The post-mission cleanup code needs it needs to handle
-		// someone who isn't in the squad. This will make sure they get recorded in the memorial if they die, and handles
-		// captures, shaken effects, etc.
-		if (Unit.IsSoldier())
-		{
-			Unit.bSpawnedFromAvenger = true;
-		}
-		Unit.SetVisibilityLocation(UnitTile);
-
-		foreach Unit.InventoryItems(ItemReference)
-		{
-			ItemState = XComGameState_Item(NewGameState.ModifyStateObject(class'XComGameState_Item', ItemReference.ObjectID));
-			//Issue #159, this is needed now for loading units from avenger to properly update gamestate.
-			ItemState.BeginTacticalPlay(NewGameState);
-
-			// add any cosmetic items that might exists
-			ItemState.CreateCosmeticItemUnit(NewGameState);
-		}
-
-		// submit it
-		XComGameStateContext_TacticalGameRule(NewGameState.GetContext()).UnitRef = Unit.GetReference();
-		`TACTICALRULES.SubmitGameState(NewGameState);
-
-		 // make sure the visualizer has been created so self-applied abilities have a target in the world
-	   Unit.FindOrCreateVisualizer(NewGameState);
-
-		// add abilities
-		// Must happen after unit is submitted, or it gets confused about when the unit is in play or not 
-		NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Adding Liaison Unit Abilities");
-		Unit = XComGameState_Unit(NewGameState.CreateStateObject(class'XComGameState_Unit', Unit.ObjectID));
-		NewGameState.AddStateObject(Unit);
-		// add the items to the gamestate for ammo merging
-		foreach Unit.InventoryItems(ItemReference)
-		{
-			ItemState = XComGameState_Item(NewGameState.ModifyStateObject(class'XComGameState_Item', ItemReference.ObjectID));
-			//Issue #159, this is needed now for loading units from avenger to properly update gamestate.
-			ItemState.BeginTacticalPlay(NewGameState);
-		}
-
-		Rules.InitializeUnitAbilities(NewGameState, Unit);
-
-		// make the unit concealed, if they have Phantom
-		// (special-case code, but this is how it works when starting a game normally)
-		if (Unit.FindAbility('Phantom').ObjectID > 0)
-		{
-			Unit.EnterConcealmentNewGameState(NewGameState);
-		}
-
-		`TACTICALRULES.SubmitGameState(NewGameState);
-		Unit.OnBeginTacticalPlay(NewGameState);
-	}
-}
 
 static function CreateNewCivilianUnits()
 {

@@ -72,7 +72,7 @@ var config int SIDEWINDER_FOCUS3MOBILITY;
 var config int SIDEWINDER_FOCUS3AIM;
 var config int SIDEWINDER_FOCUS3CRIT;
 
-var config int SHOGGOTH_SPAWN_CHANCE_PER_HIT;
+var config float SHOGGOTH_SPAWN_CHANCE_PER_HIT;
 
 var localized string strBayonetChargePenalty;
 
@@ -446,7 +446,7 @@ static function X2AbilityTemplate CreateDroneShockAbility()
 	local X2Condition_Visibility            VisibilityCondition;
 	local X2AbilityTarget_Single            SingleTarget;
 	local array<name>                       SkipExclusions;
-
+	local X2AbilityCost_Ammo				AmmoCost;
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'LWDroneShock');
 	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_lightningfield";
 	Template.Hostility = eHostility_Offensive;
@@ -478,6 +478,11 @@ static function X2AbilityTemplate CreateDroneShockAbility()
 	ActionPointCost.iNumPoints = 1;
 	ActionPointCost.bConsumeAllPoints = true;
 	Template.AbilityCosts.AddItem(ActionPointCost);
+
+	AmmoCost = new class'X2AbilityCost_Ammo';
+	AmmoCost.iAmmo = 1;
+	Template.AbilityCosts.AddItem(AmmoCost);
+
 
 	//  Put holo target effect first because if the target dies from this shot, it will be too late to notify the effect.
 	Template.AddTargetEffect(class'X2Ability_GrenadierAbilitySet'.static.HoloTargetEffect());
@@ -923,7 +928,7 @@ static function X2DataTemplate CreateMassReanimateAbility()
 
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
 	ActionPointCost.iNumPoints = default.MASS_REANIMATION_LW_MIN_ACTION_COST;
-	ActionPointCost.bConsumeAllPoints = true;
+	ActionPointCost.bConsumeAllPoints =false;
 	Template.AbilityCosts.AddItem(ActionPointCost);
 
 	Cooldown = new class'X2AbilityCooldown_LocalAndGlobal';
@@ -2140,11 +2145,22 @@ static function EventListenerReturn ShoggothListener(Object EventData, Object Ev
 {
 	local XComGameState_Ability AbilityState;
 	local int Roll;
+	local XComGameStateContext_Ability AbilityContext;
+	local XComGameState_Ability TriggerAbilityState;
+	local XComGameState_Unit  TargetUnit;
+	local float Chance;
 
+	AbilityContext = XComGameStateContext_Ability(GameState.GetContext());
+
+	TriggerAbilityState = XComGameState_Ability(CallbackData);
+
+	TargetUnit = XComGameState_Unit(`XCOMHISTORY.GetGameStateForObjectID(AbilityContext.InputContext.PrimaryTarget.ObjectID,,GameState.GetContext().GetFirstStateInEventChain().HistoryIndex - 1));
 
 	AbilityState = XComGameState_Ability(CallbackData);
 
 	Roll = `SYNC_RAND_STATIC(100);
+
+	Chance = default.SHOGGOTH_SPAWN_CHANCE_PER_HIT * TargetUnit.GetCurrentStat(eStat_HP) / TargetUnit.GetMaxStat(eStat_HP);
 
 	if( Roll < default.SHOGGOTH_SPAWN_CHANCE_PER_HIT)
 	{

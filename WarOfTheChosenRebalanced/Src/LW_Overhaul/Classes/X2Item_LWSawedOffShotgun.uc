@@ -189,7 +189,7 @@ static function X2DataTemplate CreateTemplate_SawedOffShotgun_Laser()
 	Template.iPhysicsImpulse = 5;
 
 	
-	Template.CreatorTemplateName = 'SawedOffShotgun_LS_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'Sidearms_LS_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'SawedoffShotgun_CV'; // Which item this will be upgraded from
 
 	Template.StartingItem = false;
@@ -234,7 +234,7 @@ static function X2DataTemplate CreateTemplate_SawedOffShotgun_Magnetic()
 
 	Template.iPhysicsImpulse = 5;
 	
-	Template.CreatorTemplateName = 'SawedoffShotgun_MG_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'Sidearms_MG_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'SawedoffShotgun_LS'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
@@ -280,7 +280,7 @@ static function X2DataTemplate CreateTemplate_SawedOffShotgun_Coil()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CreatorTemplateName = 'SawedoffShotgun_CG_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'Sidearms_CG_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'SawedoffShotgun_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
@@ -326,7 +326,7 @@ static function X2DataTemplate CreateTemplate_SawedOffShotgun_Beam()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CreatorTemplateName = 'SawedoffShotgun_BM_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'Sidearms_BM_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'SawedoffShotgun_CG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;

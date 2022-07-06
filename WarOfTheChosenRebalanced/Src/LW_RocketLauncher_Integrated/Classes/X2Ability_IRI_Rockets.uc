@@ -1509,7 +1509,7 @@ static function X2AbilityTemplate Create_FireRocketLauncherAbility()
 	Template.AbilityCosts.Length = 0;
 
 	ActionPoints = new class'X2AbilityCost_ActionPoints';
-	ActionPoints.bConsumeAllPoints = false;
+	ActionPoints.bConsumeAllPoints = true;
 	ActionPoints.DoNotConsumeAllSoldierAbilities.AddItem('Salvo');
 	//ActionPoints.DoNotConsumeAllSoldierAbilities.AddItem('TotalCombat');
 	ActionPoints.iNumPoints = 1;

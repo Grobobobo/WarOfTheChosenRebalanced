@@ -295,64 +295,6 @@ CannotModifyOnMissionSoldierTooltip="Non puoi modificare un soldato attualmente 
 [X2Effect_LWHolotarget]
 HoloTargetEffectName="Bersaglio inquadrato"
 
-[XComGameState_LWPersistentSquad]
-+DefaultSquadNames="Menace"
-+DefaultSquadNames="Voodoo"
-+DefaultSquadNames="Swordsman"
-+DefaultSquadNames="Super Six"
-+DefaultSquadNames="Hussar"
-+DefaultSquadNames="Dragoons"
-+DefaultSquadNames="Devils"
-+DefaultSquadNames="Feral"
-+DefaultSquadNames="Spearhead"
-+DefaultSquadNames="Victory"
-+DefaultSquadNames="Sandman"
-+DefaultSquadNames="Tornado"
-+DefaultSquadNames="Volontari"
-+DefaultSquadNames="Grizzly"
-+DefaultSquadNames="Keystone"
-+DefaultSquadNames="Screaming Eagles"
-+DefaultSquadNames="Hitman"
-+DefaultSquadNames="Assassin"
-+DefaultSquadNames="Raptor"
-+DefaultSquadNames="Moccasin"
-+DefaultSquadNames="Vega"
-+DefaultSquadNames="Roughnecks"
-+DefaultSquadNames="Marauders"
-+DefaultSquadNames="Black Watch"
-+DefaultSquadNames="Blackguards"
-+DefaultSquadNames="Kiryu-Kai"
-+DefaultSquadNames="Tridente"
-+DefaultSquadNames="Timberwolf"
-
-+TempSquadNames="Alfa"
-+TempSquadNames="Bravo"
-+TempSquadNames="Charlie"
-+TempSquadNames="Delta"
-+TempSquadNames="Eco"
-+TempSquadNames="Foxtrot"
-+TempSquadNames="Golf"
-+TempSquadNames="Hotel"
-+TempSquadNames="India"
-+TempSquadNames="Juliet"
-+TempSquadNames="Kilo"
-+TempSquadNames="Lima"
-+TempSquadNames="Mike"
-+TempSquadNames="November"
-+TempSquadNames="Oscar"
-+TempSquadNames="Papa"
-+TempSquadNames="Quebec"
-+TempSquadNames="Romeo"
-+TempSquadNames="Sierra"
-+TempSquadNames="Tango"
-+TempSquadNames="Uniform"
-+TempSquadNames="Victor"
-+TempSquadNames="Yankee"
-+TempSquadNames="Zulu"
-
-BackupSquadName="Squadra XCOM <XGParam:StrValue0>"
-BackupTempSquadName="Squadra Temporanea <XGParam:StrValue0>"
-
 [UIScreenListener_LivingQuarters]
 +m_strSquadSelection="CASERMA SQUADRA"
 
@@ -475,9 +417,7 @@ m_strStaffingPinText="Rf:<XGParam:IntValue0> S:<XGParam:IntValue1> R:<XGParam:In
 m_strStaffingPinTextMore="O:<XGParam:IntValue0>"
 m_strMonthlyRegionalIncome="+§<XGParam:IntValue0> (+§<XGParam:IntValue1>)"
 
-[XComGameState_LWOutpostManager]
-LabelCQ_ResistanceManagement="Gestione Resistenza"
-TooltipCQ_ResistanceManagement="Gestisci i Rifugi Regionali della Resistenza"
+
 
 [UIResistanceManagement_LW]
 m_strTitle="PANORAMICA RESISTENZA"
@@ -577,9 +517,6 @@ m_strLiberatedCityPrefix="Libera"
 [XComGameState_LWOutPost]
 m_strProhibitedJobAlert="A causa di un raid ADVENT, non è possibile assegnare membri della Resistenza all'incarico di <XGParam:StrValue0/> per <XGParam:IntValue0/> giorni nella regione <XGParam:StrValue1/>. Tutto il personale della Resistenza addetto a quell'incarico è in occultamento."
 m_strProhibitedJobEnded="I membri della Resistenza nella regione <XGParam:StrValue0/> assegnati all'incarico di <XGParam:StrValue1/> saranno nuovamente produttivi."
-
-[X2StrategyElement_DefaultAlienActivities]
-m_strInsufficientRebels="Servono almeno <XGParam:IntValue0/> ribelli nel Rifugio per stabilire un contatto con i vicini"
 
 [UIScreenListener_Alert]
 m_strInvasionTitle="INVASIONE ADVENT"

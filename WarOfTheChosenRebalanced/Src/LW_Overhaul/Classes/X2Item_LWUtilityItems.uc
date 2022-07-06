@@ -153,7 +153,7 @@ static function X2DataTemplate CreateChameleonSuit()
 static function X2AmmoTemplate CreateStilettoRounds()
 {
 	local X2AmmoTemplate				Template;
-	local WeaponDamageValue DamageValue;	
+	//local WeaponDamageValue DamageValue;	
 
 	`CREATE_X2TEMPLATE(class'X2AmmoTemplate', Template, 'StilettoRounds');
 	Template.strImage = "img:///UILibrary_LW_Overhaul.InventoryArt.Inv_Stiletto_Rounds_512";
@@ -162,9 +162,9 @@ static function X2AmmoTemplate CreateStilettoRounds()
 	Template.InventorySlot = eInvSlot_Utility;
 	Template.RewardDecks.AddItem('ExperimentalAmmoRewards');
 
-	DamageValue.Damage = default.STILETTO_DMGMOD;
-    DamageValue.DamageType = 'Stiletto';
-    Template.AddAmmoDamageModifier(none, DamageValue);
+	// DamageValue.Damage = default.STILETTO_DMGMOD;
+    // DamageValue.DamageType = 'Stiletto';
+    // Template.AddAmmoDamageModifier(none, DamageValue);
 
 	Template.StartingItem = false;
 	Template.CanBeBuilt = true;

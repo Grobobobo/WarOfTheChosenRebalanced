@@ -130,9 +130,9 @@ LocPromotionPopupText="<Bullet/> Improves the Skirmisher's mobility around the m
 ; LWOTC Needs Translation
 [Executioner X2AbilityTemplate]
 LocFriendlyName="Death Dealer"
-LocLongDescription="Grants +<Ability:DEATH_DEALER_CRIT/> crit chance. Critical shots against a flanked target while in Shadow will deal double critical damage."
-LocHelpText="Grants +<Ability:DEATH_DEALER_CRIT/> crit chance. Critical shots against a flanked target while in Shadow will deal double critical damage."
-LocPromotionPopupText="<Bullet/> Use Shadow's increased mobility and smaller enemy detection radii to flank enemies and deal massive damage.<br/>"
+LocLongDescription="Grants +<Ability:DEATH_DEALER_BONUS_AIM/> Aim +<Ability:DEATH_DEALER_BONUS_DAMAGE_ON_CRIT/> damage on a critical hit while in shadow."
+LocHelpText="Grants +<Ability:DEATH_DEALER_BONUS_AIM/> Aim +<Ability:DEATH_DEALER_BONUS_DAMAGE_ON_CRIT/> damage on a critical hit while in shadow."
+LocPromotionPopupText="<Bullet/> Use Shadow's increased mobility to flank enemies and deal massive damage.<br/>"
 
 ; End Translation
 
@@ -206,6 +206,47 @@ LocFlyOverText="Battlefield Awareness"
 LocPromotionPopupText="<Bullet/> When Battlefield Awareness is triggered the soldier is immune to the next damage-dealing attack during the enemy turn, including area of effect attacks.<br/>"
 
 
+[Heatsink_LW X2AbilityTemplate]
+LocFriendlyName = "Heatsink"
+LocLongDescription = "The <Ability:ClassName/> redirects Heat buildup from their primary weapon into powering up their Ripjack strikes. Heat is reduced on taking damage."
+LocPromotionPopupText = "<Bullet/>A Focus-like mechanic: Channel heat from Bullpup shots into the Ripjack, boosting its damage, aim and critical hit chance.<br/><Bullet/> Gain +<Ability:HEATSINK_CRIT_CHANCE_BONUS/>% chance to Crit on Ripjack attacks for each level of Heat.<br/><Bullet/> Gain +<Ability:HEATSINK_AIM_BONUS/>% accuracy on Ripjack attacks for each level of Heat. <br/><Bullet/> Gain +<Ability:RECKONING_BONUS_DAMAGE_PER_HEAT/>% Damage on Reckoning for every level of Heat. <br/><Bullet/> Chance to lose 1 Heat at the beginning of each turn - chance increases based on stored Heat.<br/><Bullet/>Very high Heat levels have a chance to lose 2 Heat.<br/><Bullet/> Shots add +<Ability:HEATSINK_GAIN_DIRECT_SHOT/> Heat.<br/><Bullet/> Taking damage removes <Ability:HEATSINK_LOSS_ON_DAMAGE/> Heat.<br/><Bullet/> Maximum of <Ability:HEATSINK_LOSS_ON_DAMAGE/> stored Heat by default.<br/>"
+
+
+
+[FireAndFury_LW X2AbilityTemplate]
+LocFriendlyName="Fire And Fury"
+LocLongDescription="Gain +<Ability:FIRE_FURY_MOBILITY_BONUS/> Mobility per <Ability:FIRE_FURY_MOBILITY_BONUS_CHARGE_DIVISOR/> heat levels."
+
+[ThermalRegulators_LW X2AbilityTemplate]
+LocFriendlyName="Thermal Regulators"
+LocLongDescription="Reduces the chance at the start of each turn for Heat to dissipate. especially at higher levels."
+LocPromotionPopupText = "<Bullet/>The reduction is <Ability:THERMAL_REGULATORS_RETAIN_HEAT_CHANCE_I/> chance per focus level on 2 or more heat, additional <Ability:THERMAL_REGULATORS_RETAIN_HEAT_CHANCE_II/> on 4 or more, and <Ability:THERMAL_REGULATORS_RETAIN_HEAT_CHANCE_III/> on 6 or more. <br/>"
+
+[Ignite_LW X2AbilityTemplate]
+LocFriendlyName="Ignite"
+LocLongDescription="Max out your heat level. 1 action, non turn ending."
+LocHelpText="Max out your heat level. 1 action, non turn ending."
+
+[OverClocking_LW X2AbilityTemplate]
+LocFriendlyName="Overclocking"
+LocLongDescription="Increase your maximum heat level by 2."
+LocHelpText="Increase your maximum heat level by 2."
+
+[RipAndTear_LW X2AbilityTemplate]
+LocFriendlyName="Rip And Tear"
+LocLongDescription="Your Ripjack attacks rupture when at 4 or more heat."
+LocHelpText="Your Ripjack attacks rupture when at 4 or more heat."
+
+
+
+[BattlefieldAwareness2 X2AbilityTemplate]
+LocFriendlyName="Battlefield Awareness"
+LocLongDescription="You no longer lose heat when taking damage. Gain <Ability:BATTLEFIELD_AWARENESS_DODGE_PER_HEAT/> dodge per heat level."
+LocHelpText="You no longer lose heat when taking damage. Gain <Ability:BATTLEFIELD_AWARENESS_DODGE_PER_HEAT/> dodge per heat level."
+LocFlyOverText="Battlefield Awareness"
+LocPromotionPopupText=""
+
+
 [BattlefieldAwarenessPassive X2AbilityTemplate]
 LocFriendlyName="Battlefield Awareness"
 LocLongDescription="If you score a kill during your turn, the next attack against you during the enemy turn will miss. Upon usage, the ability goes on a <Ability:BATTLEFIELD_AWARENESS_COOLDOWN/> turn cooldown."
@@ -219,7 +260,8 @@ LocHelpText="Battlefield Awareness will not activate until this effect ends."
 
 
 [CombatPresence X2AbilityTemplate]
-LocPromotionPopupText="<Bullet/> Combat Presence can be used to get squadmates out of tough situations where they need an extra attack or move.<br/><Bullet/> Combat Presence has a <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
+LocLongDescription="Grant an extra action to a squadmate. <Ability:SelfCooldown_LW/> turn cooldown, but it's reduced 1 per <Ability:COMBAT_PRESENCE_COOLDOWN_REDUCTION_DIVISOR/> heat."
+LocPromotionPopupText=""
 
 
 ; LWOTC Needs Translation

@@ -2,7 +2,7 @@
 <Project ToolsVersion="12.0" DefaultTargets="Default" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Guid>7a03fe19-6291-4b95-ba1c-3ec505fa8c0b</Guid>
-    <Name>War Of the Chosen Rebalance</Name>
+    <Name>Grobo's Tactical Overhaul</Name>
     <Description></Description>
     <SteamPublishID>0</SteamPublishID>
     <AssemblyName>WarOfTheChosenRebalanced</AssemblyName>

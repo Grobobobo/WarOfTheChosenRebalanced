@@ -173,7 +173,7 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Laser()
 	
 	Template.GameArchetype = "LW_CombatKnifeLWOTC.Archetypes.WP_CombatKnife_CV";
 
-	Template.CreatorTemplateName = 'CombatKnife_BM_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'CombatKnife_LS_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'CombatKnife_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
@@ -265,7 +265,7 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Coil()
 	
 	Template.GameArchetype = "LW_CombatKnifeLWOTC.Archetypes.WP_CombatKnife_CV";
 
-	Template.CreatorTemplateName = 'CombatKnife_BM_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'CombatKnife_CG_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'CombatKnife_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
@@ -322,93 +322,6 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Beam()
 
 	return Template;
 }
-
-static function X2DataTemplate CreateTemplate_CombatKnife_Magnetic_Schematic()
-{
-	local X2SchematicTemplate Template;
-	local ArtifactCost Resources, Artifacts;
-
-	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'CombatKnife_MG_Schematic');
-
-
-	Template.ItemCat = 'weapon';
-	Template.strImage = default.CombatKnife_MG_UIImage; 
-	Template.CanBeBuilt = true;
-	Template.bOneTimeBuild = true;
-	Template.HideInInventory = true;
-	Template.PointsToComplete = 0;
-	Template.Tier = 1;
-	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
-
-	// Reference Item
-	Template.HideIfPurchased = 'CombatKnife_BM';
-	Template.ReferenceItemTemplate = 'CombatKnife_MG';
-
-	// Requirements
-	//Template.Requirements.RequiredTechs.AddItem('MagnetizedWeapons');
-	Template.Requirements.RequiredTechs.AddItem('AutopsyAdventStunLancer');  // same as sword
-	Template.Requirements.RequiredEngineeringScore = 10;
-	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
-
-	// Cost
-	Resources.ItemTemplateName = 'Supplies';
-	Resources.Quantity = default.CombatKnife_MAGNETIC_SCHEMATIC_SUPPLYCOST;
-	Template.Cost.ResourceCosts.AddItem(Resources);
-
-	Artifacts.ItemTemplateName = 'AlienAlloy';
-	Artifacts.Quantity = default.CombatKnife_MAGNETIC_SCHEMATIC_ALLOYCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-	
-	// only add elerium cost if configured value greater than 0
-	if (default.CombatKnife_MAGNETIC_SCHEMATIC_ELERIUMCOST > 0) {
-		Artifacts.ItemTemplateName = 'EleriumDust';
-		Artifacts.Quantity = default.CombatKnife_MAGNETIC_SCHEMATIC_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
-
-	return Template;
-}
-
-//static function X2DataTemplate CreateTemplate_CombatKnife_Beam_Schematic()
-//{
-	//local X2SchematicTemplate Template;
-	//local ArtifactCost Resources, Artifacts;
-//
-	//`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'CombatKnife_BM_Schematic');
-//
-	//Template.ItemCat = 'weapon';
-	//Template.strImage = default.CombatKnife_BM_UIImage; 
-	//Template.CanBeBuilt = true;
-	//Template.bOneTimeBuild = true;
-	//Template.HideInInventory = true;
-	//Template.PointsToComplete = 0;
-	//Template.Tier = 3;
-	//Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
-//
-	//// Reference Item
-	//Template.ReferenceItemTemplate = 'CombatKnife_BM';
-//
-	//// Requirements
-	////Template.Requirements.RequiredTechs.AddItem('PlasmaRifle');
-	//Template.Requirements.RequiredTechs.AddItem('AutopsyArchon');  // same as sword
-	//Template.Requirements.RequiredEngineeringScore = 20;
-	//Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
-//
-	//// Cost
-	//Resources.ItemTemplateName = 'Supplies';
-	//Resources.Quantity = default.CombatKnife_BEAM_SCHEMATIC_SUPPLYCOST;
-	//Template.Cost.ResourceCosts.AddItem(Resources);
-//
-	//Artifacts.ItemTemplateName = 'AlienAlloy';
-	//Artifacts.Quantity = default.CombatKnife_BEAM_SCHEMATIC_ALLOYCOST;
-	//Template.Cost.ResourceCosts.AddItem(Artifacts);
-//
-	//Artifacts.ItemTemplateName = 'EleriumDust';
-	//Artifacts.Quantity = default.CombatKnife_BEAM_SCHEMATIC_ELERIUMCOST;
-	//Template.Cost.ResourceCosts.AddItem(Artifacts);
-//
-	//return Template;
-//}
 
 defaultproperties
 {

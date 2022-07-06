@@ -45,6 +45,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateTemplate_AdvPurifierPistol_Leader_WPN('AdvPurifierPistolM4_Leader_WPN', default.ADV_PURIFIER_PISTOL_M4_LEADER_WPN_BASEDAMAGE));
 	Weapons.AddItem(CreateTemplate_AdvPurifierPistol_Leader_WPN('AdvPurifierPistolM5_Leader_WPN', default.ADV_PURIFIER_PISTOL_M5_LEADER_WPN_BASEDAMAGE));
 
+
+    Weapons.AddItem(CreateTemplate_AdvPurifierFlamethrower('AdvPurifierFlamethrower',class'X2Item_XPackWeapons'.default.ADVPURIFIER_FLAMETHROWER_BASEDAMAGE));
     Weapons.AddItem(CreateTemplate_AdvPurifierFlamethrower('AdvPurifierM2Flamethrower',default.ADVPURIFIERM2_FLAMETHROWER_BASEDAMAGE));
     Weapons.AddItem(CreateTemplate_AdvPurifierFlamethrower('AdvPurifierM3Flamethrower',default.ADVPURIFIERM3_FLAMETHROWER_BASEDAMAGE));
     Weapons.AddItem(CreateTemplate_AdvPurifierFlamethrower('AdvPurifierM4Flamethrower',default.ADVPURIFIERM4_FLAMETHROWER_BASEDAMAGE));
@@ -170,8 +172,8 @@ static function X2WeaponTemplate CreateTemplate_AdvPurifierFlamethrower(name Tem
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	
 	Template.ItemCat = 'weapon';
-	Template.WeaponCat = 'shotgun';
-	Template.WeaponTech = 'magnetic';
+	Template.WeaponCat = 'lwchemthrower';
+	Template.WeaponTech = 'conventional';
 	Template.strImage = "img:///UILibrary_XPACK_StrategyImages.Inv_Advent_Flamethrower";
 	Template.EquipSound = "Conventional_Weapon_Equip";
 
@@ -183,7 +185,7 @@ static function X2WeaponTemplate CreateTemplate_AdvPurifierFlamethrower(name Tem
 	Template.iRadius = class'X2Item_XpackWeapons'.default.ADVPURIFIER_FLAMETHROWER_RADIUS;
 	Template.fCoverage = class'X2Item_XpackWeapons'.default.ADVPURIFIER_FLAMETHROWER_TILE_COVERAGE_PERCENT;
 	Template.iIdealRange = 7;
-	Template.InfiniteAmmo = true;
+	Template.InfiniteAmmo = false;
 	Template.PointsToComplete = 0;
 	Template.DamageTypeTemplateName = 'Fire';
 	
@@ -191,10 +193,11 @@ static function X2WeaponTemplate CreateTemplate_AdvPurifierFlamethrower(name Tem
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	
 	Template.GameArchetype = "WP_AdvFlamethrower.WP_AdvFlamethrower";
-	Template.bMergeAmmo = true;
+	//Template.bMergeAmmo = true;
 	Template.bCanBeDodged = false;
 
 	Template.Abilities.AddItem('AdvPurifierFlamethrower');
+	Template.Abilities.AddItem('ReloadNoAnim');
 
 	Template.CanBeBuilt = false;
 
@@ -211,8 +214,8 @@ static function X2WeaponTemplate CreateTemplate_AdvPurifierFlamethrower_Leader(n
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	
 	Template.ItemCat = 'weapon';
-	Template.WeaponCat = 'shotgun';
-	Template.WeaponTech = 'magnetic';
+	Template.WeaponCat = 'lwchemthrower';
+	Template.WeaponTech = 'conventional';
 	Template.strImage = "img:///UILibrary_XPACK_StrategyImages.Inv_Advent_Flamethrower";
 	Template.EquipSound = "Conventional_Weapon_Equip";
 
@@ -224,7 +227,7 @@ static function X2WeaponTemplate CreateTemplate_AdvPurifierFlamethrower_Leader(n
 	Template.iRadius = class'X2Item_XpackWeapons'.default.ADVPURIFIER_FLAMETHROWER_RADIUS;
 	Template.fCoverage = class'X2Item_XpackWeapons'.default.ADVPURIFIER_FLAMETHROWER_TILE_COVERAGE_PERCENT;
 	Template.iIdealRange = 7;
-	Template.InfiniteAmmo = true;
+	Template.InfiniteAmmo = false;
 	Template.PointsToComplete = 0;
 	Template.DamageTypeTemplateName = 'Fire';
 	
@@ -232,10 +235,11 @@ static function X2WeaponTemplate CreateTemplate_AdvPurifierFlamethrower_Leader(n
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	
 	Template.GameArchetype = "WP_AdventFlamethrower_Rusty.Archetypes.WP_AdvFlamethrower_Rusty";
-	Template.bMergeAmmo = true;
+	//Template.bMergeAmmo = true;
 	Template.bCanBeDodged = false;
 
 	Template.Abilities.AddItem('AdvPurifierFlamethrower');
+	Template.Abilities.AddItem('ReloadNoAnim');
 
 	Template.CanBeBuilt = false;
 

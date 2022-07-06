@@ -100,9 +100,9 @@ static function DoaGlobalStatModifierByDifficulty(X2CharacterTemplate Template, 
 
 	for (i = 0; i< DiffTemplates.length; i++)
 	{
-		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_HP] = FFloor(HighestDiffTemplate.CharacterBaseStats[eStat_HP] * default.DIFFICULTY_HP_MODIFIER[i]);
-		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_Offense] = FFloor(HighestDiffTemplate.CharacterBaseStats[eStat_Offense] + default.DIFFICULTY_AIM_MODIFIER[i]);
-		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_Will] = FFloor(HighestDiffTemplate.CharacterBaseStats[eStat_Will] + default.DIFFICULTY_Will_MODIFIER[i]);
+		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_HP] = FCeil(HighestDiffTemplate.CharacterBaseStats[eStat_HP] * default.DIFFICULTY_HP_MODIFIER[i]);
+		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_Offense] = FCeil(HighestDiffTemplate.CharacterBaseStats[eStat_Offense] + default.DIFFICULTY_AIM_MODIFIER[i]);
+		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_Will] = FCeil(HighestDiffTemplate.CharacterBaseStats[eStat_Will] + default.DIFFICULTY_Will_MODIFIER[i]);
 	
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_ArmorMitigation] = HighestDiffTemplate.CharacterBaseStats[eStat_ArmorMitigation];
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_CritChance] = HighestDiffTemplate.CharacterBaseStats[eStat_CritChance];

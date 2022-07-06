@@ -1,6 +1,6 @@
 class X2Effect_Serial_LW extends X2Effect_Serial;
 
-var float PCT_DMG_Reduction;
+var array<float> PCT_DMG_Reduction;
 
 
 function float GetPostDefaultAttackingDamageModifier_CH(
@@ -25,7 +25,7 @@ function float GetPostDefaultAttackingDamageModifier_CH(
 
         DamageReduction = WeaponDamage;
 
-		DamageMod = (1- PCT_DMG_Reduction)** UnitVal.fValue;
+		DamageMod = (1- PCT_DMG_Reduction[`STRATEGYDIFFICULTYSETTING])** UnitVal.fValue;
 
 		DamageReduction = DamageReduction * (1-DamageMod);
 		}

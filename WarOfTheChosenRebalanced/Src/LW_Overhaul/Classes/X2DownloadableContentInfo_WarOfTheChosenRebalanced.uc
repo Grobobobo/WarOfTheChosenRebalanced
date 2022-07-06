@@ -45,8 +45,6 @@ var config array<ChosenStrengthWeighted> HUNTER_STRENGTHS_T3;
 // behaviour.
 var config array<string> SKIP_CHOSEN_OVERRIDE_MISSION_TYPES;
 
-var config array<MinimumInfilForConcealEntry> MINIMUM_INFIL_FOR_CONCEAL;
-
 struct ArchetypeToHealth
 {
 	var string ArchetypeName;
@@ -108,6 +106,7 @@ var config array<int> RULER_POD_SIZE_ALERT_THRESHOLDS;
 
 // Scaling multiplier for the Brute's pawn
 var config float BRUTE_SIZE_MULTIPLIER;
+var config float NEONATE_SIZE_MULTIPLIER;
 
 //Mission names dictating the out of LOS ai behavior
 var config array<string> PASSIVE_MISSION_TYPES;
@@ -124,13 +123,6 @@ var config array<string> BALANCED_MISSION_TYPES;
 /// </summary>
 static event OnLoadedSavedGame()
 {
-	`Log("*********************** Starting OnLoadedSavedGame *************************");
-	//class'XComGameState_LWListenerManager'.static.CreateListenerManager();
-	//class'X2DownloadableContentInfo_LWSMGPack'.static.OnLoadedSavedGame();
-	//class'X2DownloadableContentInfo_LWLaserPack'.static.OnLoadedSavedGame();
-	//class'X2DownloadableContentInfo_LWOfficerPack'.static.OnLoadedSavedGame();
-//
-	//UpdateUtilityItemSlotsForAllSoldiers();
 }
 
 
@@ -146,18 +138,11 @@ static event UpdateDLC()
 /// </summary>
 static event InstallNewCampaign(XComGameState StartState)
 {
-	local XComGameState_WorldRegion StartingRegionState;
-	local XComGameState_ResistanceFaction StartingFactionState;
+	//local XComGameState_WorldRegion StartingRegionState;
+//	local XComGameState_ResistanceFaction StartingFactionState;
 
-	// WOTC TODO: Note that this method is called twice if you start a new campaign.
-	// Make sure that's not causing issues.
-	`Log("LWOTC: Installing a new campaign");
-	class'XComGameState_LWListenerManager'.static.CreateListenerManager(StartState);
-	class'XComGameState_LWSquadManager'.static.CreateSquadManager(StartState);
+	//class'XComGameState_LWListenerManager'.static.CreateListenerManager(StartState);
 
-	class'XComGameState_LWOutpostManager'.static.CreateOutpostManager(StartState);
-	class'XComGameState_LWAlienActivityManager'.static.CreateAlienActivityManager(StartState);
-	class'XComGameState_WorldRegion_LWStrategyAI'.static.InitializeRegionalAIs(StartState);
 	class'XComGameState_LWOverhaulOptions'.static.CreateModSettingsState_NewCampaign(class'XComGameState_LWOverhaulOptions', StartState);
 	class'XComGameState_LWXTP'.static.CreateXTPState(StartState);
 
@@ -168,20 +153,17 @@ static event InstallNewCampaign(XComGameState StartState)
 		SaveSecondWaveOptions();
 	}
 
-	StartingRegionState = SetStartingLocationToStartingRegion(StartState);
+	//StartingRegionState = SetStartingLocationToStartingRegion(StartState);
 	UpdateLockAndLoadBonus(StartState);  // update XComHQ and Continent states to remove LockAndLoad bonus if it was selected
-	//LimitStartingSquadSize(StartState); // possibly limit the starting squad size to something smaller than the maximum
 	SetUpGateCrasherCrew(StartState);
 	DisableUnwantedObjectives(StartState);
 
-	class'XComGameState_LWSquadManager'.static.CreateFirstMissionSquad(StartState);
-
 	// Clear starting resistance modes because we don't actually start
 	// at the faction HQ, unlike vanilla WOTC.
-	StartingFactionState = StartingRegionState.GetResistanceFaction();
-	class'X2StrategyElement_DefaultResistanceModes'.static.OnXCOMLeavesIntelMode(StartState, StartingFactionState.GetReference());
-	class'X2StrategyElement_DefaultResistanceModes'.static.OnXCOMLeavesMedicalMode(StartState, StartingFactionState.GetReference());
-	class'X2StrategyElement_DefaultResistanceModes'.static.OnXCOMLeavesBuildMode(StartState, StartingFactionState.GetReference());
+	// StartingFactionState = StartingRegionState.GetResistanceFaction();
+	// class'X2StrategyElement_DefaultResistanceModes'.static.OnXCOMLeavesIntelMode(StartState, StartingFactionState.GetReference());
+	// class'X2StrategyElement_DefaultResistanceModes'.static.OnXCOMLeavesMedicalMode(StartState, StartingFactionState.GetReference());
+	// class'X2StrategyElement_DefaultResistanceModes'.static.OnXCOMLeavesBuildMode(StartState, StartingFactionState.GetReference());
 }
 
 static function OnPreCreateTemplates()
@@ -198,8 +180,8 @@ static event OnPostTemplatesCreated()
 	`Log(">>>> LW_Overhaul OnPostTemplates");
 	class'LWTemplateMods_Utilities'.static.UpdateTemplates();
 	UpdateWeaponAttachmentsForCoilgun();
-	UpdateFirstMissionTemplate();
-	AddObjectivesToParcels();
+	//WOTCR - Not used because we're back to vanilla mission types. might uncomment this later if i want to re-disable tunnels.
+	//AddObjectivesToParcels();
 	UpdateChosenActivities();
 	UpdateChosenSabotages();
 }
@@ -212,9 +194,6 @@ static event OnLoadedSavedGameToStrategy()
 	local XComGameState NewGameState;
 	local XComGameStateHistory History;
 	local XComGameState_Objective ObjectiveState;
-	local XComGameState_LWOutpostManager OutpostManager;
-	local XComGameState_WorldRegion RegionState;
-	local XComGameState_LWOutpost OutpostState;
 	local XComGameState_LWToolboxOptions ToolboxOptions;
 	
 	
@@ -228,28 +207,9 @@ static event OnLoadedSavedGameToStrategy()
 	ToolboxOptions = class'XComGameState_LWToolboxOptions'.static.GetToolboxOptions();
 	`XEVENTMGR.UnRegisterFromEvent(ToolboxOptions, 'OnMonthlyReportAlert');
 
-	// Make sure pistol abilities apply to the new pistol slot
-	LWMigratePistolAbilities();
-
-	// If there are rebels that have already ranked up, make sure they have some abilities
-	OutpostManager = `LWOUTPOSTMGR;
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Patching existing campaign data");
-	foreach History.IterateByClassType(class'XComGameState_WorldRegion', RegionState)
-	{
-		if (RegionState.HaveMadeContact())
-		{
-			OutpostState = OutpostManager.GetOutpostForRegion(RegionState);
-			OutpostState.UpdateRebelAbilities(NewGameState);
-		}
-	}
 		
 	if (`LWOVERHAULOPTIONS == none)
 		class'XComGameState_LWOverhaulOptions'.static.CreateModSettingsState_ExistingCampaign(class'XComGameState_LWOverhaulOptions');
-
-	if (NewGameState.GetNumGameStateObjects() > 0)
-		History.AddGameStateToHistory(NewGameState);
-	else
-		History.CleanupPendingGameState(NewGameState);
 
 	//make sure that critical narrative moments are active
 	foreach History.IterateByClassType(class'XComGameState_Objective', ObjectiveState)
@@ -351,74 +311,6 @@ static function XComGameState_WorldRegion SetStartingLocationToStartingRegion(XC
 	return XComGameState_WorldRegion(StartState.GetGameStateForObjectID(XComHQ.StartingRegion.ObjectID));
 }
 
-// TODO: This function is only needed for players that want to upgrade
-// from a version of LW prior to beta 2 and want access to the pistol
-// abilities.
-static function LWMigratePistolAbilities()
-{
-	local XComGameState NewGameState;
-	local XComGameStateHistory History;
-	local XComGameState_Unit UnitState;
-	local int i, j;
-	local bool UnitHasPistolAbilities;
-
-	History = `XCOMHISTORY;
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Update unit pistol abilities for pistol slot");
-
-	foreach History.IterateByClassType(class'XComGameState_Unit', UnitState)
-	{
-		if (!UnitState.IsSoldier() || UnitState.IsResistanceHero())
-		{
-			// Faction soldiers and non-soldiers don't have the Pistol ability row
-			continue;
-		}
-
-		// Iterate over the whole ability tree looking for pistol abilities. For
-		// those that are found, change the `ApplyToWeaponSlot` property to the
-		// new pistol slot.
-		UnitHasPistolAbilities = false;
-		for (i = 0; i < UnitState.AbilityTree.Length; i++)
-		{
-			for (j = 0; j < UnitState.AbilityTree[i].Abilities.Length; j++)
-			{
-				// If any of the abilities are already configured for the pistol slot, skip them
-				if (UnitState.AbilityTree[i].Abilities[j].ApplyToWeaponSlot == eInvSlot_Pistol)
-				{
-					break;
-				}
-
-				switch (UnitState.AbilityTree[i].Abilities[j].AbilityName)
-				{
-				case 'ReturnFire':
-				case 'Quickdraw':
-				case 'ClutchShot':
-				case 'Gunslinger':
-				case 'LightningHands':
-				case 'Faceoff':
-				case 'FanFire':
-					if (!UnitHasPistolAbilities)
-					{
-						UnitState = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', UnitState.ObjectID));
-						UnitHasPistolAbilities = true;
-					}
-					UnitState.AbilityTree[i].Abilities[j].ApplyToWeaponSlot = eInvSlot_Pistol;
-					break;
-				default:
-					break;
-				}
-			}
-		}
-	}
-		
-	if (NewGameState.GetNumGameStateObjects() > 0)
-	{
-		History.AddGameStateToHistory(NewGameState);
-	}
-	else
-	{
-		History.CleanupPendingGameState(NewGameState);
-	}
-}
 
 static function UpdateLockAndLoadBonus(optional XComGameState StartState)
 {
@@ -445,64 +337,6 @@ static function UpdateLockAndLoadBonus(optional XComGameState StartState)
 	}
 }
 
-// use new infiltration loading screens when loading into tactical missions
-static function bool LoadingScreenOverrideTransitionMap(optional out string OverrideMapName, optional XComGameState_Unit UnitState)
-{
-	local XComGameStateHistory History;
-	local XComGameState_BattleData BattleData;
-	local XComGameState_MissionSite MissionSiteState;
-
-	History = `XCOMHISTORY;
-	BattleData = XComGameState_BattleData(History.GetSingleGameStateObjectForClass(class'XComGameState_BattleData'));
-	MissionSiteState = XComGameState_MissionSite(History.GetGameStateForObjectID(BattleData.m_iMissionID));
-
-	if (`LWSQUADMGR.IsValidInfiltrationMission(MissionSiteState.GetReference()) || class'Utilities_LW'.static.CurrentMissionType() == "Rendezvous_LW")
-	{
-		if (`TACTICALGRI != none )  // only pre tactical
-		{
-			switch (MissionSiteState.GeneratedMission.Plot.strType)
-			{
-				case "CityCenter" :
-				case "Rooftops" :
-				case "Slums" :
-				case "Facility" :
-					OverrideMapName = "CIN_Loading_Infiltration_CityCenter";
-					break;
-				case "Shanty" :
-				case "SmallTown" :
-				case "Wilderness" :
-					OverrideMapName = "CIN_Loading_Infiltration_SmallTown";
-					break;
-				// WOTC TODO: Consider creating intros for these plot types
-				case "Abandoned":
-				case "Tunnels_Sewer":
-				case "Stronghold":
-				case "Tunnels_Subway":
-				default :
-					OverrideMapName = "CIN_Loading_Infiltration_CityCenter";
-					break;
-			}
-			return true;
-		}
-	}
-
-	return false;
-}
-
-// set up alternate Mission Intro for infiltration missions
-static function bool UseAlternateMissionIntroDefinition(MissionDefinition ActiveMission, int OverrideType, string OverrideTag, out MissionIntroDefinition MissionIntro)
-{
-	local XComGameState_LWSquadManager SquadMgr;
-
-	SquadMgr = `LWSQUADMGR;
-
-	if(SquadMgr.IsValidInfiltrationMission(`XCOMHQ.MissionRef) || class'Utilities_LW'.static.CurrentMissionType() == "Rendezvous_LW")
-	{
-		MissionIntro = SquadMgr.default.InfiltrationMissionIntroDefinition;
-		return true;
-	}
-	return false;
-}
 
 /// <summary>
 /// Called when viewing mission blades, used primarily to modify tactical tags for spawning
@@ -644,13 +478,10 @@ static event OnPreMission(XComGameState StartGameState, XComGameState_MissionSit
 
 	History = `XCOMHISTORY;
 
-	`LWACTIVITYMGR.UpdatePreMission (StartGameState, MissionState);
 	ResetDelayedEvac(StartGameState);
 	ResetReinforcements(StartGameState);
-	InitializePodManager(StartGameState);
-	OverrideConcealmentAtStart(MissionState);
 	OverrideDestructibleHealths(StartGameState);
-	MaybeAddChosenToMission(StartGameState, MissionState);
+	//MaybeAddChosenToMission(StartGameState, MissionState);
 	if (class'XComGameState_AlienRulerManager' != none)
 	{
 		OverrideAlienRulerSpawning(StartGameState, MissionState);
@@ -702,17 +533,6 @@ static event OnPreMission(XComGameState StartGameState, XComGameState_MissionSit
 	`LWTRACE("===============================================================");
 }
 
-/// <summary>
-/// Called when the player completes a mission while this DLC / Mod is installed.
-/// </summary>
-static event OnPostMission()
-{
-	class'XComGameState_LWListenerManager'.static.RefreshListeners();
-
-	`LWSQUADMGR.UpdateSquadPostMission(, true); // completed mission
-	`LWOUTPOSTMGR.UpdateOutpostsPostMission();
-}
-
 // Disable the Lost if we don't meet certain conditions. This is also
 // called for the creation of Gatecrasher.
 static function PostSitRepCreation(out GeneratedMissionData GeneratedMission, optional XComGameState_BaseObject SourceObject)
@@ -726,6 +546,10 @@ static function PostSitRepCreation(out GeneratedMissionData GeneratedMission, op
 	{
 		GeneratedMission.SitReps.RemoveItem('TheLost');
 		GeneratedMission.SitReps.RemoveItem('TheHorde');
+	}
+	if (class'X2EventListener_Tactical'.default.STEALTH_MISSION_NAMES.Find(GeneratedMission.Mission.MissionName) != INDEX_NONE)
+    {
+		GeneratedMission.SitReps.AddItem('StealthMission');
 	}
 }
 
@@ -908,6 +732,11 @@ static function PostEncounterCreation(out name EncounterName, out PodSpawnInfo S
 		if (Instr(EncounterName, "Chryssalids") != -1)
 		{
 			`LWTRACE("Don't edit Chryssypods");
+			return;
+		}
+		if (Instr(EncounterName, "ChosenRetaliation_Entrenched") != -1)
+		{
+			`LWTRACE("Don't edit Civilian Pods");
 			return;
 		}
 
@@ -1297,15 +1126,14 @@ static function PostReinforcementCreation(out name EncounterName, out PodSpawnIn
 // Increase the size of Lost Brutes (unless WWL is installed)
 static function UpdateAnimations(out array<AnimSet> CustomAnimSets, XComGameState_Unit UnitState, XComUnitPawn Pawn)
 {
-	if (Left(UnitState.GetMyTemplateName(), Len("TheLostBrute")) != "TheLostBrute")
-		return;
-
-	// No need to scale the Brute's pawn size if World War Lost is installed
-	// because we'll be using its dedicated Brute model.
-	if (class'Helpers_LW'.static.IsModInstalled("WorldWarLost"))
-		return;
-
-	Pawn.Mesh.SetScale(default.BRUTE_SIZE_MULTIPLIER);
+	if (Left(UnitState.GetMyTemplateName(), Len("TheLostBrute")) == "TheLostBrute" && class'Helpers_LW'.static.IsModInstalled("WorldWarLost"))
+	{
+		Pawn.Mesh.SetScale(default.BRUTE_SIZE_MULTIPLIER);
+	}
+	else if (UnitState.GetMyTemplateName() == 'NeonateChryssalid_LW')
+	{		
+		Pawn.Mesh.SetScale(default.NEONATE_SIZE_MULTIPLIER);
+	}
 }
 
 // Use SLG hook to add infiltration modifiers to alien units
@@ -1319,7 +1147,7 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 	local int i;
 	local XComGameState_MissionSite MissionState;
 	local XComGameState_BattleData	BattleData;
-
+	local X2WeaponTemplate PrimaryWeaponTemplate;
 	if (`XENGINE.IsMultiplayerGame()) { return; }
 
 	CharTemplate = UnitState.GetMyTemplate();
@@ -1383,12 +1211,93 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 
 	switch(CharTemplate.DataName)
 	{
-		case 'Rebel':
-		case 'RebelSoldierProxy':
-		case 'RebelSoldierProxyM2':
-		case 'RebelSoldierProxyM3':
+		case 'CivilianMilitia':
+			if (class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('MilitiaAbilities1'))
+			{
+				PrimaryWeaponTemplate = X2WeaponTemplate(UnitState.GetPrimaryWeapon().GetMyTemplate());
 
-			if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('PoweredArmor'))
+				if (PrimaryWeaponTemplate.WeaponCat == 'smg')
+				{
+					AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('HuntersInstinct');
+					Data = EmptyData;
+					Data.TemplateName = 'HuntersInstinct';
+					Data.Template = AbilityTemplate;
+					SetupData.AddItem(Data);
+				}
+				else if(PrimaryWeaponTemplate.WeaponCat == 'shotgun')
+				{
+					AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('Infighter');
+					Data = EmptyData;
+					Data.TemplateName = 'Infighter';
+					Data.Template = AbilityTemplate;
+					SetupData.AddItem(Data);
+				}
+				else if(PrimaryWeaponTemplate.WeaponCat == 'bullpup')
+				{
+					AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('TargetFocus_LW');
+					Data = EmptyData;
+					Data.TemplateName = 'TargetFocus_LW';
+					Data.Template = AbilityTemplate;
+					SetupData.AddItem(Data);
+				}
+				else
+				{
+					AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('Suppression');
+					Data = EmptyData;
+					Data.TemplateName = 'Suppression';
+					Data.Template = AbilityTemplate;
+					SetupData.AddItem(Data);
+
+				}
+			}
+
+			if (class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('MilitiaAbilities2'))
+			{
+				PrimaryWeaponTemplate = X2WeaponTemplate(UnitState.GetPrimaryWeapon().GetMyTemplate());
+
+				if (PrimaryWeaponTemplate.WeaponCat == 'smg')
+				{
+					AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('Reposition_LW');
+					Data = EmptyData;
+					Data.TemplateName = 'Reposition_LW';
+					Data.Template = AbilityTemplate;
+					SetupData.AddItem(Data);
+				}
+				else if(PrimaryWeaponTemplate.WeaponCat == 'shotgun')
+				{
+					AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('RunAndGun_LW');
+					Data = EmptyData;
+					Data.TemplateName = 'RunAndGun_LW';
+					Data.Template = AbilityTemplate;
+					SetupData.AddItem(Data);
+				}
+				else if(PrimaryWeaponTemplate.WeaponCat == 'bullpup')
+				{
+					AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('Sentinel_LW');
+					Data = EmptyData;
+					Data.TemplateName = 'Sentinel_LW';
+					Data.Template = AbilityTemplate;
+					SetupData.AddItem(Data);
+				}
+				else
+				{
+					AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('FreeGrenades');
+					Data = EmptyData;
+					Data.TemplateName = 'FreeGrenades';
+					Data.Template = AbilityTemplate;
+					SetupData.AddItem(Data);
+				}
+			}
+			if(class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('TurretFall'))
+			{
+				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('Interactive_PlaceTurretObject');
+				Data = EmptyData;
+				Data.TemplateName = 'Interactive_PlaceTurretObject';
+				Data.Template = AbilityTemplate;
+				SetupData.AddItem(Data);
+			}
+			case 'FriendlyVIPCivilian':
+			if (class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('MilitiaArmor2'))
 			{
 				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('RebelHPUpgrade_T2');
 
@@ -1397,7 +1306,7 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 				Data.Template = AbilityTemplate;
 				SetupData.AddItem(Data);
 			}
-			else if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('PlatedArmor'))
+			else if (class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('MilitiaArmor1'))
 			{
 				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('RebelHPUpgrade_T1');
 				Data = EmptyData;
@@ -1405,15 +1314,9 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 				Data.Template = AbilityTemplate;
 				SetupData.AddItem(Data);
 			}
+			break;
 			
-			if (class'UIUtilities_Strategy'.static.GetXComHQ().IsTechResearched('AdvancedGrenades'))
-			{
-				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('RebelGrenadeUpgrade');
-				Data = EmptyData;
-				Data.TemplateName = 'RebelGrenadeUpgrade';
-				Data.Template = AbilityTemplate;
-				SetupData.AddItem(Data);
-				}
+
 
 		break;
 		default:
@@ -1636,37 +1539,6 @@ static function AddObjectivesToParcels()
 	}
 }
 
-static function InitializePodManager(XComGameState StartGameState)
-{
-	StartGameState.CreateNewStateObject(class'XComGameState_LWPodManager');
-	`LWTrace("Created pod manager");
-}
-
-// Start missions unconcealed if infiltration is below 100% and the mission type
-// is configured as such.
-static function OverrideConcealmentAtStart(XComGameState_MissionSite MissionState)
-{
-	local XComGameState_LWPersistentSquad	SquadState;
-	local XComGameState_BattleData			BattleData;
-	local int k;
-
-	// If within a configurable list of mission types, and infiltration below a set value, set it to true
-	BattleData = XComGameState_BattleData(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_BattleData'));
-
-	for (k = 0; k < default.MINIMUM_INFIL_FOR_CONCEAL.length; k++)
-	{
-		if (MissionState.GeneratedMission.Mission.sType == default.MINIMUM_INFIL_FOR_CONCEAL[k].MissionType)
-		{
-			SquadState = `LWSQUADMGR.GetSquadOnMission(MissionState.GetReference());
-			//`LWTRACE ("CheckForConcealOverride: Mission Type correct. Infiltration:" @ SquadState.CurrentInfiltration);
-			If (SquadState.CurrentInfiltration < default.MINIMUM_INFIL_FOR_CONCEAL[k].MinInfiltration)
-			{
-				`LWTRACE ("OverrideConcealmentAtStart: Conditions met to start squad revealed");
-				BattleData.bForceNoSquadConcealment = true;
-			}
-		}
-	}
-}
 
 static function OverrideDestructibleHealths(XComGameState StartGameState)
 {
@@ -1741,73 +1613,73 @@ static function OverrideAlienRulerSpawning(XComGameState StartState, XComGameSta
 // The main purpose of this function is to ensure that any attempts by vanilla
 // to add Chosen to the mission are blocked and Chosen are added to the HQ
 // tactical tags if the alien activity manager has set them up.
-static function MaybeAddChosenToMission(XComGameState StartState, XComGameState_MissionSite MissionState)
-{
-	local XComGameStateHistory History;
-	local XComGameState_HeadquartersXCom XComHQ;
-	local XComGameState_HeadquartersAlien AlienHQ;
-	local array<XComGameState_AdventChosen> AllChosen;
-	local XComGameState_AdventChosen ChosenState;
-	local name ChosenSpawningTag, ChosenSpawningTagLWOTC, ChosenSpawningTagRemove;
-	local bool HasRulerOnMission;
-	local array <name> SpawningTags;
+// static function MaybeAddChosenToMission(XComGameState StartState, XComGameState_MissionSite MissionState)
+// {
+// 	local XComGameStateHistory History;
+// 	local XComGameState_HeadquartersXCom XComHQ;
+// 	local XComGameState_HeadquartersAlien AlienHQ;
+// 	local array<XComGameState_AdventChosen> AllChosen;
+// 	local XComGameState_AdventChosen ChosenState;
+// 	local name ChosenSpawningTag, ChosenSpawningTagLWOTC, ChosenSpawningTagRemove;
+// 	local bool HasRulerOnMission;
+// 	local array <name> SpawningTags;
 
-	// Certain missions should just use vanilla Chosen behaviour, like the Chosen
-	// Avenger Defense
-	if (default.SKIP_CHOSEN_OVERRIDE_MISSION_TYPES.Find(MissionState.GeneratedMission.Mission.sType) != INDEX_NONE)
-	{
-		return;
-	}
+// 	// Certain missions should just use vanilla Chosen behaviour, like the Chosen
+// 	// Avenger Defense
+// 	if (default.SKIP_CHOSEN_OVERRIDE_MISSION_TYPES.Find(MissionState.GeneratedMission.Mission.sType) != INDEX_NONE)
+// 	{
+// 		return;
+// 	}
 
-	// Don't allow Chosen on the mission if there is already a Ruler
-	if (class'XComGameState_AlienRulerManager' != none && class'LWDLCHelpers'.static.IsAlienRulerOnMission(MissionState))
-	{
-		HasRulerOnMission = true;
-	}
+// 	// Don't allow Chosen on the mission if there is already a Ruler
+// 	if (class'XComGameState_AlienRulerManager' != none && class'LWDLCHelpers'.static.IsAlienRulerOnMission(MissionState))
+// 	{
+// 		HasRulerOnMission = true;
+// 	}
 
-	History = `XCOMHISTORY;
-	foreach History.IterateByClassType(class'XComGameState_HeadquartersAlien', AlienHQ)
-	{
-		break;
-	}
+// 	History = `XCOMHISTORY;
+// 	foreach History.IterateByClassType(class'XComGameState_HeadquartersAlien', AlienHQ)
+// 	{
+// 		break;
+// 	}
 
-	if (AlienHQ.bChosenActive)
-	{
-		XComHQ = `XCOMHQ;
-		AllChosen = AlienHQ.GetAllChosen(, true);
+// 	if (AlienHQ.bChosenActive)
+// 	{
+// 		XComHQ = `XCOMHQ;
+// 		AllChosen = AlienHQ.GetAllChosen(, true);
 
-		foreach AllChosen(ChosenState)
-		{
-			ChosenSpawningTag = ChosenState.GetMyTemplate().GetSpawningTag(ChosenState.Level);
-			ChosenSpawningTagLWOTC = class'Helpers_LW'.static.GetChosenActiveMissionTag(ChosenState);
+// 		foreach AllChosen(ChosenState)
+// 		{
+// 			ChosenSpawningTag = ChosenState.GetMyTemplate().GetSpawningTag(ChosenState.Level);
+// 			ChosenSpawningTagLWOTC = class'Helpers_LW'.static.GetChosenActiveMissionTag(ChosenState);
 
-			// Remove All vanilla chosen tags if they are attached to this mission. This is the only
-			// place that should add Chosen tactical mission tags to the XCOM HQ. This
-			// basically prevents the base game and other mods from adding Chosen to missions.
-			SpawningTags = ChosenState.GetMyTemplate().ChosenProgressionData.SpawningTags;
-			foreach SpawningTags(ChosenSpawningTagRemove)
-			{
-				XComHQ.TacticalGameplayTags.RemoveItem(ChosenSpawningTagRemove);
-			}
+// 			// Remove All vanilla chosen tags if they are attached to this mission. This is the only
+// 			// place that should add Chosen tactical mission tags to the XCOM HQ. This
+// 			// basically prevents the base game and other mods from adding Chosen to missions.
+// 			SpawningTags = ChosenState.GetMyTemplate().ChosenProgressionData.SpawningTags;
+// 			foreach SpawningTags(ChosenSpawningTagRemove)
+// 			{
+// 				XComHQ.TacticalGameplayTags.RemoveItem(ChosenSpawningTagRemove);
+// 			}
 
-			// Now add the appropriate tactical gameplay tag for this Chosen if the
-			// corresponding LWOTC-specific one is in the mission's tactical tags.
-			if (!HasRulerOnMission && !ChosenState.bDefeated &&
-				MissionState.TacticalGameplayTags.Find(ChosenSpawningTagLWOTC) != INDEX_NONE)
-			{
-				XComHQ.TacticalGameplayTags.AddItem(ChosenSpawningTag);
-			}
-		}
-	}
+// 			// Now add the appropriate tactical gameplay tag for this Chosen if the
+// 			// corresponding LWOTC-specific one is in the mission's tactical tags.
+// 			if (!HasRulerOnMission && !ChosenState.bDefeated &&
+// 				MissionState.TacticalGameplayTags.Find(ChosenSpawningTagLWOTC) != INDEX_NONE)
+// 			{
+// 				XComHQ.TacticalGameplayTags.AddItem(ChosenSpawningTag);
+// 			}
+// 		}
+// 	}
 
-	foreach History.IterateByClassType(class'XComGameState_AdventChosen', ChosenState)
-	{
-		if (ChosenState.bDefeated)
-		{
-			ChosenState.PurgeMissionOfTags(MissionState);
-		}
-	}
-}
+// 	foreach History.IterateByClassType(class'XComGameState_AdventChosen', ChosenState)
+// 	{
+// 		if (ChosenState.bDefeated)
+// 		{
+// 			ChosenState.PurgeMissionOfTags(MissionState);
+// 		}
+// 	}
+// }
 
 
 // WOTC TODO: Perhaps this is supposed to honour the SpawnSizeOverride parameter somehow. Seems to work
@@ -1834,23 +1706,6 @@ static function bool GetValidFloorSpawnLocations(out array<Vector> FloorPoints, 
 	if (NumSoldiers == 0)
 		NumSoldiers = 8;
 
-	// On certain mission types we need to reserve space for more units in the spawn area.
-	switch (class'Utilities_LW'.static.CurrentMissionType())
-	{
-	case "RecruitRaid_LW":
-		// Recruit raid spawns rebels with the squad, so we need lots of space for the rebels + liaison.
-		NumSoldiers += class'X2StrategyElement_DefaultAlienActivities'.default.RAID_MISSION_MAX_REBELS + 1;
-		break;
-	case "Terror_LW":
-	case "Defend_LW":
-	case "Invasion_LW":
-	case "IntelRaid_LW":
-	case "SupplyConvoy_LW":
-	case "Rendezvous_LW":
-		// Reserve space for the liaison
-		++NumSoldiers;
-		break;
-	}
 
 	if (NumSoldiers >= 6)
 	{
@@ -1997,36 +1852,6 @@ static function ResetReinforcements(XComGameState StartGameState)
 }
 
 
-// ******** Starting mission (Gate Crasher) ******** //
-
-// The starting mission uses `X2StrategyGameRulesetDataStructures.m_iMaxSoldiersOnMission`
-// for the starting squad size, but this is probably (the values are configurable) larger
-// than the squad size we actually want to start with.
-//
-// This method truncates the active squad in XComGameState_HeadquartersXCom if it's too large.
-static function LimitStartingSquadSize(XComGameState StartState)
-{
-	local XComGameState_HeadquartersXCom XComHQ;
-	`Log("Limiting starting squad size");
-
-	if (class'XComGameState_LWSquadManager'.default.MAX_FIRST_MISSION_SQUAD_SIZE <= 0) // 0 or less means unlimited
-	{
-		return;
-	}
-
-	foreach StartState.IterateByClassType(class'XComGameState_HeadquartersXCom', XComHQ)
-	{
-		break;
-	}
-	`Log("Current squad size = " $ XComHQ.Squad.Length);
-	if (XComHQ.Squad.Length > class'XComGameState_LWSquadManager'.default.MAX_FIRST_MISSION_SQUAD_SIZE)
-	{
-		XComHQ.Squad.Length = class'XComGameState_LWSquadManager'.default.MAX_FIRST_MISSION_SQUAD_SIZE;
-		`Log("After adjustment = " $ XComHQ.Squad.Length);
-	}
-}
-
-
 static function SetUpGateCrasherCrew(XComGameState StartState)
 {
 	local XComGameState_HeadquartersXCom XComHQ;
@@ -2083,55 +1908,53 @@ static function SetUpGateCrasherCrew(XComGameState StartState)
 		XComHQ.AddToCrew(StartState, NewSoldierState);
 		NewSoldierState.m_RecruitDate = GameTime.CurrentTime; // AddToCrew does this, but during start state creation the StrategyRuleset hasn't been created yet
 
-		if(XComHQ.Squad.Length < class'X2StrategyGameRulesetDataStructures'.static.GetMaxSoldiersAllowedOnMission())
-		{
-			XComHQ.Squad.AddItem(NewSoldierState.GetReference());
-		}
+		XComHQ.Squad.AddItem(NewSoldierState.GetReference());
+
 	}
 
 }
 
-static function UpdateFirstMissionTemplate()
-{
-	local X2StrategyElementTemplateManager TemplateMgr;
-	local X2ObjectiveTemplate Template;
+// static function UpdateFirstMissionTemplate()
+// {
+// 	local X2StrategyElementTemplateManager TemplateMgr;
+// 	local X2ObjectiveTemplate Template;
 
-	TemplateMgr = class'X2StrategyElementTemplateManager'.static.GetStrategyElementTemplateManager();
-	Template = X2ObjectiveTemplate(TemplateMgr.FindStrategyElementTemplate('T1_M0_FirstMission'));
-	if(Template == none)
-		return;
+// 	TemplateMgr = class'X2StrategyElementTemplateManager'.static.GetStrategyElementTemplateManager();
+// 	Template = X2ObjectiveTemplate(TemplateMgr.FindStrategyElementTemplate('T1_M0_FirstMission'));
+// 	if(Template == none)
+// 		return;
 
-	//Template.AddNarrativeTrigger("X2NarrativeMoments.Strategy.GP_WelcomeToTheLabsShort", NAW_OnCompletion, 'OnEnteredFacility_CommandersQuarters', '', ELD_OnStateSubmitted, NPC_Once, '');
-	Template.AddNarrativeTrigger("LWNarrativeMoments_Bink.TACTICAL.CIN_WelcomeToTheResistance_LW", NAW_OnCompletion, 'OnEnteredFacility_CommandersQuarters', '', ELD_OnStateSubmitted, NPC_Once, '');
-	Template.CompleteObjectiveFn = FirstMissionComplete;
-}
+// 	//Template.AddNarrativeTrigger("X2NarrativeMoments.Strategy.GP_WelcomeToTheLabsShort", NAW_OnCompletion, 'OnEnteredFacility_CommandersQuarters', '', ELD_OnStateSubmitted, NPC_Once, '');
+// 	Template.AddNarrativeTrigger("LWNarrativeMoments_Bink.TACTICAL.CIN_WelcomeToTheResistance_LW", NAW_OnCompletion, 'OnEnteredFacility_CommandersQuarters', '', ELD_OnStateSubmitted, NPC_Once, '');
+// 	Template.CompleteObjectiveFn = FirstMissionComplete;
+// }
 
-// add TriggerNeedsAttention to Commander's quarters for the new WelcomeToResistance
-static function FirstMissionComplete(XComGameState NewGameState, XComGameState_Objective ObjectiveState)
-{
-	local XComGameStateHistory History;
-	local XComGameState_HeadquartersXCom XComHQ;
-	local XComGameState_FacilityXCom CommandersQuarters;
-	local int idx;
+// // add TriggerNeedsAttention to Commander's quarters for the new WelcomeToResistance
+// static function FirstMissionComplete(XComGameState NewGameState, XComGameState_Objective ObjectiveState)
+// {
+// 	local XComGameStateHistory History;
+// 	local XComGameState_HeadquartersXCom XComHQ;
+// 	local XComGameState_FacilityXCom CommandersQuarters;
+// 	local int idx;
 
-	class'X2StrategyElement_DefaultObjectives'.static.FirstMissionComplete(NewGameState, ObjectiveState);
+// 	class'X2StrategyElement_DefaultObjectives'.static.FirstMissionComplete(NewGameState, ObjectiveState);
 
-	History = `XCOMHISTORY;
-	XComHQ = XComGameState_HeadquartersXCom(History.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersXCom'));
+// 	History = `XCOMHISTORY;
+// 	XComHQ = XComGameState_HeadquartersXCom(History.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersXCom'));
 
-	for( idx = 0; idx < XComHQ.Facilities.Length; idx++ )
-	{
-		CommandersQuarters = XComGameState_FacilityXCom(History.GetGameStateForObjectID(XComHQ.Facilities[idx].ObjectID));
+// 	for( idx = 0; idx < XComHQ.Facilities.Length; idx++ )
+// 	{
+// 		CommandersQuarters = XComGameState_FacilityXCom(History.GetGameStateForObjectID(XComHQ.Facilities[idx].ObjectID));
 
-		if( CommandersQuarters.GetMyTemplateName() == 'CommandersQuarters' )
-		{
-			CommandersQuarters = XComGameState_FacilityXCom(NewGameState.CreateStateObject(class'XComGameState_FacilityXCom', CommandersQuarters.ObjectID));
-			NewGameState.AddStateObject(CommandersQuarters);
-			CommandersQuarters.TriggerNeedsAttention();
-		}
-	}
-	`HQPRES.m_kFacilityGrid.UpdateData();
-}
+// 		if( CommandersQuarters.GetMyTemplateName() == 'CommandersQuarters' )
+// 		{
+// 			CommandersQuarters = XComGameState_FacilityXCom(NewGameState.CreateStateObject(class'XComGameState_FacilityXCom', CommandersQuarters.ObjectID));
+// 			NewGameState.AddStateObject(CommandersQuarters);
+// 			CommandersQuarters.TriggerNeedsAttention();
+// 		}
+// 	}
+// 	`HQPRES.m_kFacilityGrid.UpdateData();
+// }
 
 static function DisableUnwantedObjectives(XComGameState StartState)
 {
@@ -2653,7 +2476,6 @@ static function UpdateTechs()
 static function UpdateChosenActivities()
 {
 	UpdateTraining();
-	UpdateRetribution();
 }
 
 static function UpdateChosenSabotages()
@@ -2688,37 +2510,6 @@ static function UpdateSecureStorage()
 }
 function bool CanActivateWeaponLockers()
 {
-	local XComGameStateHistory History;
-	local XComGameState_HeadquartersXCom XComHQ;
-	local XComGameState_Item ItemState;
-	local StateObjectReference ItemRef;
-	local X2WeaponUpgradeTemplate UpgradeTemplate;
-	local int NumUpgrades, MinMods;
-
-	MinMods = `ScaleStrategyArrayInt(class'X2StrategyElement_DefaultSabotages'.default.MinWeaponLockersMods);
-	
-	NumUpgrades = 10;
-	History = `XCOMHISTORY;
-	XComHQ = XComGameState_HeadquartersXCom(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersXCom'));
-
-	foreach XComHQ.Inventory(ItemRef)
-	{
-		ItemState = XComGameState_Item(History.GetGameStateForObjectID(ItemRef.ObjectID));
-
-		if(ItemState != none)
-		{
-			UpgradeTemplate = X2WeaponUpgradeTemplate(ItemState.GetMyTemplate());
-
-			if(UpgradeTemplate != none)
-			{
-				NumUpgrades++;
-				if(NumUpgrades >= MinMods)
-				{
-					return true;
-				}
-			}
-		}
-	}
 	return false;
 }
 function bool CanActivateLabStorage()
@@ -2759,22 +2550,32 @@ static function UpdateTraining()
 
 	Template = X2ChosenActionTemplate(class'X2StrategyElementTemplateManager'.static.GetStrategyElementTemplateManager().FindStrategyElementTemplate('ChosenAction_Training'));
 	Template.OnActivatedFn = ActivateTraining;
-	Template.CanBePlayedFn = TrainingCanBePlayed;
 }
 
 static function ActivateTraining(XComGameState NewGameState, StateObjectReference InRef, optional bool bReactivate = false)
 {
 	local XComGameState_ChosenAction ActionState;
 	local XComGameState_AdventChosen ChosenState;
+	local name OldTacticalTag, NewTacticalTag;
 
 	ActionState = class'X2StrategyElement_XpackChosenActions'.static.GetAction(InRef, NewGameState);
 	ChosenState = class'X2StrategyElement_XpackChosenActions'.static.GetChosen(ActionState.ChosenRef, NewGameState);
 
+	// Grab Old Tactical Tag
+	OldTacticalTag = ChosenState.GetMyTemplate().GetSpawningTag(ChosenState.Level);
+
+	// Increase the Chosen's level
+	ChosenState.Level++;
+	NewTacticalTag = ChosenState.GetMyTemplate().GetSpawningTag(ChosenState.Level);
+
 	// Only met, active chosen trigger the just leveled up popup
-	if (ChosenState.bMetXCom && !ChosenState.bDefeated)
+	if(ChosenState.bMetXCom && !ChosenState.bDefeated)
 	{
 		ChosenState.bJustLeveledUp = true;
 	}
+
+	// Replace Old Tag with new Tag in missions
+	ChosenState.RemoveTacticalTagFromAllMissions(NewGameState, OldTacticalTag, NewTacticalTag);
 
 	// Gain New Traits
 	GainNewStrengths(NewGameState, class'XComGameState_AdventChosen'.default.NumStrengthsPerLevel, ChosenState);
@@ -2800,13 +2601,13 @@ static function	GainNewStrengths(XComGameState NewGameState, int NumStrengthsPer
 	if(ChosenTemplate.CharacterGroupName == 'ChosenSniper')
 	{
 
-		if(AlienHQ.GetForceLevel() > 14)
+		if(AlienHQ.GetForceLevel() > 12)
 		{
 			ChosenStrengths = default.HUNTER_STRENGTHS_T3;
 			BackupChosenStrengths = default.HUNTER_STRENGTHS_T2;
 			FurtherBackupChosenStrengths = default.HUNTER_STRENGTHS_T1;
 		}
-		else if(AlienHQ.GetForceLevel() > 9)
+		else if(AlienHQ.GetForceLevel() > 3)
 		{
 			ChosenStrengths = default.HUNTER_STRENGTHS_T2;
 			BackupChosenStrengths = default.HUNTER_STRENGTHS_T1;
@@ -2818,13 +2619,13 @@ static function	GainNewStrengths(XComGameState NewGameState, int NumStrengthsPer
 	}
 	if(ChosenTemplate.CharacterGroupName == 'ChosenWarlock')
 	{
-		if(AlienHQ.GetForceLevel() > 14)
+		if(AlienHQ.GetForceLevel() > 12)
 		{
 			ChosenStrengths = default.WARLOCK_STRENGTHS_T3;
 			BackupChosenStrengths = default.WARLOCK_STRENGTHS_T2;
 			FurtherBackupChosenStrengths = default.WARLOCK_STRENGTHS_T1;
 		}
-		else if(AlienHQ.GetForceLevel() > 9)
+		else if(AlienHQ.GetForceLevel() > 3)
 		{
 			ChosenStrengths = default.WARLOCK_STRENGTHS_T2;
 			BackupChosenStrengths = default.WARLOCK_STRENGTHS_T1;
@@ -2836,13 +2637,13 @@ static function	GainNewStrengths(XComGameState NewGameState, int NumStrengthsPer
 	}
 	if(ChosenTemplate.CharacterGroupName == 'ChosenAssassin')
 	{
-		if(AlienHQ.GetForceLevel() > 14)
+		if(AlienHQ.GetForceLevel() > 12)
 		{
 			ChosenStrengths = default.ASSASSIN_STRENGTHS_T3;
 			BackupChosenStrengths = default.ASSASSIN_STRENGTHS_T2;
 			FurtherBackupChosenStrengths = default.ASSASSIN_STRENGTHS_T1;
 		}
-		else if(AlienHQ.GetForceLevel() > 9)
+		else if(AlienHQ.GetForceLevel() > 3)
 		{
 			ChosenStrengths = default.ASSASSIN_STRENGTHS_T2;
 			BackupChosenStrengths = default.ASSASSIN_STRENGTHS_T1;
@@ -2938,49 +2739,7 @@ static function ValidateStrengthList(out array<ChosenStrengthWeighted> ValidChos
 	}
 }
 
-static function UpdateRetribution()
-{
-	local X2ChosenActionTemplate Template;
 
-	Template = X2ChosenActionTemplate(class'X2StrategyElementTemplateManager'.static.GetStrategyElementTemplateManager().FindStrategyElementTemplate('ChosenAction_Retribution'));
-	Template.OnActivatedFn = ActivateRetribution;
-	Template.OnChooseActionFn = OnChooseRetribution;
-}
-
-static function ActivateRetribution(XComGameState NewGameState, StateObjectReference InRef, optional bool bReactivate = false)
-{
-	local XComGameState_ChosenAction ActionState;
-	local XComGameState_WorldRegion RegionState;
-	local XComGameState_LWOutpost Outpost;
-
-	ActionState = class'X2StrategyElement_XpackChosenActions'.static.GetAction(InRef, NewGameState);
-	RegionState = XComGameState_WorldRegion(NewGameState.ModifyStateObject(class'XComGameState_WorldRegion', ActionState.StoredReference.ObjectID));
-	
-	Outpost = `LWOUTPOSTMGR.GetOutpostForRegion(RegionState);
-	Outpost = XComGameState_LWOutpost(NewGameState.CreateStateObject(class'XComGameState_LWOutpost', OutPost.ObjectID));
-	NewGameState.AddStateObject(Outpost);
-	OutPost.AddChosenRetribution(default.CHOSEN_RETRIBUTION_DURATION);
-}
-
-//---------------------------------------------------------------------------------------
-static function bool TrainingCanBePlayed(StateObjectReference InRef, optional XComGameState NewGameState = none)
-{
-	return true;
-}
-
-static function OnChooseRetribution(XComGameState NewGameState, XComGameState_ChosenAction ActionState)
-{
-	local XComGameState_WorldRegion RegionState;
-	local XComGameState_AdventChosen ChosenState;
-	local XComGameState_HeadquartersXCom XComHQ;
-
-	ChosenState = class'X2StrategyElement_XpackChosenActions'.static.GetChosen(ActionState.ChosenRef, NewGameState);
-	RegionState = ChooseRetributionRegion(ChosenState);
-	ActionState.StoredReference = RegionState.GetReference();
-	
-	XComHQ = `XCOMHQ;
-	XComHQ.NumChosenRetributions++;
-}
 
 static function XComGameState_WorldRegion ChooseRetributionRegion(XComGameState_AdventChosen ChosenState)
 {
@@ -3086,9 +2845,14 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 		case 'RAPID_TARGETING_COOLDOWN_LW':
 			OutString = string(class'X2Ability_LW_SharpshooterAbilitySet'.default.RAPID_TARGETING_COOLDOWN);
 			return true;
-
 		case 'BURNOUT_RADIUS_LW':
 			OutString = Repl(string(class'X2Ability_LW_TechnicalAbilitySet'.default.BURNOUT_RADIUS), "0", "");
+			return true;
+		case 'FIRE_AND_STEEL_DAMAGE_BONUS':
+			OutString = string(class'X2Ability_LW_TechnicalAbilitySet'.default.FIRE_AND_STEEL_DAMAGE_BONUS);
+			return true;
+		case 'FIRE_AND_STEEL_MOBILITY':
+			OutString = string(class'X2Ability_LW_TechnicalAbilitySet'.default.FIRE_AND_STEEL_MOBILITY);
 			return true;
 		case 'HIGH_PRESSURE_CHARGES_LW':
 			Outstring = string(class'X2Ability_LW_TechnicalAbilitySet'.default.FLAMETHROWER_HIGH_PRESSURE_CHARGES);
@@ -3338,6 +3102,9 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 		case 'ARTERIAL_STRIKE_PRIMARY_BLEED':
 			Outstring = string(class'X2Ability_LW_ChosenAbilities'.default.ARTERIAL_STRIKE_PRIMARY_BLEED);
 			return true;
+		case 'EXO_SERVOS_MOB':
+			Outstring = string(class'X2Ability_LW_ChosenAbilities'.default.EXO_SERVOS_MOB);
+			return true;
 		case 'ARTERIAL_STRIKE_BLEED_INCREASE':
 			Outstring = string(class'X2Ability_LW_ChosenAbilities'.default.ARTERIAL_STRIKE_BLEED_INCREASE);
 			return true;
@@ -3448,6 +3215,7 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 	local X2AbilityTemplate AbilityTemplate;
 	local int ImpactCompensationStacks;
 	local int k;
+	local XComGameState_Item PrimaryWeaponState;
 
 	Type = name(InString);
 	switch(Type)
@@ -3525,6 +3293,31 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 			}
 		}
 		return true;
+		case 'MAX_PRIMARY_AMMO':
+			OutString = "0";
+			AbilityState = XComGameState_Ability(ParseObj);
+			if (AbilityState != none)
+			{
+				PrimaryWeaponState = AbilityState.GetSourceWeapon();
+				if(PrimaryWeaponState != none)
+				{
+					Outstring = string(PrimaryWeaponState.GetClipSize());
+				}
+			}
+			return true;
+		case 'CURRENT_PRIMARY_AMMO':
+			OutString = "0";
+			AbilityState = XComGameState_Ability(ParseObj);
+			if (AbilityState != none)
+			{
+				PrimaryWeaponState = AbilityState.GetSourceWeapon();
+				if(PrimaryWeaponState != none)
+				{
+					Outstring = string(PrimaryWeaponState.Ammo);
+				}
+			}
+			return true;
+
 	default:
 		return false;
 	}
@@ -3533,58 +3326,6 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 //=========================================================================================
 //================== BEGIN EXEC LONG WAR CONSOLE EXEC =====================================
 //=========================================================================================
-
-// this spawns a debug activity with a specified mission
-exec function LWForceMission(String ForcedMissionType, optional name PrimaryRegionName)
-{
-	local StateObjectReference PrimaryRegionRef;
-	local XComGameState_LWAlienActivity NewActivityState;
-	local int MissionIndex;
-	local X2LWAlienActivityTemplate ActivityTemplate;
-	local X2StrategyElementTemplateManager StrategyElementTemplateMgr;
-	local XComGameState NewGameState;
-	local MissionDefinition ForceMission;
-
-	missionIndex = -1;
-	if (Len(ForcedMissionType) > 0)
-	{
-		MissionIndex = `TACTICALMISSIONMGR.arrMissions.Find('sType', ForcedMissionType);
-		`Log("ForcedMissionType " $ ForcedMissionType $ " = " $ MissionIndex);
-	}
-
-	StrategyElementTemplateMgr = class'X2StrategyElementTemplateManager'.static.GetStrategyElementTemplateManager();
-	ActivityTemplate = X2LWAlienActivityTemplate(StrategyElementTemplateMgr.FindStrategyElementTemplate(class'X2StrategyElement_DefaultAlienActivities'.default.DebugMissionName));
-	if (ActivityTemplate == none)
-	{
-		`Log("LWForceMission: Failed to find debug activity template");
-		return;
-	}
-
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("CHEAT: Spawn Activity for Mission");
-	if(PrimaryRegionName == '')
-		PrimaryRegionRef = GetRandomContactedRegion().GetReference();
-	else
-		PrimaryRegionRef = FindRegionByName(PrimaryRegionName).GetReference();
-
-	if(PrimaryRegionRef.ObjectID > 0)
-	{
-		if (MissionIndex >= 0)
-		{
-			ForceMission = `TACTICALMISSIONMGR.arrMissions[MissionIndex];
-			NewActivityState = ActivityTemplate.CreateInstanceFromTemplate(PrimaryRegionRef, NewGameState, ForceMission);
-		}
-		else
-		{
-			NewActivityState = ActivityTemplate.CreateInstanceFromTemplate(PrimaryRegionRef, NewGameState);
-		}
-		NewGameState.AddStateObject(NewActivityState);
-		`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
-	}
-	else
-	{
-		`XCOMHISTORY.CleanupPendingGameState(NewGameState);
-	}
-}
 
 function XComGameState_WorldRegion GetRandomContactedRegion()
 {
@@ -3612,51 +3353,6 @@ function XComGameState_WorldRegion GetRandomContactedRegion()
 	return AllRegions[`SYNC_RAND(AllRegions.Length)];
 }
 
-// this force-spawns a designated activity by name, with option to force a primary region
-exec function LWSpawnActivity(name TemplateName, optional name PrimaryRegionName, optional bool ForceDetect)
-{
-	local StateObjectReference PrimaryRegionRef;
-	local XComGameState_LWAlienActivity NewActivityState;
-	local X2LWAlienActivityTemplate ActivityTemplate;
-	local X2StrategyElementTemplateManager StrategyElementTemplateMgr;
-	local XComGameState NewGameState;
-
-	StrategyElementTemplateMgr = class'X2StrategyElementTemplateManager'.static.GetStrategyElementTemplateManager();
-	ActivityTemplate = X2LWAlienActivityTemplate(StrategyElementTemplateMgr.FindStrategyElementTemplate(TemplateName));
-	if (ActivityTemplate == none)
-	{
-		`Log("SpawnActivity: Failed to find activity template" @ TemplateName);
-		return;
-	}
-
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("CHEAT: Spawn Activity");
-	if(PrimaryRegionName == '')
-	{
-		ActivityTemplate.ActivityCreation.InitActivityCreation(ActivityTemplate, NewGameState);
-		ActivityTemplate.ActivityCreation.GetNumActivitiesToCreate(NewGameState);
-		PrimaryRegionRef = ActivityTemplate.ActivityCreation.GetBestPrimaryRegion(NewGameState);
-	}
-	else
-		PrimaryRegionRef = FindRegionByName(PrimaryRegionName).GetReference();
-
-	if(PrimaryRegionRef.ObjectID > 0)
-	{
-		NewActivityState = ActivityTemplate.CreateInstanceFromTemplate(PrimaryRegionRef, NewGameState);
-		NewGameState.AddStateObject(NewActivityState);
-		`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
-	}
-	else
-	{
-		`Log("SpawnActivity: Failed to valid Primary Region");
-		`XCOMHISTORY.CleanupPendingGameState(NewGameState);
-	}
-
-	if (ForceDetect)
-	{
-		LWForceActivityDetection(TemplateName, PrimaryRegionName);
-	}
-}
-
 function XComGameState_WorldRegion FindRegionByName(name RegionName)
 {
 	local XComGameState_WorldRegion RegionState;
@@ -3671,400 +3367,12 @@ function XComGameState_WorldRegion FindRegionByName(name RegionName)
 	return none;
 }
 
-// this method auto-advances an activity to the next mission
-exec function LWAdvanceActivity(Name ActivityTemplateName, name PrimaryRegion, optional bool bWin = true)
-{
-	local XComGameStateHistory History;
-	local XComGameState NewGameState;
-	//local XComGameState_LWAlienActivityManager ActivityMgr;
-	local XComGameState_LWAlienActivity ActivityState, UpdatedActivity;
-	local XComGameState_WorldRegion RegionState;
-	local XComGameState_MissionSite MissionState;
-	local X2MissionSourceTemplate MissionSource;
-	local bool bFound;
-
-	History = `XCOMHISTORY;
-	//ActivityMgr = class'XComGameState_LWAlienActivityManager'.static.GetAlienActivityManager();
-	//find the specified activity in the specified region
-	foreach History.IterateByClassType(class'XComGameState_LWAlienActivity', ActivityState)
-	{
-		if(ActivityState.GetMyTemplateName() == ActivityTemplateName)
-		{
-			RegionState = XComGameState_WorldRegion(History.GetGameStateForObjectID(ActivityState.PrimaryRegion.ObjectID));
-			if(RegionState.GetMyTemplateName() == PrimaryRegion)
-			{
-				bFound = true;
-				break;
-			}
-		}
-	}
-	if(!bFound)
-	{
-		`LOG("LWAdvanceActivity : could not find Activity" @ ActivityTemplateName @ "in region" @  PrimaryRegion);
-		return;
-	}
-
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("CHEAT: Advance Activity");
-
-	//clean up the existing mission
-	if(ActivityState.CurrentMissionRef.ObjectID > 0)
-	{
-		MissionState = XComGameState_MissionSite(NewGameState.CreateStateObject(class'XComGameState_MissionSite', ActivityState.CurrentMissionRef.ObjectID));
-		NewGameState.AddStateObject(MissionState);
-	}
-
-	//Update Activity
-	UpdatedActivity = XComGameState_LWAlienActivity(NewGameState.CreateStateObject(class'XComGameState_LWAlienActivity', ActivityState.ObjectID));
-	NewGameState.AddStateObject(UpdatedActivity);
-
-	//advance the activity
-	MissionSource = MissionState.GetMissionSource();
-	if(bWin)
-	{
-		MissionSource.OnSuccessFn(NewGameState, MissionState);
-	}
-	else
-	{
-		MissionSource.OnFailureFn(NewGameState, MissionState);
-	}
-	`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
-}
-
-//this overrides the usual detection mechanism to force an activity to be immediately detected
-exec function LWForceActivityDetection(name ActivityName, name RegionName)
-{
-	local XComGameStateHistory History;
-	local XComGameState NewGameState;
-	local XComGameState_LWAlienActivity ActivityState, UpdatedActivity;
-	local XComGameState_WorldRegion RegionState;
-
-	History = `XCOMHISTORY;
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("CHEAT: Force Activity Detection");
-
-	//find the specified activity in the specified region
-	foreach History.IterateByClassType(class'XComGameState_LWAlienActivity', ActivityState)
-	{
-		if(ActivityState.GetMyTemplateName() == ActivityName)
-		{
-			RegionState = XComGameState_WorldRegion(History.GetGameStateForObjectID(ActivityState.PrimaryRegion.ObjectID));
-			if(RegionState.GetMyTemplateName() == RegionName)
-			{
-
-				UpdatedActivity = XComGameState_LWAlienActivity(NewGameState.CreateStateObject(class'XComGameState_LWAlienActivity', ActivityState.ObjectID));
-				NewGameState.AddStateObject(UpdatedActivity);
-
-				//mark the activity to be detected the next time geoscape update runs
-				UpdatedActivity.bNeedsUpdateDiscovery = true;
-				break;
-			}
-		}
-	}
-	if (NewGameState.GetNumGameStateObjects() > 0)
-		`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
-	else
-		History.CleanupPendingGameState(NewGameState);
-}
-
-// this dumps activities to the log
-exec function LWDumpActivityLog(optional name Region)
-{
-	local XComGameStateHistory History;
-	local XComGameState_LWAlienActivity ActivityState;
-	local XComGameState_WorldRegion RegionState;
-
-	History = `XCOMHISTORY;
-	//ActivityMgr = class'XComGameState_LWAlienActivityManager'.static.GetAlienActivityManager();
-	//find the specified activity in the specified region
-	foreach History.IterateByClassType(class'XComGameState_LWAlienActivity', ActivityState)
-	{
-		if(Region != '')
-		{
-			RegionState = XComGameState_WorldRegion(History.GetGameStateForObjectID(ActivityState.PrimaryRegion.ObjectID));
-			if(RegionState.GetMyTemplateName() != Region)
-			{
-				continue;
-			}
-		}
-		//either we matched the region, or didn't specify one, so dump out Activity Info
-		DumpActivityInfo(ActivityState);
-	}
-}
-
-function DumpActivityInfo(XComGameState_LWAlienActivity ActivityState)
-{
-	local XComGameStateHistory History;
-	local XComGameState_WorldRegion RegionState;
-	local XComGameState_MissionSite MissionState;
-	local XComGameState_WorldRegion_LWStrategyAI RegionalAI;
-	local string MissionString;
-	local XComGameState_DarkEvent DarkEventState;
-
-	History = `XCOMHISTORY;
-	RegionState = XComGameState_WorldRegion(History.GetGameStateForObjectID(ActivityState.PrimaryRegion.ObjectID));
-	RegionalAI = class'XComGameState_WorldRegion_LWStrategyAI'.static.GetRegionalAI(RegionState);
-
-	MissionString = "None";
-	if(ActivityState.CurrentMissionRef.ObjectID > 0)
-	{
-		MissionState = XComGameState_MissionSite(History.GetGameStateForObjectID(ActivityState.CurrentMissionRef.ObjectID));
-		MissionString = string(MissionState.GeneratedMission.Mission.MissionName);
-	}
-
-	`LOG("=========================================================");
-	`LOG("Activity Template: " $ ActivityState.GetMyTemplateName() $ " -- Primary Region: " $ RegionState.GetMyTemplateName());
-	`LOG("Started: " $ GetDateTimeString(ActivityState.DateTimeStarted) $ " -- Ending: " $ GetDateTimeString(ActivityState.DateTimeActivityComplete));
-	`LOG("Current Mission: " $ MissionString);
-	`LOG("Regional AI -- Force:" @ RegionalAI.LocalForceLevel @ "; Alert:" @ RegionalAI.LocalAlertLevel @ "; Vigilance:" @ RegionalAI.LocalVigilanceLevel);
-	if(ActivityState.DarkEvent.ObjectID > 0)
-	{
-		DarkEventState = XComGameState_DarkEvent(History.GetGameStateForObjectID(ActivityState.DarkEvent.ObjectID));
-		`LOG("Dark Event: " $ DarkEventState.GetDisplayName() $ ", DataName=" $ DarkEventState.GetMyTemplate().DataName $ ", Secret=" $ DarkEventState.bSecretEvent $ ", Cost=" $ DarkEventState.GetCost());
-
-	}
-	if(MissionState != none)
-	{
-
-	}
-}
-
-exec function LWDumpRegionInfo()
-{
-	local XComGameStateHistory History;
-	local XComGameState_WorldRegion RegionState;
-	local XComGameState_WorldRegion_LWStrategyAI RegionalAI;
-	local int TotalForce, TotalAlert, TotalVigilance;
-
-	History = `XCOMHISTORY;
-
-	foreach History.IterateByClassType(class'XComGameState_WorldRegion', RegionState)
-	{
-		RegionalAI = class'XComGameState_WorldRegion_LWStrategyAI'.static.GetRegionalAI(RegionState);
-		if(RegionalAI != none)
-		{
-			`LOG("Regional AI (" $ RegionState.GetMyTemplateName() $ ") -- Force:" @ RegionalAI.LocalForceLevel @ "; Alert:" @ RegionalAI.LocalAlertLevel @ "; Vigilance:" @ RegionalAI.LocalVigilanceLevel);
-			TotalForce += RegionalAI.LocalForceLevel;
-			TotalAlert += RegionalAI.LocalAlertLevel;
-			TotalVigilance += RegionalAI.LocalVigilanceLevel;
-		}
-		else
-			`LOG("ERROR -- unable to find RegionalAI info for region " $ RegionState.GetMyTemplateName());
-	}
-	`LOG("Regional AI (Totals) -- Force:" @ TotalForce @ "; Alert:" @ TotalAlert @ "; Vigilance:" @ TotalVigilance);
-}
-
 function string GetDateTimeString(TDateTime DateTime)
 {
 	local string DateTimeString;
 	DateTimeString = class'X2StrategyGameRulesetDataStructures'.static.GetDateString(DateTime);
 	DateTimeString $= " / " $ class'X2StrategyGameRulesetDataStructures'.static.GetTimeString(DateTime);
 	return DateTimeString;
-}
-
-// this sets the regional force level -- if no Primary Region is specified, it sets for all regions
-exec function LWSetForceLevel(int NewLevel, optional name RegionName)
-{
-	local XComGameStateHistory History;
-	local XComGameState NewGameState;
-	local XComGameState_WorldRegion RegionState;
-	local XComGameState_WorldRegion_LWStrategyAI RegionalAIState, UpdatedRegionalAI;
-
-	History = `XCOMHISTORY;
-
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("CHEAT: Set ForceLevel");
-
-	foreach History.IterateByClassType(class'XComGameState_WorldRegion', RegionState)
-	{
-		if(RegionName == '' || RegionState.GetMyTemplateName() == RegionName)
-		{
-			RegionalAIState = class'XComGameState_WorldRegion_LWStrategyAI'.static.GetRegionalAI(RegionState);
-			UpdatedRegionalAI = XComGameState_WorldRegion_LWStrategyAI(NewGameState.CreateStateObject(class'XComGameState_WorldRegion_LWStrategyAI', RegionalAIState.ObjectID));
-			NewGameState.AddStateObject(UpdatedRegionalAI);
-
-			UpdatedRegionalAI.LocalForceLevel = NewLevel;
-		}
-	}
-	if (NewGameState.GetNumGameStateObjects() > 0)
-		`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
-	else
-		History.CleanupPendingGameState(NewGameState);
-}
-
-// this sets the regional alert level -- if no Primary Region is specified, it sets for all regions
-exec function LWSetAlertLevel(int NewLevel, optional name RegionName)
-{
-	local XComGameStateHistory History;
-	local XComGameState NewGameState;
-	local XComGameState_WorldRegion RegionState;
-	local XComGameState_WorldRegion_LWStrategyAI RegionalAIState, UpdatedRegionalAI;
-
-	History = `XCOMHISTORY;
-
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("CHEAT: Set AlertLevel");
-
-	foreach History.IterateByClassType(class'XComGameState_WorldRegion', RegionState)
-	{
-		if(RegionName == '' || RegionState.GetMyTemplateName() == RegionName)
-		{
-			RegionalAIState = class'XComGameState_WorldRegion_LWStrategyAI'.static.GetRegionalAI(RegionState);
-			UpdatedRegionalAI = XComGameState_WorldRegion_LWStrategyAI(NewGameState.CreateStateObject(class'XComGameState_WorldRegion_LWStrategyAI', RegionalAIState.ObjectID));
-			NewGameState.AddStateObject(UpdatedRegionalAI);
-
-			UpdatedRegionalAI.LocalAlertLevel = NewLevel;
-		}
-	}
-	if (NewGameState.GetNumGameStateObjects() > 0)
-		`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
-	else
-		History.CleanupPendingGameState(NewGameState);
-}
-
-// this sets the regional vigilance level -- if no Primary Region is specified, it sets for all regions
-exec function LWSetVigilanceLevel(int NewLevel, optional name RegionName)
-{
-	local XComGameStateHistory History;
-	local XComGameState NewGameState;
-	local XComGameState_WorldRegion RegionState;
-	local XComGameState_WorldRegion_LWStrategyAI RegionalAIState, UpdatedRegionalAI;
-
-	History = `XCOMHISTORY;
-
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("CHEAT: Set VigilanceLevel");
-
-	foreach History.IterateByClassType(class'XComGameState_WorldRegion', RegionState)
-	{
-		if(RegionName == '' || RegionState.GetMyTemplateName() == RegionName)
-		{
-			RegionalAIState = class'XComGameState_WorldRegion_LWStrategyAI'.static.GetRegionalAI(RegionState);
-			UpdatedRegionalAI = XComGameState_WorldRegion_LWStrategyAI(NewGameState.CreateStateObject(class'XComGameState_WorldRegion_LWStrategyAI', RegionalAIState.ObjectID));
-			NewGameState.AddStateObject(UpdatedRegionalAI);
-
-			UpdatedRegionalAI.LocalVigilanceLevel = NewLevel;
-		}
-	}
-	if (NewGameState.GetNumGameStateObjects() > 0)
-		`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
-	else
-		History.CleanupPendingGameState(NewGameState);
-}
-
-exec function LWPlayStrategyMovie(string Movie)
-{
-	local XComNarrativeMoment Moment;
-	local string MoviePath;
-	MoviePath = "LWNarrativeMoments_Bink.Strategy." $ Movie;
-	Moment = XComNarrativeMoment(DynamicLoadObject(MoviePath, class'XComNarrativeMoment'));
-	`HQPRES.UINarrative(Moment);
-}
-
-exec function LWPlayTacticalMovie(string Movie)
-{
-	local XComNarrativeMoment Moment;
-	local string MoviePath;
-	MoviePath = "LWNarrativeMoments_Bink.TACTICAL." $ Movie;
-	Moment = XComNarrativeMoment(DynamicLoadObject(MoviePath, class'XComNarrativeMoment'));
-	`HQPRES.UINarrative(Moment);
-}
-
-
-exec function LWForceRecruitRoll(int Roll, optional name RegionName)
-{
-	local XComGameStateHistory History;
-	local XComGameState NewGameState;
-	local XComGameState_WorldRegion RegionState;
-	local XComGameState_LWOutpost OutpostState;
-	local XComGameState_LWOutpostManager OutpostManager;
-
-	History = `XCOMHISTORY;
-
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("CHEAT: ForceRecruitRoll");
-	OutpostManager = class'XComGameState_LWOutpostManager'.static.GetOutpostManager();
-
-	foreach History.IterateByClassType(class'XComGameState_WorldRegion', RegionState)
-	{
-		if(RegionName == '' || RegionState.GetMyTemplateName() == RegionName)
-		{
-			OutpostState = OutpostManager.GetOutpostForRegion(RegionState);
-			OutpostState = XComGameState_LWOutpost(NewGameState.CreateStateObject(class'XComGameState_LWOutpost', OutpostState.ObjectID));
-			NewGameState.AddStateObject(OutpostState);
-			OutpostState.ForceRecruitRoll = Roll;
-		}
-	}
-
-	if (NewGameState.GetNumGameStateObjects() > 0)
-		`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
-	else
-		History.CleanupPendingGameState(NewGameState);
-}
-
-exec function LWToggleShowFaceless()
-{
-	local UIOutpostManagement OutpostUI;
-
-	if (`SCREENSTACK.IsCurrentScreen('UIOutpostManagement'))
-	{
-		OutpostUI = UIOutpostManagement(`SCREENSTACK.GetCurrentScreen());
-		OutpostUI.ToggleShowFaceless();
-	}
-}
-
-exec function LWAddRebel(optional bool IsFaceless = false, optional Name RegionName)
-{
-	local XComGameState_LWOutpost OutpostState;
-	local XComGameState_WorldRegion RegionState;
-	local XComGameState NewGameState;
-	local XComGameStateHistory History;
-	local XComGameState_LWOutpostManager OutpostManager;
-
-	History = `XCOMHISTORY;
-	OutpostManager = `LWOUTPOSTMGR;
-
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("CHEAT: LWAddRebel");
-
-	foreach History.IterateByClassType(class'XComGameState_WorldRegion', RegionState)
-	{
-		if(RegionName == '' || RegionState.GetMyTemplateName() == RegionName)
-		{
-			OutpostState = OutpostManager.GetOutpostForRegion(RegionState);
-			OutpostState = XComGameState_LWOutpost(NewGameState.CreateStateObject(class'XComGameState_LWOutpost', OutpostState.ObjectID));
-			NewGameState.AddStateObject(OutpostState);
-			OutpostState.AddRebel(OutpostState.CreateRebel(NewGameState, RegionState, true, IsFaceless), NewGameState);
-		}
-	}
-
-	if (NewGameState.GetNumGameStateObjects() > 0)
-		`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
-	else
-		History.CleanupPendingGameState(NewGameState);
-}
-
-exec function LWAddResistanceMec(optional name RegionName)
-{
-	local XComGameState_LWOutpost OutpostState;
-	local XComGameState_WorldRegion RegionState;
-	local XComGameState NewGameState;
-	local XComGameStateHistory History;
-	local XComGameState_LWOutpostManager OutpostManager;
-
-	History = `XCOMHISTORY;
-	OutpostManager = `LWOUTPOSTMGR;
-
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("CHEAT: LWAddResistanceMEC");
-
-	foreach History.IterateByClassType(class'XComGameState_WorldRegion', RegionState)
-	{
-		if(RegionName == '' || RegionState.GetMyTemplateName() == RegionName)
-		{
-			OutpostState = OutpostManager.GetOutpostForRegion(RegionState);
-			OutpostState = XComGameState_LWOutpost(NewGameState.CreateStateObject(class'XComGameState_LWOutpost', OutpostState.ObjectID));
-			NewGameState.AddStateObject(OutpostState);
-			OutpostState.AddResistanceMec(OutpostState.CreateResistanceMec(NewGameState), NewGameState);
-		}
-	}
-
-	if (NewGameState.GetNumGameStateObjects() > 0)
-		`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
-	else
-		History.CleanupPendingGameState(NewGameState);
 }
 
 exec function LWSetEvacCounter(int Turns)
@@ -4084,404 +3392,6 @@ exec function LWSetEvacCounter(int Turns)
 	}
 }
 
-function static XComGameState_LWOutpost FindCurrentOutpostFromScreenStack()
-{
-	local UIOutpostManagement OutpostScreen;
-	local StateObjectReference OutpostRef;
-	//local XComGameState_LWOutpost OutpostState;
-
-	if (!`SCREENSTACK.IsInStack(class'UIOutpostManagement'))
-	{
-		`Redscreen("LWLevelUpRebel: Not in outpost management screen");
-		return none;
-	}
-
-	OutpostScreen = UIOutpostManagement(`SCREENSTACK.GetScreen(class'UIOutpostManagement'));
-	OutpostRef = OutpostScreen.OutpostRef;
-	return XComGameState_LWOutpost(`XCOMHISTORY.GetGameStateForObjectID(OutpostRef.ObjectID));
-}
-
-exec function LWLevelUpRebel(string FirstName, string LastName)
-{
-	local XComGameState_LWOutpost OutpostState;
-	local XComGameState NewGameState;
-	local XComGameStateHistory History;
-	local StateObjectReference RebelRef;
-	local int i;
-
-	History = `XCOMHISTORY;
-
-	OutpostState = FindCurrentOutpostFromScreenStack();
-	if (OutpostState == none)
-	{
-		return;
-	}
-
-	RebelRef = OutpostState.GetRebelByName(FirstName, LastName);
-	if (RebelRef.ObjectID <= 0)
-	{
-		return;
-	}
-
-	i = OutpostState.GetRebelLevel(RebelRef);
-	if (i >= 2)
-	{
-		`Redscreen("LWLevelUpRebel: Rebel at max level");
-		return;
-	}
-
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("CHEAT: LWLevelUpRebel");
-	OutpostState = XComGameState_LWOutpost(NewGameState.CreateStateObject(class'XComGameState_LWOutpost', OutpostState.ObjectID));
-	NewGameState.AddStateObject(OutpostState);
-	OutpostState.PromoteRebel(RebelRef, NewGameState);
-
-	if (NewGameState.GetNumGameStateObjects() > 0)
-		`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
-	else
-		History.CleanupPendingGameState(NewGameState);
-}
-
-exec function LWRenameRebel(String OldFirstName, String OldLastName, String NewFirstName, String NewLastName)
-{
-	local XComGameState_LWOutpost OutpostState;
-	local XComGameState NewGameState;
-	local XComGameState_Unit Unit;
-	local StateObjectReference RebelRef;
-
-	OutpostState = FindCurrentOutpostFromScreenStack();
-	if (OutpostState == none)
-	{
-		return;
-	}
-	RebelRef = OutpostState.GetRebelByName(OldFirstName, OldLastName);
-	if (RebelRef.ObjectID <= 0)
-	{
-		`Log("LWRenameRebel: No such rebel found");
-		return;
-	}
-
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("CHEAT: LWRenameRebel");
-	Unit = XComGameState_Unit(NewGameState.CreateStateObject(class'XComGameState_Unit', RebelRef.ObjectID));
-	NewGameState.AddStateObject(Unit);
-	Unit.SetUnitName(NewFirstName, NewLastName, "");
-	`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
-}
-
-exec function LWDumpHavenIncome(optional Name RegionName)
-{
-	local XComGameState_LWOutpost Outpost;
-	local XComGameState_WorldRegion Region;
-	local XComGameStateHistory History;
-	local int i;
-
-	History = `XCOMHISTORY;
-	foreach History.IterateByClassType(class'XComGameState_LWOutpost', Outpost)
-	{
-		Region = XComGameState_WorldRegion(History.GetGameStateForObjectID(Outpost.Region.ObjectID));
-		if (RegionName != '' && RegionName != Region.GetMyTemplateName())
-			continue;
-
-		`Log("Dumping Haven info for " $ Region.GetDisplayName());
-
-		for (i = 0; i < Outpost.IncomePools.Length; ++i)
-		{
-			`Log("Income pool for " $ Outpost.IncomePools[i].Job $ ": " $ Outpost.IncomePools[i].Value);
-		}
-	}
-}
-
-exec function LWDebugPodJobs()
-{
-	bDebugPodJobs = !bDebugPodJobs;
-}
-
-exec function LWActivatePodJobs()
-{
-	local XComGameState NewGameState;
-	local XComGameState_LWPodManager PodMgr;
-	local XGAIPlayer AIPlayer;
-	local Vector XComLocation;
-	local float Rad;
-
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("CHEAT: LWActivatePodJobs");
-	PodMgr = XComGameState_LWPodManager(NewGameState.CreateStateObject(class'XComGameState_LWPodManager', `LWPODMGR.ObjectID));
-	NewGameState.AddStateObject(PodMgr);
-	PodMgr.AlertLevel = `ALERT_LEVEL_RED;
-
-	AIPlayer = XGAIPlayer(XGBattle_SP(`BATTLE).GetAIPlayer());
-	AIPlayer.GetSquadLocation(XComLocation, Rad);
-	PodMgr.LastKnownXComPosition = XComLocation;
-	`TACTICALRULES.SubmitGameState(NewGameState);
-}
-
-exec function LWPrintHistory()
-{
-	local int HistoryIndex;
-	local XComGameState AssociatedGameStateFrame;
-	local string ContextString;
-	local XComGameStateHistory History;
-	local XComGameState_BaseObject Obj;
-
-	History = `XCOMHISTORY;
-
-	for( HistoryIndex = History.GetCurrentHistoryIndex(); HistoryIndex > -1; --HistoryIndex )
-	{
-		AssociatedGameStateFrame = History.GetGameStateFromHistory(HistoryIndex, eReturnType_Reference);
-		if (AssociatedGameStateFrame != none)
-		{
-			if (AssociatedGameStateFrame.GetContext() != none)
-			{
-				ContextString = AssociatedGameStateFrame.GetContext().SummaryString();
-				`Log("History Frame"@HistoryIndex@" : "@ContextString@"\n");
-			}
-			else
-			{
-				foreach AssociatedGameStateFrame.IterateByClassType(class'XComGameState_BaseObject', Obj)
-				{
-					`Log("Sub-object " $ Obj.ToString());
-				}
-				`Log("History Frame"@HistoryIndex@" : No associated context found!!\n");
-			}
-		}
-	}
-}
-
-exec function LWForceEvac()
-{
-	local XComGameState_LWEvacSpawner Spawner;
-	local XComGameState NewGameState;
-
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("CHEAT: LWForceEvac");
-	Spawner = XComGameState_LWEvacSpawner(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_LWEvacSpawner', true));
-	if (Spawner == none || Spawner.GetCountdown() <= 0)
-	{
-		`Log("No spawner");
-		return;
-	}
-	Spawner = XComGameState_LWEvacSpawner(NewGameState.CreateStateObject(class'XComGameState_LWEvacSpawner', Spawner.ObjectID));
-	NewGameState.AddStateObject(Spawner);
-	Spawner.SetCountdown(0);
-	`TACTICALRULES.SubmitGameState(NewGameState);
-	Spawner.SpawnEvacZone();
-}
-
-exec function LWPrintVersion()
-{
-	`Log("Long War of the Chosen Version: " $ class'LWVersion'.static.GetVersionString());
-	class'Helpers'.static.OutputMsg("Long War of the Chosen Version: " $ class'LWVersion'.static.GetVersionString());
-}
-
-exec function LWAddFortressDoom(optional int DoomToAdd = 1)
-{
-	local XComGameState NewGameState;
-	local XComGameState_HeadquartersAlien AlienHQ;
-
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("LWCHEAT : Add Doom To Fortress");
-
-	if (DoomToAdd < 0)
-	{
-		AlienHQ = XComGameState_HeadquartersAlien(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersAlien'));
-		AlienHQ = XComGameState_HeadquartersAlien(NewGameState.CreateStateObject(class'XComGameState_HeadquartersAlien', AlienHQ.ObjectID));
-		NewGameState.AddStateObject(AlienHQ);
-		AlienHQ.RemoveDoomFromFortress(NewGameState, -DoomToAdd, , false);
-	}
-	else
-	{
-		`LWACTIVITYMGR.AddDoomToFortress(NewGameState, DoomToAdd, , false);
-	}
-	`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
-}
-
-exec function LWAddDoomToRegion(name RegionName, int DoomToAdd = 1)
-{
-	local XComGameStateHistory History;
-	local XComGameState_LWAlienActivity ActivityState;
-	local XComGameState_MissionSite MissionState;
-	local XComGameState_WorldRegion Region;
-	local XComGameState NewGameState;
-
-	History = `XCOMHISTORY;
-	Region = FindRegionByName(RegionName);
-	if (Region == none)
-	{
-		`Log("No region found: " $ RegionName);
-		return;
-	}
-	foreach History.IterateByClassType(class'XComGameState_LWAlienActivity', ActivityState)
-	{
-		if(ActivityState.GetMyTemplateName() == class'X2StrategyElement_DefaultAlienActivities'.default.RegionalAvatarResearchName)
-		{
-			if (ActivityState.PrimaryRegion.ObjectID == Region.ObjectID)
-			{
-				break;
-			}
-		}
-	}
-
-	if (ActivityState == none || ActivityState.PrimaryRegion.ObjectID != Region.ObjectID)
-	{
-		`Log("No facility in region.");
-		return;
-	}
-
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("CHEAT: Add facility doom");
-
-	if(ActivityState.CurrentMissionRef.ObjectID > 0) // is detected and has a mission
-	{
-		MissionState = XComGameState_MissionSite(NewGameState.CreateStateObject(class'XComGameState_MissionSite', ActivityState.CurrentMissionRef.ObjectID));
-		NewGameState.AddStateObject(MissionState);
-		MissionState.Doom += DoomToAdd;
-	}
-	else
-	{
-		ActivityState = XComGameState_LWAlienActivity(NewGameState.CreateStateObject(class'XComGameState_LWAlienActivity', ActivityState.ObjectID));
-		NewGameState.AddStateObject(ActivityState);
-		ActivityState.Doom += DoomToAdd;
-	}
-	`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
-}
-
-exec function LWPrintScreenStack()
-{
-	local UIScreenStack ScreenStack;
-	local int i;
-	local UIScreen Screen;
-	local string inputType;
-	local string prefix;
-
-	ScreenStack = `SCREENSTACK;
-
-	`LWDEBUG("============================================================");
-	`LWDEBUG("---- BEGIN UIScreenStack.PrintScreenStack() -------------");
-
-	`LWDEBUG("");
-
-	`LWDEBUG("---- Stack: General Information ----------------");
-	`LWDEBUG("Stack.GetCurrentScreen() = " $ ScreenStack.GetCurrentScreen());
-	`LWDEBUG("Stack.IsInputBlocked = " $ ScreenStack.IsInputBlocked);
-
-	`LWDEBUG("");
-	`LWDEBUG("---- Screens[]:  Classes and Instance Names ---");
-	for( i = 0; i < ScreenStack.Screens.Length; i++)
-	{
-		Screen = ScreenStack.Screens[i];
-		if ( Screen == none )
-		{
-			`LWDEBUG(i $": NONE ");
-			continue;
-		}
-		`LWDEBUG(i $": " $Screen.Class $", " $ Screen);
-	}
-	if( ScreenStack.Screens.Length == 0)
-		`LWDEBUG("Nothing to show because Screens.Length = 0,");
-	`LWDEBUG("");
-
-	`LWDEBUG("---- Screen.MCPath ----------------------------");
-	for( i = 0; i < ScreenStack.Screens.Length; i++)
-	{
-		Screen = ScreenStack.Screens[i];
-		if ( Screen == none )
-		{
-			`LWDEBUG(i $": NONE ");
-			continue;
-		}
-		`LWDEBUG(i $": " $Screen.MCPath);
-	}
-	if( ScreenStack.Screens.Length == 0)
-		`LWDEBUG("Nothing to show because Screens.Length = 0,");
-	`LWDEBUG("");
-
-	`LWDEBUG("---- Unreal Visibility -----------------------");
-	for( i = 0; i < ScreenStack.Screens.Length; i++)
-	{
-		Screen = ScreenStack.Screens[i];
-		if ( Screen == none )
-		{
-			`LWDEBUG(i $": NONE ");
-			continue;
-		}
-		`LWDEBUG(i $": " $"bIsVisible = " $Screen.bIsVisible @ Screen);
-	}
-	if( ScreenStack.Screens.Length == 0)
-		`LWDEBUG("Nothing to show because Screens.Length = 0,");
-	`LWDEBUG("");
-
-	`LWDEBUG("---- Owned by 2D vs. 3D movies --------------");
-	for( i = 0; i < ScreenStack.Screens.Length; i++)
-	{
-		Screen = ScreenStack.Screens[i];
-		if ( Screen == none )
-		{
-			`LWDEBUG(i $": NONE ");
-			continue;
-		}
-		if( Screen.bIsIn3D )
-			`LWDEBUG(i $": 3D " $ Screen);
-		else
-			`LWDEBUG(i $": 2D " $ Screen);
-	}
-	if( ScreenStack.Screens.Length == 0)
-		`LWDEBUG("Nothing to show because Screens.Length = 0,");
-	`LWDEBUG("");
-
-	`LWDEBUG("---- ScreensHiddenForCinematic[] -------------");
-	for( i = 0; i < ScreenStack.ScreensHiddenForCinematic.Length; i++)
-	{
-		Screen = ScreenStack.ScreensHiddenForCinematic[i];
-		if ( Screen == none )
-		{
-			`LWDEBUG(i $": NONE ");
-			continue;
-		}
-		`LWDEBUG(i $": " $Screen);
-	}
-	if( ScreenStack.ScreensHiddenForCinematic.Length == 0)
-		`LWDEBUG("Nothing to show because ScreensHiddenForCinematic.Length = 0,");
-	`LWDEBUG("");
-
-	`LWDEBUG("---- UI Input information --------------------");
-
-	prefix = ScreenStack.IsInputBlocked ? "INPUT GATED " : "      ";
-	for( i = 0; i < ScreenStack.Screens.Length; i++)
-	{
-		Screen = ScreenStack.Screens[i];
-		if ( Screen == none )
-		{
-			`LWDEBUG("      " $ "        " $ " " $ i $ ": ?none?");
-			continue;
-		}
-
-		if( Screen.ConsumesInput() )
-		{
-			inputType = "CONSUME ";
-			prefix = "XXX   ";
-		}
-		else if( Screen.EvaluatesInput() )
-			inputType = "eval    ";
-		else
-			inputType = "-       ";
-
-		`LWDEBUG(prefix $ inputType $ " " $ i $ ": '" @ Screen.class $ "'");
-	}
-	if( ScreenStack.Screens.Length == 0)
-		`LWDEBUG("Nothing to show because Screens.Length = 0,");
-	`LWDEBUG("");
-
-	`LWDEBUG("*** Movie.Screens are what the movie has loaded: **");
-	ScreenStack.Pres.Get2DMovie().PrintCurrentScreens();
-	`LWDEBUG("****************************************************");
-	`LWDEBUG("");
-
-	`LWDEBUG("---- END PrintScreenStack --------------------");
-
-	`LWDEBUG("========================================================");
-}
-
-exec function LWValidatePendingDarkEvents()
-{
-	`LWACTIVITYMGR.ValidatePendingDarkEvents();
-}
-
 exec function LWSetUnitValue(Name ValueName, float Value)
 {
 	local StateObjectReference ActiveUnitRef;
@@ -4498,39 +3408,6 @@ exec function LWSetUnitValue(Name ValueName, float Value)
 		NewGameState.AddStateObject(Unit);
 		Unit.SetUnitFloatValue(ValueName, Value, eCleanup_BeginTactical);
 		`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
-	}
-}
-
-exec function LWForceSquadPostMissionCleanup(string SquadName)
-{
-	local XComGameState_LWPersistentSquad SquadState, UpdatedSquadState;
-	local XComGameState UpdateState;
-	local XComGameState_LWSquadManager SquadMgr, UpdatedSquadMgr;
-	local StateObjectReference NullRef;
-
-	SquadMgr = `LWSQUADMGR;
-	SquadState = SquadMgr.GetSquadByName(SquadName);
-	if (SquadState == none)
-	{
-		return;
-	}
-
-	UpdateState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("DEBUG:Persistent Squad Cleanup");
-
-	UpdatedSquadMgr = XComGameState_LWSquadManager(UpdateState.CreateStateObject(SquadMgr.Class, SquadMgr.ObjectID));
-	UpdateState.AddStateObject(UpdatedSquadMgr);
-
-	UpdatedSquadState = XComGameState_LWPersistentSquad(UpdateState.CreateStateObject(SquadState.Class, SquadState.ObjectID));
-	UpdateState.AddStateObject(UpdatedSquadState);
-
-	UpdatedSquadMgr.LaunchingMissionSquad = NullRef;
-	UpdatedSquadState.PostMissionRevertSoldierStatus(UpdateState, UpdatedSquadMgr);
-	UpdatedSquadState.ClearMission();
-	`XCOMGAME.GameRuleset.SubmitGameState(UpdateState);
-
-	if(SquadState.bTemporary)
-	{
-		`LWSQUADMGR.RemoveSquadByRef(SquadState.GetReference());
 	}
 }
 

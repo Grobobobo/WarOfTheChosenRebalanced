@@ -6,20 +6,25 @@ function int GetAttackingDamageModifier(XComGameState_Effect EffectState, XComGa
 {
 	local XComGameState_Item SourceWeapon;
 	local XComGameState_Unit TargetUnit;
-
+	local X2WeaponTemplate WeaponTemplate;
 	SourceWeapon = AbilityState.GetSourceWeapon();
 	if (SourceWeapon != none && SourceWeapon.LoadedAmmo.ObjectID == EffectState.ApplyEffectParameters.ItemStateObjectRef.ObjectID)
 	{
 		TargetUnit = XComGameState_Unit(TargetDamageable);
 		if(TargetUnit != none)
 		{
-			if (!TargetUnit.IsAdvent() && !TargetUnit.IsRobotic())
+			WeaponTemplate = X2WeaponTemplate(SourceWeapon.GetMyTemplate());
+			if(WeaponTemplate != none)
 			{
-				if (class'XComGameStateContext_Ability'.static.IsHitResultHit(AppliedData.AbilityResultContext.HitResult))
+				if (WeaponTemplate.WeaponTech == 'conventional')
 				{
-					return BonusDmg;
+					if (class'XComGameStateContext_Ability'.static.IsHitResultHit(AppliedData.AbilityResultContext.HitResult))
+					{
+						return BonusDmg;
+					}
 				}
 			}
+
 		}
 	}
 }

@@ -1,6 +1,6 @@
-# War of the Chosen Rebalancee (WOTC-R)
+# Grobo's Tactical Overhaul (GTO)
 
-This is a fundamental rebalance of Long War of the Chosen, with the following design goals:
+This is a massive MegaOverhaul of XCOM 2 War of the Chosen, meant to be a pretty much complete package with the following design goals:
 
 1.  Significantly lower the reliance on alpha striking (more 3-4 + turn engagements than 1-2 turn ones)
 2.  Eliminate the need to manage pod activations
@@ -12,15 +12,17 @@ This is a fundamental rebalance of Long War of the Chosen, with the following de
 
 
 ## Current State
-Currently the Mod is in alpha, in a playable but feature incomplete and unpolished state.
+Currently the Mod is in beta, in a playable but feature incomplete, unbalanced and unpolished state.
 
 Particularly, the not-implemented features (In this case: Not rebalanced/redesigned yet) so far include:
 * Psi ops
-* Sparks
+* MECS (instead of sparks)
+* Compatibility with Covert Infiltration
+* Resistance Orders
+* Negative Traits
 * Alien Hunters DLC
-* The Chosen (should disable them in Second Wave options)
 
-Also, Gotcha again overwatch indicators are unreliable for now.
+Also, Gotcha again overwatch indicators are unreliable for now. I plan on creating a version that matches the new OW behavior.
 
 ## Features
 
@@ -45,26 +47,28 @@ Here's a headline list of features of this mod
 
 ### Cover
 * Cover Defense is further increased to 40/55 from 30/45 - significantly raising the value of cover
-* Base Flanking crit bonus increased to 50% from 40%
+* Base Flanking crit bonus increased to 60% from 40%
 
 ### Ammo management
 * Reload is now turn ending
 * Pistols and autopistols no longer carry any mobility penalty
-* Sawed-off can now be equipped in a pistol slot 
+* Sawed-off can now be equipped in a pistol slot
 
 ### Attachments
 * Attachments now only have 1 tier, and supply is infinite as soon as you research Modular Weapons (do so early)
 * All weapons now start with only 1 attachment slot, and can gain 2 more slots by researching proving ground projects
 
 Attachments have been rebalanced to:
-* Scope - Gain 5 aim
-* Laser sight - Gain 10 crit
+* Scope - Gain 5 aim, and reduce the long range non-squadsight penalties for weapons by 67%
+* Laser sight - Gain 10 crit and reduce the short range penalties for weapons by 67%
 
-* Hair trigger - After a miss, gain +25 aim
+* Hair trigger - After a miss, gain +25 aim and crit
 * Stock - Missed attacks have a 35% chance to become a graze. Your attacks ignore up to 15 dodge
 
 * Expended magazine - Gain +1 weapon capacity
 * Auto-loader - Grants quick reload - Reloads up to 2 ammo, non-turn ending
+
+* Suppressor - Gain 5 defense. Your first shot in a mission has +25/25 aim and crit.
 
 ### Overwatch and suppression
 Overwatch has been overhauled:
@@ -81,7 +85,58 @@ Similar to LWR overwatch rules, except it doesn't have covering fire by default.
 
 These changes make suppression far more effective at locking down units, and far less effective at killing them.
 
-### Soldiers
+### Injury and Fatigue
+
+* Significantly Decreased the recovery time for light and medium soldier wounds
+
+* Will will no longer drop on enemy sightings - Instead, it drops a set amount per turn
+
+* Significantly Increased the recovery Time for shaken soldiers
+
+* Injury and Fatigue times are now seperate - In vanilla recovering from injuries made you remove fatigue instantly, which made fatigue irrelevant with lower wound times.
+
+### Barracks
+
+* Rookie promotion now happens on the basis of super classes: there are 3
+
+Assault - Specialist
+
+Sharpshooter - Shinobi
+
+Gunner - Technical
+
+* Reduced the amount of starting soldiers to 16 from 22 - compensates for the average soldier being far more useful, reduces overall mission density and soldier management, makes recruiting worth more
+
+* Injury recovery is faster
+
+* All Soldiers Autopromote every 24 hours to squaddies
+
+* Removed GTS train rookies slots (not needed anymore)
+* Introduced Xcom Training Program Unlocks:
+
+XTP1: All Soldiers Autopromote to Lance Corporals (unlocked with first lieutenant)
+
+XTP2: All Soldiers Autopromote to Corporals (unlocked with Major)
+
+XTP3: All Soldiers Autopromote to Sergeants (unlocked with Colonel)
+
+
+* Most GTS Unlocks have been moved to proving ground projects
+
+Vengeance: Unlocked with Trooper autopsy
+
+Wet Work: Unlocked with Sectoid autopsy
+
+Integrated warfare: Unlocked with Priest Autopsy
+
+Lightning Strike: Unlocked with Spectre Autopsy
+
+Stay with me: Unlocked with Chryssalid Autopsy
+
+Vulture: Unlocked with Alien Encryption research
+
+
+#### Soldiers
 
 * All soldiers now start as squaddies - Eliminates the boring rookie phase where your toolset was severely limited
 
@@ -96,6 +151,8 @@ These changes make suppression far more effective at locking down units, and far
 * Soldier HP, Aim and Will growths have been completely removed - Makes sure cover is just as important early game as it is late
 
 * All soldier classes (except templars) now have access to the following "Universal" primary weapon categories: Assault rifle, Shotgun, SMG, Bullpup, Vektor, Grenade launcher
+
+
 
 ##### Classes
 
@@ -133,14 +190,15 @@ You can find new class trees [here.](https://docs.google.com/spreadsheets/d/1Sdk
 ### Enemies
 
 * Enemy Aim and Will growths have been completely removed - Makes sure cover is just as important early game as it is late
-* Rescaled all enemies across 5 tiers, scaled from FL 1 to FL 25
-* New tier naming is : Basic, Advanced, Elite, Supreme, With T5 enemies having special names
+* Enemies no longer have tiers, instead they gain stats based on Force level.
 * Incorporated over 100 new permament dark events as new and unpredictable enemy scaling
-* Removed Najas - squadsight doesn't fit that well in podless
-* Removed MEC Archers - squadsight doesn't fit and they weren't an interesting enough enemy
-* Removed ADVENT grenadiers, rocketeers, scouts, sergeants, commandos, vanguards and shock troopers - Their variants have been incorporated elsewhere
 
 More detailed enemy changes can be found here, I'll just present some more important changes here
+
+#### The Leader System
+
+* Most pods now have a leader, which is now a significantly more powerful version of a standard unit (eg trooper leader becomes advent vanguard, priest leader is a modified purge priest).
+
 #### Troopers
 * Gains Marauder (standard shots are no longer turn ending)
 
@@ -160,10 +218,10 @@ More detailed enemy changes can be found here, I'll just present some more impor
 #### Stun lancers
 * Stun Lance is no longer a dash attack, deals a lot more damage, and will now always stun for 1 action (instead of a random effect including unconscious)
 * Gains Whirlwind
-* Gains Flashbangs
 
 #### Priests
 * No longer have Mind Control by default
+* No longer have sustain
 
 #### Vipers
 * Enemies can no longer shoot bound units
@@ -175,16 +233,13 @@ More detailed enemy changes can be found here, I'll just present some more impor
 * Have Hit and Slither by default
 
 #### Mutons
-* Gains Will to Survive
+* Gains First In Line
 
 #### Mecs
 * Gains Damage Control by default
 
 #### Spectres
 * Shadowbind is no longer a dash move
-
-#### Codex
-* Gains Evasive
 
 #### Andromedons
 * Primary Weapon now has short range
@@ -234,13 +289,13 @@ Base Damage is 4/5/6/7/8 depending on weapon tier (from 4/5.5/7/8.5/10)
 * 100% base damage
 * 15 base aim
 * 3 ammo capacity
-* -50 base crit (note this is negative)
+* -40 base crit (note this is negative)
 * +1 mobility
 * MidShort Range
 
 #### Strike Rifle (Vektor)
 * 100% base damage
-* 5 base aim
+* 10 base aim
 * 3 ammo capacity
 * 30 base crit
 * Mid long range
@@ -248,14 +303,14 @@ Base Damage is 4/5/6/7/8 depending on weapon tier (from 4/5.5/7/8.5/10)
 
 #### Shotgun
 * 125% base damae
-* 0 base crit
+* 20 base crit
 * 4 ammo capacity
 * Short Range
 
 #### Sniper Rifle
 * 125% base damage
 * 20 base aim
-* 30 base crit
+* 10 base crit
 * 3 ammo capacity
 * Long Range
 
@@ -269,8 +324,7 @@ Base Damage is 4/5/6/7/8 depending on weapon tier (from 4/5.5/7/8.5/10)
 
 #### Immolator (technical only)
 * Primary Flamethrower, uses lw2 targeting
-* -1 mobility
-* 75% base damage, has 100% chance to set someone on fire
+* 100% base damage, has 100% chance to set someone on fire
 * 7 tile long, 5 tile wide
 * infinite ammo, but 2 only ammo capacity, in addition flamethrower has 2 turns cooldown.
 * T0 is availible at game start
@@ -322,8 +376,8 @@ Outrider Frame - +1 weapon mobility, at the cost of -35% weapon damage
 
 
 #### GRENADE LAUNCHER
-* +3/4/4 grenade throw range depending on tier
-* +15 grenade accuracy
+* +2/3/3 grenade throw range depending on tier
+* +10/15/20 grenade accuracy
 * Plasma grenade launcher grants blaster launcher targeting
 
 ### Secondary weapons
@@ -356,15 +410,15 @@ Outrider Frame - +1 weapon mobility, at the cost of -35% weapon damage
 
 Rocket types:
 #### Standard:
-* 125% weapon damage
-* 5 radius
+* 150% weapon damage
+* 6 radius
 * 0 shred
 * 0 pierce
 
 #### Shredder
-* 150% weapon damage
-* 3 radius
-* 1/2/3 shred
+* 175% weapon damage
+* 4 radius
+* 2/2/2 shred
 * 2/3/4 pierce
 
 #### lockon
@@ -374,14 +428,9 @@ Rocket types:
 * can only be fired at holo’d targets
 
 #### flechette
-* 175% weapon damage
+* 200% weapon damage
 * 6 radius
-* Damage is reduced a lot against cover and armor
-
-#### Concussion:
-* 50% weapon damage
-* 5 radius
-* can disorient and stun
+* Damage is reduced a lot against cover
 
 #### Plasma Ejector:
 * 150% weapon damage in a line - replaces plasma blaster
@@ -390,17 +439,19 @@ Rocket types:
 
 #### Pistol
 * 75% base damage
+* 20 base crit
 * infinite ammo capacity
 * midshort range
 
 #### Autopistol
 * 75% base damage
-* 50 base crit
+* 20 base crit
 * ignores up to 30 dodge
 * short range
 
 #### Sawed off 
 * 125% base damage
+* 20 base crit
 * sawed-off range
 * does not work with any of the pistol skills
 * 2 Ammo, after that can be reloaded
@@ -645,7 +696,7 @@ LONG_ALL_RANGE[41] = -44
 
 ##### Light Kevlar
 
-* 0 hp, 0 ablative, 2 mobility
+* 0 hp, 1 ablative, 2 mobility
 
 ##### Kevlar:
 
@@ -655,35 +706,35 @@ LONG_ALL_RANGE[41] = -44
 
 ##### Spider suit
 
-* 2 hp, 1 ablative, 2 mobility, grapple
+* 2 hp, 2 ablative, 2 mobility, grapple
 
 ##### Predator armor
 
-* 3 HP, 1 armor, 4 ablative
+* 1 HP, 1 armor, 4 ablative
 
 ##### EXO
 
-* 3 HP, 1 armor, 4 ablative,
+* 1 HP, 1 armor, 4 ablative,
 * No longer grants a heavy weapon slot
-* Exoskeleton Servos: This Unit's mobility cannot go below 14
+* Exoskeleton Servos: This Unit's mobility cannot go below 13
 * -1 Equipment Slot
 
 #### Powered
 
 ##### Wraith suit
 
-* 6 hp, 2 ablative, 2 mobility, grapple, wraith properties
+* 5 hp, 3 ablative, 2 mobility, grapple, wraith properties
 
 
 ##### Warden armor:
 
-* 8hp, 2 armor, 5 ablative
+* 5hp, 2 armor, 5 ablative
 
 ##### WAR Suit
 
-* 8hp, 2 armor, 5 ablative,
+* 5hp, 2 armor, 5 ablative,
 
-* Exoskeleton Servos: This Unit's mobility cannot go below 14
+* Exoskeleton Servos: This Unit's mobility cannot go below 13
 
 * -1 equipment slot
 
@@ -700,46 +751,6 @@ LONG_ALL_RANGE[41] = -44
 * Burn now blocks only standard shot, overwatch, and throw/launch grenade, everything else works
 
 * Acid burn: One of the few sources of shred, the game is getting changed so armor is overall rarer but shred is much, MUCH less common and harder to do 
-
-### Barracks
-
-* Rookie promotion now happens on the basis of super classes: there are 3
-
-Assault - Specialist
-
-Sharpshooter - Shinobi
-
-Gunner - Technical
-
-* Reduced the amount of starting soldiers to 16 from 22 - compensates for the average soldier being far more useful, reduces overall mission density and soldier management, makes recruiting worth more
-
-* Injury recovery is faster
-
-* All Soldiers Autopromote every 24 hours to squaddies
-
-* Removed GTS train rookies slots (not needed anymore)
-* Introduced Xcom Training Program Unlocks:
-
-XTP1: All Soldiers Autopromote to Lance Corporals (unlocked with first lieutenant)
-
-XTP2: All Soldiers Autopromote to Corporals (unlocked with Major)
-
-XTP3: All Soldiers Autopromote to Sergeants (unlocked with Colonel)
-
-
-* Most GTS Unlocks have been moved to proving ground projects
-
-Vengeance: Unlocked with Trooper autopsy
-
-Wet Work: Unlocked with Sectoid autopsy
-
-Integrated warfare: Unlocked with Priest Autopsy
-
-Lightning Strike: Unlocked with Spectre Autopsy
-
-Stay with me: Unlocked with Chryssalid Autopsy
-
-Vulture: Unlocked with Alien Encryption research
 
 ### Officers
 * Air Controller skyranger turn reduction to 1 (from 2)
@@ -896,4 +907,3 @@ If you find you can't complete the issue in a reasonable time, please add anothe
 the issue.
 
 All contributions are welcome, but bug fixes are _extremely_ welcome!
-

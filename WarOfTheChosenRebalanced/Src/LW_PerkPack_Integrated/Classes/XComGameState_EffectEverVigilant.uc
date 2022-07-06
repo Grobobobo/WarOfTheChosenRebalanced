@@ -137,7 +137,8 @@ function EventListenerReturn EverVigilantTurnEndListener(Object EventData, Objec
 
 				if (UnitState.NumActionPoints() == 0)
 				{
-					//  give the unit an action point so they can activate overwatch										
+					//  give the unit TWO action points so they can activate overwatch including long watch								
+					UnitState.ActionPoints.AddItem(class'X2CharacterTemplateManager'.default.StandardActionPoint);					
 					UnitState.ActionPoints.AddItem(class'X2CharacterTemplateManager'.default.StandardActionPoint);					
 				}
 				UnitState.SetUnitFloatValue(class'X2Ability_SpecialistAbilitySet'.default.EverVigilantEffectName, 1, eCleanup_BeginTurn);

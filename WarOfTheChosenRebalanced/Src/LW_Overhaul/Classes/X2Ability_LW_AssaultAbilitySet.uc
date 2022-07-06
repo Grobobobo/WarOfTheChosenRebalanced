@@ -33,7 +33,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddArcthrowerStun());
 	Templates.AddItem(AddArcthrowerPassive());
 	Templates.AddItem(AddEMPulser());
-	Templates.AddItem(PurePassive('EMPulserPassive', "img:///UILibrary_LW_Overhaul.LW_AbilityEMPulser", true));  
+	//Templates.AddItem(EmPulserPassive());  
 	Templates.AddItem(StunGunner());
 	Templates.AddItem(PurePassive('Electroshock', "img:///UILibrary_LW_Overhaul.LW_AbilityElectroshock", true));  
 	Templates.AddItem(CreateStreetSweeper2Ability());
@@ -51,7 +51,7 @@ static function array<X2DataTemplate> CreateTemplates()
 static function X2AbilityTemplate AddArcthrowerStun()
 {
 
-	local X2AbilityCooldown                 Cooldown;
+	local X2AbilityCooldown_ArcThrower      Cooldown;
 	local X2AbilityTemplate                 Template;	
 	local X2Condition_UnitProperty			UnitPropertyCondition;
 	local X2AbilityToHitCalc_StandardAim    ToHitCalc;
@@ -59,6 +59,7 @@ static function X2AbilityTemplate AddArcthrowerStun()
 	local X2Effect_ArcthrowerStunned	    StunnedEffect;
 	local array<name>                       SkipExclusions;
 	local X2Condition_UnitType				ImmuneUnitCondition;
+	local X2Condition_ArcPulser NoRoboticsCondition;
 	//local X2Effect_RemoveEffects			CleanUpEffect;
 
 	// Macro to do localisation and stuffs
@@ -78,7 +79,7 @@ static function X2AbilityTemplate AddArcthrowerStun()
 	SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.DisorientedName);
 	Template.AddShooterEffectExclusions(SkipExclusions);
 
-	Cooldown = new class'X2AbilityCooldown';
+	Cooldown = new class'X2AbilityCooldown_ArcThrower';
 	Cooldown.iNumTurns = default.STUN_COOLDOWN;
 	Template.AbilityCooldown = Cooldown;
 
@@ -87,12 +88,17 @@ static function X2AbilityTemplate AddArcthrowerStun()
 	Template.AbilityTargetConditions.AddItem(default.GameplayVisibilityCondition);
 	// Can't target dead; Can't target friendlies -- must be enemy organic
 	UnitPropertyCondition = new class'X2Condition_UnitProperty';
-	UnitPropertyCondition.ExcludeRobotic = true;
+	UnitPropertyCondition.ExcludeRobotic = false;
 	UnitPropertyCondition.ExcludeOrganic = false;
 	UnitPropertyCondition.ExcludeDead = true;
 	UnitPropertyCondition.ExcludeFriendlyToSource = true;
 	UnitPropertyCondition.RequireWithinRange = true;
 	Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);
+
+	NoRoboticsCondition = new class'X2Condition_ArcPulser';
+	Template.AbilityTargetConditions.AddItem(NoRoboticsCondition);
+
+
 	
 	ImmuneUnitCondition = new class'X2Condition_UnitType';
 	ImmuneUnitCondition.ExcludeTypes.AddItem('PsiZombie');
@@ -108,8 +114,8 @@ static function X2AbilityTemplate AddArcthrowerStun()
 	// Action Point
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
 	ActionPointCost.iNumPoints = 1;
-	//ActionPointCost.DoNotConsumeAllSoldierAbilities.AddItem('Unlimitedpower_LW');
-	ActionPointCost.bConsumeAllPoints = false;
+	ActionPointCost.bConsumeAllPoints = true;
+	ActionPointCost.DoNotConsumeAllSoldierAbilities.AddItem('EMPulser');
 	Template.AbilityCosts.AddItem(ActionPointCost);	
 
 	//Stun Effect
@@ -129,6 +135,10 @@ static function X2AbilityTemplate AddArcthrowerStun()
 	Template.AbilityToHitCalc = ToHitCalc;
 	Template.AbilityToHitOwnerOnMissCalc = ToHitCalc;
 			
+	Template.AssociatedPassives.AddItem( 'EMPulser' );
+	Template.AddTargetEffect(EMPulserHackDefenseReductionEffect());
+	Template.AddTargetEffect(EMPulserWeaponDamageEffect());
+
 	// Targeting Method
 	Template.TargetingMethod = class'X2TargetingMethod_OverTheShoulder';
 	Template.bUsesFiringCamera = true;
@@ -276,111 +286,122 @@ static function X2AbilityTemplate StunGunner()
 }
 
 
-//EM Pulser alternative attack, which allows targeting and damaging robots
+// //EM Pulser alternative attack, which allows targeting and damaging robots
+// static function X2AbilityTemplate AddEMPulser()
+// {
+// 	local X2AbilityCooldown                 Cooldown;
+// 	local X2AbilityTemplate                 Template;	
+// 	local X2Condition_UnitProperty			UnitPropertyCondition;
+// 	local X2AbilityToHitCalc_StandardAim    ToHitCalc;
+// 	local X2AbilityCost_ActionPoints        ActionPointCost;
+// 	local X2Effect_ArcthrowerStunned	    StunnedEffect;
+// 	local array<name>                       SkipExclusions;
+// 	local X2Condition_UnitType				ImmuneUnitCondition;
+// 	//local X2Effect_RemoveEffects			CleanUpEffect;
+// 	// Macro to do localisation and stuffs
+// 	`CREATE_X2ABILITY_TEMPLATE(Template, 'EMPulser');
+
+// 	// Icon Properties
+// 	Template.IconImage = "img:///UILibrary_LW_Overhaul.LW_AbilityEMPulser"; 
+// 	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.STANDARD_PISTOL_SHOT_PRIORITY;
+// 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;
+// 	Template.DisplayTargetHitChance = true;
+// 	Template.AbilitySourceName = 'eAbilitySource_Perk';                                       // color of the icon
+
+// 	// Activated by a button press; additionally, tells the AI this is an activatable
+// 	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
+
+// 	// *** VALIDITY CHECKS *** //
+// 	SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.DisorientedName);
+// 	Template.AddShooterEffectExclusions(SkipExclusions);
+
+// 	Cooldown = new class'X2AbilityCooldown';
+// 	Cooldown.iNumTurns = default.STUN_COOLDOWN;
+// 	Template.AbilityCooldown = Cooldown;
+
+// 	// Targeting Details
+// 	// Can only shoot visible enemies
+// 	Template.AbilityTargetConditions.AddItem(default.GameplayVisibilityCondition);
+// 	// Can't target dead; Can't target friendlies -- must be enemy organic
+// 	UnitPropertyCondition = new class'X2Condition_UnitProperty';
+// 	UnitPropertyCondition.ExcludeRobotic = false;  // change from basic stun to allow targeting robotic units
+// 	UnitPropertyCondition.ExcludeOrganic = false;
+// 	UnitPropertyCondition.ExcludeDead = true;
+// 	UnitPropertyCondition.ExcludeFriendlyToSource = true;
+// 	UnitPropertyCondition.RequireWithinRange = true;
+// 	Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);
+	
+// 	ImmuneUnitCondition = new class'X2Condition_UnitType';
+// 	ImmuneUnitCondition.ExcludeTypes.AddItem('PsiZombie');
+// 	ImmuneUnitCondition.ExcludeTypes.AddItem('AdvPsiWitchM2');
+// 	ImmuneUnitCondition.ExcludeTypes.AddItem('AdvPsiWitchM3');
+// 	Template.AbilityTargetConditions.AddItem(ImmuneUnitCondition);
+
+// 	// Can't shoot while dead
+// 	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+// 	// Only at single targets that are in range.
+// 	Template.AbilityTargetStyle = default.SimpleSingleTarget;
+
+// 	// Action Point
+// 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+// 	ActionPointCost.iNumPoints = 1;
+// 	ActionPointCost.bConsumeAllPoints = true;
+// 	ActionPointCost.DoNotConsumeAllSoldierAbilities.AddItem('Unlimitedpower_LW');
+// 	Template.AbilityCosts.AddItem(ActionPointCost);	
+
+// 	// Hit Calculation (Different weapons now have different calculations for range)
+// 	ToHitCalc = new class'X2AbilityToHitCalc_StandardAim';
+// 	ToHitCalc.bGuaranteedHit = false;
+// 	ToHitCalc.bAllowCrit = false;
+// 	Template.AbilityToHitCalc = ToHitCalc;
+// 	Template.AbilityToHitOwnerOnMissCalc = ToHitCalc;
+
+// 	//Stun Effect
+// 	StunnedEffect = CreateArcthrowerStunnedStatusEffect(100);
+// 	Template.AddTargetEffect(StunnedEffect);
+	
+// 	//CleanUpEffect = CreateStunnedEffectsCleanUpEffect();
+// 	//Template.AddTargetEffect(CleanUpEffect);
+
+// 	Template.AssociatedPassives.AddItem( 'Electroshock' );
+// 	Template.AddTargetEffect(ElectroshockDisorientEffect());
+
+// 	Template.AssociatedPassives.AddItem( 'EMPulser' );
+// 	Template.AddTargetEffect(EMPulserHackDefenseReductionEffect());
+// 	Template.AddTargetEffect(EMPulserWeaponDamageEffect());
+
+// 	// Targeting Method
+// 	Template.TargetingMethod = class'X2TargetingMethod_OverTheShoulder';
+// 	Template.bUsesFiringCamera = true;
+// 	Template.CinescriptCameraType = "StandardGunFiring";
+// 	Template.ActivationSpeech = 'TeslaCannon';
+
+// 	// MAKE IT LIVE!
+// 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+// 	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;	
+// 	Template.BuildInterruptGameStateFn = TypicalAbility_BuildInterruptGameState;
+	
+// 	Template.SuperConcealmentLoss = class'X2AbilityTemplateManager'.default.SuperConcealmentStandardShotLoss;
+// 	Template.ChosenActivationIncreasePerUse = class'X2AbilityTemplateManager'.default.StandardShotChosenActivationIncreasePerUse;
+// 	Template.LostSpawnIncreasePerUse = class'X2AbilityTemplateManager'.default.StandardShotLostSpawnIncreasePerUse;
+
+// 	Template.AdditionalAbilities.AddItem('ArcthrowerPassive');
+// 	Template.OverrideAbilities.AddItem('ArcthrowerStun');
+
+// 	Template.AdditionalAbilities.AddItem('EMPulserPassive');
+
+// 	return Template;	
+// }
+
+
 static function X2AbilityTemplate AddEMPulser()
 {
-	local X2AbilityCooldown                 Cooldown;
-	local X2AbilityTemplate                 Template;	
-	local X2Condition_UnitProperty			UnitPropertyCondition;
-	local X2AbilityToHitCalc_StandardAim    ToHitCalc;
-	local X2AbilityCost_ActionPoints        ActionPointCost;
-	local X2Effect_ArcthrowerStunned	    StunnedEffect;
-	local array<name>                       SkipExclusions;
-	local X2Condition_UnitType				ImmuneUnitCondition;
-	//local X2Effect_RemoveEffects			CleanUpEffect;
-	// Macro to do localisation and stuffs
-	`CREATE_X2ABILITY_TEMPLATE(Template, 'EMPulser');
+	local X2AbilityTemplate Template;
 
-	// Icon Properties
-	Template.IconImage = "img:///UILibrary_LW_Overhaul.LW_AbilityEMPulser"; 
-	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.STANDARD_PISTOL_SHOT_PRIORITY;
-	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;
-	Template.DisplayTargetHitChance = true;
-	Template.AbilitySourceName = 'eAbilitySource_Perk';                                       // color of the icon
+	Template = PurePassive('EMPulser', "img:///UILibrary_LW_Overhaul.LW_AbilityEMPulser", true);
+	Template.AdditionalAbilities.AddItem('ElectroShock');
 
-	// Activated by a button press; additionally, tells the AI this is an activatable
-	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
-
-	// *** VALIDITY CHECKS *** //
-	SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.DisorientedName);
-	Template.AddShooterEffectExclusions(SkipExclusions);
-
-	Cooldown = new class'X2AbilityCooldown';
-	Cooldown.iNumTurns = default.STUN_COOLDOWN;
-	Template.AbilityCooldown = Cooldown;
-
-	// Targeting Details
-	// Can only shoot visible enemies
-	Template.AbilityTargetConditions.AddItem(default.GameplayVisibilityCondition);
-	// Can't target dead; Can't target friendlies -- must be enemy organic
-	UnitPropertyCondition = new class'X2Condition_UnitProperty';
-	UnitPropertyCondition.ExcludeRobotic = false;  // change from basic stun to allow targeting robotic units
-	UnitPropertyCondition.ExcludeOrganic = false;
-	UnitPropertyCondition.ExcludeDead = true;
-	UnitPropertyCondition.ExcludeFriendlyToSource = true;
-	UnitPropertyCondition.RequireWithinRange = true;
-	Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);
-	
-	ImmuneUnitCondition = new class'X2Condition_UnitType';
-	ImmuneUnitCondition.ExcludeTypes.AddItem('PsiZombie');
-	ImmuneUnitCondition.ExcludeTypes.AddItem('AdvPsiWitchM2');
-	ImmuneUnitCondition.ExcludeTypes.AddItem('AdvPsiWitchM3');
-	Template.AbilityTargetConditions.AddItem(ImmuneUnitCondition);
-
-	// Can't shoot while dead
-	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
-	// Only at single targets that are in range.
-	Template.AbilityTargetStyle = default.SimpleSingleTarget;
-
-	// Action Point
-	ActionPointCost = new class'X2AbilityCost_ActionPoints';
-	ActionPointCost.iNumPoints = 1;
-	ActionPointCost.bConsumeAllPoints = true;
-	ActionPointCost.DoNotConsumeAllSoldierAbilities.AddItem('Unlimitedpower_LW');
-	Template.AbilityCosts.AddItem(ActionPointCost);	
-
-	// Hit Calculation (Different weapons now have different calculations for range)
-	ToHitCalc = new class'X2AbilityToHitCalc_StandardAim';
-	ToHitCalc.bGuaranteedHit = false;
-	ToHitCalc.bAllowCrit = false;
-	Template.AbilityToHitCalc = ToHitCalc;
-	Template.AbilityToHitOwnerOnMissCalc = ToHitCalc;
-
-	//Stun Effect
-	StunnedEffect = CreateArcthrowerStunnedStatusEffect(100);
-	Template.AddTargetEffect(StunnedEffect);
-	
-	//CleanUpEffect = CreateStunnedEffectsCleanUpEffect();
-	//Template.AddTargetEffect(CleanUpEffect);
-
-	Template.AssociatedPassives.AddItem( 'Electroshock' );
-	Template.AddTargetEffect(ElectroshockDisorientEffect());
-
-	Template.AssociatedPassives.AddItem( 'EMPulser' );
-	Template.AddTargetEffect(EMPulserHackDefenseReductionEffect());
-	Template.AddTargetEffect(EMPulserWeaponDamageEffect());
-
-	// Targeting Method
-	Template.TargetingMethod = class'X2TargetingMethod_OverTheShoulder';
-	Template.bUsesFiringCamera = true;
-	Template.CinescriptCameraType = "StandardGunFiring";
-	Template.ActivationSpeech = 'TeslaCannon';
-
-	// MAKE IT LIVE!
-	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
-	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;	
-	Template.BuildInterruptGameStateFn = TypicalAbility_BuildInterruptGameState;
-	
-	Template.SuperConcealmentLoss = class'X2AbilityTemplateManager'.default.SuperConcealmentStandardShotLoss;
-	Template.ChosenActivationIncreasePerUse = class'X2AbilityTemplateManager'.default.StandardShotChosenActivationIncreasePerUse;
-	Template.LostSpawnIncreasePerUse = class'X2AbilityTemplateManager'.default.StandardShotLostSpawnIncreasePerUse;
-
-	Template.AdditionalAbilities.AddItem('ArcthrowerPassive');
-	Template.OverrideAbilities.AddItem('ArcthrowerStun');
-
-	Template.AdditionalAbilities.AddItem('EMPulserPassive');
-
-	return Template;	
+	return Template;
 }
 
 static function X2Effect_PersistentStatChange EMPulserHackDefenseReductionEffect()
@@ -549,12 +570,12 @@ static function X2AbilityTemplate CreateChainLightningAbility()
 	local X2Condition_UnitProperty			UnitPropertyCondition, UnitPropertyCondition2;
 	local X2Effect_ArcthrowerStunned		StunnedEffect;
 	local X2AbilityToHitCalc_StandardAim    ToHitCalc;
-	local X2AbilityCooldown					Cooldown;	
+	local X2AbilityCooldown_ArcThrower					Cooldown;	
 	local X2Condition_UnitType				ImmuneUnitCondition;
 	local X2Condition_UnitEffects			SuppressedCondition;
 	local X2Effect_Persistent				DisorientedEffect;
 	//local X2Effect_RemoveEffects			CleanUpEffect;
-
+	local X2Condition_ArcPulser				NoRoboticsCondition;
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'ChainLightning');
 	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_COLONEL_PRIORITY;
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
@@ -566,9 +587,9 @@ static function X2AbilityTemplate CreateChainLightningAbility()
 	Template.ActivationSpeech = 'TeslaCannon';
 
 	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
-	Template.AbilityTargetConditions.AddItem(default.LivingTargetUnitOnlyProperty);
 	Template.AbilityTargetConditions.AddItem(default.GameplayVisibilityCondition);
 	
+
 	Template.AbilityTargetStyle = default.SimpleSingleTarget;
 	Template.AbilityMultiTargetStyle = new class'X2AbilityMultiTarget_Volt';
 	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
@@ -577,22 +598,32 @@ static function X2AbilityTemplate CreateChainLightningAbility()
 	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
 	Template.AddShooterEffectExclusions();
 
-	Template.AbilityTargetConditions.AddItem(default.GameplayVisibilityCondition);
 	Template.AbilityTargetConditions.AddItem(default.LivingHostileUnitDisallowMindControlProperty);
 
+	Template.AbilityMultiTargetConditions.AddItem(default.LivingHostileUnitDisallowMindControlProperty);
+	Template.AbilityMultiTargetConditions.AddItem(default.GameplayVisibilityCondition);
+
+	NoRoboticsCondition = new class'X2Condition_ArcPulser';
+	Template.AbilityTargetConditions.AddItem(NoRoboticsCondition);
 
 	//Template.bAllowAmmoEffects = true;
 	Template.bAllowBonusWeaponEffects = true;
 
 	// Can't target dead; Can't target friendlies -- must be enemy organic
 	UnitPropertyCondition = new class'X2Condition_UnitProperty';
-	UnitPropertyCondition.ExcludeRobotic = true;
+	UnitPropertyCondition.ExcludeRobotic = false;
 	UnitPropertyCondition.ExcludeOrganic = false;
 	UnitPropertyCondition.ExcludeDead = true;
 	UnitPropertyCondition.ExcludeFriendlyToSource = true;
 	Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);
 	
+	UnitPropertyCondition = new class'X2Condition_UnitProperty';
+	UnitPropertyCondition.ExcludeRobotic = true;
+	UnitPropertyCondition.ExcludeOrganic = false;
+	UnitPropertyCondition.ExcludeDead = true;
+	UnitPropertyCondition.ExcludeFriendlyToSource = true;
 	Template.AbilityMultiTargetConditions.AddItem(UnitPropertyCondition);
+
 	UnitPropertyCondition2 = new class'X2Condition_UnitProperty';
 	UnitPropertyCondition2.ExcludeConcealed = true;
 	Template.AbilityShooterConditions.AddItem(UnitPropertyCondition2);
@@ -610,15 +641,15 @@ static function X2AbilityTemplate CreateChainLightningAbility()
 	Template.AbilityMultiTargetConditions.AddItem(ImmuneUnitCondition);
 
 
-
-	Cooldown = new class'X2AbilityCooldown';
+	Cooldown = new class'X2AbilityCooldown_ArcThrower';
 	Cooldown.iNumTurns = default.CHAIN_LIGHTNING_COOLDOWN;
 	Template.AbilityCooldown = Cooldown;
 
 	// Action Point
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
 	ActionPointCost.iNumPoints = default.CHAIN_LIGHTNING_MIN_ACTION_REQ;
-	ActionPointCost.bConsumeAllPoints = false;
+	ActionPointCost.bConsumeAllPoints = true;
+	ActionPointCost.DoNotConsumeAllSoldierAbilities.AddItem('EMPulser');
 	Template.AbilityCosts.AddItem(ActionPointCost);	
 
 	//Stun Effect
@@ -636,6 +667,10 @@ static function X2AbilityTemplate CreateChainLightningAbility()
 	Template.AddTargetEffect(ElectroshockDisorientEffect());
 	Template.AddMultiTargetEffect(ElectroshockDisorientEffect());
 	
+	Template.AssociatedPassives.AddItem( 'EMPulser' );
+	Template.AddTargetEffect(EMPulserHackDefenseReductionEffect());
+	Template.AddTargetEffect(EMPulserWeaponDamageEffect());
+
 	ToHitCalc = new class'X2AbilityToHitCalc_StandardAim';
 	ToHitCalc.bOnlyMultiHitWithSuccess = false;
 	ToHitCalc.BuiltInHitMod = default.CHAIN_LIGHTNING_AIM_MOD;

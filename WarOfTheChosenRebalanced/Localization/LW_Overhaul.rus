@@ -296,65 +296,6 @@ CannotModifyOnMissionSoldierTooltip="Невозможно изменить на�
 [X2Effect_LWHolotarget]
 HoloTargetEffectName="В голографическом прицеле"
 
-[XComGameState_LWPersistentSquad]
-+DefaultSquadNames="Угроза"
-+DefaultSquadNames="Вуду"
-+DefaultSquadNames="Мечник"
-+DefaultSquadNames="Супершесть"
-+DefaultSquadNames="Гусары"
-+DefaultSquadNames="Драгуны"
-+DefaultSquadNames="Дьяволята"
-+DefaultSquadNames="Дикие"
-+DefaultSquadNames="Острие копья"
-+DefaultSquadNames="Победа"
-+DefaultSquadNames="Морфей"
-+DefaultSquadNames="Торнадо"
-+DefaultSquadNames="Добровольцы"
-+DefaultSquadNames="Гризли"
-+DefaultSquadNames="Опора"
-+DefaultSquadNames="Парящие орлы"
-+DefaultSquadNames="Леон"
-+DefaultSquadNames="Убийца"
-+DefaultSquadNames="Хищник"
-+DefaultSquadNames="Гадюка"
-+DefaultSquadNames="Вега"
-+DefaultSquadNames="Крепкие парни"
-+DefaultSquadNames="Мародеры"
-+DefaultSquadNames="Черная стража"
-+DefaultSquadNames="Разбойники"
-+DefaultSquadNames="Кирю-Кай"
-+DefaultSquadNames="Трезубец"
-+DefaultSquadNames="Дикий волк"
-
-+TempSquadNames="Альфа"
-+TempSquadNames="Браво"
-+TempSquadNames="Чарли"
-+TempSquadNames="Дельта"
-+TempSquadNames="Эхо"
-+TempSquadNames="Фокстрот"
-+TempSquadNames="Гольф"
-+TempSquadNames="Отель"
-+TempSquadNames="Индия"
-+TempSquadNames="Джульетта"
-+TempSquadNames="Кило"
-+TempSquadNames="Лима"
-+TempSquadNames="Майк"
-+TempSquadNames="Ноябрь"
-+TempSquadNames="Оскар"
-+TempSquadNames="Папа"
-+TempSquadNames="Квебек"
-+TempSquadNames="Ромео"
-+TempSquadNames="Сьерра"
-+TempSquadNames="Танго"
-+TempSquadNames="Юниформ"
-+TempSquadNames="Виктор"
-+TempSquadNames="Янки"
-+TempSquadNames="Зулус"
-
-
-BackupSquadName="Отряд XCom \"<XGParam:StrValue0>\""
-BackupTempSquadName="Временный отряд \"<XGParam:StrValue0>\""
-
 [UIScreenListener_LivingQuarters]
 +m_strSquadSelection="КАЗАРМА ОТРЯДА"
 
@@ -476,10 +417,6 @@ m_strStaffingPinText="М:<XGParam:IntValue0> Д:<XGParam:IntValue1> Р:<XGParam:
 m_strStaffingPinTextMore="К:<XGParam:IntValue0>"
 m_strMonthlyRegionalIncome="+§<XGParam:IntValue0> (+§<XGParam:IntValue1>)"
 
-[XComGameState_LWOutpostManager]
-LabelCQ_ResistanceManagement="Управление Сопротивлением"
-TooltipCQ_ResistanceManagement="Управление региональными убежищами"
-
 [UIResistanceManagement_LW]
 m_strTitle="ОБЗОР СОПРОТИВЛЕНИЯ"
 m_strLabel="СВЯЗЬ С УБЕЖИЩАМИ СОПРОТИВЛЕНИЯ..."
@@ -582,9 +519,6 @@ m_strProhibitedJobEnded="Члены Сопротивления в регионе
 ;LWOTC translated
 m_strRetributionEnded="Члены сопротивления в регионе <XGParam:StrValue0/> поправились от возмездия Избранного"
 ;End translated
-
-[X2StrategyElement_DefaultAlienActivities]
-m_strInsufficientRebels="Требуется как минимум <XGParam:IntValue0/> повстанцев в убежище, чтобы установить контакт с соседями"
 
 [UIScreenListener_Alert]
 m_strInvasionTitle="ВТОРЖЕНИЕ \"АДВЕНТА\""

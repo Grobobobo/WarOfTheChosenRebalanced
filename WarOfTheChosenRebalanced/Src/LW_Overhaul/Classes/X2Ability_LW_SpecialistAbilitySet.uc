@@ -29,6 +29,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddRescueProtocol());
 	Templates.AddItem(AddHackRewardGreaterShutdownRobot());
 	Templates.AddItem(AddHackRewardGreaterShutdownTurret());
+	Templates.AddItem(AddTotalCombat2());
 	
 	return Templates;
 }
@@ -346,7 +347,6 @@ static function X2AbilityTemplate AddHackRewardControlRobot_Permanent()
 	local X2AbilityTrigger_EventListener    Listener;
 	local X2Effect_MindControl              ControlEffect;
 	local bool								bInfiniteDuration;
-	local X2Effect_TransferMecToOutpost		Effect;
 	local X2Effect_PersistentStatChange		Buff;
 	local X2Effect_RemoveEffects			RemoveEffects;
 
@@ -371,15 +371,6 @@ static function X2AbilityTemplate AddHackRewardControlRobot_Permanent()
 	ControlEffect.bRemoveWhenSourceDies = false; // added for ID 1733 -- mind control effect is no longer lost when source unit dies or evacs
 	ControlEffect.EffectRemovedVisualizationFn = none; // No visualization of this effect being removed (which happens when the unit evacs or dies)
 	Template.AddTargetEffect(ControlEffect);
-
-	// Save MEC effect
-	Effect = new class'X2Effect_TransferMecToOutpost';
-	Effect.BuildPersistentEffect(1, true, false, true, eGameRule_PlayerTurnBegin); // for ID 1733, changed parameter 3 to falso, so effect is no longer lost when source unit dies or evacs
-	Effect.SetDisplayInfo(ePerkBuff_Penalty, Template.LocFriendlyName, Template.GetMyLongDescription(), "img:///UILibrary_PerkIcons.UIPerk_hack_reward", true,,Template.AbilitySourceName);
-	Effect.bRemoveWhenTargetDies = true;
-	Effect.bUseSourcePlayerState = true;
-	Effect.bPersistThroughTacticalGameEnd=true;
-	Template.AddTargetEffect(Effect);
 
 	Buff = new class'X2Effect_PersistentStatChange';
 	Buff.BuildPersistentEffect (1, true, true);
@@ -534,13 +525,13 @@ static function X2AbilityTemplate AddRescueProtocol()
 	UnitPropertyCondition.TreatMindControlledSquadmateAsHostile = true;
 	UnitPropertyCondition.ExcludeAlive = false;
     UnitPropertyCondition.ExcludeHostileToSource = true;
-    UnitPropertyCondition.RequireSquadmates = true;
+    UnitPropertyCondition.RequireSquadmates = false;
     UnitPropertyCondition.ExcludePanicked = true;
 	UnitPropertyCondition.ExcludeRobotic = false;
 	UnitPropertyCondition.ExcludeStunned = true;
 	UnitPropertyCondition.ExcludeNoCover = false;
 	UnitPropertyCondition.FailOnNonUnits = true;
-	UnitPropertyCondition.ExcludeCivilian = false;
+	UnitPropertyCondition.ExcludeCivilian = true;
 	UnitPropertyCondition.ExcludeTurret = true;
 	Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);
 
@@ -580,6 +571,17 @@ static function X2AbilityTemplate AddRescueProtocol()
 	Template.BuildVisualizationFn = class'X2Ability_SpecialistAbilitySet'.static.GremlinSingleTarget_BuildVisualization;
 
 	Template.ChosenActivationIncreasePerUse = class'X2AbilityTemplateManager'.default.NonAggressiveChosenActivationIncreasePerUse;
+
+	return Template;
+}
+
+static function X2AbilityTemplate AddTotalCombat2()
+{
+	local X2AbilityTemplate Template;
+
+	Template = PurePassive('TotalCombat2', "img:///UILibrary_XPACK_Common.PerkIcons.UIPerk_totalCombat", true);
+	//Template.AdditionalAbilities.AddItem('ElectroShock');
+
 
 	return Template;
 }

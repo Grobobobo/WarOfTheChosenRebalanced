@@ -57,7 +57,7 @@ static function XComGameState_Unit AddStrategyUnitToBoardAtLocation(XComGameStat
 	local array<XComGameState_Item> Items;
 	local XComGameState_Item Item, UpdatedItem;
 	local XComGameState_Unit UpdatedUnit;
-
+	local X2WeaponTemplate WeaponTemplate;
 	if(Unit == none)
 	{
 		return none;
@@ -126,17 +126,20 @@ static function XComGameState_Unit AddStrategyUnitToBoardAtLocation(XComGameStat
 	// add abilities
 	// Must happen after unit is submitted and ammo merged, or it gets confused about when the unit is in play or not, and it can pull stale item info
 	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("LWS: Initializing Abilities");
-	UpdatedUnit = XComGameState_Unit(NewGameState.CreateStateObject(class'XComGameState_Unit', UpdatedUnit.ObjectID));
+	UpdatedUnit = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', UpdatedUnit.ObjectID));
 	NewGameState.AddStateObject(UpdatedUnit);
 	Items = UpdatedUnit.GetAllInventoryItems(NewGameState);
 	foreach Items(Item)
 	{
 		UpdatedItem = XComGameState_Item(NewGameState.ModifyStateObject(class'XComGameState_Item', Item.ObjectID));
+
+
 		//Issue #159, this is needed now for loading units from avenger to properly update gamestate.
-		ItemState.BeginTacticalPlay(NewGameState);
+		UpdatedItem.BeginTacticalPlay(NewGameState);
 	}
 
 	Rules.InitializeUnitAbilities(NewGameState, UpdatedUnit);
+
 
 	// make the unit concealed, if they have Phantom
 	// (special-case code, but this is how it works when starting a game normally)
@@ -145,6 +148,23 @@ static function XComGameState_Unit AddStrategyUnitToBoardAtLocation(XComGameStat
 		UpdatedUnit.EnterConcealmentNewGameState(NewGameState);
 	}
 
+
+
+	Rules.SubmitGameState(NewGameState);
+
+	//There is an issue where X2Effect_BonusClipSize triggers too late and the unit does not start with full ammo. This is a quick and dirty fix
+	// to set the ammo count to max after everything has been initialized
+	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("LWS: Updating ammo count");
+	UpdatedUnit = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', UpdatedUnit.ObjectID));
+	UpdatedItem = XComGameState_Item(NewGameState.ModifyStateObject(class'XComGameState_Item', UpdatedUnit.GetPrimaryWeapon().ObjectID));
+	WeaponTemplate = X2WeaponTemplate(UpdatedItem.GetMyTemplate());
+		if(WeaponTemplate != none)
+		{
+			if(WeaponTemplate.InventorySlot == eInvSlot_PrimaryWeapon)
+			{
+				UpdatedItem.Ammo = UpdatedItem.GetClipSize();
+			}
+		}
 	Rules.SubmitGameState(NewGameState);
 
 	return UpdatedUnit;

@@ -3,6 +3,7 @@ class X2Effect_PrimaryHitBonusDamage extends X2Effect_Persistent;
 var int BonusDmg;
 var bool includepistols;
 var bool includesos;
+var bool includeknives;
 
 function int GetAttackingDamageModifier(XComGameState_Effect EffectState, XComGameState_Unit Attacker, Damageable TargetDamageable, XComGameState_Ability AbilityState, const out EffectAppliedData AppliedData, const int CurrentDamage, optional XComGameState NewGameState)
 {
@@ -49,6 +50,10 @@ function int GetAttackingDamageModifier(XComGameState_Effect EffectState, XComGa
 				return BonusDmg;
 			}
 			if (WeaponTemplate.weaponcat == 'sawedoffshotgun' && includesos)
+			{
+				return BonusDmg;
+			}
+			if (WeaponTemplate.weaponcat == 'throwingknife' && includeknives)
 			{
 				return BonusDmg;
 			}

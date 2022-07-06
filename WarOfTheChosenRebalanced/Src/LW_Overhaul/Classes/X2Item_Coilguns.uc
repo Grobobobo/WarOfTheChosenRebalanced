@@ -99,7 +99,9 @@ static function X2DataTemplate CreateAssaultRifle_Coil_Template()
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('CoilgunBonusShredAbility');
+	// Template.Abilities.AddItem('CoilgunBonusShredAbility');
+
+	Template.CreatorTemplateName = 'GeneralWeapons_CG_Schematic'; // The schematic which creates this item
 
 	Template.iPhysicsImpulse = 5;
 
@@ -150,9 +152,10 @@ static function X2DataTemplate CreateSMG_Coil_Template()
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('CoilgunBonusShredAbility');
+	// Template.Abilities.AddItem('CoilgunBonusShredAbility');
 
 	Template.iPhysicsImpulse = 5;
+	Template.CreatorTemplateName = 'LightWeapons_CG_Schematic'; // The schematic which creates this item
 
 	Template.CanBeBuilt = true;
 	Template.bInfiniteItem = false;
@@ -200,7 +203,9 @@ static function X2DataTemplate CreateCannon_Coil_Template()
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('CoilgunBonusShredAbility');
+	// Template.Abilities.AddItem('CoilgunBonusShredAbility');
+
+	Template.CreatorTemplateName = 'HeavyWeapons_CG_Schematic'; // The schematic which creates this item
 
 	Template.iPhysicsImpulse = 5;
 
@@ -248,9 +253,10 @@ static function X2DataTemplate CreateShotgun_Coil_Template()
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('CoilgunBonusShredAbility');
+	// Template.Abilities.AddItem('CoilgunBonusShredAbility');
 
 	Template.iPhysicsImpulse = 5;
+	Template.CreatorTemplateName = 'HeavyWeapons_CG_Schematic'; // The schematic which creates this item
 
 	Template.CanBeBuilt = true;
 	Template.bInfiniteItem = false;
@@ -299,9 +305,10 @@ static function X2DataTemplate CreateSniperRifle_Coil_Template()
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('CoilgunBonusShredAbility');
+	// Template.Abilities.AddItem('CoilgunBonusShredAbility');
 
 	Template.iPhysicsImpulse = 5;
+	Template.CreatorTemplateName = 'PrecisionWeapons_CG_Schematic'; // The schematic which creates this item
 
 	Template.CanBeBuilt = true;
 	Template.bInfiniteItem = false;

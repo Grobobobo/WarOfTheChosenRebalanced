@@ -7,30 +7,30 @@ function bool BT_IsFlanked()
 	return UnitState.IsFlanked(,true);
 }
 
-function bool IsValidTarget(AvailableTarget kTarget)
-{
-	local bool retVal;
-	local XComGameStateHistory History;
-	local XComGameState_Unit kTargetState;
+// function bool IsValidTarget(AvailableTarget kTarget)
+// {
+// 	local bool retVal;
+// 	local XComGameStateHistory History;
+// 	local XComGameState_Unit kTargetState;
 
-	retVal = super.IsValidTarget(kTarget);
+// 	retVal = super.IsValidTarget(kTarget);
 
-	// If we found a valid target and we are an AI, reconsider if the target is civilian.
-	if (retVal &&
-		UnitState.ControllingPlayerIsAI() && 
-		m_kPlayer != None ) {
-		History = `XCOMHISTORY;
-		kTargetState = XComGameState_Unit(History.GetGameStateForObjectID(kTarget.PrimaryTarget.ObjectID));
-		if( kTargetState != None && 
-			kTargetState.GetTeam() == eTeam_Neutral && 
-			!m_kPlayer.bCiviliansTargetedByAliens) // Ignore civs if the AI player has visibility of XCom.
-		{
-			retVal = false;
-		}
-	}
+// 	// If we found a valid target and we are an AI, reconsider if the target is civilian.
+// 	if (retVal &&
+// 		UnitState.ControllingPlayerIsAI() && 
+// 		m_kPlayer != None ) {
+// 		History = `XCOMHISTORY;
+// 		kTargetState = XComGameState_Unit(History.GetGameStateForObjectID(kTarget.PrimaryTarget.ObjectID));
+// 		if( kTargetState != None && 
+// 			kTargetState.GetTeam() == eTeam_Neutral && 
+// 			!m_kPlayer.bCiviliansTargetedByAliens) // Ignore civs if the AI player has visibility of XCom.
+// 		{
+// 			retVal = false;
+// 		}
+// 	}
 
-	return retVal;
-}
+// 	return retVal;
+// }
 
 // Adds check to ignore mind controlled units
 function bool GetAllAoETargets(out array<TTile> TargetList, AoETargetingInfo Profile, out XComGameState_Unit RequiredTarget, optional out array<int> TargetIDs, bool bBaseUnitTiles=false, optional array<Name> DeprioritizedEffects, optional out array<XComGameState_Unit> TargetStates)

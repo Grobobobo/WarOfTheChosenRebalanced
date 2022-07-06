@@ -1482,10 +1482,26 @@ static function X2AbilityTemplate Create_FireRocketLauncherAbility()
 	local X2AbilityToHitCalc_StandardAim    StandardAim;
 	local X2AbilityMultiTarget_Radius       RadiusMultiTarget;
 	local X2Condition_IRI_HasOneAbilityFromList	HasAbilityCondition;
+	local X2AbilityCost_ActionPoints		ActionPointCost;
+	local X2AbilityCost_Ammo	AmmoCost;
+
 	//local X2Condition_UnitEffects			SuppressedCondition;
 
 	Template = class'X2Ability_HeavyWeapons'.static.RocketLauncherAbility('IRI_FireRocketLauncher');
 
+	Template.AbilityCosts.Length = 0;
+
+	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.iNumPoints = 1;
+	ActionPointCost.bConsumeAllPoints = true;
+	ActionPointCost.DoNotConsumeAllSoldierAbilities.AddItem('Salvo');
+	Template.AbilityCosts.AddItem(ActionPointCost);	
+
+
+	AmmoCost = new class'X2AbilityCost_Ammo';
+	AmmoCost.iAmmo = 1;
+	Template.AbilityCosts.AddItem(AmmoCost);
+	
 	//	Ability icon
 	Template.AbilitySourceName = 'eAbilitySource_Item';
 	Template.HideErrors.AddItem('AA_CannotAfford_AmmoCost');

@@ -439,7 +439,8 @@ static function int GetNumAimRolls(XComGameState_Unit Unit)
 		}
 		else if (EffectTemplate.IsA('X2Effect_SteadyWeapon'))
 		{
-			NumAimRolls += default.STEADY_TILE_MODIFIER;
+			//NumAimRolls += default.STEADY_TILE_MODIFIER;
+			NumAimRolls = 0;
 		}
 	}
 

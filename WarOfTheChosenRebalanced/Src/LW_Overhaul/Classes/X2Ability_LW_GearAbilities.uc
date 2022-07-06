@@ -31,6 +31,7 @@ var config int ALLOY_PLATING_HP;
 var config int CARAPACE_PLATING_HP;
 var config int CHITIN_PLATING_HP;
 
+var config int LIGHT_KEVLAR_PLATING_HP;
 var config int SPIDER_PLATING_HP;
 var config int WRAITH_PLATING_HP;
 var config int KEVLAR_PLATING_HP;
@@ -53,6 +54,7 @@ var localized string AblativeHPLabel;
 var config int LIGHT_KEVLAR_MOBILITY_BONUS;
 var config int HEAVY_ARMOR_MOB_PENALTY;
 var config int HEAVY_WEAPONS_MOB_PENALTY;
+
 
 var config int AP_ROUNDS_CRIT_PENALTY;
 static function array<X2DataTemplate> CreateTemplates()
@@ -82,6 +84,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateAblativeHPAbility('Chitin_Plating_Ability', default.CHITIN_PLATING_HP));
 	Templates.AddItem(CreateAblativeHPAbility('Carapace_Plating_Ability', default.CARAPACE_PLATING_HP));
 
+	Templates.AddItem(CreateAblativeHPAbility('Light_Kevlar_Plating_Ability', default.LIGHT_KEVLAR_PLATING_HP));
 	Templates.AddItem(CreateAblativeHPAbility('Spider_Plating_Ability', default.SPIDER_PLATING_HP));
 	Templates.AddItem(CreateAblativeHPAbility('Wraith_Plating_Ability', default.WRAITH_PLATING_HP));
 	Templates.AddItem(CreateAblativeHPAbility('Kevlar_Plating_Ability', default.KEVLAR_PLATING_HP));
@@ -235,6 +238,7 @@ static function X2AbilityTemplate CreateStockSteadyWeaponAbility(name TemplateNa
 	ToHitModifier.Aim_Bonus = Bonus;
 	ToHitModifier.Crit_Bonus = Bonus;
 	ToHitModifier.Upgrade_Empower_Bonus = default.STOCK_EMPOWER_BONUS;
+	//ToHitModifier.ITZ_Triggers = default.VALID_ITZ_ABILITIES;
 	Template.AddTargetEffect(ToHitModifier);
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
@@ -395,7 +399,7 @@ static function X2AbilityTemplate CreateStilettoRoundsAbility()
 	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
 
 	Effect = new class'X2Effect_StilettoRounds';
-	Effect.BonusDmg = class'X2Item_LWUtilityItems'.default.STILETTO_ALIEN_DMG;
+	Effect.BonusDmg = class'X2Item_LWUtilityItems'.default.STILETTO_DMGMOD;
 	Effect.BuildPersistentEffect (1, true, false, false);
 	Effect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true, , Template.AbilitySourceName);
 	Template.AddTargetEffect (Effect);

@@ -91,9 +91,15 @@ LocPromotionPopupText="<Bullet/> Grants 5 points of ablative armor.<br/><Bullet/
 [MassReanimation_LW X2AbilityTemplate]
 LocFriendlyName="Mass Reanimate"
 LocFlyOverText="Mass Reanimate"
-LocHelpText="Reanimate all nearby dead organics, turning them into zombies."
-LocLongDescription="Reanimate all nearby dead organics, turning them into zombies."
+LocHelpText="Reanimate all nearby dead humanoids, turning them into zombies. Killing (and not stunning/disorienting) the unit will kill the zombies."
+LocLongDescription="Reanimate all nearby dead humanoids, turning them into zombies. Killing (and not stunning/disorienting) the unit will kill the zombies."
 LocPromotionPopupText="<Bullet/> Reanimate all nearby dead organics, turning them into zombies."
+
+[PsiReanimation X2AbilityTemplate]
+LocFriendlyName="Psi Reanimation"
+LocLongDescription="Raise a dead soldier, civilian, or ADVENT soldier as a Psionic zombie. Killing (and not stunning/disorienting) the unit will kill the zombies."
+LocHelpText="Raise a dead soldier, civilian, or ADVENT soldier as a Psionic zombie. Killing (and not stunning/disorienting) the unit will kill the zombies."
+LocFlyOverText="Psi Reanimation"
 
 [ReadyForAnything X2AbilityTemplate]
 LocFriendlyName="Ready For Anything"
@@ -517,8 +523,8 @@ FriendlyName="Viper Gatling Rifle"
 
 ;;purifier loc
 
-[AdvPurifier_Leader X2WeaponTemplate]
-FriendlyName="Advent Gunslinger"
+[AdvPurifier_Leader X2CharacterTemplate]
+strCharacterName="Advent Gunslinger"
 
 ;;Priest loc
 
@@ -596,27 +602,35 @@ strCharacterName="Juggernaut"
 
 [Berserker_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
+AbilityDescName="Fist"
 
 [BerserkerM2_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
+AbilityDescName="Fist"
 
 [BerserkerM3_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
+AbilityDescName="Fist"
 
 [BerserkerM4_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
+AbilityDescName="Fist"
 
 [Berserker_Leader_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
+AbilityDescName="Fist"
 
-[Berserker_Leader_MeleeAttack X2WeaponTemplate]
+[BerserkerM2_Leader_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
+AbilityDescName="Fist"
 
-[Berserker_Leader_MeleeAttack X2WeaponTemplate]
+[BerserkerM3_Leader_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
+AbilityDescName="Fist"
 
-[Berserker_Leader_MeleeAttack X2WeaponTemplate]
+[BerserkerM4_Leader_MeleeAttack X2WeaponTemplate]
 FriendlyName="Berserker Fists"
+AbilityDescName="Fist"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;; Archon Loc ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -1007,7 +1021,7 @@ FriendlyName="ADVENT Rocket Launcher"
 ;;;;;;;;;;;;;;;;;;;;;;;;;; AdvMecM3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 [AdvMec_Leader X2CharacterTemplate]
-strCharacterName="Superheavy MEC"
+strCharacterName="Heavy MEC"
 
 [AdvMEC_M3_Wpn X2WeaponTemplate]
 FriendlyName="ADVENT Mag Cannon"
@@ -1329,6 +1343,9 @@ strCharacterName="ADVENT Vanguard"
 [Chryssalid_Leader X2CharacterTemplate]
 strCharacterName="Chryssalid Soldier"
 
+[NeonatecHryssalid_LW X2CharacterTemplate]
+strCharacterName="Neonate Chryssalid"
+
 [Chryssalid_Wpn X2WeaponTemplate]
 FriendlyName="Chryssalid Claw"
 FriendlyNamePlural="Chryssalid Claws"
@@ -1342,6 +1359,30 @@ FriendlyName="Chryssalid Claw"
 FriendlyNamePlural="Chryssalid Claws"
 
 [ChryssalidM4_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[ChryssalidM5_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[NeonateChryssalid_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[NeonateChryssalidM2_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[NeonateChryssalidM3_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[NeonateChryssalidM4_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
+[NeonateChryssalidM5_Wpn X2WeaponTemplate]
 FriendlyName="Chryssalid Claw"
 FriendlyNamePlural="Chryssalid Claws"
 
@@ -1360,6 +1401,11 @@ FriendlyNamePlural="Chryssalid Claws"
 [ChryssalidM4_Leader_Wpn X2WeaponTemplate]
 FriendlyName="Chryssalid Claw"
 FriendlyNamePlural="Chryssalid Claws"
+
+[ChryssalidM5_Leader_Wpn X2WeaponTemplate]
+FriendlyName="Chryssalid Claw"
+FriendlyNamePlural="Chryssalid Claws"
+
 
 [Andromedon_Leader X2CharacterTemplate]
 strCharacterName="Cybertoid"

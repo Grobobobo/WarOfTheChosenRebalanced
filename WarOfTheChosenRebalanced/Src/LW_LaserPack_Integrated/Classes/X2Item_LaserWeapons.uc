@@ -113,7 +113,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateTemplate_Cannon_Laser());
 	Weapons.AddItem(CreateTemplate_Shotgun_Laser());
 	Weapons.AddItem(CreateTemplate_SniperRifle_Laser());
-	Weapons.AddItem(CreateTemplate_Sword_Laser());
+	//Weapons.AddItem(CreateTemplate_Sword_Laser());
 
 	return Weapons;
 }
@@ -163,8 +163,8 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Laser()
 	Template.AddDefaultAttachment('Foregrip', "LWAttachments_LS.Meshes.SK_Laser_Foregrip_A", , "img:///UILibrary_LW_LaserPack.LaserRifle_ForegripA");
 	//Template.AddDefaultAttachment('Optic', "LWRifle_LS.Meshes.SK_LaserRifle_Optic_A", , "img:///UILibrary_LW_LaserPack.LaserRifle__OpticA"); // no default optic
 
-	Template.CreatorTemplateName = 'AssaultRifle_LS_Schematic'; // The schematic which creates this item
-	Template.BaseItem = 'AssaultRifle_MG'; // Which item this will be upgraded from
+	Template.CreatorTemplateName = 'GeneralWeapons_LS_Schematic'; // The schematic which creates this item
+	Template.BaseItem = 'AssaultRifle_CV'; // Which item this will be upgraded from
 
 	Template.iPhysicsImpulse = 5;
 
@@ -225,8 +225,8 @@ static function X2DataTemplate CreateTemplate_SMG_Laser()
 	Template.CanBeBuilt = false;
 	Template.bInfiniteItem = true;
 
-	Template.CreatorTemplateName = 'SMG_LS_Schematic'; // The schematic which creates this item
-	Template.BaseItem = 'SMG_MG'; // Which item this will be upgraded from
+	Template.CreatorTemplateName = 'LightWeapons_LS_Schematic'; // The schematic which creates this item
+	Template.BaseItem = 'SMG_CV'; // Which item this will be upgraded from
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  
 
@@ -277,7 +277,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Laser()
 	Template.CanBeBuilt = false;
 	Template.bInfiniteItem = true;
 
-	Template.CreatorTemplateName = 'Cannon_LS_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'HeavyWeapons_LS_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'Cannon_MG'; // Which item this will be upgraded from
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom'; 
@@ -330,7 +330,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Laser()
 	Template.CanBeBuilt = false;
 	Template.bInfiniteItem = true;
 
-	Template.CreatorTemplateName = 'Shotgun_LS_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'HeavyWeapons_LS_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'Shotgun_MG'; // Which item this will be upgraded from
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  
@@ -384,57 +384,57 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Laser()
 	Template.CanBeBuilt = false;
 	Template.bInfiniteItem = true;
 
-	Template.CreatorTemplateName = 'SniperRifle_LS_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'PrecisionWeapons_LS_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'SniperRifle_MG'; // Which item this will be upgraded from
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom'; 
 
 	return Template;
 }
-static function X2DataTemplate CreateTemplate_Sword_Laser()
-{
-	local X2WeaponTemplate Template;
+// static function X2DataTemplate CreateTemplate_Sword_Laser()
+// {
+// 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Sword_LS');
-	Template.WeaponPanelImage = "_Pistol";                       // used by the UI. Probably determines iconview of the weapon.
+// 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Sword_LS');
+// 	Template.WeaponPanelImage = "_Pistol";                       // used by the UI. Probably determines iconview of the weapon.
 
-	Template.ItemCat = 'weapon';
-	Template.WeaponCat = 'sword';
-	Template.WeaponTech = 'laser_lw'; 
-	Template.strImage = "img:///" $ default.Sword_Laser_ImagePath; 
-	Template.EquipSound = "Sword_Equip_Beam";  
-	Template.InventorySlot = eInvSlot_SecondaryWeapon;
-	Template.StowedLocation = eSlot_RightBack;
-	// This all the resources; sounds, animations, models, physics, the works.
-	Template.GameArchetype = "LWSword_LS.Archetype.WP_Sword_LS";
-	Template.AddDefaultAttachment('R_Back', "BeamSword.Meshes.SM_BeamSword_Sheath", false); 
-	Template.Tier = 4;
+// 	Template.ItemCat = 'weapon';
+// 	Template.WeaponCat = 'sword';
+// 	Template.WeaponTech = 'laser_lw'; 
+// 	Template.strImage = "img:///" $ default.Sword_Laser_ImagePath; 
+// 	Template.EquipSound = "Sword_Equip_Beam";  
+// 	Template.InventorySlot = eInvSlot_SecondaryWeapon;
+// 	Template.StowedLocation = eSlot_RightBack;
+// 	// This all the resources; sounds, animations, models, physics, the works.
+// 	Template.GameArchetype = "LWSword_LS.Archetype.WP_Sword_LS";
+// 	Template.AddDefaultAttachment('R_Back', "BeamSword.Meshes.SM_BeamSword_Sheath", false); 
+// 	Template.Tier = 4;
 
-	Template.iRadius = 1;
-	Template.NumUpgradeSlots = 2;
-	Template.InfiniteAmmo = true;
-	Template.iPhysicsImpulse = 5;
+// 	Template.iRadius = 1;
+// 	Template.NumUpgradeSlots = 2;
+// 	Template.InfiniteAmmo = true;
+// 	Template.iPhysicsImpulse = 5;
 
-	Template.iRange = 0;
-	Template.BaseDamage = default.SWORD_LASER_BASEDAMAGE;
-	Template.Aim = default.SWORD_LASER_AIM;
-	Template.CritChance = default.SWORD_LASER_CRITCHANCE;
-	Template.iSoundRange = default.SWORD_LASER_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.SWORD_LASER_IENVIRONMENTDAMAGE;
-	Template.BaseDamage.DamageType='Melee';
+// 	Template.iRange = 0;
+// 	Template.BaseDamage = default.SWORD_LASER_BASEDAMAGE;
+// 	Template.Aim = default.SWORD_LASER_AIM;
+// 	Template.CritChance = default.SWORD_LASER_CRITCHANCE;
+// 	Template.iSoundRange = default.SWORD_LASER_ISOUNDRANGE;
+// 	Template.iEnvironmentDamage = default.SWORD_LASER_IENVIRONMENTDAMAGE;
+// 	Template.BaseDamage.DamageType='Melee';
 
-	Template.BonusWeaponEffects.AddItem(class'X2StatusEffects'.static.CreateBurningStatusEffect(2, 0));
+// 	Template.BonusWeaponEffects.AddItem(class'X2StatusEffects'.static.CreateBurningStatusEffect(2, 0));
 	
-	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+// 	Template.CanBeBuilt = false;
+// 	Template.bInfiniteItem = true;
 
-	Template.CreatorTemplateName = 'Sword_LS_Schematic'; // The schematic which creates this item
-	Template.BaseItem = 'Sword_MG'; // Which item this will be upgraded from
+// 	Template.CreatorTemplateName = 'Sword_LS_Schematic'; // The schematic which creates this item
+// 	Template.BaseItem = 'Sword_MG'; // Which item this will be upgraded from
 
-	Template.DamageTypeTemplateName = 'Melee';
+// 	Template.DamageTypeTemplateName = 'Melee';
 	
-	return Template;
-}
+// 	return Template;
+// }
 
 defaultproperties
 {

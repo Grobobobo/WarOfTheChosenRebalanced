@@ -22,7 +22,7 @@ function float GetPostDefaultAttackingDamageModifier_CH(
 
 	if (AbilityState.GetMyTemplateName() == 'WalkFire')
 	{
-		if (class'XComGameStateContext_Ability'.static.IsHitResultHit(AppliedData.AbilityResultContext.HitResult))
+		if (class'XComGameStateContext_Ability'.static.IsHitResultHit(AppliedData.AbilityResultContext.HitResult) && !Attacker.HasSoldierAbility('SteadFast'))
 		{
 			ExtraDamage = -CurrentDamage * default.WALK_FIRE_DAMAGE_MODIFIER;
 		}

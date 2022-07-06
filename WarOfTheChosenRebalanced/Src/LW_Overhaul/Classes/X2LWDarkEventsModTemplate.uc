@@ -61,7 +61,7 @@ static function UpdateDarkEvents(X2StrategyElementTemplate Template, int Difficu
 		case 'DarkEvent_LoyaltyAmongThieves_Warlock':   // balancing around that.
 		case 'DarkEvent_AlloyPadding':
 		case 'DarkEvent_RapidResponse':
-
+		case 'DarkEvent_ResistanceInformant':
 			// Remove these from play
 			DETemplate.StartingWeight = 0;
 			DETemplate.MinWeight = 0;
@@ -74,32 +74,24 @@ static function UpdateDarkEvents(X2StrategyElementTemplate Template, int Difficu
 			DETemplate.bRepeatable = false;
 			break;
 
-		case 'DarkEvent_AlienCypher': 
-			DETemplate.OnActivatedFn = class'X2StrategyElement_DarkEvents_LW'.static.ActivateAlienCypher_LW; 
-			DETemplate.OnDeactivatedFn = class'X2StrategyElement_DarkEvents_LW'.static.DeactivateAlienCypher_LW;
-			break;
+		// case 'DarkEvent_AlienCypher': 
+		// 	DETemplate.OnActivatedFn = class'X2StrategyElement_DarkEvents_LW'.static.ActivateAlienCypher_LW; 
+		// 	DETemplate.OnDeactivatedFn = class'X2StrategyElement_DarkEvents_LW'.static.DeactivateAlienCypher_LW;
+		// 	break;
 
-		case 'DarkEvent_ResistanceInformant':
-			DETemplate.MinDurationDays = 21;
-			DETemplate.MaxDurationDays = 28;
-			DETemplate.GetSummaryFn = GetResistanceInformantSummary;
-			break;
+		// case 'DarkEvent_ResistanceInformant':
+		// 	DETemplate.MinDurationDays = 21;
+		// 	DETemplate.MaxDurationDays = 28;
+		// 	DETemplate.GetSummaryFn = GetResistanceInformantSummary;
+		// 	break;
 
 		case 'DarkEvent_MinorBreakthrough':
 			DETemplate.MinActivationDays = 15;
 			DETemplate.MaxActivationDays = 20;
-			DETemplate.MutuallyExclusiveEvents.AddItem('DarkEvent_MinorBreakthrough2');
-			DETemplate.MutuallyExclusiveEvents.AddItem('DarkEvent_MajorBreakthrough2');
-			DETemplate.CanActivateFn = class'X2StrategyElement_DarkEvents_LW'.static.CanActivateMinorBreakthroughAlt; // Will check for whether avatar project has been revealed
-			DETemplate.OnActivatedFn = class'X2StrategyElement_DarkEvents_LW'.static.ActivateMinorBreakthroughMod;
 			`LWTRACE("Redefined Minor Breakthrough Dark Event Template");
 			break;
 
 		case 'DarkEvent_MajorBreakthrough':
-			DETemplate.MutuallyExclusiveEvents.AddItem('DarkEvent_MinorBreakthrough2');
-			DETemplate.MutuallyExclusiveEvents.AddItem('DarkEvent_MajorBreakthrough2');
-			DETemplate.CanActivateFn = class'X2StrategyElement_DarkEvents_LW'.static.CanActivateMajorBreakthroughAlt;
-			DETemplate.OnActivatedFn = class'X2StrategyElement_DarkEvents_LW'.static.ActivateMajorBreakthroughMod;
 			`LWTRACE("Redefined Major Breakthrough Dark Event Template");
 			break;
 
@@ -132,29 +124,29 @@ static function bool ChosenAliveCheck(XComGameState_DarkEvent DarkEventState)
 }
 
 //---------------------------------------------------------------------------------------
-static function string GetResistanceInformantSummary(string strSummaryText)
-{
-	local XGParamTag ParamTag;
-	local float Divider, TempFloat;
-	local int TempInt;
+// static function string GetResistanceInformantSummary(string strSummaryText)
+// {
+// 	local XGParamTag ParamTag;
+// 	local float Divider, TempFloat;
+// 	local int TempInt;
 
-	ParamTag = XGParamTag(`XEXPANDCONTEXT.FindTag("XGParam"));
+// 	ParamTag = XGParamTag(`XEXPANDCONTEXT.FindTag("XGParam"));
 
-	Divider = class'X2LWActivityDetectionCalc_Terror'.default.RESISTANCE_INFORMANT_DETECTION_DIVIDER[`STRATEGYDIFFICULTYSETTING];
-	Divider = 1.0f;
-	TempInt = Round(Divider);
-	if (float(TempInt) ~= Divider)
-	{
-		ParamTag.StrValue0 = string(TempInt);
-	}
-	else
-	{
-		TempFloat = Round(Divider * 10.0) / 10.0;
-		ParamTag.StrValue0 = Repl(string(TempFloat), "0", "");
-	}
+// 	Divider = class'X2LWActivityDetectionCalc_Terror'.default.RESISTANCE_INFORMANT_DETECTION_DIVIDER[`STRATEGYDIFFICULTYSETTING];
+// 	Divider = 1.0f;
+// 	TempInt = Round(Divider);
+// 	if (float(TempInt) ~= Divider)
+// 	{
+// 		ParamTag.StrValue0 = string(TempInt);
+// 	}
+// 	else
+// 	{
+// 		TempFloat = Round(Divider * 10.0) / 10.0;
+// 		ParamTag.StrValue0 = Repl(string(TempFloat), "0", "");
+// 	}
 
-	return `XEXPAND.ExpandString(strSummaryText);
-}
+// 	return `XEXPAND.ExpandString(strSummaryText);
+// }
 
 defaultproperties
 {

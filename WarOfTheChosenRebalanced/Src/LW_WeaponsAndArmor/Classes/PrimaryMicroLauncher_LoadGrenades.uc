@@ -24,7 +24,7 @@ simulated function bool OnEffectTicked(const out EffectAppliedData ApplyEffectPa
 		if (X2GrenadeTemplate(InventoryItem.GetMyTemplate()) != none)
 		{ 
 			`LOG("GRENADE TEMPLATE FOUND WITH NAME: " $ InventoryItem.GetMyTemplate().DataName);
-			if ( class'GrimyClassAN_BonusItemCharges'.default.rockets.find(InventoryItem.GetMyTemplateName()) == INDEX_NONE ){
+			if ( X2GrenadeTemplate(InventoryItem.GetMyTemplate()).WeaponCat != 'rocket' ){
 				`TACTICALRULES.InitAbilityForUnit(AbilityTemplate, UnitState, NewGameState, WeaponState.GetReference(), InventoryItem.GetReference());
 			}
 			else {

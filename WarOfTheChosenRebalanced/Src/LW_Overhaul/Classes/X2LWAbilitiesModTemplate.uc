@@ -603,16 +603,16 @@ static function UpdateTeamwork(X2AbilityTemplate Template)
 
 	if (Template.DataName == 'BondmateTeamwork')
 	{
-		// Change the lvl 1 Teamwork to granting a move action rather than a standard one
-		foreach Template.AbilityTargetEffects(Effect)
-		{
-			ActionPointEffect = X2Effect_GrantActionPoints(Effect);
-			if (ActionPointEffect != none)
-			{
-				ActionPointEffect.PointType = class'X2CharacterTemplateManager'.default.MoveActionPoint;
-				break;
-			}
-		}
+		// // Change the lvl 1 Teamwork to granting a move action rather than a standard one
+		// foreach Template.AbilityTargetEffects(Effect)
+		// {
+		// 	ActionPointEffect = X2Effect_GrantActionPoints(Effect);
+		// 	if (ActionPointEffect != none)
+		// 	{
+		// 		ActionPointEffect.PointType = class'X2CharacterTemplateManager'.default.MoveActionPoint;
+		// 		break;
+		// 	}
+		// }
 
 		// Only apply lvl 1 Teamwork to lvl 1 bonds (not lvl 2)
 		foreach Template.AbilityShooterConditions(Condition)

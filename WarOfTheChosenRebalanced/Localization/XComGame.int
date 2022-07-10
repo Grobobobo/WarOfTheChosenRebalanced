@@ -6670,13 +6670,13 @@ LocLongDescription="Strike an enemy with Psionic force, stunning them. Costs 1 F
 LocHelpText="Strike an enemy with Psionic force, stunning them. Costs 1 Focus."
 LocPromotionPopupText="<Bullet/> Stun Strike has a <Ability:STUNSTRIKEHITCHANCE/>% chance to hit, increased by <Ability:STUNSTRIKEFOCUSHITCHANCE/>% for each Focus level.<br/><Bullet/> Stun Strike has a <Ability:STUNSTRIKE_STUN_CHANCE/>% chance to stun the target if successful.<br/><Bullet/> Stun Strike does not end the Templar's turn.<br/><Bullet/> Stun Strike has a <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
 
-[BondmateTeamwork X2AbilityTemplate]
-LocHelpText="Grant an additional movement point to a bondmate. Has a single charge shared between bondmates."
-LocLongDescription="Grant an additional movement point to a bondmate. Has a single charge shared between bondmates."
+;[BondmateTeamwork X2AbilityTemplate]
+;LocHelpText="Grant an additional movement point to a bondmate. Has a single charge shared between bondmates."
+;LocLongDescription="Grant an additional movement point to a bondmate. Has a single charge shared between bondmates."
 
-[BondmateTeamwork_Improved X2AbilityTemplate]
-LocHelpText="Grant an additional action point to a bondmate. Has one or two charges per mission depending on bond level, shared between bondmates."
-LocLongDescription="Grant an additional action point to a bondmate. Has one or two charges per mission depending on bond level, shared between bondmates."
+;[BondmateTeamwork_Improved X2AbilityTemplate]
+;LocHelpText="Grant an additional action point to a bondmate. Has one or two charges per mission depending on bond level, shared between bondmates."
+;LocLongDescription="Grant an additional action point to a bondmate. Has one or two charges per mission depending on bond level, shared between bondmates."
 ; End Translation
 
 ; LWOTC Needs Translation
@@ -8191,8 +8191,18 @@ LocFriendlyName="Complex Reload"
 LocHelpText="Reload your primary weapon. Ends turn."
 LocFlyOverText="Reloading"
 
+
+
 [XcomGame.X2StrategyGameRulesetDataStructures]
 [X2StrategyGameRulesetDataStructures]
+
+NoCompatLabel="NO COMPATIBILITY"
+VeryLowCompatLabel="VERY LOW"
+LowCompatLabel="LOW"
+HighCompatLabel="MEDIUM"
+VeryHighCompatLabel="HIGH"
+InvalidCompatLabel="INVALID COMPATIBILITY"
+
 ComIntLabels[eComInt_Standard]="Very Low"
 ComIntLabels[eComInt_AboveAverage]="Low"
 ComIntLabels[eComInt_Gifted]="Average"

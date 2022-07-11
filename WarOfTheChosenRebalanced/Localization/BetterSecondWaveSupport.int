@@ -9,9 +9,9 @@ Description="No Hand Holding: Disable the LWOTC tutorial."
 Tooltip="Disables the Chosen so you don't have to play with them."
 Description="The Chosen On Holiday: Disables the Chosen."
 
-[EnableResistanceOrders SecondWaveOptionObject]
-Tooltip="Enables Resistance Orders."
-Description="Strategic Dominance: Enables Resistance Orders for XCOM."
+[DisableResistanceOrders SecondWaveOptionObject]
+Tooltip="Disables Resistance Orders."
+Description="Old School: Disables Resistance Orders for XCOM."
 ; End Translation
 
 ; LWOTC Needs Translation

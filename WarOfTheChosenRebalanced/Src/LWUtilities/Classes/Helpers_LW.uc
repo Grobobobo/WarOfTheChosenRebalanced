@@ -465,7 +465,7 @@ static function bool AreResistanceOrdersEnabled()
 	}
 
 	// Finally, check the second wave option
-	return `SecondWaveEnabled('EnableResistanceOrders');
+	return !`SecondWaveEnabled('DisableResistanceOrders');
 }
 
 // Resumes or pauses any Will recovery projects for the given unit when

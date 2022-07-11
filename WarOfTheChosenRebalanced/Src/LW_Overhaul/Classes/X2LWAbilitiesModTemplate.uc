@@ -588,70 +588,70 @@ static function DisableLostHeadshot(X2AbilityTemplate Template)
 
 static function UpdateTeamwork(X2AbilityTemplate Template)
 {
-	local X2Effect Effect;
-	local X2Condition Condition;
-	local X2Effect_GrantActionPoints ActionPointEffect;
-	local X2Condition_Bondmate BondmateCondition;
+	// local X2Effect Effect;
+	// local X2Condition Condition;
+	// local X2Effect_GrantActionPoints ActionPointEffect;
+	// local X2Condition_Bondmate BondmateCondition;
 	local X2Condition_Visibility TargetVisibilityCondition;
-	local X2AbilityCharges_Teamwork AbilityCharges;
+	// local X2AbilityCharges_Teamwork AbilityCharges;
 
-	// Change the charges for each level of Teamwork
-	AbilityCharges = new class'X2AbilityCharges_Teamwork';
-	AbilityCharges.Charges.AddItem(default.TEAMWORK_LVL1_CHARGES);
-	AbilityCharges.Charges.AddItem(default.TEAMWORK_LVL2_CHARGES);
-	AbilityCharges.Charges.AddItem(default.TEAMWORK_LVL3_CHARGES);
+	// // Change the charges for each level of Teamwork
+	// AbilityCharges = new class'X2AbilityCharges_Teamwork';
+	// AbilityCharges.Charges.AddItem(default.TEAMWORK_LVL1_CHARGES);
+	// AbilityCharges.Charges.AddItem(default.TEAMWORK_LVL2_CHARGES);
+	// AbilityCharges.Charges.AddItem(default.TEAMWORK_LVL3_CHARGES);
 
-	if (Template.DataName == 'BondmateTeamwork')
-	{
-		// // Change the lvl 1 Teamwork to granting a move action rather than a standard one
-		// foreach Template.AbilityTargetEffects(Effect)
-		// {
-		// 	ActionPointEffect = X2Effect_GrantActionPoints(Effect);
-		// 	if (ActionPointEffect != none)
-		// 	{
-		// 		ActionPointEffect.PointType = class'X2CharacterTemplateManager'.default.MoveActionPoint;
-		// 		break;
-		// 	}
-		// }
+	// if (Template.DataName == 'BondmateTeamwork')
+	// {
+	// 	// // Change the lvl 1 Teamwork to granting a move action rather than a standard one
+	// 	// foreach Template.AbilityTargetEffects(Effect)
+	// 	// {
+	// 	// 	ActionPointEffect = X2Effect_GrantActionPoints(Effect);
+	// 	// 	if (ActionPointEffect != none)
+	// 	// 	{
+	// 	// 		ActionPointEffect.PointType = class'X2CharacterTemplateManager'.default.MoveActionPoint;
+	// 	// 		break;
+	// 	// 	}
+	// 	// }
 
-		// Only apply lvl 1 Teamwork to lvl 1 bonds (not lvl 2)
-		foreach Template.AbilityShooterConditions(Condition)
-		{
-			BondmateCondition = X2Condition_Bondmate(Condition);
-			if (BondmateCondition != none)
-			{
-				BondmateCondition.MaxBondLevel = 1;
-				break;
-			}
-		}
+	// 	// Only apply lvl 1 Teamwork to lvl 1 bonds (not lvl 2)
+	// 	foreach Template.AbilityShooterConditions(Condition)
+	// 	{
+	// 		BondmateCondition = X2Condition_Bondmate(Condition);
+	// 		if (BondmateCondition != none)
+	// 		{
+	// 			BondmateCondition.MaxBondLevel = 1;
+	// 			break;
+	// 		}
+	// 	}
 
-		Template.AbilityCharges = AbilityCharges;
-	}
-	else if (Template.DataName == 'BondmateTeamwork_Improved')
-	{
-		// Only apply lvl 1 Teamwork to lvl 1 bonds (not lvl 2)
-		foreach Template.AbilityShooterConditions(Condition)
-		{
-			BondmateCondition = X2Condition_Bondmate(Condition);
-			if (BondmateCondition != none)
-			{
-				BondmateCondition.MaxBondLevel = 1;
-			}
-		}
+	// 	Template.AbilityCharges = AbilityCharges;
+	// }
+	// else if (Template.DataName == 'BondmateTeamwork_Improved')
+	// {
+	// 	// Only apply lvl 1 Teamwork to lvl 1 bonds (not lvl 2)
+	// 	foreach Template.AbilityShooterConditions(Condition)
+	// 	{
+	// 		BondmateCondition = X2Condition_Bondmate(Condition);
+	// 		if (BondmateCondition != none)
+	// 		{
+	// 			BondmateCondition.MaxBondLevel = 1;
+	// 		}
+	// 	}
 
-		// Apply Advanced Teamwork to lvl 2 and 3 bonds
-		foreach Template.AbilityShooterConditions(Condition)
-		{
-			BondmateCondition = X2Condition_Bondmate(Condition);
-			if (BondmateCondition != none)
-			{
-				BondmateCondition.MinBondLevel = 2;
-				BondmateCondition.MaxBondLevel = 3;
-			}
-		}
+	// 	// Apply Advanced Teamwork to lvl 2 and 3 bonds
+	// 	foreach Template.AbilityShooterConditions(Condition)
+	// 	{
+	// 		BondmateCondition = X2Condition_Bondmate(Condition);
+	// 		if (BondmateCondition != none)
+	// 		{
+	// 			BondmateCondition.MinBondLevel = 2;
+	// 			BondmateCondition.MaxBondLevel = 3;
+	// 		}
+	// 	}
 
-		Template.AbilityCharges = AbilityCharges;
-	}
+	// 	Template.AbilityCharges = AbilityCharges;
+	// }
 
 	// Limit Teamwork to line of sight
 	TargetVisibilityCondition = new class'X2Condition_Visibility';

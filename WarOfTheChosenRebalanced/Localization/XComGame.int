@@ -4456,7 +4456,7 @@ PreMissionText="Troopers gain Evasive."
 PostMissionSuccessText="Trooper Upgrade: Evasive"
 PostMissionFailureText="Trooper Upgrade: Evasive"
 
-[DarkEvent_TrooperChosenViperRounds X2DarkEventTemplate]
+[DarkEvent_TrooperChosenVenomRounds X2DarkEventTemplate]
 DisplayName="Trooper Upgrade: Toxic Nightmare"
 SummaryText="Troopers gain Toxic Nightmare, causing shots to poison targets."
 QuoteText="\"These rounds are so toxic, im surprised they aren't harmful to the ones handling them.\""

@@ -8591,7 +8591,7 @@ LocPromotionPopupText="<Bullet/> Greater Padding reduces the number of hit point
 
 [IRI_SoulShot X2AbilityTemplate]
 LocFriendlyName="Soul Shot"
-LocLongDescription="A powerful aim-based ranged attack that can crit and does not end turn. Costs 1 Focus."
+LocLongDescription="Upgrades rend to a ranged attack that is guaranteed to hit and pierces armor."
 LocHelpText="A powerful aim-based ranged attack that can crit and does not end turn. Costs 1 Focus."
 LocPromotionPopupText="<Bullet/> Soul Shot has no cooldown."
 

@@ -62,15 +62,15 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 	case 'FocusKillTracker':
 		//DisableFocusGainDuringApotheosis(Template);
 		break;
-	case 'OverCharge':
-		Template.AdditionalAbilities.RemoveItem('OverchargePassive');
-		break;
+	// case 'OverCharge':
+	// 	Template.AdditionalAbilities.RemoveItem('OverchargePassive');
+	// 	break;
 	case 'Amplify':
 		ModifyAmplifyEffect(Template);
 		class'Helpers_LW'.static.MakeFreeAction(Template);
 		break;
-	case 'Reverberation':
-		HideTheEffects(Template);
+//	case 'Reverberation':
+	//	HideTheEffects(Template);
 	case 'Ghost':
 		MakeGhostCooldownInsteadOfCharges(Template);
 		break;

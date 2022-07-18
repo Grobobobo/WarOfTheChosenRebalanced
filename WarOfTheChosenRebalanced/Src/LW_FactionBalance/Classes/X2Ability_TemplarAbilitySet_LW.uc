@@ -639,8 +639,7 @@ static function X2AbilityTemplate SoulShot()
 	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_SQUADDIE_PRIORITY;
 
 	ToHitCalc = new class'X2AbilityToHitCalc_StandardAim';
-	Template.AbilityToHitCalc = ToHitCalc;
-	Template.AbilityToHitOwnerOnMissCalc = ToHitCalc;
+	Template.AbilityToHitCalc = default.Deadeye;
 
 	Template.AbilityTargetStyle = default.SimpleSingleTarget;
 	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
@@ -663,13 +662,13 @@ static function X2AbilityTemplate SoulShot()
 
 	// Costs
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
-	ActionPointCost.bConsumeAllPoints = false;
+	ActionPointCost.bConsumeAllPoints = true;
 	ActionPointCost.iNumPoints = 1;
 	Template.AbilityCosts.AddItem(ActionPointCost);
 	
-	FocusCost = new class'X2AbilityCost_Focus';
-	FocusCost.FocusAmount = 1;
-	Template.AbilityCosts.AddItem(FocusCost);
+	// FocusCost = new class'X2AbilityCost_Focus';
+	// FocusCost.FocusAmount = 1;
+	// Template.AbilityCosts.AddItem(FocusCost);
 
 	// Effects
 	WeaponDamageEffect = new class'X2Effect_ApplyWeaponDamage';
@@ -700,6 +699,7 @@ static function X2AbilityTemplate SoulShot()
 	Template.Hostility = eHostility_Offensive;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	Template.PostActivationEvents.AddItem('RendActivated');
 	
 	Template.SuperConcealmentLoss = class'X2AbilityTemplateManager'.default.SuperConcealmentStandardShotLoss;
 	Template.ChosenActivationIncreasePerUse = class'X2AbilityTemplateManager'.default.StandardShotChosenActivationIncreasePerUse;

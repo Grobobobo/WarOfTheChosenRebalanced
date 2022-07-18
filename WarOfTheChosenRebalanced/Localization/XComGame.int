@@ -8557,8 +8557,8 @@ LocFlyOverText="Shield Bash"
 [TemplarInvert X2AbilityTemplate]
 LocFriendlyName="Invert"
 
-LocLongDescription="Switch locations with a unit. Costs 1 Focus."
-LocHelpText="Switch locations with a unit. Costs 1 Focus."
+LocLongDescription="Switch locations with a unit. Costs 2 Focus."
+LocHelpText="Switch locations with a unit. Costs 2 Focus."
 LocPromotionPopupText="<Bullet/> Invert has a <Ability:SelfCooldown/> turn cooldown, and does not end the Templar's turn.<br/><Bullet/> Can target both ally and enemy units.<br/><Bullet/> Cannot Target Chosen.<br/>"
 
 [OneForAll X2AbilityTemplate]
@@ -8631,8 +8631,8 @@ LocFlyOverText="Superior Aptitude"
 
 [Volt X2AbilityTemplate]
 LocFriendlyName="Volt"
-LocLongDescription="A non-turn ending AOE attack that makes its targets easier to hit. Costs 1 Focus."
-LocHelpText="A non-turn ending AOE attack that makes its targets easier to hit. Costs 1 Focus."
+LocLongDescription="A non-turn ending AOE attack. Costs 1 Focus."
+LocHelpText="A non-turn ending AOE attack. Costs 1 Focus."
 LocPromotionPopupText="<Bullet/> Volt has no cooldown, but costs 1 Focus.<br/><Bullet/> Volt increases your squad's aim by +<Ability:RECOILAIMBONUS/> against the targets.<br/>"
 
 [Amplify X2AbilityTemplate]

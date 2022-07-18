@@ -2597,6 +2597,12 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			X2GrenadeTemplate(WeaponTemplate).iRadius = 2;
 			break;
 
+		
+		
+		case 'SpectreM1_WPN':
+		case 'SpectreM2_WPN':
+			WeaponTemplate.InfiniteAmmo = false;
+			break;
 		case 'AdvPriestM1_PsiAmp':
 			//WeaponTemplate.Abilities.AddItem('PriestPsiMindControl');
 			break;

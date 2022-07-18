@@ -2048,7 +2048,7 @@ static function X2DataTemplate CreateTemplate_Spectre_LW_WPN(name TemplateName, 
 
 	Template.DamageTypeTemplateName = 'Heavy';
 
-	Template.InfiniteAmmo = true;
+	Template.InfiniteAmmo = false;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');

@@ -349,6 +349,7 @@ static function UpdateArcWave(X2AbilityTemplate Template)
 
 	Effect = new class'X2Effect_ArcWaveMultiDamage_LW';
 
+	Effect.bIgnoreArmor = false;
 	Effect.T1Damage = default.ARCWAVE_T1_DAMAGE;
 	Effect.T2Damage = default.ARCWAVE_T2_DAMAGE;
 	Effect.T3Damage = default.ARCWAVE_T3_DAMAGE;

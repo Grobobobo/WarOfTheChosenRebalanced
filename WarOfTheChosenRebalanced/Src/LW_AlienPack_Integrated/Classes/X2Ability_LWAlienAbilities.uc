@@ -2143,7 +2143,6 @@ static function X2AbilityTemplate CreateChangeForm_Shoggoth_Ability()
 
 static function EventListenerReturn ShoggothListener(Object EventData, Object EventSource, XComGameState GameState, Name Event, Object CallbackData)
 {
-	local XComGameState_Ability AbilityState;
 	local int Roll;
 	local XComGameStateContext_Ability AbilityContext;
 	local XComGameState_Ability TriggerAbilityState;
@@ -2156,15 +2155,13 @@ static function EventListenerReturn ShoggothListener(Object EventData, Object Ev
 
 	TargetUnit = XComGameState_Unit(`XCOMHISTORY.GetGameStateForObjectID(AbilityContext.InputContext.PrimaryTarget.ObjectID,,GameState.GetContext().GetFirstStateInEventChain().HistoryIndex - 1));
 
-	AbilityState = XComGameState_Ability(CallbackData);
-
 	Roll = `SYNC_RAND_STATIC(100);
 
 	Chance = default.SHOGGOTH_SPAWN_CHANCE_PER_HIT * TargetUnit.GetCurrentStat(eStat_HP) / TargetUnit.GetMaxStat(eStat_HP);
 
-	if( Roll < default.SHOGGOTH_SPAWN_CHANCE_PER_HIT)
+	if( Roll < Chance)
 	{
-		return AbilityState.AbilityTriggerEventListener_Self(EventData, EventSource, GameState, Event, CallbackData);
+		return TriggerAbilityState.AbilityTriggerEventListener_Self(EventData, EventSource, GameState, Event, CallbackData);
 	}
 }
 

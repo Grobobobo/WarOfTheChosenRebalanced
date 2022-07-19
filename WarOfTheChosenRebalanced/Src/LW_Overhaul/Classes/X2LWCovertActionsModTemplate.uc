@@ -63,13 +63,9 @@ static function UpdateCovertActions(X2StrategyElementTemplate Template, int Diff
 			break;
 		case 'CovertAction_ImproveComInt':
 		case 'CovertAction_RemoveDoom':
-
+		case 'CovertAction_RecruitExtraFactionSoldier':
 			RemoveStaffSlots(CATemplate, 'CovertActionScientistStaffSlot');
 			CATemplate.RequiredFactionInfluence = EFactionInfluence(eFactionInfluence_MAX + 1);
-			break;
-		case 'CovertAction_RecruitExtraFactionSoldier':
-			CATemplate.bDisplayIgnoresInfluence = false;  // Don't roll this CA if the player can't run it!
-			ConfigureHardCovertAction(CATemplate);
 			break;
 		case 'CovertAction_FacilityLead':
 //			`LWTrace("X2LWCovertActionsModTemplate - making " $ CATemplate.DataName $ " unique");

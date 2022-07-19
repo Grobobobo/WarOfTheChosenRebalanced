@@ -79,7 +79,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Techs.AddItem(CreateCarapacePlatingProjectTemplate());
 
 	Techs.AddItem(CreateChitinPlatingProjectTemplate());
-//	Techs.AddItem(CreateAPRoundsProjectTemplate());
+	Techs.AddItem(CreateAPRoundsProjectTemplate());
 	Techs.AddItem(CreateStilettoRoundsProjectTemplate());
 	Techs.AddItem(CreateTalonRoundsProjectTemplate());
 	Techs.AddItem(CreateFlechetteRoundsProjectTemplate());
@@ -131,12 +131,14 @@ static function array<X2DataTemplate> CreateTemplates()
 	Techs.AddItem(AddWeaponUpgradeBreakthrough2());
 	Techs.AddItem(CreateReinforcedUnderlay1());
 	Techs.AddItem(CreateReinforcedUnderlay2());
-	Techs.AddItem(CreateWetWorkProject());
-	Techs.AddItem(CreateIntegratedWarfareProject());
-	Techs.AddItem(CreateVengeanceProject());
-	Techs.AddItem(CreateVultureProject());
-	Techs.AddItem(StayWithMeProject());
-	Techs.AddItem(LightningStrikeProject());
+
+	// Techs.AddItem(CreateWetWorkProject());
+	// Techs.AddItem(CreateIntegratedWarfareProject());
+	// Techs.AddItem(CreateVengeanceProject());
+	// Techs.AddItem(CreateVultureProject());
+	// Techs.AddItem(StayWithMeProject());
+	// Techs.AddItem(LightningStrikeProject());
+
 	Techs.AddItem(CreateLockOnProjectTemplate());
 	Techs.AddItem(CreateFlechetteProjectTemplate());
 	Techs.AddItem(CreatePlasmaEjectorProjectTemplate());

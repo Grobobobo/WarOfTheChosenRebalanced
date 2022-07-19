@@ -7,7 +7,7 @@ simulated protected function OnEffectAdded(const out EffectAppliedData ApplyEffe
 	local XComGameState_Unit ControllerState;
 	local XComGameState_Unit UnitState;
 	local Object EffectObj;
-	local int i;
+//	local int i;
 
 	super(X2Effect_Persistent).OnEffectAdded(ApplyEffectParameters, kNewTargetState, NewGameState, NewEffectState);
 

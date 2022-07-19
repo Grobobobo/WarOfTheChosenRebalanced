@@ -164,6 +164,9 @@ static event InstallNewCampaign(XComGameState StartState)
 	// class'X2StrategyElement_DefaultResistanceModes'.static.OnXCOMLeavesIntelMode(StartState, StartingFactionState.GetReference());
 	// class'X2StrategyElement_DefaultResistanceModes'.static.OnXCOMLeavesMedicalMode(StartState, StartingFactionState.GetReference());
 	// class'X2StrategyElement_DefaultResistanceModes'.static.OnXCOMLeavesBuildMode(StartState, StartingFactionState.GetReference());
+	
+	SetupContinentBonuses(StartState);
+
 }
 
 static function OnPreCreateTemplates()
@@ -1970,6 +1973,58 @@ static function DisableUnwantedObjectives(XComGameState StartState)
 			break;
 		default:
 			break;
+		}
+	}
+}
+
+
+static function SetupContinentBonuses(XComGameState StartState)
+{
+	local XComGameState_Continent ContinentState;
+
+	local XComGameState_StrategyCard CardState;
+
+	foreach StartState.IterateByClassType(class'XComGameState_Continent', ContinentState)
+	{
+		foreach StartState.IterateByClassType(class'XComGameState_StrategyCard', CardState)
+		{
+			if (ContinentState.GetMyTemplateName() == 'Continent_NorthAmerica' && CardState.GetMyTemplateName() == 'ResCard_InsideJobI')
+			{
+				ContinentState.ContinentBonusCard = CardState.GetReference();
+				CardState.bDrawn = true;
+			}
+			else if (ContinentState.GetMyTemplateName() == 'Continent_SouthAmerica' && CardState.GetMyTemplateName() == 'ResCard_UnderTheTableI')
+			{
+				ContinentState.ContinentBonusCard = CardState.GetReference();
+				CardState.bDrawn = true;
+			}
+			else if (ContinentState.GetMyTemplateName() == 'Continent_Africa' && CardState.GetMyTemplateName() == 'ResCard_HiddenReservesI')
+			{
+				ContinentState.ContinentBonusCard = CardState.GetReference();
+				CardState.bDrawn = true;
+			}
+			else if (ContinentState.GetMyTemplateName() == 'Continent_Asia' && CardState.GetMyTemplateName() == 'ResCard_PursuitOfKnowledge')
+			{
+				ContinentState.ContinentBonusCard = CardState.GetReference();
+				CardState.bDrawn = true;
+			}
+			else if (ContinentState.GetMyTemplateName() == 'Continent_Oceania' && CardState.GetMyTemplateName() == 'ResCard_ResUnitIfRetaliation')
+			{
+				ContinentState.ContinentBonusCard = CardState.GetReference();
+				CardState.bDrawn = true;
+			}
+			else if (ContinentState.GetMyTemplateName() == 'Continent_Europe' && CardState.GetMyTemplateName() == 'ResCard_MassivePopularity')
+			{
+				ContinentState.ContinentBonusCard = CardState.GetReference();
+				CardState.bDrawn = true;
+			}
+// Continents=Continent_NorthAmerica
+// Continents=Continent_SouthAmerica
+// Continents=Continent_Europe
+// Continents=Continent_Asia
+// Continents=Continent_Africa
+// Continents=Continent_Oceania
+
 		}
 	}
 }

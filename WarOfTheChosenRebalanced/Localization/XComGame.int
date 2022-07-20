@@ -263,9 +263,8 @@ LocPromotionPopupText="<Bullet/> Rocket Cooldown is decreased by 1.<br/>"
 [FireInTheHole X2AbilityTemplate]
 LocFriendlyName="Fire In The Hole"
 LocFlyOverText="Fire In The Hole"
-LocLongDescription="Your Grenades and Rockets have reduced scatter by 1 tile."
-LocHelpText="Your Grenades and Rockets have reduced scatter by 1 tile."
-LocPromotionPopupText="<Bullet/> Your rockets are more likely to hit their intended point of impact, or at least close to it.<br/><Bullet/> The maximum it can miss by is reduced by two tiles."
+LocLongDescription="Reduce Rocket scatter by around 50%, and reduce grenade scatter by around 20%."
+LocPromotionPopupText="<Bullet/> Your rockets are more likely to hit their intended point of impact, or at least close to it.<br/><Bullet/> The maximum it can miss by is reduced by 50%."
 
 [JavelinRockets X2AbilityTemplate]
 LocFriendlyName="Javelin Rockets"

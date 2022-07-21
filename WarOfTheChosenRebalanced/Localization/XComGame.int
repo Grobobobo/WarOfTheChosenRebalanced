@@ -9119,6 +9119,14 @@ LocHelpText="Target a small area with a magnetic grenade."
 
 ;End translation
 
+[AssaultRifle_CV X2WeaponTemplate]
+FriendlyName="Assault Rifle"
+FriendlyNamePlural="Assault Rifles"
+BriefSummary="We've managed to salvage a variety of standard infantry small arms; this is the most common variety, similar to the rifle used twenty years before. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText="<Bullet/> <Ability:ASSAULTRIFLE_CV_DAMAGE> Average Damage. <\n<Bullet/> Use upgrades looted from enemies to improve the Assault Rifle's tactical effectiveness."
+AbilityDescName="assault rifle"
+
+
 
 [Sidearm_LS X2WeaponTemplate]
 FriendlyName="Heater"

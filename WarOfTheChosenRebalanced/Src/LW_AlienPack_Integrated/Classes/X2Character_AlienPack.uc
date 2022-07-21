@@ -1702,16 +1702,12 @@ static function X2CharacterTemplate CreateTemplate_Shoggoth()
 static function X2CharacterTemplate CreateNeonateChryssalid_Template()
 {
 	local X2CharacterTemplate CharTemplate;
-	local LootReference Loot;
 
 	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, 'NeonateChryssalid_LW');
 	CharTemplate.CharacterGroupName = 'NeonChryssalid';
 	CharTemplate.DefaultLoadout = 'Chryssalid_Loadout';
 	CharTemplate.BehaviorClass = class'XGAIBehavior';
 	CharTemplate.strPawnArchetypes.AddItem("GameUnit_NeonateChryssalid.ARC_GameUnit_NeonateChryssalid");
-	//Loot.ForceLevel = 0;
-	//Loot.LootTableName = 'Chryssalid_BaseLoot';
-	//CharTemplate.Loot.LootReferences.AddItem(Loot);
 
 	CharTemplate.strMatineePackages.AddItem("CIN_Chryssalid");
 

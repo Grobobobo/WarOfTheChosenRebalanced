@@ -828,7 +828,15 @@ static function RemoveAbilityCosts(X2AbilityTemplate Template, name EffectClass)
 	}
 }
 
+simulated static function TrimTrailingZerosFromFloat(float InputValue, out string text)
+{
+	text = string(InputValue);
 
+	while ((Len(text) > 0) && (InStr(text, "0", true) == Len(text) - 1))
+		text = left(text, Len(text) - 1);
+	while ((Len(text) > 0) && (InStr(text, ".", true) == Len(text) - 1))
+		text = left(text, Len(text) - 1);
+}
 defaultproperties
 {
 	CHOSEN_SPAWN_TAG_SUFFIX="_LWOTC_ChosenTag"

@@ -867,12 +867,8 @@ static function EventListenerReturn OnOverrideAbilityIconColor(Object EventData,
 		case 'ThrowGrenade':
 			if (UnitState.AffectedByEffectNames.Find('RapidDeploymentEffect') != -1)
 			{
-				if (class'X2Effect_RapidDeployment'.default.VALID_GRENADE_TYPES.Find(WeaponState.GetMyTemplateName()) != -1)
-				{
-					IsTurnEnding = false;
-					IsFree = true;
-				}
-
+				IsTurnEnding = false;
+				IsFree = true;
 			}
 			if(UnitState.HasSoldierAbility('FreeGrenades'))
 			{
@@ -889,11 +885,8 @@ static function EventListenerReturn OnOverrideAbilityIconColor(Object EventData,
 		case 'LaunchGrenade':
 			if (UnitState.AffectedByEffectNames.Find('RapidDeploymentEffect') != -1)
 			{
-				if (class'X2Effect_RapidDeployment'.default.VALID_GRENADE_TYPES.Find(WeaponState.GetLoadedAmmoTemplate(AbilityState).DataName) != -1)
-				{
-					IsTurnEnding = false;
-					IsFree = true;
-				}
+				IsTurnEnding = false;
+				IsFree = true;
 			}
 			if(UnitState.HasSoldierAbility('FreeGrenades'))
 			{

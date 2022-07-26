@@ -327,7 +327,7 @@ static function X2AbilityTemplate CreateHazmatVestBonusAbility_LW()
 	//
 	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
 	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
-	PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false, , Template.AbilitySourceName);
+	PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true, , Template.AbilitySourceName);
 	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.HAZMAT_ABLATIVE_BONUS);
 	Template.AddTargetEffect(PersistentStatChangeEffect);
 	

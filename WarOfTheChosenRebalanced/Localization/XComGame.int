@@ -353,6 +353,15 @@ Description="Take control of this unit for rest of the mission and gain stat bon
 
 ;LWOTC needs translation
 
+
+[PartialShutDownRobot X2HackRewardTemplate]
+FriendlyName="Sensor Overload"
+Description="Disable (stun) the unit for 1 Action."
+
+[PartialShutDownTurret X2HackRewardTemplate]
+FriendlyName="Sensor Overload"
+Description="Disable (stun) the unit for 1 Action."
+
 [GreaterShutdownRobot X2HackRewardTemplate]
 FriendlyName="Greater Shutdown"
 Description="Disable (stun) the unit for 3 turns."

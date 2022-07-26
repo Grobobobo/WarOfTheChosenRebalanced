@@ -106,7 +106,7 @@ static function DoaGlobalStatModifierByDifficulty(X2CharacterTemplate Template, 
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_HP] = FCeil(HighestDiffTemplate.CharacterBaseStats[eStat_HP] * default.DIFFICULTY_HP_MODIFIER[i]);
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_Offense] = FCeil(HighestDiffTemplate.CharacterBaseStats[eStat_Offense] + default.DIFFICULTY_AIM_MODIFIER[i]);
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_Will] = FCeil(HighestDiffTemplate.CharacterBaseStats[eStat_Will] + default.DIFFICULTY_Will_MODIFIER[i]);
-		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_Mobility] = Max(FCeil(HighestDiffTemplate.CharacterBaseStats[eStat_Mobility] + DIFFICULTY_MOBILITY_MODIFIER[i]),0);
+		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_Mobility] = Max(FCeil(HighestDiffTemplate.CharacterBaseStats[eStat_Mobility] + default.DIFFICULTY_MOBILITY_MODIFIER[i]),0);
 
 	
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_ArmorMitigation] = HighestDiffTemplate.CharacterBaseStats[eStat_ArmorMitigation];

@@ -88,7 +88,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	// DarkEvents.AddItem(CreateTacticalUpgradesTemplate('OverBearingSuperiority_LW','Captain',LidAppeared,default.T3_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Predator_LW','Drone',TrooperAppeared,default.T1_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Brawler','Drone',TrooperAppeared,default.T1_UPGRADES_WEIGHT));
+	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Brawler','Drone',TrooperAppeared,default.T1_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('HuntersInstinct','Drone',MECAppeared,default.T2_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ApexPredator_LW','Drone',MECAppeared,default.T2_UPGRADES_WEIGHT));

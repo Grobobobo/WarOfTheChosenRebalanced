@@ -461,6 +461,12 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 		case 'IRT_DODGE_PER_TILE':
 			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.IRT_DODGE_PER_TILE);
 			return true;
+		case 'SECTICIDE_WILL_REDUCTION':
+			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.SECTICIDE_WILL_REDUCTION);
+			return true;
+		case 'SECTICIDE_PSIOFFENSE_REDUCTION':
+			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.SECTICIDE_PSIOFFENSE_REDUCTION);
+			return true;
 		case 'BRAWLER_DR_PCT':
 			OutString = string(int(class'X2Effect_Brawler'.default.BRAWLER_DR_PCT));
 			return true;

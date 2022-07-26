@@ -628,8 +628,8 @@ static function X2AbilityTemplate SoulShot()
 	local X2Condition_UnitProperty          TargetProperty;
 	local X2Effect_ApplyWeaponDamage        WeaponDamageEffect;
 	local X2Condition_Visibility            TargetVisibilityCondition;
-	local X2AbilityToHitCalc_StandardAim	ToHitCalc;
-	local X2AbilityCost_Focus				FocusCost;
+	//local X2AbilityToHitCalc_StandardAim	ToHitCalc;
+//	local X2AbilityCost_Focus				FocusCost;
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'IRI_SoulShot');
 
 	// Icon Setup
@@ -638,7 +638,7 @@ static function X2AbilityTemplate SoulShot()
 	Template.AbilitySourceName = 'eAbilitySource_Psionic';
 	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_SQUADDIE_PRIORITY;
 
-	ToHitCalc = new class'X2AbilityToHitCalc_StandardAim';
+	//ToHitCalc = new class'X2AbilityToHitCalc_StandardAim';
 	Template.AbilityToHitCalc = default.Deadeye;
 
 	Template.AbilityTargetStyle = default.SimpleSingleTarget;

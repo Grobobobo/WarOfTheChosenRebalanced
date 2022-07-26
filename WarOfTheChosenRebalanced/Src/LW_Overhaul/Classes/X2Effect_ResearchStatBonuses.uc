@@ -137,7 +137,10 @@ simulated protected function OnEffectAdded(const out EffectAppliedData ApplyEffe
 	//Make The bonus scale by difficulty
 	//Rounding on this doesn't work because it's not summed up
 
-	TotalHP = FCeil(1.0f * TotalHP * class'X2LWCharactersModTemplate'.default.DIFFICULTY_HP_MODIFIER[`StrategyDifficultySetting]);
+	if(class'X2LWCharactersModTemplate'.default.EXCLUDED_CHARACTERS_FROM_GLOBAL_DIFF_MOD.Find(UnitState.GetMyTemplate().DataName) == INDEX_NONE)
+	{
+		TotalHP = FCeil(1.0f * TotalHP * class'X2LWCharactersModTemplate'.default.DIFFICULTY_HP_MODIFIER[`StrategyDifficultySetting]);
+	}
 	NewChange.StatType = eStat_HP;
 	NewChange.StatAmount = TotalHP;
 	NewChange.ModOp = MODOP_Addition;

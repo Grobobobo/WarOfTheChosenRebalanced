@@ -540,6 +540,15 @@ static event OnPreMission(XComGameState StartGameState, XComGameState_MissionSit
 // called for the creation of Gatecrasher.
 static function PostSitRepCreation(out GeneratedMissionData GeneratedMission, optional XComGameState_BaseObject SourceObject)
 {
+	local XComGameState_MissionSite MissionState;
+	//local XComGameState_Reward RewardState;
+	//local X2RewardTemplate RewardTemplate;
+	//local XComGameState_HeadquartersResistance ResHQ;
+	//local X2StrategyElementTemplateManager TemplateManager;
+	local XComGameState NewGameState;
+	local name CurrentSitrepName;
+	local array<name> SitrepList;
+	local XComGameStateHistory CachedHistory;
 	local XComGameState_HeadquartersAlien AlienHQ;
 
 	AlienHQ = XComGameState_HeadquartersAlien(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersAlien'));
@@ -554,7 +563,195 @@ static function PostSitRepCreation(out GeneratedMissionData GeneratedMission, op
     {
 		GeneratedMission.SitReps.AddItem('StealthMission');
 	}
+
+	//TemplateManager = class'X2StrategyElementTemplateManager'.static.GetStrategyElementTemplateManager();
+	//ResHQ = class'UIUtilities_Strategy'.static.GetResistanceHQ();
+	
+	//NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("TempGameState");
+	CachedHistory = `XCOMHISTORY;
+	NewGameState = CachedHistory.GetGameStateFromHistory();
+	If (`HQGAME  != none && `HQPC != None && `HQPRES != none) // we're in strategy
+	{
+	
+		// AddSitrepToMissionFamilyIfResistanceCardsActive('ResCard_BoobyTraps', 'HighExplosives', 'Terror', GeneratedMission);
+		// AddSitrepToMissionFamilyIfResistanceCardsActive('ResCard_BoobyTraps', 'HighExplosives', 'Retaliation', GeneratedMission);
+		// AddSitrepToMissionFamilyIfResistanceCardsActive('ResCard_BoobyTraps', 'HighExplosives', 'ChosenRetaliation', GeneratedMission);
+		// AddSitrepToMissionFamilyIfResistanceCardsActive('ResCard_BoobyTraps', 'HighExplosives', 'ProtectDevice', GeneratedMission);
+
+
+
+		MissionState = XComGameState_MissionSite(SourceObject);
+
+		if (MissionState == none){
+			MissionState = XComGameState_MissionSite(`XCOMHISTORY.GetGameStateForObjectID(GeneratedMission.MissionID));
+		}
+
+		if (MissionState == none){
+			`LOG("ERROR: Could not find mission state for mission id " $ GeneratedMission.MissionID);
+		}
+			
+
+		AddRewardsToMissionSourceIfResistanceCardActive(NewGameState, MissionState, GeneratedMission, 'Reward_Intel', 40, 'ResCard_ZealousDeployment_LW', 'MissionSource_GuerillaOp'); 
+
+
+		AddSitrepToMissionSourceIfResistanceCardsActive('ResCard_XenobiologicalFieldResearch_LW', 'DarkEventInfiltratorChryssalidSitRep', 'MissionSource_GuerillaOp', MissionState, GeneratedMission);
+		AddSitrepToMissionSourceIfResistanceCardsActive('ResCard_XenobiologicalFieldResearch_LW', 'DarkEventInfiltratorChryssalidSitRep', 'MissionSource_ResistanceOp', MissionState, GeneratedMission);
+		AddSitrepToMissionSourceIfResistanceCardsActive('ResCard_XenobiologicalFieldResearch_LW', 'DarkEventInfiltratorChryssalidSitRep', 'MissionSource_SupplyRaid', MissionState, GeneratedMission);
+		AddSitrepToMissionSourceIfResistanceCardsActive('ResCard_XenobiologicalFieldResearch_LW', 'DarkEventInfiltratorChryssalidSitRep', 'MissionSource_Retaliation', MissionState, GeneratedMission);
+		AddSitrepToMissionSourceIfResistanceCardsActive('ResCard_XenobiologicalFieldResearch_LW', 'DarkEventInfiltratorChryssalidSitRep', 'MissionSource_Council', MissionState, GeneratedMission);
+		AddSitrepToMissionSourceIfResistanceCardsActive('ResCard_XenobiologicalFieldResearch_LW', 'DarkEventInfiltratorChryssalidSitRep', 'MissionSource_ChosenAmbush', MissionState, GeneratedMission);
+		//AddCrackdownSitrepsBasedOnResistanceCardsActive(MissionState, GeneratedMission);
+		
+		AddSitrepToMissionSourceIfResistanceCardsActive('ResCard_RadioFreeLily_LW', 'RadioFreeLily_LW', 'MissionSource_Retaliation', MissionState, GeneratedMission);
+
+		
+		`LOG("enumerating sitreps selected for mission");
+		SitrepList = GeneratedMission.SitReps;
+		foreach SitrepList(CurrentSitrepName)
+		{
+			`LOG("Sitrep selected for mission: " $ GeneratedMission.BattleOpName $ " : " $ CurrentSitrepName);
+		}
+	}
 }
+
+static function AddRewardsToMissionSourceIfResistanceCardActive(XComGameState NewGameState, XComGameState_MissionSite MissionState, GeneratedMissionData GeneratedMission, name RewardId, int Quantity, name ResCard, name RequiredMissionSource)
+{
+	local XComGameState_Reward RewardState;
+	local X2RewardTemplate RewardTemplate;
+	local XComGameState_HeadquartersResistance ResHQ;
+	local X2StrategyElementTemplateManager TemplateManager;
+
+
+	TemplateManager = class'X2StrategyElementTemplateManager'.static.GetStrategyElementTemplateManager();
+	ResHQ = class'UIUtilities_Strategy'.static.GetResistanceHQ();
+	
+	if (class'Helpers_LW'.static.IsResistanceOrderActive(ResCard))
+	{
+		if (RequiredMissionSource == MissionState.GetMissionSource().DataName)
+		{
+			RewardTemplate = X2RewardTemplate(TemplateManager.FindStrategyElementTemplate(RewardId));
+
+			if (RewardTemplate != none)
+			{
+
+				RewardState = RewardTemplate.CreateInstanceFromTemplate(NewGameState);
+				RewardState.GenerateReward(NewGameState, ResHQ.GetMissionResourceRewardScalar(RewardState)); //ignoring regionref
+				RewardState.Quantity = Quantity;
+				MissionState.Rewards.AddItem(RewardState.GetReference());
+				
+			}
+			else
+			{
+				`Log("Can't find reward template!  " $ RewardId);
+			}
+			return;
+		}
+	}
+}
+
+
+// static function AddCrackdownSitrepsBasedOnResistanceCardsActive(XComGameState_MissionSite MissionState, out GeneratedMissionData GeneratedMission){
+// 	local int PercentageCrackdownChance;
+// 	local int CrackdownRoll;
+// 	local name MissionSource;
+// 	local string MissionFamily;
+// 	local bool RelevantMissionSourceForRandomCrackdown;
+// 	local name CrackdownSitrepAdded;
+// 	RelevantMissionSourceForRandomCrackdown = false;
+// 	MissionSource = MissionState.GetMissionSource().DataName; // e.g. 'MissionSource_GuerillaOp'
+// 	MissionFamily = MissionState.GeneratedMission.Mission.MissionFamily;
+// 	// First: handle retaliation crackdowns
+
+// 	if (class'Helpers_LW'.static.IsResistanceOrderActive('ResCard_RadioFreeLily_LW') && IsRetaliation(MissionFamily))
+// 	{
+// 		`LOG("Adding plus one force level sitrep due to retaliation + Radio Free Lily");
+// 		GeneratedMission.SitReps.AddItem('ILB_Sitrep_PlusOneForceLevel');
+// 	}
+
+// 	if (MissionSource == 'MissionSource_GuerillaOp' 
+// 		|| MissionSource == 'MissionSource_Council'
+// 		|| MissionSource == 'MissionSource_ActivityCI' // generic covert infiltration mission source
+// 		|| MissionSource == 'MissionSource_LWSGenericMissionSource') // generic LWOTC mission source
+// 	{
+// 		RelevantMissionSourceForRandomCrackdown = true;
+// 		`LOG("Relevant mission detected for crackdown rolls; now, we roll.");
+// 	}
+
+// 	// now we handle generic crackdowns based on res cards selected
+// 	if (RelevantMissionSourceForRandomCrackdown){
+	
+// 		/// calculation of crackdown chance based on active resistance cards.
+// 		/// should ensure none of these can be continent bonuses.
+// 		PercentageCrackdownChance = 0;
+
+// 		if (class'Helpers_LW'.static.IsResistanceOrderActive('ResCard_NotoriousSmugglers')){
+// 			PercentageCrackdownChance += 15;
+// 		}
+// 		if (class'Helpers_LW'.static.IsResistanceOrderActive('ResCard_BrazenCollection')){
+// 			PercentageCrackdownChance += 15;
+// 		}
+// 		if (class'Helpers_LW'.static.IsResistanceOrderActive('ResCard_BrazenRecruitment')){
+// 			PercentageCrackdownChance += 15;
+// 		}
+// 		if (class'Helpers_LW'.static.IsResistanceOrderActive('ResCard_LeachPsionicLeylines')){
+// 			PercentageCrackdownChance += 15;
+// 		}
+
+// 		`LOG("Total percent crackdown chance based on res cards active: " $ PercentageCrackdownChance);
+// 		CrackdownRoll = Rand(100);
+// 		`LOG("Crackdown Roll (1-100): " $ CrackdownRoll);
+
+// 		if (CrackdownRoll < PercentageCrackdownChance)
+// 		{
+		
+// 			CrackdownSitrepAdded = GrabRandomCrackdownSitrep();
+// 			`LOG("Added crackdown " $ CrackdownSitrepAdded $ " to mission " $ GeneratedMission.Mission.MissionFamily $ ":" $ GeneratedMission.BattleOpName);
+// 			GeneratedMission.SitReps.AddItem(CrackdownSitrepAdded);
+// 		}
+// 		else
+// 		{
+// 			`LOG("Elected not to use crackdown sitrep on eligible mission.");
+// 		}
+// 	}else{
+// 		`LOG("Mission type excluded from crackdown due to being " $ MissionSource);
+// 	}
+
+// }
+
+static function AddSitrepToMissionSourceIfResistanceCardsActive(
+name ResCard,
+name Sitrep,
+name RequiredMissionSource,
+XComGameState_MissionSite MissionState,
+out GeneratedMissionData GeneratedMission
+)
+{
+	if (GeneratedMission.SitReps.Find(Sitrep) != -1){
+		return;
+	}
+
+	if (class'Helpers_LW'.static.IsResistanceOrderActive(ResCard))
+	{
+		if (RequiredMissionSource == MissionState.GetMissionSource().DataName)
+		{
+			GeneratedMission.SitReps.AddItem(Sitrep);
+			return;
+		}
+	}
+}
+
+
+static function bool IsRetaliation(string MissionFamily){
+	return MissionFamily == "Terror" || MissionFamily == "Retaliation" || MissionFamily == "ChosenRetaliation";
+}
+
+
+static function bool IsMissionFamily(
+GeneratedMissionData MissionStruct, name MissionFamilyId)
+{
+	return MissionStruct.Mission.MissionFamily == string(MissionFamilyId);
+}
+
 
 // Diversify pod makeup, especially with all-alien pods which typically consist
 // of the same alien unit. This also makes a few other adjustments to pods.

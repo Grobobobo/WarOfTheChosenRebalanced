@@ -571,6 +571,10 @@ LocLongDescription="Gain <ABILITY:COMBAT_FITNESS_OFFENSE_LW/> aim, <ABILITY:COMB
 LocHelpText="This soldier has numerous stat bonuses."
 LocPromotionPopUpText="<Bullet/> Combat Fitness provides <ABILITY:COMBAT_FITNESS_OFFENSE_LW/> aim, <ABILITY:COMBAT_FITNESS_MOBILITY_LW/> mobility, <ABILITY:COMBAT_FITNESS_HP_LW/> HP, <ABILITY:COMBAT_FITNESS_WILL_LW/> will, and <ABILITY:COMBAT_FITNESS_DODGE_LW/> dodge."
 
+[CombatFitness X2AbilityTemplate]
+LocFriendlyName="Secticide"
+LocLongDescription="Lose <ABILITY:SECTICIDE_WILL_REDUCTION/> will and <ABILITY:SECTICIDE_PSIOFFENSE_REDUCTION/> psi offense."
+
 [Sprinter X2AbilityTemplate]
 LocFriendlyName="Sprinter"
 LocLongDescription="Gain 2 mobility."
@@ -7060,7 +7064,7 @@ Description="Combat Rush triggered when a unit crits."
 
 [LethargyEffect X2SitRepEffect_GrantAbilities]
 FriendlyName="Lethargy"
-Description="Units have -20 Aim and -2 Mobility."
+Description="Units have -3 Mobility."
 
 ; LWOTC Needs Translation (2)
 [IncreaseTimer1Effect_LW X2SitRepEffect_ModifyTacticalStartState]
@@ -7080,6 +7084,12 @@ Description="If this mission has a timer, it is increased by 4 turns."
 FriendlyName="Stealth Mission"
 Description="The Concealment does not break at the start of the 2nd turn for this mission."
 ; End Translation (2)
+
+[RadioFreeLilyEffect X2SitRepEffectTemplate]
+FriendlyName="Radio Free Lily"
+Description="Lily has pissed off advent, increasing the amount of enemies on the mission."
+; End Translation (2)
+
 
 [CovertActionRisk_Failure_Easy X2CovertActionRiskTemplate]
 RiskName="Failure"
@@ -7157,6 +7167,9 @@ ActionObjective="Recruit Rebels"
 
 [CovertAction_LiberationIntel X2CovertActionTemplate]
 ActionObjective="Investigate Liberating Region"
+
+[CovertAction_ResistanceCard X2CovertActionTemplate]
+ActionObjective="2 Resistance Order Cards"
 
 [CovertActionNarrative_EnemyCorpses_Skirmishers X2CovertActionNarrativeTemplate]
 ActionName="Raid an Enemy Morgue"
@@ -7373,6 +7386,15 @@ LocLongDescription="Free <Ability:SecondaryWeaponName/> attacks on any enemies t
 LocHelpText="Free <Ability:SecondaryWeaponName/> attacks on any enemies that enter, exit or attack from melee range on enemy turns. Grants Cool Under Pressure."
 LocFlyOverText="Enraged Flailing"
 LocPromotionPopupText="<Bullet/> If an enemy begins their turn in an adjacent tile, Bladestorm will trigger if that enemy tries to attack the <Ability:ClassName/>.<br/><Bullet/> If an enemy does not begin their turn in an adjacent tile, then Bladestorm will trigger when that enemy moves into melee range.<br/><Bullet/> Bladestorm does not trigger on your own turn.<br/>"
+
+[RookieAimBuff_LW X2AbilityTemplate]
+LocFriendlyName="Live Fire Training"
+LocLongDescription="Permament +5 Aim"
+
+[RookieHPBuff_LW X2AbilityTemplate]
+LocFriendlyName="The Only School That Matters"
+LocLongDescription="Permament +5 Aim"
+
 
 ; LWOTC Needs Translation
 [Concentration_LW X2AbilityTemplate]
@@ -7821,6 +7843,20 @@ LocFriendlyName="Hit it where it hurts"
 LocFlyOverText="Hit it where it hurts"
 LocLongDescription="Your Primary weapon attacks will bleed enemies."
 LocHelpText="Your Primary weapon attacks will bleed enemies."
+
+[SidearmBleedingRounds_LW X2AbilityTemplate]
+LocFriendlyName="Sectocide Rounds"
+LocFlyOverText="Hit it where it hurts"
+LocLongDescription="Your sidearm shots will bleed enemies."
+LocHelpText="Your sidearm shots will bleed enemies."
+
+[SidearmBleedingRounds_LW X2AbilityTemplate]
+LocFriendlyName="Sectocide Rounds"
+LocFlyOverText="Hit it where it hurts"
+LocLongDescription="Your sidearm shots will bleed enemies."
+LocHelpText="Your sidearm shots will bleed enemies."
+
+
 
 [MindScorchDangerZone X2AbilityTemplate]
 LocFriendlyName="Mind Combustion"
@@ -9348,3 +9384,116 @@ FlavorText="MISSING FLAVOR TEXT"
 CouncilSpokesmanSuccessText="Commander, you've done the Resistance a great service by bringing back the ADVENT VIP alive, allowing us to gain some important Intel and Supplies."
 CouncilSpokesmanPartialSuccessText="Commander, while we are pleased that your team was able to neutralize the ADVENT VIP, we won't gain any significant rewards from a corpse."
 CouncilSpokesmanFailureText="Failing to neutralize the ADVENT VIP will make it tough on the Resistance in the coming weeks, but we still believe in you, Commander."
+
+;;New Resistance Orders
+[ResCard_NeedlepointForSidearms X2StrategyCardTemplate]
+DisplayName="Hollow Point Rounds"
+SummaryText="Pistols, Autopistols and sawed-offs shots will cause their targets to bleed."
+QuoteText="I don't recall aliens signing the Geneva Convention."
+QuoteTextAuthor="Volk"
+
+[ResCard_LiveFireTraining_LW X2StrategyCardTemplate]
+DisplayName="Live Fire Training"
+SummaryText="Whenever you send a soldier on their first ever combat mission, they get a PERMANENT +5 aim."
+QuoteText="Eh, They'll learn quickly. They'll have to."
+QuoteTextAuthor="Volk"
+
+[ResCard_VeryIncandescentPersons_LW X2StrategyCardTemplate]
+DisplayName="Very Incandescent Persons"
+SummaryText="Aligned VIPs gain an assortment of grenades depending on your tech level, and grenadier."
+QuoteText="I wouldn't quite call her a 'non-combatant', no."
+QuoteTextAuthor="Volk"
+
+[ResCard_PracticalOccultism X2StrategyCardTemplate]
+DisplayName="Practical Occultism"
+SummaryText="Your Reapers can teleport to anywhere within squadsight, with an HP cost."
+QuoteText="I hate it when Geist and Volk talk to each other.  It always ends up someplace... weird."
+QuoteTextAuthor="Bradford"
+
+[ResCard_Secticide_LW X2StrategyCardTemplate]
+DisplayName="Secticide"
+SummaryText="Enemies have 10 less will and 30 less psi offense."
+QuoteText="Ayylmao? More like, Die, Lmao."
+QuoteTextAuthor="Shen"
+
+[ResCard_HigherZealotry_LW X2StrategyCardTemplate]
+DisplayName="Higher Zealotry"
+SummaryText="Decreases psi training time by 35%."
+QuoteText="My people can show your people how it's done."
+QuoteTextAuthor="Geist"
+
+[ResCard_EfficiencyManual_LW X2StrategyCardTemplate]
+DisplayName="Efficiency Manual"
+SummaryText="Decreases Proving Ground project costs by 35%."
+QuoteText="What the hell do you guys even need Ayyphones for?"
+QuoteTextAuthor="Shen"
+
+[ResCard_ZealousDeployment_LW X2StrategyCardTemplate]
+DisplayName="Zealous Deployment"
+SummaryText="Guerilla ops grant Additional 50 intel rewards, but they have a project miranda sitrep (all biological units have -3 mobility)"
+QuoteText="We will go to the every end of the world to get what we're looking for."
+QuoteTextAuthor="Geist"
+
+[ResCard_GrantRookiesPermaHp_LW X2StrategyCardTemplate]
+DisplayName="The Only School That Matters"
+SummaryText="Whenever you send a soldier on their first ever combat mission, they get a PERMANENT +2 max HP."
+QuoteText="No proposition Euclid wrote / no formulae the text-books know / will turn the bullet from your coat / or ward the Lancer's downward blow"
+QuoteTextAuthor="Avenger restroom wall."
+
+[ResCard_RemoteSuperchargers_LW X2StrategyCardTemplate]
+DisplayName="Remote Power Transmitters"
+SummaryText="Costs 4 avenger power; only functions when not at power deficit. All soldiers' electric abilities deal 2 extra damage"
+QuoteText="Congratulations, you've been discharged."
+QuoteTextAuthor="Sgt. Jane Kelly"
+
+[ResCard_XenobiologicalFieldResearch_LW X2StrategyCardTemplate]
+DisplayName="Xenobiological Field Research"
+SummaryText="Gain +30% research speed. ALL missions now have additional chryssalids, and (when appropriate) faceless"
+QuoteText="...and when we add this compound into the Chryssalid nest, they get even more aggressive.  If only Vahlen could see us now!"
+QuoteTextAuthor="Tygan"
+
+[ResCard_RadioFreeLily_LW X2StrategyCardTemplate]
+DisplayName="Radio Free Lily"
+SummaryText="Gain +3 resistance contacts. Retaliations have 3 more enemies."
+QuoteText="She says it's a good way of blowing off steam.  I won't lie, most of it would have been totally unprintable even before ADVENT censorship."
+QuoteTextAuthor="Bradford"
+
+[ResCard_ShadyScavengers_LW X2StrategyCardTemplate]
+DisplayName="Shady Scavengers"
+SummaryText="Black market has additional alloys and elerium for sale."
+QuoteText="When there's demand, there's supply."
+QuoteTextAuthor="Bradford"
+
+;[ResCard_DenseSmoke_LW X2StrategyCardTemplate]
+;DisplayName="Dense Smoke"
+;SummaryText="Soldiers equipped with the grenade launcher gain the Dense smoke perk, causing their smoke grenades to have +10 defense."
+;QuoteText="This is military equipment soldier, you do not get to \"420 blaze it\"."
+;QuoteTextAuthor="Bradford"
+
+[ResCard_ExperimentalExperimentation_LW X2StrategyCardTemplate]
+DisplayName="Experimental Experimentation"
+SummaryText="Decreases the proving ground project's time by 35%"
+QuoteText="Hey, You never know what might happen."
+QuoteTextAuthor="Shen"
+
+[ResCard_DesperateReserves_LW X2StrategyCardTemplate]
+DisplayName="Desperate Reserves"
+SummaryText="Gain a resistance mec if you're fielding 5 or fewer soldiers (3 or fewer on covert ambushes)."
+QuoteText="Since you seem to be severely understaffed, we can provide an alternative."
+QuoteTextAuthor="Betos"
+
+[ResCard_BasiliskDoctrine_LW X2StrategyCardTemplate]
+DisplayName="Basilisk Doctrine"
+SummaryText="Skirmisher armor grants the Take Under perk, which is a guaranteed melee dash attack against any target under three health that executes the target and doesn't end the turn."
+QuoteText="Oh, hey, are we getting video feed of the new Skirmisher tech?  I wanna see!"
+QuoteTextAuthor="[REDACTED], immediately preceding an urgent janitorial visit."
+
+[POI_ResistanceCard X2PointOfInterestTemplate]
+DisplayNames[0]="Ayy Lmao"
+DisplayNames[1]="Ayy Lmao 2"
+
+CompletedSummaries[0]="PLACEHOLDER FLAVOR TEXT."
+CompletedSummaries[1]="PLACEHOLDER FLAVOR TEXT 2."
+
+POIImages[0]="img:///UILibrary_StrategyImages.X2StrategyMap.POI_RadioTower"
+POIImages[1]="img:///UILibrary_StrategyImages.X2StrategyMap.POI_DeadAdvent"

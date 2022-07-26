@@ -1,8 +1,5 @@
 class X2StrategyElement_AcademyUnlocks_LW extends X2StrategyElement config(LW_Overhaul);
 
-var config int OFFICER_RANK_FOR_INFILTRATION_1;
-var config int OFFICER_RANK_FOR_INFILTRATION_2;
-
 var config int OFFICER_RANK_FOR_XTP_1;
 var config int OFFICER_RANK_FOR_XTP_2;
 var config int OFFICER_RANK_FOR_XTP_3;

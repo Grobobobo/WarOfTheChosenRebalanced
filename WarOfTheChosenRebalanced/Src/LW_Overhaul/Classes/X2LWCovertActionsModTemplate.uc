@@ -56,10 +56,13 @@ static function UpdateCovertActions(X2StrategyElementTemplate Template, int Diff
 		case 'CovertAction_ResistanceContact':
 		case 'CovertAction_RecruitRebels':
 		case 'CovertAction_SharedAbilityPoints':
-		case 'CovertAction_ResistanceCard':
 		case 'CovertAction_IncreaseIncome':
 
 			ConfigureModerateCovertAction(CATemplate);
+			break;
+		case 'CovertAction_ResistanceCard':
+			ConfigureModerateCovertAction(CATemplate);
+			CATemplate.Rewards.AddItem('Reward_ResistanceCard');
 			break;
 		case 'CovertAction_ImproveComInt':
 		case 'CovertAction_RemoveDoom':
@@ -124,6 +127,7 @@ static function UpdateCovertActions(X2StrategyElementTemplate Template, int Diff
 			CATemplate.Slots[i].Rewards.Length = 0;
 		}
 	}
+
 }
 
 // Adds a chance of failure to easy covert actions and resets the staff slots.

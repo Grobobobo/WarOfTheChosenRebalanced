@@ -712,10 +712,10 @@ LaunchedAbilityHelpText="Provides a 50% chance to stun units in area of effect f
 [RapidDeployment X2AbilityTemplate]
 LocFriendlyName="Rapid Deployment"
 LocFlyOverText="Rapid Deployment"
-LocLongDescription="Activate this ability before throwing or launching a support grenade, and the throw will not cost an action."
-LocHelpText="Activate this ability before throwing or launching a support grenade, and the throw will not cost an action."
+LocLongDescription="Activate this ability before throwing or launching a grenade, and the throw will not cost an action. <Ability:SelfCooldown_LW> Turn Cooldown."
+LocHelpText="Activate this ability before throwing or launching a grenade, and the throw will not cost an action."
 ; LWOTC Needs Translation (2)
-LocPromotionPopupText="<Bullet/> Activate this ability before throwing or launching a support grenade, and the throw will not cost an action.<br/><Bullet/> Applies to Smoke Grenades, Flashbangs, Shaped Charges and Battle Scanners.<br/><Bullet/> Rapid Deployment has a <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
+LocPromotionPopupText="<Bullet/> Activate this ability before throwing or launching a grenade, and the throw will not cost an action.<br/><Bullet/> Rapid Deployment has a <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
 ; End Translation (2)
 
 [CombatRush X2AbilityTemplate]

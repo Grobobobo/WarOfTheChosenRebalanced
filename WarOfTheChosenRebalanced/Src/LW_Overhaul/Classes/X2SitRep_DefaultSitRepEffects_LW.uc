@@ -39,6 +39,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateUndyingLoyaltyDEEffectTemplate());
 	Templates.AddItem(CreateVigilanceDEEffectTemplate());
 	Templates.AddItem(CreateStealthMissionEffectTemplate());
+	Templates.AddItem(CreateRadioFreeLilyMissionEffectTemplate());
 
 	return Templates;
 }
@@ -307,6 +308,16 @@ static function X2SitRepEffectTemplate CreateStealthMissionEffectTemplate()
 
 	return Template;
 }
+
+static function X2SitRepEffectTemplate CreateRadioFreeLilyMissionEffectTemplate()
+{
+	local X2SitRepEffectTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2SitRepEffectTemplate', Template, 'RadioFreeLilyEffect');
+
+	return Template;
+}
+
 
 defaultproperties
 {

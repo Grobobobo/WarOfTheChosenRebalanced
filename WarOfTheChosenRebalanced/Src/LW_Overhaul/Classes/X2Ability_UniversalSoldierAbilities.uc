@@ -35,6 +35,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddReloadnoAnimAbility());
 	Templates.AddItem(OutOfAmmoFlyover());
 	Templates.AddItem(AddPlaceTurretAbility());
+	Templates.AddItem(AddMedikitSelfHeal('MedikitSelfHeal', class'X2Ability_DefaultAbilitySet'.default.MEDIKIT_PERUSEHP));
+	Templates.AddItem(AddMedikitSelfHeal('NanoMedikitSelfHeal', class'X2Ability_DefaultAbilitySet'.default.NANOMEDIKIT_PERUSEHP));
+	
 	
 	return Templates;
 }
@@ -932,4 +935,83 @@ simulated function SpawnTurret_BuildVisualization(XComGameState VisualizeGameSta
 	AnimationAction = X2Action_PlayAnimation(class'X2Action_PlayAnimation'.static.AddToVisualizationTree(MimicBeaconTrack, Context, false, MimicBeaconTrack.LastActionAdded));
 	AnimationAction.Params.AnimName = 'NO_Activate_XcomA';		//	E3245 CHANGE ANIMATION NAME HERE IF YOU WANT YOUR FILTHY MITV
 	AnimationAction.Params.BlendTime = 0.0f;
+}
+
+
+static function X2AbilityTemplate AddMedikitSelfHeal(name AbilityName, int HealAmount)
+{
+	local X2AbilityTemplate                 Template;
+	local X2AbilityCost_Ammo                AmmoCost;
+	local X2AbilityCost_ActionPoints        ActionPointCost;
+	local X2AbilityPassiveAOE_SelfRadius	PassiveAOEStyle;
+	local X2Condition_UnitProperty          UnitPropertyCondition;
+	local X2AbilityTrigger_PlayerInput      InputTrigger;
+	local X2Effect_ApplyMedikitHeal         MedikitHeal;
+	local X2Effect_RemoveEffectsByDamageType RemoveEffects;
+	local array<name>                       SkipExclusions;
+	local name                              HealType;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, AbilityName);
+
+	AmmoCost = new class'X2AbilityCost_Ammo';
+	AmmoCost.iAmmo = 1;
+	AmmoCost.bReturnChargesError = true;
+	Template.AbilityCosts.AddItem(AmmoCost);
+
+	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.iNumPoints = 2;
+	ActionPointCost.bConsumeAllPoints = true;
+	Template.AbilityCosts.AddItem(ActionPointCost);
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+
+	PassiveAOEStyle = new class'X2AbilityPassiveAOE_SelfRadius';
+	PassiveAOEStyle.OnlyIncludeTargetsInsideWeaponRange = true;
+	Template.AbilityPassiveAOEStyle = PassiveAOEStyle;
+
+	UnitPropertyCondition = new class'X2Condition_UnitProperty';
+	UnitPropertyCondition.ExcludeDead = true;
+	Template.AbilityShooterConditions.AddItem(UnitPropertyCondition);
+
+	SkipExclusions.AddItem(class'X2StatusEffects'.default.BurningName);
+	Template.AddShooterEffectExclusions(SkipExclusions);
+
+	UnitPropertyCondition = new class'X2Condition_UnitProperty';
+	UnitPropertyCondition.ExcludeDead = true;
+	UnitPropertyCondition.ExcludeHostileToSource = true;
+	UnitPropertyCondition.ExcludeFriendlyToSource = false;
+	UnitPropertyCondition.ExcludeFullHealth = true;
+	UnitPropertyCondition.ExcludeRobotic = true;
+	Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);
+
+	MedikitHeal = new class'X2Effect_ApplyMedikitHeal';
+	MedikitHeal.PerUseHP = HealAmount;
+	Template.AddTargetEffect(MedikitHeal);
+
+	RemoveEffects = new class'X2Effect_RemoveEffectsByDamageType';
+	foreach default.MedikitHealEffectTypes(HealType)
+	{
+		RemoveEffects.DamageTypesToRemove.AddItem(HealType);
+	}
+	Template.AddTargetEffect(RemoveEffects);
+
+	InputTrigger = new class'X2AbilityTrigger_PlayerInput';
+	Template.AbilityTriggers.AddItem(InputTrigger);
+
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_medkit";
+	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.MEDIKIT_HEAL_PRIORITY;
+	Template.bUseAmmoAsChargesForHUD = true;
+	Template.Hostility = eHostility_Defensive;
+	Template.bDisplayInUITooltip = false;
+	Template.bLimitTargetIcons = true;
+	Template.ActivationSpeech = 'HealingAlly';
+
+	Template.CustomSelfFireAnim = 'FF_FireMedkitSelf';
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+
+	Template.ChosenActivationIncreasePerUse = class'X2AbilityTemplateManager'.default.NonAggressiveChosenActivationIncreasePerUse;
+
+	return Template;
 }

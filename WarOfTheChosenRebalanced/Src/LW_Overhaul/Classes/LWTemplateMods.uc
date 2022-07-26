@@ -2559,6 +2559,15 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		}
 		if (WeaponTemplate.DataName == 'Medikit' || WeaponTemplate.DataName == 'NanoMedikit')
 		{
+
+			if(WeaponTemplate.DataName == 'Medikit')
+			{
+				WeaponTemplate.Abilities.AddItem('MedikitSelfHeal');
+			}
+			if(WeaponTemplate.DataName == 'NanoMedikit')
+			{
+				WeaponTemplate.Abilities.AddItem('NanoMedikitSelfHeal');
+			}
 			WeaponTemplate.Abilities.AddItem('ParaMedikitHeal');
 			WeaponTemplate.Abilities.AddItem('ParaMedikitStabilize');
 			//WeaponTemplate.Abilities.AddItem('Sedate');

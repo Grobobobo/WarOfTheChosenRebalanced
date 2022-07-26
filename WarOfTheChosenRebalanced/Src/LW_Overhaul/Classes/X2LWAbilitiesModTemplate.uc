@@ -292,7 +292,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 
 		case 'MedikitHeal':
 		case 'NanoMedikitHeal':
-			AddCooldownToMedikits(Template);
+			UpdateMedikits(Template);
 			break;
 		case 'EverVigilant':
 			Template.AdditionalAbilities.Removeitem('EverVigilantTrigger');
@@ -1683,7 +1683,7 @@ static function AddSharedSuppressionCooldown(X2AbilityTemplate Template)
 	Template.AbilityCooldown = Cooldown;
 }
 
-static function AddCooldownToMedikits(X2AbilityTemplate Template)
+static function UpdateMedikits(X2AbilityTemplate Template)
 {
 	local X2AbilityCooldown_Shared	Cooldown;
 
@@ -1691,6 +1691,15 @@ static function AddCooldownToMedikits(X2AbilityTemplate Template)
 	Cooldown.SharingCooldownsWith.AddItem('MedikitHeal');
 	Cooldown.SharingCooldownsWith.AddItem('NanoMedikitHeal');
 	Cooldown.SharingCooldownsWith.AddItem('MedikitStabilize');
+	Cooldown.SharingCooldownsWith.AddItem('ParaMedikitStabilize');
+	Cooldown.SharingCooldownsWith.AddItem('ParaMedikitHeal');
+
+	if(X2AbilityTarget_Single(Template.AbilityTargetStyle) != none)
+	{
+		X2AbilityTarget_Single(Template.AbilityTargetStyle).bIncludeSelf = false;
+	}
+	
+
 	Cooldown.iNumTurns = 1;
 	Template.AbilityCooldown = Cooldown;
 }

@@ -8738,6 +8738,14 @@ LocFriendlyName="Paramedic Stabilize"
 LocLongDescription="Run towards an Ally and stabilize them with your medikit."
 LocHelpText="Run towards an Ally and heal stabilize with your medikit."
 
+[MedikitSelfHeal X2AbilityTemplate]
+LocFriendlyName="Medikit Heal (Self)"
+LocHelpText="Heal yourself up to <Ability:MEDIKITPERUSEHP/> HP.\n"
+
+[NanoMedikitSelfHeal X2AbilityTemplate]
+LocFriendlyName="Nanomedikit Heal (Self)"
+LocHelpText="Heal yourself up to <Ability:NANOMEDIKITHEALHP/> HP.\n"
+
 [SoulReaper X2AbilityTemplate]
 LocFriendlyName="Banish"
 LocLongDescription="Fire at a target until you run out of ammo or it dies. Each shot has <Ability:BANISH_HIT_MOD/> aim less than the previous one. Reveals the Reaper. "

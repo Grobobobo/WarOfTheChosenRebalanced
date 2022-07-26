@@ -1015,6 +1015,8 @@ static function X2AbilityTemplate ParaMedikitHeal()
 	local array<name>                       SkipExclusions;
 	local X2AbilityCost_Ammo	AmmoCost;
 	local X2Condition_AbilityProperty ParamedicCondition;
+	local X2AbilityCooldown_Shared Cooldown;
+
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'ParaMedikitHeal');
 
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
@@ -1030,6 +1032,14 @@ static function X2AbilityTemplate ParaMedikitHeal()
 	AmmoCost.iAmmo = 1;
 	AmmoCost.bReturnChargesError = true;
 	Template.AbilityCosts.AddItem(AmmoCost);
+
+
+	Cooldown = new class'X2AbilityCooldown_Shared';
+	Cooldown.SharingCooldownsWith.AddItem('MedikitHeal');
+	Cooldown.SharingCooldownsWith.AddItem('NanoMedikitHeal');
+	Cooldown.SharingCooldownsWith.AddItem('MedikitStabilize');
+	Cooldown.SharingCooldownsWith.AddItem('ParaMedikitStabilize');
+	Cooldown.SharingCooldownsWith.AddItem('ParaMedikitHeal');
 
 	Template.bUseAmmoAsChargesForHUD = true;
 
@@ -1105,6 +1115,8 @@ static function X2AbilityTemplate ParaMedikitStabilize()
 	local X2AbilityCost_Ammo	AmmoCost;
 	local X2Condition_AbilityProperty ParamedicCondition;
 	local X2Effect_RemoveEffects RemoveEffects;
+	local X2AbilityCooldown_Shared Cooldown;
+
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'ParaMedikitStabilize');
 
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
@@ -1113,6 +1125,13 @@ static function X2AbilityTemplate ParaMedikitStabilize()
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_ShowIfAvailable;
 	//Template.HideErrors.AddItem('AA_AbilityUnavailable');
 	//Template.HideErrors.AddItem('AA_CannotAfford_Charges');
+
+	Cooldown = new class'X2AbilityCooldown_Shared';
+	Cooldown.SharingCooldownsWith.AddItem('MedikitHeal');
+	Cooldown.SharingCooldownsWith.AddItem('NanoMedikitHeal');
+	Cooldown.SharingCooldownsWith.AddItem('MedikitStabilize');
+	Cooldown.SharingCooldownsWith.AddItem('ParaMedikitStabilize');
+	Cooldown.SharingCooldownsWith.AddItem('ParaMedikitHeal');
 
 	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.MEDIKIT_HEAL_PRIORITY;
 

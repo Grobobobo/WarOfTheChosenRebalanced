@@ -1652,7 +1652,7 @@ static function bool UnitTypeShouldBeCleanedUp(XComGameState_Unit UnitState)
 	if (class'LWDLCHelpers'.static.IsAlienRuler(CharTemplateName)) { return false; }
 	if (!CharTemplate.bIsSoldier)
 	{
-		if (CharTemplate.bIsAlien || CharTemplate.bIsAdvent || CharTemplate.bIsCivilian)
+		if (CharTemplate.bIsAlien || CharTemplate.bIsAdvent || CharTemplate.bIsCivilian || CharTemplate.DataName == 'CivilianMilitia')
 		{
 			ExcludeIdx = default.CharacterTypesExemptFromCleanup.Find(CharTemplateName);
 			if (ExcludeIdx == -1)

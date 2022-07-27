@@ -2079,7 +2079,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 	local int k;
 
 	
-	if(Template.bCanTakeCover && !Template.bIsSoldier && !Template.bIsCivilian)
+	if(Template.bCanTakeCover && !Template.bIsSoldier && !Template.bIsCivilian && Template.DataName != 'CivilianMilitia')
 	{
 		if(Template.bIsAlien)
 		{
@@ -2265,6 +2265,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 			break;
 		case 'CivilianMilitia':
 			Template.bDisplayUIUnitFlag=true;
+			Template.bIsCivilian=false;
 			break;
 		case 'FriendlyVIPCivilian':
 		case 'Soldier_VIP':

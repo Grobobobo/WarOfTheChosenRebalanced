@@ -1207,6 +1207,13 @@ LocFriendlyName="Rend The Marked"
 LocLongDescription="A Dash attack that can only be used on targets marked by advent hunter."
 LocHelpText="A Dash attack that can only be used on targets marked by advent hunter."
 
+[HunterMarkAdvent X2AbilityTemplate]
+LocFriendlyName="Mark Target"
+LocLongDescription="Primary Hits with the weapon will mark their target."
+LocHelpText="Primary Hits with the weapon will mark their target."
+
+
+
 ;;;;;;;;;;;;;;;;;; GEAR LOC OVERRIDES ;;;;;;;;;;;;;;;;;;;;
 
 [LightPlatedArmor X2ArmorTemplate]
@@ -6494,17 +6501,17 @@ LocPromotionPopupText="<Bullet/> Learn officer abilities in half the time."
 ; End Translation
 
 [DoubleTap2 X2AbilityTemplate]
-LocFriendlyName="Double Tap"
-LocFlyOverText="Double Tap"
-LocLongDescription="Activate to fire a standard shot and gain a second action restricted to an additional standard shot or overwatching."
-LocHelpText="Fire a standard shot and gain a bonus shot or overwatch action."
+LocFriendlyName="HipFire"
+LocFlyOverText="HipFire"
+LocLongDescription="Activate to fire a standard shot and gain a second standard action."
+LocHelpText="Fire a standard shot and gain a bonus action."
 ; LWOTC Needs Translation
 LocPromotionPopupText="<Bullet/> Activate to fire a standard shot and gain a second action restricted to several different shooting abilities or overwatch.<br/><Bullet/> Double Tap has a <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
 ; End Translation
 
 [DoubleTap2Bonus X2AbilityTemplate]
-LocFriendlyName="Double Tap"
-LocFlyOverText="Double Tap"
+LocFriendlyName="HipFire"
+LocFlyOverText="HipFire"
 
 ; LWOTC Needs Translation (3)
 [RescueProtocol X2AbilityTemplate]
@@ -6619,8 +6626,8 @@ LocPromotionPopupText="<Bullet/> You can trigger the Charge ability by placing t
 ; LWOTC Needs Translation (2)
 [SkirmisherFleche X2AbilityTemplate]
 LocFriendlyName="Reckoning"
-LocLongDescription="Attack any enemy within movement range with your <Ability:BOUND_WEAPON_NAME/>. Deals +<Ability:RECKONING_BONUS_DAMAGE_PER_HEAT/>% damage per heat, but removes all of it no use."
-LocHelpText="Attack any enemy within movement range with your <Ability:BOUND_WEAPON_NAME/>. Deals additional +<Ability:RECKONING_BONUS_DAMAGE_PER_HEAT/>% damage per heat, but removes all of it no use."
+LocLongDescription="Attack any enemy within movement range with your <Ability:BOUND_WEAPON_NAME/>. Deals +<Ability:RECKONING_BONUS_DAMAGE_PER_HEAT/>% damage per heat."
+LocHelpText="Attack any enemy within movement range with your <Ability:BOUND_WEAPON_NAME/>. Deals additional +<Ability:RECKONING_BONUS_DAMAGE_PER_HEAT/>% damage per heat."
 LocPromotionPopupText=""
 ; End Translation (2)
 

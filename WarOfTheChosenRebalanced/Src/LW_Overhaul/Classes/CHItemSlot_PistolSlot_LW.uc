@@ -8,7 +8,7 @@
 class CHItemSlot_PistolSlot_LW extends CHItemSlotSet config(LW_Overhaul);
 
 var config bool DISABLE_LW_PISTOL_SLOT;
-var config array<name> EXCLUDE_FROM_PISTOL_SLOT_CLASSES;
+var config array<name> INCLUDE_PISTOL_SLOT_CHARACTER_TEMPLATES;
 var config array<name> PISTOL_SLOT_WEAPON_CATS;
 
 var const array<name> DEFAULT_ALLOWED_WEAPON_CATS;
@@ -78,7 +78,7 @@ static function bool HasPistolSlot(
 	out string LockedReason,
 	optional XComGameState CheckGameState)
 {
-	return default.EXCLUDE_FROM_PISTOL_SLOT_CLASSES.Find(UnitState.GetSoldierClassTemplateName()) == INDEX_NONE;
+	return default.INCLUDE_PISTOL_SLOT_CHARACTER_TEMPLATES.Find(UnitState.GetMyTemplateName()) != INDEX_NONE;
 }
 
 static function int PistolGetPriority(CHItemSlot Slot, XComGameState_Unit UnitState, optional XComGameState CheckGameState)

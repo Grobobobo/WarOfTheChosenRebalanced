@@ -310,7 +310,7 @@ static function X2AbilityTemplate AddDoubleTap2()
 {
 	local X2AbilityTemplate					Template;
 	local X2AbilityCost_ActionPoints		ActionPointCost;
-	local X2AbilityCost_Ammo				AmmoCostShow, AmmoCostActual;
+	local X2AbilityCost_Ammo				AmmoCostActual;
 	local X2AbilityCooldown					Cooldown;	
 	local X2Effect_Knockback				KnockbackEffect;
 	local X2Condition_Visibility            VisibilityCondition;
@@ -341,10 +341,10 @@ static function X2AbilityTemplate AddDoubleTap2()
     Cooldown.iNumTurns = default.DOUBLE_TAP_2_COOLDOWN;
     Template.AbilityCooldown = Cooldown;
 
-	AmmoCostShow = new class'X2AbilityCost_Ammo';
-	AmmoCostShow.iAmmo = 2;
-	AmmoCostShow.bFreeCost = true; // just for show only
-	Template.AbilityCosts.AddItem(AmmoCostShow);
+	// AmmoCostShow = new class'X2AbilityCost_Ammo';
+	// AmmoCostShow.iAmmo = 2;
+	// AmmoCostShow.bFreeCost = true; // just for show only
+	// Template.AbilityCosts.AddItem(AmmoCostShow);
 
 	AmmoCostActual = new class'X2AbilityCost_Ammo';
 	AmmoCostActual.iAmmo = 1; //Second shot charges 2nd

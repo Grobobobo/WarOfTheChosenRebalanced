@@ -889,14 +889,14 @@ AbilityDescName="Stun Lance"
 [AdvGunnerM1 X2CharacterTemplate]
 strCharacterName="ADVENT Gunner"
 
+[AdvGunner_Leader X2CharacterTemplate]
+strCharacterName="ADVENT Oppressor"
+
 [AdvGunnerM1_WPN X2WeaponTemplate]
 FriendlyName="AutoMag"
 ; LWOTC Needs Translation
 AbilityDescName="cannon"
 ; End translation
-
-[AdvGunnerM2 X2CharacterTemplate]
-strCharacterName="Advanced Gunner"
 
 [AdvGunnerM2_WPN X2WeaponTemplate]
 FriendlyName="AutoMag"
@@ -904,14 +904,62 @@ FriendlyName="AutoMag"
 AbilityDescName="cannon"
 ; End translation
 
-[AdvGunnerM3 X2CharacterTemplate]
-strCharacterName="Elite Gunner"
-
 [AdvGunnerM3_WPN X2WeaponTemplate]
 FriendlyName="AutoMag"
 ; LWOTC Needs Translation
 AbilityDescName="cannon"
 ; End translation
+
+[AdvGunnerM4_WPN X2WeaponTemplate]
+FriendlyName="AutoMag"
+; LWOTC Needs Translation
+AbilityDescName="cannon"
+; End translation
+
+[AdvGunnerM5_WPN X2WeaponTemplate]
+FriendlyName="AutoMag"
+; LWOTC Needs Translation
+AbilityDescName="cannon"
+; End translation
+
+
+[AdvGunner_Leader_WPN X2WeaponTemplate]
+FriendlyName="AutoMag"
+; LWOTC Needs Translation
+AbilityDescName="cannon"
+; End translation
+
+[AdvGunnerM2_Leader_WPN X2WeaponTemplate]
+FriendlyName="AutoMag"
+; LWOTC Needs Translation
+AbilityDescName="cannon"
+; End translation
+
+[AdvGunnerM3_Leader_WPN X2WeaponTemplate]
+FriendlyName="AutoMag"
+; LWOTC Needs Translation
+AbilityDescName="cannon"
+; End translation
+
+[AdvGunnerM4_Leader_WPN X2WeaponTemplate]
+FriendlyName="AutoMag"
+; LWOTC Needs Translation
+AbilityDescName="cannon"
+; End translation
+
+[AdvGunnerM5_Leader_WPN X2WeaponTemplate]
+FriendlyName="AutoMag"
+; LWOTC Needs Translation
+AbilityDescName="cannon"
+; End translation
+
+
+[AdvGunnerM2 X2CharacterTemplate]
+strCharacterName="Advanced Gunner"
+
+[AdvGunnerM3 X2CharacterTemplate]
+strCharacterName="Elite Gunner"
+
 
 [AdvGunnerM4 X2CharacterTemplate]
 strCharacterName="Supreme Gunner"

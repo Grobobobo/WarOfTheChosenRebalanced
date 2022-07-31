@@ -65,6 +65,7 @@ struct MultiShotAbility
 	var array<name> FollowUpAbilityNames;
 };
 
+var config int MEDICAL_PROTOCOL_COOLDOWN;
 var config bool USE_LOS_FOR_MULTI_SHOT_ABILITIES;
 var config array<MultiShotAbility> MULTI_SHOT_ABILITIES;
 
@@ -293,6 +294,11 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'MedikitHeal':
 		case 'NanoMedikitHeal':
 			UpdateMedikits(Template);
+			break;
+
+		case 'GremlinHeal':
+		case 'GremlinStabilize':
+			UpdateMedicalProtocol(Template);
 			break;
 		case 'EverVigilant':
 			Template.AdditionalAbilities.Removeitem('EverVigilantTrigger');
@@ -1703,6 +1709,26 @@ static function UpdateMedikits(X2AbilityTemplate Template)
 	Cooldown.iNumTurns = 1;
 	Template.AbilityCooldown = Cooldown;
 }
+
+
+static function UpdateMedicalProtocol(X2AbilityTemplate Template)
+{
+	local X2AbilityCooldown_Shared	Cooldown;
+
+	Cooldown = new class'X2AbilityCooldown_Shared';
+	Cooldown.SharingCooldownsWith.AddItem('GremlinHeal');
+	Cooldown.SharingCooldownsWith.AddItem('GremlinStabilize');
+
+	// if(X2AbilityTarget_Single(Template.AbilityTargetStyle) != none)
+	// {
+	// 	X2AbilityTarget_Single(Template.AbilityTargetStyle).bIncludeSelf = false;
+	// }
+	Template.OverrideAbilities.Length = 0;
+
+	Cooldown.iNumTurns = default.MEDICAL_PROTOCOL_COOLDOWN;
+	Template.AbilityCooldown = Cooldown;
+}
+
 
 static function UpdateAidProtocol(X2AbilityTemplate Template)
 {

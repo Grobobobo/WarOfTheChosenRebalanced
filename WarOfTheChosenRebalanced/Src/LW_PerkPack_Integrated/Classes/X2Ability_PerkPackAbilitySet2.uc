@@ -70,6 +70,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateImpact());
 	Templates.AddItem(CreatePlatformStability());
 	Templates.AddItem(CreateImpact());
+	Templates.AddItem(CreateAmmoImpact());
+	
 	Templates.AddItem(CreateSteadFast());
 	Templates.AddItem(CreateNewConceal());
 	Templates.AddItem(InTheZone());
@@ -1425,6 +1427,18 @@ static function X2AbilityTemplate CreateImpact()
 	local X2AbilityTemplate		Template;
 
 	Template = PurePassive('Impact', "img:///UILibrary_XPerkIconPack_LW.UIPerk_stasis_overwatch", , 'eAbilitySource_Perk');
+
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+
+	return Template;
+}
+
+static function X2AbilityTemplate CreateAmmoImpact()
+{
+	local X2AbilityTemplate		Template;
+
+	Template = PurePassive('AmmoImpact', "img:///UILibrary_PerkIcons.UIPerk_ammo_needle", , 'eAbilitySource_Perk');
 
 	Template.bDisplayInUITooltip = true;
 	Template.bDisplayInUITacticalText = true;

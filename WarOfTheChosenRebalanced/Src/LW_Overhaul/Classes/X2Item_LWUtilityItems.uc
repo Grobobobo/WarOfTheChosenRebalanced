@@ -283,8 +283,8 @@ static function X2AmmoTemplate CreateRedScreenRounds()
 static function X2AmmoTemplate CreateNeedleRounds()
 {
 	local X2AmmoTemplate				Template;
-	local X2Condition_UnitProperty		Condition;
-	local WeaponDamageValue				DamageValue;
+	//local X2Condition_UnitProperty		Condition;
+	//local WeaponDamageValue				DamageValue;
 
 	`CREATE_X2TEMPLATE(class'X2AmmoTemplate', Template, 'NeedleRounds');
 	Template.strImage = "img:///UILibrary_LW_Overhaul.InventoryArt.Inv_Needle_Rounds_512";
@@ -296,19 +296,20 @@ static function X2AmmoTemplate CreateNeedleRounds()
 	Template.StartingItem = false;
 	Template.CanBeBuilt = true;
 
-	DamageValue.Damage = default.NEEDLE_DMGMOD;
-    DamageValue.DamageType = 'Needle';
-    Template.AddAmmoDamageModifier(none, DamageValue);
+	// DamageValue.Damage = default.NEEDLE_DMGMOD;
+    // DamageValue.DamageType = 'Needle';
+    // Template.AddAmmoDamageModifier(none, DamageValue);
 
-	Condition = new class'X2Condition_UnitProperty';
-	Condition.IsAdvent = true;
-	Condition.ExcludeRobotic = true;
-	Condition.ExcludeAlien = true;
-	Condition.FailOnNonUnits = true;
-	DamageValue.Damage = default.NEEDLE_ADVENT_DMG;
-	Template.AddAmmoDamageModifier(Condition, DamageValue);
+	// Condition = new class'X2Condition_UnitProperty';
+	// Condition.IsAdvent = true;
+	// Condition.ExcludeRobotic = true;
+	// Condition.ExcludeAlien = true;
+	// Condition.FailOnNonUnits = true;
+	// DamageValue.Damage = default.NEEDLE_ADVENT_DMG;
+	// Template.AddAmmoDamageModifier(Condition, DamageValue);
 
-	Template.Abilities.AddItem('Needle_Rounds_Ability');
+	Template.Abilities.AddItem('AmmoImpact');
+	Template.Abilities.AddItem('ShredderRoundsPenalty');
 
 	//Template.GameArchetype = "Ammo_Needle.PJ_Needle"; // present, placeholder FX
 	//FX References

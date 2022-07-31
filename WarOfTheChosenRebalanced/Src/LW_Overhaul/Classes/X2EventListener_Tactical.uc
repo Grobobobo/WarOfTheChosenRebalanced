@@ -1258,16 +1258,21 @@ static function AlertAllUnits(XComGameState_Unit Unit, XComGameState newGameStat
 static function EventListenerReturn OverrideReserveActionPoints(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
 	local XComLWTuple Tuple;
-	local XComGameState_Unit UnitState, SourceUnit;
+	local XComGameState_Unit OldUnitState, UnitState, SourceUnit;
 	local name ActionPointName;
 	local bool IsSuppression;
 	local DamageResult Result;
 	local XComGameStateContext_Ability AbilityContext;
+	local XComGameState_Item ItemState;
+	local X2WeaponTemplate WeaponTemplate;
 	//local XComGameStateHistory History;
 
 	//History = `XCOMHISTORY;
 
-	UnitState = XcomGameState_Unit(EventSource);
+	OldUnitState = XcomGameState_Unit(EventSource);
+	UnitState = XcomGameState_Unit(GameState.GetGameStateForObjectID(OldUnitState.ObjectID));
+
+
 	Tuple = XComLWTuple(EventData);
 
 	if (Tuple == none)
@@ -1293,6 +1298,22 @@ static function EventListenerReturn OverrideReserveActionPoints(Object EventData
 		{
 			Tuple.Data[0].b = true;
 			return ELR_NoInterrupt;
+		}
+		if(SourceUnit.HasSoldierAbility('AmmoImpact'))
+		{
+			ItemState = XComGameState_Item(`XCOMHISTORY.GetGameStateForObjectID(AbilityContext.InputContext.SourceObject.ObjectID));
+			if (ItemState != none){
+				WeaponTemplate = X2WeaponTemplate(ItemState.GetMyTemplate());
+				if(WeaponTemplate.Abilities.Find('HotLoadAmmo') != INDEX_NONE)
+				{
+					Tuple.Data[0].b = true;
+					return ELR_NoInterrupt;
+				}
+			}
+			
+			Tuple.Data[0].b = true;
+			return ELR_NoInterrupt;
+
 		}
 	}
 

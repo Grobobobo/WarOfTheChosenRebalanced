@@ -136,6 +136,7 @@ var config array<name> CE_ABILITYNAMES;
 
 var config int WILLTOSURVIVE_DEF_PENALTY;
 var config int WTS_ABLATIVE;
+var config int WTS_FLAT_DR;
 var config float WTS_COVER_DR_PCT;
 var config float WTS_WOUND_REDUCTION;
 
@@ -869,7 +870,7 @@ static function X2AbilityTemplate AddWilltoSurviveAbility()
 	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
 	Template.bIsPassive = true;
 	ArmorBonus = new class 'X2Effect_WilltoSurvive';
-	ArmorBonus.WTS_DR = default.WTS_COVER_DR_PCT;
+	ArmorBonus.WTS_FLAT_DR = default.WTS_FLAT_DR;
 	ArmorBonus.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
 	ArmorBonus.BuildPersistentEffect(1, true, false);
 	Template.AddTargetEffect(ArmorBonus);

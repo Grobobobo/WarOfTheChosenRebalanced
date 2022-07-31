@@ -636,7 +636,8 @@ static function X2AbilityTemplate SoulShot()
 	Template.IconImage = "img:///IRIPerkPack_UILibrary_LW.UIPerk_SoulShot";
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;
 	Template.AbilitySourceName = 'eAbilitySource_Psionic';
-	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_SQUADDIE_PRIORITY;
+	//Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_SQUADDIE_PRIORITY;
+	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.REND_PRIORITY;
 
 	//ToHitCalc = new class'X2AbilityToHitCalc_StandardAim';
 	Template.AbilityToHitCalc = default.Deadeye;
@@ -700,6 +701,7 @@ static function X2AbilityTemplate SoulShot()
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
 	Template.PostActivationEvents.AddItem('RendActivated');
+	Template.OverrideAbilities.AddItem('Rend');
 	
 	Template.SuperConcealmentLoss = class'X2AbilityTemplateManager'.default.SuperConcealmentStandardShotLoss;
 	Template.ChosenActivationIncreasePerUse = class'X2AbilityTemplateManager'.default.StandardShotChosenActivationIncreasePerUse;

@@ -182,6 +182,9 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 		case 'WTS_COVER_DR_PCT':
 			Outstring = string(int(class'X2Ability_PerkPackAbilitySet'.default.WTS_COVER_DR_PCT * 100));
 			return true;
+		case 'WTS_FLAT_DR':
+			Outstring = string(class'X2Ability_PerkPackAbilitySet'.default.WTS_FLAT_DR);
+			return true;
 		case 'WTS_WOUND_REDUCTION':
 			Outstring = string(int(class'X2Ability_PerkPackAbilitySet'.default.WTS_WOUND_REDUCTION * 100));
 			return true;

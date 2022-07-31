@@ -1578,8 +1578,8 @@ TacticalText="<Bullet/> Lowers enemy hack defense by <Ability:REDSCREEN_EFFECT_L
 [NeedleRounds X2AmmoTemplate]
 FriendlyName="Needle Rounds"
 FriendlyNamePlural="Needle Rounds"
-BriefSummary="Does +1 damage to all targets and +2 damage to nonrobotic ADVENT personnel."
-TacticalText="<Bullet/> Does +2 damage to nonrobotic ADVENT personnel.<br/><Bullet/> Only one ammo enhancement may be equipped at a time."
+BriefSummary="Breaks enemy overwatch, at the cost of -<Ability:SHREDDER_ROUNDS_DMG_PENALTY/>% damage penalty."
+TacticalText="<Bullet/> Breaks enemy overwatch, at the cost of -<Ability:SHREDDER_ROUNDS_DMG_PENALTY/>% damage penalty.<br/><Bullet/> Only one ammo enhancement may be equipped at a time."
 
 [FalconRounds X2AmmoTemplate]
 FriendlyName="Shredder Rounds"
@@ -3611,7 +3611,7 @@ Summary="These rounds are designed to do extra damage to the computer hardware i
 
 [NeedleRoundsProject X2TechTemplate]
 DisplayName="Needle Rounds"
-Summary="These ultrathin slivers of alien alloy are designed to penetrate the body armor that ADVENT soldiers wear, doing bonus damage to nonrobotic ADVENT units."
+Summary="These ultrathin slivers of alien alloy are designed to penetrate the body armor that ADVENT wears, Allowing For us to break their overwatch."
 
 [DragonRoundsProject X2TechTemplate]
 DisplayName="Dragon Rounds"
@@ -8642,8 +8642,8 @@ LocPromotionPopupText="<Bullet/> Greater Padding reduces the number of hit point
 
 [IRI_SoulShot X2AbilityTemplate]
 LocFriendlyName="Soul Shot"
-LocLongDescription="Upgrades rend to a ranged attack that is guaranteed to hit and pierces armor."
-LocHelpText="A powerful aim-based ranged attack that can crit and does not end turn. Costs 1 Focus."
+LocLongDescription="Upgrades rend to a ranged attack that is guaranteed to hit."
+LocHelpText="Shoot an enemy with your bow. Generates focus."
 LocPromotionPopupText="<Bullet/> Soul Shot has no cooldown."
 
 [IRI_TemplarShield X2AbilityTemplate]
@@ -8729,10 +8729,10 @@ TacticalText="<Bullet/> A Nanomedikit can restore <Ability:NANOMEDIKITHEALHP/>HP
 
 [Paramedic_LW X2AbilityTemplate]
 LocFriendlyName="Paramedic"
-LocLongDescription="Unlocks an ability to perform a dash move to use a medikit on an ally. Gain a free medikit. Equipped medikits have <Ability:PARAMEDIC_BONUS_CHARGES/> extra charges."
-LocHelpText="Unlocks an ability to perform a dash move to use a medikit on an ally. Gain a free medikit. Equipped medikits have <Ability:PARAMEDIC_BONUS_CHARGES/> extra charges."
+LocLongDescription="Unlocks an ability to perform a dash move to use a medikit on an ally. Equipped medikits have <Ability:PARAMEDIC_BONUS_CHARGES/> extra charge/s."
+LocHelpText="Unlocks an ability to perform a dash move to use a medikit on an ally. Equipped medikits have <Ability:PARAMEDIC_BONUS_CHARGES/> extra charge/s."
 ; LWOTC Needs Translation (2)
-LocPromotionPopupText="<Bullet/> "Unlocks an ability to perform a dash move to use a medikit on an ally. Gain a free medikit. Equipped medikits have <Ability:PARAMEDIC_BONUS_CHARGES/> extra charges."
+LocPromotionPopupText=""
 ; End Translation (2)
 [ParaMedikitHeal X2AbilityTemplate]
 LocFriendlyName="Paramedic Heal"
@@ -8916,6 +8916,12 @@ LocPromotionPopupText=""
 LocFriendlyName="Impact"
 LocLongDescription="Your Attacks can now remove enemy overwatch on hit."
 LocHelpText="Your Attacks can now remove enemy overwatch on hit."
+LocPromotionPopupText=""
+
+[AmmoImpact X2AbilityTemplate]
+LocFriendlyName="Impact"
+LocLongDescription="Your Shots can now remove enemy overwatch on hit."
+LocHelpText="Your Shots can now remove enemy overwatch on hit."
 LocPromotionPopupText=""
 
 [UnstoppableGunFire X2AbilityTemplate]

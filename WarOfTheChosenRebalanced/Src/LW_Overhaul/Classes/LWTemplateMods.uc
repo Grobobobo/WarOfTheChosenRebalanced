@@ -3198,6 +3198,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			if (GrenadeTemplate.DataName == 'MutonGrenade')
 			{
 				GrenadeTemplate.iEnvironmentDamage = class'X2Item_DefaultWeaponMods_LW'.default.MUTONGRENADE_iENVIRONMENTDAMAGE;
+				GrenadeTemplate.iRange = class'X2Item_DefaultWeaponMods_LW'.default.MUTONGRENADE_RANGE;
 			}
 			if (GrenadeTemplate.DataName == 'FragGrenade')
 			{

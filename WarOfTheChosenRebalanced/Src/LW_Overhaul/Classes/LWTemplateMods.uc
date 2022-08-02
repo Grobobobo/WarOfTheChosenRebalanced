@@ -3080,7 +3080,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		{
 			if (EquipmentTemplate.Abilities.Find('Bluescreen_Rounds_Ability_PP') == -1)
 			{
-				EquipmentTemplate.Abilities.AddItem('BluescreenRoundsDisorient');
+			//	EquipmentTemplate.Abilities.AddItem('BluescreenRoundsDisorient');
 				EquipmentTemplate.Abilities.AddItem('Bluescreen_Rounds_Ability_PP');
 			}
 		}

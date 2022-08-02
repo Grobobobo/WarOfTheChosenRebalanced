@@ -827,8 +827,10 @@ LocHelpText="Does +1 damage to all targets and +2 damage to nonrobotic aliens."
 [AP_Rounds_Ability_PP X2AbilityTemplate]
 LocFriendlyName="Armor Piercing Rounds"
 LocFlyOverText="Armor Piercing Rounds"
-LocLongDescription="Your hits ignore 2 armor at the cost of <Ability:AP_ROUNDS_CRIT_PENALTY/> crit."
-LocHelpText="Your hits ignore 2 armor at the cost of <Ability:AP_ROUNDS_CRIT_PENALTY/> crit."
+;LocLongDescription="Your hits ignore 2 armor at the cost of <Ability:AP_ROUNDS_CRIT_PENALTY/> crit."
+;LocHelpText="Your hits ignore 2 armor at the cost of <Ability:AP_ROUNDS_CRIT_PENALTY/> crit."
+LocLongDescription="Your hits ignore 2 armor."
+LocHelpText="Your hits ignore 2 armor."
 
 [Tracer_Rounds_Ability_PP X2AbilityTemplate]
 LocFriendlyName="Tracer Rounds"
@@ -1587,8 +1589,8 @@ FriendlyNamePlural="Shredder Rounds"
 BriefSummary="Shreds 1 enemy armor with every hit, at the cost of -<Ability:SHREDDER_ROUNDS_DMG_PENALTY/>% damage penalty."
 TacticalText="<Bullet/> Shreds 1 enemy armor with every hit.<br/><Bullet/> Only one ammo enhancement may be equipped at a time."
 
-[APRounds X2AmmoTemplate]
-BriefSummary="Hand machined from ultra strong, ultra light alien alloys, these deadly rounds will effectively bypass <Ability:APROUNDSPIERCEBONUS/> enemy armor to deal unmitigated damage, at the cost of <Ability:AP_ROUNDS_CRIT_PENALTY/> crit."
+;[APRounds X2AmmoTemplate]
+;BriefSummary="Hand machined from ultra strong, ultra light alien alloys, these deadly rounds will effectively bypass <Ability:APROUNDSPIERCEBONUS/> enemy armor to deal unmitigated damage, at the cost of <Ability:AP_ROUNDS_CRIT_PENALTY/> crit."
 
 [HighPressureTanks X2WeaponTemplate]
 FriendlyName="High Pressure Tanks"

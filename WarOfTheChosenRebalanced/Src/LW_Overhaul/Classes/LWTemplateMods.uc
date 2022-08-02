@@ -3052,7 +3052,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			if (EquipmentTemplate.Abilities.Find('AP_Rounds_Ability_PP') == -1)
 			{
 				EquipmentTemplate.Abilities.AddItem('AP_Rounds_Ability_PP');
-				EquipmentTemplate.Abilities.AddItem('APRoundsCritPenalty');
+			//	EquipmentTemplate.Abilities.AddItem('APRoundsCritPenalty');
 			}
 		}
 		if (EquipmentTemplate.DataName == 'TalonRounds')

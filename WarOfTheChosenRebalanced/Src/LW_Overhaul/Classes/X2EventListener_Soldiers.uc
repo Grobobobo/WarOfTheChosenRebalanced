@@ -385,14 +385,15 @@ static function EventListenerReturn OverrideAPGain(
 
 	UnitState = XComGameState_Unit(EventData);
 
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Change AP Gain");
-	UnitState = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', UnitState.ObjectID));
+	//NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Change AP Gain");
+	UnitState = XComGameState_Unit(GameState.GetGameStateForObjectID(class'XComGameState_Unit', UnitState.ObjectID));
 
 	UnitState.GetUnitValue('GTO_FreePromotionAP',FreePromotionValue);
 	//Redundant checks because I don't want to spam gamestates in the strategy
 	if(FreePromotionValue.fValue < 1.0f || UnitState.IsResistanceHero())
 	{
 		NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Change AP Gain");
+		UnitState = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', UnitState.ObjectID));
 
 	//Add Some starting AP to soldiers
 		if(FreePromotionValue.fValue < 1.0f)

@@ -314,8 +314,8 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'CombatProtocol':
 			UpdateCombatProtocol(Template);
 			break;
-		case 'LongWatch':
-			Template.AdditionalAbilities.AddItem('CoolUnderPressure');
+		// case 'LongWatch':
+		// 	Template.AdditionalAbilities.AddItem('CoolUnderPressure');
 		case 'Overwatch':
 		case 'PistolOverwatch':
 		case 'SniperRifleOverwatch':

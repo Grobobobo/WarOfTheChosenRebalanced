@@ -332,6 +332,9 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 		case 'ZONE_CONTROL_AIM_PENALTY':
 			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.ZONE_CONTROL_AIM_PENALTY);
 			return true;
+		case 'ZONE_CONTROL_CRIT_PENALTY':
+			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.ZONE_CONTROL_CRIT_PENALTY);
+			return true;
 		case 'ZONE_CONTROL_MOBILITY_PENALTY':
 			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.ZONE_CONTROL_MOBILITY_PENALTY);
 			return true;

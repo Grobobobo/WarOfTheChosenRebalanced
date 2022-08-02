@@ -43,8 +43,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('OpenFire_LW','Trooper',MECAppeared,default.T2_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Suppression','Trooper',MECAppeared,default.T2_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Evasive','Trooper',LidAppeared,default.T3_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ChosenVenomRounds','Trooper',LidAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Evasive','Trooper',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ChosenVenomRounds','Trooper',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CombatAwareness','Sentry',TrooperAppeared,default.T1_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('GrazingFire','Sentry',TrooperAppeared,default.T1_UPGRADES_WEIGHT));
@@ -52,8 +52,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CoolUnderPressure','Sentry',MECAppeared,default.T2_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Concentration_LW','Sentry',MECAppeared,default.T2_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('RapidReaction','Sentry',LidAppeared,default.T3_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('HuntersInstinct','Sentry',LidAppeared,default.T3_UPGRADES_WEIGHT));
+	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('RapidReaction','Sentry',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Aggression','Sentry',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('HuntersInstinct','Sentry',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
 
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('GrazingFire','Gunner',TrooperAppeared,default.T1_UPGRADES_WEIGHT));
@@ -61,10 +62,10 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CombatAwareness','Gunner',MECAppeared,default.T2_UPGRADES_WEIGHT));
 	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Mayhem','Gunner',MECAppeared,default.T2_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('SteadFast','Gunner',LidAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('SteadFast','Gunner',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Holotargeting','Gunner',LidAppeared,default.T3_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Shredder','Gunner',LidAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Holotargeting','Gunner',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Shredder','Gunner',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('InstantReactionTime','Sectoid',TrooperAppeared,default.T1_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Predator_LW','Sectoid',TrooperAppeared,default.T1_UPGRADES_WEIGHT));
@@ -72,8 +73,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ShootingSharp_LW','Sectoid',MECAppeared,default.T2_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Aggression','Sectoid',MECAppeared,default.T2_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Dominant_LW','Sectoid',LidAppeared,default.T3_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('MindShield','Sectoid',LidAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Dominant_LW','Sectoid',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('MindShield','Sectoid',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ApexPredator_LW','Sectoid',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Solace','Sectoid',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
@@ -84,8 +85,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	// DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Suppression','Captain',MECAppeared,default.T2_UPGRADES_WEIGHT));
 	// DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Executioner_LW','Captain',MECAppeared,default.T2_UPGRADES_WEIGHT));
 
-	// DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CloseCombatSpecialist','Captain',LidAppeared,default.T3_UPGRADES_WEIGHT));
-	// DarkEvents.AddItem(CreateTacticalUpgradesTemplate('OverBearingSuperiority_LW','Captain',LidAppeared,default.T3_UPGRADES_WEIGHT));
+	// DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CloseCombatSpecialist','Captain',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
+	// DarkEvents.AddItem(CreateTacticalUpgradesTemplate('OverBearingSuperiority_LW','Captain',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Predator_LW','Drone',TrooperAppeared,default.T1_UPGRADES_WEIGHT));
 	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Brawler','Drone',TrooperAppeared,default.T1_UPGRADES_WEIGHT));
@@ -93,8 +94,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('HuntersInstinct','Drone',MECAppeared,default.T2_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ApexPredator_LW','Drone',MECAppeared,default.T2_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CloseCombatSpecialist','Drone',LidAppeared,default.T3_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ParalyzingBlows','Drone',LidAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CloseCombatSpecialist','Drone',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ParalyzingBlows','Drone',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
 
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Infighter','StunLancer',LancerAppeared,default.T1_UPGRADES_WEIGHT));
@@ -114,8 +115,8 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('SteadyHands','Viper',SpectreAppeared,default.T2_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Serpentine','Viper',LidAppeared,default.T3_UPGRADES_WEIGHT));
-	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Entwine_LW','Viper',LidAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Serpentine','Viper',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
+	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Entwine_LW','Viper',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('HazmatVestBonus_LW','Viper',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
 
@@ -126,9 +127,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Grit_LW','Priest',SpectreAppeared,default.T2_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('MindShield','Priest',SpectreAppeared,default.T2_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Dominant_LW','Priest',LidAppeared,default.T3_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ChosenDragonRounds','Priest',LidAppeared,default.T3_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Solace','Priest',LidAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Dominant_LW','Priest',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ChosenDragonRounds','Priest',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Solace','Priest',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
 
 
 	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('OverBearingSuperiority_LW','Priest',ViperM4,default.T4_UPGRADES_WEIGHT));
@@ -150,24 +151,29 @@ static function array<X2DataTemplate> CreateTemplates()
 	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ReturnFire','Purifier',ArchonAppeared,default.T3_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('InstantReactionTime','Purifier',ArchonAppeared,default.T3_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Sprinter','Muton',MutonAppeared,default.T1_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Shredder','Muton',MutonAppeared,default.T1_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Sprinter','Muton',MutonAppeared,default.T2_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('OpenFire_LW','Muton',MutonAppeared,default.T2_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Bladestorm','Muton',BerserkerAppeared,default.T2_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Predator_LW','Muton',BerserkerAppeared,default.T2_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ZoneOfControl_LW','Muton',BerserkerAppeared,default.T2_UPGRADES_WEIGHT));
+	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Bladestorm','Muton',BerserkerAppeared,default.T2_UPGRADES_WEIGHT));
+	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Predator_LW','Muton',BerserkerAppeared,default.T2_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('TotalCombat','Muton',MutonEliteAppeared,default.T3_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Grit_LW','Muton',MutonEliteAppeared,default.T3_UPGRADES_WEIGHT));
+	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('TotalCombat','Muton',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
+	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Grit_LW','Muton',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ZoneOfControl_LW','Muton',SpectreAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Shredder','Muton',SpectreAppeared,default.T3_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Resilience','Mec',MutonAppeared,default.T1_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Shredder','Mec',MutonAppeared,default.T1_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('AbsorbtionFields_LW','Muton',SectopodAppeared,default.T4_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CloseCombatSpecialist','Muton',SectopodAppeared,default.T4_UPGRADES_WEIGHT));
+	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Warcry','Muton',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('VolatileMix','Mec',BerserkerAppeared,default.T2_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Sprinter','Mec',BerserkerAppeared,default.T2_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Resilience','Mec',MECAppeared,default.T2_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('VolatileMix','Mec',MECAppeared,default.T2_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('PrimaryReturnFire','Mec',MutonEliteAppeared,default.T3_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('AbsorptionFields_LW','Mec',MutonEliteAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Sprinter','Mec',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Shredder','Mec',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
+
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('PrimaryReturnFire','Mec',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
+	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('AbsorptionFields_LW','Mec',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Resilience','Cyberus',Cyberus,default.T2_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Predator','Cyberus',Cyberus,default.T2_UPGRADES_WEIGHT));
@@ -185,7 +191,7 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Brawler','Shieldbearer',SpectreAppeared,default.T2_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Formidable','Shieldbearer',LidAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Formidable','Shieldbearer',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ChosenDragonRounds','Shieldbearer',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ReadyForAnything','Shieldbearer',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
@@ -199,14 +205,14 @@ static function array<X2DataTemplate> CreateTemplates()
 //	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Bladestorm','Berserker',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('DamageControl','Berserker',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Infighter','Chryssalid',BerserkerAppeared,default.T2_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('MovingTarget_LW','Chryssalid',BerserkerAppeared,default.T2_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('MovingTarget_LW','Chryssalid',TrooperAppeared,default.T1_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('InstantReactionTime','Chryssalid',TrooperAppeared,default.T1_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('InstantReactionTime','Chryssalid',MutonEliteAppeared,default.T3_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Sprinter','Chryssalid',MutonEliteAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Infighter','Chryssalid',MutonAppeared,default.T2_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Sprinter','Chryssalid',MutonAppeared,default.T3_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Grit_LW','Chryssalid',MutonEliteAppeared,default.T3_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ParalyzingBlows','Chryssalid',MutonEliteAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Cutthroat','Chryssalid',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ParalyzingBlows','Chryssalid',BerserkerAppeared,default.T3_UPGRADES_WEIGHT));
 
 	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ReadyForAnything','Shieldbearer',ViperM4,default.T4_UPGRADES_WEIGHT));
 
@@ -214,8 +220,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('VolatileMix','Andromedon',AndromedonAppeared,default.T3_UPGRADES_WEIGHT));
 
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CloseCombatSpecialist','Andromedon',LancerM4,default.T4_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('SuperDuperRobot','AndromedonRobot',LancerM4,default.T4_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CloseCombatSpecialist','Andromedon',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('SuperDuperRobot','AndromedonRobot',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CoolUnderPressure','Archon',ArchonAppeared,default.T3_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('HardTarget','Archon',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
@@ -493,15 +499,6 @@ function bool MECAppeared(XComGameState_DarkEvent DarkEventState)
 	return SeenAnyofThem(Charlist);
 }
 
-function bool LidAppeared(XComGameState_DarkEvent DarkEventState)
-{
-	local array<name> CharList;
-
-	CharList.AddItem('Chryssalid');
-	CharList.AddItem('Chryssalid_Leader');
-	return SeenAnyofThem(Charlist);
-}
-
 function bool LancerAppeared(XComGameState_DarkEvent DarkEventState)
 {
 	local array<name> CharList;
@@ -515,6 +512,7 @@ function bool SpectreAppeared(XComGameState_DarkEvent DarkEventState)
 {
 	local array<name> CharList;
 
+	CharList.AddItem('SpectreM1');
 	CharList.AddItem('SpectreM2');
 	return SeenAnyofThem(Charlist);
 }
@@ -527,22 +525,13 @@ function bool AndromedonAppeared(XComGameState_DarkEvent DarkEventState)
 	return SeenAnyofThem(Charlist);
 }
 
-function bool LancerM4(XComGameState_DarkEvent DarkEventState)
-{
-	local array<name> CharList;
-
-	CharList.AddItem('AdvStunSpectreAppeared');
-	CharList.AddItem('SpecreM4');
-
-	return SeenAnyofThem(Charlist);
-}
 
 function bool ViperAppeared(XComGameState_DarkEvent DarkEventState)
 {
 	local array<name> CharList;
 
 	CharList.AddItem('Viper');
-	CharList.AddItem('AdvPriestM1');
+	CharList.AddItem('Viper_Leader');
 
 	return SeenAnyofThem(Charlist);
 }
@@ -575,16 +564,6 @@ function bool MutonAppeared(XComGameState_DarkEvent DarkEventState)
 
 	CharList.AddItem('Muton');
 	CharList.AddItem('Muton_Leader');
-
-	return SeenAnyofThem(Charlist);
-}
-
-function bool MutonEliteAppeared(XComGameState_DarkEvent DarkEventState)
-{
-	local array<name> CharList;
-
-	CharList.AddItem('BerserkerAppeared_LW');
-	CharList.AddItem('BerserkerAppeared_Leader');
 
 	return SeenAnyofThem(Charlist);
 }

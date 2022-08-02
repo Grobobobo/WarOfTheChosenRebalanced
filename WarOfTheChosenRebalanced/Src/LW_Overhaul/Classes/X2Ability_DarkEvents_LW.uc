@@ -30,7 +30,8 @@ static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
 
-	Templates.AddItem(CreateDarkEventAbility('CloseCombatSpecialist','Captain'));
+	//Templates.AddItem(CreateDarkEventAbility('CloseCombatSpecialist','Captain'));
+	Templates.AddItem(CreateDarkEventAbility('CloseCombatSpecialist','Muton'));
 	Templates.AddItem(CreateDarkEventAbility('CloseCombatSpecialist','Drone'));
 	Templates.AddItem(CreateDarkEventAbility('CloseCombatSpecialist','Andromedon'));
 
@@ -41,7 +42,7 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	Templates.AddItem(CreateDarkEventAbility('CoolUnderPressure','Sentry'));
 
-	Templates.AddItem(CreateDarkEventAbility('RapidReaction','Sentry'));
+//	Templates.AddItem(CreateDarkEventAbility('RapidReaction','Sentry'));
 
 	Templates.AddItem(CreateDarkEventAbility('HuntersInstinct','Sentry'));
 	Templates.AddItem(CreateDarkEventAbility('HuntersInstinct','Drone'));
@@ -81,6 +82,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateDarkEventAbility('OpenFire_LW','Trooper'));
 	Templates.AddItem(CreateDarkEventAbility('OpenFire_LW','Gunner'));
 	Templates.AddItem(CreateDarkEventAbility('OpenFire_LW','Viper'));
+	Templates.AddItem(CreateDarkEventAbility('OpenFire_LW','Muton'));
 
 	Templates.AddItem(CreateDarkEventAbility('ChosenVenomRounds','Trooper'));
 
@@ -100,6 +102,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateDarkEventAbility('ShootingSharp_LW','Captain'));
 
 	Templates.AddItem(CreateDarkEventAbility('Aggression','Sectoid'));
+	Templates.AddItem(CreateDarkEventAbility('Aggression','Sentry'));
 
 	Templates.AddItem(CreateDarkEventAbility('Predator_LW','Sectoid'));
 	Templates.AddItem(CreateDarkEventAbility('Predator_LW','Drone'));
@@ -190,6 +193,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateDarkEventAbility('VolatileMix','Andromedon'));
 
 	Templates.AddItem(CreateDarkEventAbility('AbsorptionFields_LW','Mec'));
+	Templates.AddItem(CreateDarkEventAbility('AbsorptionFields_LW','Muton'));
 
 	Templates.AddItem(CreateDarkEventAbility('PrimaryReturnFire','Mec'));
 	Templates.AddItem(CreateDarkEventAbility('PrimaryReturnFire','Sectopod'));

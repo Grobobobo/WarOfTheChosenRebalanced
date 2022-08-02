@@ -4531,6 +4531,15 @@ PreMissionText="Sentries gain Rapid Reaction."
 PostMissionSuccessText="Sentry Upgrade: Rapid Reaction"
 PostMissionFailureText="Sentry Upgrade: Rapid Reaction"
 
+[DarkEvent_SentryAggression X2DarkEventTemplate]
+DisplayName="Sentry Upgrade: Aggression"
+SummaryText="Sentries gain Aggression, granting increasing critical chance with each XCOM sighted."
+QuoteText="\"Don't go thinking the numbers scare them They're more than prepared for all of us.\""
+QuoteTextAuthor="- Unidentified Tech Sergeant"
+PreMissionText="Sentries gain Aggression."
+PostMissionSuccessText="Sentry Upgrade: Aggression"
+PostMissionFailureText="Sentry Upgrade: Aggression"
+
 [DarkEvent_SentryHuntersInstinct X2DarkEventTemplate]
 DisplayName="Sentry Upgrade: Hunters Instinct"
 SummaryText="Sentries gain Hunters Instinct, granting bonus damage against exposed targets."
@@ -4805,7 +4814,7 @@ PostMissionFailureText="Stun Lancer Upgrade: Infighter"
 
 [DarkEvent_StunLancerZoneOfControl_LW X2DarkEventTemplate]
 DisplayName="Stun Lancer Upgrade: Zone Of Control"
-SummaryText="Stun Lancers gain Zone Of Control, causing nearby enemies to lose aim and mobility."
+SummaryText="Stun Lancers gain Zone Of Control, causing nearby enemies to lose crit and mobility."
 QuoteText="\"Hard to keep your cool when you are worried about being stabbed.\""
 QuoteTextAuthor="- Unidentified Tech Sergeant"
 PreMissionText="Stun Lancers gain Zone Of Control."
@@ -5112,7 +5121,7 @@ PostMissionFailureText="Muton Upgrade: Sprinter"
 
 [DarkEvent_MutonZoneOfControl_LW X2DarkEventTemplate]
 DisplayName="Muton Upgrade: Zone Of Control"
-SummaryText="Mutons gain Zone Of Control, causing nearby enemies to lose aim and mobility."
+SummaryText="Mutons gain Zone Of Control, causing nearby enemies to lose crit and mobility."
 QuoteText="\"That stare it gave me was enough of a reason to not peek again.\""
 QuoteTextAuthor="- Unidentified Rookie"
 PreMissionText="Mutons gain Zone Of Control."
@@ -5127,6 +5136,33 @@ QuoteTextAuthor="- Unidentified Sharpshooter"
 PreMissionText="Mutons gain Predator."
 PostMissionSuccessText="Muton Upgrade: Predator"
 PostMissionFailureText="Muton Upgrade: Predator"
+
+[DarkEvent_MutonOpenFire_LW X2DarkEventTemplate]
+DisplayName="Muton Upgrade: Open Fire"
+SummaryText="Mutons gain Open Fire, granting crit against targets at full health."
+QuoteText="\"Do Mutons go to the shooting range? Or are we the target dummies?\""
+QuoteTextAuthor="- Unidentified Sharpshooter"
+PreMissionText="Mutons gain Open Fire."
+PostMissionSuccessText="Muton Upgrade: Open Fire"
+PostMissionFailureText="Muton Upgrade: Open Fire"
+
+[DarkEvent_MutonCloseCombatSpecialist X2DarkEventTemplate]
+DisplayName="Muton Upgrade: Close Combat Specialist"
+SummaryText="Mutons gain Close Combat Specialist, granting automatic reaction shots in close range."
+QuoteText="\"Really having second thoughts about the whole close range thing.\""
+QuoteTextAuthor="- Central Officer Bradford"
+PreMissionText="Mutons gain Close Combat Specialist."
+PostMissionSuccessText="Muton Upgrade: Close Combat Specialist"
+PostMissionFailureText="Muton Upgrade: Close Combat Specialist"
+
+[DarkEvent_MutonAbsorptionFields_LW X2DarkEventTemplate]
+DisplayName="Muton Upgrade: Absorption Fields"
+SummaryText="Mutons gain Absorption Fields, granting damage reduction against the first attack each turn."
+QuoteText="\"The Muton Power Armor always had great potential, it seems ADVENT finally reached it.\""
+QuoteTextAuthor="- Chief Engineer Shen"
+PreMissionText="Mutons gain Absorption Fields."
+PostMissionSuccessText="Muton Upgrade: Absorption Fields"
+PostMissionFailureText="Muton Upgrade: Absorption Fields"
 
 [DarkEvent_MutonBladeStorm X2DarkEventTemplate]
 DisplayName="Muton Upgrade: Bladestorm"
@@ -5347,7 +5383,7 @@ PostMissionFailureText="Berserker Upgrade: Sprinter"
 
 [DarkEvent_BerserkerZoneOfControl_LW X2DarkEventTemplate]
 DisplayName="Berserker Upgrade: Zone Of Control"
-SummaryText="Berserkers gain Zone Of Control, causing nearby enemies to lose aim and mobility."
+SummaryText="Berserkers gain Zone Of Control, causing nearby enemies to lose crit and mobility."
 QuoteText="\"I don't imagine many can go up against these beasts without batting an eye.\""
 QuoteTextAuthor="- Central Officer Bradford"
 PreMissionText="Berserkers gain Zone Of Control."
@@ -7639,26 +7675,26 @@ LocPromotionPopupText="<Bullet/> By cleverly combining the effects of Brutality 
 
 [ZoneOfControl_LW X2AbilityTemplate]
 LocFriendlyName = "Zone of Control"
-LocHelpText = "All enemies within the <Ability:ClassName/>'s <Ability:ZONE_CONTROL_RADIUS/> tile radius suffer penalties of <Ability:ZONE_CONTROL_AIM_PENALTY/> Aim and <Ability:ZONE_CONTROL_MOBILITY_PENALTY/> Mobility."
+LocHelpText = "All enemies within the <Ability:ClassName/>'s <Ability:ZONE_CONTROL_RADIUS/> tile radius suffer penalties of <Ability:ZONE_CONTROL_CRIT_PENALTY/> Crit and <Ability:ZONE_CONTROL_MOBILITY_PENALTY/> Mobility."
 LocLongDescription = "All enemies within the <Ability:ClassName/>'s <Ability:ZONE_CONTROL_RADIUS/> tile radius suffer penalties to Aim and Mobility."
 ; LWOTC Needs Translation (2)
-LocPromotionPopupText = "<Bullet/> All enemies within the <Ability:ClassName/>'s <Ability:ZONE_CONTROL_RADIUS/> tile radius suffer penalties of <Ability:ZONE_CONTROL_AIM_PENALTY/> Aim and <Ability:ZONE_CONTROL_MOBILITY_PENALTY/> Mobility.<br/>"
+LocPromotionPopupText = "<Bullet/> All enemies within the <Ability:ClassName/>'s <Ability:ZONE_CONTROL_RADIUS/> tile radius suffer penalties of <Ability:ZONE_CONTROL_CRIT_PENALTY/> Crit and <Ability:ZONE_CONTROL_MOBILITY_PENALTY/> Mobility.<br/>"
 ; End Translation (2)
 
 [ZoCCleanse X2AbilityTemplate]
 LocFriendlyName = "Zone of Control"
-LocHelpText = "All enemies within the <Ability:ClassName/>'s <Ability:ZONE_CONTROL_RADIUS/> tile radius suffer penalties of <Ability:ZONE_CONTROL_AIM_PENALTY/> Aim and <Ability:ZONE_CONTROL_MOBILITY_PENALTY/> Mobility."
+LocHelpText = "All enemies within the <Ability:ClassName/>'s <Ability:ZONE_CONTROL_RADIUS/> tile radius suffer penalties of <Ability:ZONE_CONTROL_CRIT_PENALTY/> Crit and <Ability:ZONE_CONTROL_MOBILITY_PENALTY/> Mobility."
 LocLongDescription = "All enemies within the <Ability:ClassName/>'s <Ability:ZONE_CONTROL_RADIUS/> tile radius suffer penalties to Aim and Mobility."
 ; LWOTC Needs Translation (2)
-LocPromotionPopupText = "<Bullet/> All enemies within the <Ability:ClassName/>'s <Ability:ZONE_CONTROL_RADIUS/> tile radius suffer penalties of <Ability:ZONE_CONTROL_AIM_PENALTY/> Aim and <Ability:ZONE_CONTROL_MOBILITY_PENALTY/> Mobility.<br/>"
+LocPromotionPopupText = "<Bullet/> All enemies within the <Ability:ClassName/>'s <Ability:ZONE_CONTROL_RADIUS/> tile radius suffer penalties of <Ability:ZONE_CONTROL_CRIT_PENALTY/> Crit and <Ability:ZONE_CONTROL_MOBILITY_PENALTY/> Mobility.<br/>"
 ; End Translation (2)
 
 [ZoCPassive X2AbilityTemplate]
 LocFriendlyName = "Zone of Control"
-LocHelpText = "All enemies within the <Ability:ClassName/>'s <Ability:ZONE_CONTROL_RADIUS/> tile radius suffer penalties of <Ability:ZONE_CONTROL_AIM_PENALTY/> Aim and <Ability:ZONE_CONTROL_MOBILITY_PENALTY/> Mobility."
+LocHelpText = "All enemies within the <Ability:ClassName/>'s <Ability:ZONE_CONTROL_RADIUS/> tile radius suffer penalties of <Ability:ZONE_CONTROL_CRIT_PENALTY/> Crit and <Ability:ZONE_CONTROL_MOBILITY_PENALTY/> Mobility."
 LocLongDescription = "All enemies within the <Ability:ClassName/>'s <Ability:ZONE_CONTROL_RADIUS/> tile radius suffer penalties to Aim and Mobility."
 ; LWOTC Needs Translation (2)
-LocPromotionPopupText = "<Bullet/> All enemies within the <Ability:ClassName/>'s <Ability:ZONE_CONTROL_RADIUS/> tile radius suffer penalties of <Ability:ZONE_CONTROL_AIM_PENALTY/> Aim and <Ability:ZONE_CONTROL_MOBILITY_PENALTY/> Mobility.<br/>"
+LocPromotionPopupText = "<Bullet/> All enemies within the <Ability:ClassName/>'s <Ability:ZONE_CONTROL_RADIUS/> tile radius suffer penalties of <Ability:ZONE_CONTROL_CRIT_PENALTY/> Crit and <Ability:ZONE_CONTROL_MOBILITY_PENALTY/> Mobility.<br/>"
 ; End Translation (2)
 
 

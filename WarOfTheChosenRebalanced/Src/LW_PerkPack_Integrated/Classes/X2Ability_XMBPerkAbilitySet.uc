@@ -68,6 +68,7 @@ var config int BLINDING_PROTOCOL_COOLDOWN;
 
 var config int ZONE_CONTROL_MOBILITY_PENALTY;
 var config int ZONE_CONTROL_AIM_PENALTY;
+var config int ZONE_CONTROL_CRIT_PENALTY;
 var config float ZONE_CONTROL_RADIUS_SQ;
 
 var config int AIM_ASSIST_AIM_BONUS;
@@ -1134,7 +1135,8 @@ static function X2AbilityTemplate AddZoCCleanse()
 	ZOCEffect.EffectName = 'ZoneOfControl_LWEffect';
 	ZOCEffect.BuildPersistentEffect(1, true, true);
 	ZOCEffect.AddPersistentStatChange(eStat_Mobility, default.ZONE_CONTROL_MOBILITY_PENALTY);
-	ZOCEffect.AddPersistentStatChange(eStat_Offense, default.ZONE_CONTROL_AIM_PENALTY);
+	//ZOCEffect.AddPersistentStatChange(eStat_Offense, default.ZONE_CONTROL_AIM_PENALTY);
+	ZOCEffect.AddPersistentStatChange(eStat_CritChance, default.ZONE_CONTROL_CRIT_PENALTY);
 	ZOCEffect.SetDisplayInfo(ePerkBuff_Penalty, Template.LocFriendlyName, Template.LocHelpText, Template.IconImage, true,,Template.AbilitySourceName);
 	ZOCEffect.DuplicateResponse = eDupe_Ignore;
 	ZOCEffect.bRemoveWhenSourceDies = true;

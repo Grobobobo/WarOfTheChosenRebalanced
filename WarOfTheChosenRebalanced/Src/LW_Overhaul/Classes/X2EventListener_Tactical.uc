@@ -857,15 +857,15 @@ static protected function EventListenerReturn DynamicallyApplyLoadouts(
 				LoadoutStr $= "2";
 			}
 			iRand = `SYNC_RAND_STATIC(100);
-			if (iRand < 15)
-			{
-				LoadoutStr $= "SMG";
-			}
-			else if (iRand < 30)
+			// if (iRand < 15)
+			// {
+			// 	LoadoutStr $= "SMG";
+			// }
+			if (iRand < 34)
 			{
 				LoadoutStr $= "Shotgun";
 			}
-			else if (iRand < 45)
+			else if (iRand < 67)
 			{
 				LoadoutStr $= "Bullpup";
 			}

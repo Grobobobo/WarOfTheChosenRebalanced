@@ -147,6 +147,9 @@ static function X2DataTemplate CreateTemplate_Immolator_CV()
 
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Cannon';
 
+	Template.CreatorTemplateName = 'Immolator_CV_Schematic'; // The schematic which creates this item
+	Template.BaseItem = 'LWImmolator_T0'; // Which item this will be upgraded from
+
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.RangeLabel, , default.FLAMETHROWER_RANGE);
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.RadiusLabel, , default.FLAMETHROWER_RADIUS);
 
@@ -203,7 +206,7 @@ static function X2DataTemplate CreateTemplate_Immolator_MG()
 
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Cannon';
 
-	Template.CreatorTemplateName = 'Immolator_BM_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'Immolator_MG_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'LWImmolator_CV'; // Which item this will be upgraded from
 
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.RangeLabel, , default.FLAMETHROWER_RANGE);
@@ -262,7 +265,7 @@ static function X2DataTemplate CreateTemplate_Immolator_BM()
 
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Cannon';
 
-	Template.CreatorTemplateName = 'Cannon_BM_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'Immolator_BM_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'LWImmolator_MG'; // Which item this will be upgraded from
 
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.RangeLabel, , default.FLAMETHROWER_RANGE);

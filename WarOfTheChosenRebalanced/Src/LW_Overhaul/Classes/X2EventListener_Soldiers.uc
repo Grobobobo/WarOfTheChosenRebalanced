@@ -386,7 +386,7 @@ static function EventListenerReturn OverrideAPGain(
 	UnitState = XComGameState_Unit(EventData);
 
 	//NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Change AP Gain");
-	UnitState = XComGameState_Unit(GameState.GetGameStateForObjectID(class'XComGameState_Unit', UnitState.ObjectID));
+	UnitState = XComGameState_Unit(GameState.GetGameStateForObjectID(UnitState.ObjectID));
 
 	UnitState.GetUnitValue('GTO_FreePromotionAP',FreePromotionValue);
 	//Redundant checks because I don't want to spam gamestates in the strategy
@@ -970,6 +970,7 @@ static function EventListenerReturn  OnOverrideBleedOutChance(Object EventData, 
 {
 	local XComLWTuple				OverrideTuple;
 	local int						BleedOutChance;
+	local XComGameState_HeadquartersXCom XComHQ;
 
 	OverrideTuple = XComLWTuple(EventData);
 	if(OverrideTuple == none)
@@ -978,12 +979,21 @@ static function EventListenerReturn  OnOverrideBleedOutChance(Object EventData, 
 		return ELR_NoInterrupt;
 	}
 
+	BleedOutChance = default.BLEEDOUT_CHANCE_BASE - (OverrideTuple.Data[2].i * default.DEATH_CHANCE_PER_OVERKILL_DAMAGE);
+
+	XComHQ = XComGameState_HeadquartersXCom(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersXCom', true));
+	
+	if (XComHQ != none && XComHQ.SoldierUnlockTemplates.Find('StayWithMeUnlock') != INDEX_NONE)
+	{
+		`log("Applying bonus chance for StayWithMeUnlock...",,'XCom_HitRolls');
+		BleedOutChance += class'X2StatusEffects'.default.BLEEDOUT_BONUS_ROLL;
+	}
+
 	// Tuple data consists of:
 	//   0: Bleed out chance
 	//   1: Size of die to roll
 	//   2: Overkill damage, i.e. how much damage was dealt over and above what was needed
 	//      to take the solider to 0 health.
-	BleedOutChance = default.BLEEDOUT_CHANCE_BASE - (OverrideTuple.Data[2].i * default.DEATH_CHANCE_PER_OVERKILL_DAMAGE);
 	OverrideTuple.Data[0].i = BleedOutChance;
 
 	return ELR_NoInterrupt;

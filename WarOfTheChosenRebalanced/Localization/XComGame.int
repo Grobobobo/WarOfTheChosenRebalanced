@@ -8680,8 +8680,8 @@ LocPromotionPopupText="<Bullet/> Greater Padding reduces the number of hit point
 
 [IRI_SoulShot X2AbilityTemplate]
 LocFriendlyName="Soul Shot"
-LocLongDescription="Upgrades rend to a ranged attack that is guaranteed to hit."
-LocHelpText="Shoot an enemy with your bow. Generates focus."
+LocLongDescription="An Aim Based Ranged attack that deals heavy damage and can crit. Costs 1 Focus and is non-turn ending."
+LocHelpText="Shoot an enemy with your bow."
 LocPromotionPopupText="<Bullet/> Soul Shot has no cooldown."
 
 [IRI_TemplarShield X2AbilityTemplate]

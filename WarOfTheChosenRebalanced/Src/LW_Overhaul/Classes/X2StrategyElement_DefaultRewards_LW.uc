@@ -273,30 +273,30 @@ static function X2DataTemplate CreateResistanceCardRewardTemplate_LW()
 {
 	local X2RewardTemplate Template;
 
-	`CREATE_X2Reward_TEMPLATE(Template, 'Reward_ResistanceCard_LW');
+	`CREATE_X2Reward_TEMPLATE(Template, 'Reward_ResistanceCard_POI');
 	Template.RewardImage = "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_Intel";
 
-	Template.IsRewardAvailableFn = IsResistanceCardRewardAvailable;
-	Template.GenerateRewardFn = GenerateResistanceCardReward;
-	Template.GiveRewardFn = GiveResistanceCardReward;
-	Template.GetRewardImageFn = GetResistanceCardRewardImage;
-	Template.GetRewardStringFn = GetResistanceCardRewardString;
-	Template.GetRewardPreviewStringFn = GetResistanceCardRewardString;
-	Template.GetRewardDetailsStringFn = GetResistanceCardRewardDetailsString;
-	Template.CleanUpRewardFn = CleanUpResistanceCardReward;
-	Template.RewardPopupFn = ResistanceCardRewardPopup;
+	Template.IsRewardAvailableFn = IsResistanceCardRewardAvailable_POI;
+	Template.GenerateRewardFn = GenerateResistanceCardReward_POI;
+	Template.GiveRewardFn = GiveResistanceCardReward_POI;
+	Template.GetRewardImageFn = GetResistanceCardRewardImage_POI;
+	Template.GetRewardStringFn = GetResistanceCardRewardString_POI;
+	Template.GetRewardPreviewStringFn = GetResistanceCardRewardString_POI;
+	Template.GetRewardDetailsStringFn = GetResistanceCardRewardDetailsString_POI;
+	Template.CleanUpRewardFn = CleanUpResistanceCardReward_POI;
+	Template.RewardPopupFn = ResistanceCardRewardPopup_POI;
 
 	return Template;
 }
 
-static function bool IsResistanceCardRewardAvailable(optional XComGameState NewGameState, optional StateObjectReference AuxRef)
+static function bool IsResistanceCardRewardAvailable_POI(optional XComGameState NewGameState, optional StateObjectReference AuxRef)
 {
 	//local XComGameState_ResistanceFaction FactionState;
 	//The condition i wanted is filled in the POI condition
 	return true;
 }
 
-static function GenerateResistanceCardReward(XComGameState_Reward RewardState, XComGameState NewGameState, optional float RewardScalar = 1.0, optional StateObjectReference AuxRef)
+static function GenerateResistanceCardReward_POI(XComGameState_Reward RewardState, XComGameState NewGameState, optional float RewardScalar = 1.0, optional StateObjectReference AuxRef)
 {
 	local XComGameState_ResistanceFaction FactionState;
 	local XComGameState_StrategyCard CardState;
@@ -350,7 +350,7 @@ static function XComGameState_StrategyCard DrawRandomPlayableCard(XComGameState 
 {
 	local XComGameState_StrategyCard CardState;
 	//Make it select worse rewards than the covert action one
-	CardState = GetRandomCardToMakePlayable(NewGameState, Min(FactionState.Influence, 1), FactionState);
+	CardState = GetRandomCardToMakePlayable(NewGameState, Max(FactionState.Influence, 1), FactionState);
 	if (CardState != none)
 	{
 		CardState = XComGameState_StrategyCard(NewGameState.ModifyStateObject(class'XComGameState_StrategyCard', CardState.ObjectID));
@@ -410,7 +410,7 @@ static function bool IsCardAvailable(XComGameState_StrategyCard CardState, int C
 	return false;
 }
 
-static function GiveResistanceCardReward(XComGameState NewGameState, XComGameState_Reward RewardState, optional StateObjectReference AuxRef, optional bool bOrder = false, optional int OrderHours = -1)
+static function GiveResistanceCardReward_POI(XComGameState NewGameState, XComGameState_Reward RewardState, optional StateObjectReference AuxRef, optional bool bOrder = false, optional int OrderHours = -1)
 {
 	//local XComGameStateHistory History;
 	local XComGameState_ResistanceFaction FactionState;
@@ -418,39 +418,37 @@ static function GiveResistanceCardReward(XComGameState NewGameState, XComGameSta
 
 	//History = `XCOMHISTORY;
 
-	NewCardState = XComGameState_StrategyCard(NewGameState.GetGameStateForObjectID(RewardState.RewardObjectReference.ObjectID));
+	NewCardState = XComGameState_StrategyCard(`XCOMHISTORY.GetGameStateForObjectID(RewardState.RewardObjectReference.ObjectID));
 
 	FactionState = XComGameState_ResistanceFaction(NewGameState.ModifyStateObject(class'XComGameState_ResistanceFaction', NewCardState.GetAssociatedFaction().ObjectID));
 	FactionState.AddPlayableCard(NewGameState, RewardState.RewardObjectReference);
 }
 
-static function string GetResistanceCardRewardImage(XComGameState_Reward RewardState)
+static function string GetResistanceCardRewardImage_POI(XComGameState_Reward RewardState)
 {
 	local XComGameStateHistory History;
 	local XComGameState_CovertAction ActionState;
 	local XComGameState_StrategyCard CardState;
 
 	History = `XCOMHISTORY;
-	ActionState = XComGameState_CovertAction(History.GetGameStateForObjectID(RewardState.RewardObjectReference.ObjectID));
-	CardState = XComGameState_StrategyCard(History.GetGameStateForObjectID(ActionState.StoredRewardRef.ObjectID));
+	CardState = XComGameState_StrategyCard(History.GetGameStateForObjectID(RewardState.RewardObjectReference.ObjectID));
 
 	return CardState.GetImagePath();
 }
 
-static function string GetResistanceCardRewardString(XComGameState_Reward RewardState)
+static function string GetResistanceCardRewardString_POI(XComGameState_Reward RewardState)
 {
 	local XComGameStateHistory History;
 	local XComGameState_CovertAction ActionState;
 	local XComGameState_StrategyCard CardState;
 
 	History = `XCOMHISTORY;
-	ActionState = XComGameState_CovertAction(History.GetGameStateForObjectID(RewardState.RewardObjectReference.ObjectID));
-	CardState = XComGameState_StrategyCard(History.GetGameStateForObjectID(ActionState.StoredRewardRef.ObjectID));
+	CardState = XComGameState_StrategyCard(History.GetGameStateForObjectID(RewardState.RewardObjectReference.ObjectID));
 	
 	return CardState.GetDisplayName();
 }
 
-static function string GetResistanceCardRewardDetailsString(XComGameState_Reward RewardState)
+static function string GetResistanceCardRewardDetailsString_POI(XComGameState_Reward RewardState)
 {
 	local XComGameStateHistory History;
 	local XComGameState_CovertAction ActionState;
@@ -463,30 +461,28 @@ static function string GetResistanceCardRewardDetailsString(XComGameState_Reward
 	return CardState.GetSummaryText();
 }
 
-static function CleanUpResistanceCardReward(XComGameState NewGameState, XComGameState_Reward RewardState)
+static function CleanUpResistanceCardReward_POI(XComGameState NewGameState, XComGameState_Reward RewardState)
 {
 	local XComGameState_CovertAction ActionState;
 	local XComGameState_StrategyCard CardState;
 	
-	ActionState = XComGameState_CovertAction(`XCOMHISTORY.GetGameStateForObjectID(RewardState.RewardObjectReference.ObjectID));
-	CardState = XComGameState_StrategyCard(NewGameState.ModifyStateObject(class'XComGameState_StrategyCard', ActionState.StoredRewardRef.ObjectID));
+	CardState = XComGameState_StrategyCard(`XCOMHISTORY.GetGameStateForObjectID(RewardState.RewardObjectReference.ObjectID));
+	CardState = XComGameState_StrategyCard(NewGameState.ModifyStateObject(class'XComGameState_StrategyCard', CardState.ObjectID));
 	CardState.bDrawn = false; // Put the selected card back into the available pool
 }
 
-static function ResistanceCardRewardPopup(XComGameState_Reward RewardState)
+static function ResistanceCardRewardPopup_POI(XComGameState_Reward RewardState)
 {
 	local XComGameStateHistory History;
 	local XComGameState_CovertAction ActionState;
 	local XComGameState_StrategyCard CardState;
 
 	History = `XCOMHISTORY;
-	ActionState = XComGameState_CovertAction(History.GetGameStateForObjectID(RewardState.RewardObjectReference.ObjectID));
-	if (ActionState != none)
+
+	CardState = XComGameState_StrategyCard(History.GetGameStateForObjectID(RewardState.RewardObjectReference.ObjectID));
+	if (CardState != none)
 	{
-		CardState = XComGameState_StrategyCard(History.GetGameStateForObjectID(ActionState.StoredRewardRef.ObjectID));
-		if (CardState != none)
-		{
-			`HQPRES.UIStrategyCardReceived(CardState.GetReference());
-		}
+		`HQPRES.UIStrategyCardReceived(CardState.GetReference());
 	}
+
 }

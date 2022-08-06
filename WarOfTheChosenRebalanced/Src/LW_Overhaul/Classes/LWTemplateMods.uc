@@ -568,8 +568,37 @@ function UpdateRewardTemplate(X2StrategyElementTemplate Template, int Difficulty
 			RewardTemplate.IsRewardAvailableFn = IsRescueSoldierRewardAvailableFixed;
 			RewardTemplate.GenerateRewardFn = GenerateRescueSoldierRewardFixed;
 			break;
+		//Change the way The Resistance Cards are generated
+		case 'Reward_ResistanceCard':
+			RewardTemplate.GenerateRewardFn = GenerateResistanceCardReward;
 		default:
 			break;
+	}
+}
+
+static function GenerateResistanceCardReward(XComGameState_Reward RewardState, XComGameState NewGameState, optional float RewardScalar = 1.0, optional StateObjectReference AuxRef)
+{
+	local XComGameState_CovertAction ActionState;
+	local XComGameState_ResistanceFaction FactionState;
+	local XComGameState_StrategyCard CardState;
+
+	ActionState = XComGameState_CovertAction(NewGameState.GetGameStateForObjectID(AuxRef.ObjectID));
+	if (ActionState != none)
+	{
+		FactionState = ActionState.GetFaction();
+		CardState = class'X2StrategyElement_DefaultRewards_LW'.static.DrawRandomPlayableCard(NewGameState, FactionState);
+		
+		// Save the generated card to the Action so it can easily be retrieved later
+		if (CardState != none)
+		{
+			ActionState.StoredRewardRef = CardState.GetReference();
+		}
+
+		RewardState.RewardObjectReference = AuxRef;
+	}
+	else
+	{
+		`RedScreen("@jweinhoffer Tried to generate Resistance Card reward for non-covert action");
 	}
 }
 

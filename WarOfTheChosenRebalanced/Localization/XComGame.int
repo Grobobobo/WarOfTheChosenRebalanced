@@ -2223,6 +2223,11 @@ DisplayName="Resistance Personnel"
 DisplayName="Resistance MEC"
 RewardDetails="You'll get a Resistance MEC to guard one of your Havens."
 
+
+[Reward_ResistanceCard_POI X2RewardTemplate]
+DisplayName="Resistance Card"
+RewardDetails="You'll get a Resistance Order."
+
 [Reward_NewResources X2RewardTemplate]
 DisplayName="New Resources"
 

@@ -35,8 +35,9 @@ static function UpdateMissionSources(X2StrategyElementTemplate Template, int Dif
 			SourceTemplate.OnExpireFn = RetaliationOnExpire_LW;
 		case 'MissionSource_Council':
 			SourceTemplate.OnSuccessFn = CouncilOnSuccess;
-
-
+		case 'MissionSource_AlienNetwork':
+			SourceTemplate.DifficultyValue = 1;
+			SourceTemplate.GetMissionDifficultyFn = GetMissionDifficultyFromDoom;
 			break;
 		default:
 			break;
@@ -284,6 +285,19 @@ static function array<int> GetCouncilExcludeRewards(XComGameState_MissionSite Mi
 	}
 
 	return ExcludeIndices;
+}
+
+static function int GetMissionDifficultyFromDoom(XComGameState_MissionSite MissionState)
+{
+	local int Difficulty;
+
+	Difficulty = MissionState.GetMissionSource().DifficultyValue;
+
+	Difficulty += (MissionState.Doom/2);
+
+	Difficulty = Clamp(Difficulty, class'X2StrategyGameRulesetDataStructures'.default.MinMissionDifficulty, 7);
+
+	return Difficulty;
 }
 
 defaultproperties

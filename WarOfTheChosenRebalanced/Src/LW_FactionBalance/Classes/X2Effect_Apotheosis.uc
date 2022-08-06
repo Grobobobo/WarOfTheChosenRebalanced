@@ -9,29 +9,44 @@ class X2Effect_Apotheosis extends X2Effect_ModifyStats;
 var float FocusDamageMultiplier;
 var array<FocusLevelModifiers> arrFocusModifiers;
 
+// simulated protected function OnEffectAdded(
+// 	const out EffectAppliedData ApplyEffectParameters,
+// 	XComGameState_BaseObject kNewTargetState,
+// 	XComGameState NewGameState,
+// 	XComGameState_Effect NewEffectState)
+// {
+// 	local XComGameState_Effect_FocusLevel FocusEffectState;
+// 	local XComGameState_Unit UnitState;
+
+// 	FocusEffectState = XComGameState_Effect_FocusLevel(NewEffectState);
+// 	UnitState = XComGameState_Unit(kNewTargetState);
+// 	if (UnitState != none)
+// 	{
+// 		FocusEffectState.SetFocusLevel(
+// 			UnitState.GetTemplarFocusLevel(),
+// 			arrFocusModifiers[UnitState.GetTemplarFocusLevel()].StatChanges,
+// 			UnitState,
+// 			NewGameState);
+// 	}
+
+// 	if (FocusEffectState.StatChanges.Length > 0)
+// 		super.OnEffectAdded(ApplyEffectParameters, kNewTargetState, NewGameState, NewEffectState);
+// }
+
 simulated protected function OnEffectAdded(
 	const out EffectAppliedData ApplyEffectParameters,
 	XComGameState_BaseObject kNewTargetState,
 	XComGameState NewGameState,
 	XComGameState_Effect NewEffectState)
 {
-	local XComGameState_Effect_FocusLevel FocusEffectState;
 	local XComGameState_Unit UnitState;
 
-	FocusEffectState = XComGameState_Effect_FocusLevel(NewEffectState);
-	UnitState = XComGameState_Unit(kNewTargetState);
-	if (UnitState != none)
-	{
-		FocusEffectState.SetFocusLevel(
-			UnitState.GetTemplarFocusLevel(),
-			arrFocusModifiers[UnitState.GetTemplarFocusLevel()].StatChanges,
-			UnitState,
-			NewGameState);
-	}
+	NewEffectState.iTurnsRemaining = NewEffectState.iTurnsRemaining + UnitState.GetTemplarFocusLevel() -1;
 
-	if (FocusEffectState.StatChanges.Length > 0)
-		super.OnEffectAdded(ApplyEffectParameters, kNewTargetState, NewGameState, NewEffectState);
+	super.OnEffectAdded(ApplyEffectParameters, kNewTargetState, NewGameState, NewEffectState);
 }
+
+
 
 function float GetPostDefaultAttackingDamageModifier_CH(
 	XComGameState_Effect EffectState,

@@ -460,10 +460,10 @@ LocPromotionPopupText="<Bullet/> Your grenades, rockets and heavy weapons do ful
 
 [GhostGrenade X2AbilityTemplate]
 LocFriendlyName="Ghost Grenade"
-LocLongDescription="A specialized smoke grenade that causes the targeted ally to enter concealment."
+LocLongDescription="A specialized smoke grenade that causes the targeted ally to enter phantom concealment. Free Action."
 LocHelpText="Put a single XCOM ally into concealment."
 ; LWOTC Needs Translation
-LocPromotionPopupText="<Bullet/> This ability only affects a single targeted ally; others in the smoke cloud are not concealed but do receive the defense bonus.<br/><Bullet/> Uses one action and ends your turn.<br/><Bullet/> One use per mission; abilities that add grenade charges do not provide any bonuses.<br/><Bullet/> Only works on XCOM soldiers, as civilians do not have training in concealment techniques.<br/><Bullet/> Small smoke cloud grants 20 defense; dense smoke bonuses do not apply.<br/><Bullet/> It does not fit in the standard XCOM grenade launcher and must be thrown at a visible ally.<br/><Bullet/> The <Ability:ClassName/> cannot use this ability when concealed."
+LocPromotionPopupText="<Bullet/> This ability only affects a single targeted ally; others in the smoke cloud are not concealed but do receive the defense bonus.<br/><Bullet/> Free Action.<br/><Bullet/> One use per mission; abilities that add grenade charges do not provide any bonuses.<br/><Bullet/> Only works on XCOM soldiers, as civilians do not have training in concealment techniques.<br/><Bullet/> Small smoke cloud grants 20 defense; dense smoke bonuses do not apply.<br/><Bullet/> It does not fit in the standard XCOM grenade launcher and must be thrown at a visible ally.<br/><Bullet/> The <Ability:ClassName/> cannot use this ability when concealed."
 ; End Translation
 
 [VanishingAct X2AbilityTemplate]
@@ -580,7 +580,7 @@ LocLongDescription="Gain <ABILITY:COMBAT_FITNESS_OFFENSE_LW/> aim, <ABILITY:COMB
 LocHelpText="This soldier has numerous stat bonuses."
 LocPromotionPopUpText="<Bullet/> Combat Fitness provides <ABILITY:COMBAT_FITNESS_OFFENSE_LW/> aim, <ABILITY:COMBAT_FITNESS_MOBILITY_LW/> mobility, <ABILITY:COMBAT_FITNESS_HP_LW/> HP, <ABILITY:COMBAT_FITNESS_WILL_LW/> will, and <ABILITY:COMBAT_FITNESS_DODGE_LW/> dodge."
 
-[CombatFitness X2AbilityTemplate]
+[Secticide_LW X2AbilityTemplate]
 LocFriendlyName="Secticide"
 LocLongDescription="Lose <ABILITY:SECTICIDE_WILL_REDUCTION/> will and <ABILITY:SECTICIDE_PSIOFFENSE_REDUCTION/> psi offense."
 
@@ -3104,8 +3104,8 @@ m_strDifficulty="BASELINE ENEMY ACTIVITY:"
 
 [X2StrategyGameRulesetDataStructures]
 MissionDifficultyLabels[0]="Unknown"
-MissionDifficultyLabels[1]="Easy"
-MissionDifficultyLabels[2]="Medium"
+MissionDifficultyLabels[1]="Standard"
+MissionDifficultyLabels[2]="Above Average"
 MissionDifficultyLabels[3]="Difficult"
 MissionDifficultyLabels[4]="Very Difficult"
 MissionDifficultyLabels[5]="Moderate"

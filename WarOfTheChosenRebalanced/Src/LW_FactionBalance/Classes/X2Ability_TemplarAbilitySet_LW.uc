@@ -518,7 +518,7 @@ static function X2AbilityTemplate AddApotheosis()
 	Template.AbilityCooldown = Cooldown;
 
 	Effect = new class'X2Effect_Apotheosis';
-	Effect.BuildPersistentEffect(2, false, true, false, eGameRule_PlayerTurnBegin);
+	Effect.BuildPersistentEffect(1, false, true, false, eGameRule_PlayerTurnBegin);
 	Effect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
 	// Effect.AddPersistentStatChange(eStat_Dodge, float(default.APOTHEOSIS_DODGE_BONUS));
 	Effect.FocusDamageMultiplier = default.APOTHEOSIS_DAMAGE_MULTIPLIER;

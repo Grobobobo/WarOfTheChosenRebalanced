@@ -8685,8 +8685,8 @@ LocPromotionPopupText="<Bullet/> Greater Padding reduces the number of hit point
 
 [IRI_SoulShot X2AbilityTemplate]
 LocFriendlyName="Soul Shot"
-LocLongDescription="Upgrades rend to a ranged attack that is guaranteed to hit."
-LocHelpText="Shoot an enemy with your bow. Generates focus."
+LocLongDescription="An Aim Based Ranged attack that deals heavy damage and can crit. Costs 1 Focus and is non-turn ending."
+LocHelpText="Shoot an enemy with your bow."
 LocPromotionPopupText="<Bullet/> Soul Shot has no cooldown."
 
 [IRI_TemplarShield X2AbilityTemplate]
@@ -9188,6 +9188,20 @@ LocFriendlyName="Protective Servos"
 LocFlyOverText="Protective Servos"
 LocLongDescription="After taking damage, gain Stackable 2 armor through the end of the turn."
 LocHelpText="After taking damage, gain Stackable 2 armor through the end of the turn."
+LocPromotionPopupText="<Bullet/> Your armor hardens temporarily after an impact. After taking damage, gain 1 armor through the end of the next turn.
+
+[LightProtectiveServos X2AbilityTemplate]
+LocFriendlyName="Light Protective Servos"
+LocFlyOverText="Light Protective Servos"
+LocLongDescription="After taking damage, gain Stackable 1 armor through the end of the turn."
+LocHelpText="After taking damage, gain Stackable 1 armor through the end of the turn."
+LocPromotionPopupText="<Bullet/> Your armor hardens temporarily after an impact. After taking damage, gain 1 armor through the end of the next turn.
+
+[LightProtectiveServosPassive X2AbilityTemplate]
+LocFriendlyName="Light Protective Servos"
+LocFlyOverText="Light Protective Servos"
+LocLongDescription="After taking damage, gain Stackable 1 armor through the end of the turn."
+LocHelpText="After taking damage, gain Stackable 1 armor through the end of the turn."
 LocPromotionPopupText="<Bullet/> Your armor hardens temporarily after an impact. After taking damage, gain 1 armor through the end of the next turn.
 
 [SuperiorHolyWarrior X2AbilityTemplate]

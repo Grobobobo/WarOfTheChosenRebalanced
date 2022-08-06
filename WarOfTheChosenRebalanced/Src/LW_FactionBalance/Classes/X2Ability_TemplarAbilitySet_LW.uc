@@ -18,9 +18,10 @@ var config int OVERCHARGE_AIM_BONUS;
 var config int OVERCHARGE_CRIT_BONUS;
 var config int APOTHEOSIS_COOLDOWN;
 var config int APOTHEOSIS_DODGE_BONUS;
+var config int APOTHEOSIS_AIM_BONUS;
 var config int APOTHEOSIS_MOBILITY_BONUS;
 var config float APOTHEOSIS_DAMAGE_MULTIPLIER;
-
+var config int SOUL_SHOT_HIT_MOD;
 var config int AMPLIFY_SHOTS;
 
 var name PanicImpairingAbilityName;
@@ -520,13 +521,15 @@ static function X2AbilityTemplate AddApotheosis()
 	Effect = new class'X2Effect_Apotheosis';
 	Effect.BuildPersistentEffect(1, false, true, false, eGameRule_PlayerTurnBegin);
 	Effect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
-	// Effect.AddPersistentStatChange(eStat_Dodge, float(default.APOTHEOSIS_DODGE_BONUS));
+	Effect.AddPersistentStatChange(eStat_Dodge, float(default.APOTHEOSIS_DODGE_BONUS));
+	Effect.AddPersistentStatChange(eStat_Offense, float(default.APOTHEOSIS_AIM_BONUS));
+	Effect.AddPersistentStatChange(eStat_Mobility, float(default.APOTHEOSIS_MOBILITY_BONUS));
 	Effect.FocusDamageMultiplier = default.APOTHEOSIS_DAMAGE_MULTIPLIER;
 	Effect.arrFocusModifiers.AddItem(EmptyFocusLevelModifiers);
 	Effect.arrFocusModifiers.AddItem(EmptyFocusLevelModifiers);
 	Effect.arrFocusModifiers.AddItem(EmptyFocusLevelModifiers);
-	Effect.arrFocusModifiers.AddItem(CreateFocusLevelModifiers(default.APOTHEOSIS_DODGE_BONUS, default.APOTHEOSIS_MOBILITY_BONUS));
-	Effect.arrFocusModifiers.AddItem(CreateFocusLevelModifiers(2 * default.APOTHEOSIS_DODGE_BONUS, 2 * default.APOTHEOSIS_MOBILITY_BONUS));
+	//Effect.arrFocusModifiers.AddItem(CreateFocusLevelModifiers(default.APOTHEOSIS_DODGE_BONUS, default.APOTHEOSIS_MOBILITY_BONUS));
+	//Effect.arrFocusModifiers.AddItem(CreateFocusLevelModifiers(2 * default.APOTHEOSIS_DODGE_BONUS, 2 * default.APOTHEOSIS_MOBILITY_BONUS));
 	Template.AddTargetEffect(Effect);
 
 	// State and Viz
@@ -629,18 +632,19 @@ static function X2AbilityTemplate SoulShot()
 	local X2Effect_ApplyWeaponDamage        WeaponDamageEffect;
 	local X2Condition_Visibility            TargetVisibilityCondition;
 	//local X2AbilityToHitCalc_StandardAim	ToHitCalc;
-//	local X2AbilityCost_Focus				FocusCost;
+	local X2AbilityCost_Focus				FocusCost;
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'IRI_SoulShot');
 
 	// Icon Setup
 	Template.IconImage = "img:///IRIPerkPack_UILibrary_LW.UIPerk_SoulShot";
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;
 	Template.AbilitySourceName = 'eAbilitySource_Psionic';
-	//Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_SQUADDIE_PRIORITY;
-	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.REND_PRIORITY;
+	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_SQUADDIE_PRIORITY;
+	//Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.REND_PRIORITY;
 
-	//ToHitCalc = new class'X2AbilityToHitCalc_StandardAim';
-	Template.AbilityToHitCalc = default.Deadeye;
+	ToHitCalc = new class'X2AbilityToHitCalc_StandardAim';
+	ToHitCalc.BuiltInHitMod = default.SOUL_SHOT_HIT_MOD;
+	Template.AbilityToHitCalc = ToHitCalc;
 
 	Template.AbilityTargetStyle = default.SimpleSingleTarget;
 	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
@@ -663,13 +667,13 @@ static function X2AbilityTemplate SoulShot()
 
 	// Costs
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
-	ActionPointCost.bConsumeAllPoints = true;
+	ActionPointCost.bConsumeAllPoints = false;
 	ActionPointCost.iNumPoints = 1;
 	Template.AbilityCosts.AddItem(ActionPointCost);
 	
-	// FocusCost = new class'X2AbilityCost_Focus';
-	// FocusCost.FocusAmount = 1;
-	// Template.AbilityCosts.AddItem(FocusCost);
+	FocusCost = new class'X2AbilityCost_Focus';
+	FocusCost.FocusAmount = 1;
+	Template.AbilityCosts.AddItem(FocusCost);
 
 	// Effects
 	WeaponDamageEffect = new class'X2Effect_ApplyWeaponDamage';
@@ -700,8 +704,8 @@ static function X2AbilityTemplate SoulShot()
 	Template.Hostility = eHostility_Offensive;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
-	Template.PostActivationEvents.AddItem('RendActivated');
-	Template.OverrideAbilities.AddItem('Rend');
+	//Template.PostActivationEvents.AddItem('RendActivated');
+	//Template.OverrideAbilities.AddItem('Rend');
 	
 	Template.SuperConcealmentLoss = class'X2AbilityTemplateManager'.default.SuperConcealmentStandardShotLoss;
 	Template.ChosenActivationIncreasePerUse = class'X2AbilityTemplateManager'.default.StandardShotChosenActivationIncreasePerUse;

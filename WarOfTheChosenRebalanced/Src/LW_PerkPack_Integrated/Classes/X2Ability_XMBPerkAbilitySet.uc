@@ -255,6 +255,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateBullRushPassive());
 	Templates.AddItem(AddProtectiveServosAbility());
 	Templates.AddItem(AddProtectiveServosPassive());
+	Templates.AddItem(AddLightProtectiveServosAbility());
+	Templates.AddItem(AddLightProtectiveServosPassive());
 	Templates.AddItem(AddSuperiorHolyWarrior());
 	Templates.AddItem(AddSuperDuperRobot());
 	Templates.AddItem(ShredderRoundsDamagePenalty());
@@ -3785,6 +3787,62 @@ static function X2AbilityTemplate AddProtectiveServosAbility()
 	return Template;
 }
 
+static function X2AbilityTemplate AddLightProtectiveServosPassive()
+{
+	local X2AbilityTemplate                 Template;	
+
+	Template = PurePassive('LightProtectiveServosPassive', "img:///UILibrary_LW_PerkPack.LW_AbilityDamageControl", true, 'eAbilitySource_Perk');
+	Template.bCrossClassEligible = false;
+	//Template.AdditionalAbilities.AddItem('DamageControlAbilityActivated');
+	return Template;
+}
+
+static function X2AbilityTemplate AddLightProtectiveServosAbility()
+{
+	local X2AbilityTemplate						Template;	
+	local X2AbilityTrigger_EventListener		EventListener;
+	local X2Effect_DamageControl 				DamageControlEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'LightProtectiveServos');
+	Template.IconImage = "img:///UILibrary_LW_PerkPack.LW_AbilityDamageControl";
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.Hostility = eHostility_Neutral;
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
+	Template.AbilityToHitCalc = default.DeadEye;
+    Template.AbilityTargetStyle = default.SelfTarget;
+	Template.bShowActivation = true;
+	Template.bSkipFireAction = true;
+	//Template.bIsPassive = true;
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+
+	// Trigger on Damage
+	EventListener = new class'X2AbilityTrigger_EventListener';
+	EventListener.ListenerData.EventID = 'UnitTakeEffectDamage';
+	EventListener.ListenerData.EventFn = class'XComGameState_Ability'.static.AbilityTriggerEventListener_Self;
+	EventListener.ListenerData.Deferral = ELD_OnStateSubmitted;
+	EventListener.ListenerData.Filter = eFilter_Unit;
+	Template.AbilityTriggers.AddItem(EventListener);
+
+	DamageControlEffect = new class'X2Effect_DamageControl';
+	DamageControlEffect.BuildPersistentEffect(1,false,true,,eGameRule_PlayerTurnBegin);
+	DamageControlEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
+	DamageControlEffect.DuplicateResponse = eDupe_Allow;
+	DamageControlEffect.EffectName = 'LightProtectiveServos';
+	DamageControlEffect.BonusArmor = 1;
+	Template.AddTargetEffect(DamageControlEffect);
+
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	//Template.BuildInterruptGameStateFn = TypicalAbility_BuildInterruptGameState;
+
+	Template.AdditionalAbilities.AddItem('LightProtectiveServosPassive');
+
+	return Template;
+}
+
 static function X2AbilityTemplate AddProtectiveServosPassive()
 {
 	local X2AbilityTemplate                 Template;	
@@ -3794,6 +3852,7 @@ static function X2AbilityTemplate AddProtectiveServosPassive()
 	//Template.AdditionalAbilities.AddItem('DamageControlAbilityActivated');
 	return Template;
 }
+
 
 static function X2AbilityTemplate AddSuperiorHolyWarrior()
 {

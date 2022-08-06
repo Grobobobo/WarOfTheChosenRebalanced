@@ -66,9 +66,7 @@ function float GetPostDefaultAttackingDamageModifier_CH(
 
 	if (TargetUnit != none)
 	{
-		// Double the current damage (will include bonuses from other persistent
-		// effects that precede this one)
-		return WeaponDamage * (FocusEffectState.FocusLevel - 2) * FocusDamageMultiplier;
+		return WeaponDamage * FocusDamageMultiplier;
 	}
 
 	return 0.0;

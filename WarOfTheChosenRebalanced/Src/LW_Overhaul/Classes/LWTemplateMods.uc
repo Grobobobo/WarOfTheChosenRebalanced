@@ -3042,14 +3042,6 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			EquipmentTemplate.UIStatMarkups.Length = 0;
 			EquipmentTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 2);
 		}
-		if (EquipmentTemplate.DataName == 'NanofiberVest') // THIS JUST MAKES IT BETTER
-		{
-			EquipmentTemplate.Abilities.Length = 0;
-			EquipmentTemplate.Abilities.AddItem ('NanofiberVestBonus_LW');
-			//remove the HP bonuses in favor of ablative
-			EquipmentTemplate.UIStatMarkups.Length = 0;
-			EquipmentTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 2);
-		}
 		if (EquipmentTemplate.DataName == 'PlatedVest') 
 		{
 			EquipmentTemplate.Abilities.AddItem ('Alloy_Plating_Ability');

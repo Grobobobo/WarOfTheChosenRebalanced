@@ -218,6 +218,9 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 	case 'ApotheosisDodgeBonus':
 		OutString = string(class'X2Ability_TemplarAbilitySet_LW'.default.APOTHEOSIS_DODGE_BONUS);
 		return true;
+	case 'APOTHEOSIS_AIM_BONUS':
+		OutString = string(class'X2Ability_TemplarAbilitySet_LW'.default.APOTHEOSIS_AIM_BONUS);
+		return true;
 	case 'ApotheosisDamageMultiplier':
 		OutString = string(int(class'X2Ability_TemplarAbilitySet_LW'.default.APOTHEOSIS_DAMAGE_MULTIPLIER * 100));
 		return true;

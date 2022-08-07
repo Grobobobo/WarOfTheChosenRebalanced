@@ -245,10 +245,13 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'SteadyHands':
 			FixSteadyHands(Template);
 			break;
+		case 'ChryssalidSlash':
+			RemoveAbilityWeaponDamage(Template);
+			RemoveTargetingRandomCivilians(Template);
+			break;
 		case 'DevastatingPunch':
 			class'Helpers_LW'.static.RemoveAbilityTargetEffects(Template,'X2Effect_ImmediateAbilityActivation');
 		case 'BigDamnPunch':
-		case 'ChryssalidSlash':
 		case 'ScythingClaws':
 			RemoveAbilityWeaponDamage(Template);
 			break;
@@ -1580,6 +1583,21 @@ static function RemoveAbilityWeaponDamage(X2AbilityTemplate Template)
 	}
 }
 
+//Make Chryssalids not insta-ruin some missions when they appear
+static function RemoveTargetingRandomCivilians(X2AbilityTemplate Template)
+{
+	local X2Effect TempEffect;
+	local X2Condition_UnitProperty	UnitPropertyCondition;
+
+	class 'Helpers_LW'.static.RemoveAbilityTargetConditions(Template,'X2Condition_UnitProperty');
+
+	UnitPropertyCondition = new class'X2Condition_UnitProperty';
+	UnitPropertyCondition.ExcludeDead = true;
+	//UnitPropertyCondition.ExcludeFriendlyToSource = false; // Disable this to allow civilians to be attacked.
+	UnitPropertyCondition.ExcludeSquadmates = true;		   // Don't attack other AI units.
+	Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);
+
+}
 
 static function MakeBindDamageScale(X2AbilityTemplate Template)
 {

@@ -3324,6 +3324,10 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 		case 'CHAIN_LIGHTNING_AIM_MOD_LW':
 			Outstring = string(class'X2Ability_LW_AssaultAbilitySet'.default.CHAIN_LIGHTNING_AIM_MOD);
 			return true;
+		case 'KNIFE_FIGHTER_TILE_RANGE':
+			Outstring = string(class'X2Ability_LW_GunnerAbilitySet'.default.KNIFE_FIGHTER_TILE_RANGE);
+			return true;
+
 		case 'STUNGUNNER_BONUS_CV_LW':
 			Outstring = string(class'X2Effect_StunGunner'.default.STUNGUNNER_BONUS_CV);
 			return true;

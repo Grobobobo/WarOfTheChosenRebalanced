@@ -484,7 +484,7 @@ LocPromotionPopupText="<Bullet/> Grenades, standard rockets, and MEC micromissil
 
 [KnifeFighter X2AbilityTemplate]
 LocFriendlyName="Knife Fighter"
-LocLongDescription="You may make a melee attack with your knife against adjacent enemies."
+LocLongDescription="You may make a melee attack with your knife against enemies within <Ability:KNIFE_FIGHTER_TILE_RANGE/> tiles."
 LocHelpText="Knife Attack"
 LocFlyOverText="Knife Fighter"
 LocPromotionPopupText="<Bullet/> Knife attacks use one action and do not end your turn.<br/>"

@@ -2285,6 +2285,8 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		case 'ReaperSoldier':
 		case 'SkirmisherSoldier':
 			Template.CharacterGroupName = 'XCOMSoldier';
+			Template.Abilities.AddItem('Vengeance_LW');
+
 		case 'RebelSoldierProxy':
 		case 'RebelSoldierProxyM2':
 		case 'RebelSoldierProxyM3':

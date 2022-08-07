@@ -37,6 +37,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddPlaceTurretAbility());
 	Templates.AddItem(AddMedikitSelfHeal('MedikitSelfHeal', class'X2Ability_DefaultAbilitySet'.default.MEDIKIT_PERUSEHP));
 	Templates.AddItem(AddMedikitSelfHeal('NanoMedikitSelfHeal', class'X2Ability_DefaultAbilitySet'.default.NANOMEDIKIT_PERUSEHP));
+	Templates.AddItem(Vengeance_LW());
 	
 	
 	return Templates;
@@ -1015,3 +1016,165 @@ static function X2AbilityTemplate AddMedikitSelfHeal(name AbilityName, int HealA
 
 	return Template;
 }
+
+static function X2AbilityTemplate Vengeance_LW()
+{
+	local X2AbilityTemplate                 Template;
+	local X2Effect_Vengeance_LW               VengeanceEffect;
+	local X2Condition_UnitProperty          ShooterProperty, MultiTargetProperty;
+	local X2AbilityTrigger_EventListener    Listener;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'Vengeance_LW');
+
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_tacticalsense";
+
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.AbilityMultiTargetStyle = new class'X2AbilityMultiTarget_AllAllies';
+
+	VengeanceEffect = new class'X2Effect_Vengeance_LW';
+	VengeanceEffect.BuildPersistentEffect(class'X2Ability_OfficerTrainingSchool'.default.VENGEANCE_DURATION, false, false, false, eGameRule_PlayerTurnEnd);
+	VengeanceEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage);
+	Template.AddMultiTargetEffect(VengeanceEffect);
+
+	Listener = new class'X2AbilityTrigger_EventListener';
+	Listener.ListenerData.Filter = eFilter_Unit;
+	Listener.ListenerData.Deferral = ELD_OnStateSubmitted;
+	// Need a custom listener to make sure a soldier that bled out previously won't give vengeance again on death
+	Listener.ListenerData.EventFn = VengeanceDeathTrigger;
+	Listener.ListenerData.EventID = 'UnitDied';
+	Template.AbilityTriggers.AddItem(Listener);
+
+	Listener = new class'X2AbilityTrigger_EventListener';
+	Listener.ListenerData.Filter = eFilter_Unit;
+	Listener.ListenerData.Deferral = ELD_OnStateSubmitted;
+	// Need a custom listener to make sure a soldier that bled out previously won't give vengeance again on death
+	Listener.ListenerData.EventFn = VengeanceBleedoutTrigger;
+	Listener.ListenerData.EventID = 'UnitBleedingOut';
+	Template.AbilityTriggers.AddItem(Listener);
+
+	ShooterProperty = new class'X2Condition_UnitProperty';
+	ShooterProperty.ExcludeAlive = false;
+	ShooterProperty.ExcludeDead = false;
+	ShooterProperty.MinRank = class'X2Ability_OfficerTrainingSchool'.default.VENGEANCE_MIN_RANK;
+	Template.AbilityShooterConditions.AddItem(ShooterProperty);
+
+	MultiTargetProperty = new class'X2Condition_UnitProperty';
+	MultiTargetProperty.ExcludeAlive = false;
+	MultiTargetProperty.ExcludeDead = true;
+	MultiTargetProperty.ExcludeHostileToSource = true;
+	MultiTargetProperty.ExcludeFriendlyToSource = false;
+	MultiTargetProperty.RequireSquadmates = true;	
+	MultiTargetProperty.ExcludePanicked = true;
+	Template.AbilityMultiTargetConditions.AddItem(MultiTargetProperty);
+
+	Template.bSkipFireAction = true;
+	Template.bShowActivation = true;
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = Vengeance_BuildVisualization;
+
+	return Template;
+}
+
+function Vengeance_BuildVisualization(XComGameState VisualizeGameState)
+{
+	local VisualizationActionMetadata TargetTrack, EmptyTrack;
+	local XComGameState_Effect EffectState;
+	local XComGameState_Unit UnitState;
+	local XComGameStateHistory History;
+	local X2Action_PlaySoundAndFlyOver FlyOverAction;
+	local int i;
+	local float Ratio, DamageMultiplier;
+	local int DodgeBonus;
+
+	History = `XCOMHISTORY;
+	foreach VisualizeGameState.IterateByClassType(class'XComGameState_Effect', EffectState)
+	{
+		if (EffectState.GetX2Effect().EffectName != class'X2Effect_Vengeance_LW'.default.EffectName)
+			continue;
+
+		TargetTrack = EmptyTrack;
+		UnitState = XComGameState_Unit(VisualizeGameState.GetGameStateForObjectID(EffectState.ApplyEffectParameters.TargetStateObjectRef.ObjectID));
+		TargetTrack.StateObject_NewState = UnitState;
+		TargetTrack.StateObject_OldState = History.GetGameStateForObjectID(UnitState.ObjectID, eReturnType_Reference, VisualizeGameState.HistoryIndex - 1);
+		TargetTrack.VisualizeActor = UnitState.GetVisualizer();
+
+    	Ratio = class'Helpers_LW'.static.GetVengeanceSoldierKillRatio();
+    	DamageMultiplier =  (1 + Ratio) ** 3.5 / 10;
+
+		DodgeBonus = FFloor(Ratio * 100);
+
+		FlyOverAction = X2Action_PlaySoundAndFlyOver(class'X2Action_PlaySoundAndFlyOver'.static.AddToVisualizationTree(TargetTrack, VisualizeGameState.GetContext()));
+		FlyOverAction.SetSoundAndFlyOverParameters(none, "+ " $ string(int(DamageMultiplier * 100)) $ "% Damage", '', eColor_Good,,  2.0f);
+		
+		FlyOverAction = X2Action_PlaySoundAndFlyOver(class'X2Action_PlaySoundAndFlyOver'.static.AddToVisualizationTree(TargetTrack, VisualizeGameState.GetContext()));
+		FlyOverAction.SetSoundAndFlyOverParameters(none, "+ " $ string(DodgeBonus) $ " Dodge", '', eColor_Good,,  0.0f);
+
+	}
+}
+
+
+static function EventListenerReturn VengeanceBleedoutTrigger(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
+{
+	 local XComGameStateContext_Ability AbilityContext;
+	 local XComGameStateHistory History;
+	 local XComGameState_Ability Ability;
+	 local XComGameState_Unit DeadUnit;
+
+	 History = `XCOMHISTORY;
+
+	// FindContext = GameState.GetContext();
+//	 AbilityContext = XComGameStateContext_Ability(GameState.GetContext());
+
+	 //SourceUnit = XComGameState_Unit(History.GetGameStateForObjectID(AbilityContext.InputContext.SourceObject.ObjectID));
+
+	DeadUnit = XComGameState_Unit(EventData);
+
+	DeadUnit.SetUnitFloatValue('VengeanceTriggered', 2.0, eCleanup_BeginTactical);
+
+	Ability = XComGameState_Ability(History.GetGameStateForObjectID(DeadUnit.FindAbility('Vengeance_LW').ObjectID));
+
+	if(Ability != none)
+	{
+		Ability.AbilityTriggerAgainstSingleTarget(DeadUnit.GetReference(), false);
+	}
+
+	return ELR_NoInterrupt;
+}
+
+
+static function EventListenerReturn VengeanceDeathTrigger(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
+{
+	 local XComGameStateContext_Ability AbilityContext;
+	 local XComGameStateHistory History;
+	 local XComGameState_Ability Ability;
+	 local XComGameState_Unit DeadUnit;
+	 local UnitValue PreviouslyTriggeredValue;
+
+	 History = `XCOMHISTORY;
+
+	// FindContext = GameState.GetContext();
+//	 AbilityContext = XComGameStateContext_Ability(GameState.GetContext());
+
+	 //SourceUnit = XComGameState_Unit(History.GetGameStateForObjectID(AbilityContext.InputContext.SourceObject.ObjectID));
+
+	DeadUnit = XComGameState_Unit(EventData);
+
+	DeadUnit.GetUnitValue('VengeanceTriggered', PreviouslyTriggeredValue);
+	//DeadUnit.SetUnitFloatValue('VengeanceTriggered', 2.0, eCleanup_BeginTactical);
+	if(PreviouslyTriggeredValue.fValue < 1.0f)
+	{
+		Ability = XComGameState_Ability(History.GetGameStateForObjectID(DeadUnit.FindAbility('Vengeance_LW').ObjectID));
+
+		if(Ability != none)
+		{
+			Ability.AbilityTriggerAgainstSingleTarget(DeadUnit.GetReference(), false);
+		}
+	}
+
+	return ELR_NoInterrupt;
+}
+

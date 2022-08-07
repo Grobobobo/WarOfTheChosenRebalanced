@@ -4,7 +4,7 @@
 //  PURPOSE: Grants the target god-like stats.
 //---------------------------------------------------------------------------------------
 
-class X2Effect_Apotheosis extends X2Effect_ModifyStats;
+class X2Effect_Apotheosis extends X2Effect_PersistentStatChange;
 
 var float FocusDamageMultiplier;
 var array<FocusLevelModifiers> arrFocusModifiers;
@@ -39,9 +39,11 @@ simulated protected function OnEffectAdded(
 	XComGameState NewGameState,
 	XComGameState_Effect NewEffectState)
 {
-	local XComGameState_Unit UnitState;
+	local XComGameState_Effect_FocusLevel FocusEffectState;
 
-	NewEffectState.iTurnsRemaining = NewEffectState.iTurnsRemaining + UnitState.GetTemplarFocusLevel() -1;
+	FocusEffectState = XComGameState_Effect_FocusLevel(NewEffectState);
+
+	NewEffectState.iTurnsRemaining = NewEffectState.iTurnsRemaining + FocusEffectState.FocusLevel -1;
 
 	super.OnEffectAdded(ApplyEffectParameters, kNewTargetState, NewGameState, NewEffectState);
 }
@@ -58,10 +60,10 @@ function float GetPostDefaultAttackingDamageModifier_CH(
 	X2Effect_ApplyWeaponDamage WeaponDamageEffect,
 	XComGameState NewGameState)
 {
-	local XComGameState_Effect_FocusLevel FocusEffectState;
+	//local XComGameState_Effect_FocusLevel FocusEffectState;
 	local XComGameState_Unit TargetUnit;
 
-	FocusEffectState = XComGameState_Effect_FocusLevel(EffectState);
+	//FocusEffectState = XComGameState_Effect_FocusLevel(EffectState);
 	TargetUnit = XComGameState_Unit(Target);
 
 	if (TargetUnit != none)

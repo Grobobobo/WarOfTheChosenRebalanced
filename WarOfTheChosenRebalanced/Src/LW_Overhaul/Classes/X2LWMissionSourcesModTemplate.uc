@@ -124,6 +124,7 @@ static function MarkUnitAsCaptured(
 	ActionState.Risks.AddItem(ActionRisk);
 }
 
+//Disable guaranteed standard retaliation first
 static function SpawnRetaliationMission_LW(XComGameState NewGameState, int MissionMonthIndex)
 {
 	local XComGameState_MissionSite MissionState;

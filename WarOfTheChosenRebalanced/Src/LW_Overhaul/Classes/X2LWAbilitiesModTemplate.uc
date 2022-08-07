@@ -1586,7 +1586,6 @@ static function RemoveAbilityWeaponDamage(X2AbilityTemplate Template)
 //Make Chryssalids not insta-ruin some missions when they appear
 static function RemoveTargetingRandomCivilians(X2AbilityTemplate Template)
 {
-	local X2Effect TempEffect;
 	local X2Condition_UnitProperty	UnitPropertyCondition;
 
 	class 'Helpers_LW'.static.RemoveAbilityTargetConditions(Template,'X2Condition_UnitProperty');

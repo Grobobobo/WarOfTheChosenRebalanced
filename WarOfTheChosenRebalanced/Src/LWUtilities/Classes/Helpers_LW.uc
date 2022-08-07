@@ -926,6 +926,48 @@ static function bool IsResistanceOrderActive(name ResistanceOrderName){
 	return false;
 }
 
+
+
+static function float GetVengeanceSoldierKillRatio()
+{
+	local int iKilled, i, iTotal;
+	local float Ratio;
+	local array<XComGameState_Unit> arrUnits;
+	local XGBattle_SP Battle;
+	local XComGameState_BattleData BattleData;
+
+	Battle = XGBattle_SP(`BATTLE);
+	BattleData = XComGameState_BattleData(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_BattleData'));
+
+	if(Battle != None)
+	{
+		Battle.GetHumanPlayer().GetOriginalUnits(arrUnits);
+
+		for(i = 0; i < arrUnits.Length; i++)
+		{
+			if(arrUnits[i].GetMyTemplate().bIsAlien || arrUnits[i].GetMyTemplateName() == 'CivilianMilitia' || arrUnits[i].GetMyTemplate().bIsCivilian)
+			{
+				arrUnits.Remove(i, 1);
+				i--;
+			}
+		}
+
+		iTotal = arrUnits.Length;
+
+		for(i = 0; i < iTotal; i++)
+		{
+			if(arrUnits[i].IsDead() || arrUnits[i].IsBleedingOut())
+			{
+				iKilled++;
+			}
+		}
+	}
+	Ratio = iKilled * 1.0f / iTotal;
+
+	return Ratio;
+}
+
+
 defaultproperties
 {
 	CHOSEN_SPAWN_TAG_SUFFIX="_LWOTC_ChosenTag"

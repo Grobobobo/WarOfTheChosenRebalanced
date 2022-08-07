@@ -427,7 +427,6 @@ static function GiveResistanceCardReward_POI(XComGameState NewGameState, XComGam
 static function string GetResistanceCardRewardImage_POI(XComGameState_Reward RewardState)
 {
 	local XComGameStateHistory History;
-	local XComGameState_CovertAction ActionState;
 	local XComGameState_StrategyCard CardState;
 
 	History = `XCOMHISTORY;
@@ -439,7 +438,6 @@ static function string GetResistanceCardRewardImage_POI(XComGameState_Reward Rew
 static function string GetResistanceCardRewardString_POI(XComGameState_Reward RewardState)
 {
 	local XComGameStateHistory History;
-	local XComGameState_CovertAction ActionState;
 	local XComGameState_StrategyCard CardState;
 
 	History = `XCOMHISTORY;
@@ -463,7 +461,6 @@ static function string GetResistanceCardRewardDetailsString_POI(XComGameState_Re
 
 static function CleanUpResistanceCardReward_POI(XComGameState NewGameState, XComGameState_Reward RewardState)
 {
-	local XComGameState_CovertAction ActionState;
 	local XComGameState_StrategyCard CardState;
 	
 	CardState = XComGameState_StrategyCard(`XCOMHISTORY.GetGameStateForObjectID(RewardState.RewardObjectReference.ObjectID));
@@ -474,7 +471,6 @@ static function CleanUpResistanceCardReward_POI(XComGameState NewGameState, XCom
 static function ResistanceCardRewardPopup_POI(XComGameState_Reward RewardState)
 {
 	local XComGameStateHistory History;
-	local XComGameState_CovertAction ActionState;
 	local XComGameState_StrategyCard CardState;
 
 	History = `XCOMHISTORY;

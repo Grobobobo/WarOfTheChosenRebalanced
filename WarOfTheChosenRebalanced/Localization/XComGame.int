@@ -9584,3 +9584,7 @@ CompletedSummaries[1]="PLACEHOLDER FLAVOR TEXT 2."
 
 POIImages[0]="img:///UILibrary_StrategyImages.X2StrategyMap.POI_RadioTower"
 POIImages[1]="img:///UILibrary_StrategyImages.X2StrategyMap.POI_DeadAdvent"
+
+[Vengeance_LW X2AbilityTemplate]
+LocFriendlyName="Vengeance"
+LocHelpText="Gain Damage and Dodge bonuses when a squadmate dies or bleeds out (can trigger once per dying squadmate). The bonus Increases with more losses."

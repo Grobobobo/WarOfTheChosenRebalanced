@@ -631,7 +631,7 @@ static function X2AbilityTemplate SoulShot()
 	local X2Condition_UnitProperty          TargetProperty;
 	local X2Effect_ApplyWeaponDamage        WeaponDamageEffect;
 	local X2Condition_Visibility            TargetVisibilityCondition;
-	//local X2AbilityToHitCalc_StandardAim	ToHitCalc;
+	local X2AbilityToHitCalc_StandardAim	ToHitCalc;
 	local X2AbilityCost_Focus				FocusCost;
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'IRI_SoulShot');
 

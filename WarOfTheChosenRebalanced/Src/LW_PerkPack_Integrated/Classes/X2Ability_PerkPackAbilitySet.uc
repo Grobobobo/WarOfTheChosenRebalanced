@@ -2831,7 +2831,7 @@ static function X2AbilityTemplate AddBulletWizardSuppression()
 	Template.AddMultiTargetEffect(class'X2Ability_GrenadierAbilitySet'.static.HoloTargetEffect());
 		
 	Template.AdditionalAbilities.AddItem('AreaSuppressionShot_LW');
-	Template.AdditionalAbilities.AddItem('LockdownBonuses');
+	//Template.AdditionalAbilities.AddItem('LockdownBonuses');
 	Template.AdditionalAbilities.AddItem('MayhemBonuses');
 
 	Template.TargetingMethod = class'X2TargetingMethod_AreaSuppression';
@@ -2984,7 +2984,7 @@ static function X2AbilityTemplate AddSuppressionAbility_LW()
 
 
 	Template.AdditionalAbilities.AddItem('SuppressionShot_LW');
-	Template.AdditionalAbilities.AddItem('LockdownBonuses');
+	//Template.AdditionalAbilities.AddItem('LockdownBonuses');
 	Template.AdditionalAbilities.AddItem('MayhemBonuses');
 	Template.AdditionalAbilities.AddItem('SuppressionDamage');
 
@@ -3355,7 +3355,7 @@ static function X2AbilityTemplate AddAreaSuppressionAbility()
 	Template.AddMultiTargetEffect(class'X2Ability_GrenadierAbilitySet'.static.HoloTargetEffect());
 	
 	Template.AdditionalAbilities.AddItem('AreaSuppressionShot_LW');
-	Template.AdditionalAbilities.AddItem('LockdownBonuses');
+	//Template.AdditionalAbilities.AddItem('LockdownBonuses');
 	Template.AdditionalAbilities.AddItem('MayhemBonuses');
 	Template.AdditionalAbilities.AddItem('SuppressionDamage');
 
@@ -3664,6 +3664,8 @@ static function X2AbilityTemplate LockdownBonuses()
 	Template.AbilityToHitCalc = default.DeadEye;
     Template.AbilityTargetStyle = default.SelfTarget;
 	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
+	Template.Hostility = eHostility_Neutral;
+
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
 	Template.bDisplayInUITooltip = false;
@@ -3690,6 +3692,8 @@ static function X2AbilityTemplate MayhemBonuses()
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
 	Template.bDisplayInUITooltip = false;
 	Template.bIsASuppressionEffect = true;
+	Template.Hostility = eHostility_Neutral;
+
 	//  Effect code checks whether unit has Mayhem before providing aim and damage bonuses
 	DamageEffect = new class'X2Effect_Mayhem';
 	DamageEffect.BuildPersistentEffect(1,true,false,false,eGameRule_PlayerTurnBegin);

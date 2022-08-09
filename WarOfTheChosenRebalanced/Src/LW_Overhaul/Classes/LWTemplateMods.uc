@@ -3603,6 +3603,10 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			WeaponUpgradeTemplate.MutuallyExclusiveUpgrades.AddItem('ReloadUpgrade_Adv');
 			WeaponUpgradeTemplate.MutuallyExclusiveUpgrades.AddItem('ReloadUpgrade_Sup');
 			WeaponUpgradeTemplate.bInfiniteItem = true;
+			WeaponUpgradeTemplate.BonusAbilities.AddItem('ExpandedMagMobilityPenalty');
+			WeaponTemplate.SetUIStatMarkup("Mobility", eStat_Mobility, class'X2Ability_LW_GearAbilities'.default.EXPANDED_MAG_MOB_PENALTY);
+
+			
 		}
 		//Config-able items array -- Weapon Upgrades
 		for (i=0; i < ItemTable.Length; ++i)

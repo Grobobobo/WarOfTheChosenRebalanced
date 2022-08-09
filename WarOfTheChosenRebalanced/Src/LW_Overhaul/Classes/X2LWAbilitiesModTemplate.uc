@@ -69,6 +69,11 @@ var config int MEDICAL_PROTOCOL_COOLDOWN;
 var config bool USE_LOS_FOR_MULTI_SHOT_ABILITIES;
 var config array<MultiShotAbility> MULTI_SHOT_ABILITIES;
 
+var config int POISON_SPIT_COOLDOWN;
+var config int POISON_SPIT_GLOBAL_COOLDOWN;
+
+var config int TONGUE_GRAB_COOLDOWN;
+var config int TONGUE_GRAB_GLOBAL_COOLDOWN;
 var privatewrite X2Condition_Visibility GameplayVisibilityCondition;
 
 static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
@@ -161,12 +166,15 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 
 		case 'Bind':
 		case 'BindSustained':
-		MakeBindDamageScale(Template);
-		//At this point trying to figure out why AI does not do the thing it's supposed to do takes way longer than just doing this
+			MakeBindDamageScale(Template);
+			MakeAbilitiesUnusableOnLost(Template);
+			break;
 		case 'GetOverHere':
 		case 'KingGetOverHere':
 			MakeAbilitiesUnusableOnLost(Template);
+			AdjustTongueGrabCooldown(Template);
 			break;
+
 		case 'ScanningProtocol':
 			class'Helpers_LW'.static.MakeFreeAction(Template);
 			AddInitialScanningCharges(Template);
@@ -731,10 +739,17 @@ static function ReplaceWithDamageReductionMelee(X2AbilityTemplate Template)
 static function AddImmuneConditionToPoisonSpit(X2AbilityTemplate Template)
 {
 	local X2Condition_UnitImmunities UnitImmunityCondition;
+	local X2AbilityCooldown_LocalAndGlobal Cooldown;
 	
 	UnitImmunityCondition = new class'X2Condition_UnitImmunities';
 	UnitImmunityCondition.AddExcludeDamageType('Poison');
 	Template.AbilityMultiTargetConditions.AddItem(UnitImmunityCondition);
+
+	Cooldown = new class'X2AbilityCooldown_LocalAndGlobal';
+	Cooldown.iNumTurns = default.POISON_SPIT_COOLDOWN;
+	Cooldown.NumGlobalTurns = default.POISON_SPIT_GLOBAL_COOLDOWN;
+	Template.AbilityCooldown = Cooldown;
+	
 }
 
 static function AddImmuneConditionToFlamethrower(X2AbilityTemplate Template)
@@ -2127,6 +2142,15 @@ static function AddRipjackRuptureEffects(X2AbilityTemplate Template)
 // 	Template.AddTargetEffect(new class'X2Effect_SpawnChryssalid_LW');
 // }
 
+static function AdjustTongueGrabCooldown(X2AbilityTemplate Template)
+{
+	local X2AbilityCooldown_LocalAndGlobal Cooldown;
+	
+	Cooldown = new class'X2AbilityCooldown_LocalAndGlobal';
+	Cooldown.iNumTurns = default.TONGUE_GRAB_COOLDOWN;
+	Cooldown.NumGlobalTurns = default.TONGUE_GRAB_GLOBAL_COOLDOWN;
+	Template.AbilityCooldown = Cooldown;
+}
 
 defaultproperties
 {

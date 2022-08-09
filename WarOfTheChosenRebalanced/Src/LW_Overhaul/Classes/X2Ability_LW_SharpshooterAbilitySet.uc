@@ -320,7 +320,7 @@ static function X2AbilityTemplate AddDoubleTap2()
 	Template.IconImage = "img:///UILibrary_LW_PerkPack.LW_AbilityDoubleTap";
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
 	//Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_COLONEL_PRIORITY;
-	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_SQUADDIE_PRIORITY;
+	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.STANDARD_SHOT_PRIORITY + 1;
 
 	Template.DisplayTargetHitChance = true;
 	Template.bCrossClassEligible = false;

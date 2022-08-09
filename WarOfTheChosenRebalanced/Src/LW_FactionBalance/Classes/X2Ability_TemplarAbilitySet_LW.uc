@@ -510,7 +510,7 @@ static function X2AbilityTemplate AddApotheosis()
 	Template.AbilityCosts.AddItem(ActionPointCost);
 
 	FocusCost = new class'X2AbilityCost_Focus';
-	FocusCost.FocusAmount = 3;
+	FocusCost.FocusAmount = 2;
 	FocusCost.ConsumeAllFocus = true;
 	Template.AbilityCosts.AddItem(FocusCost);
 

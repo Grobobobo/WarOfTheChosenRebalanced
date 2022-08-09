@@ -934,10 +934,8 @@ static function float GetVengeanceSoldierKillRatio()
 	local float Ratio;
 	local array<XComGameState_Unit> arrUnits;
 	local XGBattle_SP Battle;
-	local XComGameState_BattleData BattleData;
 
 	Battle = XGBattle_SP(`BATTLE);
-	BattleData = XComGameState_BattleData(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_BattleData'));
 
 	if(Battle != None)
 	{

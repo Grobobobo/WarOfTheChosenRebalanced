@@ -145,6 +145,7 @@ static event InstallNewCampaign(XComGameState StartState)
 
 	class'XComGameState_LWOverhaulOptions'.static.CreateModSettingsState_NewCampaign(class'XComGameState_LWOverhaulOptions', StartState);
 	class'XComGameState_LWXTP'.static.CreateXTPState(StartState);
+	class'XComGameState_AlienAggression'.static.CreateAggressionState(StartState);
 
 	// Save the second wave options, but only if we've actually started a new
 	// campaign (hence the check for UIShellDifficulty being open).
@@ -550,6 +551,7 @@ static function PostSitRepCreation(out GeneratedMissionData GeneratedMission, op
 	local array<name> SitrepList;
 	local XComGameStateHistory CachedHistory;
 	local XComGameState_HeadquartersAlien AlienHQ;
+	local XComGameState_AlienAggression	AggressionState;
 
 	AlienHQ = XComGameState_HeadquartersAlien(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersAlien'));
 
@@ -564,6 +566,30 @@ static function PostSitRepCreation(out GeneratedMissionData GeneratedMission, op
 		GeneratedMission.SitReps.AddItem('StealthMission');
 	}
 
+	AggressionState = class'XComGameState_AlienAggression'.static.GetAggressionState(true);
+	if(AggressionState != none)
+	{
+		if(AggressionState.AggressionValue >= 100)
+		{
+			GeneratedMission.SitReps.AddItem('AlienAggression5');
+		}
+		else if(AggressionState.AggressionValue >= 80)
+		{
+			GeneratedMission.SitReps.AddItem('AlienAggression4');
+		}
+		else if(AggressionState.AggressionValue >= 60)
+		{
+			GeneratedMission.SitReps.AddItem('AlienAggression3');
+		}
+		else if(AggressionState.AggressionValue >= 40)
+		{
+			GeneratedMission.SitReps.AddItem('AlienAggression2');
+		}
+		else if(AggressionState.AggressionValue >= 20)
+		{
+			GeneratedMission.SitReps.AddItem('AlienAggression1');
+		}
+	}
 	//TemplateManager = class'X2StrategyElementTemplateManager'.static.GetStrategyElementTemplateManager();
 	//ResHQ = class'UIUtilities_Strategy'.static.GetResistanceHQ();
 	
@@ -603,6 +629,7 @@ static function PostSitRepCreation(out GeneratedMissionData GeneratedMission, op
 		//AddCrackdownSitrepsBasedOnResistanceCardsActive(MissionState, GeneratedMission);
 		
 		AddSitrepToMissionSourceIfResistanceCardsActive('ResCard_RadioFreeLily_LW', 'RadioFreeLily_LW', 'MissionSource_Retaliation', MissionState, GeneratedMission);
+
 
 		
 		`LOG("enumerating sitreps selected for mission");

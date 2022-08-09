@@ -40,6 +40,10 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateVigilanceDEEffectTemplate());
 	Templates.AddItem(CreateStealthMissionEffectTemplate());
 	Templates.AddItem(CreateRadioFreeLilyMissionEffectTemplate());
+	Templates.AddItem(CreateAlertLevelIncreaseByThreeEffectTemplate());
+	Templates.AddItem(CreateAlertLevelIncreaseByFourEffectTemplate());
+	Templates.AddItem(CreateAlertLevelIncreaseByFiveEffectTemplate());
+
 
 	return Templates;
 }
@@ -318,7 +322,40 @@ static function X2SitRepEffectTemplate CreateRadioFreeLilyMissionEffectTemplate(
 	return Template;
 }
 
+static function X2SitRepEffectTemplate CreateAlertLevelIncreaseByThreeEffectTemplate()
+{
+	local X2SitRepEffect_ModifyAlertLevel Template;
 
+	`CREATE_X2TEMPLATE(class'X2SitRepEffect_ModifyAlertLevel', Template, 'AlertLevelIncreaseByThreeEffect');
+
+	Template.AlertLevelModification = 3;
+	Template.MaxAlertLevel = 7;
+
+	return Template;
+}
+static function X2SitRepEffectTemplate CreateAlertLevelIncreaseByFourEffectTemplate()
+{
+	local X2SitRepEffect_ModifyAlertLevel Template;
+
+	`CREATE_X2TEMPLATE(class'X2SitRepEffect_ModifyAlertLevel', Template, 'AlertLevelIncreaseByFourEffect');
+
+	Template.AlertLevelModification = 4;
+	Template.MaxAlertLevel = 7;
+
+	return Template;
+}
+
+static function X2SitRepEffectTemplate CreateAlertLevelIncreaseByFiveEffectTemplate()
+{
+	local X2SitRepEffect_ModifyAlertLevel Template;
+
+	`CREATE_X2TEMPLATE(class'X2SitRepEffect_ModifyAlertLevel', Template, 'AlertLevelIncreaseByFiveEffect');
+
+	Template.AlertLevelModification = 5;
+	Template.MaxAlertLevel = 7;
+
+	return Template;
+}
 defaultproperties
 {
 	MissionTimerModifierVarName = "Timer_LengthDelta"

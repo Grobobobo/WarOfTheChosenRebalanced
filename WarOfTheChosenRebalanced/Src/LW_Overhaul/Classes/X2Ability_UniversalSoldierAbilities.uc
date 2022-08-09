@@ -1086,7 +1086,7 @@ function Vengeance_BuildVisualization(XComGameState VisualizeGameState)
 	local XComGameState_Unit UnitState;
 	local XComGameStateHistory History;
 	local X2Action_PlaySoundAndFlyOver FlyOverAction;
-	local int i;
+//	local int i;
 	local float Ratio, DamageMultiplier;
 	local int DodgeBonus;
 
@@ -1119,7 +1119,7 @@ function Vengeance_BuildVisualization(XComGameState VisualizeGameState)
 
 static function EventListenerReturn VengeanceBleedoutTrigger(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
-	 local XComGameStateContext_Ability AbilityContext;
+//	 local XComGameStateContext_Ability AbilityContext;
 	 local XComGameStateHistory History;
 	 local XComGameState_Ability Ability;
 	 local XComGameState_Unit DeadUnit;
@@ -1148,7 +1148,7 @@ static function EventListenerReturn VengeanceBleedoutTrigger(Object EventData, O
 
 static function EventListenerReturn VengeanceDeathTrigger(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
-	 local XComGameStateContext_Ability AbilityContext;
+	 //local XComGameStateContext_Ability AbilityContext;
 	 local XComGameStateHistory History;
 	 local XComGameState_Ability Ability;
 	 local XComGameState_Unit DeadUnit;

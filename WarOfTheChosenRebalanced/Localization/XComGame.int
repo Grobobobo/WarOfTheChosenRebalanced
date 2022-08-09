@@ -1367,6 +1367,13 @@ BriefSummary="Gain +<Ability:SUPPRESSOR_DEFENSE_BONUS/> Defense. Your first shot
 TinySummary="Boosts defense and first shot power"
 LootTooltip="This weapon upgrade, when installed, will increase the soldier's defense, and make his first shot in the mission more powerful."
 
+[ClipSizeUpgrade_Bsc X2WeaponUpgradeTemplate]
+FriendlyName="Expanded Magazine"
+FriendlyNamePlural="Expanded Magazines"
+BriefSummary="Clip size is increased by <Ability:EXPMAGINCREASE/> At the cost of 1 Mobility."
+TinySummary="Increased Clip Size, Reduces mobility."
+LootTooltip="This weapon upgrade will increase the ammunition count of any weapon it is attached to."
+
 [FreeKillUpgrade_Adv X2WeaponUpgradeTemplate]
 FriendlyName="Advanced Suppressor"
 FriendlyNamePlural="Advanced Suppressors"
@@ -1413,7 +1420,7 @@ FriendlyNamePlural="Elite Auto-Loaders"
 [ReloadUpgrade_Bsc X2WeaponUpgradeTemplate]
 FriendlyName="Auto-Loader"
 FriendlyNamePlural="Auto-Loaders"
-BriefSummary="Grants the quick reload ability, allowing you to reload 2 ammo without ending your turn with a 2 turn cooldown."
+BriefSummary="Grants the quick reload ability, allowing you to reload 2 ammo without ending your turn with a 3 turn cooldown."
 TinySummary="Free Reloads"
 LootTooltip="This weapon upgrade will allow you to quickly reload a small amount of ammo without ending your turn."
 
@@ -7060,6 +7067,26 @@ Description="ADVENT are testing pacification technology in the area, which is ma
 [SomethingInTheAir X2SitRepTemplate]
 FriendlyName="There's Something in the Air"
 Description="Maybe it's something in the air, but whatever it is, it's causing soldiers to trigger Combat Rush whenever they crit. Beware, this works for ADVENT too!"
+
+[ALienAggression1 X2SitRepTemplate]
+FriendlyName="Alien Aggression I"
+Description="Due to Your Successful Resistance Activities, The Aliens Divert Their Resources From The Avatar Project To their Forces. Missions Have More Enemies, but Avatar Project is Delayed."
+
+[ALienAggression2 X2SitRepTemplate]
+FriendlyName="Alien Aggression II"
+Description="Due to Your Successful Resistance Activities, The Aliens Divert Their Resources From The Avatar Project To their Forces. Missions Have More Enemies, but Avatar Project is Delayed."
+
+[ALienAggression3 X2SitRepTemplate]
+FriendlyName="Alien Aggression III"
+Description="Due to Your Successful Resistance Activities, The Aliens Divert Their Resources From The Avatar Project To their Forces. Missions Have More Enemies, but Avatar Project is Delayed."
+
+[ALienAggression4 X2SitRepTemplate]
+FriendlyName="Alien Aggression IV"
+Description="Due to Your Successful Resistance Activities, The Aliens Divert Their Resources From The Avatar Project To their Forces. Missions Have More Enemies, but Avatar Project is Delayed."
+
+[ALienAggression5 X2SitRepTemplate]
+FriendlyName="Alien Aggression V"
+Description="Due to Your Successful Resistance Activities, The Aliens Divert Their Resources From The Avatar Project To their Forces. Missions Have More Enemies, but Avatar Project is Delayed."
 
 [DarkEventBarrierSitRep X2SitRepTemplate]
 FriendlyName="Barrier"

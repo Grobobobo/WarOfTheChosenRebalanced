@@ -285,6 +285,11 @@ static function X2AbilityTemplate AddKnifeFighter()
 
 	Template.AbilityTargetStyle = new class'X2AbilityTarget_MovingMelee';
 	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
+	Template.AbilityTriggers.AddItem(new class'X2AbilityTrigger_EndOfMove');
+
+
+
+
 
 	// Target Conditions
 	Template.AbilityTargetConditions.AddItem(default.LivingHostileTargetProperty);
@@ -297,6 +302,10 @@ static function X2AbilityTemplate AddKnifeFighter()
 
 	// Shooter Conditions
 	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+
+
+
+	Template.TargetingMethod = class'X2TargetingMethod_MeleePath';
 
 	if (!class'X2Ability_PerkPackAbilitySet'.default.NO_MELEE_ATTACKS_WHEN_ON_FIRE)
 	{

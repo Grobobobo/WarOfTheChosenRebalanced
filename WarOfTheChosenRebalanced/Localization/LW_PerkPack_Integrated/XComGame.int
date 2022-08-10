@@ -1030,8 +1030,8 @@ LocPromotionPopupText="<Bullet/> Abilities like Fleche will still reveal. <br/><
 [ShotgunFireControl X2AbilityTemplate]
 LocFriendlyName="Shotgun Fire Control"
 LocFlyOverText="Shotgun Fire Control"
-LocLongDescription="Overwatch shots with this weapon will only trigger within 4 tiles."
-LocHelpText="Overwatch shots with this weapon will only trigger within 4 tiles."
+LocLongDescription="Overwatch shots with this weapon will only trigger within 6 tiles."
+LocHelpText="Overwatch shots with this weapon will only trigger within 6 tiles."
 
 [XComGame.Shadowstep X2AbilityTemplate]
 [Shadowstep X2AbilityTemplate]

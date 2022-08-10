@@ -1071,6 +1071,9 @@ static function X2AbilityTemplate Vengeance_LW()
 	MultiTargetProperty.ExcludePanicked = true;
 	Template.AbilityMultiTargetConditions.AddItem(MultiTargetProperty);
 
+	Template.bDisplayInUITooltip = false;
+	Template.bDisplayInUITacticalText = false;
+
 	Template.bSkipFireAction = true;
 	Template.bShowActivation = true;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;

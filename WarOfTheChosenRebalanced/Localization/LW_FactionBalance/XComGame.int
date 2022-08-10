@@ -130,8 +130,8 @@ LocPromotionPopupText="<Bullet/> Improves the Skirmisher's mobility around the m
 ; LWOTC Needs Translation
 [Executioner X2AbilityTemplate]
 LocFriendlyName="Death Dealer"
-LocLongDescription="Grants +<Ability:DEATH_DEALER_BONUS_AIM/> Aim +<Ability:DEATH_DEALER_BONUS_DAMAGE_ON_CRIT/> damage on a critical hit while in shadow."
-LocHelpText="Grants +<Ability:DEATH_DEALER_BONUS_AIM/> Aim +<Ability:DEATH_DEALER_BONUS_DAMAGE_ON_CRIT/> damage on a critical hit while in shadow."
+LocLongDescription="Grants +<Ability:DEATH_DEALER_BONUS_AIM/> Aim and +<Ability:DEATH_DEALER_BONUS_DAMAGE_ON_CRIT/> damage on a critical hit while in shadow."
+LocHelpText="Grants +<Ability:DEATH_DEALER_BONUS_AIM/> Aim and +<Ability:DEATH_DEALER_BONUS_DAMAGE_ON_CRIT/> damage on a critical hit while in shadow."
 LocPromotionPopupText="<Bullet/> Use Shadow's increased mobility to flank enemies and deal massive damage.<br/>"
 
 ; End Translation

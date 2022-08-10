@@ -61,8 +61,8 @@ static function UpdateCovertActions(X2StrategyElementTemplate Template, int Diff
 			ConfigureModerateCovertAction(CATemplate);
 			break;
 		case 'CovertAction_ResistanceCard':
-			ConfigureModerateCovertAction(CATemplate);
-			CATemplate.Rewards.AddItem('Reward_ResistanceCard');
+			ConfigureEasyCovertAction(CATemplate);
+			//CATemplate.Rewards.AddItem('Reward_ResistanceCard');
 			break;
 		case 'CovertAction_ImproveComInt':
 		case 'CovertAction_RemoveDoom':

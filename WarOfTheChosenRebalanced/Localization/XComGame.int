@@ -1393,7 +1393,7 @@ LootTooltip="This weapon upgrade, when installed, will reduce the time the soldi
 [CritUpgrade_Bsc X2WeaponUpgradeTemplate]
 FriendlyName="Laser Sight"
 FriendlyNamePlural="Laser Sights"
-BriefSummary="Increase critical hit chance by +<Ability:CRITINCREASE/>%, and reduce the short-range aim penalties for primary weapons by <Ability:WEAPONHANDLING_SHORTRANGE_MULTIPLIER/>%"
+BriefSummary="Increase critical hit chance by +<Ability:CRITINCREASE/>%, and reduce the short-range aim penalties for primary weapons by <Ability:WEAPONHANDLING_SHORTRANGE_MULTIPLIER/>%."
 TinySummary="Increased Crit Chance and reduce close range penalties."
 LootTooltip="This weapon upgrade will increase the critical hit chance of any weapon it is attached to."
 
@@ -7254,8 +7254,8 @@ ActionObjective="Recruit Rebels"
 [CovertAction_LiberationIntel X2CovertActionTemplate]
 ActionObjective="Investigate Liberating Region"
 
-[CovertAction_ResistanceCard X2CovertActionTemplate]
-ActionObjective="2 Resistance Order Cards"
+;[CovertAction_ResistanceCard X2CovertActionTemplate]
+;ActionObjective="2 Resistance Order Cards"
 
 [CovertActionNarrative_EnemyCorpses_Skirmishers X2CovertActionNarrativeTemplate]
 ActionName="Raid an Enemy Morgue"
@@ -9069,7 +9069,7 @@ LocPromotionPopupText=""
 LocFriendlyName="Advanced Robotics"
 LocLongDescription="Upgrades ABC protocols by granting Threat Assessment, Shock Therapy and Chaining Jolt."
 LocHelpText="Upgrades ABC protocols by granting Threat Assessment, Shock Therapy and Chaining Jolt."
-LocPromotionPopupText="<Bullet/> Threat assessment makes Aid protocol target go on overwatch.<br/><Bullet/>Shock therapy makes Blinding protocol have a 50% chance to stun the targets.<br/><Bullet/> Chaining Jolt causes combat protocol to jump to up to 3 targets.<br/>"
+LocPromotionPopupText="<Bullet/> Threat assessment makes Aid protocol target go on overwatch.<br/><Bullet/> Shock therapy makes Blinding protocol have a 50% chance to stun the targets.<br/><Bullet/> Chaining Jolt causes combat protocol to jump to up to 3 targets.<br/>"
 
 [ChainingJolt_LW X2AbilityTemplate]
 LocFriendlyName="Chaining Jolt"

@@ -87,7 +87,7 @@ static function CHEventListenerTemplate CreatePromotionListeners()
 	Template.AddCHEvent('CPS_OverrideCanPurchaseAbility', OverrideCanPurchaseAbility, ELD_Immediate);
 	Template.AddCHEvent('CPS_OverrideAbilityPointCost', OverrideAbilityPointCost, ELD_Immediate);
 	Template.AddCHEvent('CPS_AbilityPurchased', UpdateAbilityCostMultiplier, ELD_Immediate);
-	Template.AddCHEvent('UnitRankUp', OverrideAPGain, ELD_OnStateSubmitted);
+	Template.AddCHEvent('UnitRankUp', OverrideAPGain, ELD_Immediate);
 
 	Template.RegisterInStrategy = true;
 
@@ -381,7 +381,10 @@ static function EventListenerReturn OverrideAPGain(
 	local XComGameState NewGameState;
 	local UnitValue FreePromotionValue;
 
-
+	if (GameState.GetContext().InterruptionStatus == eInterruptionStatus_Interrupt)
+	{
+		return ELR_NoInterrupt;
+	}
 
 	UnitState = XComGameState_Unit(EventData);
 
@@ -392,8 +395,8 @@ static function EventListenerReturn OverrideAPGain(
 	//Redundant checks because I don't want to spam gamestates in the strategy
 	if(FreePromotionValue.fValue < 1.0f || UnitState.IsResistanceHero())
 	{
-		NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Change AP Gain");
-		UnitState = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', UnitState.ObjectID));
+		//NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Change AP Gain");
+		UnitState = XComGameState_Unit(GameState.ModifyStateObject(class'XComGameState_Unit', UnitState.ObjectID));
 
 	//Add Some starting AP to soldiers
 		if(FreePromotionValue.fValue < 1.0f)
@@ -407,7 +410,7 @@ static function EventListenerReturn OverrideAPGain(
 			UnitState.AbilityPoints = UnitState.AbilityPoints + UnitState.GetBaseSoldierAPAmount(UnitState.Comint);
 			UnitState.AbilityPoints = UnitState.AbilityPoints - UnitState.GetResistanceHeroAPAmount(UnitState.GetSoldierRank(), UnitState.ComInt);
 		}
-		`GAMERULES.SubmitGameState(NewGameState);
+	//	`GAMERULES.SubmitGameState(NewGameState);
 	}
 
 

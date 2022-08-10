@@ -154,7 +154,7 @@ static function MakeShadowTemporary(X2AbilityTemplate Template)
 
 	GhostEffect = new class'X2Effect_SilentMelee';
 	GhostEffect.EffectName = 'GhostEffect';
-	GhostEffect.BuildPersistentEffect(class'X2Ability_PerkPackAbilitySet2'.default.PHANTOM_DURATION, false, true, false, eGameRule_PlayerTurnBegin);
+	GhostEffect.BuildPersistentEffect(default.SHADOW_DURATION, false, true, false, eGameRule_PlayerTurnBegin);
 	// StealthyEffect.SetDisplayInfo (ePerkBuff_Bonus,Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,,, Template.AbilitySourceName); 
 	GhostEffect.bRemoveWhenTargetConcealmentBroken = true;
 	GhostEffect.DuplicateResponse = eDupe_Refresh;

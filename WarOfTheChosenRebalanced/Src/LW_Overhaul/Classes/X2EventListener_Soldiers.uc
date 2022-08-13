@@ -378,7 +378,7 @@ static function EventListenerReturn OverrideAPGain(
 	Object CallbackData)
 {
 	local XComGameState_Unit UnitState;
-	local XComGameState NewGameState;
+//	local XComGameState NewGameState;
 	local UnitValue FreePromotionValue;
 
 	if (GameState.GetContext().InterruptionStatus == eInterruptionStatus_Interrupt)

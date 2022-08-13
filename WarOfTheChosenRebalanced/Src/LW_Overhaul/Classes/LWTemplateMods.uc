@@ -324,7 +324,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateReconfigFacilitiesTemplate());
 	Templates.AddItem(CreateRecoverItemTemplate());
 	Templates.AddItem(CreateRemovePPClassesTemplate());
-	Templates.AddItem(CreateUpdateQuestItemsTemplate());
+	//Templates.AddItem(CreateUpdateQuestItemsTemplate());
 	TEmplates.AddItem(CreateGeneralCharacterModTemplate());
 	Templates.AddItem(CreateModifyPOIsTemplate());
 	Templates.AddItem(CreateModifyHackRewardsTemplate());
@@ -571,10 +571,83 @@ function UpdateRewardTemplate(X2StrategyElementTemplate Template, int Difficulty
 		//Change the way The Resistance Cards are generated
 		case 'Reward_ResistanceCard':
 			RewardTemplate.GenerateRewardFn = GenerateResistanceCardReward;
+			break;
+		case 'Reward_IncreaseIncome':
+			RewardTemplate.GiveRewardFn = GiveIncreaseIncomeReward;
+			break;
 		default:
 			break;
 	}
 }
+
+static function GiveIncreaseIncomeReward(XComGameState NewGameState, XComGameState_Reward RewardState, optional StateObjectReference AuxRef, optional bool bOrder = false, optional int OrderHours = -1)
+{
+	local XComGameState_WorldRegion RegionState;
+	local int NegativeSupplyDifference;
+
+	RegionState = XComGameState_WorldRegion(NewGameState.ModifyStateObject(class'XComGameState_WorldRegion', RewardState.RewardObjectReference.ObjectID));
+
+	if (RewardState.Quantity < 0 && RegionState.GetSupplyDropReward() + RewardState.Quantity < 0)
+	{
+		NegativeSupplyDifference = RegionState.GetSupplyDropReward() + RewardState.Quantity;
+		RegionState.POISupplyBonusDelta = RegionState.POISupplyBonusDelta - NegativeSupplyDifference;
+	}
+	else
+	{
+		RegionState.POISupplyBonusDelta += RewardState.Quantity;
+	}
+}
+
+static function bool OnRescueCivilianRewardAcquired(XComGameState NewGameState, XComGameState_Item ItemState)
+{
+	local XComGameStateHistory History;
+	local X2StrategyElementTemplateManager StratMgr;
+	local XComGameState_HeadquartersXCom XComHQ;
+	local XComGameState_MissionSite MissionState;
+	local XComGameState_Reward RewardState;
+	local XComGameState_WorldRegion RegionState;
+	local X2RewardTemplate RewardTemplate;
+	local int RewardAmount;
+	local XGParamTag ParamTag;
+	History = `XCOMHISTORY;
+	StratMgr = class'X2StrategyElementTemplateManager'.static.GetStrategyElementTemplateManager();
+	XComHQ = XComGameState_HeadquartersXCom(History.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersXCom'));
+	MissionState = XComGameState_MissionSite(History.GetGameStateForObjectID(XComHQ.MissionRef.ObjectID));
+	
+	// This resource should only be given during loot after missions, so this should be valid
+	if (MissionState != none)
+	{
+		//Also Count Resistance Civilian Militia being Dead
+		RegionState = MissionState.GetWorldRegion();
+		ParamTag = XGParamTag(`XEXPANDCONTEXT.FindTag("XGParam"));
+		
+		// Increase region income per civilian rescued
+		RewardAmount = -100 + ItemState.Quantity * class'X2StrategyElement_XpackRewards'.static.GetRescueCivilianIncomeIncreaseReward();
+
+		RewardTemplate = X2RewardTemplate(StratMgr.FindStrategyElementTemplate('Reward_IncreaseIncome'));
+		RewardState = RewardTemplate.CreateInstanceFromTemplate(NewGameState);
+		RewardState.GenerateReward(NewGameState, , RegionState.GetReference());
+		RewardState.SetReward(, RewardAmount); 
+		RewardState.GiveReward(NewGameState);
+		if(RewardAmount >= 0)
+		{
+			ParamTag.StrValue0 = RegionState.GetMyTemplate().DisplayName;
+			class'XComGameState_HeadquartersResistance'.static.AddGlobalEffectString(NewGameState, `XEXPAND.ExpandString(class'UIRewardsRecap'.default.m_strIncreasedRegionSupplyOutput), false);
+			ParamTag.StrValue0 = string(RewardAmount);
+			class'XComGameState_HeadquartersResistance'.static.AddGlobalEffectString(NewGameState, `XEXPAND.ExpandString(class'UIRewardsRecap'.default.m_strIncreasedSupplyIncome), false);
+		}
+		else
+		{
+			ParamTag.StrValue0 = RegionState.GetMyTemplate().DisplayName;
+			class'XComGameState_HeadquartersResistance'.static.AddGlobalEffectString(NewGameState, `XEXPAND.ExpandString(class'UIRewardsRecap'.default.m_strDecreasedRegionSupplyOutput), true);
+			ParamTag.StrValue0 = string(-RewardAmount);
+			class'XComGameState_HeadquartersResistance'.static.AddGlobalEffectString(NewGameState, `XEXPAND.ExpandString(class'UIRewardsRecap'.default.m_strDecreasedSupplyIncome), true);
+		}
+	}
+			
+	return true;
+}
+
 
 static function GenerateResistanceCardReward(XComGameState_Reward RewardState, XComGameState NewGameState, optional float RewardScalar = 1.0, optional StateObjectReference AuxRef)
 {
@@ -2230,6 +2303,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 
 		case 'Chryssalid':
 			Template.Abilities.RemoveItem('ChryssalidBurrow');
+			Template.Abilities.RemoveItem('ChryssalidImmunities');
 		case 'Chryssalid_Leader':
 			Template.Abilities.AddItem('AbsorptionFields');
 			break;
@@ -2508,6 +2582,12 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 	ItemMgr = class'X2ItemTemplateManager'.static.GetItemTemplateManager();
 	CharMgr = class'X2CharacterTemplateManager'.static.GetCharacterTemplateManager();
 	// Reconfig Weapons and Weapon Schematics
+
+	if(Template.DataName == 'RescueCivilianReward')
+	{
+		Template.OnAcquiredFn = OnRescueCivilianRewardAcquired;
+	}
+
 	WeaponTemplate = X2WeaponTemplate(Template);
 	if (WeaponTemplate != none)
 	{
@@ -2557,8 +2637,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		{
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MID_LONG_ALL_RANGE;
 		}
-		if (WeaponTemplate.WeaponCat == 'rifle' ||
-		 WeaponTemplate.WeaponCat == 'arcthrower'
+		if (WeaponTemplate.WeaponCat == 'rifle' 
 		)
 		{
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MEDIUM_ALL_RANGE;
@@ -2576,7 +2655,12 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		{		
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MIDSHORT_ALL_RANGE;
 		}
-		if (WeaponTemplate.WeaponCat == 'shotgun' || WeaponTemplate.WeaponCat == 'sidearm')
+		if(WeaponTemplate.WeaponCat == 'smg' )
+		{
+			WeaponTemplate.Abilities.AddItem('PrimarySprayAndPray');
+		}
+		if (WeaponTemplate.WeaponCat == 'shotgun' || WeaponTemplate.WeaponCat == 'sidearm' ||
+		 WeaponTemplate.WeaponCat == 'arcthrower')
 		{
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.SHORT_ALL_RANGE;
 			if (WeaponTemplate.WeaponCat == 'shotgun')

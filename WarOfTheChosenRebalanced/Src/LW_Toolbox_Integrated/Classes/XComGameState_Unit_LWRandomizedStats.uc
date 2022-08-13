@@ -73,7 +73,7 @@ function RandomizeInitialStats(XComGameState_Unit Unit)
 
 	//set up
 	
-	if(!bIsFirstMissionSoldier || !Unit.IsResistanceHero())
+	if(!bIsFirstMissionSoldier && !Unit.IsResistanceHero())
 	{
 		NumSwaps = RollNumStatSwaps();
 	}

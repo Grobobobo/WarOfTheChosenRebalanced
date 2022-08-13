@@ -231,6 +231,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 			break;
 		case 'HunterRifleShot':
 			MakeAbilityWorkWhenBurning(Template);
+			AddAmmoToHunterRifleShot(Template);
 
 		// case 'FanFire':
 		// case 'LightningHands':
@@ -2151,6 +2152,17 @@ static function AdjustTongueGrabCooldown(X2AbilityTemplate Template)
 	Cooldown.NumGlobalTurns = default.TONGUE_GRAB_GLOBAL_COOLDOWN;
 	Template.AbilityCooldown = Cooldown;
 }
+
+static function AddAmmoToHunterRifleShot(X2AbilityTemplate Template)
+{
+	local X2AbilityCost_Ammo AmmoCost;
+	
+	AmmoCost = new class'X2AbilityCost_Ammo';
+	AmmoCost.iAmmo = 1;
+	Template.AbilityCosts.AddItem(AmmoCost);
+}
+
+
 
 defaultproperties
 {

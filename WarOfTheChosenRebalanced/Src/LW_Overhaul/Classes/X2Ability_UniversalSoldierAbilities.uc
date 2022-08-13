@@ -1073,6 +1073,7 @@ static function X2AbilityTemplate Vengeance_LW()
 
 	Template.bDisplayInUITooltip = false;
 	Template.bDisplayInUITacticalText = false;
+	Template.bDontDisplayInAbilitySummary = true;
 
 	Template.bSkipFireAction = true;
 	Template.bShowActivation = true;

@@ -9041,6 +9041,12 @@ LocLongDescription="Suppression Cooldown is reduced by 1."
 LocHelpText="Suppression Cooldown is reduced by 1."
 LocPromotionPopupText=""
 
+[PrimarySprayAndPray X2AbilityTemplate]
+LocFriendlyName="Spray And Pray"
+LocLongDescription="Attacks with your Primary Weapon Ignore up to <Ability:SPRAY_AND_PRAY_DODGE/> Dodge."
+LocHelpText="Attacks with your Primary Weapon Ignore up to <Ability:SPRAY_AND_PRAY_DODGE/> Dodge."
+LocPromotionPopupText=""
+
 [SprayAndPray X2AbilityTemplate]
 LocFriendlyName="Spray And Pray"
 LocLongDescription="Attacks with your Autopistol Ignore up to <Ability:SPRAY_AND_PRAY_DODGE/> Dodge."
@@ -9048,7 +9054,7 @@ LocHelpText="Attacks with your Autopistol Ignore up to <Ability:SPRAY_AND_PRAY_D
 LocPromotionPopupText=""
 
 [StockSprayAndPray X2AbilityTemplate]
-LocFriendlyName="Spray And Pray"
+LocFriendlyName="Stock"
 LocLongDescription="Attacks with your Primary Weapon Ignore up to 15 Dodge."
 LocHelpText="Attacks with your Primary Weapon Ignore up to 15 Dodge."
 LocPromotionPopupText=""

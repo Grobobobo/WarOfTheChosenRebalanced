@@ -45,14 +45,13 @@ function ETeam GetTeam(const out EffectAppliedData ApplyEffectParameters)
 function OnSpawnComplete(const out EffectAppliedData ApplyEffectParameters, StateObjectReference NewUnitRef, XComGameState NewGameState, XComGameState_Effect NewEffectState)
 {
 	local XComGameState_Unit ChryssalidPupGameState;
-	local int HalfLife;
 
 	ChryssalidPupGameState = XComGameState_Unit(NewGameState.GetGameStateForObjectID(NewUnitRef.ObjectID));
 	`assert(ChryssalidPupGameState != none);
 
-	HalfLife = ChryssalidPupGameState.GetCurrentStat(eStat_HP) / 2;
-	ChryssalidPupGameState.SetBaseMaxStat(eStat_HP, HalfLife);
-	ChryssalidPupGameState.SetCurrentStat(eStat_HP, HalfLife);
+	// HalfLife = ChryssalidPupGameState.GetCurrentStat(eStat_HP) / 2;
+	// ChryssalidPupGameState.SetBaseMaxStat(eStat_HP, HalfLife);
+	// ChryssalidPupGameState.SetCurrentStat(eStat_HP, HalfLife);
 
 	ChryssalidPupGameState.SetUnitFloatValue('NewSpawnedUnit', 1, eCleanup_BeginTactical);
 }

@@ -303,7 +303,16 @@ static function EventListenerReturn OnCleanupTacticalMission(Object EventData, O
 	local X2MissionSourceTemplate MissionSource;
 	local int NumVetsKilled, DelayValueHours;
 	local XComGameState_HeadquartersAlien AlienHq;
+	local X2ItemTemplateManager ItemTemplateManager;
+	local int NumTotalMilitia, NumDeadMilitia, NumSavedMilitia;
+	local XComGameState_Item ItemState;
+	local XComGameState_HeadquartersXCom XComHQ;
+
     History = `XCOMHISTORY;
+
+	XComHQ = XComGameState_HeadquartersXCom(History.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersXCom'));
+	XComHQ = XComGameState_HeadquartersXCom(NewGameState.GetGameStateForObjectID(XComHQ.ObjectID));
+
     BattleData = XComGameState_BattleData(EventData);
     BattleData = XComGameState_BattleData(NewGameState.GetGameStateForObjectID(BattleData.ObjectID));
 
@@ -405,6 +414,27 @@ static function EventListenerReturn OnCleanupTacticalMission(Object EventData, O
 					}
 				}
 			}
+		}
+	}
+
+
+	ItemTemplateManager = class'X2ItemTemplateManager'.static.GetItemTemplateManager();
+
+	///Handle The Civilian Save thing
+	if (BattleData.MapData.ActiveMission.MissionFamily == "ChosenRetaliation")
+	{
+		
+		NumDeadMilitia = class'Helpers_LW'.static.GetNumCivilianMilitiaKilled(NumTotalMilitia);
+
+		NumSavedMilitia = NumTotalMilitia - NumDeadMilitia;
+		
+		// Create the Rescued Civ loot item and add it to the HQ inventory
+		if (NumSavedMilitia > 0)
+		{
+			ItemState = ItemTemplateManager.FindItemTemplate('RescueCivilianReward').CreateInstanceFromTemplate(NewGameState);
+			ItemState.Quantity = NumSavedMilitia;
+			ItemState.OwnerStateObject = XComHQ.GetReference();
+			XComHQ.PutItemInInventory(NewGameState, ItemState, true);
 		}
 	}
 

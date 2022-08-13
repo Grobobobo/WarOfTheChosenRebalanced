@@ -129,6 +129,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateHunterMarkAdvent());
 	Templates.AddItem(CreateStunLanceCharge());
 	Templates.AddItem(CreateChangeForm_Shoggoth_Ability());
+	Templates.AddItem(CreateNeonateSlashAbility());
+
+	
 	return Templates;
 }
 
@@ -2224,4 +2227,69 @@ simulated function ChangeForm_Shoggoth_BuildVisualization(XComGameState Visualiz
 	}
 
 	SpawnFacelessEffect.AddSpawnVisualizationsToTracks(Context, SpawnedUnit, FacelessTrack, CivilianUnit, CivilianTrack);
+}
+
+
+static function X2AbilityTemplate CreateNeonateSlashAbility(optional Name AbilityName = 'NeonateChryssalidSlash')
+{
+	local X2AbilityTemplate Template;
+	local X2AbilityCost_ActionPoints ActionPointCost;
+	local X2AbilityToHitCalc_StandardMelee MeleeHitCalc;
+	local X2Condition_UnitProperty UnitPropertyCondition;
+	local X2Effect_ApplyWeaponDamage PhysicalDamageEffect;
+	local X2AbilityTarget_MovingMelee MeleeTarget;
+	local array<name> SkipExclusions;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, AbilityName);
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_chryssalid_slash";
+	Template.Hostility = eHostility_Offensive;
+	Template.AbilitySourceName = 'eAbilitySource_Standard';
+
+	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.iNumPoints = 1;
+	ActionPointCost.bConsumeAllPoints = true;
+	Template.AbilityCosts.AddItem(ActionPointCost);
+
+	MeleeHitCalc = new class'X2AbilityToHitCalc_StandardMelee';
+	Template.AbilityToHitCalc = MeleeHitCalc;
+
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	
+	// May slash if the unit is burning or disoriented
+	SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.DisorientedName);
+	SkipExclusions.AddItem(class'X2StatusEffects'.default.BurningName);
+	Template.AddShooterEffectExclusions(SkipExclusions);
+
+	UnitPropertyCondition = new class'X2Condition_UnitProperty';
+	UnitPropertyCondition.ExcludeDead = true;
+	UnitPropertyCondition.ExcludeFriendlyToSource = true; // Disable this to allow civilians to be attacked.
+	UnitPropertyCondition.ExcludeCivilian = true; //Neonates leave the food to mommy
+	UnitPropertyCondition.ExcludeSquadmates = true;		   // Don't attack other AI units.
+	Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);
+	
+	Template.AbilityTargetConditions.AddItem(default.MeleeVisibilityCondition);
+
+	PhysicalDamageEffect = new class'X2Effect_ApplyWeaponDamage';
+	PhysicalDamageEffect.EffectDamageValue.DamageType = 'Melee';
+	Template.AddTargetEffect(PhysicalDamageEffect);
+
+	MeleeTarget = new class'X2AbilityTarget_MovingMelee';
+	MeleeTarget.MovementRangeAdjustment = 0;
+	Template.AbilityTargetStyle = MeleeTarget;
+	Template.TargetingMethod = class'X2TargetingMethod_MeleePath';
+
+	Template.AbilityTriggers.AddItem(new class'X2AbilityTrigger_PlayerInput');
+	Template.AbilityTriggers.AddItem(new class'X2AbilityTrigger_EndOfMove');
+
+	Template.CustomFireAnim = 'FF_Melee';
+	Template.bSkipMoveStop = true;
+	Template.BuildNewGameStateFn = TypicalMoveEndAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	Template.BuildInterruptGameStateFn = TypicalMoveEndAbility_BuildInterruptGameState;
+	Template.CinescriptCameraType = "Chryssalid_PoisonousClaws";
+
+	Template.LostSpawnIncreasePerUse = class'X2AbilityTemplateManager'.default.MeleeLostSpawnIncreasePerUse;
+	Template.bFrameEvenWhenUnitIsHidden = true;
+
+	return Template;
 }

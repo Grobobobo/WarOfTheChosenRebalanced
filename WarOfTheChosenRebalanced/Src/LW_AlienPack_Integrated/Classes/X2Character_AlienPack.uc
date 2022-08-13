@@ -1039,7 +1039,7 @@ static function X2CharacterTemplate CreateTemplate_ChryssalidSoldier(name Templa
 
 	CharTemplate.Abilities.AddItem('ChryssalidSlash');
 	CharTemplate.Abilities.AddItem('ChyssalidPoison');
-	CharTemplate.Abilities.AddItem('ChryssalidImmunities');
+//	CharTemplate.Abilities.AddItem('ChryssalidImmunities');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
 
 	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_Cryssalid');
@@ -1106,7 +1106,7 @@ static function X2CharacterTemplate CreateTemplate_HiveQueen()
 	CharTemplate.Abilities.AddItem('ChryssalidSlash');
 	CharTemplate.Abilities.AddItem('ChryssalidBurrow'); // REMOVE?
 	CharTemplate.Abilities.AddItem('ChyssalidPoison');
-	CharTemplate.Abilities.AddItem('ChryssalidImmunities');
+//	CharTemplate.Abilities.AddItem('ChryssalidImmunities');
 	CharTemplate.Abilities.AddItem('HiveQueenSlash');
 	// WOTC abilities
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
@@ -1826,10 +1826,12 @@ static function X2CharacterTemplate CreateNeonateChryssalid_Template()
 	CharTemplate.MPPointValue = CharTemplate.XpKillscore * 10;
 	CharTemplate.strScamperBT = "ChryssalidScamperRoot";
 
-	CharTemplate.Abilities.AddItem('ChryssalidSlash');
+	//CharTemplate.Abilities.AddItem('ChryssalidSlash');
+	CharTemplate.Abilities.AddItem('NeonateChryssalidSlash');
+	
 	//CharTemplate.Abilities.AddItem('ChryssalidBurrow');
 //	CharTemplate.Abilities.AddItem('ChyssalidPoison');
-	CharTemplate.Abilities.AddItem('ChryssalidImmunities');
+	//CharTemplate.Abilities.AddItem('ChryssalidImmunities');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
 
 	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_Cryssalid');

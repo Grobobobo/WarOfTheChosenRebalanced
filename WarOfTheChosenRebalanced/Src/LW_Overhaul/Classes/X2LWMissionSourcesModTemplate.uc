@@ -206,12 +206,20 @@ static function SpawnRetaliationMission_LW(XComGameState NewGameState, int Missi
 
 static function RetaliationOnSuccess_LW(XComGameState NewGameState, XComGameState_MissionSite MissionState)
 {
+
+	//Get Battle Data Like this:
+	//BattleData = XComGameState_BattleData(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_BattleData'));
+
+
+	// Get Reward State from the mission site and adjust the quantity
+	// Modify the actual civilian Reward Amount
 	class'X2StrategyElement_DefaultMissionSources'.static.GiveRewards(NewGameState, MissionState);
+
+	//class'X2StrategyElement_DefaultMissionSources'.static.ModifyRegionSupplyYield(NewGameState, MissionState, class'XComGameState_WorldRegion'.static.GetRegionDisconnectSupplyChangePercent(), , true);
 	class'X2StrategyElement_DefaultMissionSources'.static.SpawnPointOfInterest(NewGameState, MissionState);
 
-	class'X2StrategyElement_DefaultMissionSources'.static.ModifyRegionSupplyYield(NewGameState, MissionState, class'XComGameState_WorldRegion'.static.GetRegionDisconnectSupplyChangePercent(), , true);
-
 	MissionState.RemoveEntity(NewGameState);
+	
 	class'XComGameState_HeadquartersResistance'.static.RecordResistanceActivity(NewGameState, 'ResAct_RetaliationsStopped');
 
 	`XEVENTMGR.TriggerEvent('RetaliationComplete', , , NewGameState);
@@ -222,7 +230,10 @@ static function RetaliationOnFailure_LW(XComGameState NewGameState, XComGameStat
 
 	class'X2StrategyElement_DefaultMissionSources'.static.ModifyRegionSupplyYield(NewGameState, MissionState, class'XComGameState_WorldRegion'.static.GetRegionDisconnectSupplyChangePercent(), , true);
 
-
+	if(!class'X2StrategyElement_DefaultMissionSources'.static.IsInStartingRegion(MissionState))
+	{
+		class'X2StrategyElement_DefaultMissionSources'.static.LoseContactWithMissionRegion(NewGameState, MissionState, true);
+	}
 	MissionState.RemoveEntity(NewGameState);	
 	class'XComGameState_HeadquartersResistance'.static.DeactivatePOI(NewGameState, MissionState.POIToSpawn);	
 	class'XComGameState_HeadquartersResistance'.static.RecordResistanceActivity(NewGameState, 'ResAct_RetaliationsFailed');

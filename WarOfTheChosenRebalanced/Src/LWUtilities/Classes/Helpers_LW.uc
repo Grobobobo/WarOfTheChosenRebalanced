@@ -965,6 +965,42 @@ static function float GetVengeanceSoldierKillRatio()
 	return Ratio;
 }
 
+static function int GetNumCivilianMilitiaKilled(out int iTotal)
+{
+	local int iKilled, i;
+	local array<XComGameState_Unit> arrUnits;
+	local XGBattle_SP Battle;
+
+	Battle = XGBattle_SP(`BATTLE);
+
+	if(Battle != None)
+	{
+		Battle.GetHumanPlayer().GetOriginalUnits(arrUnits);
+
+		for(i = 0; i < arrUnits.Length; i++)
+		{
+			if(arrUnits[i].GetMyTemplateName() != 'CivilianMilitia')
+			{
+				arrUnits.Remove(i, 1);
+				i--;
+			}
+		}
+
+		iTotal = arrUnits.Length;
+
+		for(i = 0; i < iTotal; i++)
+		{
+			if(arrUnits[i].IsDead() || arrUnits[i].IsBleedingOut())
+			{
+				iKilled++;
+			}
+		}
+	}
+
+	return iKilled;
+}
+
+
 
 defaultproperties
 {

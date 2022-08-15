@@ -163,6 +163,22 @@ function ClearLOSIndicators(optional bool ForceClearCustomPathIndicators = false
     } 
 }
 
+simulated function ClearAbilityDamagePreview()
+{
+    local UIUnitFlag kFlag;
+
+    // Turn all flag info off initially 
+    foreach m_arrFlags(kFlag)
+    {
+        if( !kFlag.m_bIsFriendly.GetValue() )
+        {
+            kFlag.SetHitPointsPreview(0);
+            kFlag.SetArmorPointsPreview(0, 0);
+        }
+        //            if(kFlag.m_kUnit.GetCharacter().m_ePawnType == ePawnType_Mechtoid)
+        kFlag.SetShieldPointsPreview(0);
+    }
+}
 
 function IconPack_GA GetIconPack() {
     return LoadedIconPack;

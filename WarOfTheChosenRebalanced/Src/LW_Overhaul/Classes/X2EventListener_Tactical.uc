@@ -427,15 +427,21 @@ static function EventListenerReturn OnCleanupTacticalMission(Object EventData, O
 		NumDeadMilitia = class'Helpers_LW'.static.GetNumCivilianMilitiaKilled(NumTotalMilitia);
 
 		NumSavedMilitia = NumTotalMilitia - NumDeadMilitia;
-		
-		// Create the Rescued Civ loot item and add it to the HQ inventory
-		if (NumSavedMilitia > 0)
+		if (MissionSource.WasMissionSuccessfulFn != none)
 		{
-			ItemState = ItemTemplateManager.FindItemTemplate('RescueCivilianReward').CreateInstanceFromTemplate(NewGameState);
-			ItemState.Quantity = NumSavedMilitia;
-			ItemState.OwnerStateObject = XComHQ.GetReference();
-			XComHQ.PutItemInInventory(NewGameState, ItemState, true);
+			if(MissionSource.WasMissionSuccessfulFn(BattleData))
+			{
+				// Create the Rescued Civ loot item and add it to the HQ inventory
+				if (NumSavedMilitia > 0)
+				{
+					ItemState = ItemTemplateManager.FindItemTemplate('RescueCivilianReward').CreateInstanceFromTemplate(NewGameState);
+					ItemState.Quantity = NumSavedMilitia;
+					ItemState.OwnerStateObject = XComHQ.GetReference();
+					XComHQ.PutItemInInventory(NewGameState, ItemState, true);
+				}
+			}
 		}
+
 	}
 
 

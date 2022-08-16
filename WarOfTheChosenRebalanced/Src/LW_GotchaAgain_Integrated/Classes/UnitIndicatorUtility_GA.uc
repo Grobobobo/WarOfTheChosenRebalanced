@@ -25,7 +25,7 @@ public function ProcessUnitIndicators(const out TTile DestinationTile, optional 
     local LOSValues LOSValuesForUnit;
     local LOSValues initialLOSValues;
     local StateObjectReference EmptyRef;
-    local bool LoneWolfWillBeActive, CeWillBeActive;
+    local bool CeWillBeActive;
     local float TileDistance;
     foreach Outer.m_arrFlags(UnitFlag) {
         TargetUnit = XComGameState_Unit(class'XComGameStateHistory'.static.GetGameStateHistory().GetGameStateForObjectID(UnitFlag.StoredObjectID));

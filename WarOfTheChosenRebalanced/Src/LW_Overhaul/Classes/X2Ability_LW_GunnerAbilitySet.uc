@@ -268,6 +268,7 @@ static function X2AbilityTemplate AddKnifeFighter()
 	Template.bHideOnClassUnlock = false;
 	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_SQUADDIE_PRIORITY;
 	Template.AbilityConfirmSound = "TacticalUI_SwordConfirm";
+	Template.bUniqueSource = true;
 
 	Template.bDisplayInUITooltip = true;
     Template.bDisplayInUITacticalText = true;
@@ -284,12 +285,9 @@ static function X2AbilityTemplate AddKnifeFighter()
 	Template.AbilityToHitCalc = StandardMelee;
 
 	Template.AbilityTargetStyle = new class'X2AbilityTarget_MovingMelee';
+	Template.TargetingMethod = class'X2TargetingMethod_MeleePath';
+    //Template.AbilityTargetStyle = default.SimpleSingleMeleeTarget;
 	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
-	Template.AbilityTriggers.AddItem(new class'X2AbilityTrigger_EndOfMove');
-
-
-
-
 
 	// Target Conditions
 	Template.AbilityTargetConditions.AddItem(default.LivingHostileTargetProperty);
@@ -297,15 +295,10 @@ static function X2AbilityTemplate AddKnifeFighter()
 	AdjacencyCondition = new class'X2Condition_UnitProperty';
 	AdjacencyCondition.RequireWithinRange = true;
 	AdjacencyCondition.WithinRange = 96 * default.KNIFE_FIGHTER_TILE_RANGE;
-	AdjacencyCondition.TreatMindControlledSquadmateAsHostile = true;
 	Template.AbilityTargetConditions.AddItem(AdjacencyCondition);
 
 	// Shooter Conditions
 	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
-
-
-
-	Template.TargetingMethod = class'X2TargetingMethod_MeleePath';
 
 	if (!class'X2Ability_PerkPackAbilitySet'.default.NO_MELEE_ATTACKS_WHEN_ON_FIRE)
 	{

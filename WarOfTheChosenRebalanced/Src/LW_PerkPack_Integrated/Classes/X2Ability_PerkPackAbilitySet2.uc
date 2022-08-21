@@ -2615,7 +2615,7 @@ static function X2AbilityTemplate AddBrawler2()
 {
 	local X2AbilityTemplate						Template;
 	local X2Effect_Brawler2					DamageReduction;
-	local X2Effect_DamageImmunity			ImmunityEffect;
+//	local X2Effect_DamageImmunity			ImmunityEffect;
 	//local X2Effect_GreaterPadding			GreaterPaddingEffect;
 	`CREATE_X2ABILITY_TEMPLATE (Template, 'Brawler2');
 	Template.IconImage = "img:///UILibrary_XPerkIconPack_LW.UIPerk_mind_blossom";

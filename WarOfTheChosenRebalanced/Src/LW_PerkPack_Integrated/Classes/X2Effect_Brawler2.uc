@@ -49,10 +49,12 @@ function float GetPostDefaultAttackingDamageModifier_CH(
 	local float TilesPenalty;
 	local float DamageIncrease;
 	local float DamagePenalty;
+	local XComGameState_Unit TargetUnit;
 
-	if (AbilityState.SourceWeapon == EffectState.ApplyEffectParameters.ItemStateObjectRef)
+	TargetUnit = XComGameState_Unit(Target);
+	if (AbilityState.SourceWeapon == EffectState.ApplyEffectParameters.ItemStateObjectRef && TargetUnit != none) 
 	{
-		Tiles = SourceUnit.TileDistanceBetween(Target);
+		Tiles = SourceUnit.TileDistanceBetween(TargetUnit);
 
 		TilesPenalty = AbilityState.IsMeleeAbility()? 0 : Max(Tiles-1,0);
 

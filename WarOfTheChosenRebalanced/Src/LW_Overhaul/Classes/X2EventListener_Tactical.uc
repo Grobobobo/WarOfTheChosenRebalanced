@@ -30,6 +30,8 @@ var config array<name> ALIEN_AGGRESSION_MISSION_SOURCES;
 var config int ALIEN_AGGRESSION_INCREASE_MISSION_SUCCESS;
 var config int ALIEN_AGGRESSION_DECREASE_MISSION_FAILURE;
 var config int ALIEN_AGGRESSION_DECREASE_EXPERIENCED_SOLDIER_DEATH;
+var config int ALIEN_AGGRESSION_DECREASE_SOLDIER_DEATH;
+var config int ALIEN_AGGRESSION_DECREASE_SOLDIER_BLEEDOUT;
 
 var config int ALIEN_AGGRESSION_AVATAR_DELAY_BASE_VALUE_HOURS;
 struct UnitLoadout
@@ -301,7 +303,7 @@ static function EventListenerReturn OnCleanupTacticalMission(Object EventData, O
 	local int AggressionDelta;
 	local XComGameState_AlienAggression AggressionState;
 	local X2MissionSourceTemplate MissionSource;
-	local int NumVetsKilled, DelayValueHours;
+	local int  DelayValueHours;
 	local XComGameState_HeadquartersAlien AlienHq;
 	local X2ItemTemplateManager ItemTemplateManager;
 	local int NumTotalMilitia, NumDeadMilitia, NumSavedMilitia;
@@ -468,9 +470,8 @@ static function EventListenerReturn OnCleanupTacticalMission(Object EventData, O
 					AggressionDelta -= default.ALIEN_AGGRESSION_DECREASE_MISSION_FAILURE;
 				}
 			}
-			NumVetsKilled = GetNumVeteranSoldiersKilledOrCaptured(BattleData);
 
-			AggressionDelta -= default.ALIEN_AGGRESSION_DECREASE_EXPERIENCED_SOLDIER_DEATH * NumVetsKilled;
+			AggressionDelta += CalculateSoldierAggressionDelta(BattleData);
 
 			AggressionState.AggressionValue = Clamp(AggressionState.AggressionValue + AggressionDelta, 0,100);
 
@@ -489,11 +490,13 @@ static function EventListenerReturn OnCleanupTacticalMission(Object EventData, O
     return ELR_NoInterrupt;
 }
 
-static function int GetNumVeteranSoldiersKilledOrCaptured(XComGameState_BattleData BattleData)
+static function int CalculateSoldierAggressionDelta(XComGameState_BattleData BattleData)
 {
-	local int iKilled, i, iTotal;
+	local int  i, iTotal;
 	local array<XComGameState_Unit> arrUnits;
 	local XGBattle_SP Battle;
+	local int AggressionDelta;
+	local UnitValue BleedoutValue;
 
 	Battle = XGBattle_SP(`BATTLE);
 
@@ -514,14 +517,24 @@ static function int GetNumVeteranSoldiersKilledOrCaptured(XComGameState_BattleDa
 
 		for(i = 0; i < iTotal; i++)
 		{
+			arrUnits[i].GetUnitValue('VengeanceTriggered', BleedoutValue);
 			if(IsSoldierVeteran(arrUnits[i]) && (arrUnits[i].IsDead() || arrUnits[i].bCaptured))
 			{
-				iKilled++;
+				//iKilled++;
+				AggressionDelta -= default.ALIEN_AGGRESSION_DECREASE_EXPERIENCED_SOLDIER_DEATH;
+			}
+			else if (arrUnits[i].IsDead() || arrUnits[i].bCaptured)
+			{
+				AggressionDelta -= default.ALIEN_AGGRESSION_DECREASE_SOLDIER_DEATH;
+			}
+			else if(BleedoutValue.fvalue > 0)
+			{
+				AggressionDelta -= default.ALIEN_AGGRESSION_DECREASE_SOLDIER_BLEEDOUT;
 			}
 		}
 	}
 	
-	return iKilled;
+	return AggressionDelta;
 }
 
 //For now let's go by mission basis, later on I'll think about the more detailed mechanic if neededs

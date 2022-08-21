@@ -7070,23 +7070,36 @@ Description="Maybe it's something in the air, but whatever it is, it's causing s
 
 [ALienAggression1 X2SitRepTemplate]
 FriendlyName="Alien Aggression I"
-Description="Due to Your Successful Resistance Activities, The Aliens Divert Their Resources From The Avatar Project To their Forces. Missions Have More Enemies, but Avatar Project is Delayed."
+Description="Due to Your Successful Resistance Activities, The Aliens Divert Their Resources From The Avatar Project To their Forces. Missions Have More and Stronger Enemies, but Avatar Project is Delayed."
 
 [ALienAggression2 X2SitRepTemplate]
 FriendlyName="Alien Aggression II"
-Description="Due to Your Successful Resistance Activities, The Aliens Divert Their Resources From The Avatar Project To their Forces. Missions Have More Enemies, but Avatar Project is Delayed."
+Description="Due to Your Successful Resistance Activities, The Aliens Divert Their Resources From The Avatar Project To their Forces. Missions Have More and Stronger Enemies, but Avatar Project is Delayed."
 
 [ALienAggression3 X2SitRepTemplate]
 FriendlyName="Alien Aggression III"
-Description="Due to Your Successful Resistance Activities, The Aliens Divert Their Resources From The Avatar Project To their Forces. Missions Have More Enemies, but Avatar Project is Delayed."
+Description="Due to Your Successful Resistance Activities, The Aliens Divert Their Resources From The Avatar Project To their Forces. Missions Have More and Stronger Enemies, but Avatar Project is Delayed."
 
 [ALienAggression4 X2SitRepTemplate]
 FriendlyName="Alien Aggression IV"
-Description="Due to Your Successful Resistance Activities, The Aliens Divert Their Resources From The Avatar Project To their Forces. Missions Have More Enemies, but Avatar Project is Delayed."
+Description="Due to Your Successful Resistance Activities, The Aliens Divert Their Resources From The Avatar Project To their Forces. Missions Have More and Stronger Enemies, but Avatar Project is Delayed."
 
 [ALienAggression5 X2SitRepTemplate]
 FriendlyName="Alien Aggression V"
-Description="Due to Your Successful Resistance Activities, The Aliens Divert Their Resources From The Avatar Project To their Forces. Missions Have More Enemies, but Avatar Project is Delayed."
+Description="Due to Your Successful Resistance Activities, The Aliens Divert Their Resources From The Avatar Project To their Forces. Missions Have More and Stronger Enemies, but Avatar Project is Delayed."
+
+[LeaderBuff X2AbilityTemplate]
+LocFriendlyName="Alien Aggression II"
+LocLongDescription="Alien Leaders have + 25% HP, +5 aim, +1 mobility and +1 damage."
+
+[AlienHitBuff X2AbilityTemplate]
+LocFriendlyName="Alien Aggression IV"
+LocLongDescription="All enemies have +5 aim and 20% hp."
+
+[AlienDMGBuff X2AbilityTemplate]
+LocFriendlyName="Alien Aggression V"
+LocLongDescription="All enemies deal 1 more damage."
+
 
 [DarkEventBarrierSitRep X2SitRepTemplate]
 FriendlyName="Barrier"

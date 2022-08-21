@@ -567,7 +567,7 @@ static function PostSitRepCreation(out GeneratedMissionData GeneratedMission, op
 	}
 
 
-	if(class'X2EventListener_Tactical'.default.ALIEN_AGGRESSION_MISSION_SOURCES.Find(MissionSource.DataName) != INDEX_NONE)
+	if(class'X2EventListener_Tactical'.default.ALIEN_AGGRESSION_MISSION_SOURCES.Find(MissionState.GetMissionSource().DataName) != INDEX_NONE)
 	{
 		AggressionState = class'XComGameState_AlienAggression'.static.GetAggressionState(true);
 

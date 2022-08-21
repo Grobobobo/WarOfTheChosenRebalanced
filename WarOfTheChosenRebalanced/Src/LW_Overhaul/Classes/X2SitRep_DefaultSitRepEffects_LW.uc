@@ -4,10 +4,11 @@
 //  PURPOSE: Defines the default set of sit rep effect templates for LWOTC.
 //---------------------------------------------------------------------------------------
 
-class X2SitRep_DefaultSitRepEffects_LW extends X2SitRepEffect;
+class X2SitRep_DefaultSitRepEffects_LW extends X2SitRepEffect config(LW_Overhaul);
 
 var const name MissionTimerModifierVarName;
 
+var config array<name> ALIEN_LEADERS_TEMPLATE_NAMES;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -43,6 +44,10 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateAlertLevelIncreaseByThreeEffectTemplate());
 	Templates.AddItem(CreateAlertLevelIncreaseByFourEffectTemplate());
 	Templates.AddItem(CreateAlertLevelIncreaseByFiveEffectTemplate());
+
+	Templates.AddItem(CreateAlienDmgBuffEffect());
+	Templates.AddItem(CreateAlienHitBuffEffect());
+	Templates.AddItem(CreateLeaderBuffEffect());
 
 
 	return Templates;
@@ -356,6 +361,47 @@ static function X2SitRepEffectTemplate CreateAlertLevelIncreaseByFiveEffectTempl
 
 	return Template;
 }
+
+static function X2SitRepEffectTemplate CreateAlienHitBuffEffect()
+{
+	local X2SitRepEffect_GrantAbilities Template;
+
+	`CREATE_X2TEMPLATE(class'X2SitRepEffect_GrantAbilities', Template, 'AlienHitBuffEffect');
+	Template.DifficultyModifier = 0;
+	Template.AbilityTemplateNames.AddItem('AlienHitBuff');
+	Template.Teams.AddItem(eTeam_Alien);
+	//Template.Teams.AddItem(eTeam_XCom);
+
+	return Template;
+}
+
+static function X2SitRepEffectTemplate CreateAlienDmgBuffEffect()
+{
+	local X2SitRepEffect_GrantAbilities Template;
+
+	`CREATE_X2TEMPLATE(class'X2SitRepEffect_GrantAbilities', Template, 'AlienDmgBuffEffect');
+	Template.DifficultyModifier = 0;
+	Template.AbilityTemplateNames.AddItem('AlienDmgBuff');
+	Template.Teams.AddItem(eTeam_Alien);
+	//Template.Teams.AddItem(eTeam_XCom);
+
+	return Template;
+}
+static function X2SitRepEffectTemplate CreateLeaderBuffEffect()
+{
+	local X2SitRepEffect_GrantAbilities Template;
+
+	`CREATE_X2TEMPLATE(class'X2SitRepEffect_GrantAbilities', Template, 'LeaderBuffEffect');
+	Template.DifficultyModifier = 0;
+	Template.AbilityTemplateNames.AddItem('LeaderBuff');
+	Template.CharacterTemplateNames = default.ALIEN_LEADERS_TEMPLATE_NAMES;
+	//Template.Teams.AddItem(eTeam_XCom);
+
+	return Template;
+}
+
+
+
 defaultproperties
 {
 	MissionTimerModifierVarName = "Timer_LengthDelta"

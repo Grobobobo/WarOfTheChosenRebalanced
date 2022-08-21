@@ -151,8 +151,8 @@ LocPromotionPopupText="<Bullet/> Enemy attacks against you suffer a -<ABILITY:RE
 [Fortified X2AbilityTemplate]
 LocFriendlyName="Fortified"
 LocFlyOverText="Fortified"
-LocLongDescription="Gain <ABILITY:FORTIFIED_ABLATIVE/> Ablative HP. Enemy attacks against you suffer a -<ABILITY:FORTIFIED_CRITDEF_BONUS/> penalty to critical hit chances. Grants Immunity to negative mental conditions."
-LocHelpText="Gain <ABILITY:FORTIFIED_ABLATIVE/> Ablative HP. Enemy attacks against you suffer a -<ABILITY:FORTIFIED_CRITDEF_BONUS/> penalty to critical hit chances. Grants Immunity to negative mental conditions."
+LocLongDescription="Gain <ABILITY:FORTIFIED_ABLATIVE/> Ablative HP and <ABILITY:FORTIFIED_MOBILITY>. Enemy attacks against you suffer a -<ABILITY:FORTIFIED_CRITDEF_BONUS/> penalty to critical hit chances."
+LocHelpText="Gain <ABILITY:FORTIFIED_ABLATIVE/> Ablative HP and <ABILITY:FORTIFIED_MOBILITY>. Enemy attacks against you suffer a -<ABILITY:FORTIFIED_CRITDEF_BONUS/> penalty to critical hit chances."
 LocPromotionPopupText=""
 
 [TacticalSense X2AbilityTemplate]
@@ -204,7 +204,7 @@ LocPromotionPopupText="<Bullet/> Gain 5 aim and reduce enemies' dodge by 25 when
 [WilltoSurvive X2AbilityTemplate]
 LocFriendlyName="Will to Survive"
 LocFlyOverText="Will to Survive"
-LocLongDescription="Halfs Cover Bonuses. Enemy damage is reduced by <Ability:WTS_FLAT_DR/> when in cover and attacked through that cover. Reduce wound recovery times for this soldier by <Ability:WTS_WOUND_REDUCTION/>% of max HP. Grants Immunity to negative mental conditions."
+LocLongDescription="Enemy damage is reduced by <Ability:WTS_FLAT_DR/> when in cover and attacked through that cover. When targeted by enemy fire, automatically fire back with your <Ability:WeaponName/> once per turn."
 LocPromotionPopupText="<Bullet/> Cover against explosives and other indirect attacks is calculated from the point of the explosion.<br/><Bullet/> Armor piercing effects do not eliminate this bonus.<br/>"
 
 [FirstInLine X2AbilityTemplate]

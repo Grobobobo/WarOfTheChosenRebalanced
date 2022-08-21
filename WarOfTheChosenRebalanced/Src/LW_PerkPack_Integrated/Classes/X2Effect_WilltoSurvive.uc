@@ -10,6 +10,8 @@ var float WTS_DR;
 
 var int WTS_FLAT_DR;
 
+var bool HALF_COVER_BONUSES;
+
 function float GetPostDefaultDefendingDamageModifier_CH(
 	XComGameState_Effect EffectState,
 	XComGameState_Unit Attacker,
@@ -131,7 +133,7 @@ function GetToHitAsTargetModifiers(XComGameState_Effect EffectState, XComGameSta
 	local GameRulesCache_VisibilityInfo			VisInfo;
     local ShotModifierInfo						ShotInfo;
 
-	if (Target != none)
+	if (Target != none && HALF_COVER_BONUSES)
 	{
 		if(X2TacticalGameRuleset(XComGameInfo(class'Engine'.static.GetCurrentWorldInfo().Game).GameRuleset).VisibilityMgr.GetVisibilityInfo(Attacker.ObjectID, Target.ObjectID, VisInfo))
 		{

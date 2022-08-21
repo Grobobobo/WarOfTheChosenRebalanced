@@ -2616,7 +2616,7 @@ static function X2AbilityTemplate AddBrawler2()
 	local X2AbilityTemplate						Template;
 	local X2Effect_Brawler2					DamageReduction;
 	local X2Effect_DamageImmunity			ImmunityEffect;
-	local X2Effect_GreaterPadding			GreaterPaddingEffect;
+	//local X2Effect_GreaterPadding			GreaterPaddingEffect;
 	`CREATE_X2ABILITY_TEMPLATE (Template, 'Brawler2');
 	Template.IconImage = "img:///UILibrary_XPerkIconPack_LW.UIPerk_mind_blossom";
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
@@ -2634,20 +2634,20 @@ static function X2AbilityTemplate AddBrawler2()
 	DamageReduction.BuildPersistentEffect(1, true, false);
 	Template.AddTargetEffect(DamageReduction);
 
-	ImmunityEffect = new class'X2Effect_DamageImmunity';
-	ImmunityEffect.EffectName = 'MindShieldImmunity';
-	ImmunityEffect.ImmuneTypes.AddItem('Mental');
-	ImmunityEffect.ImmuneTypes.AddItem(class'X2Item_DefaultDamageTypes'.default.DisorientDamageType);
-	ImmunityEffect.ImmuneTypes.AddItem('stun');
-	ImmunityEffect.ImmuneTypes.AddItem('Unconscious');
-	ImmunityEffect.BuildPersistentEffect(1, true, false, false);
-	ImmunityEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, false, , Template.AbilitySourceName);
-	Template.AddTargetEffect(ImmunityEffect);
+	// ImmunityEffect = new class'X2Effect_DamageImmunity';
+	// ImmunityEffect.EffectName = 'MindShieldImmunity';
+	// ImmunityEffect.ImmuneTypes.AddItem('Mental');
+	// ImmunityEffect.ImmuneTypes.AddItem(class'X2Item_DefaultDamageTypes'.default.DisorientDamageType);
+	// ImmunityEffect.ImmuneTypes.AddItem('stun');
+	// ImmunityEffect.ImmuneTypes.AddItem('Unconscious');
+	// ImmunityEffect.BuildPersistentEffect(1, true, false, false);
+	// ImmunityEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, false, , Template.AbilitySourceName);
+	// Template.AddTargetEffect(ImmunityEffect);
 
-	GreaterPaddingEffect = new class 'X2Effect_GreaterPadding';
-	GreaterPaddingEffect.BuildPersistentEffect (1, true, false);
-	GreaterPaddingEffect.Padding_HealHP = default.BRAWLER2_WOUND_REDUCTION;	
-	Template.AddTargetEffect(GreaterPaddingEffect);
+	// GreaterPaddingEffect = new class 'X2Effect_GreaterPadding';
+	// GreaterPaddingEffect.BuildPersistentEffect (1, true, false);
+	// GreaterPaddingEffect.Padding_HealHP = default.BRAWLER2_WOUND_REDUCTION;	
+	// Template.AddTargetEffect(GreaterPaddingEffect);
 
 
 	Template.bDisplayInUITooltip = true;

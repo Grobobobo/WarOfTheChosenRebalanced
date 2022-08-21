@@ -9031,8 +9031,8 @@ LocPromotionPopupText="This effectively Decreases the unit's fatigue, allowing y
 
 [Brawler2 X2AbilityTemplate]
 LocFriendlyName="Brawler"
-LocLongDescription="Grants <Ability:BRAWLER2_MAX_DR/>% damage reduction against adjacent targets. This bonus decreases with distance (-<Ability:BRAWLER2_DR_PER_TILE/>% DR per tile). Reduce wound recovery times for this soldier by <Ability:BRAWLER2_WOUND_REDUCTION/>% of max HP. Grants Immunity to negative mental conditions."
-LocHelpText="Grants <Ability:BRAWLER2_MAX_DR/>% damage reduction against adjacent targets. This bonus decreases with distance (-<Ability:BRAWLER2_DR_PER_TILE/>% DR per tile). Reduce wound recovery times for this soldier by <Ability:BRAWLER2_WOUND_REDUCTION/>% of max HP. Grants Immunity to negative mental conditions."
+LocLongDescription="Grants <Ability:BRAWLER2_MAX_DR/>% damage reduction and primary weapon damage against adjacent targets. This bonus decreases with distance (-<Ability:BRAWLER2_DR_PER_TILE/>% DR per tile)."
+LocHelpText="Grants <Ability:BRAWLER2_MAX_DR/>% damage reduction against adjacent targets. This bonus decreases with distance (-<Ability:BRAWLER2_DR_PER_TILE/>% DR per tile)."
 LocPromotionPopupText=""
 
 [ShockAbsorbentArmor X2AbilityTemplate]

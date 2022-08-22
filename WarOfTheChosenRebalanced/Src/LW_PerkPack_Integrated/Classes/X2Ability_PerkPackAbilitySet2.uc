@@ -1377,6 +1377,8 @@ static function X2AbilityTemplate AddPhantomTrigger()
 	OwnerAbilityConidition.OwnerHasSoldierAbilities.AddItem('Stealth_LW');
 	AmmoEffect.TargetConditions.AddItem(OwnerAbilityConidition);
 
+	Template.AddTargetEffect(AmmoEffect);
+	
 	PrimaryWeaponCondition = new class'X2Condition_PrimaryWeapon';
 	PrimaryWeaponCondition.RequirePrimary = true;
 	AddTriggerTargetCondition(Template, PrimaryWeaponCondition);

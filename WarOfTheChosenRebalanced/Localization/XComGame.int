@@ -9001,10 +9001,22 @@ LocLongDescription="Your Attacks can now remove enemy overwatch on hit."
 LocHelpText="Your Attacks can now remove enemy overwatch on hit."
 LocPromotionPopupText=""
 
-[AmmoImpact X2AbilityTemplate]
-LocFriendlyName="Impact"
-LocLongDescription="Your Shots can now remove enemy overwatch on hit."
-LocHelpText="Your Shots can now remove enemy overwatch on hit."
+[BoltCasterPassive X2AbilityTemplate]
+LocFriendlyName="Bolt Caster"
+LocLongDescription="Attacks will Alien rulers for 1 action."
+LocHelpText="Attacks will Stun Alien rulers for 1 action."
+LocPromotionPopupText=""
+
+[HuntersAxePassive X2AbilityTemplate]
+LocFriendlyName="Hunter's Axe"
+LocLongDescription="Attacks have +40 aim against Alien Rulers."
+LocHelpText="Attacks have +40 aim against Alien Rulers."
+LocPromotionPopupText=""
+
+[HuntersPistolPassive X2AbilityTemplate]
+LocFriendlyName="ShadowFall"
+LocLongDescription="If this weapon's standard shot hits a ruler, enter phantom concealment."
+LocHelpText="If this weapon's standard shot hits a ruler, enter phantom concealment."
 LocPromotionPopupText=""
 
 [UnstoppableGunFire X2AbilityTemplate]

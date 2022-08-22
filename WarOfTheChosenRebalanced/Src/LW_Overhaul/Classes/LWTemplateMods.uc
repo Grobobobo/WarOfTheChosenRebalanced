@@ -934,7 +934,16 @@ function ModifyGrenadeEffects(X2ItemTemplate Template, int Difficulty)
 			GrenadeTemplate.ThrownGrenadeEffects.AddItem(DisorientedEffect);
 			GrenadeTemplate.LaunchedGrenadeEffects.AddItem(DisorientedEffect);
 			break;
+		case 'FrostBomb':
+		GrenadeTemplate.ThrownGrenadeEffects.Length = 0;
+		GrenadeTemplate.LaunchedGrenadeEffects.Length = 0;
 
+		GrenadeTemplate.ThrownGrenadeEffects.AddItem(class'BitterfrostHelper'.static.FreezeEffect());
+		GrenadeTemplate.ThrownGrenadeEffects.AddItem(class'BitterfrostHelper'.static.FreezeCleanse());
+		GrenadeTemplate.ThrownGrenadeEffects.AddItem(class'BitterfrostHelper'.static.BitterChillEffect());
+		GrenadeTemplate.ThrownGrenadeEffects.AddItem(class'BitterfrostHelper'.static.ChillEffect());
+		GrenadeTemplate.LaunchedGrenadeEffects = GrenadeTemplate.ThrownGrenadeEffects;
+		break;
 		default:
 			break;
 	}
@@ -1044,6 +1053,7 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 	local X2Effect_RemoveEffects 			RemoveEffects;
 	local X2Effect_InstantReactionTime		DodgeBonus;
 	local X2Effect_Formidable				FormidableEffect;
+	local X2Condition_RulerStasis RulerStasisCondition;
 
 	if (Template.DataName == 'CivilianPanicked')
 	{
@@ -1229,6 +1239,10 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 		Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);
 		Template.AdditionalAbilities.AddItem('StasisShield');
 		Template.PrerequisiteAbilities.AddItem('Fuse');
+
+		RulerStasisCondition = new class 'X2Condition_RulerStasis';
+		Template.AbilityTargetConditions.AddItem(RulerStasisCondition);
+
 	}
 
 	if (Template.DataName == 'StasisShield')
@@ -2568,7 +2582,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 	local X2ArmorTemplate ArmorTemplate;
 	local StrategyRequirement AltReq;
 	local X2GremlinTemplate GremlinTemplate, GremlinTemplate2;
-	local delegate<X2StrategyGameRulesetDataStructures.SpecialRequirementsDelegate> SpecialRequirement;
+	//local delegate<X2StrategyGameRulesetDataStructures.SpecialRequirementsDelegate> SpecialRequirement;
 	local X2Effect_Persistent Effect;
 	local UIStatMarkup Markup;
 	local X2CharacterTemplateManager CharMgr;
@@ -2722,7 +2736,6 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			X2GrenadeTemplate(WeaponTemplate).iRadius = 2;
 			break;
 
-		
 		
 		case 'SpectreM1_WPN':
 		case 'SpectreM2_WPN':
@@ -3035,16 +3048,16 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			Template.Requirements.RequiredSoldierClass = '';
 			break;
 
-			case 'HunterRifle_MG_Schematic':
-			case 'HunterRifle_BM_Schematic':
-			case 'HunterPistol_MG_Schematic':
-			case 'HunterPistol_BM_Schematic':
-			case 'HunterAxe_MG_Schematic':
-			case 'HunterAxe_BM_Schematic':
-				class'LWDLCHelpers'.static.GetAlienHunterWeaponSpecialRequirementFunction(SpecialRequirement, SchematicTemplate.DataName);
-				SchematicTemplate.Requirements.SpecialRequirementsFn = SpecialRequirement;
-				SchematicTemplate.AlternateRequirements[0].SpecialRequirementsFn = SpecialRequirement;
-				break;
+			// case 'HunterRifle_MG_Schematic':
+			// case 'HunterRifle_BM_Schematic':
+			// case 'HunterPistol_MG_Schematic':
+			// case 'HunterPistol_BM_Schematic':
+			// case 'HunterAxe_MG_Schematic':
+			// case 'HunterAxe_BM_Schematic':
+			// 	class'LWDLCHelpers'.static.GetAlienHunterWeaponSpecialRequirementFunction(SpecialRequirement, SchematicTemplate.DataName);
+			// 	SchematicTemplate.Requirements.SpecialRequirementsFn = SpecialRequirement;
+			// 	SchematicTemplate.AlternateRequirements[0].SpecialRequirementsFn = SpecialRequirement;
+			// 	break;
 			default:
 				break;
 		}
@@ -3396,6 +3409,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		}
 
 
+
 		switch (EquipmentTemplate.DataName)
 		{
 			case 'Pistol_MG':
@@ -3560,6 +3574,33 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 						Template.AlternateRequirements.AddItem(AltReq);
 						break;
 
+					default:
+						break;
+				}
+
+				switch (EquipmentTemplate.DataName)
+				{
+					//special handling for SLG DLC items
+					case 'AlienHunterRifle_CV':
+					case 'AlienHunterRifle_MG':
+					case 'AlienHunterRifle_BM':
+						EquipmentTemplate.Abilities.Additem('BoltCasterPassive');
+						X2WeaponTemplate(EquipmentTemplate).BonusWeaponEffects.Length = 0;
+						X2WeaponTemplate(EquipmentTemplate).BonusWeaponEffects.AddItem(BoltCasterStunEffect_LW());
+						break;	
+
+					case 'AlienHunterAxe_CV':
+					case 'AlienHunterAxe_MG':
+					case 'AlienHunterAxe_BM':
+						EquipmentTemplate.Abilities.Additem('HuntersAxePassive');
+						break;
+
+					case 'AlienHunterPistol_CV':
+					case 'AlienHunterPistol_MG':
+					case 'AlienHunterPistol_BM':
+						EquipmentTemplate.Abilities.Additem('HuntersPistolPassive');
+						EquipmentTemplate.Abilities.RemoveItem('ShadowFall');
+						break;
 					default:
 						break;
 				}
@@ -3756,6 +3797,15 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			}
 		}
 	}
+}
+
+static function X2Effect_Stunned BoltCasterStunEffect_LW()
+{
+	local X2Effect_Stunned StunEffect;
+
+	StunEffect = class'X2StatusEffects'.static.CreateStunnedStatusEffect(1, 0, false);
+	StunEffect.ApplyChanceFn = class'X2Item_DLC_Day60Weapons'.static.BoltCasterStunChance;
+	return StunEffect;
 }
 
 static function X2LWTemplateModTemplate CreateRewireTechTreeTemplate()

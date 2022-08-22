@@ -17,6 +17,9 @@ var config int QUICK_RELOAD_COOLDOWN;
 var config int TURRETFALL_COOLDOWN;
 var config int TURRETFALL_INITIAL_CHARGES;
 var config int TURRETFALL_EXTRA_CHARGES;
+
+var config int AXE_RULER_AIM_BONUS;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -38,7 +41,11 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddMedikitSelfHeal('MedikitSelfHeal', class'X2Ability_DefaultAbilitySet'.default.MEDIKIT_PERUSEHP));
 	Templates.AddItem(AddMedikitSelfHeal('NanoMedikitSelfHeal', class'X2Ability_DefaultAbilitySet'.default.NANOMEDIKIT_PERUSEHP));
 	Templates.AddItem(Vengeance_LW());
-	
+	Templates.AddItem(BoltCasterPassive());
+	Templates.AddItem(HuntersAxePassive());
+	Templates.AddItem(HuntersPistolPassive());
+	Templates.AddItem(ShadowFallTrigger());
+
 	
 	return Templates;
 }
@@ -1179,6 +1186,169 @@ static function EventListenerReturn VengeanceDeathTrigger(Object EventData, Obje
 		}
 	}
 
+	return ELR_NoInterrupt;
+}
+
+static function X2AbilityTemplate BoltCasterPassive()
+{
+	local X2AbilityTemplate		Template;
+
+	Template = PurePassive('BoltCasterPassive', "img:///UILibrary_PerkIcons.UIPerk_ammo_needle", , 'eAbilitySource_Perk');
+
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+
+	return Template;
+}
+
+static function X2AbilityTemplate HuntersAxePassive()
+{
+	local X2AbilityTemplate		Template;
+	local X2Effect_HuntersAxe	AxeEffect;
+	Template = PurePassive('HuntersAxePassive', "img:///UILibrary_PerkIcons.UIPerk_ammo_needle", , 'eAbilitySource_Perk');
+
+	AxeEffect = new class 'X2Effect_HuntersAxe';
+	AxeEffect.AimBonus = default.AXE_RULER_AIM_BONUS;
+	AxeEffect.BuildPersistentEffect (1, true, true);
+	AxeEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
+	Template.AddTargetEffect(AxeEffect);
+
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+
+	return Template;
+}
+
+
+static function X2AbilityTemplate HuntersPistolPassive()
+{
+	local X2AbilityTemplate		Template;
+
+	Template = PurePassive('HuntersPistolPassive', "img:///UILibrary_PerkIcons.UIPerk_ammo_needle", , 'eAbilitySource_Perk');
+
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+
+	Template.AdditionalAbilities.AddItem('ShadowFallTrigger');
+
+	return Template;
+}
+
+
+static function X2AbilityTemplate ShadowFallTrigger()
+{
+	local X2AbilityTemplate					Template;
+	local X2AbilityTrigger_EventListener	EventListener;
+	local X2Effect_PersistentStatChange StealthyEffect;
+	local X2Effect_SilentMelee	GhostEffect;
+	local X2Effect_RangerStealth	StealthEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'ShadowFallTrigger');
+
+	Template.IconImage = "img:///StealthOverhaulUILibrary_LW.UIPerk_takedown";
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+
+	Template.AbilityTargetStyle = default.SimpleSingleTarget;
+	Template.AbilityToHitCalc = default.DeadEye;
+
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	Template.AbilityTargetConditions.AddItem(default.LivingHostileTargetProperty);
+
+	// Trigger on Damage
+	EventListener = new class'X2AbilityTrigger_EventListener';
+	EventListener.ListenerData.EventID = 'AbilityActivated';
+	EventListener.ListenerData.EventFn = AbilityTriggerEventListener_ShadowFall;
+	EventListener.ListenerData.Deferral = ELD_OnStateSubmitted;
+	EventListener.ListenerData.Priority = 40;
+	EventListener.ListenerData.Filter = eFilter_Unit;
+
+	Template.AbilityTriggers.AddItem(EventListener);
+
+	StealthyEffect = new class'X2Effect_PersistentStatChange';
+	StealthyEffect.EffectName = 'TemporaryPhantomConcealment';
+	StealthyEffect.BuildPersistentEffect(class'X2Ability_PerkPackAbilitySet2'.default.PHANTOM_DURATION, false, true, false, eGameRule_PlayerTurnBegin);
+	// StealthyEffect.SetDisplayInfo (ePerkBuff_Bonus,Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,,, Template.AbilitySourceName); 
+	StealthyEffect.AddPersistentStatChange(eStat_DetectionModifier, class'X2Ability_PerkPackAbilitySet2'.default.PHANTOM_DETECTION_RANGE_REDUCTION);
+	StealthyEffect.bRemoveWhenTargetDies = true;
+	StealthyEffect.DuplicateResponse = eDupe_Refresh;
+	StealthyEffect.EffectRemovedFn = class'X2Ability_PerkPackAbilitySet2'.static.PhantomExpired;
+	StealthyEffect.EffectRemovedVisualizationFn = class'X2Ability_PerkPackAbilitySet2'.static.VisualizePhantomExpired;
+	Template.AddTargetEffect(StealthyEffect);
+
+	GhostEffect = new class'X2Effect_SilentMelee';
+	GhostEffect.EffectName = 'GhostEffect';
+	GhostEffect.BuildPersistentEffect(class'X2Ability_PerkPackAbilitySet2'.default.PHANTOM_DURATION, false, true, false, eGameRule_PlayerTurnBegin);
+	// StealthyEffect.SetDisplayInfo (ePerkBuff_Bonus,Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,,, Template.AbilitySourceName); 
+	GhostEffect.bRemoveWhenTargetConcealmentBroken = true;
+	GhostEffect.DuplicateResponse = eDupe_Refresh;
+	Template.AddTargetEffect(GhostEffect);
+
+	StealthEffect = new class'X2Effect_RangerStealth';
+	StealthEffect.BuildPersistentEffect(1, true, true, false, eGameRule_PlayerTurnEnd);
+	StealthEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, true);
+	StealthEffect.bRemoveWhenTargetConcealmentBroken = true;
+	Template.AddTargetEffect(StealthEffect);
+
+	Template.FrameAbilityCameraType = eCameraFraming_Never; 
+	Template.bSkipExitCoverWhenFiring = true;
+	Template.bSkipFireAction = true;	//	this fire action will be merged by Merge Vis function
+	Template.bShowActivation = true;
+	Template.bUsesFiringCamera = false;
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	Template.BuildInterruptGameStateFn = none;
+
+	Template.DefaultSourceItemSlot = eInvSlot_Pistol;
+
+	return Template;
+}
+
+static function EventListenerReturn AbilityTriggerEventListener_ShadowFall(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
+{
+	local XComGameState_Unit				UnitState, TargetUnit;
+	local XComGameState_Effect				EffectState;
+	local XComGameState_Ability				AbilityState, TriggerAbilityState;
+	local XComGameStateContext_Ability		AbilityContext;
+	local X2AbilityTemplate					AbilityTemplate;
+
+	EffectState = XComGameState_Effect(CallbackData);
+	if (EffectState == none)
+		return ELR_NoInterrupt;
+
+	UnitState = XComGameState_Unit(EventSource);
+	if (UnitState == none)
+		return ELR_NoInterrupt;
+
+
+	AbilityState = XComGameState_Ability(EventData);
+	if (AbilityState != none)
+	{
+
+		AbilityTemplate = AbilityState.GetMyTemplate();
+
+		AbilityContext = XComGameStateContext_Ability(GameState.GetContext());
+
+
+		// Only apply post-attack
+		if (AbilityContext != none && AbilityContext.InterruptionStatus != eInterruptionStatus_Interrupt)
+		{
+			TriggerAbilityState = XComGameState_Ability(`XCOMHISTORY.GetGameStateForObjectID(UnitState.FindAbility('ShadowFallTrigger', AbilityContext.InputContext.ItemObject).ObjectID));
+			TargetUnit = XComGameState_Unit(GameState.GetGameStateForObjectID(AbilityContext.InputContext.PrimaryTarget.ObjectID));
+				// Activated ability must be tied to the unit's primary weapon
+				if (TriggerAbilityState!= none && AbilityContext.IsResultContextHit() && class'LWDLCHelpers'.static.IsAlienRuler(TargetUnit.GetMyTemplateName()))
+				{
+					// Check that the ability is a shot ability - looking for bAllowAmmoEffects should catch pretty much everything
+					if (AbilityTemplate.bAllowAmmoEffects)
+					{
+						return TriggerAbilityState.AbilityTriggerEventListener_Self(EventData, EventSource, GameState, EventID, CallbackData);
+					}
+				}	
+		}	
+	}
+
+			
 	return ELR_NoInterrupt;
 }
 

@@ -2274,6 +2274,8 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 			Template.ImmuneTypes.AddItem('Fire');
 			Template.Abilities.AddItem('Mindshield');
 			Template.Abilities.AddItem('AbsorptionFields');
+			Template.bWeakAgainstTechLikeRobot = false;
+
 			break;
 		case 'AdvStunLancerM1':
 			Template.Abilities.AddItem('Whirlwind2');
@@ -3201,7 +3203,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		{
 			if (EquipmentTemplate.Abilities.Find('Bluescreen_Rounds_Ability_PP') == -1)
 			{
-			//	EquipmentTemplate.Abilities.AddItem('BluescreenRoundsDisorient');
+				EquipmentTemplate.Abilities.AddItem('BluescreenRoundsDisorient');
 				EquipmentTemplate.Abilities.AddItem('Bluescreen_Rounds_Ability_PP');
 			}
 		}

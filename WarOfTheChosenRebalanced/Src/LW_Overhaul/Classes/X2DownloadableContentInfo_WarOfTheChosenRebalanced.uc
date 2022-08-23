@@ -486,10 +486,10 @@ static event OnPreMission(XComGameState StartGameState, XComGameState_MissionSit
 	ResetReinforcements(StartGameState);
 	OverrideDestructibleHealths(StartGameState);
 	//MaybeAddChosenToMission(StartGameState, MissionState);
-	if (class'XComGameState_AlienRulerManager' != none)
-	{
-		OverrideAlienRulerSpawning(StartGameState, MissionState);
-	}
+	// if (class'XComGameState_AlienRulerManager' != none)
+	// {
+	// 	OverrideAlienRulerSpawning(StartGameState, MissionState);
+	// }
 
 	// Test Code to see if DLC POI replacement is working
 	if (MissionState.POIToSpawn.ObjectID > 0)

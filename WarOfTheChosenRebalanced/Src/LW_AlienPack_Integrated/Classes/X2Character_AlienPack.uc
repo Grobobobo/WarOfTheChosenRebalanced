@@ -587,7 +587,7 @@ static function X2CharacterTemplate CreateTemplate_Viper_LW(name TemplateName)
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 
-	CharTemplate.ImmuneTypes.AddItem('Poison');
+	//CharTemplate.ImmuneTypes.AddItem('Poison');
 
 	CharTemplate.bAllowSpawnFromATT = false;
 

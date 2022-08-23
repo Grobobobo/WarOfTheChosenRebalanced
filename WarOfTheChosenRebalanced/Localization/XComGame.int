@@ -892,6 +892,12 @@ LocFlyOverText="Hazmat Vest"
 LocLongDescription="Grants 3 hit points and confers immunity to fire, acid and poison."
 LocHelpText="Grants 3 hit points and confers immunity to fire, acid and poison."
 
+[ChameleonVestBonus_LW X2AbilityTemplate]
+LocFriendlyName="Chameleon Vest"
+LocFlyOverText="Chameleon Vest"
+LocLongDescription="Grants 3 ablative hit points and grants the ability to temporarily become immune to overwatch."
+;LocHelpText="Grants 3 hit points and confers immunity to fire, acid and poison."
+
 [NanofiberVestBonus_LW X2AbilityTemplate]
 LocFriendlyName="Nanoscale Vest"
 LocFlyOverText="Nanoscale Vest"
@@ -1543,6 +1549,12 @@ FriendlyNamePlural="Chameleon Suits"
 BriefSummary="Significantly reduces infiltration time by this soldier."
 TacticalText="<Bullet/> Significantly reduces infiltration time by this unit.\n<Bullet/> Only one plating item and one vest can be equipped at a time."
 
+[ChameleonVest X2EquipmentTemplate]
+FriendlyName="Chameleon Vest"
+FriendlyNamePlural="Chameleon Vests"
+BriefSummary="By reinforcing the Nanoscale Vest with specialized materials, we are able to make our soldiers temporarily immune to enemy reaction fire while also boosting their mobility."
+TacticalText="<Bullet/> Grants 2 ablative armor points.\n<Bullet/> Provides an active ability that lets you be temporarily immune to reaction fire and boost mobility.\n<Bullet/> Only one plating item and one vest can be equipped at a time."
+
 [AlloyPlating X2EquipmentTemplate]
 FriendlyName="Alloy Plating"
 FriendlyNamePlural="Alloy Plating"
@@ -1573,8 +1585,8 @@ TacticalText="<Bullet/> The bonus only applies when using a conventional tier we
 [FlechetteRounds X2AmmoTemplate]
 FriendlyName="Flechette Rounds"
 FriendlyNamePlural="Flechette Rounds"
-BriefSummary="Does +1 damage to all targets and +2 damage to unarmored enemies."
-TacticalText="<Bullet/> Does +2 damage to unarmored targets.<br/><Bullet/> Only one ammo enhancement may be equipped at a time."
+BriefSummary="Does +1 damage to unarmored enemies."
+TacticalText="<Bullet/> Does +1 damage to unarmored targets.<br/><Bullet/> Only one ammo enhancement may be equipped at a time."
 
 [RedScreenRounds X2AmmoTemplate]
 FriendlyName="Redscreen Rounds"
@@ -3560,6 +3572,10 @@ UnlockedDescription="Prototype added to inventory"
 [HazmatVestProject X2TechTemplate]
 DisplayName="Hazmat Vest"
 Summary="The Hazmat Vest will provide a boost to hit points and immunity to fire, acid and poison."
+
+[ChameleonVestProject X2TechTemplate]
+DisplayName="Chameleon Vest"
+Summary="The Chameleon Vest will provide a boost to hit points, temporary immunity to reaction fire and slight mobility boost."
 
 [PlatedVestProject X2TechTemplate]
 DisplayName="Tactical Vest"
@@ -7571,6 +7587,13 @@ LocPromotionPopupText="<Bullet/> If you get at least one kill during your turn, 
 [Dedication_LW X2AbilityTemplate]
 LocFriendlyName="Dedication"
 LocFlyOverText="Dedication"
+LocLongDescription="Free action. Gain <Ability:DEDICATION_MOBILITY/> mobility and ignore reaction fire for the rest of the turn. Has a <Ability:SelfCooldown_LW/> turn cooldown."
+LocHelpText="Free action. Gain <Ability:DEDICATION_MOBILITY/> mobility and ignore reaction fire for the rest of the turn. Has a <Ability:SelfCooldown_LW/> turn cooldown."
+LocPromotionPopupText="<Bullet/> Gain <Ability:DEDICATION_MOBILITY/> mobility and ignore reaction fire for the rest of the turn.<br/><Bullet/> Free action.<br/><Bullet/> Dedication has a <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
+
+[Dedication_LW X2AbilityTemplate]
+LocFriendlyName="Chameleon Vest"
+LocFlyOverText="Chameleon Vest"
 LocLongDescription="Free action. Gain <Ability:DEDICATION_MOBILITY/> mobility and ignore reaction fire for the rest of the turn. Has a <Ability:SelfCooldown_LW/> turn cooldown."
 LocHelpText="Free action. Gain <Ability:DEDICATION_MOBILITY/> mobility and ignore reaction fire for the rest of the turn. Has a <Ability:SelfCooldown_LW/> turn cooldown."
 LocPromotionPopupText="<Bullet/> Gain <Ability:DEDICATION_MOBILITY/> mobility and ignore reaction fire for the rest of the turn.<br/><Bullet/> Free action.<br/><Bullet/> Dedication has a <Ability:SelfCooldown_LW/> turn cooldown.<br/>"

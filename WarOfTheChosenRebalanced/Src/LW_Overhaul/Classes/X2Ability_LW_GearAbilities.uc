@@ -93,6 +93,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateAblativeHPAbility('Warden_Plating_Ability', default.WARDEN_PLATING_HP));
 
 	Templates.AddItem(CreateHazmatVestBonusAbility_LW());
+	Templates.AddItem(CreateChameleonVestBonusAbility_LW());
+
+	
 	Templates.AddItem(CreateNanofiberBonusAbility_LW());
 	Templates.AddItem(CreateNeurowhipAbility());
 	Templates.AddItem(CreateStilettoRoundsAbility());
@@ -346,6 +349,37 @@ static function X2AbilityTemplate CreateHazmatVestBonusAbility_LW()
 
 	return Template;
 }
+
+static function X2AbilityTemplate CreateChameleonVestBonusAbility_LW()
+{
+	local X2AbilityTemplate                 Template;
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'ChameleonVestBonus_LW');
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_item_flamesealant";
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.bDisplayInUITacticalText = false;
+
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
+
+	// Bonus to health stat Effect, also gives protection from fire and poison
+	//
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false, , Template.AbilitySourceName);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.HAZMAT_ABLATIVE_BONUS);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+	
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;
+}
+
 
 static function X2AbilityTemplate CreateNanoFiberBonusAbility_LW()
 {

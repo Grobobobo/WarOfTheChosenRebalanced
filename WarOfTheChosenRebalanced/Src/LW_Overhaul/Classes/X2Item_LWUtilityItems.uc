@@ -45,6 +45,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Items.AddItem(CreateNeurowhip());
 
 	Items.AddItem(CreateShapedCharge());
+	Items.AddItem(CreateChameleonVest());
 
 
 
@@ -453,3 +454,27 @@ static function X2DataTemplate CreateShapedCharge()
 	return Template;
 }
 
+static function X2DataTemplate CreateChameleonVest()
+{
+	local X2EquipmentTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2EquipmentTemplate', Template, 'ChameleonVest');
+	Template.ItemCat = 'defense';
+	Template.InventorySlot = eInvSlot_Utility;
+	Template.strImage = "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_Hazmat_Vest";
+	Template.EquipSound = "StrategyUI_Vest_Equip";
+
+	Template.Abilities.AddItem('ChameleonVestBonus');
+	Template.Abilities.AddItem('Dedication_Suit');
+
+	Template.CanBeBuilt = false;
+	Template.TradingPostValue = 25;
+	Template.PointsToComplete = 0;
+	Template.Tier = 2;
+
+	Template.RewardDecks.AddItem('ExperimentalArmorRewards');
+
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_ItemGrantedAbilitySet'.default.HAZMAT_VEST_HP_BONUS);
+
+	return Template;
+}

@@ -151,6 +151,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Techs.AddItem(CreateMilitiaArmor1());
 	Techs.AddItem(CreateMilitiaArmor2());
 	Techs.AddItem(CreateTurretFall());
+	Techs.AddItem(CreateChameleonVestProjectTemplate());
 
 	
 	return Techs;
@@ -513,6 +514,32 @@ static function X2DataTemplate CreateHazMatVestProjectTemplate()
 
 	Template.ResearchCompletedFn = GiveRandomItemReward;
 	Template.ItemRewards.AddItem('HazmatVest');
+
+	return Template;
+}
+
+static function X2DataTemplate CreateChameleonVestProjectTemplate()
+{
+	local X2TechTemplate Template;
+	local ArtifactCost Resources;
+
+	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'ChameleonVestProject');
+	Template.SortingTier = 2;
+	Template.strImage = "img:///UILibrary_StrategyImages.ResearchTech.TECH_ExperimentalArmor";
+	Template.bProvingGround = true;
+	Template.bArmor = true;
+
+
+	Template.Requirements.RequiredTechs.AddItem('HybridMaterials');
+	Template.Requirements.RequiredTechs.AddItem('AutopsyAdventTrooper');
+	
+	Template.Requirements.RequiredItems.AddItem('CorpseAdventTrooper');
+	Resources.ItemTemplateName='CorpseAdventTrooper';
+	Resources.Quantity = 5;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Template.ResearchCompletedFn = GiveRandomItemReward;
+	Template.ItemRewards.AddItem('ChameleonVest');
 
 	return Template;
 }

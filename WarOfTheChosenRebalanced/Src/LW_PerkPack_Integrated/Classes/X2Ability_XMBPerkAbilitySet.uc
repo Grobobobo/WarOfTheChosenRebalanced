@@ -184,6 +184,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(LockNLoad());
 	Templates.AddItem(TrenchWarfare());
 	Templates.AddItem(Dedication());
+	Templates.AddItem(Dedication_Suit());
+
+	
 	Templates.AddItem(WatchThemRun());
     Templates.AddItem(Avenger());
 	Templates.AddItem(Predator());
@@ -1579,7 +1582,7 @@ static function X2AbilityTemplate TrenchWarfareActivator()
 	return Template;
 }
 
-	static function X2AbilityTemplate Dedication()
+static function X2AbilityTemplate Dedication()
 {
 	local X2AbilityTemplate             Template;
 	local X2Effect_PersistentStatChange Effect;
@@ -1604,6 +1607,33 @@ static function X2AbilityTemplate TrenchWarfareActivator()
 
 	return Template;
 }
+
+static function X2AbilityTemplate Dedication_Suit()
+{
+	local X2AbilityTemplate             Template;
+	local X2Effect_PersistentStatChange Effect;
+	
+	// Activated ability that targets user
+	Template = SelfTargetActivated('Dedication_Suit', "img:///UILibrary_FavidsPerkPack_LW.Perk_Ph_Dedication", true, none, class'UIUtilities_Tactical'.const.CLASS_CORPORAL_PRIORITY, eCost_Free);
+	Template.bShowActivation = true;
+
+	// Create a persistent stat change effect that grants a mobility bonus - naming the effect Shadowstep lets you ignore reaction fire
+	Effect = new class'X2Effect_PersistentStatChange';
+	Effect.EffectName = 'Shadowstep';
+	Effect.AddPersistentStatChange(eStat_Mobility, default.DEDICATION_MOBILITY);
+	Effect.DuplicateResponse = eDupe_Refresh;
+	Effect.BuildPersistentEffect(1, false, true, false, eGameRule_PlayerTurnBegin);
+    Template.AddTargetEffect(Effect);
+
+	// Cannot be used while burning, etc.
+	Template.AddShooterEffectExclusions();
+
+	// Cooldown
+	AddCooldown(Template, default.DEDICATION_COOLDOWN);
+
+	return Template;
+}
+
 
 static function X2AbilityTemplate Corpsman()
 {

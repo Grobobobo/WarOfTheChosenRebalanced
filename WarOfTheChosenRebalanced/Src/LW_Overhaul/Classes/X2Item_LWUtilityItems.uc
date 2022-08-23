@@ -464,7 +464,7 @@ static function X2DataTemplate CreateChameleonVest()
 	Template.strImage = "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_Hazmat_Vest";
 	Template.EquipSound = "StrategyUI_Vest_Equip";
 
-	Template.Abilities.AddItem('ChameleonVestBonus');
+	Template.Abilities.AddItem('ChameleonVestBonus_LW');
 	Template.Abilities.AddItem('Dedication_Suit');
 
 	Template.CanBeBuilt = false;

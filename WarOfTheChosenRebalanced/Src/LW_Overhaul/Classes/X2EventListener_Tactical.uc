@@ -1425,12 +1425,6 @@ static function EventListenerReturn OverrideReserveActionPoints(Object EventData
 	AbilityContext = XComGameStateContext_Ability(Result.Context);
 
 
-	if(UnitState.AffectedByEffectNames.Find(class'X2StatusEffects'.default.BurningName) != -1)
-	{
-		Tuple.Data[0].b = true;
-		return ELR_NoInterrupt;
-	}
-
 	//Check if the source unit has an ability that allows breaking overwatches
 	if(AbilityContext != none)
 	{

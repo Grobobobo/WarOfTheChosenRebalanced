@@ -109,6 +109,7 @@ static function X2AbilityTemplate CreateReactionFireAgainstCoverBonus()
 	AntiCoverEffect.BuildPersistentEffect(1, true);
 	AntiCoverEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, false);
 	AntiCoverEffect.AimBonus = default.REACTION_FIRE_ANTI_COVER_BONUS;
+	AntiCoverEffect.DuplicateResponse = eDupe_Ignore;
 	Template.AddTargetEffect(AntiCoverEffect);
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;

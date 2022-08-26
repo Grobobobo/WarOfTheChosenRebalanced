@@ -938,10 +938,14 @@ function ModifyGrenadeEffects(X2ItemTemplate Template, int Difficulty)
 		GrenadeTemplate.ThrownGrenadeEffects.Length = 0;
 		GrenadeTemplate.LaunchedGrenadeEffects.Length = 0;
 
-		GrenadeTemplate.ThrownGrenadeEffects.AddItem(class'BitterfrostHelper'.static.FreezeEffect());
-		GrenadeTemplate.ThrownGrenadeEffects.AddItem(class'BitterfrostHelper'.static.FreezeCleanse());
-		GrenadeTemplate.ThrownGrenadeEffects.AddItem(class'BitterfrostHelper'.static.BitterChillEffect());
-		GrenadeTemplate.ThrownGrenadeEffects.AddItem(class'BitterfrostHelper'.static.ChillEffect());
+		GrenadeTemplate.ThrownGrenadeEffects.AddItem(class'BitterfrostHelper'.static.FreezeEffect(,,true));
+		GrenadeTemplate.ThrownGrenadeEffects.AddItem(class'BitterfrostHelper'.static.FreezeCleanse(,,true));
+		GrenadeTemplate.ThrownGrenadeEffects.AddItem(class'BitterfrostHelper'.static.BitterChillEffect(, true));
+		GrenadeTemplate.ThrownGrenadeEffects.AddItem(class'BitterfrostHelper'.static.ChillEffect(true));
+
+		GrenadeTemplate.ThrownGrenadeEffects.AddItem(class'BitterfrostHelper'.static.FreezeEffect(false,true));
+		GrenadeTemplate.ThrownGrenadeEffects.AddItem(class'BitterfrostHelper'.static.FreezeCleanse(false,true));
+
 		GrenadeTemplate.LaunchedGrenadeEffects = GrenadeTemplate.ThrownGrenadeEffects;
 		break;
 		default:
@@ -1053,7 +1057,7 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 	local X2Effect_RemoveEffects 			RemoveEffects;
 	local X2Effect_InstantReactionTime		DodgeBonus;
 	local X2Effect_Formidable				FormidableEffect;
-	local X2Condition_RulerStasis RulerStasisCondition;
+	local X2Condition_ExcludeRuler RulerStasisCondition;
 
 	if (Template.DataName == 'CivilianPanicked')
 	{
@@ -1240,7 +1244,7 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 		Template.AdditionalAbilities.AddItem('StasisShield');
 		Template.PrerequisiteAbilities.AddItem('Fuse');
 
-		RulerStasisCondition = new class 'X2Condition_RulerStasis';
+		RulerStasisCondition = new class 'X2Condition_ExcludeRuler';
 		Template.AbilityTargetConditions.AddItem(RulerStasisCondition);
 
 	}
@@ -3245,8 +3249,24 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				ArmorTemplate.bHeavyWeapon = false;
 				break;
 
+				case 'HeavyAlienArmor':
+				ArmorTemplate.Abilities.RemoveItem('RagePanic');
+				ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
+				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.PREDATOR_PLATING_HP);
+				ArmorTemplate.Abilities.AddItem('ExoskeletonServos');
+				ArmorTemplate.bHeavyWeapon = false;
+				break;
+
 				case 'HeavyPoweredArmor':
 				ArmorTemplate.CreatorTemplateName = 'HeavyPoweredArmor_Schematic';
+				ArmorTemplate.Abilities.AddItem('Warden_Plating_Ability');
+				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.WARDEN_PLATING_HP);
+				ArmorTemplate.Abilities.AddItem('ExoskeletonServos');
+				ArmorTemplate.bHeavyWeapon = false;
+				break;
+
+				case 'HeavyAlienArmorMk2':
+				ArmorTemplate.Abilities.RemoveItem('RagePanic');
 				ArmorTemplate.Abilities.AddItem('Warden_Plating_Ability');
 				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.WARDEN_PLATING_HP);
 				ArmorTemplate.Abilities.AddItem('ExoskeletonServos');
@@ -3260,10 +3280,23 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.SPIDER_PLATING_HP);
 				break;
 
+				case 'LightAlienArmor':
+				ArmorTemplate.bAddsUtilitySlot = true;
+				ArmorTemplate.Abilities.RemoveItem('SerpentPanic');
+				ArmorTemplate.Abilities.AddItem('Spider_Plating_Ability');
+				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.SPIDER_PLATING_HP);
+				break;
 
 				case 'LightPoweredArmor':
 				ArmorTemplate.CreatorTemplateName = 'LightPoweredArmor_Schematic';
 				ArmorTemplate.Abilities.AddItem('Wraith_Plating_Ability');
+				ArmorTemplate.bAddsUtilitySlot = true;
+				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.WRAITH_PLATING_HP);
+				break;
+
+				case 'LightAlienArmorMk2':
+				ArmorTemplate.Abilities.AddItem('Wraith_Plating_Ability');
+				ArmorTemplate.Abilities.RemoveItem('SerpentPanic');
 				ArmorTemplate.bAddsUtilitySlot = true;
 				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.WRAITH_PLATING_HP);
 				break;

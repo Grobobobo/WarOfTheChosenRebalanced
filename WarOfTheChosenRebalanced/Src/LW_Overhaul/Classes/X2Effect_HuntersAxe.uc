@@ -5,7 +5,6 @@ var int AimBonus;
 function GetToHitModifiers(XComGameState_Effect EffectState, XComGameState_Unit Attacker, XComGameState_Unit Target, XComGameState_Ability AbilityState, class<X2AbilityToHitCalc> ToHitType, bool bMelee, bool bFlanking, bool bIndirectFire, out array<ShotModifierInfo> ShotModifiers)
 {
 	local ShotModifierInfo ShotInfo;
-	local int DodgeReduction;
 
 	if (AbilityState.SourceWeapon == EffectState.ApplyEffectParameters.ItemStateObjectRef && class'LWDLCHelpers'.static.IsAlienRuler(Target.GetMyTemplateName()))
 	{

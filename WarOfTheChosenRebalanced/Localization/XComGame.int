@@ -1426,7 +1426,7 @@ FriendlyNamePlural="Elite Auto-Loaders"
 [ReloadUpgrade_Bsc X2WeaponUpgradeTemplate]
 FriendlyName="Auto-Loader"
 FriendlyNamePlural="Auto-Loaders"
-BriefSummary="Grants the quick reload ability, allowing you to reload 2 ammo without ending your turn with a 3 turn cooldown."
+BriefSummary="Grants the quick reload ability, allowing you to reload 2 ammo without ending your turn with a 4 turn cooldown."
 TinySummary="Free Reloads"
 LootTooltip="This weapon upgrade will allow you to quickly reload a small amount of ammo without ending your turn."
 
@@ -9669,3 +9669,15 @@ POIImages[1]="img:///UILibrary_StrategyImages.X2StrategyMap.POI_DeadAdvent"
 [Vengeance_LW X2AbilityTemplate]
 LocFriendlyName="Vengeance"
 LocHelpText="Gain Damage and Dodge bonuses when a squadmate dies or bleeds out (can trigger once per dying squadmate). The bonus Increases with more losses."
+
+[AlienAlloy X2ItemTemplate]
+FriendlyName="Alien Alloy"
+FriendlyNamePlural="Alien Alloys"
+BriefSummary="Light, flexible, and incredibly strong, the aliens use this precious material in the fabrication of their weapons and armor."
+BlackMarketTexts="ADVENT almost never lets this metal go to waste, but when they do, you better believe we're there to pick up the pieces."
+
+[EleriumDust X2ItemTemplate]
+FriendlyName="Elerium Crystal"
+FriendlyNamePlural="Elerium Crystals"
+BriefSummary="These crystals are incredibly valuable as a power source for a wide variety of applications, though it may take a significant amount of research to unlock their potential."
+BlackMarketTexts="This shiny dust is some sort of miracle energy source. Good for an extra pick-me-up in your coffee too."

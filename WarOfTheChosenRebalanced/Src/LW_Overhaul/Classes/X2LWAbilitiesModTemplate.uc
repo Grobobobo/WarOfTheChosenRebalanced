@@ -76,6 +76,11 @@ var config int TONGUE_GRAB_COOLDOWN;
 var config int TONGUE_GRAB_GLOBAL_COOLDOWN;
 var privatewrite X2Condition_Visibility GameplayVisibilityCondition;
 
+var config int FREEZING_LASH_COOLDOWN;
+var config int FREEZING_LASH_AIM_BONUS;
+
+var config int RAGE_STRIKE_COOLDOWN;
+var config int RAGE_STRIKE_AIM_BONUS;
 static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 {
     // Override the FinalizeHitChance calculation for abilities that use standard aim
@@ -358,6 +363,8 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'SkirmisherPostAbilityMelee':
 			AddRipjackRuptureEffects(Template);
 			break;
+		case 'FreezingLash':
+			ReworkFreezingLash(Template);
 		// case 'SpawnChryssalid':
 		// 	ReworkChryssalidSpawning(Template);
 		// 	break
@@ -2162,7 +2169,71 @@ static function AddAmmoToHunterRifleShot(X2AbilityTemplate Template)
 	Template.AbilityCosts.AddItem(AmmoCost);
 }
 
+static function ReworkFreezingLash(X2AbilityTemplate Template)
+{
+	local X2AbilityCooldown Cooldown;
+	local X2AbilityCost_ActionPoints Cost;
+	local X2AbilityToHitCalc_StandardAim StandardAim;
 
+	StandardAim = new class'X2AbilityToHitCalc_StandardAim';
+	StandardAim.BuiltInHitMod = default.FREEZING_LASH_AIM_BONUS;
+	Template.AbilityToHitCalc = StandardAim;
+
+
+	Template.AbilityCharges = none;
+	Template.AbilityCosts.Length = 0;
+
+
+	Cost = new class'X2AbilityCost_ActionPoints';
+	Cost.iNumPoints = 1;
+	Cost.bFreeCost = true;
+	Cost.bConsumeAllPoints = false;
+
+	Template.AbilityCosts.AddItem(Cost);
+
+	Cooldown = new class'X2AbilityCooldown';
+	Cooldown.iNumTurns = default.FREEZING_LASH_COOLDOWN;
+	Template.AbilityCooldown = Cooldown;
+
+	Template.AbilityTargetEffects.Length = 0;
+
+	Template.AbilityTargetEffects.AddItem(class'BitterfrostHelper'.static.FreezeEffect());
+	Template.AbilityTargetEffects.AddItem(class'BitterfrostHelper'.static.FreezeCleanse());
+	Template.AbilityTargetEffects.AddItem(class'BitterfrostHelper'.static.BitterChillEffect());
+	Template.AbilityTargetEffects.AddItem(class'BitterfrostHelper'.static.ChillEffect());
+
+	
+}
+
+static function ReworkRageStrike(X2AbilityTemplate Template)
+{
+	local X2AbilityCooldown Cooldown;
+	local X2AbilityCost_ActionPoints Cost;
+	local X2AbilityToHitCalc_StandardAim StandardAim;
+
+	StandardAim = new class'X2AbilityToHitCalc_StandardAim';
+	StandardAim.BuiltInHitMod = default.RAGE_STRIKE_AIM_BONUS;
+	Template.AbilityToHitCalc = StandardAim;
+
+
+	Template.AbilityCharges = none;
+	Template.AbilityCosts.Length = 0;
+
+
+	Cost = new class'X2AbilityCost_ActionPoints';
+	Cost.iNumPoints = 1;
+	Cost.bFreeCost = true;
+	Cost.bConsumeAllPoints = false;
+
+	Template.AbilityCosts.AddItem(Cost);
+
+	Cooldown = new class'X2AbilityCooldown';
+	Cooldown.iNumTurns = default.RAGE_STRIKE_COOLDOWN;
+	Template.AbilityCooldown = Cooldown;
+	
+
+
+}
 
 defaultproperties
 {

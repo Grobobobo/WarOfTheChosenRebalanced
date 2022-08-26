@@ -205,7 +205,7 @@ LocPromotionPopupText="<Bullet/> Gain 5 aim and reduce enemies' dodge by 25 when
 LocFriendlyName="Will to Survive"
 LocFlyOverText="Will to Survive"
 LocLongDescription="Enemy damage is reduced by <Ability:WTS_FLAT_DR/> when in cover and attacked through that cover. When targeted by enemy fire, automatically fire back with your <Ability:WeaponName/> once per turn."
-LocPromotionPopupText="<Bullet/> Cover against explosives and other indirect attacks is calculated from the point of the explosion.<br/><Bullet/> Armor piercing effects do not eliminate this bonus.<br/>"
+LocPromotionPopupText="<Bullet/> Cover against explosives and other indirect attacks is calculated from the point of the explosion.<br/> <Bullet/> The return fire does not trigger when hunkered down.<br/><Bullet/> Armor piercing effects do not eliminate this bonus.<br/>"
 
 [FirstInLine X2AbilityTemplate]
 LocFriendlyName="First In Line"

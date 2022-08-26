@@ -1,4 +1,4 @@
-class X2Condition_RulerStasis extends X2Condition;
+class X2Condition_ExcludeRuler extends X2Condition;
 
 event name CallMeetsCondition(XComGameState_BaseObject kTarget) 
 { 

@@ -30,9 +30,10 @@ static function BChillVisualization(XComGameState VisualizeGameState, out Visual
 	class'X2StatusEffects'.static.UpdateUnitFlag(ActionMetadata, VisualizeGameState.GetContext());
 }
 
-static function X2Effect_PersistentStatChange ChillEffect()
+static function X2Effect_PersistentStatChange ChillEffect(optional bool ExcludeRulers = false)
 {
 	local X2Effect_PersistentStatChange	ChillEffect;
+	local X2Condition_ExcludeRuler			RulerExcludeCondition;
 
 	ChillEffect = new class'X2Effect_PersistentStatChange';
 	ChillEffect.BuildPersistentEffect(default.Chill_Turns, false, false, false, eGameRule_PlayerTurnEnd);
@@ -50,14 +51,19 @@ static function X2Effect_PersistentStatChange ChillEffect()
 		ChillEffect.VFXSocket = default.ChillSocket_Name;
 		ChillEffect.VFXSocketsArrayName = default.ChillSocketsArray_Name;
 	}
-
+	if(ExcludeRulers)
+	{
+		RulerExcludeCondition = new class 'X2Condition_ExcludeRuler';
+		ChillEffect.TargetConditions.AddItem(RulerExcludeCondition);
+	}
 	return ChillEffect;
 }
 
-static function X2Effect_PersistentStatChange BitterChillEffect(optional bool RequireChill = True)
+static function X2Effect_PersistentStatChange BitterChillEffect(optional bool RequireChill = True, optional bool ExcludeRulers = false)
 {
 	local X2Effect_PersistentStatChange		BitterChillEffect;
 	local X2Condition_UnitEffects			ChillDegreeCondition;
+	local X2Condition_ExcludeRuler			RulerExcludeCondition;
 
 	BitterChillEffect = new class'X2Effect_PersistentStatChange';
 	BitterChillEffect.BuildPersistentEffect(default.BitterChill_Turns, false, false, false, eGameRule_PlayerTurnEnd);
@@ -75,14 +81,20 @@ static function X2Effect_PersistentStatChange BitterChillEffect(optional bool Re
 		ChillDegreeCondition.AddRequireEffect('MZChill', 'AA_MissingRequiredEffect'); // name effect, name reason
 		BitterChillEffect.TargetConditions.AddItem(ChillDegreeCondition);
 	}
-
+	if(ExcludeRulers)
+	{
+		RulerExcludeCondition = new class 'X2Condition_ExcludeRuler';
+		BitterChillEffect.TargetConditions.AddItem(RulerExcludeCondition);
+	}
 	return BitterChillEffect;
 }
 
-static function X2Effect_DLC_Day60Freeze FreezeEffect(optional bool bHasChillReq=true)
+static function X2Effect_DLC_Day60Freeze FreezeEffect(optional bool bHasChillReq=true, optional bool bRulerOnly = false, optional bool bExcludeRulers = false)
 {
 	local X2Condition_UnitEffects			ChillDegreeCondition;
 	local X2Effect_DLC_Day60Freeze			FreezeEffect;
+	local X2Condition_RequireRuler RulerOnlyCondition;
+	local X2Condition_ExcludeRuler ExcludeRulerCondition;
 
 	FreezeEffect = class'X2Effect_DLC_Day60Freeze'.static.CreateFreezeEffect(default.BitterfrostFreeze_MinDuration, default.BitterfrostFreeze_MaxDuration);
 	FreezeEffect.bApplyRulerModifiers = true;
@@ -92,14 +104,26 @@ static function X2Effect_DLC_Day60Freeze FreezeEffect(optional bool bHasChillReq
 		ChillDegreeCondition.AddRequireEffect('MZBitterChill', 'AA_MissingRequiredEffect'); // name effect, name reason
 		FreezeEffect.TargetConditions.AddItem(ChillDegreeCondition);
 	}
+	if(bRulerOnly)
+	{
+		RulerOnlyCondition = new class 'X2Condition_RequireRuler';
+		FreezeEffect.TargetConditions.AddItem(RulerOnlyCondition);
+	}
+	if(bExcludeRulers)
+	{
+		ExcludeRulerCondition = new class 'X2Condition_ExcludeRuler';
+		FreezeEffect.TargetConditions.AddItem(ExcludeRulerCondition);
+	}
 
 	return FreezeEffect;
 }
 
-static function X2Effect FreezeCleanse(optional bool bHasChillReq=true)
+static function X2Effect FreezeCleanse(optional bool bHasChillReq=true, optional bool bRulerOnly = false, optional bool bExcludeRulers = false)
 {
 	local X2Condition_UnitEffects			ChillDegreeCondition;
 	local X2Effect							RemoveEffects; 
+	local X2Condition_RequireRuler RulerOnlyCondition;
+	local X2Condition_ExcludeRuler ExcludeRulerCondition;
 
 	RemoveEffects=class'X2Effect_DLC_Day60Freeze'.static.CreateFreezeRemoveEffects();
 	if ( bHasChillReq )
@@ -108,7 +132,16 @@ static function X2Effect FreezeCleanse(optional bool bHasChillReq=true)
 		ChillDegreeCondition.AddRequireEffect('MZBitterChill', 'AA_MissingRequiredEffect'); // name effect, name reason
 		RemoveEffects.TargetConditions.AddItem(ChillDegreeCondition);
 	}
-
+	if(bRulerOnly)
+	{
+		RulerOnlyCondition = new class 'X2Condition_RequireRuler';
+		RemoveEffects.TargetConditions.AddItem(RulerOnlyCondition);
+	}
+	if(bExcludeRulers)
+	{
+		ExcludeRulerCondition = new class 'X2Condition_ExcludeRuler';
+		RemoveEffects.TargetConditions.AddItem(ExcludeRulerCondition);
+	}
 	return RemoveEffects;
 }
 

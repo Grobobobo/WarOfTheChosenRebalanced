@@ -9,9 +9,6 @@
 class X2AbilityTrigger_DLC_Day60OnAbilityActivated_Override extends X2AbilityTrigger_DLC_Day60OnAbilityActivated
 	config(GameCore);
 
-var config array<Name> RulerActionExclusions_XComEffects;
-var config array<Name> RulerActionExclusions_AbilityNames;
-
 
 simulated function bool OnAbilityActivated(XComGameState_Ability EventAbility, XComGameState GameState, XComGameState_Ability TriggerAbility, Name InEventID)
 {

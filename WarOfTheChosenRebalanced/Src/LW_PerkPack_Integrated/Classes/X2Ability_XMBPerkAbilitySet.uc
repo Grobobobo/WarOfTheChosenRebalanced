@@ -2329,7 +2329,7 @@ static function X2AbilityTemplate PrimaryReturnFireShot()
 	ShooterCondition.ExcludeConcealed = true;
 	Template.AbilityShooterConditions.AddItem(ShooterCondition);
 
-	SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.DisorientedName);
+	//SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.DisorientedName);
 	Template.AddShooterEffectExclusions(SkipExclusions);
 	
 	SingleTarget = new class'X2AbilityTarget_Single';

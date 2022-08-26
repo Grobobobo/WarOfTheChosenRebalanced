@@ -655,7 +655,7 @@ static function X2AbilityTemplate AddFortifiedAbility()
 {
 	local X2AbilityTemplate					Template;
 	local X2Effect_Resilience				MyCritModifier;
-	local X2Effect_DamageImmunity			ImmunityEffect;
+	//local X2Effect_DamageImmunity			ImmunityEffect;
 	// local X2Effect_GreaterPadding GreaterPaddingEffect;
 	local X2Effect_PersistentStatChange StatBonus;
 
@@ -674,15 +674,15 @@ static function X2AbilityTemplate AddFortifiedAbility()
 	MyCritModifier.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
 	Template.AddTargetEffect (MyCritModifier);
 
-	ImmunityEffect = new class'X2Effect_DamageImmunity';
-	ImmunityEffect.EffectName = 'MindShieldImmunity';
-	ImmunityEffect.ImmuneTypes.AddItem('Mental');
-	ImmunityEffect.ImmuneTypes.AddItem(class'X2Item_DefaultDamageTypes'.default.DisorientDamageType);
-	ImmunityEffect.ImmuneTypes.AddItem('stun');
-	ImmunityEffect.ImmuneTypes.AddItem('Unconscious');
-	ImmunityEffect.BuildPersistentEffect(1, true, false, false);
-	ImmunityEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, false, , Template.AbilitySourceName);
-	Template.AddTargetEffect(ImmunityEffect);
+	// ImmunityEffect = new class'X2Effect_DamageImmunity';
+	// ImmunityEffect.EffectName = 'MindShieldImmunity';
+	// ImmunityEffect.ImmuneTypes.AddItem('Mental');
+	// ImmunityEffect.ImmuneTypes.AddItem(class'X2Item_DefaultDamageTypes'.default.DisorientDamageType);
+	// ImmunityEffect.ImmuneTypes.AddItem('stun');
+	// ImmunityEffect.ImmuneTypes.AddItem('Unconscious');
+	// ImmunityEffect.BuildPersistentEffect(1, true, false, false);
+	// ImmunityEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, false, , Template.AbilitySourceName);
+	// Template.AddTargetEffect(ImmunityEffect);
 
 	// GreaterPaddingEffect = new class 'X2Effect_GreaterPadding';
 	// GreaterPaddingEffect.BuildPersistentEffect (1, true, false);
@@ -880,7 +880,7 @@ static function X2AbilityTemplate AddWilltoSurviveAbility()
 
 	FireEffect = new class'X2Effect_ReturnFire';
 	FireEffect.BuildPersistentEffect(1, true, false, false, eGameRule_PlayerTurnBegin);
-	FireEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage,,,Template.AbilitySourceName);
+	FireEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage,false,,Template.AbilitySourceName);
 	FireEffect.EffectName = 'PrimaryReturnFireShot';
 	FireEffect.AbilityToActivate = 'PrimaryReturnFireShot';
 	FireEffect.bDirectAttackOnly = true;

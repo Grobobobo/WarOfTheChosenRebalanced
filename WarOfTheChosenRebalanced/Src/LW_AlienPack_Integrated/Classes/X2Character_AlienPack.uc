@@ -1828,7 +1828,9 @@ static function X2CharacterTemplate CreateNeonateChryssalid_Template()
 
 	//CharTemplate.Abilities.AddItem('ChryssalidSlash');
 	CharTemplate.Abilities.AddItem('NeonateChryssalidSlash');
-	
+	//Template.Abilities.AddItem('InstantReactionTime');
+	CharTemplate.Abilities.AddItem('Evasive');
+
 	//CharTemplate.Abilities.AddItem('ChryssalidBurrow');
 //	CharTemplate.Abilities.AddItem('ChyssalidPoison');
 	//CharTemplate.Abilities.AddItem('ChryssalidImmunities');

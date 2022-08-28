@@ -19,6 +19,8 @@ var config int TURRETFALL_INITIAL_CHARGES;
 var config int TURRETFALL_EXTRA_CHARGES;
 
 var config int AXE_RULER_AIM_BONUS;
+var config int REINFORCED_UNDERLAY_1_ABLATIVE;
+var config int REINFORCED_UNDERLAY_2_ABLATIVE;
 
 static function array<X2DataTemplate> CreateTemplates()
 {
@@ -419,9 +421,9 @@ static function X2AbilityTemplate AddReinforcedUnderlay1()
 	//
 	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
 	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
-	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, 1);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.REINFORCED_UNDERLAY_1_ABLATIVE);
 	Template.AddTargetEffect(PersistentStatChangeEffect);
-	Template.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 1);
+	Template.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, default.REINFORCED_UNDERLAY_1_ABLATIVE);
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	//  NOTE: No visualization on purpose!
@@ -453,10 +455,10 @@ static function X2AbilityTemplate AddReinforcedUnderlay1()
 	//
 	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
 	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
-	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, 1);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.REINFORCED_UNDERLAY_2_ABLATIVE);
 	Template.AddTargetEffect(PersistentStatChangeEffect);
 
-	Template.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 1);
+	Template.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, default.REINFORCED_UNDERLAY_2_ABLATIVE);
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	//  NOTE: No visualization on purpose!

@@ -1547,6 +1547,26 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 				Data.Template = AbilityTemplate;
 				SetupData.AddItem(Data);
 			}
+			if (class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('ReinforcedUnderlay2'))
+			{
+				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('ReinforcedUnderlay2');
+
+				Data = EmptyData;
+				Data.TemplateName = 'ReinforcedUnderlay2';
+				Data.Template = AbilityTemplate;
+				SetupData.AddItem(Data);
+			}
+			if (class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('ReinforcedUnderlay1'))
+			{
+				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('ReinforcedUnderlay1');
+
+				Data = EmptyData;
+				Data.TemplateName = 'ReinforcedUnderlay1';
+				Data.Template = AbilityTemplate;
+				SetupData.AddItem(Data);
+			}
+			
+
 			break;
 			
 

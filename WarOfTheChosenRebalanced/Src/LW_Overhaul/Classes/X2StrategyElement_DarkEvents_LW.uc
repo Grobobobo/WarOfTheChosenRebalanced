@@ -206,7 +206,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('DamageControl','Berserker',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('MovingTarget_LW','Chryssalid',TrooperAppeared,default.T1_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('InstantReactionTime','Chryssalid',TrooperAppeared,default.T1_UPGRADES_WEIGHT));
+	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('InstantReactionTime','Chryssalid',TrooperAppeared,default.T1_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Infighter','Chryssalid',MutonAppeared,default.T2_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Sprinter','Chryssalid',MutonAppeared,default.T3_UPGRADES_WEIGHT));

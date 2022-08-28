@@ -421,6 +421,8 @@ static function EventListenerReturn OnCleanupTacticalMission(Object EventData, O
 
 
 	ItemTemplateManager = class'X2ItemTemplateManager'.static.GetItemTemplateManager();
+	MissionState = XComGameState_MissionSite(History.GetGameStateForObjectID(BattleData.m_iMissionID));
+	MissionSource = MissionState.GetMissionSource();
 
 	///Handle The Civilian Save thing
 	if (BattleData.MapData.ActiveMission.MissionFamily == "ChosenRetaliation")

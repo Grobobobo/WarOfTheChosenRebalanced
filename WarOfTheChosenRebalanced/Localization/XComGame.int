@@ -1346,9 +1346,9 @@ LootTooltip="This weapon upgrade will add an aim bonus to any weapon it is attac
 [MissDamageUpgrade_Bsc X2WeaponUpgradeTemplate]
 FriendlyName="Stock"
 FriendlyNamePlural="Stocks"
-BriefSummary="Your primary weapon attacks ignore up to 15 dodge, and missed ones have a 35% chance to become a graze instead."
-TinySummary="Grants Grazing Fire, and makes attacks ignore up to 15 dodge."
-LootTooltip="This weapon upgrade, when installed, grants the Grazing Fire ability, and 15 dodge resistance."
+BriefSummary="Your primary weapon attacks ignore up to 10 dodge, and missed ones have a 35% chance to become a graze instead."
+TinySummary="Grants Grazing Fire, and makes attacks ignore up to 10 dodge."
+LootTooltip="This weapon upgrade, when installed, grants the Grazing Fire ability, and 10 dodge resistance."
 
 [MissDamageUpgrade_Adv X2WeaponUpgradeTemplate]
 FriendlyName="Advanced Stock"
@@ -3812,11 +3812,11 @@ Summary="Despite initial concerns over balance, our recent breakthrough will all
 
 [ReinforcedUnderlay1 X2TechTemplate]
 DisplayName="Reinforced Underlay"
-Summary="The Reinforced Underlay project will provide and additional ablative point to all of our armors."
+Summary="The Reinforced Underlay project will provide additional 2 ablative points to all of our soldier armors, and our civilian fighters."
 
 [ReinforcedUnderlay2 X2TechTemplate]
 DisplayName="Reinforced Underlay II"
-Summary="The Reinforced Underlay II project will provide yet another ablative point to all of our armors."
+Summary="The Reinforced Underlay II project will provide yet another 2 ablative points to all of our armors, and our civilian fighters."
 
 [VultureProject X2TechTemplate]
 DisplayName="Vulture"
@@ -7591,7 +7591,7 @@ LocLongDescription="Free action. Gain <Ability:DEDICATION_MOBILITY/> mobility an
 LocHelpText="Free action. Gain <Ability:DEDICATION_MOBILITY/> mobility and ignore reaction fire for the rest of the turn. Has a <Ability:SelfCooldown_LW/> turn cooldown."
 LocPromotionPopupText="<Bullet/> Gain <Ability:DEDICATION_MOBILITY/> mobility and ignore reaction fire for the rest of the turn.<br/><Bullet/> Free action.<br/><Bullet/> Dedication has a <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
 
-[Dedication_LW X2AbilityTemplate]
+[Dedication_Suit X2AbilityTemplate]
 LocFriendlyName="Chameleon Vest"
 LocFlyOverText="Chameleon Vest"
 LocLongDescription="Free action. Gain <Ability:DEDICATION_MOBILITY/> mobility and ignore reaction fire for the rest of the turn. Has a <Ability:SelfCooldown_LW/> turn cooldown."

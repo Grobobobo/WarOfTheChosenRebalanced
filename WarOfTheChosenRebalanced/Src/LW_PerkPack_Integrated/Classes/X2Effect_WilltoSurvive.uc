@@ -112,7 +112,7 @@ function int GetDefendingDamageModifier(XComGameState_Effect EffectState, XComGa
 		}
 		if (MyVisInfo.TargetCover == CT_None)
 			return 0;
-		if(CurrentDamage > 0)
+		if(CurrentDamage - WTS_FLAT_DR > 0)
 		{
 			return -WTS_FLAT_DR;
 		}
@@ -124,7 +124,10 @@ function int GetDefendingDamageModifier(XComGameState_Effect EffectState, XComGa
 		{
 			if (MyVisInfo.TargetCover == CT_None) 
 				return 0;
-			return -WTS_FLAT_DR;				
+			if(CurrentDamage - WTS_FLAT_DR > 0)
+			{
+				return -WTS_FLAT_DR;
+			}		
 		}
 	}
     return 0;     

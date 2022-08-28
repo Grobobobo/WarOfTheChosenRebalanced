@@ -72,6 +72,12 @@ static function UpdateDarkEvents(X2StrategyElementTemplate Template, int Difficu
 		case 'DarkEvent_AlloyPadding':
 		case 'DarkEvent_RapidResponse':
 		case 'DarkEvent_ResistanceInformant':
+		case 'DarkEvent_MidnightRaids':
+		case 'DarkEvent_MinorBreakthrough':
+		case 'DarkEvent_MinorBreakthrough2':
+		case 'DarkEvent_MajorBreakthrough':
+		case 'DarkEvent_MajorBreakthrough2':
+
 			// Remove these from play
 			DETemplate.StartingWeight = 0;
 			DETemplate.MinWeight = 0;
@@ -95,15 +101,15 @@ static function UpdateDarkEvents(X2StrategyElementTemplate Template, int Difficu
 		// 	DETemplate.GetSummaryFn = GetResistanceInformantSummary;
 		// 	break;
 
-		case 'DarkEvent_MinorBreakthrough':
-			DETemplate.MinActivationDays = 15;
-			DETemplate.MaxActivationDays = 20;
-			`LWTRACE("Redefined Minor Breakthrough Dark Event Template");
-			break;
+		// case 'DarkEvent_MinorBreakthrough':
+		// 	DETemplate.MinActivationDays = 15;
+		// 	DETemplate.MaxActivationDays = 20;
+		// 	`LWTRACE("Redefined Minor Breakthrough Dark Event Template");
+		// 	break;
 
-		case 'DarkEvent_MajorBreakthrough':
-			`LWTRACE("Redefined Major Breakthrough Dark Event Template");
-			break;
+		// case 'DarkEvent_MajorBreakthrough':
+		// 	`LWTRACE("Redefined Major Breakthrough Dark Event Template");
+		// 	break;
 
 		case 'DarkEvent_HunterClass':
 			DETemplate.CanActivateFn = class'X2StrategyElement_DarkEvents_LW'.static.CanActivateHunterClass_LW;

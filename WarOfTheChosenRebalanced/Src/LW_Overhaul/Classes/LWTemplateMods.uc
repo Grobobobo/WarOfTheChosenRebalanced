@@ -1638,6 +1638,13 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 		Template.AbilityTargetConditions.AddItem(SuppressedCondition);
 	}
 
+	if (Template.DataName == 'PistolReturnFireShot')
+	{
+		UnitEffectsCondition = new class'X2Condition_UnitEffects';
+		UnitEffectsCondition.AddExcludeEffect(class'X2AbilityTemplateManager'.default.DisorientedName, 'AA_UnitIsDisoriented');
+		Template.AbilityTargetConditions.AddItem(UnitEffectsCondition);
+	}
+
 	if (Template.DataName == 'Mindspin' || Template.DataName == 'Domination' || Template.DataName == class'X2Ability_PsiWitch'.default.MindControlAbilityName)
 	{
 		UnitEffectsCondition = new class'X2Condition_UnitEffects';
@@ -2327,6 +2334,8 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 			Template.Abilities.RemoveItem('ChryssalidImmunities');
 		case 'Chryssalid_Leader':
 			Template.Abilities.AddItem('AbsorptionFields');
+			Template.Abilities.AddItem('InstantReactionTime');
+			Template.Abilities.AddItem('Evasive');
 			break;
 
 		case 'Andromedon':
@@ -2340,7 +2349,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		case 'AndromedonRobotM2':
 		case 'AndromedonRobotM3':
 		case 'AndromedonRobot_Leader':
-		Template.Abilities.AddItem('DamageControl');
+		//Template.Abilities.AddItem('DamageControl');
 		break;
 
 		case 'Archon':

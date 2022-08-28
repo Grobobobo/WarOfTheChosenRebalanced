@@ -673,7 +673,7 @@ static function X2DataTemplate CreateDroneHealAbility()
 	RemoveEffects = new class'X2Effect_RemoveEffectsByDamageType';
 	RemoveEffects.DamageTypesToRemove.AddItem('Fire');
 	RemoveEffects.DamageTypesToRemove.AddItem('Poison');
-	RemoveEffects.DamageTypesToRemove.AddItem('PathogenicPoison');
+	RemoveEffects.DamageTypesToRemove.AddItem(class'X2Effect_ParthenogenicPoison'.default.ParthenogenicPoisonType);
 	RemoveEffects.DamageTypesToRemove.AddItem('Acid');
 	RemoveEffects.DamageTypesToRemove.AddItem('Bleeding');
 	Template.AddTargetEffect(RemoveEffects);

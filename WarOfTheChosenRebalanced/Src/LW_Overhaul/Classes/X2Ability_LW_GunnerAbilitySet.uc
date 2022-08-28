@@ -295,6 +295,7 @@ static function X2AbilityTemplate AddKnifeFighter()
 	AdjacencyCondition = new class'X2Condition_UnitProperty';
 	AdjacencyCondition.RequireWithinRange = true;
 	AdjacencyCondition.WithinRange = 96 * default.KNIFE_FIGHTER_TILE_RANGE;
+	AdjacencyCondition.FailOnNonUnits = true;
 	Template.AbilityTargetConditions.AddItem(AdjacencyCondition);
 
 	// Shooter Conditions

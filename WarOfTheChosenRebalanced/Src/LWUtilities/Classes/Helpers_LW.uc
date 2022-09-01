@@ -756,6 +756,19 @@ static function MakeFreeAction(X2AbilityTemplate Template)
 	}
 }
 
+static function MakeAbilityNonTurnEnding(X2AbilityTemplate Template)
+{
+	local X2AbilityCost Cost;
+
+	foreach Template.AbilityCosts(Cost)
+	{
+		if (Cost.IsA('X2AbilityCost_ActionPoints'))
+		{
+			X2AbilityCost_ActionPoints(Cost).bConsumeAllPoints = false;
+		}
+	}
+}
+
 static function RemoveAbilityTargetEffects(X2AbilityTemplate Template, name EffectClass)
 {
 	local int i;

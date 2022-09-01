@@ -162,7 +162,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ZoneOfControl_LW','Muton',SpectreAppeared,default.T3_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Shredder','Muton',SpectreAppeared,default.T3_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('AbsorbtionFields_LW','Muton',SectopodAppeared,default.T4_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('AbsorptionFields_LW','Muton',SectopodAppeared,default.T4_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CloseCombatSpecialist','Muton',SectopodAppeared,default.T4_UPGRADES_WEIGHT));
 	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Warcry','Muton',GateKeeperAppeared,default.T4_UPGRADES_WEIGHT));
 

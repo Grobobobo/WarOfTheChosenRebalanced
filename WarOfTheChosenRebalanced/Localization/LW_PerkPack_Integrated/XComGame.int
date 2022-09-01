@@ -443,6 +443,12 @@ LocLongDescription="Run and Gun cooldown is reduced by one turn."
 LocHelpText="Run and Gun cooldown is reduced by one turn."
 LocPromotionPopupText="<Bullet/> Run and Gun cooldown is reduced by one turn.<br/>"
 
+[ExtraConditioning_LW X2AbilityTemplate]
+LocFriendlyName="Extra Conditioning"
+LocFlyOverText="Extra Conditioning"
+LocLongDescription="Gain <Ability:EXTRA_CONDITIONING_HP> HP. Every ability has a 10% chance to have its action point cost refunded."
+LocHelpText="Gain <Ability:EXTRA_CONDITIONING_HP> HP. Every ability has a 10% chance to have its action point cost refunded."
+
 [RunAndGun_LW X2AbilityTemplate]
 LocFriendlyName="Run And Gun"
 LocFlyOverText="Run And Gun"
@@ -1005,6 +1011,19 @@ LocLongDescription="Temporarily conceal yourself for 1 turn with no detection ra
 LocHelpText="Temporarily conceal yourself for 1 turn with no detection radius. Kills with a primary weapon add 1 charge."
 LocFlyOverText="Phantom"
 LocPromotionPopupText="<Bullet/> 2 charges, <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
+
+[RefractionFieldPhantom X2AbilityTemplate]
+LocFriendlyName="Refraction field"
+LocLongDescription="Temporarily conceal yourself for 1 turn with no detection radius."
+LocHelpText="Temporarily conceal yourself for 1 turn with no detection radius."
+LocFlyOverText="Phantom"
+LocPromotionPopupText="<Bullet/> 1 charge, <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
+
+[RefractionField X2WeaponTemplate]
+FriendlyName="Refraction Field"
+FriendlyNamePlural="Refraction Fields"
+BriefSummary="Using material recovered from the remains of the alien Spectre, Refraction Field technology will allow the equipped soldier to instantly enter temporary concealment. However, the field can only be used in combat once, and it conflicts with the methods of stealth used by reapers and shinobis."
+TacticalText="<Bullet/> Refraction Field places a soldier into Concealment.\n<Bullet/> Reapers will be placed into Shadow concealment."
 
 [Stealth_LW X2AbilityTemplate]
 LocFriendlyName="Shadow Meld"

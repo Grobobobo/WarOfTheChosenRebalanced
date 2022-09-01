@@ -304,7 +304,8 @@ var config float HUNKER_EXPLOSIVE_PCT_DR;
 var config int HUNKER_DODGE_PER_TILE;
 
 var config int GUARDIAN_BONUS_AMMO;
-
+var config int BATTLESCANNER_CLIP_SIZE;
+var config int MIMIC_BEACON_CLIP_SIZE;
 
 var config float HUNTERS_INSTINCT_DAMAGE_PCT;
 static function array<X2DataTemplate> CreateTemplates()
@@ -2260,6 +2261,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 
 		case 'Cyberus':
 		//Template.Abilities.AddItem('Evasive');
+			Template.Abilities.RemoveItem('TriggerSuperpositionDamageListener');
 		break;
 
 		case 'FacelessCivilian':
@@ -2667,7 +2669,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		{
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MID_LONG_ALL_RANGE;
 		}
-		if (WeaponTemplate.WeaponCat == 'rifle' 
+		if (WeaponTemplate.WeaponCat == 'rifle' || WeaponTemplate.WeaponCat == 'bullpup'
 		)
 		{
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MEDIUM_ALL_RANGE;
@@ -2678,7 +2680,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			WeaponTemplate.Abilities.AddItem('HeavyWeaponsMobPenalty');
 			WeaponTemplate.SetUIStatMarkup("Mobility", eStat_Mobility, class'X2Ability_LW_GearAbilities'.default.HEAVY_WEAPONS_MOB_PENALTY);
 		}
-		if (WeaponTemplate.WeaponCat == 'bullpup'||
+		if (
 		WeaponTemplate.WeaponCat == 'pistol' ||
 		WeaponTemplate.WeaponCat == 'smg' 
 		)
@@ -2752,7 +2754,16 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			X2GrenadeTemplate(WeaponTemplate).iRadius = 2;
 			break;
 
-		
+		case 'BattleScanner':
+			WeaponTemplate.iClipSize = default.BATTLESCANNER_CLIP_SIZE;
+			break;
+		case 'RefractionField':
+			WeaponTemplate.Abilities.AddItem('RefractionFieldAbility');
+			WeaponTemplate.Abilities.AddItem('RefractionFieldPhantom');
+		case 'MimicBeacon':
+			WeaponTemplate.iClipSize = default.MIMIC_BEACON_CLIP_SIZE;
+			break;
+
 		case 'SpectreM1_WPN':
 		case 'SpectreM2_WPN':
 			WeaponTemplate.InfiniteAmmo = false;
@@ -3630,6 +3641,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 					case 'AlienHunterRifle_MG':
 					case 'AlienHunterRifle_BM':
 						EquipmentTemplate.Abilities.Additem('BoltCasterPassive');
+						EquipmentTemplate.Abilities.Additem('UnstoppableGunfire');
 						X2WeaponTemplate(EquipmentTemplate).BonusWeaponEffects.Length = 0;
 						X2WeaponTemplate(EquipmentTemplate).BonusWeaponEffects.AddItem(BoltCasterStunEffect_LW());
 						break;	

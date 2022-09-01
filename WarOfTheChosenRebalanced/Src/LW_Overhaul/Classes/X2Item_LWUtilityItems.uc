@@ -16,7 +16,9 @@ var config int FLECHETTE_BONUS_DMG;
 var config int NEUROWHIP_PSI_BONUS;
 var config int NEUROWHIP_WILL_MALUS;
 
-
+var config int DEAD_MANS_VEST_ENVIRONMENT_DAMAGE;
+var config int DEAD_MANS_VEST_ICLIPSIZE;
+var config int DEAD_MANS_VEST_RADIUS;
 
 static function array<X2DataTemplate> CreateTemplates()
 {
@@ -45,7 +47,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Items.AddItem(CreateNeurowhip());
 
 	Items.AddItem(CreateShapedCharge());
-	Items.AddItem(CreateChameleonVest());
+	Items.AddItem(CreateDeadMansVest());
 
 
 
@@ -454,18 +456,25 @@ static function X2DataTemplate CreateShapedCharge()
 	return Template;
 }
 
-static function X2DataTemplate CreateChameleonVest()
+static function X2DataTemplate CreateDeadMansVest()
 {
-	local X2EquipmentTemplate Template;
+	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2EquipmentTemplate', Template, 'ChameleonVest');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'DeadMansVest');
 	Template.ItemCat = 'defense';
 	Template.InventorySlot = eInvSlot_Utility;
 	Template.strImage = "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_Hazmat_Vest";
 	Template.EquipSound = "StrategyUI_Vest_Equip";
+	Template.iEnvironmentDamage = default.DEAD_MANS_VEST_ENVIRONMENT_DAMAGE;
+	Template.iClipSize = default.DEAD_MANS_VEST_ICLIPSIZE;
+		Template.iRadius = default.DEAD_MANS_VEST_RADIUS;
 
-	Template.Abilities.AddItem('ChameleonVestBonus_LW');
-	Template.Abilities.AddItem('Dedication_Suit');
+	Template.DamageTypeTemplateName = 'Explosion';
+	Template.Abilities.AddItem('HisWill_LW');
+	Template.Abilities.AddItem('HisVengeance_LW');
+
+	Template.Abilities.AddItem('DeadMansVestBonus_LW');
+	//Template.Abilities.AddItem('Dedication_Suit');
 
 	Template.CanBeBuilt = false;
 	Template.TradingPostValue = 25;
@@ -475,6 +484,8 @@ static function X2DataTemplate CreateChameleonVest()
 	Template.RewardDecks.AddItem('ExperimentalArmorRewards');
 
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_ItemGrantedAbilitySet'.default.HAZMAT_VEST_HP_BONUS);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.RadiusLabel, , default.DEAD_MANS_VEST_RADIUS);
+	//Template.SetUIStatMarkup(class'XLocalizedData'.default.ShredLabel, , default.HISWILL_DAMAGE.Shred);
 
 	return Template;
 }

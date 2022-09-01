@@ -75,12 +75,14 @@ var config int POISON_SPIT_GLOBAL_COOLDOWN;
 var config int TONGUE_GRAB_COOLDOWN;
 var config int TONGUE_GRAB_GLOBAL_COOLDOWN;
 var privatewrite X2Condition_Visibility GameplayVisibilityCondition;
-
+var privatewrite X2Condition_UnitProperty LivingHostileUnitOnlyProperty;
 var config int FREEZING_LASH_COOLDOWN;
 var config int FREEZING_LASH_AIM_BONUS;
 
 var config int RAGE_STRIKE_COOLDOWN;
 var config int RAGE_STRIKE_AIM_BONUS;
+
+var config int BATTLESCANNER_DODGE_REDUCTION;
 static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 {
     // Override the FinalizeHitChance calculation for abilities that use standard aim
@@ -365,6 +367,19 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 			break;
 		case 'FreezingLash':
 			ReworkFreezingLash(Template);
+			break;
+		case 'BattleScanner':
+			ReworkBattleScanners(Template);
+			break;
+		case 'CombatStims':
+			ReworkCombatStims(Template);
+			break;
+		case 'SustainingSphereAbility':
+			ReworkSustainingSphere(Template);
+			break;
+		case 'MimicBeaconThrow':
+			class'Helpers_LW'.static.MakeAbilityNonTurnEnding(Template);
+			break;
 		// case 'SpawnChryssalid':
 		// 	ReworkChryssalidSpawning(Template);
 		// 	break
@@ -2230,10 +2245,48 @@ static function ReworkRageStrike(X2AbilityTemplate Template)
 	Cooldown = new class'X2AbilityCooldown';
 	Cooldown.iNumTurns = default.RAGE_STRIKE_COOLDOWN;
 	Template.AbilityCooldown = Cooldown;
-	
-
 
 }
+
+static function ReworkBattleScanners(X2AbilityTemplate Template)
+{
+	local X2Effect_PersistentStatChange DodgeModifier;
+
+	class'Helpers_LW'.static.MakeFreeAction(Template);
+
+	DodgeModifier = new class 'X2Effect_PersistentStatChange';
+	DodgeModifier.AddPersistentStatChange(eStat_Dodge, float(default.BATTLESCANNER_DODGE_REDUCTION));
+	DodgeModifier.TargetConditions.AddItem(default.LivingHostileUnitOnlyProperty);
+	DodgeModifier.BuildPersistentEffect(1, false, false, false, eGameRule_PlayerTurnEnd);
+	DodgeModifier.DuplicateResponse = eDupe_Ignore;
+	DodgeModifier.EffectName = 'BattleScannerDodge';
+	DodgeModifier.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
+	Template.AddMultiTargetEffect(DodgeModifier);
+
+}
+
+static function ReworkCombatStims(X2AbilityTemplate Template)
+{
+	local X2AbilityCost_ActionPoints Cost;
+
+	Template.AbilityCosts.Length = 0;
+		
+	Cost = new class'X2AbilityCost_ActionPoints';
+	Cost.iNumPoints = 1;
+	Cost.bFreeCost = true;
+	Cost.bConsumeAllPoints = false;
+
+	Template.AbilityCosts.AddItem(Cost);
+}
+
+
+
+static function ReworkSustainingSphere(X2AbilityTemplate Template)
+{
+
+	Template.AbilityCosts.Length = 0;
+}
+
 
 defaultproperties
 {
@@ -2244,4 +2297,16 @@ defaultproperties
 		bRequireBasicVisibility=true
 	End Object
 	GameplayVisibilityCondition = DefaultGameplayVisibilityCondition;
+
+	Begin Object Class=X2Condition_UnitProperty Name=DefaultLivingHostileUnitOnlyProperty
+	ExcludeAlive=false
+	ExcludeDead=true
+	ExcludeFriendlyToSource=true
+	ExcludeHostileToSource=false
+	TreatMindControlledSquadmateAsHostile=true
+	FailOnNonUnits=true
+	End Object
+	LivingHostileUnitOnlyProperty = DefaultLivingHostileUnitOnlyProperty;
+
+
 }

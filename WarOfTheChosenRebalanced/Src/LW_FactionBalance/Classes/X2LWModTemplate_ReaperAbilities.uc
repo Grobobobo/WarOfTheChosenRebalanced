@@ -68,6 +68,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 			MakeShadowTemporary(Template);
 			Template.AdditionalAbilities.RemoveItem('ShadowPassive');
 			Template.AdditionalAbilities.AddItem('Infiltration');
+			Template.OverrideAbilities.AddItem('RefractionFieldPhantom');
 			break;
 		case 'Sting':
 			//UpdateStingForNewShadow(Template);

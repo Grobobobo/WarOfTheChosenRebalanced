@@ -101,6 +101,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddBrawler2());
 	Templates.AddItem(AddShockAbsorbentArmor());
 	Templates.AddItem(CreateIronWill());
+	Templates.AddItem(RefractionFieldPhantom());
 	
 	//Passives for dictating AI behaviors out of LOS
 	return Templates;
@@ -1346,7 +1347,7 @@ static function X2AbilityTemplate AddNewPhantom()
 	Template.ChosenActivationIncreasePerUse = class'X2AbilityTemplateManager'.default.NonAggressiveChosenActivationIncreasePerUse;
 
 	Template.AdditionalAbilities.AddItem('PhantomChargesTrigger_LW');
-
+	Template.OverrideAbilities.AddItem('RefractionFieldPhantom');
 	return Template;
 
 }
@@ -1393,6 +1394,89 @@ static function X2AbilityTemplate AddPhantomTrigger()
 	
 	return Template;
 }
+
+static function X2AbilityTemplate RefractionFieldPhantom()
+{
+	local X2AbilityTemplate						Template;
+	local X2Effect_RangerStealth                StealthEffect;
+	local X2AbilityCharges_BonusCharges                      Charges;
+	local X2Effect_PersistentStatChange StealthyEffect;
+	local X2AbilityCooldown	Cooldown;
+	local X2Effect_SilentMelee GhostEffect;
+	local X2Condition_UnitEffects SuppressedCondition;
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'RefractionFieldPhantom');
+
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.IconImage = "img:///UILibrary_XPACK_Common.PerkIcons.UIPerk_refractionfield";
+	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_COLONEL_PRIORITY;
+
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
+	Template.AbilityCosts.AddItem(new class'X2AbilityCost_Charges');
+	Template.AbilityCosts.AddItem(default.FreeActionCost);
+
+	Cooldown = new class'X2AbilityCooldown';
+    Cooldown.iNumTurns = default.PHANTOM_COOLDOWN;
+    Template.AbilityCooldown = Cooldown;
+
+	Charges = new class'X2AbilityCharges_BonusCharges';
+	Charges.InitialCharges = default.PHANTOM_CHARGES;
+	//Charges.BonusAbility = 'Stealth_LW';
+	//Charges.BonusChargesCount = default.CONCEAL_BONUS_CHARGES;
+	Template.AbilityCharges = Charges;
+
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	//Template.AbilityShooterConditions.AddItem(new class'X2Condition_Stealth');
+	Template.AddShooterEffectExclusions();
+
+	SuppressedCondition = new class'X2Condition_UnitEffects';
+	SuppressedCondition.AddExcludeEffect(class'X2Effect_Suppression'.default.EffectName, 'AA_UnitIsSuppressed');
+	SuppressedCondition.AddExcludeEffect(class'X2Effect_AreaSuppression'.default.EffectName, 'AA_UnitIsSuppressed');
+	Template.AbilityShooterConditions.AddItem(SuppressedCondition);
+
+	StealthyEffect = new class'X2Effect_PersistentStatChange';
+	StealthyEffect.EffectName = 'TemporaryPhantomConcealment';
+	StealthyEffect.BuildPersistentEffect(default.PHANTOM_DURATION, false, true, false, eGameRule_PlayerTurnBegin);
+	// StealthyEffect.SetDisplayInfo (ePerkBuff_Bonus,Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,,, Template.AbilitySourceName); 
+	StealthyEffect.AddPersistentStatChange(eStat_DetectionModifier, default.PHANTOM_DETECTION_RANGE_REDUCTION);
+	StealthyEffect.bRemoveWhenTargetDies = true;
+	StealthyEffect.DuplicateResponse = eDupe_Refresh;
+	StealthyEffect.EffectRemovedFn = PhantomExpired;
+	StealthyEffect.EffectRemovedVisualizationFn = VisualizePhantomExpired;
+	Template.AddTargetEffect(StealthyEffect);
+
+	GhostEffect = new class'X2Effect_SilentMelee';
+	GhostEffect.EffectName = 'GhostEffect';
+	GhostEffect.BuildPersistentEffect(default.PHANTOM_DURATION, false, true, false, eGameRule_PlayerTurnBegin);
+	// StealthyEffect.SetDisplayInfo (ePerkBuff_Bonus,Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,,, Template.AbilitySourceName); 
+	GhostEffect.bRemoveWhenTargetConcealmentBroken = true;
+	GhostEffect.DuplicateResponse = eDupe_Refresh;
+	Template.AddTargetEffect(GhostEffect);
+
+	StealthEffect = new class'X2Effect_RangerStealth';
+	StealthEffect.BuildPersistentEffect(1, true, true, false, eGameRule_PlayerTurnEnd);
+	StealthEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, true);
+	StealthEffect.bRemoveWhenTargetConcealmentBroken = true;
+	Template.AddTargetEffect(StealthEffect);
+
+	Template.AddTargetEffect(class'X2Effect_Spotted'.static.CreateUnspottedEffect());
+
+	Template.ActivationSpeech = 'ActivateConcealment';
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	Template.bSkipFireAction = true;
+
+	Template.ChosenActivationIncreasePerUse = class'X2AbilityTemplateManager'.default.NonAggressiveChosenActivationIncreasePerUse;
+
+	//Template.AdditionalAbilities.AddItem('PhantomChargesTrigger_LW');
+//	Template.OverrideAbilities.AddItem('RefractionFieldPhantom');
+	return Template;
+
+}
+
 
 static function PhantomExpired(
 	X2Effect_Persistent PersistentEffect,

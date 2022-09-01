@@ -3629,6 +3629,7 @@ static function X2AbilityTemplate CreateAbsorptionFieldsTrigger()
 	Template.AbilitySourceName = 'eAbilitySource_Standard';
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
 	Template.IconImage = "img:///UILibrary_LW_PerkPack.LW_AbilityAbsorptionFields";
+	Template.Hostility = eHostility_Defensive;
 
 	Template.AbilityToHitCalc = default.DeadEye;
 	Template.AbilityTargetStyle = default.SelfTarget;

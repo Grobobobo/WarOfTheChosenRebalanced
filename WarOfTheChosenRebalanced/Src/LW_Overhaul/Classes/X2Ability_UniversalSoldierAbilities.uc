@@ -1054,12 +1054,14 @@ static function X2AbilityTemplate Vengeance_LW()
 	Listener.ListenerData.Deferral = ELD_OnStateSubmitted;
 	// Need a custom listener to make sure a soldier that bled out previously won't give vengeance again on death
 	Listener.ListenerData.EventFn = VengeanceDeathTrigger;
+	Listener.ListenerData.Priority = -20;
 	Listener.ListenerData.EventID = 'UnitDied';
 	Template.AbilityTriggers.AddItem(Listener);
 
 	Listener = new class'X2AbilityTrigger_EventListener';
 	Listener.ListenerData.Filter = eFilter_Unit;
 	Listener.ListenerData.Deferral = ELD_OnStateSubmitted;
+	Listener.ListenerData.Priority = -20;
 	// Need a custom listener to make sure a soldier that bled out previously won't give vengeance again on death
 	Listener.ListenerData.EventFn = VengeanceBleedoutTrigger;
 	Listener.ListenerData.EventID = 'UnitBleedingOut';
@@ -1085,7 +1087,7 @@ static function X2AbilityTemplate Vengeance_LW()
 	Template.bDontDisplayInAbilitySummary = true;
 
 	Template.bSkipFireAction = true;
-	Template.bShowActivation = true;
+	//Template.bShowActivation = true;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = Vengeance_BuildVisualization;
 

@@ -892,10 +892,10 @@ LocFlyOverText="Hazmat Vest"
 LocLongDescription="Grants 3 hit points and confers immunity to fire, acid and poison."
 LocHelpText="Grants 3 hit points and confers immunity to fire, acid and poison."
 
-[ChameleonVestBonus_LW X2AbilityTemplate]
+[DeadMansVestBonus_LW X2AbilityTemplate]
 LocFriendlyName="Chameleon Vest"
 LocFlyOverText="Chameleon Vest"
-LocLongDescription="Grants 3 ablative hit points and grants the ability to temporarily become immune to overwatch."
+LocLongDescription="Grants 3 ablative hit points and grants the ability to explode on death."
 ;LocHelpText="Grants 3 hit points and confers immunity to fire, acid and poison."
 
 [NanofiberVestBonus_LW X2AbilityTemplate]
@@ -1193,10 +1193,17 @@ BriefSummary="PPC uses several acceleration contours to create a focused beam of
 TacticalText="<Bullet/> Coil weapons Gain 10 crit.<br/><Bullet/> Particle Projection Cannon is the Coil equivalent of the Autocannon."
 AbilityDescName="Particle Projection Cannon"
 
-; LWOTC Needs Translation (2)
 [BattleScanner X2WeaponTemplate]
-TacticalText="<Bullet/> Battle Scanners reveal an area hidden by the \"fog of war\" for multiple turns.\n<Bullet/> Battle Scanners also reveal hidden or disguised enemies.\n<Bullet/> Haven Adviser carrying the Battle Scanner will reduce the chance of recruiting Faceless rebels by 40% (stacking cumulatively with other similar abilities)."
-; End Translation (2)
+FriendlyName="Battle Scanner"
+FriendlyNamePlural="Battle Scanners"
+BriefSummary="The Battle Scanner provides extra vision on the battlefield, and reduces the scanned enemy's dodge by <Ability:BATTLESCANNER_DODGE_REDUCTION/>. Soldiers deploy it like a grenade, throwing it to a hidden area of the map that they want to reveal. Any hidden or disguised enemies will be revealed as well."
+TacticalText="<Bullet/> Throwing a Battle Scanner is a free action.\n<Bullet/> Battle Scanners also reveal hidden or disguised enemies."
+
+[BattleScanner X2AbilityTemplate]
+LocFriendlyName="Battle Scanner"
+LocHelpText="When thrown, provides vision near its landing site for <Ability:BATTLESCANNERDURATION/> turns, and decreases the dodge of the battlescanned units. Also reveals hidden units."
+LocLongDescription="The Battle Scanner allows better scouting and reconnaissance - when thrown, it provides vision near its landing site. Enemies won't notice the scanner."
+LocFlyOverText="Scanned!"
 
 ; LWOTC Needs Translation (2)
 [AdvStunLancerM1_StunLance X2WeaponTemplate]
@@ -1549,11 +1556,11 @@ FriendlyNamePlural="Chameleon Suits"
 BriefSummary="Significantly reduces infiltration time by this soldier."
 TacticalText="<Bullet/> Significantly reduces infiltration time by this unit.\n<Bullet/> Only one plating item and one vest can be equipped at a time."
 
-[ChameleonVest X2EquipmentTemplate]
-FriendlyName="Chameleon Vest"
+[DeadMansVest X2WeaponTemplate]
+FriendlyName="Dead man's vest"
 FriendlyNamePlural="Chameleon Vests"
-BriefSummary="By reinforcing the Nanoscale Vest with specialized materials, we are able to make our soldiers temporarily immune to enemy reaction fire while also boosting their mobility."
-TacticalText="<Bullet/> Grants 2 ablative armor points.\n<Bullet/> Provides an active ability that lets you be temporarily immune to reaction fire and boost mobility.\n<Bullet/> Only one plating item and one vest can be equipped at a time."
+BriefSummary="By reinforcing the Nanoscale Vest with specialized materials, We can ."
+TacticalText="<Bullet/> Grants 3 ablative armor points.\n<Bullet/> Provides an ability to explode for massive damage when dying.\n<Bullet/> The ability can also be activated manually.\n<Bullet/>  Only one plating item and one vest can be equipped at a time."
 
 [AlloyPlating X2EquipmentTemplate]
 FriendlyName="Alloy Plating"
@@ -3573,9 +3580,9 @@ UnlockedDescription="Prototype added to inventory"
 DisplayName="Hazmat Vest"
 Summary="The Hazmat Vest will provide a boost to hit points and immunity to fire, acid and poison."
 
-[ChameleonVestProject X2TechTemplate]
-DisplayName="Chameleon Vest"
-Summary="The Chameleon Vest will provide a boost to hit points, temporary immunity to reaction fire and slight mobility boost."
+[DeadMansVestProject X2TechTemplate]
+DisplayName="Dead Man's Vest"
+Summary="Commander, sometimes desperate times call for desperate measures. Inspired by purifier's explosive tendencies, we can manufacture a vest containing extremely powerful explosives rigged to a dead-man's switch. The explosives will detonate when a soldier dies or starts bleeding out, or dies. It can also be activated manually, but it should be used as a last resort only."
 
 [PlatedVestProject X2TechTemplate]
 DisplayName="Tactical Vest"
@@ -3653,7 +3660,7 @@ Summary="Named for an inexplicable computing phenomenon common before the war, B
 
 [BattleScannerProject X2TechTemplate]
 DisplayName="Battlescanners"
-Summary="The Battle Scanner will allow better scouting and reconnaissance - when thrown, it provides vision near its landing site."
+Summary="The Battle Scanner will allow better scouting, and make our enemies have more difficulty dodging, due to our soldiers having a clearer view on the targets."
 
 [IncendiaryGrenadeProject X2TechTemplate]
 DisplayName="Incendiary Grenades"
@@ -9681,3 +9688,37 @@ FriendlyName="Elerium Crystal"
 FriendlyNamePlural="Elerium Crystals"
 BriefSummary="These crystals are incredibly valuable as a power source for a wide variety of applications, though it may take a significant amount of research to unlock their potential."
 BlackMarketTexts="This shiny dust is some sort of miracle energy source. Good for an extra pick-me-up in your coffee too."
+
+[MimicBeaconThrow X2AbilityTemplate]
+LocFriendlyName="Mimic Beacon"
+LocHelpText="Projects a holographic decoy. Enemies will react to the decoy as if it were an armed XCOM soldier."
+LocLongDescription="The Decoy Beacon is thrown like a grenade, and generates a holographic decoy where it lands. Enemies will react to the decoy as if it were an armed XCOM soldier when moving and attacking. The decoy will expire if not destroyed after 12 turns."
+
+[MimicBeacon X2CharacterTemplate]
+strCharacterName="Holographic Decoy"
+
+[MimicBeacon X2WeaponTemplate]
+FriendlyName="Mimic Beacon"
+FriendlyNamePlural="Mimic Beacons"
+BriefSummary="The Mimic Beacon projects a holographic decoy. Enemies will react to the decoy as if it were an armed XCOM soldier."
+TacticalText="<Bullet/> Enemies will react to the decoy as if it were an armed XCOM soldier when moving and attacking. \n<Bullet/> Decoys can benefit from cover, but remember that enemies will prioritise the easiest target. \n<Bullet/> Most enemies that use cover will try to avoid being flanked by the decoy. Position the decoy creatively to flush them out of cover or deter flanking maneuvers. \n<Bullet/> If not destroyed, the Mimic Beacon will run out of power after 12 turns."
+
+[CombatStims X2WeaponTemplate]
+FriendlyName="Overdrive Serum"
+FriendlyNamePlural="Overdrive Serums"
+BriefSummary="Overdrive Serum, derived from the adrenal glands of a Berserker alien, boosts a soldier's nervous system, resulting in greater mobility and significant damage Resistance for multiple turns."
+TacticalText="<Bullet/> Overdrive Serum grants a significant boost to mobility, and a soldier on Overdrive Serum takes significantly less damage.\n<Bullet/> Overdrive Serum also makes the soldier temporarily immune to negative mental effects like panic and mind control."
+
+
+[HisWill_LW X2AbilityTemplate]
+LocFriendlyName="Commander's Will"
+LocLongDescription="Manually Activate the dead man's vest."
+LocHelpText="Manually Activate the dead man's vest."
+LocFlyOverText="Commander's Will"
+LocPromotionPopupText="<Bullet/>Activate the explosive power of the Commander's Vest.<br/>"
+
+[HisVengeance_LW X2AbilityTemplate]
+LocFriendlyName="Commander's Vengeance"
+LocLongDescription="The Commander's explosive power lives on, even in death."
+LocHelpText="The Commander's explosive power lives on, even in death."
+LocFlyOverText="Commander's Vengeance"

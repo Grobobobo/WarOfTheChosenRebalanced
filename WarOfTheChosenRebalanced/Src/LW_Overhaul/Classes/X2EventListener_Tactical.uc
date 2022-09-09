@@ -300,10 +300,10 @@ static function EventListenerReturn OnCleanupTacticalMission(Object EventData, O
 	local StateObjectReference EffectRef;
 	local bool AwardWrecks;
 	local XComGameState_MissionSite MissionState;
-	local int AggressionDelta;
+//	local int AggressionDelta;
 	local XComGameState_AlienAggression AggressionState;
 	local X2MissionSourceTemplate MissionSource;
-	local int  DelayValueHours;
+	//local int  DelayValueHours;
 	local XComGameState_HeadquartersAlien AlienHq;
 	local X2ItemTemplateManager ItemTemplateManager;
 	local int NumTotalMilitia, NumDeadMilitia, NumSavedMilitia;

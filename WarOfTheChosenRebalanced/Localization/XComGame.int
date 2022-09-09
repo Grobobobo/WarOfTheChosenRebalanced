@@ -7444,6 +7444,18 @@ strCharacterName="Lost Grappler"
 [TheLostBruteHP10_LW X2CharacterTemplate]
 strCharacterName="Lost Brute"
 
+[TheLostBrute_LW X2CharacterTemplate]
+strCharacterName="Lost Brute"
+
+[TheLostDasher_LW X2CharacterTemplate]
+strCharacterName="Lost Dasher"
+
+[TheLostGrappler_LW X2CharacterTemplate]
+strCharacterName="Lost Grappler"
+
+[TheLost_LW X2CharacterTemplate]
+strCharacterName="Lost"
+
 [TheLostBruteHP11_LW X2CharacterTemplate]
 strCharacterName="Lost Brute"
 

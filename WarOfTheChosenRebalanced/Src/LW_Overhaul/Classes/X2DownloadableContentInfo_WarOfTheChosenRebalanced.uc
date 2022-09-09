@@ -551,7 +551,7 @@ static function PostSitRepCreation(out GeneratedMissionData GeneratedMission, op
 	local array<name> SitrepList;
 	local XComGameStateHistory CachedHistory;
 	local XComGameState_HeadquartersAlien AlienHQ;
-	local XComGameState_AlienAggression	AggressionState;
+///	local XComGameState_AlienAggression	AggressionState;
 
 	AlienHQ = XComGameState_HeadquartersAlien(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersAlien'));
 

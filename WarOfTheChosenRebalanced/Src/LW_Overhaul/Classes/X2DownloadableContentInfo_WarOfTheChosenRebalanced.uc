@@ -567,34 +567,34 @@ static function PostSitRepCreation(out GeneratedMissionData GeneratedMission, op
 	}
 
 
-	if(class'X2EventListener_Tactical'.default.ALIEN_AGGRESSION_MISSION_SOURCES.Find(MissionState.GetMissionSource().DataName) != INDEX_NONE)
-	{
-		AggressionState = class'XComGameState_AlienAggression'.static.GetAggressionState(true);
+	// if(class'X2EventListener_Tactical'.default.ALIEN_AGGRESSION_MISSION_SOURCES.Find(MissionState.GetMissionSource().DataName) != INDEX_NONE)
+	// {
+	// 	AggressionState = class'XComGameState_AlienAggression'.static.GetAggressionState(true);
 
-		if(AggressionState != none)
-		{
-			if(AggressionState.AggressionValue >= 100)
-			{
-				GeneratedMission.SitReps.AddItem('AlienAggression5');
-			}
-			else if(AggressionState.AggressionValue >= 80)
-			{
-				GeneratedMission.SitReps.AddItem('AlienAggression4');
-			}
-			else if(AggressionState.AggressionValue >= 60)
-			{
-				GeneratedMission.SitReps.AddItem('AlienAggression3');
-			}
-			else if(AggressionState.AggressionValue >= 40)
-			{
-				GeneratedMission.SitReps.AddItem('AlienAggression2');
-			}
-			else if(AggressionState.AggressionValue >= 20)
-			{
-				GeneratedMission.SitReps.AddItem('AlienAggression1');
-			}
-		}
-	}
+	// 	if(AggressionState != none)
+	// 	{
+	// 		if(AggressionState.AggressionValue >= 100)
+	// 		{
+	// 			GeneratedMission.SitReps.AddItem('AlienAggression5');
+	// 		}
+	// 		else if(AggressionState.AggressionValue >= 80)
+	// 		{
+	// 			GeneratedMission.SitReps.AddItem('AlienAggression4');
+	// 		}
+	// 		else if(AggressionState.AggressionValue >= 60)
+	// 		{
+	// 			GeneratedMission.SitReps.AddItem('AlienAggression3');
+	// 		}
+	// 		else if(AggressionState.AggressionValue >= 40)
+	// 		{
+	// 			GeneratedMission.SitReps.AddItem('AlienAggression2');
+	// 		}
+	// 		else if(AggressionState.AggressionValue >= 20)
+	// 		{
+	// 			GeneratedMission.SitReps.AddItem('AlienAggression1');
+	// 		}
+	// 	}
+	// }
 
 	//TemplateManager = class'X2StrategyElementTemplateManager'.static.GetStrategyElementTemplateManager();
 	//ResHQ = class'UIUtilities_Strategy'.static.GetResistanceHQ();

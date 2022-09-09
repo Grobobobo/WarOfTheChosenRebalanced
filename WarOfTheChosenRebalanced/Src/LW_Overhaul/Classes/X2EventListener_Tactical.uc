@@ -452,41 +452,41 @@ static function EventListenerReturn OnCleanupTacticalMission(Object EventData, O
 	//
 	// Handle The Changes to Alien aggression Depending on Mission Result
 
-	MissionState = XComGameState_MissionSite(History.GetGameStateForObjectID(BattleData.m_iMissionID));
-	MissionSource = MissionState.GetMissionSource();
-	if(default.ALIEN_AGGRESSION_MISSION_SOURCES.Find(MissionSource.DataName) != INDEX_NONE)
-	{
-		AggressionState = class'XComGameState_AlienAggression'.static.GetAggressionState(true);
-		if(AggressionState != none)
-		{
-			AggressionState = XComGameState_AlienAggression(NewGameState.ModifyStateObject(class'XComGameState_AlienAggression', AggressionState.ObjectID));
-			if(MissionSource.WasMissionSuccessfulFn != none)
-			{	
-				//Increase The Aggression By X 
-				if(MissionSource.WasMissionSuccessfulFn(BattleData))
-				{
-					AggressionDelta += default.ALIEN_AGGRESSION_INCREASE_MISSION_SUCCESS;
-				}
-				else
-				{
-					AggressionDelta -= default.ALIEN_AGGRESSION_DECREASE_MISSION_FAILURE;
-				}
-			}
+	// MissionState = XComGameState_MissionSite(History.GetGameStateForObjectID(BattleData.m_iMissionID));
+	// MissionSource = MissionState.GetMissionSource();
+	// if(default.ALIEN_AGGRESSION_MISSION_SOURCES.Find(MissionSource.DataName) != INDEX_NONE)
+	// {
+	// 	AggressionState = class'XComGameState_AlienAggression'.static.GetAggressionState(true);
+	// 	if(AggressionState != none)
+	// 	{
+	// 		AggressionState = XComGameState_AlienAggression(NewGameState.ModifyStateObject(class'XComGameState_AlienAggression', AggressionState.ObjectID));
+	// 		if(MissionSource.WasMissionSuccessfulFn != none)
+	// 		{	
+	// 			//Increase The Aggression By X 
+	// 			if(MissionSource.WasMissionSuccessfulFn(BattleData))
+	// 			{
+	// 				AggressionDelta += default.ALIEN_AGGRESSION_INCREASE_MISSION_SUCCESS;
+	// 			}
+	// 			else
+	// 			{
+	// 				AggressionDelta -= default.ALIEN_AGGRESSION_DECREASE_MISSION_FAILURE;
+	// 			}
+	// 		}
 
-			AggressionDelta += CalculateSoldierAggressionDelta(BattleData);
+	// 		AggressionDelta += CalculateSoldierAggressionDelta(BattleData);
 
-			AggressionState.AggressionValue = Clamp(AggressionState.AggressionValue + AggressionDelta, 0,100);
+	// 		AggressionState.AggressionValue = Clamp(AggressionState.AggressionValue + AggressionDelta, 0,100);
 
-			DelayValueHours = int(default.ALIEN_AGGRESSION_AVATAR_DELAY_BASE_VALUE_HOURS * 1.0 * AggressionState.AggressionValue / 100.0f);
+	// 		DelayValueHours = int(default.ALIEN_AGGRESSION_AVATAR_DELAY_BASE_VALUE_HOURS * 1.0 * AggressionState.AggressionValue / 100.0f);
 
-			AlienHQ = class'UIUtilities_Strategy'.static.GetAlienHQ();
-			AlienHQ = XComGameState_HeadquartersAlien(NewGameState.ModifyStateObject(class'XComGameState_HeadquartersAlien',AlienHQ.ObjectID));
+	// 		AlienHQ = class'UIUtilities_Strategy'.static.GetAlienHQ();
+	// 		AlienHQ = XComGameState_HeadquartersAlien(NewGameState.ModifyStateObject(class'XComGameState_HeadquartersAlien',AlienHQ.ObjectID));
 			
-			//AlienHQ.FortressDoomIntervalEndTime = FortressDoomIntervalStartTime;
-			class'X2StrategyGameRulesetDataStructures'.static.AddHours(AlienHQ.FortressDoomIntervalEndTime, DelayValueHours);
-			AlienHQ.FortressDoomTimeRemaining = class'X2StrategyGameRulesetDataStructures'.static.DifferenceInSeconds(AlienHQ.FortressDoomIntervalEndTime, AlienHQ.FortressDoomIntervalStartTime);
-		}
-	}
+	// 		//AlienHQ.FortressDoomIntervalEndTime = FortressDoomIntervalStartTime;
+	// 		class'X2StrategyGameRulesetDataStructures'.static.AddHours(AlienHQ.FortressDoomIntervalEndTime, DelayValueHours);
+	// 		AlienHQ.FortressDoomTimeRemaining = class'X2StrategyGameRulesetDataStructures'.static.DifferenceInSeconds(AlienHQ.FortressDoomIntervalEndTime, AlienHQ.FortressDoomIntervalStartTime);
+	// 	}
+	// }
 
 
     return ELR_NoInterrupt;

@@ -11,7 +11,7 @@ event name CallMeetsConditionWithSource(XComGameState_BaseObject kTarget, XComGa
 	if ( Target != none && Source != none )
 	{
 		
-		if ( Source.HasSoldierAbility('EMPulser') && Target.GetMyTemplate().bIsRobotic )
+		if (!Target.GetMyTemplate().bIsRobotic ||  Source.HasSoldierAbility('EMPulser'))
 		{
 			return 'AA_Success';
 		}

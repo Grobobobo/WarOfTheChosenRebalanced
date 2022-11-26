@@ -10,6 +10,9 @@ var config array<name> EXCLUDED_CHARACTERS_FROM_GLOBAL_DIFF_MOD;
 var config array<float> DIFFICULTY_HP_MODIFIER;
 var config array<float> DIFFICULTY_AIM_MODIFIER;
 var config array<float> DIFFICULTY_WILL_MODIFIER;
+var config array<float> DIFFICULTY_MOBILITY_MODIFIER;
+
+
 var config int GLOBAL_FLANKING_CRIT_CHANCE;
 
 
@@ -103,12 +106,13 @@ static function DoaGlobalStatModifierByDifficulty(X2CharacterTemplate Template, 
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_HP] = FCeil(HighestDiffTemplate.CharacterBaseStats[eStat_HP] * default.DIFFICULTY_HP_MODIFIER[i]);
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_Offense] = FCeil(HighestDiffTemplate.CharacterBaseStats[eStat_Offense] + default.DIFFICULTY_AIM_MODIFIER[i]);
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_Will] = FCeil(HighestDiffTemplate.CharacterBaseStats[eStat_Will] + default.DIFFICULTY_Will_MODIFIER[i]);
+		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_Mobility] = Max(FCeil(HighestDiffTemplate.CharacterBaseStats[eStat_Mobility] + default.DIFFICULTY_MOBILITY_MODIFIER[i]),0);
+
 	
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_ArmorMitigation] = HighestDiffTemplate.CharacterBaseStats[eStat_ArmorMitigation];
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_CritChance] = HighestDiffTemplate.CharacterBaseStats[eStat_CritChance];
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_Defense] = HighestDiffTemplate.CharacterBaseStats[eStat_Defense];
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_Dodge] = HighestDiffTemplate.CharacterBaseStats[eStat_Dodge];
-		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_Mobility] = HighestDiffTemplate.CharacterBaseStats[eStat_Mobility];
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_PsiOffense] = HighestDiffTemplate.CharacterBaseStats[eStat_PsiOffense];
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_HackDefense] = HighestDiffTemplate.CharacterBaseStats[eStat_HackDefense];
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_FlankingCritChance] = default.GLOBAL_FLANKING_CRIT_CHANCE;

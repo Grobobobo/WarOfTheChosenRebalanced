@@ -86,7 +86,7 @@ static function CHEventListenerTemplate CreateMissionPrepListeners()
 
 	`CREATE_X2TEMPLATE(class'CHEventListenerTemplate', Template, 'MissionPrepListeners');
 	Template.AddCHEvent('OverrideEncounterZoneAnchorPoint', DisableAutoAdjustingPatrolZones, ELD_Immediate);
-	Template.AddCHEvent('OnTacticalBeginPlay', ChangeLostSpawningBehavior, ELD_Immediate);
+//	Template.AddCHEvent('OnTacticalBeginPlay', ChangeLostSpawningBehavior, ELD_OnStateSubmitted);
 
 	Template.RegisterInTactical = true;
 
@@ -429,54 +429,54 @@ static function EventListenerReturn LW2OnPlayerTurnBegun(Object EventData, Objec
 
 	return ELR_NoInterrupt;
 }
-//Changes the Battle data to include an updated way of choosing how to spawn lost. 
-//It basically uses the same method as DisableInterceptAIBehavior, so could be put there, but I decided to seperate it for code clarity
-static function EventListenerReturn ChangeLostSpawningBehavior(Object EventData, Object EventSource, XComGameState NewGameState, Name InEventID, Object CallbackData)
-{
-	local XComGameStateHistory History;
-	local XComGameState_BattleData BattleData;
-	local int AlertLevel;
-	local bool SubmitGameState;
+// //Changes the Battle data to include an updated way of choosing how to spawn lost. 
+// //It basically uses the same method as DisableInterceptAIBehavior, so could be put there, but I decided to seperate it for code clarity
+// static function EventListenerReturn ChangeLostSpawningBehavior(Object EventData, Object EventSource, XComGameState NewGameState, Name InEventID, Object CallbackData)
+// {
+// 	local XComGameStateHistory History;
+// 	local XComGameState_BattleData BattleData;
+// 	local int AlertLevel;
+// 	local bool SubmitGameState;
 
-	SubmitGameState = false;
-	History = `XCOMHISTORY;
+// 	SubmitGameState = false;
+// 	History = `XCOMHISTORY;
 
-	if (NewGameState == none)
-	{
-		NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Change Lost summoning");
-		SubmitGameState = true;
-	}
+// 	if (NewGameState == none)
+// 	{
+// 		NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Change Lost summoning");
+// 		SubmitGameState = true;
+// 	}
 
-	BattleData = XComGameState_BattleData(History.GetSingleGameStateObjectForClass(class'XComGameState_BattleData'));
-	BattleData = XComGameState_BattleData(NewGameState.ModifyStateObject(class'XComGameState_BattleData', BattleData.ObjectID));
-	AlertLevel = BattleData.GetAlertLevel();
-
-
-	switch (`TacticalDifficultySetting)
-	{
-		case 0:
-			BattleData.LostGroupID = GetReinforcementGroupName(AlertLevel, default.LostSwarmIDsDiff0);
-			break;
-		case 1:
-			BattleData.LostGroupID = GetReinforcementGroupName(AlertLevel, default.LostSwarmIDsDiff1);
-			break;
-		case 2:
-			BattleData.LostGroupID = GetReinforcementGroupName(AlertLevel, default.LostSwarmIDsDiff2);
-			break;
-		default:
-			BattleData.LostGroupID = GetReinforcementGroupName(AlertLevel, default.LostSwarmIDsDiff3);
-			break;
-	}
+// 	BattleData = XComGameState_BattleData(History.GetSingleGameStateObjectForClass(class'XComGameState_BattleData'));
+// 	BattleData = XComGameState_BattleData(NewGameState.ModifyStateObject(class'XComGameState_BattleData', BattleData.ObjectID));
+// 	AlertLevel = BattleData.GetAlertLevel();
 
 
-	if (SubmitGameState)
-	{
-		`TACTICALRULES.SubmitGameState(NewGameState);
-	}
+// 	switch (`TacticalDifficultySetting)
+// 	{
+// 		case 0:
+// 			BattleData.LostGroupID = GetReinforcementGroupName(AlertLevel, default.LostSwarmIDsDiff0);
+// 			break;
+// 		case 1:
+// 			BattleData.LostGroupID = GetReinforcementGroupName(AlertLevel, default.LostSwarmIDsDiff1);
+// 			break;
+// 		case 2:
+// 			BattleData.LostGroupID = GetReinforcementGroupName(AlertLevel, default.LostSwarmIDsDiff2);
+// 			break;
+// 		default:
+// 			BattleData.LostGroupID = GetReinforcementGroupName(AlertLevel, default.LostSwarmIDsDiff3);
+// 			break;
+// 	}
 
-	return ELR_NoInterrupt;
 
-}
+// 	if (SubmitGameState)
+// 	{
+// 		`TACTICALRULES.SubmitGameState(NewGameState);
+// 	}
+
+// 	return ELR_NoInterrupt;
+
+// }
 
 static function name GetReinforcementGroupName(int AlertLevel, array<name> GroupArray)
 {

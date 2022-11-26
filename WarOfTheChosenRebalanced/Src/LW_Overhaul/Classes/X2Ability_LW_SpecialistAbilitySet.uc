@@ -29,6 +29,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddRescueProtocol());
 	Templates.AddItem(AddHackRewardGreaterShutdownRobot());
 	Templates.AddItem(AddHackRewardGreaterShutdownTurret());
+	Templates.AddItem(AddHackRewardPartialShutdownRobot());
+	Templates.AddItem(AddHackRewardPartialShutdownTurret());
+
 	Templates.AddItem(AddTotalCombat2());
 	
 	return Templates;
@@ -293,15 +296,24 @@ static function X2AbilityTemplate AddHackRewardControlRobot_Mission()
 
 static function X2AbilityTemplate AddHackRewardGreaterShutdownRobot()
 {
-	return HackRewardShutdownRobotOrTurret(false, 'HackRewardGreaterShutdownRobot');
+	return HackRewardShutdownRobotOrTurret(false, 'HackRewardGreaterShutdownRobot',6);
 }
 
 static function X2AbilityTemplate AddHackRewardGreaterShutdownTurret()
 {
-	return HackRewardShutdownRobotOrTurret(true, 'HackRewardGreaterShutdownTurret');
+	return HackRewardShutdownRobotOrTurret(true, 'HackRewardGreaterShutdownTurret',6);
 }
 
-static function X2AbilityTemplate HackRewardShutdownRobotOrTurret( bool bTurret, Name AbilityName )
+static function X2AbilityTemplate AddHackRewardPartialShutdownRobot()
+{
+	return HackRewardShutdownRobotOrTurret(false, 'HackRewardPartialShutdownRobot',1);
+}
+
+static function X2AbilityTemplate AddHackRewardPartialShutdownTurret()
+{
+	return HackRewardShutdownRobotOrTurret(true, 'HackRewardPartialShutdownTurret',1);
+}
+static function X2AbilityTemplate HackRewardShutdownRobotOrTurret( bool bTurret, Name AbilityName, int StunActions)
 {
 	local X2AbilityTemplate                 Template;
 	local X2AbilityTrigger_EventListener    Listener;
@@ -323,7 +335,7 @@ static function X2AbilityTemplate HackRewardShutdownRobotOrTurret( bool bTurret,
 
 	Template.AbilityTargetStyle = default.SimpleSingleTarget;
 
-	StunEffect = class'X2StatusEffects'.static.CreateStunnedStatusEffect(6, 100, false);
+	StunEffect = class'X2StatusEffects'.static.CreateStunnedStatusEffect(StunActions, 100, false);
 	StunEffect.SetDisplayInfo(ePerkBuff_Penalty, class'X2StatusEffects'.default.RoboticStunnedFriendlyName, class'X2StatusEffects'.default.RoboticStunnedFriendlyDesc, "img:///UILibrary_PerkIcons.UIPerk_stun");
 	if (bTurret)
 	{

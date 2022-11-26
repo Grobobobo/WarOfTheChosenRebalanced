@@ -268,7 +268,23 @@ var config int HEAVY_POWERED_ELERIUMCOST;
 var config name HEAVY_POWERED_CORPSE_NAME;
 var config int HEAVY_POWERED_CORPSE_COST;
 
+var config int BOLT_CASTER_MG_SUPPLYCOST;
+var config int BOLT_CASTER_MG_ALLOYCOST;
 
+var config int BOLT_CASTER_BM_SUPPLYCOST;
+var config int BOLT_CASTER_BM_ALLOYCOST;
+
+var config int HUNTER_AXE_MG_SUPPLYCOST;
+var config int HUNTER_AXE_MG_ALLOYCOST;
+
+var config int HUNTER_AXE_BM_SUPPLYCOST;
+var config int HUNTER_AXE_BM_ALLOYCOST;
+
+var config int HUNTER_PISTOL_MG_SUPPLYCOST;
+var config int HUNTER_PISTOL_MG_ALLOYCOST;
+
+var config int HUNTER_PISTOL_BM_SUPPLYCOST;
+var config int HUNTER_PISTOL_BM_ALLOYCOST;
 
 static function array<X2DataTemplate> CreateTemplates()
 {
@@ -338,6 +354,17 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(LightPoweredArmor_Schematic());
 	Weapons.AddItem(MediumPoweredArmor_Schematic());
 	Weapons.AddItem(HeavyPoweredArmor_Schematic());
+
+	Weapons.AddItem(CreateTemplate_HunterRifle_MG_Schematic());
+	Weapons.AddItem(CreateTemplate_HunterRifle_BM_Schematic());
+
+	Weapons.AddItem(CreateTemplate_HunterPistol_MG_Schematic());
+	Weapons.AddItem(CreateTemplate_HunterPistol_BM_Schematic());
+
+	Weapons.AddItem(CreateTemplate_HunterAxe_MG_Schematic());
+	Weapons.AddItem(CreateTemplate_HunterAxe_BM_Schematic());
+
+
 
 	return Weapons;
 }
@@ -2669,8 +2696,306 @@ static function X2DataTemplate HeavyPoweredArmor_Schematic()
 	return Template;
 }
 
+static function X2DataTemplate CreateTemplate_HunterRifle_MG_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local StrategyRequirement AltReq;
+	local ArtifactCost Resources;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'HunterRifle_MG_Schematic');
+
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///UILibrary_DLC2Images.MagBoltCaster";
+	Template.PointsToComplete = 0;
+	Template.Tier = 1;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
+	Template.bSquadUpgrade = false;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'AlienHunterRifle_MG';
+	Template.HideIfPurchased = 'HunterRifle_BM_Schematic';
+
+	// Narrative Requirements
+	Template.Requirements.RequiredTechs.AddItem('MagnetizedWeapons');
+	Template.Requirements.RequiredEquipment.AddItem('AlienHunterRifle_CV');
+	Template.Requirements.RequiredEngineeringScore = 10;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+	Template.Requirements.SpecialRequirementsFn = IsAlienHuntersNarrativeContentComplete;
+	
+	// Non-Narrative Requirements
+	AltReq.RequiredItems.AddItem('HunterRifle_CV_Schematic');
+	AltReq.RequiredEquipment.AddItem('AlienHunterRifle_CV');
+	AltReq.RequiredTechs.AddItem('MagnetizedWeapons');
+	AltReq.RequiredEngineeringScore = 10;
+	AltReq.bVisibleIfPersonnelGatesNotMet = true;
+	Template.AlternateRequirements.AddItem(AltReq);
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.BOLT_CASTER_MG_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Resources.ItemTemplateName = 'AlienAlloy';
+	Resources.Quantity = default.BOLT_CASTER_MG_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_HunterRifle_BM_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local StrategyRequirement AltReq;
+	local ArtifactCost Resources;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'HunterRifle_BM_Schematic');
+
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///UILibrary_DLC2Images.BeamBoltCaster";
+	Template.PointsToComplete = 0;
+	Template.Tier = 3;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
+	Template.bSquadUpgrade = false;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'AlienHunterRifle_BM';
+
+	// Narrative Requirements
+	Template.Requirements.RequiredTechs.AddItem('PlasmaRifle');
+	Template.Requirements.RequiredEquipment.AddItem('AlienHunterRifle_CV');
+	Template.Requirements.RequiredEquipment.AddItem('AlienHunterRifle_MG');
+	Template.Requirements.bDontRequireAllEquipment = true;
+	Template.Requirements.RequiredEngineeringScore = 20;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+	Template.Requirements.SpecialRequirementsFn = IsAlienHuntersNarrativeContentComplete;
+
+	// Non-Narrative Requirements
+	AltReq.RequiredItems.AddItem('HunterRifle_CV_Schematic');
+	AltReq.RequiredEquipment.AddItem('AlienHunterRifle_CV');
+	AltReq.RequiredEquipment.AddItem('AlienHunterRifle_MG');
+	AltReq.bDontRequireAllEquipment = true;
+	AltReq.RequiredTechs.AddItem('PlasmaRifle');
+	AltReq.RequiredEngineeringScore = 20;
+	AltReq.bVisibleIfPersonnelGatesNotMet = true;
+	Template.AlternateRequirements.AddItem(AltReq);
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.BOLT_CASTER_BM_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Resources.ItemTemplateName = 'AlienAlloy';
+	Resources.Quantity = default.BOLT_CASTER_BM_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_HunterAxe_MG_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local StrategyRequirement AltReq;
+	local ArtifactCost Resources;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'HunterAxe_MG_Schematic');
+
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///UILibrary_DLC2Images.MagHuntmansAxe";
+	Template.PointsToComplete = 0;
+	Template.Tier = 1;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
+	Template.bSquadUpgrade = false;
+
+	// Reference Items
+	Template.ReferenceItemTemplate = 'AlienHunterAxe_MG';
+	Template.HideIfPurchased = 'HunterAxe_BM_Schematic';
+
+	// Narrative Requirements
+	Template.Requirements.RequiredTechs.AddItem('AutopsyAdventStunLancer');
+	Template.Requirements.RequiredEquipment.AddItem('AlienHunterAxe_CV');
+	Template.Requirements.RequiredEngineeringScore = 10;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+	Template.Requirements.SpecialRequirementsFn = IsAlienHuntersNarrativeContentComplete;
+
+	// Non-Narrative Requirements
+	AltReq.RequiredItems.AddItem('HunterAxe_CV_Schematic');
+	AltReq.RequiredEquipment.AddItem('AlienHunterAxe_CV');
+	AltReq.RequiredTechs.AddItem('AutopsyAdventStunLancer');
+	AltReq.RequiredEngineeringScore = 10;
+	AltReq.bVisibleIfPersonnelGatesNotMet = true;
+	Template.AlternateRequirements.AddItem(AltReq);
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.HUNTER_AXE_MG_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Resources.ItemTemplateName = 'AlienAlloy';
+	Resources.Quantity = default.HUNTER_AXE_MG_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_HunterAxe_BM_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local StrategyRequirement AltReq;
+	local ArtifactCost Resources;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'HunterAxe_BM_Schematic');
+
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///UILibrary_DLC2Images.BeamHuntmansAxe";
+	Template.PointsToComplete = 0;
+	Template.Tier = 3;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
+	Template.bSquadUpgrade = false;
+
+	// Reference Items
+	Template.ReferenceItemTemplate = 'AlienHunterAxe_BM';
+
+	// Narrative Requirements
+	Template.Requirements.RequiredTechs.AddItem('AutopsyArchon');
+	Template.Requirements.RequiredEquipment.AddItem('AlienHunterAxe_CV');
+	Template.Requirements.RequiredEquipment.AddItem('AlienHunterAxe_MG');
+	Template.Requirements.bDontRequireAllEquipment = true;
+	Template.Requirements.RequiredEngineeringScore = 20;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+	Template.Requirements.SpecialRequirementsFn = IsAlienHuntersNarrativeContentComplete;
+
+	// Non-Narrative Requirements
+	AltReq.RequiredItems.AddItem('HunterAxe_CV_Schematic');
+	AltReq.RequiredEquipment.AddItem('AlienHunterAxe_CV');
+	AltReq.RequiredEquipment.AddItem('AlienHunterAxe_MG');
+	AltReq.bDontRequireAllEquipment = true;
+	AltReq.RequiredTechs.AddItem('AutopsyArchon');
+	AltReq.RequiredEngineeringScore = 20;
+	AltReq.bVisibleIfPersonnelGatesNotMet = true;
+	Template.AlternateRequirements.AddItem(AltReq);
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.HUNTER_AXE_BM_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Resources.ItemTemplateName = 'AlienAlloy';
+	Resources.Quantity = default.HUNTER_AXE_BM_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_HunterPistol_MG_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local StrategyRequirement AltReq;
+	local ArtifactCost Resources;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'HunterPistol_MG_Schematic');
+
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///UILibrary_DLC2Images.MagShadowKeeper";
+	Template.PointsToComplete = 0;
+	Template.Tier = 1;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
+	Template.bSquadUpgrade = false;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'AlienHunterPistol_MG';
+	Template.HideIfPurchased = 'HunterPistol_BM_Schematic';
+
+	// Narrative Requirements
+	Template.Requirements.RequiredTechs.AddItem('MagnetizedWeapons');
+	Template.Requirements.RequiredEquipment.AddItem('AlienHunterPistol_CV');
+	Template.Requirements.RequiredEngineeringScore = 10;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+	Template.Requirements.SpecialRequirementsFn = IsAlienHuntersNarrativeContentComplete;
+
+	// Non-Narrative Requirements
+	AltReq.RequiredItems.AddItem('HunterPistol_CV_Schematic');
+	AltReq.RequiredEquipment.AddItem('AlienHunterPistol_CV');
+	AltReq.RequiredTechs.AddItem('MagnetizedWeapons');
+	AltReq.RequiredEngineeringScore = 10;
+	AltReq.bVisibleIfPersonnelGatesNotMet = true;
+	Template.AlternateRequirements.AddItem(AltReq);
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.HUNTER_PISTOL_MG_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Resources.ItemTemplateName = 'AlienAlloy';
+	Resources.Quantity = default.HUNTER_PISTOL_MG_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_HunterPistol_BM_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local StrategyRequirement AltReq;
+	local ArtifactCost Resources;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'HunterPistol_BM_Schematic');
+
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///UILibrary_DLC2Images.BeamShadowKeeper";
+	Template.PointsToComplete = 0;
+	Template.Tier = 3;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
+	Template.bSquadUpgrade = false;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'AlienHunterPistol_BM';
+
+	// Narrative Requirements
+	Template.Requirements.RequiredTechs.AddItem('PlasmaRifle');
+	Template.Requirements.RequiredEquipment.AddItem('AlienHunterPistol_CV');
+	Template.Requirements.RequiredEquipment.AddItem('AlienHunterPistol_MG');
+	Template.Requirements.bDontRequireAllEquipment = true;
+	Template.Requirements.RequiredEngineeringScore = 20;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+	Template.Requirements.SpecialRequirementsFn = IsAlienHuntersNarrativeContentComplete;
+
+	// Non-Narrative Requirements
+	AltReq.RequiredItems.AddItem('HunterPistol_CV_Schematic');
+	AltReq.RequiredEquipment.AddItem('AlienHunterPistol_CV');
+	AltReq.RequiredEquipment.AddItem('AlienHunterPistol_MG');
+	AltReq.bDontRequireAllEquipment = true;
+	AltReq.RequiredTechs.AddItem('PlasmaRifle');
+	AltReq.RequiredEngineeringScore = 20;
+	AltReq.bVisibleIfPersonnelGatesNotMet = true;
+	Template.AlternateRequirements.AddItem(AltReq);
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.HUNTER_PISTOL_BM_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Resources.ItemTemplateName = 'AlienAlloy';
+	Resources.Quantity = default.HUNTER_PISTOL_BM_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	return Template;
+}
 
 
+static function bool IsAlienHuntersNarrativeContentComplete()
+{
+	local XComGameState_CampaignSettings CampaignSettings;
 
+	CampaignSettings = XComGameState_CampaignSettings(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_CampaignSettings'));
 
+	if (CampaignSettings.HasOptionalNarrativeDLCEnabled(name(class'X2DownloadableContentInfo_DLC_Day60'.default.DLCIdentifier)))
+	{
+		if (class'XComGameState_HeadquartersXCom'.static.IsObjectiveCompleted('DLC_AlienNestMissionComplete'))
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
 

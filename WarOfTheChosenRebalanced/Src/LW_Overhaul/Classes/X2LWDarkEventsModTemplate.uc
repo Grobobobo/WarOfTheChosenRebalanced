@@ -19,6 +19,28 @@ static function UpdateDarkEvents(X2StrategyElementTemplate Template, int Difficu
 
 	switch (DETemplate.DataName)
 	{
+		// case 'DarkEvent_Barrier':
+		// case 'DarkEvent_HighAlert':
+		// case 'DarkEvent_Infiltrator':
+		// case 'DarkEvent_InfiltratorChryssalid':
+		// case 'DarkEvent_LostWorld':
+		// case 'DarkEvent_ReturnFire':
+		// case 'DarkEvent_SealedArmor':
+		// case 'DarkEvent_UndyingLoyalty':
+		// case 'DarkEvent_Vigilance':
+		// 	// Disable the normal dark event activation as these are handled by
+		// 	// sit reps now.
+		// 	DETemplate.OnActivatedFn = none;
+		// 	DETemplate.OnDeactivatedFn = none;
+		// 	DETemplate.ModifyTacticalStartStateFn = none;
+
+		// 	// 50% longer duration as you won't get them on every mission now and
+		// 	// some mission types won't even allow the corresponding sit rep.
+		// 	DETemplate.MinDurationDays = 42;
+		// 	DETemplate.MaxDurationDays = 42;
+		// 	break;
+
+		case 'DarkEvent_AlienCypher':
 		case 'DarkEvent_Barrier':
 		case 'DarkEvent_HighAlert':
 		case 'DarkEvent_Infiltrator':
@@ -28,18 +50,6 @@ static function UpdateDarkEvents(X2StrategyElementTemplate Template, int Difficu
 		case 'DarkEvent_SealedArmor':
 		case 'DarkEvent_UndyingLoyalty':
 		case 'DarkEvent_Vigilance':
-			// Disable the normal dark event activation as these are handled by
-			// sit reps now.
-			DETemplate.OnActivatedFn = none;
-			DETemplate.OnDeactivatedFn = none;
-			DETemplate.ModifyTacticalStartStateFn = none;
-
-			// 50% longer duration as you won't get them on every mission now and
-			// some mission types won't even allow the corresponding sit rep.
-			DETemplate.MinDurationDays = 42;
-			DETemplate.MaxDurationDays = 42;
-			break;
-
 		case 'DarkEvent_NewConstruction':
 		case 'DarkEvent_RuralCheckpoints':
 		case 'DarkEvent_BendingReed':
@@ -62,6 +72,12 @@ static function UpdateDarkEvents(X2StrategyElementTemplate Template, int Difficu
 		case 'DarkEvent_AlloyPadding':
 		case 'DarkEvent_RapidResponse':
 		case 'DarkEvent_ResistanceInformant':
+		case 'DarkEvent_MidnightRaids':
+		case 'DarkEvent_MinorBreakthrough':
+		case 'DarkEvent_MinorBreakthrough2':
+		case 'DarkEvent_MajorBreakthrough':
+		case 'DarkEvent_MajorBreakthrough2':
+
 			// Remove these from play
 			DETemplate.StartingWeight = 0;
 			DETemplate.MinWeight = 0;
@@ -85,15 +101,15 @@ static function UpdateDarkEvents(X2StrategyElementTemplate Template, int Difficu
 		// 	DETemplate.GetSummaryFn = GetResistanceInformantSummary;
 		// 	break;
 
-		case 'DarkEvent_MinorBreakthrough':
-			DETemplate.MinActivationDays = 15;
-			DETemplate.MaxActivationDays = 20;
-			`LWTRACE("Redefined Minor Breakthrough Dark Event Template");
-			break;
+		// case 'DarkEvent_MinorBreakthrough':
+		// 	DETemplate.MinActivationDays = 15;
+		// 	DETemplate.MaxActivationDays = 20;
+		// 	`LWTRACE("Redefined Minor Breakthrough Dark Event Template");
+		// 	break;
 
-		case 'DarkEvent_MajorBreakthrough':
-			`LWTRACE("Redefined Major Breakthrough Dark Event Template");
-			break;
+		// case 'DarkEvent_MajorBreakthrough':
+		// 	`LWTRACE("Redefined Major Breakthrough Dark Event Template");
+		// 	break;
 
 		case 'DarkEvent_HunterClass':
 			DETemplate.CanActivateFn = class'X2StrategyElement_DarkEvents_LW'.static.CanActivateHunterClass_LW;

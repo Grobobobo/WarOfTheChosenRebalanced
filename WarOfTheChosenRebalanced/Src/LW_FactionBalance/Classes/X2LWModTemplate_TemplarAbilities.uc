@@ -62,15 +62,15 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 	case 'FocusKillTracker':
 		//DisableFocusGainDuringApotheosis(Template);
 		break;
-	case 'OverCharge':
-		Template.AdditionalAbilities.RemoveItem('OverchargePassive');
-		break;
+	// case 'OverCharge':
+	// 	Template.AdditionalAbilities.RemoveItem('OverchargePassive');
+	// 	break;
 	case 'Amplify':
 		ModifyAmplifyEffect(Template);
 		class'Helpers_LW'.static.MakeFreeAction(Template);
 		break;
-	case 'Reverberation':
-		HideTheEffects(Template);
+//	case 'Reverberation':
+	//	HideTheEffects(Template);
 	case 'Ghost':
 		MakeGhostCooldownInsteadOfCharges(Template);
 		break;
@@ -349,6 +349,7 @@ static function UpdateArcWave(X2AbilityTemplate Template)
 
 	Effect = new class'X2Effect_ArcWaveMultiDamage_LW';
 
+	Effect.bIgnoreArmor = false;
 	Effect.T1Damage = default.ARCWAVE_T1_DAMAGE;
 	Effect.T2Damage = default.ARCWAVE_T2_DAMAGE;
 	Effect.T3Damage = default.ARCWAVE_T3_DAMAGE;

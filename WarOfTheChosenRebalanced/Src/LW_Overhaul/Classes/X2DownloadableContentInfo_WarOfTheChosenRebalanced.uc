@@ -145,6 +145,7 @@ static event InstallNewCampaign(XComGameState StartState)
 
 	class'XComGameState_LWOverhaulOptions'.static.CreateModSettingsState_NewCampaign(class'XComGameState_LWOverhaulOptions', StartState);
 	class'XComGameState_LWXTP'.static.CreateXTPState(StartState);
+	class'XComGameState_AlienAggression'.static.CreateAggressionState(StartState);
 
 	// Save the second wave options, but only if we've actually started a new
 	// campaign (hence the check for UIShellDifficulty being open).
@@ -164,6 +165,9 @@ static event InstallNewCampaign(XComGameState StartState)
 	// class'X2StrategyElement_DefaultResistanceModes'.static.OnXCOMLeavesIntelMode(StartState, StartingFactionState.GetReference());
 	// class'X2StrategyElement_DefaultResistanceModes'.static.OnXCOMLeavesMedicalMode(StartState, StartingFactionState.GetReference());
 	// class'X2StrategyElement_DefaultResistanceModes'.static.OnXCOMLeavesBuildMode(StartState, StartingFactionState.GetReference());
+	
+	SetupContinentBonuses(StartState);
+
 }
 
 static function OnPreCreateTemplates()
@@ -338,132 +342,132 @@ static function UpdateLockAndLoadBonus(optional XComGameState StartState)
 }
 
 
-/// <summary>
-/// Called when viewing mission blades, used primarily to modify tactical tags for spawning
-/// Returns true when the mission's spawning info needs to be updated
-/// </summary>
-static function bool UpdateMissionSpawningInfo(StateObjectReference MissionRef)
-{
-	// We need to clear up the mess that the Alien Rulers DLC leaves in its wake.
-	// In this case, it clears all the alien ruler gameplay tags from XComHQ, just
-	// before the schedules are picked (which rely on those tags). And of course it
-	// may apply the ruler tags itself when we don't want them. Bleh.
-	if (class'XComGameState_AlienRulerManager' != none)
-	{
-		return FixAlienRulerTags(MissionRef);
-	}
+// /// <summary>
+// /// Called when viewing mission blades, used primarily to modify tactical tags for spawning
+// /// Returns true when the mission's spawning info needs to be updated
+// /// </summary>
+// static function bool UpdateMissionSpawningInfo(StateObjectReference MissionRef)
+// {
+// 	// We need to clear up the mess that the Alien Rulers DLC leaves in its wake.
+// 	// In this case, it clears all the alien ruler gameplay tags from XComHQ, just
+// 	// before the schedules are picked (which rely on those tags). And of course it
+// 	// may apply the ruler tags itself when we don't want them. Bleh.
+// 	if (class'XComGameState_AlienRulerManager' != none)
+// 	{
+// 		return FixAlienRulerTags(MissionRef);
+// 	}
 
-	return false;
-}
+// 	return false;
+// }
 
-static function bool FixAlienRulerTags(StateObjectReference MissionRef)
-{
-	local XComGameState_AlienRulerManager RulerMgr;
-	local XComGameState_HeadquartersXCom XComHQ;
-	local XComGameState_MissionSite MissionState;
-	local XComGameStateHistory History;
-	local XComGameState NewGameState;
-	local name CurrentTag;
-	local bool bUpdated;
+// static function bool FixAlienRulerTags(StateObjectReference MissionRef)
+// {
+// 	local XComGameState_AlienRulerManager RulerMgr;
+// 	local XComGameState_HeadquartersXCom XComHQ;
+// 	local XComGameState_MissionSite MissionState;
+// 	local XComGameStateHistory History;
+// 	local XComGameState NewGameState;
+// 	local name CurrentTag;
+// 	local bool bUpdated;
 
-	History = `XCOMHISTORY;
-	bUpdated = false;
+// 	History = `XCOMHISTORY;
+// 	bUpdated = false;
 
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("LWOTC: Fix Alien Ruler gameplay tags");
-	RulerMgr = XComGameState_AlienRulerManager(History.GetSingleGameStateObjectForClass(class'XComGameState_AlienRulerManager'));
-	RulerMgr = XComGameState_AlienRulerManager(NewGameState.ModifyStateObject(class'XComGameState_AlienRulerManager', RulerMgr.ObjectID));
-	XComHQ = XComGameState_HeadquartersXCom(History.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersXCom'));
-	XComHQ = XComGameState_HeadquartersXCom(NewGameState.ModifyStateObject(class'XComGameState_HeadquartersXCom', XComHQ.ObjectID));
-	MissionState = XComGameState_MissionSite(History.GetGameStateForObjectID(MissionRef.ObjectID));
+// 	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("LWOTC: Fix Alien Ruler gameplay tags");
+// 	RulerMgr = XComGameState_AlienRulerManager(History.GetSingleGameStateObjectForClass(class'XComGameState_AlienRulerManager'));
+// 	RulerMgr = XComGameState_AlienRulerManager(NewGameState.ModifyStateObject(class'XComGameState_AlienRulerManager', RulerMgr.ObjectID));
+// 	XComHQ = XComGameState_HeadquartersXCom(History.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersXCom'));
+// 	XComHQ = XComGameState_HeadquartersXCom(NewGameState.ModifyStateObject(class'XComGameState_HeadquartersXCom', XComHQ.ObjectID));
+// 	MissionState = XComGameState_MissionSite(History.GetGameStateForObjectID(MissionRef.ObjectID));
 
-	// Check whether DLC has added active ruler tags to XComHQ. We don't want
-	// them if there are any.
-	if (class'LWDLCHelpers'.static.TagArrayHasActiveRulerTag(XComHQ.TacticalGameplayTags))
-	{
-		// Clear existing active tags out so we can replace them.
-		RulerMgr.ClearActiveRulerTags(XComHQ);
-		bUpdated = true;
-	}
+// 	// Check whether DLC has added active ruler tags to XComHQ. We don't want
+// 	// them if there are any.
+// 	if (class'LWDLCHelpers'.static.TagArrayHasActiveRulerTag(XComHQ.TacticalGameplayTags))
+// 	{
+// 		// Clear existing active tags out so we can replace them.
+// 		RulerMgr.ClearActiveRulerTags(XComHQ);
+// 		bUpdated = true;
+// 	}
 
-	// Add back any mission active ruler tags that DLC 2 will have kindly
-	// removed from XComHQ for us. This is important to ensure that the
-	// alien rulers are added to the mission schedule if it's possible.
-	if (class'LWDLCHelpers'.static.IsAlienRulerOnMission(MissionState))
-	{
-		foreach MissionState.TacticalGameplayTags(CurrentTag)
-		{
-			if (class'LWDLCHelpers'.default.AlienRulerTags.Find(CurrentTag) != INDEX_NONE)
-			{
-				// Found an active Ruler tag, so add it to XComHQ.
-				XComHQ.TacticalGameplayTags.AddItem(CurrentTag);
-				AddRulerAdditionalTags(MissionState, XComHQ, CurrentTag);
-				bUpdated = true;
-			}
-		}
-	}
+// 	// Add back any mission active ruler tags that DLC 2 will have kindly
+// 	// removed from XComHQ for us. This is important to ensure that the
+// 	// alien rulers are added to the mission schedule if it's possible.
+// 	if (class'LWDLCHelpers'.static.IsAlienRulerOnMission(MissionState))
+// 	{
+// 		foreach MissionState.TacticalGameplayTags(CurrentTag)
+// 		{
+// 			if (class'LWDLCHelpers'.default.AlienRulerTags.Find(CurrentTag) != INDEX_NONE)
+// 			{
+// 				// Found an active Ruler tag, so add it to XComHQ.
+// 				XComHQ.TacticalGameplayTags.AddItem(CurrentTag);
+// 				AddRulerAdditionalTags(MissionState, XComHQ, CurrentTag);
+// 				bUpdated = true;
+// 			}
+// 		}
+// 	}
 
-	if (bUpdated)
-		`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
-	else
-		History.CleanupPendingGameState(NewGameState);
+// 	if (bUpdated)
+// 		`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
+// 	else
+// 		History.CleanupPendingGameState(NewGameState);
 
-	return bUpdated;
-}
+// 	return bUpdated;
+// }
 
-static function AddRulerAdditionalTags(
-	XComGameState_MissionSite MissionState,
-	XComGameState_HeadquartersXCom XComHQ,
-	name RulerActiveTacticalTag)
-{
-	local int i, RulerIndex;
+// static function AddRulerAdditionalTags(
+// 	XComGameState_MissionSite MissionState,
+// 	XComGameState_HeadquartersXCom XComHQ,
+// 	name RulerActiveTacticalTag)
+// {
+// 	local int i, RulerIndex;
 
-	for (i = 0; i < class'XComGameState_AlienRulerManager'.default.AlienRulerTemplates.Length; i++)
-	{
-		if (class'XComGameState_AlienRulerManager'.default.AlienRulerTemplates[i].ActiveTacticalTag == RulerActiveTacticalTag)
-		{
-			RulerIndex = i;
-			break;
-		}
-	}
+// 	for (i = 0; i < class'XComGameState_AlienRulerManager'.default.AlienRulerTemplates.Length; i++)
+// 	{
+// 		if (class'XComGameState_AlienRulerManager'.default.AlienRulerTemplates[i].ActiveTacticalTag == RulerActiveTacticalTag)
+// 		{
+// 			RulerIndex = i;
+// 			break;
+// 		}
+// 	}
 
-	// Check the mission alert level against the thresholds for Alien Ruler
-	// pod size. If the alert level is below the first threshold, then we
-	// don't add any additional tags. Otherwise we pull the required additional
-	// tag from the Alien Ruler template config.
-	for (i = 0; i < default.RULER_POD_SIZE_ALERT_THRESHOLDS.Length; i++)
-	{
-		if (MissionState.SelectedMissionData.AlertLevel < default.RULER_POD_SIZE_ALERT_THRESHOLDS[i])
-		{
-			if (i > 0)
-			{
-				XComHQ.TacticalGameplayTags.AddItem(
-						class'XComGameState_AlienRulerManager'.default.AlienRulerTemplates[RulerIndex].AdditionalTags[i - 1].TacticalTag);
-			}
-			break;
-		}
-	}
-}
+// 	// Check the mission alert level against the thresholds for Alien Ruler
+// 	// pod size. If the alert level is below the first threshold, then we
+// 	// don't add any additional tags. Otherwise we pull the required additional
+// 	// tag from the Alien Ruler template config.
+// 	for (i = 0; i < default.RULER_POD_SIZE_ALERT_THRESHOLDS.Length; i++)
+// 	{
+// 		if (MissionState.SelectedMissionData.AlertLevel < default.RULER_POD_SIZE_ALERT_THRESHOLDS[i])
+// 		{
+// 			if (i > 0)
+// 			{
+// 				XComHQ.TacticalGameplayTags.AddItem(
+// 						class'XComGameState_AlienRulerManager'.default.AlienRulerTemplates[RulerIndex].AdditionalTags[i - 1].TacticalTag);
+// 			}
+// 			break;
+// 		}
+// 	}
+// }
 
-private static function int SortNames(name NameA, name NameB)
-{
-	local string StringA, StringB;
+// private static function int SortNames(name NameA, name NameB)
+// {
+// 	local string StringA, StringB;
 
-	StringA = string(NameA);
-	StringB = string(NameB);
+// 	StringA = string(NameA);
+// 	StringB = string(NameB);
 
-	if (StringA < StringB)
-	{
-		return 1;
-	}
-	else if (StringA > StringB)
-	{
-		return -1;
-	}
-	else
-	{
-		return 0;
-	}
-}
+// 	if (StringA < StringB)
+// 	{
+// 		return 1;
+// 	}
+// 	else if (StringA > StringB)
+// 	{
+// 		return -1;
+// 	}
+// 	else
+// 	{
+// 		return 0;
+// 	}
+// }
 
 // *****************************************************
 // XCOM tactical mission adjustments
@@ -482,10 +486,10 @@ static event OnPreMission(XComGameState StartGameState, XComGameState_MissionSit
 	ResetReinforcements(StartGameState);
 	OverrideDestructibleHealths(StartGameState);
 	//MaybeAddChosenToMission(StartGameState, MissionState);
-	if (class'XComGameState_AlienRulerManager' != none)
-	{
-		OverrideAlienRulerSpawning(StartGameState, MissionState);
-	}
+	// if (class'XComGameState_AlienRulerManager' != none)
+	// {
+	// 	OverrideAlienRulerSpawning(StartGameState, MissionState);
+	// }
 
 	// Test Code to see if DLC POI replacement is working
 	if (MissionState.POIToSpawn.ObjectID > 0)
@@ -537,7 +541,17 @@ static event OnPreMission(XComGameState StartGameState, XComGameState_MissionSit
 // called for the creation of Gatecrasher.
 static function PostSitRepCreation(out GeneratedMissionData GeneratedMission, optional XComGameState_BaseObject SourceObject)
 {
+	local XComGameState_MissionSite MissionState;
+	//local XComGameState_Reward RewardState;
+	//local X2RewardTemplate RewardTemplate;
+	//local XComGameState_HeadquartersResistance ResHQ;
+	//local X2StrategyElementTemplateManager TemplateManager;
+	local XComGameState NewGameState;
+	local name CurrentSitrepName;
+	local array<name> SitrepList;
+	local XComGameStateHistory CachedHistory;
 	local XComGameState_HeadquartersAlien AlienHQ;
+///	local XComGameState_AlienAggression	AggressionState;
 
 	AlienHQ = XComGameState_HeadquartersAlien(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersAlien'));
 
@@ -551,7 +565,226 @@ static function PostSitRepCreation(out GeneratedMissionData GeneratedMission, op
     {
 		GeneratedMission.SitReps.AddItem('StealthMission');
 	}
+
+
+	// if(class'X2EventListener_Tactical'.default.ALIEN_AGGRESSION_MISSION_SOURCES.Find(MissionState.GetMissionSource().DataName) != INDEX_NONE)
+	// {
+	// 	AggressionState = class'XComGameState_AlienAggression'.static.GetAggressionState(true);
+
+	// 	if(AggressionState != none)
+	// 	{
+	// 		if(AggressionState.AggressionValue >= 100)
+	// 		{
+	// 			GeneratedMission.SitReps.AddItem('AlienAggression5');
+	// 		}
+	// 		else if(AggressionState.AggressionValue >= 80)
+	// 		{
+	// 			GeneratedMission.SitReps.AddItem('AlienAggression4');
+	// 		}
+	// 		else if(AggressionState.AggressionValue >= 60)
+	// 		{
+	// 			GeneratedMission.SitReps.AddItem('AlienAggression3');
+	// 		}
+	// 		else if(AggressionState.AggressionValue >= 40)
+	// 		{
+	// 			GeneratedMission.SitReps.AddItem('AlienAggression2');
+	// 		}
+	// 		else if(AggressionState.AggressionValue >= 20)
+	// 		{
+	// 			GeneratedMission.SitReps.AddItem('AlienAggression1');
+	// 		}
+	// 	}
+	// }
+
+	//TemplateManager = class'X2StrategyElementTemplateManager'.static.GetStrategyElementTemplateManager();
+	//ResHQ = class'UIUtilities_Strategy'.static.GetResistanceHQ();
+	
+	//NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("TempGameState");
+	CachedHistory = `XCOMHISTORY;
+	NewGameState = CachedHistory.GetGameStateFromHistory();
+	If (`HQGAME  != none && `HQPC != None && `HQPRES != none) // we're in strategy
+	{
+	
+		// AddSitrepToMissionFamilyIfResistanceCardsActive('ResCard_BoobyTraps', 'HighExplosives', 'Terror', GeneratedMission);
+		// AddSitrepToMissionFamilyIfResistanceCardsActive('ResCard_BoobyTraps', 'HighExplosives', 'Retaliation', GeneratedMission);
+		// AddSitrepToMissionFamilyIfResistanceCardsActive('ResCard_BoobyTraps', 'HighExplosives', 'ChosenRetaliation', GeneratedMission);
+		// AddSitrepToMissionFamilyIfResistanceCardsActive('ResCard_BoobyTraps', 'HighExplosives', 'ProtectDevice', GeneratedMission);
+
+
+
+		MissionState = XComGameState_MissionSite(SourceObject);
+
+		if (MissionState == none){
+			MissionState = XComGameState_MissionSite(`XCOMHISTORY.GetGameStateForObjectID(GeneratedMission.MissionID));
+		}
+
+		if (MissionState == none){
+			`LOG("ERROR: Could not find mission state for mission id " $ GeneratedMission.MissionID);
+		}
+			
+
+		AddRewardsToMissionSourceIfResistanceCardActive(NewGameState, MissionState, GeneratedMission, 'Reward_Intel', 40, 'ResCard_ZealousDeployment_LW', 'MissionSource_GuerillaOp'); 
+
+
+		AddSitrepToMissionSourceIfResistanceCardsActive('ResCard_XenobiologicalFieldResearch_LW', 'DarkEventInfiltratorChryssalidSitRep', 'MissionSource_GuerillaOp', MissionState, GeneratedMission);
+		AddSitrepToMissionSourceIfResistanceCardsActive('ResCard_XenobiologicalFieldResearch_LW', 'DarkEventInfiltratorChryssalidSitRep', 'MissionSource_ResistanceOp', MissionState, GeneratedMission);
+		AddSitrepToMissionSourceIfResistanceCardsActive('ResCard_XenobiologicalFieldResearch_LW', 'DarkEventInfiltratorChryssalidSitRep', 'MissionSource_SupplyRaid', MissionState, GeneratedMission);
+		AddSitrepToMissionSourceIfResistanceCardsActive('ResCard_XenobiologicalFieldResearch_LW', 'DarkEventInfiltratorChryssalidSitRep', 'MissionSource_Retaliation', MissionState, GeneratedMission);
+		AddSitrepToMissionSourceIfResistanceCardsActive('ResCard_XenobiologicalFieldResearch_LW', 'DarkEventInfiltratorChryssalidSitRep', 'MissionSource_Council', MissionState, GeneratedMission);
+		AddSitrepToMissionSourceIfResistanceCardsActive('ResCard_XenobiologicalFieldResearch_LW', 'DarkEventInfiltratorChryssalidSitRep', 'MissionSource_ChosenAmbush', MissionState, GeneratedMission);
+		//AddCrackdownSitrepsBasedOnResistanceCardsActive(MissionState, GeneratedMission);
+		
+		AddSitrepToMissionSourceIfResistanceCardsActive('ResCard_RadioFreeLily_LW', 'RadioFreeLily_LW', 'MissionSource_Retaliation', MissionState, GeneratedMission);
+
+
+		
+		`LOG("enumerating sitreps selected for mission");
+		SitrepList = GeneratedMission.SitReps;
+		foreach SitrepList(CurrentSitrepName)
+		{
+			`LOG("Sitrep selected for mission: " $ GeneratedMission.BattleOpName $ " : " $ CurrentSitrepName);
+		}
+	}
 }
+
+static function AddRewardsToMissionSourceIfResistanceCardActive(XComGameState NewGameState, XComGameState_MissionSite MissionState, GeneratedMissionData GeneratedMission, name RewardId, int Quantity, name ResCard, name RequiredMissionSource)
+{
+	local XComGameState_Reward RewardState;
+	local X2RewardTemplate RewardTemplate;
+	local XComGameState_HeadquartersResistance ResHQ;
+	local X2StrategyElementTemplateManager TemplateManager;
+
+
+	TemplateManager = class'X2StrategyElementTemplateManager'.static.GetStrategyElementTemplateManager();
+	ResHQ = class'UIUtilities_Strategy'.static.GetResistanceHQ();
+	
+	if (class'Helpers_LW'.static.IsResistanceOrderActive(ResCard))
+	{
+		if (RequiredMissionSource == MissionState.GetMissionSource().DataName)
+		{
+			RewardTemplate = X2RewardTemplate(TemplateManager.FindStrategyElementTemplate(RewardId));
+
+			if (RewardTemplate != none)
+			{
+
+				RewardState = RewardTemplate.CreateInstanceFromTemplate(NewGameState);
+				RewardState.GenerateReward(NewGameState, ResHQ.GetMissionResourceRewardScalar(RewardState)); //ignoring regionref
+				RewardState.Quantity = Quantity;
+				MissionState.Rewards.AddItem(RewardState.GetReference());
+				
+			}
+			else
+			{
+				`Log("Can't find reward template!  " $ RewardId);
+			}
+			return;
+		}
+	}
+}
+
+
+// static function AddCrackdownSitrepsBasedOnResistanceCardsActive(XComGameState_MissionSite MissionState, out GeneratedMissionData GeneratedMission){
+// 	local int PercentageCrackdownChance;
+// 	local int CrackdownRoll;
+// 	local name MissionSource;
+// 	local string MissionFamily;
+// 	local bool RelevantMissionSourceForRandomCrackdown;
+// 	local name CrackdownSitrepAdded;
+// 	RelevantMissionSourceForRandomCrackdown = false;
+// 	MissionSource = MissionState.GetMissionSource().DataName; // e.g. 'MissionSource_GuerillaOp'
+// 	MissionFamily = MissionState.GeneratedMission.Mission.MissionFamily;
+// 	// First: handle retaliation crackdowns
+
+// 	if (class'Helpers_LW'.static.IsResistanceOrderActive('ResCard_RadioFreeLily_LW') && IsRetaliation(MissionFamily))
+// 	{
+// 		`LOG("Adding plus one force level sitrep due to retaliation + Radio Free Lily");
+// 		GeneratedMission.SitReps.AddItem('ILB_Sitrep_PlusOneForceLevel');
+// 	}
+
+// 	if (MissionSource == 'MissionSource_GuerillaOp' 
+// 		|| MissionSource == 'MissionSource_Council'
+// 		|| MissionSource == 'MissionSource_ActivityCI' // generic covert infiltration mission source
+// 		|| MissionSource == 'MissionSource_LWSGenericMissionSource') // generic LWOTC mission source
+// 	{
+// 		RelevantMissionSourceForRandomCrackdown = true;
+// 		`LOG("Relevant mission detected for crackdown rolls; now, we roll.");
+// 	}
+
+// 	// now we handle generic crackdowns based on res cards selected
+// 	if (RelevantMissionSourceForRandomCrackdown){
+	
+// 		/// calculation of crackdown chance based on active resistance cards.
+// 		/// should ensure none of these can be continent bonuses.
+// 		PercentageCrackdownChance = 0;
+
+// 		if (class'Helpers_LW'.static.IsResistanceOrderActive('ResCard_NotoriousSmugglers')){
+// 			PercentageCrackdownChance += 15;
+// 		}
+// 		if (class'Helpers_LW'.static.IsResistanceOrderActive('ResCard_BrazenCollection')){
+// 			PercentageCrackdownChance += 15;
+// 		}
+// 		if (class'Helpers_LW'.static.IsResistanceOrderActive('ResCard_BrazenRecruitment')){
+// 			PercentageCrackdownChance += 15;
+// 		}
+// 		if (class'Helpers_LW'.static.IsResistanceOrderActive('ResCard_LeachPsionicLeylines')){
+// 			PercentageCrackdownChance += 15;
+// 		}
+
+// 		`LOG("Total percent crackdown chance based on res cards active: " $ PercentageCrackdownChance);
+// 		CrackdownRoll = Rand(100);
+// 		`LOG("Crackdown Roll (1-100): " $ CrackdownRoll);
+
+// 		if (CrackdownRoll < PercentageCrackdownChance)
+// 		{
+		
+// 			CrackdownSitrepAdded = GrabRandomCrackdownSitrep();
+// 			`LOG("Added crackdown " $ CrackdownSitrepAdded $ " to mission " $ GeneratedMission.Mission.MissionFamily $ ":" $ GeneratedMission.BattleOpName);
+// 			GeneratedMission.SitReps.AddItem(CrackdownSitrepAdded);
+// 		}
+// 		else
+// 		{
+// 			`LOG("Elected not to use crackdown sitrep on eligible mission.");
+// 		}
+// 	}else{
+// 		`LOG("Mission type excluded from crackdown due to being " $ MissionSource);
+// 	}
+
+// }
+
+static function AddSitrepToMissionSourceIfResistanceCardsActive(
+name ResCard,
+name Sitrep,
+name RequiredMissionSource,
+XComGameState_MissionSite MissionState,
+out GeneratedMissionData GeneratedMission
+)
+{
+	if (GeneratedMission.SitReps.Find(Sitrep) != -1){
+		return;
+	}
+
+	if (class'Helpers_LW'.static.IsResistanceOrderActive(ResCard))
+	{
+		if (RequiredMissionSource == MissionState.GetMissionSource().DataName)
+		{
+			GeneratedMission.SitReps.AddItem(Sitrep);
+			return;
+		}
+	}
+}
+
+
+static function bool IsRetaliation(string MissionFamily){
+	return MissionFamily == "Terror" || MissionFamily == "Retaliation" || MissionFamily == "ChosenRetaliation";
+}
+
+
+static function bool IsMissionFamily(
+GeneratedMissionData MissionStruct, name MissionFamilyId)
+{
+	return MissionStruct.Mission.MissionFamily == string(MissionFamilyId);
+}
+
 
 // Diversify pod makeup, especially with all-alien pods which typically consist
 // of the same alien unit. This also makes a few other adjustments to pods.
@@ -669,13 +902,13 @@ static function PostEncounterCreation(out name EncounterName, out PodSpawnInfo S
 	// override native insisting every mission have a codex while certain tactical options are active
 	XCOMHQ = XComGameState_HeadquartersXCom(`XCOMHistory.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersXCom', true));
 
-	// Swap out forced Codices on regular encounters
-	if (SpawnInfo.SelectedCharacterTemplateNames[0] == 'Cyberus' && InStr (EncounterName,"PROTECTED") == -1 && EncounterName != 'LoneCodex')
-	{
-		swap = true;
-		SpawnInfo.SelectedCharacterTemplateNames[0] = SelectNewPodLeader(SpawnInfo, ForceLevel, LeaderSpawnList);
-		`LWTRACE ("Swapping Codex leader for" @ SpawnInfo.SelectedCharacterTemplateNames[0]);
-	}
+	// // Swap out forced Codices on regular encounters
+	// if (SpawnInfo.SelectedCharacterTemplateNames[0] == 'Cyberus' && InStr (EncounterName,"PROTECTED") == -1 && EncounterName != 'LoneCodex')
+	// {
+	// 	swap = true;
+	// 	SpawnInfo.SelectedCharacterTemplateNames[0] = SelectNewPodLeader(SpawnInfo, ForceLevel, LeaderSpawnList);
+	// 	`LWTRACE ("Swapping Codex leader for" @ SpawnInfo.SelectedCharacterTemplateNames[0]);
+	// }
 
 	// forces special conditions for avatar to pop
 	if (SpawnInfo.SelectedCharacterTemplateNames[0] == 'AdvPsiWitchM3')
@@ -1314,6 +1547,26 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 				Data.Template = AbilityTemplate;
 				SetupData.AddItem(Data);
 			}
+			if (class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('ReinforcedUnderlay2'))
+			{
+				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('ReinforcedUnderlay2');
+
+				Data = EmptyData;
+				Data.TemplateName = 'ReinforcedUnderlay2';
+				Data.Template = AbilityTemplate;
+				SetupData.AddItem(Data);
+			}
+			if (class'X2EventListener_Tactical'.static.IsProvingGroundProjectResearched('ReinforcedUnderlay1'))
+			{
+				AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate('ReinforcedUnderlay1');
+
+				Data = EmptyData;
+				Data.TemplateName = 'ReinforcedUnderlay1';
+				Data.Template = AbilityTemplate;
+				SetupData.AddItem(Data);
+			}
+			
+
 			break;
 			
 
@@ -1452,7 +1705,7 @@ static function bool UnitTypeShouldBeCleanedUp(XComGameState_Unit UnitState)
 	if (class'LWDLCHelpers'.static.IsAlienRuler(CharTemplateName)) { return false; }
 	if (!CharTemplate.bIsSoldier)
 	{
-		if (CharTemplate.bIsAlien || CharTemplate.bIsAdvent || CharTemplate.bIsCivilian)
+		if (CharTemplate.bIsAlien || CharTemplate.bIsAdvent || CharTemplate.bIsCivilian || CharTemplate.DataName == 'CivilianMilitia')
 		{
 			ExcludeIdx = default.CharacterTypesExemptFromCleanup.Find(CharTemplateName);
 			if (ExcludeIdx == -1)
@@ -1970,6 +2223,58 @@ static function DisableUnwantedObjectives(XComGameState StartState)
 			break;
 		default:
 			break;
+		}
+	}
+}
+
+
+static function SetupContinentBonuses(XComGameState StartState)
+{
+	local XComGameState_Continent ContinentState;
+
+	local XComGameState_StrategyCard CardState;
+
+	foreach StartState.IterateByClassType(class'XComGameState_Continent', ContinentState)
+	{
+		foreach StartState.IterateByClassType(class'XComGameState_StrategyCard', CardState)
+		{
+			if (ContinentState.GetMyTemplateName() == 'Continent_NorthAmerica' && CardState.GetMyTemplateName() == 'ResCard_InsideJobI')
+			{
+				ContinentState.ContinentBonusCard = CardState.GetReference();
+				CardState.bDrawn = true;
+			}
+			else if (ContinentState.GetMyTemplateName() == 'Continent_SouthAmerica' && CardState.GetMyTemplateName() == 'ResCard_UnderTheTableI')
+			{
+				ContinentState.ContinentBonusCard = CardState.GetReference();
+				CardState.bDrawn = true;
+			}
+			else if (ContinentState.GetMyTemplateName() == 'Continent_Africa' && CardState.GetMyTemplateName() == 'ResCard_HiddenReservesI')
+			{
+				ContinentState.ContinentBonusCard = CardState.GetReference();
+				CardState.bDrawn = true;
+			}
+			else if (ContinentState.GetMyTemplateName() == 'Continent_Asia' && CardState.GetMyTemplateName() == 'ResCard_PursuitOfKnowledge')
+			{
+				ContinentState.ContinentBonusCard = CardState.GetReference();
+				CardState.bDrawn = true;
+			}
+			else if (ContinentState.GetMyTemplateName() == 'Continent_Oceania' && CardState.GetMyTemplateName() == 'ResCard_ResUnitIfRetaliation')
+			{
+				ContinentState.ContinentBonusCard = CardState.GetReference();
+				CardState.bDrawn = true;
+			}
+			else if (ContinentState.GetMyTemplateName() == 'Continent_Europe' && CardState.GetMyTemplateName() == 'ResCard_MassivePopularity')
+			{
+				ContinentState.ContinentBonusCard = CardState.GetReference();
+				CardState.bDrawn = true;
+			}
+// Continents=Continent_NorthAmerica
+// Continents=Continent_SouthAmerica
+// Continents=Continent_Europe
+// Continents=Continent_Asia
+// Continents=Continent_Africa
+// Continents=Continent_Oceania
+
 		}
 	}
 }
@@ -3072,6 +3377,10 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 		case 'CHAIN_LIGHTNING_AIM_MOD_LW':
 			Outstring = string(class'X2Ability_LW_AssaultAbilitySet'.default.CHAIN_LIGHTNING_AIM_MOD);
 			return true;
+		case 'KNIFE_FIGHTER_TILE_RANGE':
+			Outstring = string(class'X2Ability_LW_GunnerAbilitySet'.default.KNIFE_FIGHTER_TILE_RANGE);
+			return true;
+
 		case 'STUNGUNNER_BONUS_CV_LW':
 			Outstring = string(class'X2Effect_StunGunner'.default.STUNGUNNER_BONUS_CV);
 			return true;

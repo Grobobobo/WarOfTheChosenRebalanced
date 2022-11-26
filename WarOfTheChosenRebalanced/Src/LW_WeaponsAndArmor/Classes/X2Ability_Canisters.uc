@@ -88,7 +88,7 @@ static function X2AbilityTemplate MedicCanisterPassive()
 {
 	local X2AbilityTemplate				Template;
 	local X2Effect_TeamSpiritBonusCharges					AmmoEffect;
-	local X2Effect_Regeneration			RegenEffect;
+	//local X2Effect_Regeneration			RegenEffect;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'LWMedicCanisterPassive');
 
@@ -112,15 +112,15 @@ static function X2AbilityTemplate MedicCanisterPassive()
 	AmmoEffect.AbilityName = 'LWMedispray';
 	Template.AddTargetEffect(AmmoEffect);
 
-	RegenEffect = new class'X2Effect_Regeneration';
-	RegenEffect.BuildPersistentEffect(1, true, false, false, eGameRule_PlayerTurnBegin);
-	RegenEffect.HealAmount = default.MedicCanister_PerTurnSelfRegen;
-	RegenEffect.MaxHealAmount = default.MedicCanister_MaxSelfRegen;
-	RegenEffect.HealthRegeneratedName = 'MedicCanister_SelfRegen';
-	RegenEffect.EffectName = 'MedicCanister_SelfRegen';
-	RegenEffect.bRemoveWhenTargetDies = true;
-	RegenEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true, , Template.AbilitySourceName);
-	Template.AddTargetEffect(RegenEffect);
+	// RegenEffect = new class'X2Effect_Regeneration';
+	// RegenEffect.BuildPersistentEffect(1, true, false, false, eGameRule_PlayerTurnBegin);
+	// RegenEffect.HealAmount = default.MedicCanister_PerTurnSelfRegen;
+	// RegenEffect.MaxHealAmount = default.MedicCanister_MaxSelfRegen;
+	// RegenEffect.HealthRegeneratedName = 'MedicCanister_SelfRegen';
+	// RegenEffect.EffectName = 'MedicCanister_SelfRegen';
+	// RegenEffect.bRemoveWhenTargetDies = true;
+	// RegenEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true, , Template.AbilitySourceName);
+	// Template.AddTargetEffect(RegenEffect);
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = none;
@@ -1085,6 +1085,8 @@ static function X2AbilityTemplate SmokeCanisterActivate()
 
 	Template.PostActivationEvents.AddItem('ChemthrowerActivated');
 	Template.PostActivationEvents.AddItem('ChemthrowerCanisterActivated');
+	Template.PostActivationEvents.AddItem('SmokeCanisterActivated');
+	Template.AdditionalAbilities.AddItem('Burnout');
 
 	Template.SuperConcealmentLoss = 0;
 

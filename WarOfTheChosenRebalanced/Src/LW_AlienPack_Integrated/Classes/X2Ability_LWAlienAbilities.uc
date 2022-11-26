@@ -74,6 +74,16 @@ var config int SIDEWINDER_FOCUS3CRIT;
 
 var config float SHOGGOTH_SPAWN_CHANCE_PER_HIT;
 
+var config int ALIEN_AGGRESSION_MOBILITY_BUFF;
+var config int ALIEN_AGGRESSION_LEADER_DAMAGE_BUFF;
+var config float ALIEN_AGGRESSION_LEADER_AIM_BUFF;
+var config float ALIEN_AGGRESSION_LEADER_HP_BUFF;
+
+var config int ALIEN_AGGRESSION_AIM_BUFF;
+var config int ALIEN_AGGRESSION_DMG_BUFF;
+var config int ALIEN_AGGRESSION_HP_BUFF;
+
+
 var localized string strBayonetChargePenalty;
 
 var localized string HunterMarkAdventEffectName;
@@ -129,6 +139,13 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateHunterMarkAdvent());
 	Templates.AddItem(CreateStunLanceCharge());
 	Templates.AddItem(CreateChangeForm_Shoggoth_Ability());
+	Templates.AddItem(CreateNeonateSlashAbility());
+
+	Templates.AddItem(CreateLeaderBuffEffect());
+	Templates.AddItem(CreateAlienHitBuffEffect());
+	Templates.AddItem(CreateAlienDMGBuffEffect());
+
+	
 	return Templates;
 }
 
@@ -656,7 +673,7 @@ static function X2DataTemplate CreateDroneHealAbility()
 	RemoveEffects = new class'X2Effect_RemoveEffectsByDamageType';
 	RemoveEffects.DamageTypesToRemove.AddItem('Fire');
 	RemoveEffects.DamageTypesToRemove.AddItem('Poison');
-	RemoveEffects.DamageTypesToRemove.AddItem('PathogenicPoison');
+	RemoveEffects.DamageTypesToRemove.AddItem(class'X2Effect_ParthenogenicPoison'.default.ParthenogenicPoisonType);
 	RemoveEffects.DamageTypesToRemove.AddItem('Acid');
 	RemoveEffects.DamageTypesToRemove.AddItem('Bleeding');
 	Template.AddTargetEffect(RemoveEffects);
@@ -1594,6 +1611,143 @@ static function X2AbilityTemplate CreateLostHPBuff()
 	return Template;
 }
 
+static function X2AbilityTemplate CreateLeaderBuffEffect()
+{
+	local X2AbilityTemplate					Template;
+	local X2AbilityTarget_Self	TargetStyle;
+	local X2Effect_PersistentStatChange LeaderStatBuff;
+	local X2Effect_BonusWeaponDOT		DamageEffect;
+	local X2AbilityTrigger_UnitPostBeginPlay	Trigger;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'LeaderBuff');
+	Template.AbilitySourceName = 'eAbilitySource_Standard';
+	Template.IconImage = "img:///Texture2D'UILibrary_LWAlienPack.LWCenturion_AbilityWarCry64'";
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;
+	Template.Hostility = eHostility_Neutral;
+
+	Template.AbilityToHitCalc = default.Deadeye;
+
+	TargetStyle = new class 'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Trigger.Priority -= 20; // delayed so that Full Kit happen first
+	Template.AbilityTriggers.AddItem(Trigger);
+
+	LeaderStatBuff = new class'X2Effect_PersistentStatChange';
+	LeaderStatBuff.AddPersistentStatChange(eStat_HP, default.ALIEN_AGGRESSION_LEADER_HP_BUFF, MODOP_PostMultiplication);
+	LeaderStatBuff.AddPersistentStatChange(eStat_Offense, float(default.ALIEN_AGGRESSION_AIM_BUFF));
+	LeaderStatBuff.AddPersistentStatChange(eStat_Mobility, float(default.ALIEN_AGGRESSION_MOBILITY_BUFF));
+	LeaderStatBuff.BuildPersistentEffect(1, true, false, false);
+	LeaderStatBuff.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
+	Template.AddTargetEffect(LeaderStatBuff);
+	Template.bCrossClassEligible = true;
+
+	//Template.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, default.COMBAT_FITNESS_HP);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.AimLabel, eStat_Offense, default.ALIEN_AGGRESSION_AIM_BUFF);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.ALIEN_AGGRESSION_MOBILITY_BUFF);
+
+	DamageEffect = new class'X2Effect_BonusWeaponDOT';
+	DamageEffect.BonusDmg = default.ALIEN_AGGRESSION_LEADER_DAMAGE_BUFF;
+	// Apply to burning tick effects like the description says it should
+	DamageEffect.ApplyToNonBaseDamage = true;
+	DamageEffect.BuildPersistentEffect(1, true, false, false);
+	DamageEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
+	Template.AddTargetEffect(DamageEffect);
+
+
+	Template.bSkipFireAction = true;
+	Template.bShowActivation = false;
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	return Template;
+}
+
+
+static function X2AbilityTemplate CreateAlienHitBuffEffect()
+{
+	local X2AbilityTemplate					Template;
+	local X2AbilityTarget_Self	TargetStyle;
+	local X2Effect_PersistentStatChange	StatEffect;
+	local X2AbilityTrigger_UnitPostBeginPlay	Trigger;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'AlienHitBuff');
+	Template.AbilitySourceName = 'eAbilitySource_Standard';
+	Template.IconImage = "img:///Texture2D'UILibrary_LWAlienPack.LWCenturion_AbilityWarCry64'";
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;
+	Template.Hostility = eHostility_Neutral;
+
+	Template.AbilityToHitCalc = default.Deadeye;
+
+	TargetStyle = new class 'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Trigger.Priority -= 20; // delayed so that Full Kit happen first
+	Template.AbilityTriggers.AddItem(Trigger);
+
+	StatEffect = new class'X2Effect_PersistentStatChange';
+	StatEffect.AddPersistentStatChange(eStat_Offense, float(default.ALIEN_AGGRESSION_AIM_BUFF));
+	StatEffect.AddPersistentStatChange(eStat_HP, default.ALIEN_AGGRESSION_HP_BUFF, MODOP_PostMultiplication);
+	StatEffect.BuildPersistentEffect(1, true, false, false);
+	StatEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
+	Template.AddTargetEffect(StatEffect);
+	Template.bCrossClassEligible = true;
+
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.AimLabel, eStat_Offense, default.ALIEN_AGGRESSION_AIM_BUFF);
+
+	Template.bSkipFireAction = true;
+	Template.bShowActivation = false;
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	return Template;
+}
+
+static function X2AbilityTemplate CreateAlienDMGBuffEffect()
+{
+	local X2AbilityTemplate					Template;
+	local X2Effect_BonusWeaponDOT				DamageEffect;
+	local X2AbilityTarget_Self	TargetStyle;
+	local X2AbilityTrigger_UnitPostBeginPlay	Trigger;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'AlienDMGBuff');
+	Template.AbilitySourceName = 'eAbilitySource_Standard';
+	Template.IconImage = "img:///Texture2D'UILibrary_LWAlienPack.LWCenturion_AbilityWarCry64'";
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;
+	Template.Hostility = eHostility_Neutral;
+
+	Template.AbilityToHitCalc = default.Deadeye;
+
+	TargetStyle = new class 'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Trigger.Priority -= 20; // delayed so that Full Kit happen first
+	Template.AbilityTriggers.AddItem(Trigger);
+
+	DamageEffect = new class'X2Effect_BonusWeaponDOT';
+	DamageEffect.BonusDmg = default.ALIEN_AGGRESSION_LEADER_DAMAGE_BUFF;
+	// Apply to burning tick effects like the description says it should
+	DamageEffect.ApplyToNonBaseDamage = true;
+	DamageEffect.BuildPersistentEffect(1, true, false, false);
+	DamageEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
+	Template.AddTargetEffect(DamageEffect);
+
+
+//	Template.SetUIStatMarkup(class'XLocalizedData'.default.AimLabel, eStat_Offense, default.ALIEN_AGGRESSION_AIM_BUFF);
+
+	Template.bSkipFireAction = true;
+	Template.bShowActivation = false;
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	return Template;
+}
 
 static function X2AbilityTemplate AddNewKillSiredZombies()
 {
@@ -2061,7 +2215,7 @@ static function X2Effect_HunterMarkAdvent HunterMarkAdventEffect()
 	AbilityTag = X2AbilityTag(`XEXPANDCONTEXT.FindTag("Ability"));
 	AbilityTag.ParseObj = Effect;
 
-	Effect.SetDisplayInfo(ePerkBuff_Penalty, default.HunterMarkAdventEffectName, `XEXPAND.ExpandString(default.HunterMarkAdventEffectDesc), "img:///WoTCAdventPathfinderCaptain_UI.Perks.UIPerk_advent_HunterShot", true);
+	Effect.SetDisplayInfo(ePerkBuff_Penalty, default.HunterMarkAdventEffectName, `XEXPAND.ExpandString(default.HunterMarkAdventEffectDesc), "img:///LWAdventPathfinderCaptain_UI.Perks.UIPerk_advent_HunterShot", true);
 
 	AbilityCondition = new class'X2Condition_AbilityProperty';
 	AbilityCondition.OwnerHasSoldierAbilities.AddItem('HunterMarkAdvent');
@@ -2143,7 +2297,6 @@ static function X2AbilityTemplate CreateChangeForm_Shoggoth_Ability()
 
 static function EventListenerReturn ShoggothListener(Object EventData, Object EventSource, XComGameState GameState, Name Event, Object CallbackData)
 {
-	local XComGameState_Ability AbilityState;
 	local int Roll;
 	local XComGameStateContext_Ability AbilityContext;
 	local XComGameState_Ability TriggerAbilityState;
@@ -2156,15 +2309,13 @@ static function EventListenerReturn ShoggothListener(Object EventData, Object Ev
 
 	TargetUnit = XComGameState_Unit(`XCOMHISTORY.GetGameStateForObjectID(AbilityContext.InputContext.PrimaryTarget.ObjectID,,GameState.GetContext().GetFirstStateInEventChain().HistoryIndex - 1));
 
-	AbilityState = XComGameState_Ability(CallbackData);
-
 	Roll = `SYNC_RAND_STATIC(100);
 
 	Chance = default.SHOGGOTH_SPAWN_CHANCE_PER_HIT * TargetUnit.GetCurrentStat(eStat_HP) / TargetUnit.GetMaxStat(eStat_HP);
 
-	if( Roll < default.SHOGGOTH_SPAWN_CHANCE_PER_HIT)
+	if( Roll < Chance)
 	{
-		return AbilityState.AbilityTriggerEventListener_Self(EventData, EventSource, GameState, Event, CallbackData);
+		return TriggerAbilityState.AbilityTriggerEventListener_Self(EventData, EventSource, GameState, Event, CallbackData);
 	}
 }
 
@@ -2227,4 +2378,69 @@ simulated function ChangeForm_Shoggoth_BuildVisualization(XComGameState Visualiz
 	}
 
 	SpawnFacelessEffect.AddSpawnVisualizationsToTracks(Context, SpawnedUnit, FacelessTrack, CivilianUnit, CivilianTrack);
+}
+
+
+static function X2AbilityTemplate CreateNeonateSlashAbility(optional Name AbilityName = 'NeonateChryssalidSlash')
+{
+	local X2AbilityTemplate Template;
+	local X2AbilityCost_ActionPoints ActionPointCost;
+	local X2AbilityToHitCalc_StandardMelee MeleeHitCalc;
+	local X2Condition_UnitProperty UnitPropertyCondition;
+	local X2Effect_ApplyWeaponDamage PhysicalDamageEffect;
+	local X2AbilityTarget_MovingMelee MeleeTarget;
+	local array<name> SkipExclusions;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, AbilityName);
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_chryssalid_slash";
+	Template.Hostility = eHostility_Offensive;
+	Template.AbilitySourceName = 'eAbilitySource_Standard';
+
+	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.iNumPoints = 1;
+	ActionPointCost.bConsumeAllPoints = true;
+	Template.AbilityCosts.AddItem(ActionPointCost);
+
+	MeleeHitCalc = new class'X2AbilityToHitCalc_StandardMelee';
+	Template.AbilityToHitCalc = MeleeHitCalc;
+
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	
+	// May slash if the unit is burning or disoriented
+	SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.DisorientedName);
+	SkipExclusions.AddItem(class'X2StatusEffects'.default.BurningName);
+	Template.AddShooterEffectExclusions(SkipExclusions);
+
+	UnitPropertyCondition = new class'X2Condition_UnitProperty';
+	UnitPropertyCondition.ExcludeDead = true;
+	UnitPropertyCondition.ExcludeFriendlyToSource = true; // Disable this to allow civilians to be attacked.
+	UnitPropertyCondition.ExcludeCivilian = true; //Neonates leave the food to mommy
+	UnitPropertyCondition.ExcludeSquadmates = true;		   // Don't attack other AI units.
+	Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);
+	
+	Template.AbilityTargetConditions.AddItem(default.MeleeVisibilityCondition);
+
+	PhysicalDamageEffect = new class'X2Effect_ApplyWeaponDamage';
+	PhysicalDamageEffect.EffectDamageValue.DamageType = 'Melee';
+	Template.AddTargetEffect(PhysicalDamageEffect);
+
+	MeleeTarget = new class'X2AbilityTarget_MovingMelee';
+	MeleeTarget.MovementRangeAdjustment = 0;
+	Template.AbilityTargetStyle = MeleeTarget;
+	Template.TargetingMethod = class'X2TargetingMethod_MeleePath';
+
+	Template.AbilityTriggers.AddItem(new class'X2AbilityTrigger_PlayerInput');
+	Template.AbilityTriggers.AddItem(new class'X2AbilityTrigger_EndOfMove');
+
+	Template.CustomFireAnim = 'FF_Melee';
+	Template.bSkipMoveStop = true;
+	Template.BuildNewGameStateFn = TypicalMoveEndAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	Template.BuildInterruptGameStateFn = TypicalMoveEndAbility_BuildInterruptGameState;
+	Template.CinescriptCameraType = "Chryssalid_PoisonousClaws";
+
+	Template.LostSpawnIncreasePerUse = class'X2AbilityTemplateManager'.default.MeleeLostSpawnIncreasePerUse;
+	Template.bFrameEvenWhenUnitIsHidden = true;
+
+	return Template;
 }

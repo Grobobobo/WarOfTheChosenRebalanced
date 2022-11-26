@@ -574,3 +574,9 @@ strDisabledPrecisionExplosivesTooltip="L'opzione Esplosivi di Precisione è disa
 strCovertActionFailed="FALLITA"
 
 ; End Translation
+
+[BitterfrostHelper]
+ChillEffectName="Chilled"
+ChillEffectDesc="Mobility and Dodge reduced."
+BitterChillEffectName="Bitter Chilled"
+BitterChillEffectDesc="Mobility reduced and unable to dodge. Vulnerable to freezing."

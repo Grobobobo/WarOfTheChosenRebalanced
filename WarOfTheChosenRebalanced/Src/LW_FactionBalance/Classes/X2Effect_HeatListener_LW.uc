@@ -208,8 +208,8 @@ function GetToHitModifiers(XComGameState_Effect EffectState, XComGameState_Unit 
 
 
 
-	if (AbilityState.SourceWeapon == EffectState.ApplyEffectParameters.ItemStateObjectRef)
-	{
+	// if (AbilityState.SourceWeapon == EffectState.ApplyEffectParameters.ItemStateObjectRef)
+	// {
 
 		Attacker.GetUnitValue(class'X2Ability_SkirmisherAbilitySet_LW'.default.HEATSINK_CURRENT_NAME, HeatLevelValue);
 		BonusCritAmount = class'X2Ability_SkirmisherAbilitySet_LW'.default.HEATSINK_CRIT_CHANCE_BONUS * HeatLevelValue.fValue;
@@ -228,7 +228,7 @@ function GetToHitModifiers(XComGameState_Effect EffectState, XComGameState_Unit 
 			ShotModifiers.AddItem(ShotInfo);
 		}
 
-	}
+//	}
 }
 
 

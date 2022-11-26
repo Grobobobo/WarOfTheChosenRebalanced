@@ -5,7 +5,12 @@
 //--------------------------------------------------------------------------------------- 
 class X2Item_ResistanceMECWeapons extends X2Item config(GameData_WeaponData);
 
-var config WeaponDamageValue ResistanceMEC_MicroMissiles_BaseDamage;
+var config WeaponDamageValue RESISTANCEMEC_MICROMISSILES_BASEDAMAGE;
+var config WeaponDamageValue RESISTANCEMECM2_MICROMISSILES_BASEDAMAGE;
+var config WeaponDamageValue RESISTANCEMECM3_MICROMISSILES_BASEDAMAGE;
+var config WeaponDamageValue RESISTANCEMECM4_MICROMISSILES_BASEDAMAGE;
+var config WeaponDamageValue RESISTANCEMECM5_MICROMISSILES_BASEDAMAGE;
+
 var config int ResistanceMEC_MicroMissiles_Clipsize;
 var config int ResistanceMEC_MicroMissiles_EnvironmentDamage;
 var config int ResistanceMEC_MicroMissiles_RANGE;
@@ -16,16 +21,20 @@ static function array<X2DataTemplate> CreateTemplates()
 	
 	`LWTrace("  >> X2Item_ResistanceMECWeapons.CreateTemplates()");
 	
-	Templates.AddItem(CreateTemplate_ResistanceMEC_Shoulder_WPN());
+	Templates.AddItem(CreateTemplate_ResistanceMEC_Shoulder_WPN('ResistanceMEC_Shoulder_WPN', default.RESISTANCEMEC_MICROMISSILES_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_ResistanceMEC_Shoulder_WPN('ResistanceMECM2_Shoulder_WPN', default.RESISTANCEMECM2_MICROMISSILES_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_ResistanceMEC_Shoulder_WPN('ResistanceMECM3_Shoulder_WPN', default.RESISTANCEMECM3_MICROMISSILES_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_ResistanceMEC_Shoulder_WPN('ResistanceMECM4_Shoulder_WPN', default.RESISTANCEMECM4_MICROMISSILES_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_ResistanceMEC_Shoulder_WPN('ResistanceMECM5_Shoulder_WPN', default.RESISTANCEMECM5_MICROMISSILES_BASEDAMAGE));
 
 	return Templates;
 }
 
-static function X2DataTemplate CreateTemplate_ResistanceMEC_Shoulder_WPN()
+static function X2DataTemplate CreateTemplate_ResistanceMEC_Shoulder_WPN(name TemplateName, WeaponDamageValue Damage)
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'ResistanceMEC_Shoulder_WPN');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	
 	Template.WeaponPanelImage = "_ConventionalRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.ItemCat = 'weapon';
@@ -35,7 +44,7 @@ static function X2DataTemplate CreateTemplate_ResistanceMEC_Shoulder_WPN()
 	Template.RemoveTemplateAvailablility(Template.BITFIELD_GAMEAREA_Multiplayer); //invalidates multiplayer availability
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.FLAT_CONVENTIONAL_RANGE;
-	Template.BaseDamage = default.ResistanceMEC_MicroMissiles_BaseDamage;
+	Template.BaseDamage = Damage;
 	Template.iClipSize = default.ResistanceMEC_MicroMissiles_Clipsize;
 	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.ResistanceMEC_MicroMissiles_EnvironmentDamage;

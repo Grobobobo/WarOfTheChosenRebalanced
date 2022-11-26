@@ -63,7 +63,7 @@ Attachments have been rebalanced to:
 * Laser sight - Gain 10 crit and reduce the short range penalties for weapons by 67%
 
 * Hair trigger - After a miss, gain +25 aim and crit
-* Stock - Missed attacks have a 35% chance to become a graze. Your attacks ignore up to 15 dodge
+* Stock - Missed attacks have a 35% chance to become a graze. Your attacks ignore up to 10 dodge
 
 * Expended magazine - Gain +1 weapon capacity
 * Auto-loader - Grants quick reload - Reloads up to 2 ammo, non-turn ending

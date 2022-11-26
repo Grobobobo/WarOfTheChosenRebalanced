@@ -31,11 +31,40 @@ function float GetPostDefaultDefendingDamageModifier_CH(
 
 	DamageReduction = (MaxDR - DrPenalty) > 0 ? MaxDR - DrPenalty : 0.0f;
 
-
-
     return -CurrentDamage * DamageReduction;
 }
 
+
+function float GetPostDefaultAttackingDamageModifier_CH(
+	XComGameState_Effect EffectState,
+	XComGameState_Unit SourceUnit,
+	Damageable Target,
+	XComGameState_Ability AbilityState,
+	const out EffectAppliedData ApplyEffectParameters,
+	float WeaponDamage,
+	X2Effect_ApplyWeaponDamage WeaponDamageEffect,
+	XComGameState NewGameState)
+{
+	local int Tiles;
+	local float TilesPenalty;
+	local float DamageIncrease;
+	local float DamagePenalty;
+	local XComGameState_Unit TargetUnit;
+
+	TargetUnit = XComGameState_Unit(Target);
+	if (AbilityState.SourceWeapon == EffectState.ApplyEffectParameters.ItemStateObjectRef && TargetUnit != none) 
+	{
+		Tiles = SourceUnit.TileDistanceBetween(TargetUnit);
+
+		TilesPenalty = AbilityState.IsMeleeAbility()? 0 : Max(Tiles-1,0);
+
+		DamagePenalty = TilesPenalty * DRPerTile;
+
+		DamageIncrease = (MaxDR - DamagePenalty) > 0 ? MaxDR - DamagePenalty : 0.0f;
+    }
+
+	return WeaponDamage * DamageIncrease;
+}
 defaultproperties
 {
 	DuplicateResponse=eDupe_Ignore

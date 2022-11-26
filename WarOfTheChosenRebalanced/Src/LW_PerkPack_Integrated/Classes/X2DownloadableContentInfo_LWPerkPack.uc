@@ -182,6 +182,9 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 		case 'WTS_COVER_DR_PCT':
 			Outstring = string(int(class'X2Ability_PerkPackAbilitySet'.default.WTS_COVER_DR_PCT * 100));
 			return true;
+		case 'WTS_FLAT_DR':
+			Outstring = string(class'X2Ability_PerkPackAbilitySet'.default.WTS_FLAT_DR);
+			return true;
 		case 'WTS_WOUND_REDUCTION':
 			Outstring = string(int(class'X2Ability_PerkPackAbilitySet'.default.WTS_WOUND_REDUCTION * 100));
 			return true;
@@ -329,6 +332,9 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 		case 'ZONE_CONTROL_AIM_PENALTY':
 			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.ZONE_CONTROL_AIM_PENALTY);
 			return true;
+		case 'ZONE_CONTROL_CRIT_PENALTY':
+			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.ZONE_CONTROL_CRIT_PENALTY);
+			return true;
 		case 'ZONE_CONTROL_MOBILITY_PENALTY':
 			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.ZONE_CONTROL_MOBILITY_PENALTY);
 			return true;
@@ -460,6 +466,12 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 			return true;
 		case 'IRT_DODGE_PER_TILE':
 			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.IRT_DODGE_PER_TILE);
+			return true;
+		case 'SECTICIDE_WILL_REDUCTION':
+			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.SECTICIDE_WILL_REDUCTION);
+			return true;
+		case 'SECTICIDE_PSIOFFENSE_REDUCTION':
+			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.SECTICIDE_PSIOFFENSE_REDUCTION);
 			return true;
 		case 'BRAWLER_DR_PCT':
 			OutString = string(int(class'X2Effect_Brawler'.default.BRAWLER_DR_PCT));

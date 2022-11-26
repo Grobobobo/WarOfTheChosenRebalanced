@@ -17,6 +17,11 @@ var config int QUICK_RELOAD_COOLDOWN;
 var config int TURRETFALL_COOLDOWN;
 var config int TURRETFALL_INITIAL_CHARGES;
 var config int TURRETFALL_EXTRA_CHARGES;
+
+var config int AXE_RULER_AIM_BONUS;
+var config int REINFORCED_UNDERLAY_1_ABLATIVE;
+var config int REINFORCED_UNDERLAY_2_ABLATIVE;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -35,6 +40,14 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddReloadnoAnimAbility());
 	Templates.AddItem(OutOfAmmoFlyover());
 	Templates.AddItem(AddPlaceTurretAbility());
+	Templates.AddItem(AddMedikitSelfHeal('MedikitSelfHeal', class'X2Ability_DefaultAbilitySet'.default.MEDIKIT_PERUSEHP));
+	Templates.AddItem(AddMedikitSelfHeal('NanoMedikitSelfHeal', class'X2Ability_DefaultAbilitySet'.default.NANOMEDIKIT_PERUSEHP));
+	Templates.AddItem(Vengeance_LW());
+	Templates.AddItem(BoltCasterPassive());
+	Templates.AddItem(HuntersAxePassive());
+	Templates.AddItem(HuntersPistolPassive());
+	Templates.AddItem(ShadowFallTrigger());
+
 	
 	return Templates;
 }
@@ -408,9 +421,9 @@ static function X2AbilityTemplate AddReinforcedUnderlay1()
 	//
 	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
 	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
-	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, 1);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.REINFORCED_UNDERLAY_1_ABLATIVE);
 	Template.AddTargetEffect(PersistentStatChangeEffect);
-	Template.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 1);
+	Template.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, default.REINFORCED_UNDERLAY_1_ABLATIVE);
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	//  NOTE: No visualization on purpose!
@@ -442,10 +455,10 @@ static function X2AbilityTemplate AddReinforcedUnderlay1()
 	//
 	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
 	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
-	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, 1);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.REINFORCED_UNDERLAY_2_ABLATIVE);
 	Template.AddTargetEffect(PersistentStatChangeEffect);
 
-	Template.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 1);
+	Template.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, default.REINFORCED_UNDERLAY_2_ABLATIVE);
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	//  NOTE: No visualization on purpose!
@@ -933,3 +946,413 @@ simulated function SpawnTurret_BuildVisualization(XComGameState VisualizeGameSta
 	AnimationAction.Params.AnimName = 'NO_Activate_XcomA';		//	E3245 CHANGE ANIMATION NAME HERE IF YOU WANT YOUR FILTHY MITV
 	AnimationAction.Params.BlendTime = 0.0f;
 }
+
+
+static function X2AbilityTemplate AddMedikitSelfHeal(name AbilityName, int HealAmount)
+{
+	local X2AbilityTemplate                 Template;
+	local X2AbilityCost_Ammo                AmmoCost;
+	local X2AbilityCost_ActionPoints        ActionPointCost;
+	local X2AbilityPassiveAOE_SelfRadius	PassiveAOEStyle;
+	local X2Condition_UnitProperty          UnitPropertyCondition;
+	local X2AbilityTrigger_PlayerInput      InputTrigger;
+	local X2Effect_ApplyMedikitHeal         MedikitHeal;
+	local X2Effect_RemoveEffectsByDamageType RemoveEffects;
+	local array<name>                       SkipExclusions;
+	local name                              HealType;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, AbilityName);
+
+	AmmoCost = new class'X2AbilityCost_Ammo';
+	AmmoCost.iAmmo = 1;
+	AmmoCost.bReturnChargesError = true;
+	Template.AbilityCosts.AddItem(AmmoCost);
+
+	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.iNumPoints = 1;
+	ActionPointCost.bConsumeAllPoints = true;
+	Template.AbilityCosts.AddItem(ActionPointCost);
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+
+	PassiveAOEStyle = new class'X2AbilityPassiveAOE_SelfRadius';
+	PassiveAOEStyle.OnlyIncludeTargetsInsideWeaponRange = true;
+	Template.AbilityPassiveAOEStyle = PassiveAOEStyle;
+
+	UnitPropertyCondition = new class'X2Condition_UnitProperty';
+	UnitPropertyCondition.ExcludeDead = true;
+	Template.AbilityShooterConditions.AddItem(UnitPropertyCondition);
+
+	SkipExclusions.AddItem(class'X2StatusEffects'.default.BurningName);
+	Template.AddShooterEffectExclusions(SkipExclusions);
+
+	UnitPropertyCondition = new class'X2Condition_UnitProperty';
+	UnitPropertyCondition.ExcludeDead = true;
+	UnitPropertyCondition.ExcludeHostileToSource = true;
+	UnitPropertyCondition.ExcludeFriendlyToSource = false;
+	UnitPropertyCondition.ExcludeFullHealth = true;
+	UnitPropertyCondition.ExcludeRobotic = true;
+	Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);
+
+	MedikitHeal = new class'X2Effect_ApplyMedikitHeal';
+	MedikitHeal.PerUseHP = HealAmount;
+	Template.AddTargetEffect(MedikitHeal);
+
+	RemoveEffects = new class'X2Effect_RemoveEffectsByDamageType';
+	foreach default.MedikitHealEffectTypes(HealType)
+	{
+		RemoveEffects.DamageTypesToRemove.AddItem(HealType);
+	}
+	Template.AddTargetEffect(RemoveEffects);
+
+	InputTrigger = new class'X2AbilityTrigger_PlayerInput';
+	Template.AbilityTriggers.AddItem(InputTrigger);
+
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_medkit";
+	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.MEDIKIT_HEAL_PRIORITY;
+	Template.bUseAmmoAsChargesForHUD = true;
+	Template.Hostility = eHostility_Defensive;
+	Template.bDisplayInUITooltip = false;
+	Template.bLimitTargetIcons = true;
+	Template.ActivationSpeech = 'HealingAlly';
+
+	Template.CustomSelfFireAnim = 'FF_FireMedkitSelf';
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+
+	Template.ChosenActivationIncreasePerUse = class'X2AbilityTemplateManager'.default.NonAggressiveChosenActivationIncreasePerUse;
+
+	return Template;
+}
+
+static function X2AbilityTemplate Vengeance_LW()
+{
+	local X2AbilityTemplate                 Template;
+	local X2Effect_Vengeance_LW               VengeanceEffect;
+	local X2Condition_UnitProperty          ShooterProperty, MultiTargetProperty;
+	local X2AbilityTrigger_EventListener    Listener;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'Vengeance_LW');
+
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_tacticalsense";
+
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.AbilityMultiTargetStyle = new class'X2AbilityMultiTarget_AllAllies';
+
+	VengeanceEffect = new class'X2Effect_Vengeance_LW';
+	VengeanceEffect.BuildPersistentEffect(class'X2Ability_OfficerTrainingSchool'.default.VENGEANCE_DURATION, false, false, false, eGameRule_PlayerTurnEnd);
+	VengeanceEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage);
+	Template.AddMultiTargetEffect(VengeanceEffect);
+
+	Listener = new class'X2AbilityTrigger_EventListener';
+	Listener.ListenerData.Filter = eFilter_Unit;
+	Listener.ListenerData.Deferral = ELD_OnStateSubmitted;
+	// Need a custom listener to make sure a soldier that bled out previously won't give vengeance again on death
+	Listener.ListenerData.EventFn = VengeanceDeathTrigger;
+	Listener.ListenerData.Priority = -20;
+	Listener.ListenerData.EventID = 'UnitDied';
+	Template.AbilityTriggers.AddItem(Listener);
+
+	Listener = new class'X2AbilityTrigger_EventListener';
+	Listener.ListenerData.Filter = eFilter_Unit;
+	Listener.ListenerData.Deferral = ELD_OnStateSubmitted;
+	Listener.ListenerData.Priority = -20;
+	// Need a custom listener to make sure a soldier that bled out previously won't give vengeance again on death
+	Listener.ListenerData.EventFn = VengeanceBleedoutTrigger;
+	Listener.ListenerData.EventID = 'UnitBleedingOut';
+	Template.AbilityTriggers.AddItem(Listener);
+
+	ShooterProperty = new class'X2Condition_UnitProperty';
+	ShooterProperty.ExcludeAlive = false;
+	ShooterProperty.ExcludeDead = false;
+	ShooterProperty.MinRank = class'X2Ability_OfficerTrainingSchool'.default.VENGEANCE_MIN_RANK;
+	Template.AbilityShooterConditions.AddItem(ShooterProperty);
+
+	MultiTargetProperty = new class'X2Condition_UnitProperty';
+	MultiTargetProperty.ExcludeAlive = false;
+	MultiTargetProperty.ExcludeDead = true;
+	MultiTargetProperty.ExcludeHostileToSource = true;
+	MultiTargetProperty.ExcludeFriendlyToSource = false;
+	MultiTargetProperty.RequireSquadmates = true;	
+	MultiTargetProperty.ExcludePanicked = true;
+	Template.AbilityMultiTargetConditions.AddItem(MultiTargetProperty);
+
+	Template.bDisplayInUITooltip = false;
+	Template.bDisplayInUITacticalText = false;
+	Template.bDontDisplayInAbilitySummary = true;
+
+	Template.bSkipFireAction = true;
+	//Template.bShowActivation = true;
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = Vengeance_BuildVisualization;
+
+	return Template;
+}
+
+function Vengeance_BuildVisualization(XComGameState VisualizeGameState)
+{
+	local VisualizationActionMetadata TargetTrack, EmptyTrack;
+	local XComGameState_Effect EffectState;
+	local XComGameState_Unit UnitState;
+	local XComGameStateHistory History;
+	local X2Action_PlaySoundAndFlyOver FlyOverAction;
+//	local int i;
+	local float Ratio, DamageMultiplier;
+	local int DodgeBonus;
+
+	History = `XCOMHISTORY;
+	foreach VisualizeGameState.IterateByClassType(class'XComGameState_Effect', EffectState)
+	{
+		if (EffectState.GetX2Effect().EffectName != class'X2Effect_Vengeance_LW'.default.EffectName)
+			continue;
+
+		TargetTrack = EmptyTrack;
+		UnitState = XComGameState_Unit(VisualizeGameState.GetGameStateForObjectID(EffectState.ApplyEffectParameters.TargetStateObjectRef.ObjectID));
+		TargetTrack.StateObject_NewState = UnitState;
+		TargetTrack.StateObject_OldState = History.GetGameStateForObjectID(UnitState.ObjectID, eReturnType_Reference, VisualizeGameState.HistoryIndex - 1);
+		TargetTrack.VisualizeActor = UnitState.GetVisualizer();
+
+    	Ratio = class'Helpers_LW'.static.GetVengeanceSoldierKillRatio();
+    	DamageMultiplier =  (1 + Ratio) ** 3.5 / 10;
+
+		DodgeBonus = FFloor(Ratio * 100);
+
+		FlyOverAction = X2Action_PlaySoundAndFlyOver(class'X2Action_PlaySoundAndFlyOver'.static.AddToVisualizationTree(TargetTrack, VisualizeGameState.GetContext()));
+		FlyOverAction.SetSoundAndFlyOverParameters(none, "+ " $ string(int(DamageMultiplier * 100)) $ "% Damage", '', eColor_Good,,  2.0f);
+		
+		FlyOverAction = X2Action_PlaySoundAndFlyOver(class'X2Action_PlaySoundAndFlyOver'.static.AddToVisualizationTree(TargetTrack, VisualizeGameState.GetContext()));
+		FlyOverAction.SetSoundAndFlyOverParameters(none, "+ " $ string(DodgeBonus) $ " Dodge", '', eColor_Good,,  0.0f);
+
+	}
+}
+
+
+static function EventListenerReturn VengeanceBleedoutTrigger(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
+{
+//	 local XComGameStateContext_Ability AbilityContext;
+	 local XComGameStateHistory History;
+	 local XComGameState_Ability Ability;
+	 local XComGameState_Unit DeadUnit;
+
+	 History = `XCOMHISTORY;
+
+	// FindContext = GameState.GetContext();
+//	 AbilityContext = XComGameStateContext_Ability(GameState.GetContext());
+
+	 //SourceUnit = XComGameState_Unit(History.GetGameStateForObjectID(AbilityContext.InputContext.SourceObject.ObjectID));
+
+	DeadUnit = XComGameState_Unit(EventData);
+
+	DeadUnit.SetUnitFloatValue('VengeanceTriggered', 2.0, eCleanup_BeginTactical);
+
+	Ability = XComGameState_Ability(History.GetGameStateForObjectID(DeadUnit.FindAbility('Vengeance_LW').ObjectID));
+
+	if(Ability != none)
+	{
+		Ability.AbilityTriggerAgainstSingleTarget(DeadUnit.GetReference(), false);
+	}
+
+	return ELR_NoInterrupt;
+}
+
+
+static function EventListenerReturn VengeanceDeathTrigger(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
+{
+	 //local XComGameStateContext_Ability AbilityContext;
+	 local XComGameStateHistory History;
+	 local XComGameState_Ability Ability;
+	 local XComGameState_Unit DeadUnit;
+	 local UnitValue PreviouslyTriggeredValue;
+
+	 History = `XCOMHISTORY;
+
+	// FindContext = GameState.GetContext();
+//	 AbilityContext = XComGameStateContext_Ability(GameState.GetContext());
+
+	 //SourceUnit = XComGameState_Unit(History.GetGameStateForObjectID(AbilityContext.InputContext.SourceObject.ObjectID));
+
+	DeadUnit = XComGameState_Unit(EventData);
+
+	DeadUnit.GetUnitValue('VengeanceTriggered', PreviouslyTriggeredValue);
+	//DeadUnit.SetUnitFloatValue('VengeanceTriggered', 2.0, eCleanup_BeginTactical);
+	if(PreviouslyTriggeredValue.fValue < 1.0f)
+	{
+		Ability = XComGameState_Ability(History.GetGameStateForObjectID(DeadUnit.FindAbility('Vengeance_LW').ObjectID));
+
+		if(Ability != none)
+		{
+			Ability.AbilityTriggerAgainstSingleTarget(DeadUnit.GetReference(), false);
+		}
+	}
+
+	return ELR_NoInterrupt;
+}
+
+static function X2AbilityTemplate BoltCasterPassive()
+{
+	local X2AbilityTemplate		Template;
+
+	Template = PurePassive('BoltCasterPassive', "img:///UILibrary_PerkIcons.UIPerk_ammo_needle", , 'eAbilitySource_Perk');
+
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+
+	return Template;
+}
+
+static function X2AbilityTemplate HuntersAxePassive()
+{
+	local X2AbilityTemplate		Template;
+	local X2Effect_HuntersAxe	AxeEffect;
+	Template = PurePassive('HuntersAxePassive', "img:///UILibrary_PerkIcons.UIPerk_ammo_needle", , 'eAbilitySource_Perk');
+
+	AxeEffect = new class 'X2Effect_HuntersAxe';
+	AxeEffect.AimBonus = default.AXE_RULER_AIM_BONUS;
+	AxeEffect.BuildPersistentEffect (1, true, true);
+	AxeEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
+	Template.AddTargetEffect(AxeEffect);
+
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+
+	return Template;
+}
+
+
+static function X2AbilityTemplate HuntersPistolPassive()
+{
+	local X2AbilityTemplate		Template;
+
+	Template = PurePassive('HuntersPistolPassive', "img:///UILibrary_PerkIcons.UIPerk_ammo_needle", , 'eAbilitySource_Perk');
+
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+
+	Template.AdditionalAbilities.AddItem('ShadowFallTrigger');
+
+	return Template;
+}
+
+
+static function X2AbilityTemplate ShadowFallTrigger()
+{
+	local X2AbilityTemplate					Template;
+	local X2AbilityTrigger_EventListener	EventListener;
+	local X2Effect_PersistentStatChange StealthyEffect;
+	local X2Effect_SilentMelee	GhostEffect;
+	local X2Effect_RangerStealth	StealthEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'ShadowFallTrigger');
+
+	Template.IconImage = "img:///StealthOverhaulUILibrary_LW.UIPerk_takedown";
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+
+	Template.AbilityTargetStyle = default.SimpleSingleTarget;
+	Template.AbilityToHitCalc = default.DeadEye;
+
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	Template.AbilityTargetConditions.AddItem(default.LivingHostileTargetProperty);
+
+	// Trigger on Damage
+	EventListener = new class'X2AbilityTrigger_EventListener';
+	EventListener.ListenerData.EventID = 'AbilityActivated';
+	EventListener.ListenerData.EventFn = AbilityTriggerEventListener_ShadowFall;
+	EventListener.ListenerData.Deferral = ELD_OnStateSubmitted;
+	EventListener.ListenerData.Priority = 40;
+	EventListener.ListenerData.Filter = eFilter_Unit;
+
+	Template.AbilityTriggers.AddItem(EventListener);
+
+	StealthyEffect = new class'X2Effect_PersistentStatChange';
+	StealthyEffect.EffectName = 'TemporaryPhantomConcealment';
+	StealthyEffect.BuildPersistentEffect(class'X2Ability_PerkPackAbilitySet2'.default.PHANTOM_DURATION, false, true, false, eGameRule_PlayerTurnBegin);
+	// StealthyEffect.SetDisplayInfo (ePerkBuff_Bonus,Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,,, Template.AbilitySourceName); 
+	StealthyEffect.AddPersistentStatChange(eStat_DetectionModifier, class'X2Ability_PerkPackAbilitySet2'.default.PHANTOM_DETECTION_RANGE_REDUCTION);
+	StealthyEffect.bRemoveWhenTargetDies = true;
+	StealthyEffect.DuplicateResponse = eDupe_Refresh;
+	StealthyEffect.EffectRemovedFn = class'X2Ability_PerkPackAbilitySet2'.static.PhantomExpired;
+	StealthyEffect.EffectRemovedVisualizationFn = class'X2Ability_PerkPackAbilitySet2'.static.VisualizePhantomExpired;
+	Template.AddTargetEffect(StealthyEffect);
+
+	GhostEffect = new class'X2Effect_SilentMelee';
+	GhostEffect.EffectName = 'GhostEffect';
+	GhostEffect.BuildPersistentEffect(class'X2Ability_PerkPackAbilitySet2'.default.PHANTOM_DURATION, false, true, false, eGameRule_PlayerTurnBegin);
+	// StealthyEffect.SetDisplayInfo (ePerkBuff_Bonus,Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,,, Template.AbilitySourceName); 
+	GhostEffect.bRemoveWhenTargetConcealmentBroken = true;
+	GhostEffect.DuplicateResponse = eDupe_Refresh;
+	Template.AddTargetEffect(GhostEffect);
+
+	StealthEffect = new class'X2Effect_RangerStealth';
+	StealthEffect.BuildPersistentEffect(1, true, true, false, eGameRule_PlayerTurnEnd);
+	StealthEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, true);
+	StealthEffect.bRemoveWhenTargetConcealmentBroken = true;
+	Template.AddTargetEffect(StealthEffect);
+
+	Template.FrameAbilityCameraType = eCameraFraming_Never; 
+	Template.bSkipExitCoverWhenFiring = true;
+	Template.bSkipFireAction = true;	//	this fire action will be merged by Merge Vis function
+	Template.bShowActivation = true;
+	Template.bUsesFiringCamera = false;
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	Template.BuildInterruptGameStateFn = none;
+
+	Template.DefaultSourceItemSlot = eInvSlot_Pistol;
+
+	return Template;
+}
+
+static function EventListenerReturn AbilityTriggerEventListener_ShadowFall(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
+{
+	local XComGameState_Unit				UnitState, TargetUnit;
+	local XComGameState_Effect				EffectState;
+	local XComGameState_Ability				AbilityState, TriggerAbilityState;
+	local XComGameStateContext_Ability		AbilityContext;
+	local X2AbilityTemplate					AbilityTemplate;
+
+	EffectState = XComGameState_Effect(CallbackData);
+	if (EffectState == none)
+		return ELR_NoInterrupt;
+
+	UnitState = XComGameState_Unit(EventSource);
+	if (UnitState == none)
+		return ELR_NoInterrupt;
+
+
+	AbilityState = XComGameState_Ability(EventData);
+	if (AbilityState != none)
+	{
+
+		AbilityTemplate = AbilityState.GetMyTemplate();
+
+		AbilityContext = XComGameStateContext_Ability(GameState.GetContext());
+
+
+		// Only apply post-attack
+		if (AbilityContext != none && AbilityContext.InterruptionStatus != eInterruptionStatus_Interrupt)
+		{
+			TriggerAbilityState = XComGameState_Ability(`XCOMHISTORY.GetGameStateForObjectID(UnitState.FindAbility('ShadowFallTrigger', AbilityContext.InputContext.ItemObject).ObjectID));
+			TargetUnit = XComGameState_Unit(GameState.GetGameStateForObjectID(AbilityContext.InputContext.PrimaryTarget.ObjectID));
+				// Activated ability must be tied to the unit's primary weapon
+				if (TriggerAbilityState!= none && AbilityContext.IsResultContextHit() && class'LWDLCHelpers'.static.IsAlienRuler(TargetUnit.GetMyTemplateName()))
+				{
+					// Check that the ability is a shot ability - looking for bAllowAmmoEffects should catch pretty much everything
+					if (AbilityTemplate.bAllowAmmoEffects)
+					{
+						return TriggerAbilityState.AbilityTriggerEventListener_Self(EventData, EventSource, GameState, EventID, CallbackData);
+					}
+				}	
+		}	
+	}
+
+			
+	return ELR_NoInterrupt;
+}
+

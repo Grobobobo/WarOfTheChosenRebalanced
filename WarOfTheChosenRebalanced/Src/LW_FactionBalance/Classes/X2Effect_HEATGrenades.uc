@@ -43,17 +43,9 @@ function int GetExtraShredValue(XComGameState_Effect EffectState, XComGameState_
 	// make sure the weapon is either a grenade or a grenade launcher
 	if(X2GrenadeTemplate(WeaponTemplate) != none || X2GrenadeLauncherTemplate(WeaponTemplate) != none)
 	{
-		// make sure it already shreds
-		if (WeaponTemplate.BaseDamage.Shred > 0)
-		{
-			return Shred;
-		}
-		SourceWeaponAmmoTemplate = X2WeaponTemplate(SourceWeapon.GetLoadedAmmoTemplate(AbilityState));
-		if (SourceWeaponAmmoTemplate.BaseDamage.Shred > 0)
-		{
-			return Shred;
-		}
+		return Shred;
 	}
+	
 	return 0;
 }
 

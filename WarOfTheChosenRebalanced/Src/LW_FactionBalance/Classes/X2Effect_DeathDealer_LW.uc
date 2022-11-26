@@ -69,7 +69,6 @@ function int GetAttackingDamageModifier(XComGameState_Effect EffectState, XComGa
 function GetToHitModifiers(XComGameState_Effect EffectState, XComGameState_Unit Attacker, XComGameState_Unit Target, XComGameState_Ability AbilityState, class<X2AbilityToHitCalc> ToHitType, bool bMelee, bool bFlanking, bool bIndirectFire, out array<ShotModifierInfo> ShotModifiers)
 {
     local ShotModifierInfo ShotInfo;
-    local UnitValue UnitValue;
 	//if (Attacker.IsImpaired(false) || Attacker.IsBurning())
 //		return;
 
@@ -80,7 +79,7 @@ function GetToHitModifiers(XComGameState_Effect EffectState, XComGameState_Unit 
 
 		ShotInfo.ModType = eHit_Success;
 		ShotInfo.Reason = FriendlyName;
-		ShotInfo.Value = class'X2Ability_ReaperAbilitySet_LW'.default.DEATH_DEALER_BONUS_AIM * UnitValue.fValue;
+		ShotInfo.Value = class'X2Ability_ReaperAbilitySet_LW'.default.DEATH_DEALER_BONUS_AIM;
 		ShotModifiers.AddItem(ShotInfo);
 	}
 }

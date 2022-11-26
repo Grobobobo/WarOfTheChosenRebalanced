@@ -459,12 +459,18 @@ static function array<X2DataTemplate> CreateTemplates()
 
 
 
-	Templates.AddItem(CreateTemplate_AdvGunner_WPN('AdvGunnerM1_WPN'));
-	Templates.AddItem(CreateTemplate_AdvGunner_WPN('AdvGunnerM2_WPN'));
-	Templates.AddItem(CreateTemplate_AdvGunner_WPN('AdvGunnerM3_WPN'));
-	Templates.AddItem(CreateTemplate_AdvGunner_WPN('AdvGunnerM4_WPN'));
-	Templates.AddItem(CreateTemplate_AdvGunner_WPN('AdvGunnerM5_WPN'));
+	Templates.AddItem(CreateTemplate_AdvGunner_WPN('AdvGunnerM1_WPN', default.ADVGUNNER_WPN_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_AdvGunner_WPN('AdvGunnerM2_WPN', default.ADVGUNNERM2_WPN_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_AdvGunner_WPN('AdvGunnerM3_WPN', default.ADVGUNNERM3_WPN_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_AdvGunner_WPN('AdvGunnerM4_WPN', default.ADVGUNNERM4_WPN_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_AdvGunner_WPN('AdvGunnerM5_WPN', default.ADVGUNNERM5_WPN_BASEDAMAGE));
 	
+	Templates.AddItem(CreateTemplate_AdvGunner_Leader_WPN('AdvGunner_Leader_WPN', default.ADVGUNNER_WPN_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_AdvGunner_Leader_WPN('AdvGunnerM2_Leader_WPN', default.ADVGUNNERM2_WPN_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_AdvGunner_Leader_WPN('AdvGunnerM3_Leader_WPN', default.ADVGUNNERM3_WPN_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_AdvGunner_Leader_WPN('AdvGunnerM4_Leader_WPN', default.ADVGUNNERM4_WPN_BASEDAMAGE));
+	Templates.AddItem(CreateTemplate_AdvGunner_Leader_WPN('AdvGunnerM5_Leader_WPN', default.ADVGUNNERM5_WPN_BASEDAMAGE));
+
 	Templates.AddItem(CreateTemplate_AdvSentry_WPN('AdvSentryM1_WPN'));
 	Templates.AddItem(CreateTemplate_AdvSentry_WPN('AdvSentryM2_WPN'));
 	Templates.AddItem(CreateTemplate_AdvSentry_WPN('AdvSentryM3_WPN'));
@@ -1078,7 +1084,7 @@ static function X2DataTemplate CreateTemplate_VorpalBlade(name TemplateName, Wea
 }
 
 
-static function X2DataTemplate CreateTemplate_AdvGunner_WPN(name TemplateName)
+static function X2DataTemplate CreateTemplate_AdvGunner_WPN(name TemplateName, WeaponDamageValue Damage)
 {
 	local X2WeaponTemplate Template;
 
@@ -1093,16 +1099,7 @@ static function X2DataTemplate CreateTemplate_AdvGunner_WPN(name TemplateName)
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.FLAT_CONVENTIONAL_RANGE;
 
-	if (TemplateName == 'AdvGunnerM1_WPN')
-		Template.BaseDamage = default.ADVGUNNER_WPN_BASEDAMAGE;
-	if (TemplateName == 'AdvGunnerM2_WPN')
-		Template.BaseDamage = default.ADVGUNNERM2_WPN_BASEDAMAGE;
-	if (TemplateName == 'AdvGunnerM3_WPN')
-		Template.BaseDamage = default.ADVGUNNERM3_WPN_BASEDAMAGE;
-	if (TemplateName == 'AdvGunnerM4_WPN')
-		Template.BaseDamage = default.ADVGUNNERM4_WPN_BASEDAMAGE;
-	if (TemplateName == 'AdvGunnerM5_WPN')
-		Template.BaseDamage = default.ADVGUNNERM5_WPN_BASEDAMAGE;
+	Template.BaseDamage = Damage;
 	Template.iClipSize = default.ADVGUNNER_WPN_CLIPSIZE;
 	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.LMG_MAGNETIC_ISOUNDRANGE;
 	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.LMG_MAGNETIC_IENVIRONMENTDAMAGE;
@@ -1142,6 +1139,65 @@ static function X2DataTemplate CreateTemplate_AdvGunner_WPN(name TemplateName)
 
 	return Template;
 }
+
+
+static function X2DataTemplate CreateTemplate_AdvGunner_Leader_WPN(name TemplateName, WeaponDamageValue Damage)
+{
+	local X2WeaponTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
+	
+	Template.WeaponPanelImage = "_ConventionalRifle";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.ItemCat = 'weapon';
+	Template.WeaponCat = 'cannon';
+	Template.WeaponTech = 'magnetic';
+	Template.strImage = "img:///UILibrary_Common.UI_MagCannon.MagCannon_Base";
+	Template.RemoveTemplateAvailablility(Template.BITFIELD_GAMEAREA_Multiplayer); //invalidates multiplayer availability
+
+	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.FLAT_CONVENTIONAL_RANGE;
+
+	Template.BaseDamage = Damage;
+	Template.iClipSize = default.ADVGUNNER_WPN_CLIPSIZE;
+	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.LMG_MAGNETIC_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.LMG_MAGNETIC_IENVIRONMENTDAMAGE;
+	Template.iIdealRange = default.ADVGUNNER_IDEALRANGE;
+
+	Template.DamageTypeTemplateName = 'Heavy';
+	
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('Overwatch');
+	Template.Abilities.AddItem('OverwatchShot');
+	Template.Abilities.AddItem('Reload');
+	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('BulletWizard');
+	Template.Abilities.AddItem('SteadFast');
+/*
+	if (TemplateName == 'AdvGunnerM2_WPN' || TemplateName == 'AdvGunnerM3_WPN')
+	{
+		Template.Abilities.AddItem('LockedOn');
+	}
+	if (TemplateName == 'AdvGunnerM3_WPN')
+	{
+		Template.Abilities.AddItem('TraverseFire');
+		Template.Abilities.AddItem('CoveringFire');
+	}
+	*/
+	// This all the resources; sounds, animations, models, physics, the works.
+	Template.GameArchetype = "LWAdvGunner.Archetypes.WP_Cannon_MG";  
+
+	Template.AddDefaultAttachment('Mag', "LWAdvGunner.Meshes.SK_MagCannon_Mag", , "img:///UILibrary_Common.UI_MagCannon.MagCannon_MagA");
+	Template.AddDefaultAttachment('Reargrip',   "LWAdvGunner.Meshes.SM_MagCannon_Reargrip");
+	Template.AddDefaultAttachment('Foregrip', "LWAdvGunner.Meshes.SM_MagCannon_Stock", , "img:///UILibrary_Common.UI_MagCannon.MagCannon_StockA");
+
+	Template.iPhysicsImpulse = 5;
+
+	Template.CanBeBuilt = false;
+	Template.TradingPostValue = 30;
+
+	return Template;
+}
+
 
 
 static function X2DataTemplate CreateTemplate_AdvSentry_WPN(name TemplateName)
@@ -1245,7 +1301,7 @@ static function X2DataTemplate CreateTemplate_AdvGrenadier_GrenadeLauncher(name 
 	//Template.Abilities.AddItem('LaunchGrenade');  // remove this to prevent a "null" LaunchGrenade ability which confuses the AI
 	Template.Abilities.AddItem('AdventGrenadeLauncher');
 
-	Template.GameArchetype = "AdvGrenadeLauncher.WP_AdvGrenadeLauncher";
+	Template.GameArchetype = "WP_GrenadeLauncher_MG.WP_GrenadeLauncher_MG";
 
 	Template.CanBeBuilt = false;
 
@@ -2048,7 +2104,7 @@ static function X2DataTemplate CreateTemplate_Spectre_LW_WPN(name TemplateName, 
 
 	Template.DamageTypeTemplateName = 'Heavy';
 
-	Template.InfiniteAmmo = true;
+	Template.InfiniteAmmo = false;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
@@ -2349,7 +2405,6 @@ static function X2DataTemplate CreateTemplate_AdvStunLancer_Leader_WPN(name Temp
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('HunterMarkAdvent');
 	Template.BonusWeaponEffects.AddItem(class'X2Ability_LWAlienAbilities'.static.HunterMarkAdventEffect());
 	//Animation Test
 	//Template.Abilities.AddItem('Suppression');

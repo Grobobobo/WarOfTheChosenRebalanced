@@ -68,6 +68,7 @@ var config int BLINDING_PROTOCOL_COOLDOWN;
 
 var config int ZONE_CONTROL_MOBILITY_PENALTY;
 var config int ZONE_CONTROL_AIM_PENALTY;
+var config int ZONE_CONTROL_CRIT_PENALTY;
 var config float ZONE_CONTROL_RADIUS_SQ;
 
 var config int AIM_ASSIST_AIM_BONUS;
@@ -149,6 +150,12 @@ var config float SHREDDER_ROUNDS_DMG_PENALTY;
 var config int IRT_DODGE_PER_TILE;
 
 var config int MAGNUM_BONUS;
+
+var config int ROOKIE_COMBAT_HP_BONUS;
+var config int ROOKIE_COMBAT_AIM_BONUS;
+
+var config int SECTICIDE_WILL_REDUCTION;
+var config int SECTICIDE_PSIOFFENSE_REDUCTION;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -177,6 +184,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(LockNLoad());
 	Templates.AddItem(TrenchWarfare());
 	Templates.AddItem(Dedication());
+	Templates.AddItem(Dedication_Suit());
+
+	
 	Templates.AddItem(WatchThemRun());
     Templates.AddItem(Avenger());
 	Templates.AddItem(Predator());
@@ -248,6 +258,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateBullRushPassive());
 	Templates.AddItem(AddProtectiveServosAbility());
 	Templates.AddItem(AddProtectiveServosPassive());
+	Templates.AddItem(AddLightProtectiveServosAbility());
+	Templates.AddItem(AddLightProtectiveServosPassive());
 	Templates.AddItem(AddSuperiorHolyWarrior());
 	Templates.AddItem(AddSuperDuperRobot());
 	Templates.AddItem(ShredderRoundsDamagePenalty());
@@ -265,6 +277,10 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	Templates.AddItem(CreateBerserkerBladestorm());
 	Templates.AddItem(CreateBerserkerBladestormAttack());
+
+	Templates.AddItem(PermaRookieHpBuff());
+	Templates.AddItem(PermaRookieAimBuff());
+	Templates.AddItem(AddSecticide());
 
 	
 	
@@ -1124,7 +1140,8 @@ static function X2AbilityTemplate AddZoCCleanse()
 	ZOCEffect.EffectName = 'ZoneOfControl_LWEffect';
 	ZOCEffect.BuildPersistentEffect(1, true, true);
 	ZOCEffect.AddPersistentStatChange(eStat_Mobility, default.ZONE_CONTROL_MOBILITY_PENALTY);
-	ZOCEffect.AddPersistentStatChange(eStat_Offense, default.ZONE_CONTROL_AIM_PENALTY);
+	//ZOCEffect.AddPersistentStatChange(eStat_Offense, default.ZONE_CONTROL_AIM_PENALTY);
+	ZOCEffect.AddPersistentStatChange(eStat_CritChance, default.ZONE_CONTROL_CRIT_PENALTY);
 	ZOCEffect.SetDisplayInfo(ePerkBuff_Penalty, Template.LocFriendlyName, Template.LocHelpText, Template.IconImage, true,,Template.AbilitySourceName);
 	ZOCEffect.DuplicateResponse = eDupe_Ignore;
 	ZOCEffect.bRemoveWhenSourceDies = true;
@@ -1565,7 +1582,7 @@ static function X2AbilityTemplate TrenchWarfareActivator()
 	return Template;
 }
 
-	static function X2AbilityTemplate Dedication()
+static function X2AbilityTemplate Dedication()
 {
 	local X2AbilityTemplate             Template;
 	local X2Effect_PersistentStatChange Effect;
@@ -1590,6 +1607,33 @@ static function X2AbilityTemplate TrenchWarfareActivator()
 
 	return Template;
 }
+
+static function X2AbilityTemplate Dedication_Suit()
+{
+	local X2AbilityTemplate             Template;
+	local X2Effect_PersistentStatChange Effect;
+	
+	// Activated ability that targets user
+	Template = SelfTargetActivated('Dedication_Suit', "img:///UILibrary_FavidsPerkPack_LW.Perk_Ph_Dedication", true, none, class'UIUtilities_Tactical'.const.CLASS_CORPORAL_PRIORITY, eCost_Free);
+	Template.bShowActivation = true;
+
+	// Create a persistent stat change effect that grants a mobility bonus - naming the effect Shadowstep lets you ignore reaction fire
+	Effect = new class'X2Effect_PersistentStatChange';
+	Effect.EffectName = 'Shadowstep';
+	Effect.AddPersistentStatChange(eStat_Mobility, default.DEDICATION_MOBILITY);
+	Effect.DuplicateResponse = eDupe_Refresh;
+	Effect.BuildPersistentEffect(1, false, true, false, eGameRule_PlayerTurnBegin);
+    Template.AddTargetEffect(Effect);
+
+	// Cannot be used while burning, etc.
+	Template.AddShooterEffectExclusions();
+
+	// Cooldown
+	AddCooldown(Template, default.DEDICATION_COOLDOWN);
+
+	return Template;
+}
+
 
 static function X2AbilityTemplate Corpsman()
 {
@@ -2285,7 +2329,7 @@ static function X2AbilityTemplate PrimaryReturnFireShot()
 	ShooterCondition.ExcludeConcealed = true;
 	Template.AbilityShooterConditions.AddItem(ShooterCondition);
 
-	SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.DisorientedName);
+	//SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.DisorientedName);
 	Template.AddShooterEffectExclusions(SkipExclusions);
 	
 	SingleTarget = new class'X2AbilityTarget_Single';
@@ -3585,6 +3629,7 @@ static function X2AbilityTemplate CreateAbsorptionFieldsTrigger()
 	Template.AbilitySourceName = 'eAbilitySource_Standard';
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
 	Template.IconImage = "img:///UILibrary_LW_PerkPack.LW_AbilityAbsorptionFields";
+	Template.Hostility = eHostility_Defensive;
 
 	Template.AbilityToHitCalc = default.DeadEye;
 	Template.AbilityTargetStyle = default.SelfTarget;
@@ -3773,6 +3818,62 @@ static function X2AbilityTemplate AddProtectiveServosAbility()
 	return Template;
 }
 
+static function X2AbilityTemplate AddLightProtectiveServosPassive()
+{
+	local X2AbilityTemplate                 Template;	
+
+	Template = PurePassive('LightProtectiveServosPassive', "img:///UILibrary_LW_PerkPack.LW_AbilityDamageControl", true, 'eAbilitySource_Perk');
+	Template.bCrossClassEligible = false;
+	//Template.AdditionalAbilities.AddItem('DamageControlAbilityActivated');
+	return Template;
+}
+
+static function X2AbilityTemplate AddLightProtectiveServosAbility()
+{
+	local X2AbilityTemplate						Template;	
+	local X2AbilityTrigger_EventListener		EventListener;
+	local X2Effect_DamageControl 				DamageControlEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'LightProtectiveServos');
+	Template.IconImage = "img:///UILibrary_LW_PerkPack.LW_AbilityDamageControl";
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.Hostility = eHostility_Neutral;
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
+	Template.AbilityToHitCalc = default.DeadEye;
+    Template.AbilityTargetStyle = default.SelfTarget;
+	Template.bShowActivation = true;
+	Template.bSkipFireAction = true;
+	//Template.bIsPassive = true;
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+
+	// Trigger on Damage
+	EventListener = new class'X2AbilityTrigger_EventListener';
+	EventListener.ListenerData.EventID = 'UnitTakeEffectDamage';
+	EventListener.ListenerData.EventFn = class'XComGameState_Ability'.static.AbilityTriggerEventListener_Self;
+	EventListener.ListenerData.Deferral = ELD_OnStateSubmitted;
+	EventListener.ListenerData.Filter = eFilter_Unit;
+	Template.AbilityTriggers.AddItem(EventListener);
+
+	DamageControlEffect = new class'X2Effect_DamageControl';
+	DamageControlEffect.BuildPersistentEffect(1,false,true,,eGameRule_PlayerTurnBegin);
+	DamageControlEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
+	DamageControlEffect.DuplicateResponse = eDupe_Allow;
+	DamageControlEffect.EffectName = 'LightProtectiveServos';
+	DamageControlEffect.BonusArmor = 1;
+	Template.AddTargetEffect(DamageControlEffect);
+
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	//Template.BuildInterruptGameStateFn = TypicalAbility_BuildInterruptGameState;
+
+	Template.AdditionalAbilities.AddItem('LightProtectiveServosPassive');
+
+	return Template;
+}
+
 static function X2AbilityTemplate AddProtectiveServosPassive()
 {
 	local X2AbilityTemplate                 Template;	
@@ -3782,6 +3883,7 @@ static function X2AbilityTemplate AddProtectiveServosPassive()
 	//Template.AdditionalAbilities.AddItem('DamageControlAbilityActivated');
 	return Template;
 }
+
 
 static function X2AbilityTemplate AddSuperiorHolyWarrior()
 {
@@ -3922,6 +4024,68 @@ static function X2DataTemplate CreateBerserkerBladestormAttack()
 	NotItsOwnTurnCondition = new class'X2Condition_NotItsOwnTurn';
 	Template.AbilityShooterConditions.AddItem(NotItsOwnTurnCondition);
 	Template.CustomFireAnim = 'FF_Melee';
+
+	return Template;
+}
+
+
+
+static function X2AbilityTemplate PermaRookieHpBuff()
+{
+	local XMBEffect_PermanentStatChange Effect;
+	local X2AbilityTemplate Template;
+
+	Effect = new class'XMBEffect_PermanentStatChange';
+	Effect.AddStatChange(eStat_HP, default.ROOKIE_COMBAT_HP_BONUS);
+
+	// Create a triggered ability that activates whenever the unit gets a kill
+	
+	Template = Passive('RookieHpBuff_LW', "img:///UILibrary_PerkIcons.UIPerk_fieldmedic", true, Effect);
+
+	return Template;
+}
+
+static function X2AbilityTemplate PermaRookieAimBuff()
+{
+	local XMBEffect_PermanentStatChange Effect;
+	local X2AbilityTemplate Template;
+
+	Effect = new class'XMBEffect_PermanentStatChange';
+	Effect.AddStatChange(eStat_Offense, default.ROOKIE_COMBAT_AIM_BONUS);
+
+	// Create a triggered ability that activates whenever the unit gets a kill
+	
+	Template = Passive('RookieAimBuff_LW', "img:///UILibrary_PerkIcons.UIPerk_fieldmedic", true, Effect);
+
+	return Template;
+}
+
+
+static function X2AbilityTemplate AddSecticide()
+{
+	local X2AbilityTemplate						Template;
+	local X2Effect_PersistentStatChange			StatEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'Secticide_LW');
+	Template.IconImage = "img:///'LW_BstarsPerkPack_Icons.UIPerk_Ruthless";
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
+	Template.bIsPassive = true;
+	Template.Hostility = eHostility_Neutral;
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+
+	StatEffect = new class'X2Effect_PersistentStatChange';
+	StatEffect.AddPersistentStatChange(eStat_Will, float(default.SECTICIDE_WILL_REDUCTION));
+	StatEffect.AddPersistentStatChange(eStat_PsiOffense, float(default.SECTICIDE_PSIOFFENSE_REDUCTION));
+	StatEffect.BuildPersistentEffect(1, true, false, false);
+	StatEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
+	Template.AddTargetEffect(StatEffect);
+	Template.bCrossClassEligible = true;
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 
 	return Template;
 }

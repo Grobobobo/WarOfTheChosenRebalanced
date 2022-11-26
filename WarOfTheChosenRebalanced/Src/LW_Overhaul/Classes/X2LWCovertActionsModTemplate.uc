@@ -56,26 +56,27 @@ static function UpdateCovertActions(X2StrategyElementTemplate Template, int Diff
 		case 'CovertAction_ResistanceContact':
 		case 'CovertAction_RecruitRebels':
 		case 'CovertAction_SharedAbilityPoints':
+		case 'CovertAction_IncreaseIncome':
+
 			ConfigureModerateCovertAction(CATemplate);
 			break;
+		case 'CovertAction_ResistanceCard':
+			ConfigureEasyCovertAction(CATemplate);
+			//CATemplate.Rewards.AddItem('Reward_ResistanceCard');
+			break;
 		case 'CovertAction_ImproveComInt':
+		case 'CovertAction_RemoveDoom':
+		case 'CovertAction_RecruitExtraFactionSoldier':
 			RemoveStaffSlots(CATemplate, 'CovertActionScientistStaffSlot');
 			CATemplate.RequiredFactionInfluence = EFactionInfluence(eFactionInfluence_MAX + 1);
 			break;
-		case 'CovertAction_RecruitExtraFactionSoldier':
-			CATemplate.bDisplayIgnoresInfluence = false;  // Don't roll this CA if the player can't run it!
-			ConfigureHardCovertAction(CATemplate);
-			break;
-		case 'CovertAction_RemoveDoom':
 		case 'CovertAction_FacilityLead':
-			`LWTrace("X2LWCovertActionsModTemplate - making " $ CATemplate.DataName $ " unique");
-			CATemplate.bUnique = true;
+//			`LWTrace("X2LWCovertActionsModTemplate - making " $ CATemplate.DataName $ " unique");
+//			CATemplate.bUnique = true;
 			CATemplate.bMultiplesAllowed = false;
 			ConfigureHardCovertAction(CATemplate);
 			break;
-		case 'CovertAction_IncreaseIncome':
 		case 'CovertAction_BreakthroughTech':
-		case 'CovertAction_ResistanceCard':
 			`LWTrace("X2LWCovertActionsModTemplate - disabling covert action " $ CATemplate.DataName);
 			CATemplate.RequiredFactionInfluence = EFactionInfluence(eFactionInfluence_MAX + 1);
 			break;
@@ -126,6 +127,7 @@ static function UpdateCovertActions(X2StrategyElementTemplate Template, int Diff
 			CATemplate.Slots[i].Rewards.Length = 0;
 		}
 	}
+
 }
 
 // Adds a chance of failure to easy covert actions and resets the staff slots.

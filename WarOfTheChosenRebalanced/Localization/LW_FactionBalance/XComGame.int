@@ -82,11 +82,11 @@ LocFriendlyName="Apotheosis"
 LocFlyoverText="Apotheosis!"
 ; End Translation (2)
 ; LWOTC Needs Translation (2)
-LocLongDescription="Become a god, massively increasing your dodge, damage and mobility. Requires a minimum of 3 focus and consumes it all."
-LocHelpText="Become a god, massively increasing your dodge, damage and mobility. Requires a minimum of 3 focus and consumes it all."
+LocLongDescription="Become a god, massively increasing your dodge, aim, damage and mobility for the duration depending on focus consumed. Requires a minimum of 2 focus and consumes it all."
+LocHelpText="Become a god, massively increasing your dodge, aim, damage and mobility for the duration depending on focus consumed. Requires a minimum of 2 focus and consumes it all."
 ; End Translation (2)
 ; LWOTC Needs Translation (3)
-LocPromotionPopupText="<Bullet/> A free action that makes the Templar substantially more powerful for two turns.<br/><Bullet/> Increases all damage by <Ability:ApotheosisDamageMultiplier/>% for each point of focus above 2.<br/><Bullet/> Increases Dodge by <Ability:ApotheosisDodgeBonus/> for each point of focus above 2.<br/><Bullet/> Increases mobility by <Ability:ApotheosisMobilityBonus/> for each point of focus above 2.<br/><Bullet/> Requires a minimum of 3 focus.<br/><Bullet/> Consumes all focus.<br/><Bullet/> The Templar can gain focus while under the effect of Apotheosis."
+LocPromotionPopupText="<Bullet/> A free action that makes the Templar substantially more powerful for the amount of turns equal to focus consumed.<br/><Bullet/> Increases all damage by <Ability:ApotheosisDamageMultiplier/>% <br/><Bullet/> Increases Dodge by <Ability:ApotheosisDodgeBonus/>.<br/><Bullet/> Increases mobility by <Ability:ApotheosisMobilityBonus/><br/><Bullet/> Increases aim by <Ability:APOTHEOSIS_AIM_BONUS/><br/><Bullet/> Requires a minimum of 2 focus.<br/><Bullet/> Consumes all focus.<br/><Bullet/> The Templar can gain focus while under the effect of Apotheosis."
 ; End Translation (3)
 ; End Translation
 
@@ -130,8 +130,8 @@ LocPromotionPopupText="<Bullet/> Improves the Skirmisher's mobility around the m
 ; LWOTC Needs Translation
 [Executioner X2AbilityTemplate]
 LocFriendlyName="Death Dealer"
-LocLongDescription="Grants +<Ability:DEATH_DEALER_BONUS_AIM/> Aim +<Ability:DEATH_DEALER_BONUS_DAMAGE_ON_CRIT/> damage on a critical hit while in shadow."
-LocHelpText="Grants +<Ability:DEATH_DEALER_BONUS_AIM/> Aim +<Ability:DEATH_DEALER_BONUS_DAMAGE_ON_CRIT/> damage on a critical hit while in shadow."
+LocLongDescription="Grants +<Ability:DEATH_DEALER_BONUS_AIM/> Aim and +<Ability:DEATH_DEALER_BONUS_DAMAGE_ON_CRIT/> damage on a critical hit while in shadow."
+LocHelpText="Grants +<Ability:DEATH_DEALER_BONUS_AIM/> Aim and +<Ability:DEATH_DEALER_BONUS_DAMAGE_ON_CRIT/> damage on a critical hit while in shadow."
 LocPromotionPopupText="<Bullet/> Use Shadow's increased mobility to flank enemies and deal massive damage.<br/>"
 
 ; End Translation
@@ -209,7 +209,7 @@ LocPromotionPopupText="<Bullet/> When Battlefield Awareness is triggered the sol
 [Heatsink_LW X2AbilityTemplate]
 LocFriendlyName = "Heatsink"
 LocLongDescription = "The <Ability:ClassName/> redirects Heat buildup from their primary weapon into powering up their Ripjack strikes. Heat is reduced on taking damage."
-LocPromotionPopupText = "<Bullet/>A Focus-like mechanic: Channel heat from Bullpup shots into the Ripjack, boosting its damage, aim and critical hit chance.<br/><Bullet/> Gain +<Ability:HEATSINK_CRIT_CHANCE_BONUS/>% chance to Crit on Ripjack attacks for each level of Heat.<br/><Bullet/> Gain +<Ability:HEATSINK_AIM_BONUS/>% accuracy on Ripjack attacks for each level of Heat. <br/><Bullet/> Gain +<Ability:RECKONING_BONUS_DAMAGE_PER_HEAT/>% Damage on Reckoning for every level of Heat. <br/><Bullet/> Chance to lose 1 Heat at the beginning of each turn - chance increases based on stored Heat.<br/><Bullet/>Very high Heat levels have a chance to lose 2 Heat.<br/><Bullet/> Shots add +<Ability:HEATSINK_GAIN_DIRECT_SHOT/> Heat.<br/><Bullet/> Taking damage removes <Ability:HEATSINK_LOSS_ON_DAMAGE/> Heat.<br/><Bullet/> Maximum of <Ability:HEATSINK_LOSS_ON_DAMAGE/> stored Heat by default.<br/>"
+LocPromotionPopupText = "<Bullet/>A Focus-like mechanic: Channel the fire inside you to boost your aim and critical hit chance.<br/><Bullet/> Gain +<Ability:HEATSINK_CRIT_CHANCE_BONUS/>% chance to Crit on attacks for each level of Heat.<br/><Bullet/> Gain +<Ability:HEATSINK_AIM_BONUS/>% accuracy for each level of Heat. <br/><Bullet/> Gain +<Ability:RECKONING_BONUS_DAMAGE_PER_HEAT/>% Damage on Reckoning for every level of Heat. <br/><Bullet/> Chance to lose 1 Heat at the beginning of each turn - chance increases based on stored Heat.<br/><Bullet/>Very high Heat levels have a chance to lose 2 Heat.<br/><Bullet/> Shots add +<Ability:HEATSINK_GAIN_DIRECT_SHOT/> Heat.<br/><Bullet/> Taking damage removes <Ability:HEATSINK_LOSS_ON_DAMAGE/> Heat.<br/><Bullet/> Maximum of <Ability:HEATSINK_MAX_CHARGES/> stored Heat by default.<br/>"
 
 
 

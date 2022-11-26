@@ -35,8 +35,9 @@ static function UpdateMissionSources(X2StrategyElementTemplate Template, int Dif
 			SourceTemplate.OnExpireFn = RetaliationOnExpire_LW;
 		case 'MissionSource_Council':
 			SourceTemplate.OnSuccessFn = CouncilOnSuccess;
-
-
+		case 'MissionSource_AlienNetwork':
+			SourceTemplate.DifficultyValue = 1;
+			SourceTemplate.GetMissionDifficultyFn = GetMissionDifficultyFromDoom;
 			break;
 		default:
 			break;
@@ -123,6 +124,7 @@ static function MarkUnitAsCaptured(
 	ActionState.Risks.AddItem(ActionRisk);
 }
 
+//Disable guaranteed standard retaliation first
 static function SpawnRetaliationMission_LW(XComGameState NewGameState, int MissionMonthIndex)
 {
 	local XComGameState_MissionSite MissionState;
@@ -204,12 +206,20 @@ static function SpawnRetaliationMission_LW(XComGameState NewGameState, int Missi
 
 static function RetaliationOnSuccess_LW(XComGameState NewGameState, XComGameState_MissionSite MissionState)
 {
+
+	//Get Battle Data Like this:
+	//BattleData = XComGameState_BattleData(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_BattleData'));
+
+
+	// Get Reward State from the mission site and adjust the quantity
+	// Modify the actual civilian Reward Amount
 	class'X2StrategyElement_DefaultMissionSources'.static.GiveRewards(NewGameState, MissionState);
+
+	//class'X2StrategyElement_DefaultMissionSources'.static.ModifyRegionSupplyYield(NewGameState, MissionState, class'XComGameState_WorldRegion'.static.GetRegionDisconnectSupplyChangePercent(), , true);
 	class'X2StrategyElement_DefaultMissionSources'.static.SpawnPointOfInterest(NewGameState, MissionState);
 
-	class'X2StrategyElement_DefaultMissionSources'.static.ModifyRegionSupplyYield(NewGameState, MissionState, class'XComGameState_WorldRegion'.static.GetRegionDisconnectSupplyChangePercent(), , true);
-
 	MissionState.RemoveEntity(NewGameState);
+	
 	class'XComGameState_HeadquartersResistance'.static.RecordResistanceActivity(NewGameState, 'ResAct_RetaliationsStopped');
 
 	`XEVENTMGR.TriggerEvent('RetaliationComplete', , , NewGameState);
@@ -220,7 +230,10 @@ static function RetaliationOnFailure_LW(XComGameState NewGameState, XComGameStat
 
 	class'X2StrategyElement_DefaultMissionSources'.static.ModifyRegionSupplyYield(NewGameState, MissionState, class'XComGameState_WorldRegion'.static.GetRegionDisconnectSupplyChangePercent(), , true);
 
-
+	if(!class'X2StrategyElement_DefaultMissionSources'.static.IsInStartingRegion(MissionState))
+	{
+		class'X2StrategyElement_DefaultMissionSources'.static.LoseContactWithMissionRegion(NewGameState, MissionState, true);
+	}
 	MissionState.RemoveEntity(NewGameState);	
 	class'XComGameState_HeadquartersResistance'.static.DeactivatePOI(NewGameState, MissionState.POIToSpawn);	
 	class'XComGameState_HeadquartersResistance'.static.RecordResistanceActivity(NewGameState, 'ResAct_RetaliationsFailed');
@@ -284,6 +297,19 @@ static function array<int> GetCouncilExcludeRewards(XComGameState_MissionSite Mi
 	}
 
 	return ExcludeIndices;
+}
+
+static function int GetMissionDifficultyFromDoom(XComGameState_MissionSite MissionState)
+{
+	local int Difficulty;
+
+	Difficulty = MissionState.GetMissionSource().DifficultyValue;
+
+	Difficulty += (MissionState.Doom/2);
+
+	Difficulty = Clamp(Difficulty, class'X2StrategyGameRulesetDataStructures'.default.MinMissionDifficulty, 7);
+
+	return Difficulty;
 }
 
 defaultproperties

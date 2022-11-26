@@ -999,19 +999,19 @@ static protected function EventListenerReturn DynamicallyApplyLoadouts(
 			{
 				LoadoutStr $= "2";
 			}
-			iRand = `SYNC_RAND_STATIC(100);
+			// iRand = `SYNC_RAND_STATIC(100);
 			// if (iRand < 15)
 			// {
 			// 	LoadoutStr $= "SMG";
 			// }
-			if (iRand < 34)
-			{
-				LoadoutStr $= "Shotgun";
-			}
-			else if (iRand < 67)
-			{
-				LoadoutStr $= "Bullpup";
-			}
+			// if (iRand < 34)
+			// {
+			// 	LoadoutStr $= "Shotgun";
+			// }
+			// else if (iRand < 67)
+			// {
+			// 	LoadoutStr $= "Bullpup";
+			// }
 				
 			UnitState.ApplyInventoryLoadout(NewGameState,name(LoadoutStr));
 

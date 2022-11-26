@@ -6,8 +6,9 @@ var config int ReactionFrame_Aim_Bsc, ReactionFrame_Aim_Adv, ReactionFrame_Aim_S
 var config int FlankFrame_Crit_Bsc, FlankFrame_Crit_Adv, FlankFrame_Crit_Sup, FlankFrame_Crit_Empower;
 var config int FuelLine_Charges_Bsc, FuelLine_Charges_Adv, FuelLine_Charges_Sup;
 
-var config float LIGHT_FRAME_DR;
-
+var config float LIGHT_FRAME_DAMAGE_REDUCTION;
+var config int LIGHT_FRAME_MOBILITY;
+var config int OUTRIDER_FRAME_CRIT;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -22,7 +23,7 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	Templates.AddItem(FuelLineAttachment('LWFuelLineBsc', default.FuelLine_Charges_Bsc));
 
-	Templates.AddItem(AddHiddenPassive('LWFlankCritFrameBsc'));
+	Templates.AddItem(OutriderFrameAbility());
 
 	Templates.AddItem(ReactionFireFrameAttachment());
 
@@ -70,16 +71,41 @@ static function X2AbilityTemplate ReactionFireFrameAttachment()
 	// Create a conditional bonus effect
 	Effect = new class'X2Effect_LightFrame';
 	Effect.BuildPersistentEffect(1, true, false, false);
-	Effect.PCT_DMG_Reduction = default.LIGHT_FRAME_DR;
+	Effect.PCT_DMG_Reduction = default.LIGHT_FRAME_DAMAGE_REDUCTION;
 	Template.AddTargetEffect(Effect);
 	
 	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
 	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
 	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
-	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, 1);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.LIGHT_FRAME_MOBILITY);
 	Template.AddTargetEffect(PersistentStatChangeEffect);
 
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, 1);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.LIGHT_FRAME_MOBILITY);
+
+	return Template;
+}
+
+static function X2AbilityTemplate OutriderFrameAbility()
+{
+	local X2Effect_OutriderFrame Effect;
+	local X2AbilityTemplate Template;
+	local X2Effect_PersistentStatChange	PersistentStatChangeEffect;
+
+	Template = AddHiddenPassive('LWFlankCritFrameBsc');
+
+	// Create a conditional bonus effect
+	Effect = new class'X2Effect_OutriderFrame';
+	Effect.BuildPersistentEffect(1, true, false, false);
+	Effect.CRIT_CHANCE = default.OUTRIDER_FRAME_CRIT;
+	Template.AddTargetEffect(Effect);
+	
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.LIGHT_FRAME_MOBILITY);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.LIGHT_FRAME_MOBILITY);
 
 	return Template;
 }

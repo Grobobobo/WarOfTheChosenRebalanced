@@ -51,10 +51,10 @@ static function X2AbilityTemplate CreateFlameThrower()
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'MZFireThrower');
 
 
-	Cooldown = new class'X2AbilityCooldown_Immolator';
-	Cooldown.iNumTurns = default.IMMOLATOR_COOLDOWN;
-	Cooldown.SharingCooldownsWith.AddItem('Overwatch');
-	Cooldown.SharingCooldownsWith.AddItem('MZFireThrower');
+	// Cooldown = new class'X2AbilityCooldown_Immolator';
+	// Cooldown.iNumTurns = default.IMMOLATOR_COOLDOWN;
+	// Cooldown.SharingCooldownsWith.AddItem('Overwatch');
+	// Cooldown.SharingCooldownsWith.AddItem('MZFireThrower');
 	//Cooldown.SharingCooldownsWith.AddItem('MZBlastCanisterActivate');
 	//Cooldown.SharingCooldownsWith.AddItem('MZPoisonCanisterActivate');
 	//Cooldown.SharingCooldownsWith.AddItem('MZIceCanisterActivate');
@@ -63,7 +63,7 @@ static function X2AbilityTemplate CreateFlameThrower()
 	//Cooldown.SharingCooldownsWith.AddItem('MZSmokeCanisterActivate');
 	//Cooldown.SharingCooldownsWith.AddItem('MZAcidCanisterActivate');
 
-	Template.AbilityCooldown = Cooldown;
+	//Template.AbilityCooldown = Cooldown;
 
 	Template.AbilitySourceName = 'eAbilitySource_Standard';
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_HideSpecificErrors;
@@ -77,6 +77,7 @@ static function X2AbilityTemplate CreateFlameThrower()
 	ActionPointCost.iNumPoints = 1;
 	ActionPointCost.bConsumeAllPoints = true;
 	ActionPointCost.DoNotConsumeAllEffects.AddItem('LWBurningRush');
+	ActionPointCost.DoNotConsumeAllEffects.AddItem('LWAutoloaderFuelBsc');
 	Template.AbilityCosts.AddItem(ActionPointCost);
 
 	AmmoCost = new class'X2AbilityCost_Ammo';

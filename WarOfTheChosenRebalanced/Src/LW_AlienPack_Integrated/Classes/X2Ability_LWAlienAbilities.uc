@@ -2146,13 +2146,10 @@ static function EventListenerReturn ShoggothListener(Object EventData, Object Ev
 	local XComGameState_Ability AbilityState;
 	local int Roll;
 	local XComGameStateContext_Ability AbilityContext;
-	local XComGameState_Ability TriggerAbilityState;
 	local XComGameState_Unit  TargetUnit;
 	local float Chance;
 
 	AbilityContext = XComGameStateContext_Ability(GameState.GetContext());
-
-	TriggerAbilityState = XComGameState_Ability(CallbackData);
 
 	TargetUnit = XComGameState_Unit(`XCOMHISTORY.GetGameStateForObjectID(AbilityContext.InputContext.PrimaryTarget.ObjectID,,GameState.GetContext().GetFirstStateInEventChain().HistoryIndex - 1));
 

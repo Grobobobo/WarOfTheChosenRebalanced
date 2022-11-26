@@ -228,6 +228,13 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 		case 'THROWING_KNIFE_BM_BLEED_DAMAGE':
 			OutString = string(class'X2Item_SecondaryThrowingKnives'.default.THROWING_KNIFE_BM_BLEED_DAMAGE);
 			return true;
+		case 'LIGHT_FRAME_MOBILITY':
+			OutString = string(class'X2Ability_ChemthrowerUpgrades'.default.LIGHT_FRAME_MOBILITY);
+			return true;
+		case 'LIGHT_FRAME_DAMAGE_REDUCTION':
+			OutString = string(int(class'X2Ability_ChemthrowerUpgrades'.default.LIGHT_FRAME_DAMAGE_REDUCTION) * 100);
+			return true;
+
 
 	}
 

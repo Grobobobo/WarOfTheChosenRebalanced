@@ -134,22 +134,22 @@ LootTooltip="This chemthrower upgrade will slightly increase maximum ammo capaci
 [LWReloadFuel_Bsc X2WeaponUpgradeTemplate]
 FriendlyName="Heat Resistant Tank"
 FriendlyNamePlural="Heat Resistant Tank"
-BriefSummary="Reduce the cooldown of firing the flamethrower by 2."
-TinySummary="Reduce the cooldown of firing the flamethrower by 2."
-LootTooltip="Reduce the cooldown of firing the flamethrower by 2."
+BriefSummary="Makes the Flamethrower attack non-turn ending."
+TinySummary="Makes the Flamethrower attack non-turn ending."
+LootTooltip="Makes the Flamethrower attack non-turn ending."
 
 [LWFuelLine_Bsc X2WeaponUpgradeTemplate]
 FriendlyName="Fuel Line"
 FriendlyNamePlural="Fuel Line"
-BriefSummary="Increases Canister charges by 1."
-TinySummary="Increases Canister charges by 1."
+BriefSummary="Increases Canister charges by 2."
+TinySummary="Increases Canister charges by 2."
 LootTooltip="This Chemthrower upgrade provides one additional use of the ability granted by a Canister."
 
 [LWReactionFireFrame_Bsc X2WeaponUpgradeTemplate]
 FriendlyName="Light Frame"
 FriendlyNamePlural="Light Frames"
-BriefSummary="Increase the weapon's mobility by 1 at the cost of 35% weapon damage."
-TinySummary="Increase the weapon's mobility by 1 at the cost of 35% weapon damage."
+BriefSummary="Increase the weapon's mobility by <Ability:LIGHT_FRAME_MOBILITY/> at the cost of <Ability:LIGHT_FRAME_DAMAGE_REDUCTION/>% weapon damage."
+TinySummary="Increase the weapon's mobility by <Ability:LIGHT_FRAME_MOBILITY/> at the cost of <Ability:LIGHT_FRAME_DAMAGE_REDUCTION/>% weapon damage."
 LootTooltip="This chemthrower upgrade, when installed, Increases the weapon's mobility at the cost of damage."
 
 [LWReactionFireFrameBsc X2AbilityTemplate]
@@ -158,9 +158,9 @@ FriendlyName="Light Frame"
 [LWFlankCritFrame_Bsc X2WeaponUpgradeTemplate]
 FriendlyName="Outrider Frame"
 FriendlyNamePlural="Outrider Frames"
-BriefSummary="Reduce the weapon's infiltration time."
-TinySummary="Reduce the weapon's infiltration time."
-LootTooltip="This chemthrower upgrade, when installed, Reduces the weapon's infiltration time."
+BriefSummary="Increases the weapon's critical hit chance by <Ability:OUTRIDER_FRAME_CRIT/>% against units not in cover."
+TinySummary="Increases the weapon's critical hit chance by <Ability:OUTRIDER_FRAME_CRIT/>% against units not in cover."
+LootTooltip="This chemthrower upgrade, when installed, Increases the weapon's critical hit chance by <Ability:OUTRIDER_FRAME_CRIT/>% against units not in cover."
 
 [LWFlankCritFrameBsc X2AbilityTemplate]
 FriendlyName="Outrider Frame"

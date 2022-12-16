@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------------------
-//  FILE:   XComDownloadableContentInfo_LW_ResistanceOperationOverhaul.uc                                    
+//  FILE:   XComDownloadableContentInfo_RookiesChoiceWotC.uc                                    
 //           
 //	Use the X2DownloadableContentInfo class to specify unique mod behavior when the 
 //  player creates a new campaign or loads a saved game.
@@ -8,7 +8,7 @@
 //  Copyright (c) 2016 Firaxis Games, Inc. All rights reserved.
 //---------------------------------------------------------------------------------------
 
-class X2DownloadableContentInfo_LW_ResistanceOperationOverhaul extends X2DownloadableContentInfo;
+class X2DownloadableContentInfo_LW_RookieChoice_Integrated extends X2DownloadableContentInfo;
 
 /// <summary>
 /// This method is run if the player loads a saved game that was created prior to this DLC / Mod being installed, and allows the 

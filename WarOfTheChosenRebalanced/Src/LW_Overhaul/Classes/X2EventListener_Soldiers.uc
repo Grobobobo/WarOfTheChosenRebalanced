@@ -87,7 +87,7 @@ static function CHEventListenerTemplate CreatePromotionListeners()
 	Template.AddCHEvent('CPS_OverrideCanPurchaseAbility', OverrideCanPurchaseAbility, ELD_Immediate);
 	Template.AddCHEvent('CPS_OverrideAbilityPointCost', OverrideAbilityPointCost, ELD_Immediate);
 	Template.AddCHEvent('CPS_AbilityPurchased', UpdateAbilityCostMultiplier, ELD_Immediate);
-	Template.AddCHEvent('UnitRankUp', OverrideAPGain, ELD_OnStateSubmitted);
+	Template.AddCHEvent('UnitRankUp', OverrideAPGain, ELD_Immediate);
 
 	Template.RegisterInStrategy = true;
 
@@ -378,21 +378,25 @@ static function EventListenerReturn OverrideAPGain(
 	Object CallbackData)
 {
 	local XComGameState_Unit UnitState;
-	local XComGameState NewGameState;
+//	local XComGameState NewGameState;
 	local UnitValue FreePromotionValue;
 
-
+	if (GameState.GetContext().InterruptionStatus == eInterruptionStatus_Interrupt)
+	{
+		return ELR_NoInterrupt;
+	}
 
 	UnitState = XComGameState_Unit(EventData);
 
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Change AP Gain");
-	UnitState = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', UnitState.ObjectID));
+	//NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Change AP Gain");
+	UnitState = XComGameState_Unit(GameState.GetGameStateForObjectID(UnitState.ObjectID));
 
 	UnitState.GetUnitValue('GTO_FreePromotionAP',FreePromotionValue);
 	//Redundant checks because I don't want to spam gamestates in the strategy
 	if(FreePromotionValue.fValue < 1.0f || UnitState.IsResistanceHero())
 	{
-		NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Change AP Gain");
+		//NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Change AP Gain");
+		UnitState = XComGameState_Unit(GameState.ModifyStateObject(class'XComGameState_Unit', UnitState.ObjectID));
 
 	//Add Some starting AP to soldiers
 		if(FreePromotionValue.fValue < 1.0f)
@@ -406,7 +410,7 @@ static function EventListenerReturn OverrideAPGain(
 			UnitState.AbilityPoints = UnitState.AbilityPoints + UnitState.GetBaseSoldierAPAmount(UnitState.Comint);
 			UnitState.AbilityPoints = UnitState.AbilityPoints - UnitState.GetResistanceHeroAPAmount(UnitState.GetSoldierRank(), UnitState.ComInt);
 		}
-		`GAMERULES.SubmitGameState(NewGameState);
+	//	`GAMERULES.SubmitGameState(NewGameState);
 	}
 
 
@@ -867,12 +871,8 @@ static function EventListenerReturn OnOverrideAbilityIconColor(Object EventData,
 		case 'ThrowGrenade':
 			if (UnitState.AffectedByEffectNames.Find('RapidDeploymentEffect') != -1)
 			{
-				if (class'X2Effect_RapidDeployment'.default.VALID_GRENADE_TYPES.Find(WeaponState.GetMyTemplateName()) != -1)
-				{
-					IsTurnEnding = false;
-					IsFree = true;
-				}
-
+				IsTurnEnding = false;
+				IsFree = true;
 			}
 			if(UnitState.HasSoldierAbility('FreeGrenades'))
 			{
@@ -889,11 +889,8 @@ static function EventListenerReturn OnOverrideAbilityIconColor(Object EventData,
 		case 'LaunchGrenade':
 			if (UnitState.AffectedByEffectNames.Find('RapidDeploymentEffect') != -1)
 			{
-				if (class'X2Effect_RapidDeployment'.default.VALID_GRENADE_TYPES.Find(WeaponState.GetLoadedAmmoTemplate(AbilityState).DataName) != -1)
-				{
-					IsTurnEnding = false;
-					IsFree = true;
-				}
+				IsTurnEnding = false;
+				IsFree = true;
 			}
 			if(UnitState.HasSoldierAbility('FreeGrenades'))
 			{
@@ -976,6 +973,7 @@ static function EventListenerReturn  OnOverrideBleedOutChance(Object EventData, 
 {
 	local XComLWTuple				OverrideTuple;
 	local int						BleedOutChance;
+	local XComGameState_HeadquartersXCom XComHQ;
 
 	OverrideTuple = XComLWTuple(EventData);
 	if(OverrideTuple == none)
@@ -984,12 +982,21 @@ static function EventListenerReturn  OnOverrideBleedOutChance(Object EventData, 
 		return ELR_NoInterrupt;
 	}
 
+	BleedOutChance = default.BLEEDOUT_CHANCE_BASE - (OverrideTuple.Data[2].i * default.DEATH_CHANCE_PER_OVERKILL_DAMAGE);
+
+	XComHQ = XComGameState_HeadquartersXCom(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersXCom', true));
+	
+	if (XComHQ != none && XComHQ.SoldierUnlockTemplates.Find('StayWithMeUnlock') != INDEX_NONE)
+	{
+		`log("Applying bonus chance for StayWithMeUnlock...",,'XCom_HitRolls');
+		BleedOutChance += class'X2StatusEffects'.default.BLEEDOUT_BONUS_ROLL;
+	}
+
 	// Tuple data consists of:
 	//   0: Bleed out chance
 	//   1: Size of die to roll
 	//   2: Overkill damage, i.e. how much damage was dealt over and above what was needed
 	//      to take the solider to 0 health.
-	BleedOutChance = default.BLEEDOUT_CHANCE_BASE - (OverrideTuple.Data[2].i * default.DEATH_CHANCE_PER_OVERKILL_DAMAGE);
 	OverrideTuple.Data[0].i = BleedOutChance;
 
 	return ELR_NoInterrupt;

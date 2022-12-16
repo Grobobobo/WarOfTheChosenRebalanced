@@ -275,16 +275,18 @@ LocFlyOverText="Activate Curse Canister"
 FriendlyName="Smoke Canister"
 FriendlyNamePlural="Smoke Canisters"
 BriefSummary="This basic Canister enables the soldier to use an alternative smoke generating ability with thier Chemthrower."
-TacticalText="<Bullet/> Canisters can only be used alongside Chemthrowers.<br><Bullet/> Grants <Ability:SMOKECANISTER_USES> uses of a smoke generating ability.<br><Bullet/> This provides the same defensive benefits as smoke grenades in a cone."
+TacticalText="<Bullet/> Will also Additionaly smoke the user.<br><Bullet/> Canisters can only be used alongside Chemthrowers.<br> <Bullet/> Grants <Ability:SMOKECANISTER_USES> uses of a smoke generating ability.<br><Bullet/> This provides the same defensive benefits as smoke grenades in a cone."
 AbilityDescName="Canister"
+
 [MZSmokeCanister X2AbilityTemplate]
 LocFriendlyName="Activate Smoke Canister"
-LocLongDescription="Activate to expel a stream of smoke in a cone with your chemthrower. Boosts defense of units standing in the smoke."
+LocLongDescription="Activate to expel a stream of smoke in a cone and around yourself with your chemthrower, Boosts defense of units standing in the smoke."
 LocHelpText="Activate to expel a stream of smoke in a cone with your chemthrower. Boosts defense of units standing in the smoke."
 LocFlyOverText="Activate Smoke Canister"
+
 [MZSmokeCanisterActivate X2AbilityTemplate]
 LocFriendlyName="Activate Smoke Canister"
-LocLongDescription="Activate to expel a stream of smoke in a cone with your chemthrower. Boosts defense of units standing in the smoke."
+LocLongDescription="Activate to expel a stream of smoke in a cone and around yourself with your chemthrower, Boosts defense of units standing in the smoke."
 LocHelpText="Activate to expel a stream of smoke in a cone with your chemthrower. Boosts defense of units standing in the smoke."
 LocFlyOverText="Activate Smoke Canister"
 

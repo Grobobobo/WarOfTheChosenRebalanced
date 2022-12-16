@@ -117,6 +117,10 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateExoskeletonServos());	
 	Templates.AddItem(ArterialStrike());
 	Templates.AddItem(ArterialStrikePassive());
+
+	Templates.AddItem(SidearmBleedingRounds());
+	Templates.AddItem(SidearmBleedingRoundsPassive());
+	
 	
 	return Templates;
 }
@@ -2422,6 +2426,73 @@ static function EventListenerReturn AbilityTriggerEventListener_ArterialStrike(
 	Object CallbackData)
 {
 	return HandleApplyEffectEventTrigger('ArterialStrike_LW', EventData, EventSource, GameState);
+}
+
+static function X2AbilityTemplate SidearmBleedingRounds()
+{
+	local X2AbilityTemplate					Template;
+	local X2AbilityTrigger_EventListener	EventListener;
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'SidearmBleedingRounds_LW');
+
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_BloodTrail";
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+
+	Template.AbilityTargetStyle = default.SimpleSingleTarget;
+	Template.AbilityToHitCalc = default.DeadEye;
+
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	Template.AbilityTargetConditions.AddItem(default.LivingHostileTargetProperty);
+
+	// Trigger on Damage
+	EventListener = new class'X2AbilityTrigger_EventListener';
+	EventListener.ListenerData.EventID = 'AbilityActivated';
+	EventListener.ListenerData.EventFn = AbilityTriggerEventListener_SidearmBleedingRounds;
+	EventListener.ListenerData.Deferral = ELD_OnStateSubmitted;
+	EventListener.ListenerData.Priority = 40;
+	EventListener.ListenerData.Filter = eFilter_Unit;
+
+	Template.AbilityTriggers.AddItem(EventListener);
+
+	Template.AddTargetEffect(class'X2StatusEffects'.static.CreateBleedingStatusEffect(3, 2));
+
+	Template.FrameAbilityCameraType = eCameraFraming_Never; 
+	Template.bSkipExitCoverWhenFiring = true;
+	Template.bSkipFireAction = true;	//	this fire action will be merged by Merge Vis function
+	Template.bShowActivation = true;
+	Template.bUsesFiringCamera = false;
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	Template.MergeVisualizationFn = ApplyEffect_MergeVisualization;
+	Template.BuildInterruptGameStateFn = none;
+
+	Template.AdditionalAbilities.AddItem('SidearmBleedingRoundsPassive_LW');
+	
+	Template.ChosenExcludeTraits.AddItem('ChosenDragonRounds');
+	Template.ChosenExcludeTraits.AddItem('ChosenVenomRounds');
+
+	Template.DefaultSourceItemSlot = eInvSlot_Pistol;
+
+	return Template;
+}
+
+static function X2AbilityTemplate SidearmBleedingRoundsPassive()
+{
+	local X2AbilityTemplate	Template;
+
+	Template = PurePassive('SidearmBleedingRoundsPassive_LW', "img:///UILibrary_LW_Overhaul.UIPerk_BloodTrail", false);
+
+	return Template;
+}
+
+static function EventListenerReturn AbilityTriggerEventListener_SidearmBleedingRounds(
+	Object EventData,
+	Object EventSource,
+	XComGameState GameState,
+	Name EventID,
+	Object CallbackData)
+{
+	return HandleApplyEffectEventTrigger('SidearmBleedingRounds_LW', EventData, EventSource, GameState);
 }
 
 defaultproperties

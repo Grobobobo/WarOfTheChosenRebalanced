@@ -196,6 +196,7 @@ static function X2DataTemplate CreateTemplate_SawedOffShotgun_Laser()
 	Template.CanBeBuilt = false;
 	
 	Template.Abilities.AddItem('PointBlank');
+	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('SawedOffReload');
 
 	Template.DamageTypeTemplateName = 'Electrical';
@@ -242,6 +243,7 @@ static function X2DataTemplate CreateTemplate_SawedOffShotgun_Magnetic()
 
 	Template.Abilities.AddItem('PointBlank');
 	Template.Abilities.AddItem('SawedOffReload');
+	Template.Abilities.AddItem('HotLoadAmmo');
 
 	Template.DamageTypeTemplateName = 'Electrical';
 
@@ -288,6 +290,7 @@ static function X2DataTemplate CreateTemplate_SawedOffShotgun_Coil()
 	
 	Template.Abilities.AddItem('PointBlank');
 	Template.Abilities.AddItem('SawedOffReload');
+	Template.Abilities.AddItem('HotLoadAmmo');
 
 	Template.DamageTypeTemplateName = 'Electrical';
 	
@@ -334,6 +337,7 @@ static function X2DataTemplate CreateTemplate_SawedOffShotgun_Beam()
 
 	Template.Abilities.AddItem('PointBlank');
 	Template.Abilities.AddItem('SawedOffReload');
+	Template.Abilities.AddItem('HotLoadAmmo');
 
 	Template.DamageTypeTemplateName = 'Electrical';
 

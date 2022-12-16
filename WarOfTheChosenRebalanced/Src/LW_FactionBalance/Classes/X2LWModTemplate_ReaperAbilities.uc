@@ -68,6 +68,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 			MakeShadowTemporary(Template);
 			Template.AdditionalAbilities.RemoveItem('ShadowPassive');
 			Template.AdditionalAbilities.AddItem('Infiltration');
+			Template.OverrideAbilities.AddItem('RefractionFieldPhantom');
 			break;
 		case 'Sting':
 			//UpdateStingForNewShadow(Template);
@@ -154,7 +155,7 @@ static function MakeShadowTemporary(X2AbilityTemplate Template)
 
 	GhostEffect = new class'X2Effect_SilentMelee';
 	GhostEffect.EffectName = 'GhostEffect';
-	GhostEffect.BuildPersistentEffect(class'X2Ability_PerkPackAbilitySet2'.default.PHANTOM_DURATION, false, true, false, eGameRule_PlayerTurnBegin);
+	GhostEffect.BuildPersistentEffect(default.SHADOW_DURATION, false, true, false, eGameRule_PlayerTurnBegin);
 	// StealthyEffect.SetDisplayInfo (ePerkBuff_Bonus,Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,,, Template.AbilitySourceName); 
 	GhostEffect.bRemoveWhenTargetConcealmentBroken = true;
 	GhostEffect.DuplicateResponse = eDupe_Refresh;
@@ -416,13 +417,13 @@ static function ReplaceDeathDealerEffect(X2AbilityTemplate Template)
 {
 	local X2Effect_Executioner ExecutionerEffect;
 	local int i;
-	local X2Effect_ToHitModifier ToHitModifier;
+	//local X2Effect_ToHitModifier ToHitModifier;
 
-	ToHitModifier = new class'X2Effect_ToHitModifier';
-	ToHitModifier.BuildPersistentEffect(1, true, true, true);
-	ToHitModifier.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
-	ToHitModifier.AddEffectHitModifier(eHit_Crit, default.DEATH_DEALER_CRIT, Template.LocFriendlyName);
-	Template.AddTargetEffect(ToHitModifier);
+	// ToHitModifier = new class'X2Effect_ToHitModifier';
+	// ToHitModifier.BuildPersistentEffect(1, true, true, true);
+	// ToHitModifier.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
+	// ToHitModifier.AddEffectHitModifier(eHit_Crit, default.DEATH_DEALER_CRIT, Template.LocFriendlyName);
+	// Template.AddTargetEffect(ToHitModifier);
 
 	// Remove the previous Pale Horse effect
 	for (i = Template.AbilityTargetEffects.Length - 1; i >= 0 ; i--)

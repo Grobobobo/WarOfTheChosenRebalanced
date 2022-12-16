@@ -65,11 +65,24 @@ struct MultiShotAbility
 	var array<name> FollowUpAbilityNames;
 };
 
+var config int MEDICAL_PROTOCOL_COOLDOWN;
 var config bool USE_LOS_FOR_MULTI_SHOT_ABILITIES;
 var config array<MultiShotAbility> MULTI_SHOT_ABILITIES;
 
-var privatewrite X2Condition_Visibility GameplayVisibilityCondition;
+var config int POISON_SPIT_COOLDOWN;
+var config int POISON_SPIT_GLOBAL_COOLDOWN;
 
+var config int TONGUE_GRAB_COOLDOWN;
+var config int TONGUE_GRAB_GLOBAL_COOLDOWN;
+var privatewrite X2Condition_Visibility GameplayVisibilityCondition;
+var privatewrite X2Condition_UnitProperty LivingHostileUnitOnlyProperty;
+var config int FREEZING_LASH_COOLDOWN;
+var config int FREEZING_LASH_AIM_BONUS;
+
+var config int RAGE_STRIKE_COOLDOWN;
+var config int RAGE_STRIKE_AIM_BONUS;
+
+var config int BATTLESCANNER_DODGE_REDUCTION;
 static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 {
     // Override the FinalizeHitChance calculation for abilities that use standard aim
@@ -160,12 +173,15 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 
 		case 'Bind':
 		case 'BindSustained':
-		MakeBindDamageScale(Template);
-		//At this point trying to figure out why AI does not do the thing it's supposed to do takes way longer than just doing this
+			MakeBindDamageScale(Template);
+			MakeAbilitiesUnusableOnLost(Template);
+			break;
 		case 'GetOverHere':
 		case 'KingGetOverHere':
 			MakeAbilitiesUnusableOnLost(Template);
+			AdjustTongueGrabCooldown(Template);
 			break;
+
 		case 'ScanningProtocol':
 			class'Helpers_LW'.static.MakeFreeAction(Template);
 			AddInitialScanningCharges(Template);
@@ -222,6 +238,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 			break;
 		case 'HunterRifleShot':
 			MakeAbilityWorkWhenBurning(Template);
+			AddAmmoToHunterRifleShot(Template);
 
 		// case 'FanFire':
 		// case 'LightningHands':
@@ -244,10 +261,13 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'SteadyHands':
 			FixSteadyHands(Template);
 			break;
+		case 'ChryssalidSlash':
+			RemoveAbilityWeaponDamage(Template);
+			RemoveTargetingRandomCivilians(Template);
+			break;
 		case 'DevastatingPunch':
 			class'Helpers_LW'.static.RemoveAbilityTargetEffects(Template,'X2Effect_ImmediateAbilityActivation');
 		case 'BigDamnPunch':
-		case 'ChryssalidSlash':
 		case 'ScythingClaws':
 			RemoveAbilityWeaponDamage(Template);
 			break;
@@ -292,7 +312,12 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 
 		case 'MedikitHeal':
 		case 'NanoMedikitHeal':
-			AddCooldownToMedikits(Template);
+			UpdateMedikits(Template);
+			break;
+
+		case 'GremlinHeal':
+		case 'GremlinStabilize':
+			UpdateMedicalProtocol(Template);
 			break;
 		case 'EverVigilant':
 			Template.AdditionalAbilities.Removeitem('EverVigilantTrigger');
@@ -308,8 +333,8 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'CombatProtocol':
 			UpdateCombatProtocol(Template);
 			break;
-		case 'LongWatch':
-			Template.AdditionalAbilities.AddItem('CoolUnderPressure');
+		// case 'LongWatch':
+		// 	Template.AdditionalAbilities.AddItem('CoolUnderPressure');
 		case 'Overwatch':
 		case 'PistolOverwatch':
 		case 'SniperRifleOverwatch':
@@ -339,6 +364,21 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'SkirmisherFleche':
 		case 'SkirmisherPostAbilityMelee':
 			AddRipjackRuptureEffects(Template);
+			break;
+		case 'FreezingLash':
+			ReworkFreezingLash(Template);
+			break;
+		case 'BattleScanner':
+			ReworkBattleScanners(Template);
+			break;
+		case 'CombatStims':
+			ReworkCombatStims(Template);
+			break;
+		case 'SustainingSphereAbility':
+			ReworkSustainingSphere(Template);
+			break;
+		case 'MimicBeaconThrow':
+			class'Helpers_LW'.static.MakeAbilityNonTurnEnding(Template);
 			break;
 		// case 'SpawnChryssalid':
 		// 	ReworkChryssalidSpawning(Template);
@@ -588,70 +628,70 @@ static function DisableLostHeadshot(X2AbilityTemplate Template)
 
 static function UpdateTeamwork(X2AbilityTemplate Template)
 {
-	local X2Effect Effect;
-	local X2Condition Condition;
-	local X2Effect_GrantActionPoints ActionPointEffect;
-	local X2Condition_Bondmate BondmateCondition;
+	// local X2Effect Effect;
+	// local X2Condition Condition;
+	// local X2Effect_GrantActionPoints ActionPointEffect;
+	// local X2Condition_Bondmate BondmateCondition;
 	local X2Condition_Visibility TargetVisibilityCondition;
-	local X2AbilityCharges_Teamwork AbilityCharges;
+	// local X2AbilityCharges_Teamwork AbilityCharges;
 
-	// Change the charges for each level of Teamwork
-	AbilityCharges = new class'X2AbilityCharges_Teamwork';
-	AbilityCharges.Charges.AddItem(default.TEAMWORK_LVL1_CHARGES);
-	AbilityCharges.Charges.AddItem(default.TEAMWORK_LVL2_CHARGES);
-	AbilityCharges.Charges.AddItem(default.TEAMWORK_LVL3_CHARGES);
+	// // Change the charges for each level of Teamwork
+	// AbilityCharges = new class'X2AbilityCharges_Teamwork';
+	// AbilityCharges.Charges.AddItem(default.TEAMWORK_LVL1_CHARGES);
+	// AbilityCharges.Charges.AddItem(default.TEAMWORK_LVL2_CHARGES);
+	// AbilityCharges.Charges.AddItem(default.TEAMWORK_LVL3_CHARGES);
 
-	if (Template.DataName == 'BondmateTeamwork')
-	{
-		// Change the lvl 1 Teamwork to granting a move action rather than a standard one
-		foreach Template.AbilityTargetEffects(Effect)
-		{
-			ActionPointEffect = X2Effect_GrantActionPoints(Effect);
-			if (ActionPointEffect != none)
-			{
-				ActionPointEffect.PointType = class'X2CharacterTemplateManager'.default.MoveActionPoint;
-				break;
-			}
-		}
+	// if (Template.DataName == 'BondmateTeamwork')
+	// {
+	// 	// // Change the lvl 1 Teamwork to granting a move action rather than a standard one
+	// 	// foreach Template.AbilityTargetEffects(Effect)
+	// 	// {
+	// 	// 	ActionPointEffect = X2Effect_GrantActionPoints(Effect);
+	// 	// 	if (ActionPointEffect != none)
+	// 	// 	{
+	// 	// 		ActionPointEffect.PointType = class'X2CharacterTemplateManager'.default.MoveActionPoint;
+	// 	// 		break;
+	// 	// 	}
+	// 	// }
 
-		// Only apply lvl 1 Teamwork to lvl 1 bonds (not lvl 2)
-		foreach Template.AbilityShooterConditions(Condition)
-		{
-			BondmateCondition = X2Condition_Bondmate(Condition);
-			if (BondmateCondition != none)
-			{
-				BondmateCondition.MaxBondLevel = 1;
-				break;
-			}
-		}
+	// 	// Only apply lvl 1 Teamwork to lvl 1 bonds (not lvl 2)
+	// 	foreach Template.AbilityShooterConditions(Condition)
+	// 	{
+	// 		BondmateCondition = X2Condition_Bondmate(Condition);
+	// 		if (BondmateCondition != none)
+	// 		{
+	// 			BondmateCondition.MaxBondLevel = 1;
+	// 			break;
+	// 		}
+	// 	}
 
-		Template.AbilityCharges = AbilityCharges;
-	}
-	else if (Template.DataName == 'BondmateTeamwork_Improved')
-	{
-		// Only apply lvl 1 Teamwork to lvl 1 bonds (not lvl 2)
-		foreach Template.AbilityShooterConditions(Condition)
-		{
-			BondmateCondition = X2Condition_Bondmate(Condition);
-			if (BondmateCondition != none)
-			{
-				BondmateCondition.MaxBondLevel = 1;
-			}
-		}
+	// 	Template.AbilityCharges = AbilityCharges;
+	// }
+	// else if (Template.DataName == 'BondmateTeamwork_Improved')
+	// {
+	// 	// Only apply lvl 1 Teamwork to lvl 1 bonds (not lvl 2)
+	// 	foreach Template.AbilityShooterConditions(Condition)
+	// 	{
+	// 		BondmateCondition = X2Condition_Bondmate(Condition);
+	// 		if (BondmateCondition != none)
+	// 		{
+	// 			BondmateCondition.MaxBondLevel = 1;
+	// 		}
+	// 	}
 
-		// Apply Advanced Teamwork to lvl 2 and 3 bonds
-		foreach Template.AbilityShooterConditions(Condition)
-		{
-			BondmateCondition = X2Condition_Bondmate(Condition);
-			if (BondmateCondition != none)
-			{
-				BondmateCondition.MinBondLevel = 2;
-				BondmateCondition.MaxBondLevel = 3;
-			}
-		}
+	// 	// Apply Advanced Teamwork to lvl 2 and 3 bonds
+	// 	foreach Template.AbilityShooterConditions(Condition)
+	// 	{
+	// 		BondmateCondition = X2Condition_Bondmate(Condition);
+	// 		if (BondmateCondition != none)
+	// 		{
+	// 			BondmateCondition.MinBondLevel = 2;
+	// 			BondmateCondition.MaxBondLevel = 3;
+	// 		}
+	// 	}
 
-		Template.AbilityCharges = AbilityCharges;
-	}
+	// 	Template.AbilityCharges = AbilityCharges;
+	// }
 
 	// Limit Teamwork to line of sight
 	TargetVisibilityCondition = new class'X2Condition_Visibility';
@@ -722,10 +762,17 @@ static function ReplaceWithDamageReductionMelee(X2AbilityTemplate Template)
 static function AddImmuneConditionToPoisonSpit(X2AbilityTemplate Template)
 {
 	local X2Condition_UnitImmunities UnitImmunityCondition;
+	local X2AbilityCooldown_LocalAndGlobal Cooldown;
 	
 	UnitImmunityCondition = new class'X2Condition_UnitImmunities';
 	UnitImmunityCondition.AddExcludeDamageType('Poison');
 	Template.AbilityMultiTargetConditions.AddItem(UnitImmunityCondition);
+
+	Cooldown = new class'X2AbilityCooldown_LocalAndGlobal';
+	Cooldown.iNumTurns = default.POISON_SPIT_COOLDOWN;
+	Cooldown.NumGlobalTurns = default.POISON_SPIT_GLOBAL_COOLDOWN;
+	Template.AbilityCooldown = Cooldown;
+	
 }
 
 static function AddImmuneConditionToFlamethrower(X2AbilityTemplate Template)
@@ -1574,6 +1621,20 @@ static function RemoveAbilityWeaponDamage(X2AbilityTemplate Template)
 	}
 }
 
+//Make Chryssalids not insta-ruin some missions when they appear
+static function RemoveTargetingRandomCivilians(X2AbilityTemplate Template)
+{
+	local X2Condition_UnitProperty	UnitPropertyCondition;
+
+	class 'Helpers_LW'.static.RemoveAbilityTargetConditions(Template,'X2Condition_UnitProperty');
+
+	UnitPropertyCondition = new class'X2Condition_UnitProperty';
+	UnitPropertyCondition.ExcludeDead = true;
+	//UnitPropertyCondition.ExcludeFriendlyToSource = false; // Disable this to allow civilians to be attacked.
+	UnitPropertyCondition.ExcludeSquadmates = true;		   // Don't attack other AI units.
+	Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);
+
+}
 
 static function MakeBindDamageScale(X2AbilityTemplate Template)
 {
@@ -1683,7 +1744,7 @@ static function AddSharedSuppressionCooldown(X2AbilityTemplate Template)
 	Template.AbilityCooldown = Cooldown;
 }
 
-static function AddCooldownToMedikits(X2AbilityTemplate Template)
+static function UpdateMedikits(X2AbilityTemplate Template)
 {
 	local X2AbilityCooldown_Shared	Cooldown;
 
@@ -1691,9 +1752,38 @@ static function AddCooldownToMedikits(X2AbilityTemplate Template)
 	Cooldown.SharingCooldownsWith.AddItem('MedikitHeal');
 	Cooldown.SharingCooldownsWith.AddItem('NanoMedikitHeal');
 	Cooldown.SharingCooldownsWith.AddItem('MedikitStabilize');
+	Cooldown.SharingCooldownsWith.AddItem('ParaMedikitStabilize');
+	Cooldown.SharingCooldownsWith.AddItem('ParaMedikitHeal');
+
+	if(X2AbilityTarget_Single(Template.AbilityTargetStyle) != none)
+	{
+		X2AbilityTarget_Single(Template.AbilityTargetStyle).bIncludeSelf = false;
+	}
+	
+
 	Cooldown.iNumTurns = 1;
 	Template.AbilityCooldown = Cooldown;
 }
+
+
+static function UpdateMedicalProtocol(X2AbilityTemplate Template)
+{
+	local X2AbilityCooldown_Shared	Cooldown;
+
+	Cooldown = new class'X2AbilityCooldown_Shared';
+	Cooldown.SharingCooldownsWith.AddItem('GremlinHeal');
+	Cooldown.SharingCooldownsWith.AddItem('GremlinStabilize');
+
+	// if(X2AbilityTarget_Single(Template.AbilityTargetStyle) != none)
+	// {
+	// 	X2AbilityTarget_Single(Template.AbilityTargetStyle).bIncludeSelf = false;
+	// }
+	Template.OverrideAbilities.Length = 0;
+
+	Cooldown.iNumTurns = default.MEDICAL_PROTOCOL_COOLDOWN;
+	Template.AbilityCooldown = Cooldown;
+}
+
 
 static function UpdateAidProtocol(X2AbilityTemplate Template)
 {
@@ -2075,6 +2165,128 @@ static function AddRipjackRuptureEffects(X2AbilityTemplate Template)
 // 	Template.AddTargetEffect(new class'X2Effect_SpawnChryssalid_LW');
 // }
 
+static function AdjustTongueGrabCooldown(X2AbilityTemplate Template)
+{
+	local X2AbilityCooldown_LocalAndGlobal Cooldown;
+	
+	Cooldown = new class'X2AbilityCooldown_LocalAndGlobal';
+	Cooldown.iNumTurns = default.TONGUE_GRAB_COOLDOWN;
+	Cooldown.NumGlobalTurns = default.TONGUE_GRAB_GLOBAL_COOLDOWN;
+	Template.AbilityCooldown = Cooldown;
+}
+
+static function AddAmmoToHunterRifleShot(X2AbilityTemplate Template)
+{
+	local X2AbilityCost_Ammo AmmoCost;
+	
+	AmmoCost = new class'X2AbilityCost_Ammo';
+	AmmoCost.iAmmo = 1;
+	Template.AbilityCosts.AddItem(AmmoCost);
+}
+
+static function ReworkFreezingLash(X2AbilityTemplate Template)
+{
+	local X2AbilityCooldown Cooldown;
+	local X2AbilityCost_ActionPoints Cost;
+	local X2AbilityToHitCalc_StandardAim StandardAim;
+
+	StandardAim = new class'X2AbilityToHitCalc_StandardAim';
+	StandardAim.BuiltInHitMod = default.FREEZING_LASH_AIM_BONUS;
+	Template.AbilityToHitCalc = StandardAim;
+
+
+	Template.AbilityCharges = none;
+	Template.AbilityCosts.Length = 0;
+
+
+	Cost = new class'X2AbilityCost_ActionPoints';
+	Cost.iNumPoints = 1;
+	Cost.bFreeCost = true;
+	Cost.bConsumeAllPoints = false;
+
+	Template.AbilityCosts.AddItem(Cost);
+
+	Cooldown = new class'X2AbilityCooldown';
+	Cooldown.iNumTurns = default.FREEZING_LASH_COOLDOWN;
+	Template.AbilityCooldown = Cooldown;
+
+	Template.AbilityTargetEffects.Length = 0;
+
+	Template.AbilityTargetEffects.AddItem(class'BitterfrostHelper'.static.FreezeEffect());
+	Template.AbilityTargetEffects.AddItem(class'BitterfrostHelper'.static.FreezeCleanse());
+	Template.AbilityTargetEffects.AddItem(class'BitterfrostHelper'.static.BitterChillEffect());
+	Template.AbilityTargetEffects.AddItem(class'BitterfrostHelper'.static.ChillEffect());
+
+	
+}
+
+static function ReworkRageStrike(X2AbilityTemplate Template)
+{
+	local X2AbilityCooldown Cooldown;
+	local X2AbilityCost_ActionPoints Cost;
+	local X2AbilityToHitCalc_StandardAim StandardAim;
+
+	StandardAim = new class'X2AbilityToHitCalc_StandardAim';
+	StandardAim.BuiltInHitMod = default.RAGE_STRIKE_AIM_BONUS;
+	Template.AbilityToHitCalc = StandardAim;
+
+
+	Template.AbilityCharges = none;
+	Template.AbilityCosts.Length = 0;
+
+
+	Cost = new class'X2AbilityCost_ActionPoints';
+	Cost.iNumPoints = 1;
+	Cost.bFreeCost = true;
+	Cost.bConsumeAllPoints = false;
+
+	Template.AbilityCosts.AddItem(Cost);
+
+	Cooldown = new class'X2AbilityCooldown';
+	Cooldown.iNumTurns = default.RAGE_STRIKE_COOLDOWN;
+	Template.AbilityCooldown = Cooldown;
+
+}
+
+static function ReworkBattleScanners(X2AbilityTemplate Template)
+{
+	local X2Effect_PersistentStatChange DodgeModifier;
+
+	class'Helpers_LW'.static.MakeFreeAction(Template);
+
+	DodgeModifier = new class 'X2Effect_PersistentStatChange';
+	DodgeModifier.AddPersistentStatChange(eStat_Dodge, float(default.BATTLESCANNER_DODGE_REDUCTION));
+	DodgeModifier.TargetConditions.AddItem(default.LivingHostileUnitOnlyProperty);
+	DodgeModifier.BuildPersistentEffect(1, false, false, false, eGameRule_PlayerTurnEnd);
+	DodgeModifier.DuplicateResponse = eDupe_Ignore;
+	DodgeModifier.EffectName = 'BattleScannerDodge';
+	DodgeModifier.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
+	Template.AddMultiTargetEffect(DodgeModifier);
+
+}
+
+static function ReworkCombatStims(X2AbilityTemplate Template)
+{
+	local X2AbilityCost_ActionPoints Cost;
+
+	Template.AbilityCosts.Length = 0;
+		
+	Cost = new class'X2AbilityCost_ActionPoints';
+	Cost.iNumPoints = 1;
+	Cost.bFreeCost = true;
+	Cost.bConsumeAllPoints = false;
+
+	Template.AbilityCosts.AddItem(Cost);
+}
+
+
+
+static function ReworkSustainingSphere(X2AbilityTemplate Template)
+{
+
+	Template.AbilityCosts.Length = 0;
+}
+
 
 defaultproperties
 {
@@ -2085,4 +2297,16 @@ defaultproperties
 		bRequireBasicVisibility=true
 	End Object
 	GameplayVisibilityCondition = DefaultGameplayVisibilityCondition;
+
+	Begin Object Class=X2Condition_UnitProperty Name=DefaultLivingHostileUnitOnlyProperty
+	ExcludeAlive=false
+	ExcludeDead=true
+	ExcludeFriendlyToSource=true
+	ExcludeHostileToSource=false
+	TreatMindControlledSquadmateAsHostile=true
+	FailOnNonUnits=true
+	End Object
+	LivingHostileUnitOnlyProperty = DefaultLivingHostileUnitOnlyProperty;
+
+
 }

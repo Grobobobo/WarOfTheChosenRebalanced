@@ -9,6 +9,7 @@ var config array<int> SCATTER_REDUCTION_MODIFIERS;
 var config array<name> OFFENSE_INCREASE_ABILITIES;
 var config array<int> OFFENSE_INCREASE_MODIFIERS;
 
+var config int BASE_SCATTER_AIM_PENALTY;
 var config int STEADY_TILE_MODIFIER;
 var localized string strMaxScatter;
 
@@ -287,7 +288,7 @@ static function float GetEffectiveOffense(XComGameState_Unit Unit, int TileDista
 	local array<int> RangeAccuracy;
 
 	//	Get soldier's Aim Stat as the baseline
-    EffectiveOffense = Unit.GetCurrentStat(eStat_Offense);
+    EffectiveOffense = Unit.GetCurrentStat(eStat_Offense) - default.BASE_SCATTER_AIM_PENALTY;
 
 	// Get the appropriate Range Accuracy depending on rocket launcher's weapon tech level
 	// and number of remaining actions on the soldier 

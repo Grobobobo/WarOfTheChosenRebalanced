@@ -20,6 +20,9 @@ var config int SPRINTER_MOBILITY;
 var config int TD_SHIELD_HP;
 var config int TD_CRIT_DEF;
 
+var config int EXTRA_CONDITIONING_HP;
+var config int EXTRA_CONDITIONING_TRIGGER_CHANCE;
+
 var config array<name> TAKETHIS_VIABLE_CHARACTERS;
 static function array<X2DataTemplate> CreateTemplates()
 {
@@ -287,6 +290,42 @@ static function X2AbilityTemplate AddCombatFitness()
 	return Template;
 }
 
+static function X2AbilityTemplate AddExtraConditioning_LW()
+{
+	local X2AbilityTemplate						Template;
+	local X2Effect_PersistentStatChange			StatEffect;
+	local X2Effect_ExtraConditioning ExtraConEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'ExtraConditioning_LW');
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_stickandmove";
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
+	Template.bIsPassive = true;
+	Template.Hostility = eHostility_Neutral;
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+
+	StatEffect = new class'X2Effect_PersistentStatChange';
+	StatEffect.AddPersistentStatChange(eStat_HP, float(default.EXTRA_CONDITIONING_HP));
+	StatEffect.BuildPersistentEffect(1, true, false, false);
+	StatEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
+	Template.AddTargetEffect(StatEffect);
+
+
+	ExtraConEffect = new class'X2Effect_ExtraConditioning';
+	ExtraConEffect.TriggerChance = default.EXTRA_CONDITIONING_TRIGGER_CHANCE;
+
+
+	Template.bCrossClassEligible = true;
+
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, default.EXTRA_CONDITIONING_HP);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;
+}
 
 static function X2AbilityTemplate AddTenaciousDefense()
 {

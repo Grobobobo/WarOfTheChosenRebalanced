@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------------------
-//  FILE:   XComDownloadableContentInfo_RookiesChoiceWotC.uc                                    
+//  FILE:   X2DownloadableContentInfo_WOTC_GotchaAgain.uc                                    
 //           
 //	Use the X2DownloadableContentInfo class to specify unique mod behavior when the 
 //  player creates a new campaign or loads a saved game.
@@ -8,7 +8,7 @@
 //  Copyright (c) 2016 Firaxis Games, Inc. All rights reserved.
 //---------------------------------------------------------------------------------------
 
-class X2DownloadableContentInfo_LW_RookieChoice_Integrated extends X2DownloadableContentInfo;
+class X2DownloadableContentInfo_LW_GotchaAgain_Integrated extends X2DownloadableContentInfo;
 
 /// <summary>
 /// This method is run if the player loads a saved game that was created prior to this DLC / Mod being installed, and allows the 
@@ -23,3 +23,17 @@ static event OnLoadedSavedGame()
 /// </summary>
 static event InstallNewCampaign(XComGameState StartState)
 {}
+
+
+static function bool IsOtherModLoaded(name ModName) {
+    local XComOnlineEventMgr EventManager;
+    local int i;
+
+    EventManager = XComOnlineEventMgr(class'Engine'.static.GetEngine().OnlineEventManager);
+    for(i = 0; i < EventManager.GetNumDLC(); i++) {
+        if(EventManager.GetDLCNames(i) == ModName) {
+            return true;
+        }
+    }
+    return false;
+}

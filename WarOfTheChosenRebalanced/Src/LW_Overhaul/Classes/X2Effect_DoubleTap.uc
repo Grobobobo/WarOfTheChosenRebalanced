@@ -25,7 +25,7 @@ function bool PostAbilityCostPaid(XComGameState_Effect EffectState, XComGameStat
 			//`LOG ("DT3");
 			for (i = 0; i < PreCostActionPoints.Length; i++)
 			{
-				SourceUnit.ActionPoints.AddItem(class'X2Ability_LW_SharpshooterAbilitySet'.default.DoubleTapActionPoint);
+				SourceUnit.ActionPoints.AddItem(class'X2CharacterTemplateManager'.default.StandardActionPoint);
 			}
 			`XEVENTMGR.TriggerEvent('DoubleTap', AbilityState, SourceUnit, NewGameState);
 		}

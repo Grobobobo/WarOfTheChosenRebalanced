@@ -328,6 +328,7 @@ static function UpdateTotalCombat(X2AbilityTemplate Template)
 	local X2Effect_TotalCombatRange	BombardEffect;
 	local X2Effect_PersistentStatChange StatEffect;
 	local X2Effect_FullKit				FullKitEffect;
+	local X2Effect_HEATGrenades HEATEffect;
 
 	BombardEffect = new class 'X2Effect_TotalCombatRange';
 	BombardEffect.BuildPersistentEffect (1, true, false);
@@ -349,6 +350,14 @@ static function UpdateTotalCombat(X2AbilityTemplate Template)
 	FullKitEffect.BuildPersistentEffect (1, true, false);
 	FullKitEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
 	Template.AddTargetEffect (FullKitEffect);
+
+	HEATEffect = new class 'X2Effect_HEATGrenades';
+	HEATEffect.Pierce = 0;
+	HEATEffect.Shred= 1 ;
+	HEATEffect.BuildPersistentEffect (1, true, false);
+	HEATEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
+	Template.AddTargetEffect (HEATEffect);
+
 
 }
 

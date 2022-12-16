@@ -6,7 +6,9 @@
 //           In particular, it makes sure that disabled ROs (with strength 99)
 //           are removed as potential continent bonuses.
 //---------------------------------------------------------------------------------------
-class X2LWResistanceOrdersModTemplate extends X2LWTemplateModTemplate;
+class X2LWResistanceOrdersModTemplate extends X2LWTemplateModTemplate config(LW_Overhaul);
+
+var config array<name> ENABLED_RESISTANCE_ORDERS;
 
 static function UpdateResistanceOrders(X2StrategyElementTemplate Template, int Difficulty)
 {
@@ -15,20 +17,14 @@ static function UpdateResistanceOrders(X2StrategyElementTemplate Template, int D
 	CardTemplate = X2StrategyCardTemplate(Template);
 	if (CardTemplate == none)
 		return;
+	//HardCode the Resistance orders, make sure none of them are initially assigned as continent bonuses
+	CardTemplate.bContinentBonus = false;
 
-	switch (CardTemplate.DataName)
+	if(default.ENABLED_RESISTANCE_ORDERS.Find(CardTemplate.DataName) == INDEX_NONE)
 	{
-		case 'ResCard_TacticalAnalysis':  // This shouldn't be a continent bonus -- too strong!
-			CardTemplate.bContinentBonus = false;
-			break;
+		CardTemplate.Strength = 99;
 	}
-
-	// Make sure any disabled resistance orders cannot be continent bonuses either
-	if (CardTemplate.Strength == 99)
-	{
-		`LWTrace("Removing " $ CardTemplate.DataName $ " as a continent bonus as it's disabled");
-		CardTemplate.bContinentBonus = false;
-	}	
+	
 }
 
 defaultproperties

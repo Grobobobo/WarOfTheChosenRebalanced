@@ -405,7 +405,8 @@ static function X2CharacterTemplate CreateResistanceMEC()
     local X2CharacterTemplate CharTemplate;
     
     `CREATE_X2CHARACTER_TEMPLATE(CharTemplate, 'ResistanceMEC');
-    CharTemplate.DefaultLoadout='ResistanceMecM1_Loadout';
+    CharTemplate.DefaultLoadout='AdvMecM1_Loadout';
+	CharTemplate.CharacterGroupName = 'AdventMEC';
     CharTemplate.strPawnArchetypes.AddItem("LWResistanceMEC.Archetypes.GameUnit_ResistanceMecM1");
     CharTemplate.UnitSize = 1;
 

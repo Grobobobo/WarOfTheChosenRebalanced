@@ -25,7 +25,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateTemplate_AdvGeneric('AdvSergeantM1'));
 
 	Templates.AddItem(CreateTemplate_AdvGunner('AdvGunnerM1'));
-	Templates.AddItem(CreateTemplate_AdvGunner('AdvGunner_Leader'));
+	Templates.AddItem(CreateTemplate_AdvGunner_Leader('AdvGunner_Leader'));
 
 	Templates.AddItem(CreateTemplate_AdvSentry('AdvSentryM1'));
 
@@ -587,7 +587,7 @@ static function X2CharacterTemplate CreateTemplate_Viper_LW(name TemplateName)
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 
-	CharTemplate.ImmuneTypes.AddItem('Poison');
+	//CharTemplate.ImmuneTypes.AddItem('Poison');
 
 	CharTemplate.bAllowSpawnFromATT = false;
 
@@ -684,6 +684,84 @@ static function X2CharacterTemplate CreateTemplate_AdvGunner(name TemplateName)
 
 	return CharTemplate;
 }
+
+static function X2CharacterTemplate CreateTemplate_AdvGunner_Leader(name TemplateName)
+{
+	local X2CharacterTemplate CharTemplate;
+	local LootReference Loot;
+
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
+	CharTemplate.CharacterGroupName = 'AdventGunner_Leader'; 
+	CharTemplate.BehaviorClass=class'XGAIBehavior';
+	//CharTemplate.strPawnArchetypes.AddItem("LWAdvGunner.Archetypes.ARC_GameUnit_AdvGunnerM1_M"); 
+	//CharTemplate.strPawnArchetypes.AddItem("LWAdvGunner.Archetypes.ARC_GameUnit_AdvGunnerM1_F"); 
+	//CharTemplate.strPawnArchetypes.AddItem("XAdventTrooper.Archetypes.GameUnit_AdvSoldier_F"); 
+	CharTemplate.strPawnArchetypes.AddItem("XAdventTrooper.Archetypes.GameUnit_AdvSoldier_M"); 
+
+	Loot.ForceLevel=0;
+
+	CharTemplate.DefaultLoadout='AdvGunner_Leader_Loadout';
+
+	Loot.LootTableName='AdvTrooperM1_BaseLoot';
+	CharTemplate.Loot.LootReferences.AddItem(Loot);
+
+
+
+	CharTemplate.strMatineePackages.AddItem("CIN_Advent");
+	CharTemplate.RevealMatineePrefix = "CIN_Advent_Trooper";
+	CharTemplate.GetRevealMatineePrefixFn = class'X2Character_DefaultCharacters'.static.GetAdventMatineePrefix;
+
+	CharTemplate.UnitSize = 1;
+	// Traversal Rules
+	CharTemplate.bCanUse_eTraversal_Normal = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOver = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOnto = true;
+	CharTemplate.bCanUse_eTraversal_ClimbLadder = true;
+	CharTemplate.bCanUse_eTraversal_DropDown = true;
+	CharTemplate.bCanUse_eTraversal_Grapple = false;
+	CharTemplate.bCanUse_eTraversal_Landing = true;
+	CharTemplate.bCanUse_eTraversal_BreakWindow = true;
+	CharTemplate.bCanUse_eTraversal_KickDoor = true;
+	CharTemplate.bCanUse_eTraversal_JumpUp = false;
+	CharTemplate.bCanUse_eTraversal_WallClimb = false;
+	CharTemplate.bCanUse_eTraversal_BreakWall = false;
+	CharTemplate.bSetGenderAlways = true;
+	CharTemplate.bCanTakeCover = true;
+	CharTemplate.bAppearanceDefinesPawn = false;
+	
+	CharTemplate.bIsAlien = false;
+	CharTemplate.bIsAdvent = true;
+	CharTemplate.bIsCivilian = false;
+	CharTemplate.bIsPsionic = false;
+	CharTemplate.bIsRobotic = false;
+	CharTemplate.bIsSoldier = false;
+
+	CharTemplate.Abilities.AddItem('HunkerDown');
+	//CharTemplate.Abilities.AddItem('BulletStorm');
+	
+	// WOTC abilities
+	CharTemplate.Abilities.AddItem('DarkEventAbility_SealedArmor');
+	CharTemplate.Abilities.AddItem('DarkEventAbility_UndyingLoyalty');
+	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
+	CharTemplate.Abilities.AddItem('DarkEventAbility_Counterattack');
+
+	CharTemplate.bCanBeTerrorist = true;
+	CharTemplate.bCanBeCriticallyWounded = false;
+	CharTemplate.bIsAfraidOfFire = true;
+
+	CharTemplate.bAllowSpawnFromATT = true;
+
+	CharTemplate.AddTemplateAvailablility(CharTemplate.BITFIELD_GAMEAREA_Multiplayer); // Allow in MP!
+	CharTemplate.MPPointValue = CharTemplate.XpKillscore * 10;
+
+	CharTemplate.strBehaviorTree = "LWAdventGunnerLeaderRoot"; // new config behavior tree parsing means we could use the group instead
+
+	CharTemplate.strHackIconImage = "UILibrary_Common.TargetIcons.Hack_captain_icon";
+	CharTemplate.strTargetIconImage = class'UIUtilities_Image'.const.TargetIcon_Advent;
+
+	return CharTemplate;
+}
+
 
 static function X2CharacterTemplate CreateTemplate_AdvSentry(name TemplateName)
 {
@@ -961,7 +1039,7 @@ static function X2CharacterTemplate CreateTemplate_ChryssalidSoldier(name Templa
 
 	CharTemplate.Abilities.AddItem('ChryssalidSlash');
 	CharTemplate.Abilities.AddItem('ChyssalidPoison');
-	CharTemplate.Abilities.AddItem('ChryssalidImmunities');
+//	CharTemplate.Abilities.AddItem('ChryssalidImmunities');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
 
 	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_Cryssalid');
@@ -1028,7 +1106,7 @@ static function X2CharacterTemplate CreateTemplate_HiveQueen()
 	CharTemplate.Abilities.AddItem('ChryssalidSlash');
 	CharTemplate.Abilities.AddItem('ChryssalidBurrow'); // REMOVE?
 	CharTemplate.Abilities.AddItem('ChyssalidPoison');
-	CharTemplate.Abilities.AddItem('ChryssalidImmunities');
+//	CharTemplate.Abilities.AddItem('ChryssalidImmunities');
 	CharTemplate.Abilities.AddItem('HiveQueenSlash');
 	// WOTC abilities
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
@@ -1412,6 +1490,8 @@ static function X2CharacterTemplate CreateTemplate_AdvStunLancer_Leader(name Tem
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Counterattack');
 	CharTemplate.Abilities.AddItem('BendingReed');
 	CharTemplate.Abilities.AddItem('StunLanceCharge');
+	CharTemplate.Abilities.AddItem('Concentration_LW');
+	CharTemplate.Abilities.AddItem('HunterMarkAdvent');
 
 
 	return CharTemplate;
@@ -1702,16 +1782,12 @@ static function X2CharacterTemplate CreateTemplate_Shoggoth()
 static function X2CharacterTemplate CreateNeonateChryssalid_Template()
 {
 	local X2CharacterTemplate CharTemplate;
-	local LootReference Loot;
 
 	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, 'NeonateChryssalid_LW');
 	CharTemplate.CharacterGroupName = 'NeonChryssalid';
 	CharTemplate.DefaultLoadout = 'Chryssalid_Loadout';
 	CharTemplate.BehaviorClass = class'XGAIBehavior';
 	CharTemplate.strPawnArchetypes.AddItem("GameUnit_NeonateChryssalid.ARC_GameUnit_NeonateChryssalid");
-	Loot.ForceLevel = 0;
-	Loot.LootTableName = 'Chryssalid_BaseLoot';
-	CharTemplate.Loot.LootReferences.AddItem(Loot);
 
 	CharTemplate.strMatineePackages.AddItem("CIN_Chryssalid");
 
@@ -1750,10 +1826,14 @@ static function X2CharacterTemplate CreateNeonateChryssalid_Template()
 	CharTemplate.MPPointValue = CharTemplate.XpKillscore * 10;
 	CharTemplate.strScamperBT = "ChryssalidScamperRoot";
 
-	CharTemplate.Abilities.AddItem('ChryssalidSlash');
+	//CharTemplate.Abilities.AddItem('ChryssalidSlash');
+	CharTemplate.Abilities.AddItem('NeonateChryssalidSlash');
+	//Template.Abilities.AddItem('InstantReactionTime');
+	CharTemplate.Abilities.AddItem('Evasive');
+
 	//CharTemplate.Abilities.AddItem('ChryssalidBurrow');
 //	CharTemplate.Abilities.AddItem('ChyssalidPoison');
-	CharTemplate.Abilities.AddItem('ChryssalidImmunities');
+	//CharTemplate.Abilities.AddItem('ChryssalidImmunities');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
 
 	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_Cryssalid');

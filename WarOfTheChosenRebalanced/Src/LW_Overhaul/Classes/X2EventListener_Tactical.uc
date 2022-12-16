@@ -26,6 +26,14 @@ var localized string MISS_CHANCE_MSG;
 
 var config array<name> STEALTH_MISSION_NAMES;
 
+var config array<name> ALIEN_AGGRESSION_MISSION_SOURCES;
+var config int ALIEN_AGGRESSION_INCREASE_MISSION_SUCCESS;
+var config int ALIEN_AGGRESSION_DECREASE_MISSION_FAILURE;
+var config int ALIEN_AGGRESSION_DECREASE_EXPERIENCED_SOLDIER_DEATH;
+var config int ALIEN_AGGRESSION_DECREASE_SOLDIER_DEATH;
+var config int ALIEN_AGGRESSION_DECREASE_SOLDIER_BLEEDOUT;
+
+var config int ALIEN_AGGRESSION_AVATAR_DELAY_BASE_VALUE_HOURS;
 struct UnitLoadout
 {
 	var int MinFL;
@@ -291,8 +299,22 @@ static function EventListenerReturn OnCleanupTacticalMission(Object EventData, O
 	local XComGameState_Effect EffectState;
 	local StateObjectReference EffectRef;
 	local bool AwardWrecks;
+	local XComGameState_MissionSite MissionState;
+//	local int AggressionDelta;
+	local XComGameState_AlienAggression AggressionState;
+	local X2MissionSourceTemplate MissionSource;
+	//local int  DelayValueHours;
+	local XComGameState_HeadquartersAlien AlienHq;
+	local X2ItemTemplateManager ItemTemplateManager;
+	local int NumTotalMilitia, NumDeadMilitia, NumSavedMilitia;
+	local XComGameState_Item ItemState;
+	local XComGameState_HeadquartersXCom XComHQ;
 
     History = `XCOMHISTORY;
+
+	XComHQ = XComGameState_HeadquartersXCom(History.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersXCom'));
+	XComHQ = XComGameState_HeadquartersXCom(NewGameState.GetGameStateForObjectID(XComHQ.ObjectID));
+
     BattleData = XComGameState_BattleData(EventData);
     BattleData = XComGameState_BattleData(NewGameState.GetGameStateForObjectID(BattleData.ObjectID));
 
@@ -397,10 +419,131 @@ static function EventListenerReturn OnCleanupTacticalMission(Object EventData, O
 		}
 	}
 
+
+	ItemTemplateManager = class'X2ItemTemplateManager'.static.GetItemTemplateManager();
+	MissionState = XComGameState_MissionSite(History.GetGameStateForObjectID(BattleData.m_iMissionID));
+	MissionSource = MissionState.GetMissionSource();
+
+	///Handle The Civilian Save thing
+	if (BattleData.MapData.ActiveMission.MissionFamily == "ChosenRetaliation")
+	{
+		
+		NumDeadMilitia = class'Helpers_LW'.static.GetNumCivilianMilitiaKilled(NumTotalMilitia);
+
+		NumSavedMilitia = NumTotalMilitia - NumDeadMilitia;
+		if (MissionSource.WasMissionSuccessfulFn != none)
+		{
+			if(MissionSource.WasMissionSuccessfulFn(BattleData))
+			{
+				// Create the Rescued Civ loot item and add it to the HQ inventory
+				if (NumSavedMilitia > 0)
+				{
+					ItemState = ItemTemplateManager.FindItemTemplate('RescueCivilianReward').CreateInstanceFromTemplate(NewGameState);
+					ItemState.Quantity = NumSavedMilitia;
+					ItemState.OwnerStateObject = XComHQ.GetReference();
+					XComHQ.PutItemInInventory(NewGameState, ItemState, true);
+				}
+			}
+		}
+
+	}
+
+
+	//
+	// Handle The Changes to Alien aggression Depending on Mission Result
+
+	// MissionState = XComGameState_MissionSite(History.GetGameStateForObjectID(BattleData.m_iMissionID));
+	// MissionSource = MissionState.GetMissionSource();
+	// if(default.ALIEN_AGGRESSION_MISSION_SOURCES.Find(MissionSource.DataName) != INDEX_NONE)
+	// {
+	// 	AggressionState = class'XComGameState_AlienAggression'.static.GetAggressionState(true);
+	// 	if(AggressionState != none)
+	// 	{
+	// 		AggressionState = XComGameState_AlienAggression(NewGameState.ModifyStateObject(class'XComGameState_AlienAggression', AggressionState.ObjectID));
+	// 		if(MissionSource.WasMissionSuccessfulFn != none)
+	// 		{	
+	// 			//Increase The Aggression By X 
+	// 			if(MissionSource.WasMissionSuccessfulFn(BattleData))
+	// 			{
+	// 				AggressionDelta += default.ALIEN_AGGRESSION_INCREASE_MISSION_SUCCESS;
+	// 			}
+	// 			else
+	// 			{
+	// 				AggressionDelta -= default.ALIEN_AGGRESSION_DECREASE_MISSION_FAILURE;
+	// 			}
+	// 		}
+
+	// 		AggressionDelta += CalculateSoldierAggressionDelta(BattleData);
+
+	// 		AggressionState.AggressionValue = Clamp(AggressionState.AggressionValue + AggressionDelta, 0,100);
+
+	// 		DelayValueHours = int(default.ALIEN_AGGRESSION_AVATAR_DELAY_BASE_VALUE_HOURS * 1.0 * AggressionState.AggressionValue / 100.0f);
+
+	// 		AlienHQ = class'UIUtilities_Strategy'.static.GetAlienHQ();
+	// 		AlienHQ = XComGameState_HeadquartersAlien(NewGameState.ModifyStateObject(class'XComGameState_HeadquartersAlien',AlienHQ.ObjectID));
+			
+	// 		//AlienHQ.FortressDoomIntervalEndTime = FortressDoomIntervalStartTime;
+	// 		class'X2StrategyGameRulesetDataStructures'.static.AddHours(AlienHQ.FortressDoomIntervalEndTime, DelayValueHours);
+	// 		AlienHQ.FortressDoomTimeRemaining = class'X2StrategyGameRulesetDataStructures'.static.DifferenceInSeconds(AlienHQ.FortressDoomIntervalEndTime, AlienHQ.FortressDoomIntervalStartTime);
+	// 	}
+	// }
+
+
     return ELR_NoInterrupt;
 }
 
+static function int CalculateSoldierAggressionDelta(XComGameState_BattleData BattleData)
+{
+	local int  i, iTotal;
+	local array<XComGameState_Unit> arrUnits;
+	local XGBattle_SP Battle;
+	local int AggressionDelta;
+	local UnitValue BleedoutValue;
 
+	Battle = XGBattle_SP(`BATTLE);
+
+	if(Battle != None)
+	{
+		Battle.GetHumanPlayer().GetOriginalUnits(arrUnits);
+
+		for(i = 0; i < arrUnits.Length; i++)
+		{
+			if(arrUnits[i].GetMyTemplate().bIsAlien || !arrUnits[i].bSpawnedFromAvenger)
+			{
+				arrUnits.Remove(i, 1);
+				i--;
+			}
+		}
+
+		iTotal = arrUnits.Length;
+
+		for(i = 0; i < iTotal; i++)
+		{
+			arrUnits[i].GetUnitValue('VengeanceTriggered', BleedoutValue);
+			if(IsSoldierVeteran(arrUnits[i]) && (arrUnits[i].IsDead() || arrUnits[i].bCaptured))
+			{
+				//iKilled++;
+				AggressionDelta -= default.ALIEN_AGGRESSION_DECREASE_EXPERIENCED_SOLDIER_DEATH;
+			}
+			else if (arrUnits[i].IsDead() || arrUnits[i].bCaptured)
+			{
+				AggressionDelta -= default.ALIEN_AGGRESSION_DECREASE_SOLDIER_DEATH;
+			}
+			else if(BleedoutValue.fvalue > 0)
+			{
+				AggressionDelta -= default.ALIEN_AGGRESSION_DECREASE_SOLDIER_BLEEDOUT;
+			}
+		}
+	}
+	
+	return AggressionDelta;
+}
+
+//For now let's go by mission basis, later on I'll think about the more detailed mechanic if neededs
+static function bool IsSoldierVeteran(XComGameState_Unit Unit)
+{
+	return Unit.iNumMissions >= 3;
+}
 // Make sure reinforcements arrive in red alert if any aliens on the map are
 // already in red alert.
 static function EventListenerReturn AddPerfectInfoFlyover(Object EventData, Object EventSource, XComGameState GameState, Name InEventID, Object CallbackData)
@@ -856,19 +999,19 @@ static protected function EventListenerReturn DynamicallyApplyLoadouts(
 			{
 				LoadoutStr $= "2";
 			}
-			iRand = `SYNC_RAND_STATIC(100);
-			if (iRand < 15)
-			{
-				LoadoutStr $= "SMG";
-			}
-			else if (iRand < 30)
-			{
-				LoadoutStr $= "Shotgun";
-			}
-			else if (iRand < 45)
-			{
-				LoadoutStr $= "Bullpup";
-			}
+			// iRand = `SYNC_RAND_STATIC(100);
+			// if (iRand < 15)
+			// {
+			// 	LoadoutStr $= "SMG";
+			// }
+			// if (iRand < 34)
+			// {
+			// 	LoadoutStr $= "Shotgun";
+			// }
+			// else if (iRand < 67)
+			// {
+			// 	LoadoutStr $= "Bullpup";
+			// }
 				
 			UnitState.ApplyInventoryLoadout(NewGameState,name(LoadoutStr));
 
@@ -1258,16 +1401,21 @@ static function AlertAllUnits(XComGameState_Unit Unit, XComGameState newGameStat
 static function EventListenerReturn OverrideReserveActionPoints(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
 	local XComLWTuple Tuple;
-	local XComGameState_Unit UnitState, SourceUnit;
+	local XComGameState_Unit OldUnitState, UnitState, SourceUnit;
 	local name ActionPointName;
 	local bool IsSuppression;
 	local DamageResult Result;
 	local XComGameStateContext_Ability AbilityContext;
+	local XComGameState_Item ItemState;
+	local X2WeaponTemplate WeaponTemplate;
 	//local XComGameStateHistory History;
 
 	//History = `XCOMHISTORY;
 
-	UnitState = XcomGameState_Unit(EventSource);
+	OldUnitState = XcomGameState_Unit(EventSource);
+	UnitState = XcomGameState_Unit(GameState.GetGameStateForObjectID(OldUnitState.ObjectID));
+
+
 	Tuple = XComLWTuple(EventData);
 
 	if (Tuple == none)
@@ -1279,12 +1427,6 @@ static function EventListenerReturn OverrideReserveActionPoints(Object EventData
 	AbilityContext = XComGameStateContext_Ability(Result.Context);
 
 
-	if(UnitState.AffectedByEffectNames.Find(class'X2StatusEffects'.default.BurningName) != -1)
-	{
-		Tuple.Data[0].b = true;
-		return ELR_NoInterrupt;
-	}
-
 	//Check if the source unit has an ability that allows breaking overwatches
 	if(AbilityContext != none)
 	{
@@ -1293,6 +1435,22 @@ static function EventListenerReturn OverrideReserveActionPoints(Object EventData
 		{
 			Tuple.Data[0].b = true;
 			return ELR_NoInterrupt;
+		}
+		if(SourceUnit.HasSoldierAbility('AmmoImpact'))
+		{
+			ItemState = XComGameState_Item(`XCOMHISTORY.GetGameStateForObjectID(AbilityContext.InputContext.SourceObject.ObjectID));
+			if (ItemState != none){
+				WeaponTemplate = X2WeaponTemplate(ItemState.GetMyTemplate());
+				if(WeaponTemplate.Abilities.Find('HotLoadAmmo') != INDEX_NONE)
+				{
+					Tuple.Data[0].b = true;
+					return ELR_NoInterrupt;
+				}
+			}
+			
+			Tuple.Data[0].b = true;
+			return ELR_NoInterrupt;
+
 		}
 	}
 

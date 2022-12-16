@@ -690,7 +690,7 @@ static function X2AbilityTemplate CreateBurnoutAbility()
 
 	Trigger = new class'X2AbilityTrigger_EventListener';
 	Trigger.ListenerData.Deferral = ELD_OnStateSubmitted;
-	Trigger.ListenerData.EventID = 'FlamethrowerActivated';
+	Trigger.ListenerData.EventID = 'SmokeCanisterActivated';
 	Trigger.ListenerData.Filter = eFilter_Unit;
 	Trigger.ListenerData.EventFn = class'XComGameState_Ability'.static.AbilityTriggerEventListener_Self;
 	Template.AbilityTriggers.AddItem(Trigger);
@@ -711,7 +711,7 @@ static function X2AbilityTemplate CreateBurnoutAbility()
 
 	Template.AddMultiTargetEffect(class'X2Item_DefaultGrenades'.static.SmokeGrenadeEffect());
 
-	Template.AdditionalAbilities.AddItem('BurnoutPassive');
+	//Template.AdditionalAbilities.AddItem('BurnoutPassive');
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
 

@@ -28,6 +28,11 @@ function bool PreDeathCheck(XComGameState NewGameState, XComGameState_Unit UnitS
         
 	UnitState.GetUnitValue('OverKillDamage', OverKillDamage);
 
+	//Don't sustain if overkill value is that high
+	if(OverKillDamage.fValue > 25)
+	{
+		return false;
+	}
 	Index = default.SUSTAINTRIGGERUNITCHECK_LW_ARRAY.Find('UnitType', UnitState.GetMyTemplateName());
 
 	// If the Unit Type is not in the array, then it always triggers sustain

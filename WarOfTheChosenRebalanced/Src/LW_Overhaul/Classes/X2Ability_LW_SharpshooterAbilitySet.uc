@@ -310,7 +310,7 @@ static function X2AbilityTemplate AddDoubleTap2()
 {
 	local X2AbilityTemplate					Template;
 	local X2AbilityCost_ActionPoints		ActionPointCost;
-	local X2AbilityCost_Ammo				AmmoCostShow, AmmoCostActual;
+	local X2AbilityCost_Ammo				AmmoCostActual;
 	local X2AbilityCooldown					Cooldown;	
 	local X2Effect_Knockback				KnockbackEffect;
 	local X2Condition_Visibility            VisibilityCondition;
@@ -320,7 +320,7 @@ static function X2AbilityTemplate AddDoubleTap2()
 	Template.IconImage = "img:///UILibrary_LW_PerkPack.LW_AbilityDoubleTap";
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
 	//Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_COLONEL_PRIORITY;
-	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_SQUADDIE_PRIORITY;
+	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.STANDARD_SHOT_PRIORITY + 1;
 
 	Template.DisplayTargetHitChance = true;
 	Template.bCrossClassEligible = false;
@@ -341,10 +341,10 @@ static function X2AbilityTemplate AddDoubleTap2()
     Cooldown.iNumTurns = default.DOUBLE_TAP_2_COOLDOWN;
     Template.AbilityCooldown = Cooldown;
 
-	AmmoCostShow = new class'X2AbilityCost_Ammo';
-	AmmoCostShow.iAmmo = 2;
-	AmmoCostShow.bFreeCost = true; // just for show only
-	Template.AbilityCosts.AddItem(AmmoCostShow);
+	// AmmoCostShow = new class'X2AbilityCost_Ammo';
+	// AmmoCostShow.iAmmo = 2;
+	// AmmoCostShow.bFreeCost = true; // just for show only
+	// Template.AbilityCosts.AddItem(AmmoCostShow);
 
 	AmmoCostActual = new class'X2AbilityCost_Ammo';
 	AmmoCostActual.iAmmo = 1; //Second shot charges 2nd

@@ -41,7 +41,7 @@ function float GetPostDefaultAttackingDamageModifier_CH(
 		}
 	}
 
-	if(AbilityState.SourceWeapon == AppliedData.ItemStateObjectRef)
+	if(AbilityState.SourceWeapon == AppliedData.ItemStateObjectRef && X2WeaponTemplate(AbilityState.GetSourceWeapon().GetMyTemplate()).InventorySlot == eInvSlot_PrimaryWeapon)
 	{
 		if (class'XComGameStateContext_Ability'.static.IsHitResultHit(AppliedData.AbilityResultContext.HitResult) && AbilityState.IsAbilityInputTriggered())
 		{

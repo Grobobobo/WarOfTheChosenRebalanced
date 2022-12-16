@@ -234,8 +234,9 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 		case 'LIGHT_FRAME_DAMAGE_REDUCTION':
 			OutString = string(int(class'X2Ability_ChemthrowerUpgrades'.default.LIGHT_FRAME_DAMAGE_REDUCTION) * 100);
 			return true;
-
-
+		case 'ASSAULTRIFLE_CV_DAMAGE':
+			class'Helpers_LW'.static.TrimTrailingZerosFromFloat(float(class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_CONVENTIONAL_BASEDAMAGE.Damage) + (class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_CONVENTIONAL_BASEDAMAGE.PlusOne * 1.0f / 100 ) , OutString);
+			return true;
 	}
 
 	return false;

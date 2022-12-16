@@ -465,7 +465,7 @@ static function bool AreResistanceOrdersEnabled()
 	}
 
 	// Finally, check the second wave option
-	return `SecondWaveEnabled('EnableResistanceOrders');
+	return !`SecondWaveEnabled('DisableResistanceOrders');
 }
 
 // Resumes or pauses any Will recovery projects for the given unit when
@@ -756,6 +756,19 @@ static function MakeFreeAction(X2AbilityTemplate Template)
 	}
 }
 
+static function MakeAbilityNonTurnEnding(X2AbilityTemplate Template)
+{
+	local X2AbilityCost Cost;
+
+	foreach Template.AbilityCosts(Cost)
+	{
+		if (Cost.IsA('X2AbilityCost_ActionPoints'))
+		{
+			X2AbilityCost_ActionPoints(Cost).bConsumeAllPoints = false;
+		}
+	}
+}
+
 static function RemoveAbilityTargetEffects(X2AbilityTemplate Template, name EffectClass)
 {
 	local int i;
@@ -827,6 +840,179 @@ static function RemoveAbilityCosts(X2AbilityTemplate Template, name EffectClass)
 		}
 	}
 }
+
+simulated static function TrimTrailingZerosFromFloat(float InputValue, out string text)
+{
+	text = string(InputValue);
+
+	while ((Len(text) > 0) && (InStr(text, "0", true) == Len(text) - 1))
+		text = left(text, Len(text) - 1);
+	while ((Len(text) > 0) && (InStr(text, ".", true) == Len(text) - 1))
+		text = left(text, Len(text) - 1);
+}
+
+
+
+
+
+
+static function bool IsResistanceOrderActive(name ResistanceOrderName){
+	local XComGameState_StrategyCard CardState;
+	local StateObjectReference CardRef;
+	//local bool bCardPlayed;
+	local XComGameStateHistory History;
+	local XComGameState_ResistanceFaction FactionState;
+//	local array<Name> ExclusionList;
+//	local int NumActionsToAdd;
+	local XComGameState_Continent ContinentState;
+	
+	local XComGameState_HeadquartersResistance ResHQ;
+	History = `XCOMHISTORY;
+	//`Log("Checking over every single resistance order to see if it's the one we want; looking for: " $ ResistanceOrderName);
+	// go over each card active for each faction
+	
+	ResHQ = class'UIUtilities_Strategy'.static.GetResistanceHQ();
+
+	// First, going over faction-agnostic card slots
+	foreach ResHQ.WildCardSlots(CardRef)
+	{
+		if(CardRef.ObjectID != 0)
+		{
+			CardState = XComGameState_StrategyCard(History.GetGameStateForObjectID(CardRef.ObjectID));
+			if (CardState.GetMyTemplateName() == ResistanceOrderName)
+			{
+				`Log("This card IS the card I want: " $ CardState.GetMyTemplateName() );
+				return true;
+			}
+			else
+			{
+				//`Log("This faction order is NOT the one I want: " $ CardState.GetMyTemplateName());
+			}
+		}
+	}
+
+	foreach History.IterateByClassType(class'XComGameState_ResistanceFaction', FactionState)
+	{
+		//`Log("Checking over every single order in this faction to see if it's the one we want: " $ FactionState.GetMyTemplateName());
+
+		// for each faction checking each card slot in turn
+		foreach FactionState.CardSlots(CardRef)
+		{
+			if(CardRef.ObjectID != 0)
+			{
+				CardState = XComGameState_StrategyCard(History.GetGameStateForObjectID(CardRef.ObjectID));
+				if (CardState.GetMyTemplateName() == ResistanceOrderName)
+				{
+					`Log("This card IS the card I want: " $ CardState.GetMyTemplateName() );
+					return true;
+				}
+				else
+				{
+					//`Log("This faction order is NOT the one I want: " $ FactionState.GetMyTemplateName());
+
+				}
+			}
+		}
+	}
+
+	`LOG("Going over continent bonuses.");
+
+	// go over continent bonuses
+	foreach History.IterateByClassType(class'XComGameState_Continent', ContinentState){
+		CardState = XComGameState_StrategyCard(History.GetGameStateForObjectID(ContinentState.ContinentBonusCard.ObjectID));
+		if (CardState == none){
+			`LOG("Couldn't find continent bonus for object id!");
+		}
+        `LOG("observed possible continent bonus: " $ CardState.GetMyTemplateName());
+
+		if (CardState.GetMyTemplateName() == ResistanceOrderName){
+			if (ContinentState.bContinentBonusActive){
+				`LOG("successfully found targeted card as ACTIVE continent bonus: " $ ResistanceOrderName);
+				return true;
+			} else {
+				`LOG("observed targeted card as INACTIVE continent bonus: " $ ResistanceOrderName);
+			}
+		}
+	}
+
+	
+	return false;
+}
+
+
+
+static function float GetVengeanceSoldierKillRatio()
+{
+	local int iKilled, i, iTotal;
+	local float Ratio;
+	local array<XComGameState_Unit> arrUnits;
+	local XGBattle_SP Battle;
+
+	Battle = XGBattle_SP(`BATTLE);
+
+	if(Battle != None)
+	{
+		Battle.GetHumanPlayer().GetOriginalUnits(arrUnits);
+
+		for(i = 0; i < arrUnits.Length; i++)
+		{
+			if(arrUnits[i].GetMyTemplate().bIsAlien || arrUnits[i].GetMyTemplateName() == 'CivilianMilitia' || arrUnits[i].GetMyTemplate().bIsCivilian)
+			{
+				arrUnits.Remove(i, 1);
+				i--;
+			}
+		}
+
+		iTotal = arrUnits.Length;
+
+		for(i = 0; i < iTotal; i++)
+		{
+			if(arrUnits[i].IsDead() || arrUnits[i].IsBleedingOut())
+			{
+				iKilled++;
+			}
+		}
+	}
+	Ratio = iKilled * 1.0f / iTotal;
+
+	return Ratio;
+}
+
+static function int GetNumCivilianMilitiaKilled(out int iTotal)
+{
+	local int iKilled, i;
+	local array<XComGameState_Unit> arrUnits;
+	local XGBattle_SP Battle;
+
+	Battle = XGBattle_SP(`BATTLE);
+
+	if(Battle != None)
+	{
+		Battle.GetHumanPlayer().GetOriginalUnits(arrUnits);
+
+		for(i = 0; i < arrUnits.Length; i++)
+		{
+			if(arrUnits[i].GetMyTemplateName() != 'CivilianMilitia')
+			{
+				arrUnits.Remove(i, 1);
+				i--;
+			}
+		}
+
+		iTotal = arrUnits.Length;
+
+		for(i = 0; i < iTotal; i++)
+		{
+			if(arrUnits[i].IsDead() || arrUnits[i].IsBleedingOut())
+			{
+				iKilled++;
+			}
+		}
+	}
+
+	return iKilled;
+}
+
 
 
 defaultproperties

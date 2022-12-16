@@ -21,6 +21,7 @@ var config int FLUSH_DEFENSE_REDUCTION;
 var config int COMBATIVES_DODGE;
 
 var config int DISARMING_STRIKE_COOLDOWN;
+var config int KNIFE_FIGHTER_TILE_RANGE;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -267,6 +268,7 @@ static function X2AbilityTemplate AddKnifeFighter()
 	Template.bHideOnClassUnlock = false;
 	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_SQUADDIE_PRIORITY;
 	Template.AbilityConfirmSound = "TacticalUI_SwordConfirm";
+	Template.bUniqueSource = true;
 
 	Template.bDisplayInUITooltip = true;
     Template.bDisplayInUITacticalText = true;
@@ -282,7 +284,9 @@ static function X2AbilityTemplate AddKnifeFighter()
 	StandardMelee = new class'X2AbilityToHitCalc_StandardMelee';
 	Template.AbilityToHitCalc = StandardMelee;
 
-    Template.AbilityTargetStyle = default.SimpleSingleMeleeTarget;
+	Template.AbilityTargetStyle = new class'X2AbilityTarget_MovingMelee';
+	Template.TargetingMethod = class'X2TargetingMethod_MeleePath';
+    //Template.AbilityTargetStyle = default.SimpleSingleMeleeTarget;
 	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
 
 	// Target Conditions
@@ -290,8 +294,8 @@ static function X2AbilityTemplate AddKnifeFighter()
 	Template.AbilityTargetConditions.AddItem(default.MeleeVisibilityCondition);
 	AdjacencyCondition = new class'X2Condition_UnitProperty';
 	AdjacencyCondition.RequireWithinRange = true;
-	AdjacencyCondition.WithinRange = 144; //1.5 tiles in Unreal units, allows attacks on the diag
-	AdjacencyCondition.TreatMindControlledSquadmateAsHostile = true;
+	AdjacencyCondition.WithinRange = 96 * default.KNIFE_FIGHTER_TILE_RANGE;
+	AdjacencyCondition.FailOnNonUnits = true;
 	Template.AbilityTargetConditions.AddItem(AdjacencyCondition);
 
 	// Shooter Conditions

@@ -42,7 +42,6 @@ function int GetAttackingDamageModifier(XComGameState_Effect EffectState, XComGa
 function GetToHitModifiers(XComGameState_Effect EffectState, XComGameState_Unit Attacker, XComGameState_Unit Target, XComGameState_Ability AbilityState, class<X2AbilityToHitCalc> ToHitType, bool bMelee, bool bFlanking, bool bIndirectFire, out array<ShotModifierInfo> ShotModifiers)
 {
     local ShotModifierInfo BoomInfo;
-
 	if(bIndirectFire || AbilityState.GetMyTemplateName() == 'LWRocketLauncher' || AbilityState.GetMyTemplateName() == 'LWBlasterLauncher' || AbilityState.GetMyTemplateName() == 'MicroMissiles')
 	{
 		BoomInfo.ModType = eHit_Crit;

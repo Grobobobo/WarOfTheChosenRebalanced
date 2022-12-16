@@ -136,6 +136,7 @@ var config array<name> CE_ABILITYNAMES;
 
 var config int WILLTOSURVIVE_DEF_PENALTY;
 var config int WTS_ABLATIVE;
+var config int WTS_FLAT_DR;
 var config float WTS_COVER_DR_PCT;
 var config float WTS_WOUND_REDUCTION;
 
@@ -654,7 +655,7 @@ static function X2AbilityTemplate AddFortifiedAbility()
 {
 	local X2AbilityTemplate					Template;
 	local X2Effect_Resilience				MyCritModifier;
-	local X2Effect_DamageImmunity			ImmunityEffect;
+	//local X2Effect_DamageImmunity			ImmunityEffect;
 	// local X2Effect_GreaterPadding GreaterPaddingEffect;
 	local X2Effect_PersistentStatChange StatBonus;
 
@@ -673,15 +674,15 @@ static function X2AbilityTemplate AddFortifiedAbility()
 	MyCritModifier.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
 	Template.AddTargetEffect (MyCritModifier);
 
-	ImmunityEffect = new class'X2Effect_DamageImmunity';
-	ImmunityEffect.EffectName = 'MindShieldImmunity';
-	ImmunityEffect.ImmuneTypes.AddItem('Mental');
-	ImmunityEffect.ImmuneTypes.AddItem(class'X2Item_DefaultDamageTypes'.default.DisorientDamageType);
-	ImmunityEffect.ImmuneTypes.AddItem('stun');
-	ImmunityEffect.ImmuneTypes.AddItem('Unconscious');
-	ImmunityEffect.BuildPersistentEffect(1, true, false, false);
-	ImmunityEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, false, , Template.AbilitySourceName);
-	Template.AddTargetEffect(ImmunityEffect);
+	// ImmunityEffect = new class'X2Effect_DamageImmunity';
+	// ImmunityEffect.EffectName = 'MindShieldImmunity';
+	// ImmunityEffect.ImmuneTypes.AddItem('Mental');
+	// ImmunityEffect.ImmuneTypes.AddItem(class'X2Item_DefaultDamageTypes'.default.DisorientDamageType);
+	// ImmunityEffect.ImmuneTypes.AddItem('stun');
+	// ImmunityEffect.ImmuneTypes.AddItem('Unconscious');
+	// ImmunityEffect.BuildPersistentEffect(1, true, false, false);
+	// ImmunityEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, false, , Template.AbilitySourceName);
+	// Template.AddTargetEffect(ImmunityEffect);
 
 	// GreaterPaddingEffect = new class 'X2Effect_GreaterPadding';
 	// GreaterPaddingEffect.BuildPersistentEffect (1, true, false);
@@ -692,13 +693,15 @@ static function X2AbilityTemplate AddFortifiedAbility()
 	// MobBonus.AddPersistentStatChange(eStat_Mobility, default.FORTIFIED_MOBILITY);
 	// MobBonus.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
 	// Template.AddTargetEffect(GreaterPaddingEffect);
-	//Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.FORTIFIED_MOBILITY);
 
 	StatBonus = new class'X2Effect_PersistentStatChange';
 	StatBonus.AddPersistentStatChange(eStat_ShieldHP, default.FORTIFIED_ABLATIVE);
+	StatBonus.AddPersistentStatChange(eStat_Mobility, default.FORTIFIED_MOBILITY);
 	StatBonus.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
 	StatBonus.BuildPersistentEffect (1, true, false, false, 7);
 	Template.AddTargetEffect(StatBonus);
+
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.FORTIFIED_MOBILITY);
 
 	Template.bCrossClassEligible = true;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
@@ -857,8 +860,9 @@ static function X2AbilityTemplate AddWilltoSurviveAbility()
 	local X2AbilityTemplate						Template;
 	local X2Effect_WilltoSurvive				ArmorBonus;
 	//local X2Effect_PersistentStatChange			WillBonus;
-	local X2Effect_GreaterPadding				GreaterPaddingEffect;
-	local X2Effect_DamageImmunity	ImmunityEffect;
+	//local X2Effect_GreaterPadding				GreaterPaddingEffect;
+	//local X2Effect_DamageImmunity	ImmunityEffect;
+	local X2Effect_ReturnFire FireEffect;
 	`CREATE_X2ABILITY_TEMPLATE (Template, 'WilltoSurvive');
 	Template.IconImage = "img:///UILibrary_LW_PerkPack.LW_AbilityWilltoSurvive";
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
@@ -869,32 +873,21 @@ static function X2AbilityTemplate AddWilltoSurviveAbility()
 	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
 	Template.bIsPassive = true;
 	ArmorBonus = new class 'X2Effect_WilltoSurvive';
-	ArmorBonus.WTS_DR = default.WTS_COVER_DR_PCT;
+	ArmorBonus.WTS_FLAT_DR = default.WTS_FLAT_DR;
 	ArmorBonus.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
 	ArmorBonus.BuildPersistentEffect(1, true, false);
 	Template.AddTargetEffect(ArmorBonus);
 
-	// WillBonus = new class'X2Effect_PersistentStatChange';
-	// //WillBonus.AddPersistentStatChange(eStat_Defense, default.WILLTOSURVIVE_DEF_PENALTY);
-	// WillBonus.AddPersistentStatChange(eStat_ShieldHP, default.WTS_ABLATIVE);
-	// WillBonus.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
-	// WillBonus.BuildPersistentEffect (1, true, false, false, 7);
-	// Template.AddTargetEffect(WillBonus);
+	FireEffect = new class'X2Effect_ReturnFire';
+	FireEffect.BuildPersistentEffect(1, true, false, false, eGameRule_PlayerTurnBegin);
+	FireEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage,false,,Template.AbilitySourceName);
+	FireEffect.EffectName = 'PrimaryReturnFireShot';
+	FireEffect.AbilityToActivate = 'PrimaryReturnFireShot';
+	FireEffect.bDirectAttackOnly = true;
+	FireEffect.bOnlyWhenAttackMisses = false;
+	Template.AddTargetEffect(FireEffect);
 
-	GreaterPaddingEffect = new class 'X2Effect_GreaterPadding';
-	GreaterPaddingEffect.BuildPersistentEffect (1, true, false);
-	GreaterPaddingEffect.Padding_HealHP = default.WTS_WOUND_REDUCTION;	
-	Template.AddTargetEffect(GreaterPaddingEffect);
-
-	ImmunityEffect = new class'X2Effect_DamageImmunity';
-	ImmunityEffect.EffectName = 'MindShieldImmunity';
-	ImmunityEffect.ImmuneTypes.AddItem('Mental');
-	ImmunityEffect.ImmuneTypes.AddItem(class'X2Item_DefaultDamageTypes'.default.DisorientDamageType);
-	ImmunityEffect.ImmuneTypes.AddItem('stun');
-	ImmunityEffect.ImmuneTypes.AddItem('Unconscious');
-	ImmunityEffect.BuildPersistentEffect(1, true, false, false);
-	ImmunityEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, false, , Template.AbilitySourceName);
-	Template.AddTargetEffect(ImmunityEffect);
+	Template.AdditionalAbilities.AddItem('PrimaryReturnFireShot');
 
 	Template.bCrossClassEligible = true;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
@@ -917,6 +910,7 @@ static function X2AbilityTemplate AddFirstInLineAbility()
 	Template.bIsPassive = true;
 	ArmorBonus = new class 'X2Effect_WilltoSurvive';
 	ArmorBonus.WTS_DR = default.WTS_COVER_DR_PCT;
+	ArmorBonus.HALF_COVER_BONUSES = true;
 	ArmorBonus.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
 	ArmorBonus.BuildPersistentEffect(1, true, false);
 	Template.AddTargetEffect(ArmorBonus);
@@ -2304,7 +2298,7 @@ static function X2AbilityTemplate AddSentinel_LWAbility()
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.bCrossClassEligible = false;
 
-	Template.AdditionalAbilities.AddItem('CoolUnderPressure');
+///	Template.AdditionalAbilities.AddItem('CoolUnderPressure');
 	return Template;
 }
 
@@ -2830,7 +2824,7 @@ static function X2AbilityTemplate AddBulletWizardSuppression()
 	Template.AddMultiTargetEffect(class'X2Ability_GrenadierAbilitySet'.static.HoloTargetEffect());
 		
 	Template.AdditionalAbilities.AddItem('AreaSuppressionShot_LW');
-	Template.AdditionalAbilities.AddItem('LockdownBonuses');
+	//Template.AdditionalAbilities.AddItem('LockdownBonuses');
 	Template.AdditionalAbilities.AddItem('MayhemBonuses');
 
 	Template.TargetingMethod = class'X2TargetingMethod_AreaSuppression';
@@ -2983,7 +2977,7 @@ static function X2AbilityTemplate AddSuppressionAbility_LW()
 
 
 	Template.AdditionalAbilities.AddItem('SuppressionShot_LW');
-	Template.AdditionalAbilities.AddItem('LockdownBonuses');
+	//Template.AdditionalAbilities.AddItem('LockdownBonuses');
 	Template.AdditionalAbilities.AddItem('MayhemBonuses');
 	Template.AdditionalAbilities.AddItem('SuppressionDamage');
 
@@ -3354,7 +3348,7 @@ static function X2AbilityTemplate AddAreaSuppressionAbility()
 	Template.AddMultiTargetEffect(class'X2Ability_GrenadierAbilitySet'.static.HoloTargetEffect());
 	
 	Template.AdditionalAbilities.AddItem('AreaSuppressionShot_LW');
-	Template.AdditionalAbilities.AddItem('LockdownBonuses');
+	//Template.AdditionalAbilities.AddItem('LockdownBonuses');
 	Template.AdditionalAbilities.AddItem('MayhemBonuses');
 	Template.AdditionalAbilities.AddItem('SuppressionDamage');
 
@@ -3663,6 +3657,8 @@ static function X2AbilityTemplate LockdownBonuses()
 	Template.AbilityToHitCalc = default.DeadEye;
     Template.AbilityTargetStyle = default.SelfTarget;
 	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
+	Template.Hostility = eHostility_Neutral;
+
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
 	Template.bDisplayInUITooltip = false;
@@ -3689,6 +3685,8 @@ static function X2AbilityTemplate MayhemBonuses()
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
 	Template.bDisplayInUITooltip = false;
 	Template.bIsASuppressionEffect = true;
+	Template.Hostility = eHostility_Neutral;
+
 	//  Effect code checks whether unit has Mayhem before providing aim and damage bonuses
 	DamageEffect = new class'X2Effect_Mayhem';
 	DamageEffect.BuildPersistentEffect(1,true,false,false,eGameRule_PlayerTurnBegin);

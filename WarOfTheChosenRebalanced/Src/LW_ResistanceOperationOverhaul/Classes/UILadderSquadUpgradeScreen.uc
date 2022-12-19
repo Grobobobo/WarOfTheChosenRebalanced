@@ -148,7 +148,7 @@ simulated function InitScreen(XComPlayerController InitController, UIMovie InitM
 	local int RankIndex;
 	local array<name> UsedClasses;
 	local array<string> UsedCharacters;
-	local int CreditsX, CreditsY, AbilityListX, AbilityListY, AbilityListWidth;
+	local int CreditsX, CreditsY;
 	local StateObjectReference EffectRef;
 	local XComGameState_Effect EffectState;
 	local X2ResistanceTechUpgradeTemplateManager UpgradeTemplateManager;
@@ -326,9 +326,6 @@ simulated function InitScreen(XComPlayerController InitController, UIMovie InitM
 	SciencePrefix = class'UIUtilities_Text'.static.InjectImage(ScienceIcon, 20, 20, 0) $ " " $ m_Science $ ": ";
 	CreditsX = -780;
 	CreditsY = -460;
-
-	AbilityListX = 780;
-	AbilityListy = -300;
 	AbilityListWidth = 500;
 
 	Background = Spawn(class'UIBGBox', self);
@@ -349,19 +346,6 @@ simulated function InitScreen(XComPlayerController InitController, UIMovie InitM
 	CreditsText.SetSize(200,40);
 	CreditsText.SetText(CreditsPrefix $ string(LadderData.Credits));
 
-
-	// TacticalArea = Spawn(class'UIPanel', self); 
-	// TacticalArea.bAnimateOnInit = false;
-	// TacticalArea.InitPanel('TacticalArea');
-
-	// AbilityItemList = Spawn(class'UITacticalInfoList', TacticalArea);
-	// AbilityItemList.InitTacticalInfoList('AbilityItemList',
-	// 	, 
-	// 	class'XLocalizedData'.default.TacticalTextAbilitiesHeader,
-	// 	PADDING_LEFT, 
-	// 	PADDING_TOP, 
-	// 	width-PADDING_LEFT-PADDING_RIGHT);
-	// AbilityItemList.OnSizeRealized = OnAbilityListSizeRealized;
 
 
 	ScienceText = Spawn(class'UIText',self);

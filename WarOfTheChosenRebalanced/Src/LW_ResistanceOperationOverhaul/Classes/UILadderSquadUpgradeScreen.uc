@@ -48,6 +48,7 @@ var UIBGBox Background;
 var UILargeButton ContinueButton;
 
 var UIList List;
+var UIArmory_LoadoutItemTooltip_GTO InfoToolTip;
 
 var XComGameState_HeadquartersXCom XComHQ;
 var XComGameState NewGameState;
@@ -135,6 +136,17 @@ simulated function OnInit()
 	}
 
 	super(UIScreen).OnInit();
+}
+
+simulated function InitializeTooltipData()
+{
+	InfoTooltip = Spawn(class'UIArmory_LoadoutItemTooltip_GTO', self); 
+	InfoTooltip.InitLoadoutItemTooltip('UITooltipInventoryItemInfo');
+
+	InfoTooltip.CurrentTemplate = none;
+
+	InfoTooltip.ID = Movie.Pres.m_kTooltipMgr.AddPreformedTooltip( InfoTooltip );
+	InfoTooltip.tDelay = 0; // instant tooltips!
 }
 
 simulated function InitScreen(XComPlayerController InitController, UIMovie InitMovie, optional name InitName)
@@ -326,7 +338,6 @@ simulated function InitScreen(XComPlayerController InitController, UIMovie InitM
 	SciencePrefix = class'UIUtilities_Text'.static.InjectImage(ScienceIcon, 20, 20, 0) $ " " $ m_Science $ ": ";
 	CreditsX = -780;
 	CreditsY = -460;
-	AbilityListWidth = 500;
 
 	Background = Spawn(class'UIBGBox', self);
 	Background.bAnimateOnInit = false;
@@ -377,6 +388,9 @@ simulated function InitScreen(XComPlayerController InitController, UIMovie InitM
 	List.SetWidth(445);
 	List.EnableNavigation();
 	List.OnSetSelectedIndex = OnSetSelectedIndex;
+
+	InitializeTooltipData();
+	InfoTooltip.SetPosition(935, 505);
 
 	// Continue button
 	ContinueButton = Spawn(class'UILargeButton', LeftColumn);
@@ -960,9 +974,13 @@ simulated function UpdateSelectedResearchInfo(int ItemIndex)
 			mc.QueueString(ItemTemplate.strImage);
 			mc.QueueString(ItemTemplate.GetItemFriendlyNameNoStats());
 		}
+		break;
 	}
-
 	mc.EndOp();
+
+	InfoTooltip.CurrentTemplate = (ItemTemplate);
+	InfoTooltip.ShowTooltip();
+
 }
 
 function UIMechaListItem GetListItem(int ItemIndex)
@@ -2787,6 +2805,7 @@ simulated function OnCancel()
 		break;
 	case eUIScreenState_ResearchCategory:
 		UIScreenState = eUIScreenState_Research;
+		InfoTooltip.HideTooltip();
 		break;
 	case eUIScreenState_CompletedProjects:
 		UIScreenState = eUIScreenState_Research;

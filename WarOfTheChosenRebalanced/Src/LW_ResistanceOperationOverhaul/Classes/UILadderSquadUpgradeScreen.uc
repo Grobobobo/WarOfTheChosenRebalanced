@@ -43,6 +43,9 @@ var int LastSelectedIndexes[EUIScreenState] <BoundEnum = EUIScreenState>;
 
 var UIText CreditsText;
 var UIText ScienceText;
+var UIImage WeaponImage;
+var int ImageWidth;
+var int ImageHeight;
 var UIPanel CreditsPanel;
 var UIBGBox Background;
 var UILargeButton ContinueButton;
@@ -357,7 +360,12 @@ simulated function InitScreen(XComPlayerController InitController, UIMovie InitM
 	CreditsText.SetSize(200,40);
 	CreditsText.SetText(CreditsPrefix $ string(LadderData.Credits));
 
-
+	WeaponImage = Spawn(class'UIImage',self);
+	WeaponImage.bAnimateOnInit = false;
+	WeaponImage.bAnimateOnInit = false;
+	WeaponImage.InitImage(, "UILibrary_LWToolbox.StatIcons.Image_Aim").SetScale(1).SetPosition(950,100);
+	WeaponImage.SetSize(ImageWidth,ImageHeight);
+	WeaponImage.Hide();
 
 	ScienceText = Spawn(class'UIText',self);
 	ScienceText.bAnimateOnInit = false;
@@ -390,12 +398,12 @@ simulated function InitScreen(XComPlayerController InitController, UIMovie InitM
 	List.OnSetSelectedIndex = OnSetSelectedIndex;
 
 	InitializeTooltipData();
-	InfoTooltip.SetPosition(935, 505);
+	InfoTooltip.SetPosition(875, 310);
 
 	// Continue button
 	ContinueButton = Spawn(class'UILargeButton', LeftColumn);
 	ContinueButton.InitLargeButton('ContinueButton', , , OnContinueButtonClicked);
-	ContinueButton.SetPosition(500, 965);
+	ContinueButton.SetPosition(500, 920);
 	ContinueButton.DisableNavigation();
 
 	// Not sure about this...
@@ -958,11 +966,11 @@ simulated function UpdateSelectedResearchInfo(int ItemIndex)
 		Template = class'X2ResistanceTechUpgradeTemplateManager'.static.GetTemplateManager().FindTemplate(name(ListItem.metadataString));
 	}
 
-	mc.BeginFunctionOp("SetEnemyPodData");
+	//mc.BeginFunctionOp("SetSoldierGear");
 
-	mc.QueueString(Template.DisplayName);
-	mc.QueueString(Template.Description);
-	mc.QueueString(Template.GetRequirementsText());
+	// mc.QueueString(Template.DisplayName);
+	// mc.QueueString(Template.Description);
+	// mc.QueueString(Template.GetRequirementsText());
 
 	ItemTemplateManager = class'X2ItemTemplateManager'.static.GetItemTemplateManager();
 
@@ -971,15 +979,19 @@ simulated function UpdateSelectedResearchInfo(int ItemIndex)
 		ItemTemplate = ItemTemplateManager.FindItemTemplate(Upgrade.TemplateName);
 		if (ItemTemplate != none)
 		{
-			mc.QueueString(ItemTemplate.strImage);
-			mc.QueueString(ItemTemplate.GetItemFriendlyNameNoStats());
+			//mc.QueueString("Item");
+			//mc.QueueString(ItemTemplate.strImage);
+			//mc.QueueString(ItemTemplate.GetItemFriendlyNameNoStats());
+
 		}
 		break;
 	}
-	mc.EndOp();
 
+	//mc.EndOp();
+	WeaponImage.LoadImage(ItemTemplate.strImage);
 	InfoTooltip.CurrentTemplate = (ItemTemplate);
 	InfoTooltip.ShowTooltip();
+	WeaponImage.Show();
 
 }
 
@@ -2806,6 +2818,7 @@ simulated function OnCancel()
 	case eUIScreenState_ResearchCategory:
 		UIScreenState = eUIScreenState_Research;
 		InfoTooltip.HideTooltip();
+		WeaponImage.Hide();
 		break;
 	case eUIScreenState_CompletedProjects:
 		UIScreenState = eUIScreenState_Research;
@@ -3127,4 +3140,6 @@ defaultproperties
 
 	InputState = eInputState_Consume;
 	bHideOnLoseFocus = false;
+	ImageWidth = 400
+	ImageHeight = 200
 }

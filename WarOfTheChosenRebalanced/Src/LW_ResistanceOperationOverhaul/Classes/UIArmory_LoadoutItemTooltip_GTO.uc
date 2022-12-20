@@ -40,7 +40,7 @@ simulated function UIPanel InitLoadoutItemTooltip(optional name InitName, option
 
 	//-----------------------
 
-	Spawn(class'UIPanel', self).InitPanel('BGBox', class'UIUtilities_Controls'.const.MC_X2Background).SetSize(width, height);
+	//Spawn(class'UIPanel', self).InitPanel('BGBox', class'UIUtilities_Controls'.const.MC_X2Background).SetSize(width, height);
 
 	TitleControl = Spawn(class'UIScrollingText', self);
 	TitleControl.InitScrollingText('ScrollingText', "", width - PADDING_LEFT - PADDING_RIGHT, PADDING_LEFT, PADDING_TOP); 

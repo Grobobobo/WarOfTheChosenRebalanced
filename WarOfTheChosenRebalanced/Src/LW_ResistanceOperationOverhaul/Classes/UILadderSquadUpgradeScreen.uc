@@ -43,7 +43,8 @@ var int LastSelectedIndexes[EUIScreenState] <BoundEnum = EUIScreenState>;
 
 var UIText CreditsText;
 var UIText ScienceText;
-var UIImage WeaponImage;
+var UIArmory_LoadoutItem_GTO WeaponImage;
+var UIBGBox WeaponFrame;
 var int ImageWidth;
 var int ImageHeight;
 var UIPanel CreditsPanel;
@@ -122,6 +123,13 @@ const ScienceIcon = "img:///UILibrary_Common.UIEvent_science";
 
 var string CreditsPrefix;
 var string SciencePrefix;
+
+var config int WEAPON_IMAGE_X_POSITION;
+var config int WEAPON_IMAGE_Y_POSITION;
+
+var config int WEAPON_TOOLTIP_X_POSITON;
+var config int WEAPON_TOOLTIP_Y_POSIITON;
+
 
 delegate OnSelectorClickDelegate(UIMechaListItem MechaItem);
 
@@ -360,12 +368,15 @@ simulated function InitScreen(XComPlayerController InitController, UIMovie InitM
 	CreditsText.SetSize(200,40);
 	CreditsText.SetText(CreditsPrefix $ string(LadderData.Credits));
 
-	WeaponImage = Spawn(class'UIImage',self);
+	// WeaponFrame = Spawn(class'UIBGBox', self).InitBG('', 950, 100, ImageWidth, ImageHeight);
+	// WeaponFrame.SetBGColor("cyan_highlight");
+	// WeaponFrame.SetOutline(true);
+	// //WeaponFrame.SetAlpha(0.9f);
+
+	WeaponImage = Spawn(class'UIArmory_LoadoutItem_GTO',self);
 	WeaponImage.bAnimateOnInit = false;
-	WeaponImage.bAnimateOnInit = false;
-	WeaponImage.InitImage(, "UILibrary_LWToolbox.StatIcons.Image_Aim").SetScale(1).SetPosition(950,100);
-	WeaponImage.SetSize(ImageWidth,ImageHeight);
-	WeaponImage.Hide();
+	WeaponImage.InitLoadoutItem(none).SetPosition(default.WEAPON_IMAGE_X_POSITION,default.WEAPON_IMAGE_Y_POSITION);
+	//WeaponImage.Hide();
 
 	ScienceText = Spawn(class'UIText',self);
 	ScienceText.bAnimateOnInit = false;
@@ -398,7 +409,7 @@ simulated function InitScreen(XComPlayerController InitController, UIMovie InitM
 	List.OnSetSelectedIndex = OnSetSelectedIndex;
 
 	InitializeTooltipData();
-	InfoTooltip.SetPosition(875, 310);
+	InfoTooltip.SetPosition(default.WEAPON_TOOLTIP_X_POSITON,default.WEAPON_TOOLTIP_Y_POSIITON);
 
 	// Continue button
 	ContinueButton = Spawn(class'UILargeButton', LeftColumn);
@@ -988,10 +999,9 @@ simulated function UpdateSelectedResearchInfo(int ItemIndex)
 	}
 
 	//mc.EndOp();
-	WeaponImage.LoadImage(ItemTemplate.strImage);
+	WeaponImage.SetImage(ItemTemplate);
 	InfoTooltip.CurrentTemplate = (ItemTemplate);
 	InfoTooltip.ShowTooltip();
-	WeaponImage.Show();
 
 }
 
@@ -2493,25 +2503,16 @@ simulated function UpdateDataResearchCategory()
 
 	Index = 0;
 	TemplateManager = class'X2ResistanceTechUpgradeTemplateManager'.static.GetTemplateManager();
-	TemplateManager.GetTemplateNames(TemplateNames);
 
-	`LOG("Found this many template names: " $ string(TemplateNames.Length), class'XComGameState_LadderProgress_Override'.default.ENABLE_LOG, class'XComGameState_LadderProgress_Override'.default.LOG_PREFIX);
-
-	foreach TemplateNames(TemplateName)
+	foreach LadderData.CurrentShopUpgrades[SelectedUpgradeCategory].List(Template)
 	{
-		`LOG("Checking: " $ string(TemplateName), class'XComGameState_LadderProgress_Override'.default.ENABLE_LOG, class'XComGameState_LadderProgress_Override'.default.LOG_PREFIX);
+		TemplateName = Template.DataName;
 		if (!LadderData.HasPurchasedTechUpgrade(TemplateName))
 		{
-			`LOG("Not Purchased", class'XComGameState_LadderProgress_Override'.default.ENABLE_LOG, class'XComGameState_LadderProgress_Override'.default.LOG_PREFIX);
-			Template = TemplateManager.FindTemplate(TemplateName);
 			if (Template != none)
 			{
 				if (Template.Category == SelectedUpgradeCategory && Template.AtleastOneInventoryUpgradeExists())
 				{
-					`LOG("Template Found", class'XComGameState_LadderProgress_Override'.default.ENABLE_LOG, class'XComGameState_LadderProgress_Override'.default.LOG_PREFIX);
-					`LOG("Template DataName: " $ string(Template.DataName), class'XComGameState_LadderProgress_Override'.default.ENABLE_LOG, class'XComGameState_LadderProgress_Override'.default.LOG_PREFIX);
-					`LOG("Template DisplayName: " $ Template.DisplayName, class'XComGameState_LadderProgress_Override'.default.ENABLE_LOG, class'XComGameState_LadderProgress_Override'.default.LOG_PREFIX);
-					`LOG("Template Description: " $ Template.Description, class'XComGameState_LadderProgress_Override'.default.ENABLE_LOG, class'XComGameState_LadderProgress_Override'.default.LOG_PREFIX);
 
 					if (LadderData.IsUpgradeOnSale(Template.DataName))
 					{
@@ -2526,11 +2527,11 @@ simulated function UpdateDataResearchCategory()
 						NameString = Template.DisplayName;
 					}
 
-					CostString = "";
-					if (Template.RequiredScience > 0)
-					{
-						CostString = CostString $ string(Template.RequiredScience) $ " " $ class'UIUtilities_Text'.static.InjectImage(ScienceIcon, 20, 20, 0) $ "  ";
-					}
+					// CostString = "";
+					// if (Template.RequiredScience > 0)
+					// {
+					// 	CostString = CostString $ string(Template.RequiredScience/4) $ " " $ class'UIUtilities_Text'.static.InjectImage(ScienceIcon, 20, 20, 0) $ "  ";
+					// }
 
 					CostString = CostString $ CreditsString $ " " $ class'UIUtilities_Text'.static.InjectImage(CreditsIcon, 20, 20, 0);
 
@@ -2818,7 +2819,9 @@ simulated function OnCancel()
 	case eUIScreenState_ResearchCategory:
 		UIScreenState = eUIScreenState_Research;
 		InfoTooltip.HideTooltip();
-		WeaponImage.Hide();
+		WeaponImage.SetImage(none);
+		//WeaponImage.HideAllImages();
+		//WeaponImage.Hide();
 		break;
 	case eUIScreenState_CompletedProjects:
 		UIScreenState = eUIScreenState_Research;
@@ -3140,6 +3143,6 @@ defaultproperties
 
 	InputState = eInputState_Consume;
 	bHideOnLoseFocus = false;
-	ImageWidth = 400
-	ImageHeight = 200
+	ImageWidth = 342
+	ImageHeight = 145
 }

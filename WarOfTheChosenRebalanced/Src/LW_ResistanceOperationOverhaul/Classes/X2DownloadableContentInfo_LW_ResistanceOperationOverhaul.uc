@@ -23,3 +23,16 @@ static event OnLoadedSavedGame()
 /// </summary>
 static event InstallNewCampaign(XComGameState StartState)
 {}
+
+
+exec function SetLadderWeaponImagePos(int X, int Y)
+{
+    class'UILadderSquadUpgradeScreen'.default.WEAPON_IMAGE_X_POSITION = X;
+    class'UILadderSquadUpgradeScreen'.default.WEAPON_IMAGE_Y_POSITION = Y;
+}
+
+exec function SetLadderWeaponTooltipPos(int X, int Y)
+{
+    class'UILadderSquadUpgradeScreen'.default.WEAPON_TOOLTIP_X_POSITON = X;
+    class'UILadderSquadUpgradeScreen'.default.WEAPON_TOOLTIP_Y_POSIITON = Y;
+}

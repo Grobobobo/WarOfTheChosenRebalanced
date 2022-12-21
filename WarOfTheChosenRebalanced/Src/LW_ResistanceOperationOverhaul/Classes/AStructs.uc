@@ -2,17 +2,19 @@ class AStructs extends Object;
 
 enum EUpgradeCategory
 {
-	eUpCat_Misc,
 	eUpCat_Primary,
 	eUpCat_Secondary,
-	eUpCat_Heavy,
-	eUpCat_Utility,
 	eUpCat_Armor,
+	eUpCat_Utility,
+	eUpCat_MAX,
 	eUpCat_Attachment,
 	eUpCat_PCS,
 	eUpCat_Grenade,
 	eUpCat_Ammo,
 	eUpCat_Vest,
+	eUpCat_Misc,
+	eUpCat_Heavy,
+
 };
 
 struct MissionOption
@@ -70,6 +72,10 @@ struct InventoryUpgrade
 {
 	var name TemplateName;
 	var bool bSingle;
+
+	structdefaultproperties{
+		bSingle = true;
+	}
 };
 
 struct TechUpgrade

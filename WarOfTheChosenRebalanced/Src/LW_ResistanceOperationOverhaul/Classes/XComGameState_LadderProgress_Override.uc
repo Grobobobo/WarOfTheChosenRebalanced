@@ -24,6 +24,21 @@ var UILadderRewards RewardsScreen;
 var UILadderSquadUpgradeScreen UpgradeScreen;
 var UILadderChooseNextMission MissionScreen;
 
+var config array<int> TIER_RESEARCH_THERSHOLDS;
+var config int ITEMS_PER_CATEGORY;
+
+struct UpgradeList{
+	var array<X2ResistanceTechUpgradeTemplate> List;
+};
+struct ValidTechUpgrades{
+	var array<X2ResistanceTechUpgradeTemplate> ValidCurrentTierUpgrades;
+	var array<X2ResistanceTechUpgradeTemplate> ValidNextTierUpgrades;
+};
+
+var Array<UpgradeList> Pools;
+var Array<UpgradeList> CurrentShopUpgrades;
+
+
 static function ProceedToNextRung( )
 {
 	local XComGameStateHistory History;
@@ -1217,4 +1232,80 @@ simulated function bool IsUpgradeOnSaleInCategory(EUpgradeCategory Category)
 	}
 
 	return false;
+}
+
+simulated function RefreshShopStock(){
+	
+	local int BaselineTier,HigherTierItems, CurrentTierItems;
+	local X2ResistanceTechUpgradeTemplateManager UpgradeManger;
+	local X2ResistanceTechUpgradeTemplate UpgradeTemplate;
+	local array<name>TemplateNames;
+	local name TemplateName;
+	local int Category;
+	local ValidTechUpgrades ValidTechUpgrade;
+	local UpgradeList UpgradeList;
+	local array<ValidTechUpgrades>  ValidTechUpgrades;
+	local int i,j;
+
+	Pools.Length = 0;
+	CurrentShopUpgrades.Length =0;
+
+	BaselineTier = Science/4;
+
+	HigherTierItems = Science - TIER_RESEARCH_THERSHOLDS[BaselineTier];
+	CurrentTierItems = default.ITEMS_PER_CATEGORY - HigherTierItems;
+
+
+	for (i=0; i<eUpCat_MAX; i++){
+		Pools.AddItem(UpgradeList);
+		CurrentShopUpgrades.AddItem(UpgradeList);
+
+		ValidTechUpgrades.AddItem(ValidTechUpgrade);
+	}
+
+	UpgradeManger = class'X2ResistanceTechUpgradeTemplateManager'.static.GetTemplateManager();
+
+	UpgradeManger.GetTemplateNames(TemplateNames);
+
+	foreach TemplateNames(TemplateName)
+	{
+		UpgradeTemplate = UpgradeManger.FindTemplate(TemplateName);
+		if(UpgradeTemplate != none){
+			Pools[UpgradeTemplate.Category].List.AddItem(UpgradeTemplate);
+
+		}
+	}
+
+	for(i=0;i<Pools.length;i++)
+	{
+		foreach Pools[i].List(UpgradeTemplate)
+		{
+			if(UpgradeTemplate.RequiredScience == BaselineTier){
+				ValidTechUpgrades[UpgradeTemplate.Category].ValidCurrentTierUpgrades.AddItem(UpgradeTemplate);
+			}
+			else if(UpgradeTemplate.RequiredScience == BaselineTier +1){
+				ValidTechUpgrades[UpgradeTemplate.Category].ValidNextTierUpgrades.AddItem(UpgradeTemplate);
+			}
+		}
+		//Allow Repeat Upgrades
+		for(j=HigherTierItems; j > 0; j--){
+			CurrentShopUpgrades[i].List.AddItem(ValidTechUpgrades[i].ValidNextTierUpgrades[`SYNC_RAND(ValidTechUpgrades[i].ValidNextTierUpgrades.Length)]);
+		}
+		for(j=CurrentTierItems; j > 0; j--){
+			CurrentShopUpgrades[i].List.AddItem(ValidTechUpgrades[i].ValidCurrentTierUpgrades[`SYNC_RAND(ValidTechUpgrades[i].ValidCurrentTierUpgrades.Length)]);
+		}
+
+	}
+
+
+	//Assign random options to random categories
+	for(i=HigherTierItems; i > 0; i--){
+		Category = `SYNC_RAND(eUpCat_Max);
+		CurrentShopUpgrades[Category].List.AddItem(ValidTechUpgrades[Category].ValidNextTierUpgrades[`SYNC_RAND(ValidTechUpgrades[Category].ValidNextTierUpgrades.Length)]);
+
+	}
+	for(i=CurrentTierItems; i > 0; i--){
+		Category = `SYNC_RAND(eUpCat_Max);
+		CurrentShopUpgrades[Category].List.AddItem(ValidTechUpgrades[Category].ValidCurrentTierUpgrades[`SYNC_RAND(ValidTechUpgrades[Category].ValidCurrentTierUpgrades.Length)]);
+	}
 }

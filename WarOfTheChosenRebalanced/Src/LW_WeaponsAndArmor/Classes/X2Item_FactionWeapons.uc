@@ -632,7 +632,7 @@ static function X2DataTemplate CreateTemplate_WristBlade_Laser()
 	`CREATE_X2TEMPLATE(class'X2PairedWeaponTemplate', Template, 'WristBlade_CG');
 	Template.WeaponPanelImage = "_Sword";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.PairedSlot = eInvSlot_TertiaryWeapon;
-	Template.PairedTemplateName = 'WristBladeLeft_LS';
+	Template.PairedTemplateName = 'WristBladeLeft_CG';
 
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'wristblade';

@@ -2582,6 +2582,8 @@ static function X2AbilityTemplate AddBulletWizardAbility()
 	Template.Hostility = eHostility_Offensive;
 	Template.bDisplayInUITooltip = false;
 
+	Template.bShowActivation = true;
+
 	StandardAim = new class'X2AbilityToHitCalc_StandardAim';
 	//StandardAim.bMultiTargetOnly = true;
 	Template.AbilityToHitCalc = StandardAim;

@@ -1081,10 +1081,6 @@ FriendlyNamePlural="Mag Long Rifles"
 BriefSummary="Magnetic weapons technology has particular utility for precision slow-fire weapons like sniper rifles. The Mag Long Rifle will enable our Sharpshooters to cause greater damage at extended range."
 TacticalText="<Bullet/> Sniper rifles typically require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Long Rifle's tactical effectiveness."
 
-[AssaultRifle_MG X2WeaponTemplate]
-FriendlyName="Mag Rifle"
-FriendlyNamePlural="Mag Rifles"
-
 [AssaultRifle_CG X2WeaponTemplate]
 FriendlyName="Coil Rifle"
 FriendlyNamePlural="Coil Rifles"
@@ -6599,21 +6595,6 @@ LocPromotionPopupText="<Bullet/> Rescue Protocol grants +<Ability:RESCUE_BONUS_D
 LocLongDescription="All melee attacks deal +<Ability:BlademasterDmg/> extra damage and have +<Ability:BLADEMASTERAIM/> Aim."
 LocHelpText="Extra damage and aim on all melee attacks."
 
-[AssaultRifle_BM X2WeaponTemplate]
-TacticalText="<Bullet/> Plasma weapons cause targets to take 1 additional damage on future hits.\n<Bullet/> The Plasma Rifle is a general purpose, supremely powerful primary infantry weapons system.\n<Bullet/> Firing the primary weapon always ends the soldier's turn.\n<Bullet/> Use upgrades looted from enemies to improve the Plasma Rifle's tactical effectiveness.<br/>"
-
-[SniperRifle_BM X2WeaponTemplate]
-TacticalText="<Bullet/> Plasma weapons cause targets to take 1 additional damage on future hits.\n<Bullet/> This is the apex of sniper rifle technology.\n<Bullet/> Sniper rifles always require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the plasma sniper rifle's tactical effectiveness.<br/>"
-
-[Shotgun_BM X2WeaponTemplate]
-TacticalText="<Bullet/> Plasma weapons cause targets to take 1 additional damage on future hits.\n<Bullet/> This is the most advanced shotgun-style weapon available in the XCOM arsenal.\n<Bullet/> Shotgun-style weapons are extremely effective at close range, but their accuracy drops off quickly at longer range.\n<Bullet/> Use upgrades looted from enemies to improve the Storm Gun's tactical effectiveness.<br/>"
-
-[PlasmaBlaster X2WeaponTemplate]
-TacticalText="<Bullet/> Plasma weapons cause targets to take 1 additional damage on future hits.\n<Bullet/> The Plasma Blaster releases a beam of devastating energy in a straight line, capable of damaging multiple targets\n<Bullet/> Its ammo is limited, so use it only when it will be decisive.<br/>"
-
-[SparkRifle_BM X2WeaponTemplate]
-TacticalText="<Bullet/> Plasma weapons cause targets to take 1 additional damage on future hits.\n<Bullet/> Designed specifically for SPARKs to deal maximum damage, the Elerium Phase-Cannon is the epitome of powered rifle technology.\n<Bullet/> Firing the primary weapon ends the soldier's turn, in the absence of special training.<br/>"
-
 ; LWOTC Needs Translation
 [Skirmisher X2SoldierClassTemplate]
 AbilityTreeTitles[0]="Hussar"
@@ -9341,13 +9322,6 @@ LocLongDescription="Advent's standard magnetic grenade"
 LocHelpText="Target a small area with a magnetic grenade."
 
 ;End translation
-
-[AssaultRifle_CV X2WeaponTemplate]
-FriendlyName="Assault Rifle"
-FriendlyNamePlural="Assault Rifles"
-BriefSummary="We've managed to salvage a variety of standard infantry small arms; this is the most common variety, similar to the rifle used twenty years before. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
-TacticalText="<Bullet/> <Ability:ASSAULTRIFLE_CV_DAMAGE> Average Damage. <\n<Bullet/> Use upgrades looted from enemies to improve the Assault Rifle's tactical effectiveness."
-AbilityDescName="assault rifle"
 
 
 

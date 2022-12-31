@@ -2641,7 +2641,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		|| WeaponTemplate.WeaponCat == 'grenade_launcher'
 		)
 		{
-			WeaponTemplate.Abilities.AddItem('Stock_LW_Bsc_Ability');
+			//WeaponTemplate.Abilities.AddItem('Stock_LW_Bsc_Ability');
 		}
 		// substitute cannon range table
 		if (WeaponTemplate.WeaponCat == 'cannon')

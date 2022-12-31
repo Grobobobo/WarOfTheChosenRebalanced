@@ -1426,3 +1426,1279 @@ m_Credits="Credits"
 m_Science="Research"
 m_Upgrades="Projects"
 m_NoUpgrade="None"
+
+
+[TLE_AssaultRifle_CV_1 X2WeaponTemplate]
+FriendlyName="Old-world Assault Rifle"
+FriendlyNamePlural="Old-world Assault Rifles"
+BriefSummary="We've managed to salvage a variety of standard infantry small arms; this is the most common variety, similar to the rifle used twenty years before. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText="<Bullet/> This is a basic assault rifle."
+AbilityDescName="Old-world Assault Rifle"
+
+[AssaultRifle_CV_1 X2WeaponTemplate]
+FriendlyName="Modern Assault Rifle"
+FriendlyNamePlural="Assault Rifles"
+BriefSummary="We've managed to salvage a variety of standard infantry small arms; this is the most common variety, similar to the rifle used twenty years before. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText=""
+AbilityDescName="assault rifle"
+
+[AssaultRifle_CV_2 X2WeaponTemplate]
+FriendlyName="Improved Modern Assault Rifle"
+FriendlyNamePlural="Assault Rifles"
+BriefSummary="We've managed to salvage a variety of standard infantry small arms; this is the most common variety, similar to the rifle used twenty years before. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText=""
+AbilityDescName="assault rifle"
+
+[AssaultRifle_CV_3 X2WeaponTemplate]
+FriendlyName="Superior Modern Assault Rifle"
+FriendlyNamePlural="Assault Rifles"
+BriefSummary="We've managed to salvage a variety of standard infantry small arms; this is the most common variety, similar to the rifle used twenty years before. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText=""
+AbilityDescName="assault rifle"
+
+[AssaultRifle_LS_2 X2WeaponTemplate]
+FriendlyName="Laser Rifle"
+FriendlyNamePlural="Laser Rifles"
+BriefSummary="The Laser Rifle emits a series of microsecond-duration blasts of light that destroy chemical bonds in targets."
+TacticalText="Laser weapons tend to be very effective at the cost of magazine capacity."
+AbilityDescName="assault rifle"
+
+[AssaultRifle_LS_3 X2WeaponTemplate]
+FriendlyName="Improved Laser Rifle"
+FriendlyNamePlural="Laser Rifles"
+BriefSummary="The Laser Rifle emits a series of microsecond-duration blasts of light that destroy chemical bonds in targets."
+TacticalText="Laser weapons tend to be very effective at the cost of magazine capacity."
+AbilityDescName="assault rifle"
+
+[AssaultRifle_LS_4 X2WeaponTemplate]
+FriendlyName="Superior Laser Rifle"
+FriendlyNamePlural="Laser Rifles"
+BriefSummary="The Laser Rifle emits a series of microsecond-duration blasts of light that destroy chemical bonds in targets."
+TacticalText="Laser weapons tend to be very effective at the cost of magazine capacity."
+AbilityDescName="assault rifle"
+
+[AssaultRifle_LS_5 X2WeaponTemplate]
+FriendlyName="Elite Laser Rifle"
+FriendlyNamePlural="Laser Rifles"
+BriefSummary="The Laser Rifle emits a series of microsecond-duration blasts of light that destroy chemical bonds in targets."
+TacticalText="Laser weapons tend to be very effective at the cost of magazine capacity."
+AbilityDescName="assault rifle"
+
+[AssaultRifle_MG_2 X2WeaponTemplate]
+FriendlyName="Magnetic Rifle"
+FriendlyNamePlural="Magnetic Rifles"
+BriefSummary="Magnetized projectile tech has enabled us to create rifle-style slugthrowers. They represent a substantial improvement in power relative to conventional assault rifles."
+TacticalText="Magnetic Tech tends to deal a lot of damage, but carry additional downsides."
+AbilityDescName="assault rifle"
+
+[AssaultRifle_MG_3 X2WeaponTemplate]
+FriendlyName="Improved Magnetic Rifle"
+FriendlyNamePlural="Magnetic Rifles"
+BriefSummary="Magnetized projectile tech has enabled us to create rifle-style slugthrowers. They represent a substantial improvement in power relative to conventional assault rifles."
+TacticalText="Magnetic Tech tends to deal a lot of damage, but carry additional downsides."
+AbilityDescName="assault rifle"
+
+[AssaultRifle_MG_4 X2WeaponTemplate]
+FriendlyName="Superior Magnetic Rifle"
+FriendlyNamePlural="Magnetic Rifles"
+BriefSummary="Magnetized projectile tech has enabled us to create rifle-style slugthrowers. They represent a substantial improvement in power relative to conventional assault rifles."
+TacticalText="Magnetic Tech tends to deal a lot of damage, but carry additional downsides."
+AbilityDescName="assault rifle"
+
+[AssaultRifle_MG_5 X2WeaponTemplate]
+FriendlyName="Elite Magnetic Rifle"
+FriendlyNamePlural="Magnetic Rifles"
+BriefSummary="Magnetized projectile tech has enabled us to create rifle-style slugthrowers. They represent a substantial improvement in power relative to conventional assault rifles."
+TacticalText="Magnetic Tech tends to deal a lot of damage, but carry additional downsides."
+AbilityDescName="assault rifle"
+
+[AssaultRifle_CG_3 X2WeaponTemplate]
+FriendlyName="Coil Rifle"
+FriendlyNamePlural="Coil Rifles"
+BriefSummary="A powerful, mid-range, armor-piercing coilgun that fills the assault rifle role."
+TacticalText="Coil Weapons tend to have slightly increased magazine capacity."
+AbilityDescName="assault rifle"
+
+[AssaultRifle_CG_4 X2WeaponTemplate]
+FriendlyName="Improved Coil Rifle"
+FriendlyNamePlural="Coil Rifles"
+BriefSummary="A powerful, mid-range, armor-piercing coilgun that fills the assault rifle role."
+TacticalText="Coil Weapons tend to have slightly increased magazine capacity."
+AbilityDescName="assault rifle"
+
+[AssaultRifle_CG_5 X2WeaponTemplate]
+FriendlyName="Superior Coil Rifle"
+FriendlyNamePlural="Coil Rifles"
+BriefSummary="A powerful, mid-range, armor-piercing coilgun that fills the assault rifle role."
+TacticalText="Coil Weapons tend to have slightly increased magazine capacity."
+AbilityDescName="assault rifle"
+
+[AssaultRifle_BM_3 X2WeaponTemplate]
+FriendlyName="Beam Rifle"
+FriendlyNamePlural="Plasma Rifles"
+BriefSummary="Now that we've finally deciphered the aliens' devastating weapon technology and can develop beam weapons of our own, we can build rifles that will be the match of any enemy our soldiers encounter in the field."
+TacticalText="Beam weapons tend to have unique loading mechanisms."
+AbilityDescName="assault rifle"
+
+[AssaultRifle_BM_4 X2WeaponTemplate]
+FriendlyName="Improved Beam Rifle"
+FriendlyNamePlural="Plasma Rifles"
+BriefSummary="Now that we've finally deciphered the aliens' devastating weapon technology and can develop beam weapons of our own, we can build rifles that will be the match of any enemy our soldiers encounter in the field."
+TacticalText="Beam weapons tend to have unique loading mechanisms."
+AbilityDescName="assault rifle"
+
+[AssaultRifle_BM_5 X2WeaponTemplate]
+FriendlyName="Superior Beam Rifle"
+FriendlyNamePlural="Plasma Rifles"
+BriefSummary="Now that we've finally deciphered the aliens' devastating weapon technology and can develop beam weapons of our own, we can build rifles that will be the match of any enemy our soldiers encounter in the field."
+TacticalText="Beam weapons tend to have unique loading mechanisms."
+AbilityDescName="assault rifle"
+
+[TLE_AssaultRifle_MG_2 X2WeaponTemplate]
+FriendlyName="Pulse Rifle"
+FriendlyNamePlural="Pulse Rifles"
+BriefSummary="Magnetized projectile tech has enabled us to create rifle-style slugthrowers. They represent a substantial improvement in power relative to conventional assault rifles."
+TacticalText=""
+AbilityDescName="Pulse Rifle"
+
+[TLE_AssaultRifle_MG_3 X2WeaponTemplate]
+FriendlyName="Improved Pulse Rifle"
+FriendlyNamePlural="Pulse Rifles"
+BriefSummary="Magnetized projectile tech has enabled us to create rifle-style slugthrowers. They represent a substantial improvement in power relative to conventional assault rifles."
+TacticalText=""
+AbilityDescName="Pulse Rifle"
+
+[TLE_AssaultRifle_MG_4 X2WeaponTemplate]
+FriendlyName="Superior Pulse Rifle"
+FriendlyNamePlural="Pulse Rifles"
+BriefSummary="Magnetized projectile tech has enabled us to create rifle-style slugthrowers. They represent a substantial improvement in power relative to conventional assault rifles."
+TacticalText=""
+AbilityDescName="Pulse Rifle"
+
+[TLE_AssaultRifle_MG_5 X2WeaponTemplate]
+FriendlyName="Elite Pulse Rifle"
+FriendlyNamePlural="Pulse Rifles"
+BriefSummary="Magnetized projectile tech has enabled us to create rifle-style slugthrowers. They represent a substantial improvement in power relative to conventional assault rifles."
+TacticalText=""
+AbilityDescName="Pulse Rifle"
+
+[TLE_AssaultRifle_BM_3 X2WeaponTemplate]
+FriendlyName="Plasma Rifle"
+FriendlyNamePlural="Plasma Rifles"
+BriefSummary="Now that we've finally deciphered the aliens' devastating weapon technology and can develop beam weapons of our own, we can build rifles that will be the match of any enemy our soldiers encounter in the field."
+AbilityDescName="Prototype Plasma Rifle"
+
+[TLE_AssaultRifle_BM_4 X2WeaponTemplate]
+FriendlyName="Improved Plasma Rifle"
+FriendlyNamePlural="Plasma Rifles"
+BriefSummary="Now that we've finally deciphered the aliens' devastating weapon technology and can develop beam weapons of our own, we can build rifles that will be the match of any enemy our soldiers encounter in the field."
+AbilityDescName="Prototype Plasma Rifle"
+
+[TLE_AssaultRifle_BM_5 X2WeaponTemplate]
+FriendlyName="Superior Plasma Rifle"
+FriendlyNamePlural="Plasma Rifles"
+BriefSummary="Now that we've finally deciphered the aliens' devastating weapon technology and can develop beam weapons of our own, we can build rifles that will be the match of any enemy our soldiers encounter in the field."
+AbilityDescName="Prototype Plasma Rifle"
+
+[LWImmolator_T0_1 X2WeaponTemplate]
+FriendlyName="Flametorch"
+FriendlyNamePlural="Flametorch"
+BriefSummary="A simple mechanical incendiary device, mostly unchanged in design since the 20th century. With little room for improvement in terms of weapon attachments, its simplicity makes it an effective and affordable weapon of psychological warfare."
+TacticalText="A simple mechanical incendiary device, mostly unchanged in design since the 20th century. With little room for improvement in terms of weapon attachments, its simplicity makes it an effective and affordable weapon of psychological warfare.<br/><Bullet/> The Flametorch provides a limited-range cone of fire.\n<Bullet/>Use with caution, as it can burn friend and foe alike.\n<Bullet/> Canisters with diverse chemical agents can provide added versatility."
+AbilityDescName="Flametorch"
+
+[LWImmolator_T0_2 X2WeaponTemplate]
+FriendlyName="Improved Flametorch"
+FriendlyNamePlural="Flametorch"
+BriefSummary="A simple mechanical incendiary device, mostly unchanged in design since the 20th century. With little room for improvement in terms of weapon attachments, its simplicity makes it an effective and affordable weapon of psychological warfare."
+TacticalText="A simple mechanical incendiary device, mostly unchanged in design since the 20th century. With little room for improvement in terms of weapon attachments, its simplicity makes it an effective and affordable weapon of psychological warfare.<br/><Bullet/> The Flametorch provides a limited-range cone of fire.\n<Bullet/>Use with caution, as it can burn friend and foe alike.\n<Bullet/> Canisters with diverse chemical agents can provide added versatility."
+AbilityDescName="Flametorch"
+
+[LWImmolator_T0_3 X2WeaponTemplate]
+FriendlyName="Superior Flametorch"
+FriendlyNamePlural="Flametorch"
+BriefSummary="A simple mechanical incendiary device, mostly unchanged in design since the 20th century. With little room for improvement in terms of weapon attachments, its simplicity makes it an effective and affordable weapon of psychological warfare."
+TacticalText="A simple mechanical incendiary device, mostly unchanged in design since the 20th century. With little room for improvement in terms of weapon attachments, its simplicity makes it an effective and affordable weapon of psychological warfare.<br/><Bullet/> The Flametorch provides a limited-range cone of fire.\n<Bullet/>Use with caution, as it can burn friend and foe alike.\n<Bullet/> Canisters with diverse chemical agents can provide added versatility."
+AbilityDescName="Flametorch"
+
+[LWImmolator_T0_4 X2WeaponTemplate]
+FriendlyName="Elite Flametorch"
+FriendlyNamePlural="Flametorch"
+BriefSummary="A simple mechanical incendiary device, mostly unchanged in design since the 20th century. With little room for improvement in terms of weapon attachments, its simplicity makes it an effective and affordable weapon of psychological warfare."
+TacticalText="A simple mechanical incendiary device, mostly unchanged in design since the 20th century. With little room for improvement in terms of weapon attachments, its simplicity makes it an effective and affordable weapon of psychological warfare.<br/><Bullet/> The Flametorch provides a limited-range cone of fire.\n<Bullet/>Use with caution, as it can burn friend and foe alike.\n<Bullet/> Canisters with diverse chemical agents can provide added versatility."
+AbilityDescName="Flametorch"
+
+[LWImmolator_T0_5 X2WeaponTemplate]
+FriendlyName="Perfected Flametorch"
+FriendlyNamePlural="Flametorch"
+BriefSummary="A simple mechanical incendiary device, mostly unchanged in design since the 20th century. With little room for improvement in terms of weapon attachments, its simplicity makes it an effective and affordable weapon of psychological warfare."
+TacticalText="A simple mechanical incendiary device, mostly unchanged in design since the 20th century. With little room for improvement in terms of weapon attachments, its simplicity makes it an effective and affordable weapon of psychological warfare.<br/><Bullet/> The Flametorch provides a limited-range cone of fire.\n<Bullet/>Use with caution, as it can burn friend and foe alike.\n<Bullet/> Canisters with diverse chemical agents can provide added versatility."
+AbilityDescName="Flametorch"
+
+[LWImmolator_CV_2 X2WeaponTemplate]
+FriendlyName="Blast Immolator"
+FriendlyNamePlural="Immolators"
+BriefSummary="This basic chemical thrower fires a stream of highly flamable chemicals, burning and damaging multiple targets."
+TacticalText="<Bullet/> Chemthrowers do low damage in a wide area, making them effective only when dealing with multiple targets.<br> <Bullet/> The Immolator will always burn targets, dealing damage over time and disabling some abilities.<br> <Bullet/> Some enemies may be immune to fire, and take no damage from the immolator.<br> <Bullet/> Extremely effective against the Lost.<br>"
+AbilityDescName="Immolator"
+
+[LWImmolator_CV_3 X2WeaponTemplate]
+FriendlyName="Improved Blast Immolator"
+FriendlyNamePlural="Immolators"
+BriefSummary="This basic chemical thrower fires a stream of highly flamable chemicals, burning and damaging multiple targets."
+TacticalText="<Bullet/> Chemthrowers do low damage in a wide area, making them effective only when dealing with multiple targets.<br> <Bullet/> The Immolator will always burn targets, dealing damage over time and disabling some abilities.<br> <Bullet/> Some enemies may be immune to fire, and take no damage from the immolator.<br> <Bullet/> Extremely effective against the Lost.<br>"
+AbilityDescName="Immolator"
+
+[LWImmolator_CV_4 X2WeaponTemplate]
+FriendlyName="Superior Blast Immolator"
+FriendlyNamePlural="Immolators"
+BriefSummary="This basic chemical thrower fires a stream of highly flamable chemicals, burning and damaging multiple targets."
+TacticalText="<Bullet/> Chemthrowers do low damage in a wide area, making them effective only when dealing with multiple targets.<br> <Bullet/> The Immolator will always burn targets, dealing damage over time and disabling some abilities.<br> <Bullet/> Some enemies may be immune to fire, and take no damage from the immolator.<br> <Bullet/> Extremely effective against the Lost.<br>"
+AbilityDescName="Immolator"
+
+[LWImmolator_CV_5 X2WeaponTemplate]
+FriendlyName="Elite Blast Immolator"
+FriendlyNamePlural="Immolators"
+BriefSummary="This basic chemical thrower fires a stream of highly flamable chemicals, burning and damaging multiple targets."
+TacticalText="<Bullet/> Chemthrowers do low damage in a wide area, making them effective only when dealing with multiple targets.<br> <Bullet/> The Immolator will always burn targets, dealing damage over time and disabling some abilities.<br> <Bullet/> Some enemies may be immune to fire, and take no damage from the immolator.<br> <Bullet/> Extremely effective against the Lost.<br>"
+AbilityDescName="Immolator"
+
+[LWImmolator_MG_2 X2WeaponTemplate]
+FriendlyName="EMP Immolator"
+FriendlyNamePlural="Advanced Immolators"
+BriefSummary="This basic chemical thrower fires a stream of highly flamable chemicals, burning and damaging multiple targets."
+TacticalText="<Bullet/> Chemthrowers do low damage in a wide area, making them effective only when dealing with multiple targets.<br> <Bullet/> The Immolator will always burn targets, dealing damage over time and disabling some abilities.<br> <Bullet/> Some enemies may be immune to fire, and take no damage from the immolator.<br> <Bullet/> Extremely effective against the Lost.<br>"
+AbilityDescName="Immolator"
+
+[LWImmolator_MG_3 X2WeaponTemplate]
+FriendlyName="Improved EMP Immolator"
+FriendlyNamePlural="Advanced Immolators"
+BriefSummary="This basic chemical thrower fires a stream of highly flamable chemicals, burning and damaging multiple targets."
+TacticalText="<Bullet/> Chemthrowers do low damage in a wide area, making them effective only when dealing with multiple targets.<br> <Bullet/> The Immolator will always burn targets, dealing damage over time and disabling some abilities.<br> <Bullet/> Some enemies may be immune to fire, and take no damage from the immolator.<br> <Bullet/> Extremely effective against the Lost.<br>"
+AbilityDescName="Immolator"
+
+[LWImmolator_MG_4 X2WeaponTemplate]
+FriendlyName="Superior EMP Immolator"
+FriendlyNamePlural="Advanced Immolators"
+BriefSummary="This basic chemical thrower fires a stream of highly flamable chemicals, burning and damaging multiple targets."
+TacticalText="<Bullet/> Chemthrowers do low damage in a wide area, making them effective only when dealing with multiple targets.<br> <Bullet/> The Immolator will always burn targets, dealing damage over time and disabling some abilities.<br> <Bullet/> Some enemies may be immune to fire, and take no damage from the immolator.<br> <Bullet/> Extremely effective against the Lost.<br>"
+AbilityDescName="Immolator"
+
+[LWImmolator_MG_5 X2WeaponTemplate]
+FriendlyName="Elite EMP Immolator"
+FriendlyNamePlural="Advanced Immolators"
+BriefSummary="This basic chemical thrower fires a stream of highly flamable chemicals, burning and damaging multiple targets."
+TacticalText="<Bullet/> Chemthrowers do low damage in a wide area, making them effective only when dealing with multiple targets.<br> <Bullet/> The Immolator will always burn targets, dealing damage over time and disabling some abilities.<br> <Bullet/> Some enemies may be immune to fire, and take no damage from the immolator.<br> <Bullet/> Extremely effective against the Lost.<br>"
+AbilityDescName="Immolator"
+
+[LWImmolator_BM_2 X2WeaponTemplate]
+FriendlyName="War Criminal"
+FriendlyNamePlural="War Criminal"
+BriefSummary="This basic chemical thrower fires a stream of highly flamable chemicals, burning and damaging multiple targets."
+TacticalText="<Bullet/> Chemthrowers do low damage in a wide area, making them effective only when dealing with multiple targets.<br> <Bullet/> The Immolator will always burn targets, dealing damage over time and disabling some abilities.<br> <Bullet/> Some enemies may be immune to fire, and take no damage from the immolator.<br> <Bullet/> Extremely effective against the Lost.<br>"
+AbilityDescName="Immolator"
+
+[LWImmolator_BM_3 X2WeaponTemplate]
+FriendlyName="Improved War Criminal"
+FriendlyNamePlural="War Criminal"
+BriefSummary="This basic chemical thrower fires a stream of highly flamable chemicals, burning and damaging multiple targets."
+TacticalText="<Bullet/> Chemthrowers do low damage in a wide area, making them effective only when dealing with multiple targets.<br> <Bullet/> The Immolator will always burn targets, dealing damage over time and disabling some abilities.<br> <Bullet/> Some enemies may be immune to fire, and take no damage from the immolator.<br> <Bullet/> Extremely effective against the Lost.<br>"
+AbilityDescName="Immolator"
+
+[LWImmolator_BM_4 X2WeaponTemplate]
+FriendlyName="Superior War Criminal"
+FriendlyNamePlural="War Criminal"
+BriefSummary="This basic chemical thrower fires a stream of highly flamable chemicals, burning and damaging multiple targets."
+TacticalText="<Bullet/> Chemthrowers do low damage in a wide area, making them effective only when dealing with multiple targets.<br> <Bullet/> The Immolator will always burn targets, dealing damage over time and disabling some abilities.<br> <Bullet/> Some enemies may be immune to fire, and take no damage from the immolator.<br> <Bullet/> Extremely effective against the Lost.<br>"
+AbilityDescName="Immolator"
+
+[LWImmolator_BM_5 X2WeaponTemplate]
+FriendlyName="Elite War Criminal"
+FriendlyNamePlural="War Criminal"
+BriefSummary="This basic chemical thrower fires a stream of highly flamable chemicals, burning and damaging multiple targets."
+TacticalText="<Bullet/> Chemthrowers do low damage in a wide area, making them effective only when dealing with multiple targets.<br> <Bullet/> The Immolator will always burn targets, dealing damage over time and disabling some abilities.<br> <Bullet/> Some enemies may be immune to fire, and take no damage from the immolator.<br> <Bullet/> Extremely effective against the Lost.<br>"
+AbilityDescName="Immolator"
+
+[TLE_Cannon_CV_1 X2WeaponTemplate]
+FriendlyName="Light Machine Gun"
+FriendlyNamePlural="Light Machine Guns"
+BriefSummary="The LMG is an improvised light support weapon, specialized for high volume fire. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Light Machine Gun"
+
+[TLE_Cannon_CV_2 X2WeaponTemplate]
+FriendlyName="Improved Light Machine Gun"
+FriendlyNamePlural="Light Machine Guns"
+BriefSummary="The LMG is an improvised light support weapon, specialized for high volume fire. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Light Machine Gun"
+
+[TLE_Cannon_CV_3 X2WeaponTemplate]
+FriendlyName="Superior Light Machine Gun"
+FriendlyNamePlural="Light Machine Guns"
+BriefSummary="The LMG is an improvised light support weapon, specialized for high volume fire. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Light Machine Gun"
+
+[TLE_Cannon_MG_2 X2WeaponTemplate]
+FriendlyName="Pulse Machine Gun"
+FriendlyNamePlural="Pulse Machine Gun"
+BriefSummary="Magnetic weapons tech will let us deploy a rapid-fire version of the cannon. Our Grenadiers will be able to lay down a much deadlier volume of fire."
+TacticalText="<Bullet/> The Magnetic Support Cannon is a much more powerful, yet equally deployable, version of the conventional LMG.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Pulse Machine Gun"
+
+[TLE_Cannon_MG_3 X2WeaponTemplate]
+FriendlyName="Improved Pulse Machine Gun"
+FriendlyNamePlural="Pulse Machine Gun"
+BriefSummary="Magnetic weapons tech will let us deploy a rapid-fire version of the cannon. Our Grenadiers will be able to lay down a much deadlier volume of fire."
+TacticalText="<Bullet/> The Magnetic Support Cannon is a much more powerful, yet equally deployable, version of the conventional LMG.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Pulse Machine Gun"
+
+[TLE_Cannon_MG_4 X2WeaponTemplate]
+FriendlyName="Superior Pulse Machine Gun"
+FriendlyNamePlural="Pulse Machine Gun"
+BriefSummary="Magnetic weapons tech will let us deploy a rapid-fire version of the cannon. Our Grenadiers will be able to lay down a much deadlier volume of fire."
+TacticalText="<Bullet/> The Magnetic Support Cannon is a much more powerful, yet equally deployable, version of the conventional LMG.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Pulse Machine Gun"
+
+[TLE_Cannon_MG_5 X2WeaponTemplate]
+FriendlyName="Elite Pulse Machine Gun"
+FriendlyNamePlural="Pulse Machine Gun"
+BriefSummary="Magnetic weapons tech will let us deploy a rapid-fire version of the cannon. Our Grenadiers will be able to lay down a much deadlier volume of fire."
+TacticalText="<Bullet/> The Magnetic Support Cannon is a much more powerful, yet equally deployable, version of the conventional LMG.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Pulse Machine Gun"
+
+[TLE_Cannon_BM_3 X2WeaponTemplate]
+FriendlyName="Plasma Machine Gun"
+FriendlyNamePlural="Energy Cannons"
+BriefSummary="Devising a more powerful, high-volume beam weapon for our Grenadiers required substantial effort, but the firepower it brings is unquestioned."
+TacticalText="<Bullet/> The Energy Cannon is the most powerful combat support weapon human forces can deploy.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Plasma Machine Gun"
+
+[TLE_Cannon_BM_4 X2WeaponTemplate]
+FriendlyName="Improved Plasma Machine Gun"
+FriendlyNamePlural="Energy Cannons"
+BriefSummary="Devising a more powerful, high-volume beam weapon for our Grenadiers required substantial effort, but the firepower it brings is unquestioned."
+TacticalText="<Bullet/> The Energy Cannon is the most powerful combat support weapon human forces can deploy.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Plasma Machine Gun"
+
+[TLE_Cannon_BM_5 X2WeaponTemplate]
+FriendlyName="Superior Plasma Machine Gun"
+FriendlyNamePlural="Energy Cannons"
+BriefSummary="Devising a more powerful, high-volume beam weapon for our Grenadiers required substantial effort, but the firepower it brings is unquestioned."
+TacticalText="<Bullet/> The Energy Cannon is the most powerful combat support weapon human forces can deploy.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Plasma Machine Gun"
+
+
+[VektorRifle_CV_1 X2WeaponTemplate]
+FriendlyName="Vektor Rifle"
+FriendlyNamePlural="Vektor Rifles"
+BriefSummary="Reliant on a specialized cartridge presumably handloaded by the Reapers, the Vektor Rifle is a purpose-built sniper rifle designed for long range engagement and squad support. A relatively light weapon with excellent corrosion Resistance, it is ideal for the harsh environments typically associated with the Reaper faction."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> The Vektor Rifle is effective at all ranges.\n<Bullet/> Use upgrades looted from enemies to improve the Vektor Rifle's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_CV_2 X2WeaponTemplate]
+FriendlyName="Improved Vektor Rifle"
+FriendlyNamePlural="Vektor Rifles"
+BriefSummary="Reliant on a specialized cartridge presumably handloaded by the Reapers, the Vektor Rifle is a purpose-built sniper rifle designed for long range engagement and squad support. A relatively light weapon with excellent corrosion Resistance, it is ideal for the harsh environments typically associated with the Reaper faction."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> The Vektor Rifle is effective at all ranges.\n<Bullet/> Use upgrades looted from enemies to improve the Vektor Rifle's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_CV_3 X2WeaponTemplate]
+FriendlyName="Superior Vektor Rifle"
+FriendlyNamePlural="Vektor Rifles"
+BriefSummary="Reliant on a specialized cartridge presumably handloaded by the Reapers, the Vektor Rifle is a purpose-built sniper rifle designed for long range engagement and squad support. A relatively light weapon with excellent corrosion Resistance, it is ideal for the harsh environments typically associated with the Reaper faction."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> The Vektor Rifle is effective at all ranges.\n<Bullet/> Use upgrades looted from enemies to improve the Vektor Rifle's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_CV_4 X2WeaponTemplate]
+FriendlyName="Elite Vektor Rifle"
+FriendlyNamePlural="Vektor Rifles"
+BriefSummary="Reliant on a specialized cartridge presumably handloaded by the Reapers, the Vektor Rifle is a purpose-built sniper rifle designed for long range engagement and squad support. A relatively light weapon with excellent corrosion Resistance, it is ideal for the harsh environments typically associated with the Reaper faction."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> The Vektor Rifle is effective at all ranges.\n<Bullet/> Use upgrades looted from enemies to improve the Vektor Rifle's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_CV_5 X2WeaponTemplate]
+FriendlyName="Perfected Vektor Rifle"
+FriendlyNamePlural="Vektor Rifles"
+BriefSummary="Reliant on a specialized cartridge presumably handloaded by the Reapers, the Vektor Rifle is a purpose-built sniper rifle designed for long range engagement and squad support. A relatively light weapon with excellent corrosion Resistance, it is ideal for the harsh environments typically associated with the Reaper faction."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> The Vektor Rifle is effective at all ranges.\n<Bullet/> Use upgrades looted from enemies to improve the Vektor Rifle's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_LS_2 X2WeaponTemplate]
+FriendlyName="Crimson Lance"
+FriendlyNamePlural="Crimson Lances"
+BriefSummary="Crimson Lance augments the standard Vektor frame with high density pulse-duration modulated laser oscillators. It's not as powerful as our larger pulse weapon designs, but its ease of use and platform stability grant it unmatched precision. Covered heatsinks reduce the thermal footprint of this weapon, making it harder to track the user."
+TacticalText="Crimson Lance augments the standard Vektor frame with high density pulse-duration modulated laser oscillators. It's not as powerful as our larger pulse weapon designs, but its ease of use and platform stability grant it unmatched precision. Covered heatsinks reduce the thermal footprint of this weapon, making it harder to track the user.\n<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades looted from enemies to improve the Crimson Lance's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_LS_3 X2WeaponTemplate]
+FriendlyName="Improved Crimson Lance"
+FriendlyNamePlural="Crimson Lances"
+BriefSummary="Crimson Lance augments the standard Vektor frame with high density pulse-duration modulated laser oscillators. It's not as powerful as our larger pulse weapon designs, but its ease of use and platform stability grant it unmatched precision. Covered heatsinks reduce the thermal footprint of this weapon, making it harder to track the user."
+TacticalText="Crimson Lance augments the standard Vektor frame with high density pulse-duration modulated laser oscillators. It's not as powerful as our larger pulse weapon designs, but its ease of use and platform stability grant it unmatched precision. Covered heatsinks reduce the thermal footprint of this weapon, making it harder to track the user.\n<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades looted from enemies to improve the Crimson Lance's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_LS_4 X2WeaponTemplate]
+FriendlyName="Superior Crimson Lance"
+FriendlyNamePlural="Crimson Lances"
+BriefSummary="Crimson Lance augments the standard Vektor frame with high density pulse-duration modulated laser oscillators. It's not as powerful as our larger pulse weapon designs, but its ease of use and platform stability grant it unmatched precision. Covered heatsinks reduce the thermal footprint of this weapon, making it harder to track the user."
+TacticalText="Crimson Lance augments the standard Vektor frame with high density pulse-duration modulated laser oscillators. It's not as powerful as our larger pulse weapon designs, but its ease of use and platform stability grant it unmatched precision. Covered heatsinks reduce the thermal footprint of this weapon, making it harder to track the user.\n<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades looted from enemies to improve the Crimson Lance's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_LS_5 X2WeaponTemplate]
+FriendlyName="Elite Crimson Lance"
+FriendlyNamePlural="Crimson Lances"
+BriefSummary="Crimson Lance augments the standard Vektor frame with high density pulse-duration modulated laser oscillators. It's not as powerful as our larger pulse weapon designs, but its ease of use and platform stability grant it unmatched precision. Covered heatsinks reduce the thermal footprint of this weapon, making it harder to track the user."
+TacticalText="Crimson Lance augments the standard Vektor frame with high density pulse-duration modulated laser oscillators. It's not as powerful as our larger pulse weapon designs, but its ease of use and platform stability grant it unmatched precision. Covered heatsinks reduce the thermal footprint of this weapon, making it harder to track the user.\n<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades looted from enemies to improve the Crimson Lance's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_MG_2 X2WeaponTemplate]
+FriendlyName="Temnotic Rifle"
+FriendlyNamePlural="Temnotic Rifles"
+BriefSummary="Modifying the existing Vektor rifle frame to allow for the integration of a magnetic accelerator, the weapon is now capable of firing ferromagnetic projectiles that can be mass produced by our engineering staff with relative ease. Damage output has been significantly improved as a result."
+TacticalText="<Bullet/> Magnetized weapon technology makes for a lethal upgrade to the Reaper's Vektor Rifle.\n<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> The Temnotic Rifle is effective at all ranges.\n<Bullet/> Use upgrades looted from enemies to improve the Temnotic Rifle's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_MG_3 X2WeaponTemplate]
+FriendlyName="Improved Temnotic Rifle"
+FriendlyNamePlural="Temnotic Rifles"
+BriefSummary="Modifying the existing Vektor rifle frame to allow for the integration of a magnetic accelerator, the weapon is now capable of firing ferromagnetic projectiles that can be mass produced by our engineering staff with relative ease. Damage output has been significantly improved as a result."
+TacticalText="<Bullet/> Magnetized weapon technology makes for a lethal upgrade to the Reaper's Vektor Rifle.\n<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> The Temnotic Rifle is effective at all ranges.\n<Bullet/> Use upgrades looted from enemies to improve the Temnotic Rifle's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_MG_4 X2WeaponTemplate]
+FriendlyName="Superior Temnotic Rifle"
+FriendlyNamePlural="Temnotic Rifles"
+BriefSummary="Modifying the existing Vektor rifle frame to allow for the integration of a magnetic accelerator, the weapon is now capable of firing ferromagnetic projectiles that can be mass produced by our engineering staff with relative ease. Damage output has been significantly improved as a result."
+TacticalText="<Bullet/> Magnetized weapon technology makes for a lethal upgrade to the Reaper's Vektor Rifle.\n<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> The Temnotic Rifle is effective at all ranges.\n<Bullet/> Use upgrades looted from enemies to improve the Temnotic Rifle's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_MG_4 X2WeaponTemplate]
+FriendlyName="Elite Temnotic Rifle"
+FriendlyNamePlural="Temnotic Rifles"
+BriefSummary="Modifying the existing Vektor rifle frame to allow for the integration of a magnetic accelerator, the weapon is now capable of firing ferromagnetic projectiles that can be mass produced by our engineering staff with relative ease. Damage output has been significantly improved as a result."
+TacticalText="<Bullet/> Magnetized weapon technology makes for a lethal upgrade to the Reaper's Vektor Rifle.\n<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> The Temnotic Rifle is effective at all ranges.\n<Bullet/> Use upgrades looted from enemies to improve the Temnotic Rifle's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_CG_2 X2WeaponTemplate]
+FriendlyName="Tesla Lance"
+FriendlyNamePlural="Tesla Lances"
+BriefSummary="Tesla Lance owes its name to the method of igniting the propellant in its cartridges by an electric current. The long rifled barrel is internally stabilized and does not come in contact with the weapon's frame for its entire length. Both of these factors make this weapon extremely precise and easy to handle."
+TacticalText="Tesla Lance owes its name to the method of igniting the propellant in its cartridges by an electric current. The long rifled barrel is internally stabilized and does not come in contact with the weapon's frame for its entire length. Both of these factors make this weapon extremely precise and easy to handle.\n<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades looted from enemies to improve the Tesla Lance's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_CG_3 X2WeaponTemplate]
+FriendlyName="Tesla Lance"
+FriendlyNamePlural="Tesla Lances"
+BriefSummary="Tesla Lance owes its name to the method of igniting the propellant in its cartridges by an electric current. The long rifled barrel is internally stabilized and does not come in contact with the weapon's frame for its entire length. Both of these factors make this weapon extremely precise and easy to handle."
+TacticalText="Tesla Lance owes its name to the method of igniting the propellant in its cartridges by an electric current. The long rifled barrel is internally stabilized and does not come in contact with the weapon's frame for its entire length. Both of these factors make this weapon extremely precise and easy to handle.\n<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades looted from enemies to improve the Tesla Lance's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_CG_4 X2WeaponTemplate]
+FriendlyName="Improved Tesla Lance"
+FriendlyNamePlural="Tesla Lances"
+BriefSummary="Tesla Lance owes its name to the method of igniting the propellant in its cartridges by an electric current. The long rifled barrel is internally stabilized and does not come in contact with the weapon's frame for its entire length. Both of these factors make this weapon extremely precise and easy to handle."
+TacticalText="Tesla Lance owes its name to the method of igniting the propellant in its cartridges by an electric current. The long rifled barrel is internally stabilized and does not come in contact with the weapon's frame for its entire length. Both of these factors make this weapon extremely precise and easy to handle.\n<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades looted from enemies to improve the Tesla Lance's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_CG_5 X2WeaponTemplate]
+FriendlyName="Superior Tesla Lance"
+FriendlyNamePlural="Tesla Lances"
+BriefSummary="Tesla Lance owes its name to the method of igniting the propellant in its cartridges by an electric current. The long rifled barrel is internally stabilized and does not come in contact with the weapon's frame for its entire length. Both of these factors make this weapon extremely precise and easy to handle."
+TacticalText="Tesla Lance owes its name to the method of igniting the propellant in its cartridges by an electric current. The long rifled barrel is internally stabilized and does not come in contact with the weapon's frame for its entire length. Both of these factors make this weapon extremely precise and easy to handle.\n<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades looted from enemies to improve the Tesla Lance's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_BM_3 X2WeaponTemplate]
+FriendlyName="Shadow Lance"
+FriendlyNamePlural="Shadow Lances"
+BriefSummary="Although the Reapers object to the use of alien technology in principle, we have assured them that beam weaponry under development here is of our own design. Regardless of their objections, the energy-based Vektor rifle is without question superior to any past variant they have ever wielded."
+TacticalText="<Bullet/> This is most advanced Vektor Rifle variant available in the XCOM arsenal.\n<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Shadow Lance's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_BM_4 X2WeaponTemplate]
+FriendlyName="Improved Shadow Lance"
+FriendlyNamePlural="Shadow Lances"
+BriefSummary="Although the Reapers object to the use of alien technology in principle, we have assured them that beam weaponry under development here is of our own design. Regardless of their objections, the energy-based Vektor rifle is without question superior to any past variant they have ever wielded."
+TacticalText="<Bullet/> This is most advanced Vektor Rifle variant available in the XCOM arsenal.\n<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Shadow Lance's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[VektorRifle_BM_5 X2WeaponTemplate]
+FriendlyName="Superior Shadow Lance"
+FriendlyNamePlural="Shadow Lances"
+BriefSummary="Although the Reapers object to the use of alien technology in principle, we have assured them that beam weaponry under development here is of our own design. Regardless of their objections, the energy-based Vektor rifle is without question superior to any past variant they have ever wielded."
+TacticalText="<Bullet/> This is most advanced Vektor Rifle variant available in the XCOM arsenal.\n<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Shadow Lance's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[Bullpup_CV_1 X2WeaponTemplate]
+FriendlyName="Kal-7 Bullpup"
+FriendlyNamePlural="Kal-7 Bullpups"
+BriefSummary="The Skirmishers make for dangerous melee combatants, but they still rely on a unique Bullpup rifle design adapted from the weapons they were originally assigned during their service to ADVENT. At close range, these shotguns provide excellent stopping power, while the stock improves recovery time during extended firing."
+TacticalText="<Bullet/> Firing the Bullpup does not end the Skirmisher's turn, and it can be fired twice in a single turn.\n<Bullet/> Bullpups are extremely effective at close range, but their accuracy drops off quickly at longer range.\n<Bullet/> Use upgrades looted from enemies to improve the Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[Bullpup_CV_2 X2WeaponTemplate]
+FriendlyName="Improved Kal-7 Bullpup"
+FriendlyNamePlural="Kal-7 Bullpups"
+BriefSummary="The Skirmishers make for dangerous melee combatants, but they still rely on a unique Bullpup rifle design adapted from the weapons they were originally assigned during their service to ADVENT. At close range, these shotguns provide excellent stopping power, while the stock improves recovery time during extended firing."
+TacticalText="<Bullet/> Firing the Bullpup does not end the Skirmisher's turn, and it can be fired twice in a single turn.\n<Bullet/> Bullpups are extremely effective at close range, but their accuracy drops off quickly at longer range.\n<Bullet/> Use upgrades looted from enemies to improve the Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[Bullpup_CV_3 X2WeaponTemplate]
+FriendlyName="Superior Kal-7 Bullpup"
+FriendlyNamePlural="Kal-7 Bullpups"
+BriefSummary="The Skirmishers make for dangerous melee combatants, but they still rely on a unique Bullpup rifle design adapted from the weapons they were originally assigned during their service to ADVENT. At close range, these shotguns provide excellent stopping power, while the stock improves recovery time during extended firing."
+TacticalText="<Bullet/> Firing the Bullpup does not end the Skirmisher's turn, and it can be fired twice in a single turn.\n<Bullet/> Bullpups are extremely effective at close range, but their accuracy drops off quickly at longer range.\n<Bullet/> Use upgrades looted from enemies to improve the Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[Bullpup_LS_2 X2WeaponTemplate]
+FriendlyName="Kal-33 Bullpup"
+FriendlyNamePlural="Kal-33 Bullpups"
+BriefSummary="Unlike most of our pulse laser designs, the bullpup version has more strict size requirements, so we had to significantly reduce the pulse rate to prevent the weapon from overheating. This makes the weapon feel more like a traditional automatic firearm rather than a continuous beam weapon, and makes it harder to deliver deep, intense burns, although it does make the weapon easier to use at close range."
+TacticalText="<Bullet/> Laser weapons receive bonus aim.\n<Bullet/> Bullpup-style weapons are far more accurate then rifles at close and medium ranges, but they have long range penalties.\n<Bullet/> They also increase the Skirmisher's mobility.\n<Bullet/> Use upgrades looted from enemies to improve the Kal-13 Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[Bullpup_LS_3 X2WeaponTemplate]
+FriendlyName="Improved Kal-33 Bullpup"
+FriendlyNamePlural="Kal-33 Bullpups"
+BriefSummary="Unlike most of our pulse laser designs, the bullpup version has more strict size requirements, so we had to significantly reduce the pulse rate to prevent the weapon from overheating. This makes the weapon feel more like a traditional automatic firearm rather than a continuous beam weapon, and makes it harder to deliver deep, intense burns, although it does make the weapon easier to use at close range."
+TacticalText="<Bullet/> Laser weapons receive bonus aim.\n<Bullet/> Bullpup-style weapons are far more accurate then rifles at close and medium ranges, but they have long range penalties.\n<Bullet/> They also increase the Skirmisher's mobility.\n<Bullet/> Use upgrades looted from enemies to improve the Kal-13 Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[Bullpup_LS_4 X2WeaponTemplate]
+FriendlyName="Superior Kal-33 Bullpup"
+FriendlyNamePlural="Kal-33 Bullpups"
+BriefSummary="Unlike most of our pulse laser designs, the bullpup version has more strict size requirements, so we had to significantly reduce the pulse rate to prevent the weapon from overheating. This makes the weapon feel more like a traditional automatic firearm rather than a continuous beam weapon, and makes it harder to deliver deep, intense burns, although it does make the weapon easier to use at close range."
+TacticalText="<Bullet/> Laser weapons receive bonus aim.\n<Bullet/> Bullpup-style weapons are far more accurate then rifles at close and medium ranges, but they have long range penalties.\n<Bullet/> They also increase the Skirmisher's mobility.\n<Bullet/> Use upgrades looted from enemies to improve the Kal-13 Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[Bullpup_LS_5 X2WeaponTemplate]
+FriendlyName="Elite Kal-33 Bullpup"
+FriendlyNamePlural="Kal-33 Bullpups"
+BriefSummary="Unlike most of our pulse laser designs, the bullpup version has more strict size requirements, so we had to significantly reduce the pulse rate to prevent the weapon from overheating. This makes the weapon feel more like a traditional automatic firearm rather than a continuous beam weapon, and makes it harder to deliver deep, intense burns, although it does make the weapon easier to use at close range."
+TacticalText="<Bullet/> Laser weapons receive bonus aim.\n<Bullet/> Bullpup-style weapons are far more accurate then rifles at close and medium ranges, but they have long range penalties.\n<Bullet/> They also increase the Skirmisher's mobility.\n<Bullet/> Use upgrades looted from enemies to improve the Kal-13 Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[Bullpup_MG_2 X2WeaponTemplate]
+FriendlyName="Kal-15 Bullpup"
+FriendlyNamePlural="Kal-15 Bullpups"
+BriefSummary="The introduction of a magnetic accelerator to the original Skirmisher Bullpup rifle provides an even more lethal punch to an already dangerous close-quarters weapon. Although ADVENT may have originally supplied these soldiers with ammunition based on the alien alloys, they've had to make due with more conventional materials in the time since they were freed."
+TacticalText="<Bullet/> Magnetized weapon technology makes for an especially effective improvement of the Skirmisher Bullpup.\n<Bullet/> Firing a Bullpup does not end the Skirmisher's turn, and it can be fired twice in a single turn.\n<Bullet/> Bullpup-style weapons are extremely effective at close range, but their accuracy drops off quickly at longer range.\n<Bullet/> Use upgrades looted from enemies to improve the Kal-15 Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[Bullpup_MG_3 X2WeaponTemplate]
+FriendlyName="Improved Kal-15 Bullpup"
+FriendlyNamePlural="Kal-15 Bullpups"
+BriefSummary="The introduction of a magnetic accelerator to the original Skirmisher Bullpup rifle provides an even more lethal punch to an already dangerous close-quarters weapon. Although ADVENT may have originally supplied these soldiers with ammunition based on the alien alloys, they've had to make due with more conventional materials in the time since they were freed."
+TacticalText="<Bullet/> Magnetized weapon technology makes for an especially effective improvement of the Skirmisher Bullpup.\n<Bullet/> Firing a Bullpup does not end the Skirmisher's turn, and it can be fired twice in a single turn.\n<Bullet/> Bullpup-style weapons are extremely effective at close range, but their accuracy drops off quickly at longer range.\n<Bullet/> Use upgrades looted from enemies to improve the Kal-15 Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[Bullpup_MG_4 X2WeaponTemplate]
+FriendlyName="Superior Kal-15 Bullpup"
+FriendlyNamePlural="Kal-15 Bullpups"
+BriefSummary="The introduction of a magnetic accelerator to the original Skirmisher Bullpup rifle provides an even more lethal punch to an already dangerous close-quarters weapon. Although ADVENT may have originally supplied these soldiers with ammunition based on the alien alloys, they've had to make due with more conventional materials in the time since they were freed."
+TacticalText="<Bullet/> Magnetized weapon technology makes for an especially effective improvement of the Skirmisher Bullpup.\n<Bullet/> Firing a Bullpup does not end the Skirmisher's turn, and it can be fired twice in a single turn.\n<Bullet/> Bullpup-style weapons are extremely effective at close range, but their accuracy drops off quickly at longer range.\n<Bullet/> Use upgrades looted from enemies to improve the Kal-15 Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[Bullpup_MG_5 X2WeaponTemplate]
+FriendlyName="Elite Kal-15 Bullpup"
+FriendlyNamePlural="Kal-15 Bullpups"
+BriefSummary="The introduction of a magnetic accelerator to the original Skirmisher Bullpup rifle provides an even more lethal punch to an already dangerous close-quarters weapon. Although ADVENT may have originally supplied these soldiers with ammunition based on the alien alloys, they've had to make due with more conventional materials in the time since they were freed."
+TacticalText="<Bullet/> Magnetized weapon technology makes for an especially effective improvement of the Skirmisher Bullpup.\n<Bullet/> Firing a Bullpup does not end the Skirmisher's turn, and it can be fired twice in a single turn.\n<Bullet/> Bullpup-style weapons are extremely effective at close range, but their accuracy drops off quickly at longer range.\n<Bullet/> Use upgrades looted from enemies to improve the Kal-15 Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[Bullpup_CG_3 X2WeaponTemplate]
+FriendlyName="Kal-69 Bullpup"
+FriendlyNamePlural="Kal-69 Bullpups"
+BriefSummary="Designed according to specifications provided by Betos herself, the coil version of the Skirmisher bullpup is a compact and well-balanced weapon. The reduced number of magnetic coils and smaller propellant charges limit its stopping power and accuracy at long range, but superior balance and high rate of fire make it easy to handle and reliable in close quarters."
+TacticalText="<Bullet/> Coil weapons Gain 10 crit.\n<Bullet/> Bullpup-style weapons are extremely effective at close range and are designed for hit-and-run tactics.\n<Bullet/> They also increase the Skirmisher's mobility.\n<Bullet/> Use upgrades looted from enemies to improve the Kal-69 Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[Bullpup_CG_4 X2WeaponTemplate]
+FriendlyName="Kal-69 Bullpup"
+FriendlyNamePlural="Kal-69 Bullpups"
+BriefSummary="Designed according to specifications provided by Betos herself, the coil version of the Skirmisher bullpup is a compact and well-balanced weapon. The reduced number of magnetic coils and smaller propellant charges limit its stopping power and accuracy at long range, but superior balance and high rate of fire make it easy to handle and reliable in close quarters."
+TacticalText="<Bullet/> Coil weapons Gain 10 crit.\n<Bullet/> Bullpup-style weapons are extremely effective at close range and are designed for hit-and-run tactics.\n<Bullet/> They also increase the Skirmisher's mobility.\n<Bullet/> Use upgrades looted from enemies to improve the Kal-69 Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[Bullpup_CG_5 X2WeaponTemplate]
+FriendlyName="Kal-69 Bullpup"
+FriendlyNamePlural="Kal-69 Bullpups"
+BriefSummary="Designed according to specifications provided by Betos herself, the coil version of the Skirmisher bullpup is a compact and well-balanced weapon. The reduced number of magnetic coils and smaller propellant charges limit its stopping power and accuracy at long range, but superior balance and high rate of fire make it easy to handle and reliable in close quarters."
+TacticalText="<Bullet/> Coil weapons Gain 10 crit.\n<Bullet/> Bullpup-style weapons are extremely effective at close range and are designed for hit-and-run tactics.\n<Bullet/> They also increase the Skirmisher's mobility.\n<Bullet/> Use upgrades looted from enemies to improve the Kal-69 Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[Bullpup_BM_3 X2WeaponTemplate]
+FriendlyName="Kal-90 Bullpup"
+FriendlyNamePlural="Kal-90 Bullpups"
+BriefSummary="An energy-based rifle in Bullpup configuration, the scattered beam delivered by this modified variant of the standard Skirmisher weapon is among the more advanced technology in use by their forces. While more elegant and perhaps less visceral than the projectile version, it is no less damaging in combat."
+TacticalText="<Bullet/> This is the most advanced Bullpup variant available in the XCOM arsenal.\n<Bullet/> Firing a Bullpup does not end the Skirmisher's turn, and it can be fired twice in a single turn.\n<Bullet/>  Bullpup-style weapons are extremely effective at close range, but their accuracy drops off quickly at longer range.\n<Bullet/> Use upgrades looted from enemies to improve the Kal-90 Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[Bullpup_BM_4 X2WeaponTemplate]
+FriendlyName="Kal-90 Bullpup"
+FriendlyNamePlural="Kal-90 Bullpups"
+BriefSummary="An energy-based rifle in Bullpup configuration, the scattered beam delivered by this modified variant of the standard Skirmisher weapon is among the more advanced technology in use by their forces. While more elegant and perhaps less visceral than the projectile version, it is no less damaging in combat."
+TacticalText="<Bullet/> This is the most advanced Bullpup variant available in the XCOM arsenal.\n<Bullet/> Firing a Bullpup does not end the Skirmisher's turn, and it can be fired twice in a single turn.\n<Bullet/>  Bullpup-style weapons are extremely effective at close range, but their accuracy drops off quickly at longer range.\n<Bullet/> Use upgrades looted from enemies to improve the Kal-90 Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[Bullpup_BM_5 X2WeaponTemplate]
+FriendlyName="Kal-90 Bullpup"
+FriendlyNamePlural="Kal-90 Bullpups"
+BriefSummary="An energy-based rifle in Bullpup configuration, the scattered beam delivered by this modified variant of the standard Skirmisher weapon is among the more advanced technology in use by their forces. While more elegant and perhaps less visceral than the projectile version, it is no less damaging in combat."
+TacticalText="<Bullet/> This is the most advanced Bullpup variant available in the XCOM arsenal.\n<Bullet/> Firing a Bullpup does not end the Skirmisher's turn, and it can be fired twice in a single turn.\n<Bullet/>  Bullpup-style weapons are extremely effective at close range, but their accuracy drops off quickly at longer range.\n<Bullet/> Use upgrades looted from enemies to improve the Kal-90 Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[Cannon_CV_1 X2WeaponTemplate]
+FriendlyName="Cannon"
+FriendlyNamePlural="Cannons"
+BriefSummary="The Cannon is an improvised light support weapon, specialized for high volume fire. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn.\n<Bullet/> Use upgrades looted from enemies to improve the Cannon's tactical effectiveness."
+AbilityDescName="cannon"
+
+[Cannon_CV_2 X2WeaponTemplate]
+FriendlyName="Improved Cannon"
+FriendlyNamePlural="Cannons"
+BriefSummary="The Cannon is an improvised light support weapon, specialized for high volume fire. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn.\n<Bullet/> Use upgrades looted from enemies to improve the Cannon's tactical effectiveness."
+AbilityDescName="cannon"
+
+[Cannon_CV_3 X2WeaponTemplate]
+FriendlyName="Superior Cannon"
+FriendlyNamePlural="Cannons"
+BriefSummary="The Cannon is an improvised light support weapon, specialized for high volume fire. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn.\n<Bullet/> Use upgrades looted from enemies to improve the Cannon's tactical effectiveness."
+AbilityDescName="cannon"
+
+[Cannon_LS_2 X2WeaponTemplate]
+FriendlyName="Laser Cannon"
+FriendlyNamePlural="Laser Cannons"
+BriefSummary="Laser weapons tech combined with an improved cooling system will let us deploy a rapid-fire version of the cannon, able to lay down a much deadlier volume of fire."
+TacticalText="<Bullet/> The Laser Cannon is a much more powerful, yet equally deployable, version of the conventional Cannon.\n<Bullet/> Use upgrades looted from enemies to improve the Laser Cannon's tactical effectiveness.\n<Bullet/> Laser weapons receive bonus aim."
+AbilityDescName="cannon"
+
+[Cannon_LS_3 X2WeaponTemplate]
+FriendlyName="Improved Laser Cannon"
+FriendlyNamePlural="Laser Cannons"
+BriefSummary="Laser weapons tech combined with an improved cooling system will let us deploy a rapid-fire version of the cannon, able to lay down a much deadlier volume of fire."
+TacticalText="<Bullet/> The Laser Cannon is a much more powerful, yet equally deployable, version of the conventional Cannon.\n<Bullet/> Use upgrades looted from enemies to improve the Laser Cannon's tactical effectiveness.\n<Bullet/> Laser weapons receive bonus aim."
+AbilityDescName="cannon"
+
+[Cannon_LS_4 X2WeaponTemplate]
+FriendlyName="Superior Laser Cannon"
+FriendlyNamePlural="Laser Cannons"
+BriefSummary="Laser weapons tech combined with an improved cooling system will let us deploy a rapid-fire version of the cannon, able to lay down a much deadlier volume of fire."
+TacticalText="<Bullet/> The Laser Cannon is a much more powerful, yet equally deployable, version of the conventional Cannon.\n<Bullet/> Use upgrades looted from enemies to improve the Laser Cannon's tactical effectiveness.\n<Bullet/> Laser weapons receive bonus aim."
+AbilityDescName="cannon"
+
+[Cannon_LS_5 X2WeaponTemplate]
+FriendlyName="Elite Laser Cannon"
+FriendlyNamePlural="Laser Cannons"
+BriefSummary="Laser weapons tech combined with an improved cooling system will let us deploy a rapid-fire version of the cannon, able to lay down a much deadlier volume of fire."
+TacticalText="<Bullet/> The Laser Cannon is a much more powerful, yet equally deployable, version of the conventional Cannon.\n<Bullet/> Use upgrades looted from enemies to improve the Laser Cannon's tactical effectiveness.\n<Bullet/> Laser weapons receive bonus aim."
+AbilityDescName="cannon"
+
+[Cannon_MG_2 X2WeaponTemplate]
+FriendlyName="Mag Cannon"
+FriendlyNamePlural="Mag Cannons"
+BriefSummary="Magnetic weapons tech will let us deploy a rapid-fire version of the cannon. Our Grenadiers will be able to lay down a much deadlier volume of fire."
+TacticalText="<Bullet/> The Mag Cannon is a much more powerful, yet equally deployable, version of the conventional Cannon.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Cannon's tactical effectiveness."
+AbilityDescName="cannon"
+
+[Cannon_MG_3 X2WeaponTemplate]
+FriendlyName="Improved Mag Cannon"
+FriendlyNamePlural="Mag Cannons"
+BriefSummary="Magnetic weapons tech will let us deploy a rapid-fire version of the cannon. Our Grenadiers will be able to lay down a much deadlier volume of fire."
+TacticalText="<Bullet/> The Mag Cannon is a much more powerful, yet equally deployable, version of the conventional Cannon.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Cannon's tactical effectiveness."
+AbilityDescName="cannon"
+
+[Cannon_MG_4 X2WeaponTemplate]
+FriendlyName="Superior Mag Cannon"
+FriendlyNamePlural="Mag Cannons"
+BriefSummary="Magnetic weapons tech will let us deploy a rapid-fire version of the cannon. Our Grenadiers will be able to lay down a much deadlier volume of fire."
+TacticalText="<Bullet/> The Mag Cannon is a much more powerful, yet equally deployable, version of the conventional Cannon.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Cannon's tactical effectiveness."
+AbilityDescName="cannon"
+
+[Cannon_MG_5 X2WeaponTemplate]
+FriendlyName="Elite Mag Cannon"
+FriendlyNamePlural="Mag Cannons"
+BriefSummary="Magnetic weapons tech will let us deploy a rapid-fire version of the cannon. Our Grenadiers will be able to lay down a much deadlier volume of fire."
+TacticalText="<Bullet/> The Mag Cannon is a much more powerful, yet equally deployable, version of the conventional Cannon.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Cannon's tactical effectiveness."
+AbilityDescName="cannon"
+
+[Cannon_CG_3 X2WeaponTemplate]
+FriendlyName="Gauss Cannon"
+FriendlyNamePlural="Gauss Cannons"
+BriefSummary="A heavy duty, automatic coilgun with a huge rate of fire."
+TacticalText="<Bullet/> Coil weapons Gain 10 crit.<br/><Bullet/> The cannon serves in a squad automatic weapon role, has more ammo and does more damage than its rifle counterpart, but it is cumbersome to carry.<br/><Bullet/> Use upgrades recovered from ADVENT enemies to improve the Gauss Cannon's tactical effectiveness.<br/>"
+AbilityDescName="cannon"
+
+[Cannon_CG_4 X2WeaponTemplate]
+FriendlyName="Improved Gauss Cannon"
+FriendlyNamePlural="Gauss Cannons"
+BriefSummary="A heavy duty, automatic coilgun with a huge rate of fire."
+TacticalText="<Bullet/> Coil weapons Gain 10 crit.<br/><Bullet/> The cannon serves in a squad automatic weapon role, has more ammo and does more damage than its rifle counterpart, but it is cumbersome to carry.<br/><Bullet/> Use upgrades recovered from ADVENT enemies to improve the Gauss Cannon's tactical effectiveness.<br/>"
+AbilityDescName="cannon"
+
+[Cannon_CG_5 X2WeaponTemplate]
+FriendlyName="Superior Gauss Cannon"
+FriendlyNamePlural="Gauss Cannons"
+BriefSummary="A heavy duty, automatic coilgun with a huge rate of fire."
+TacticalText="<Bullet/> Coil weapons Gain 10 crit.<br/><Bullet/> The cannon serves in a squad automatic weapon role, has more ammo and does more damage than its rifle counterpart, but it is cumbersome to carry.<br/><Bullet/> Use upgrades recovered from ADVENT enemies to improve the Gauss Cannon's tactical effectiveness.<br/>"
+AbilityDescName="cannon"
+
+[Cannon_BM_3 X2WeaponTemplate]
+FriendlyName="Beam Cannon"
+FriendlyNamePlural="Beam Cannons"
+BriefSummary="Devising a more powerful, high-volume beam weapon for our soldiers required substantial effort, but the firepower it brings is unquestioned."
+TacticalText="<Bullet/> The Beam Cannon is the most powerful combat support weapon human forces can deploy.\n<Bullet/> Use upgrades looted from enemies to improve the Beam Cannon's tactical effectiveness.<br/><Bullet/> Plasma weapons also cause targets to take 1 additional damage on future hits."
+AbilityDescName="cannon"
+
+[Cannon_BM_4 X2WeaponTemplate]
+FriendlyName="Improved Beam Cannon"
+FriendlyNamePlural="Beam Cannons"
+BriefSummary="Devising a more powerful, high-volume beam weapon for our soldiers required substantial effort, but the firepower it brings is unquestioned."
+TacticalText="<Bullet/> The Beam Cannon is the most powerful combat support weapon human forces can deploy.\n<Bullet/> Use upgrades looted from enemies to improve the Beam Cannon's tactical effectiveness.<br/><Bullet/> Plasma weapons also cause targets to take 1 additional damage on future hits."
+AbilityDescName="cannon"
+
+[Cannon_BM_5 X2WeaponTemplate]
+FriendlyName="Superior Beam Cannon"
+FriendlyNamePlural="Beam Cannons"
+BriefSummary="Devising a more powerful, high-volume beam weapon for our soldiers required substantial effort, but the firepower it brings is unquestioned."
+TacticalText="<Bullet/> The Beam Cannon is the most powerful combat support weapon human forces can deploy.\n<Bullet/> Use upgrades looted from enemies to improve the Beam Cannon's tactical effectiveness.<br/><Bullet/> Plasma weapons also cause targets to take 1 additional damage on future hits."
+AbilityDescName="cannon"
+
+[SMG_CV_1 X2WeaponTemplate]
+FriendlyName="SMG"
+FriendlyNamePlural="SMGs"
+BriefSummary="Submachine guns offer a lighter, more concealable alternative to the standard assault rifle, although they lack the same punch and are less accurate at long range."
+; LWOTC Needs Translation
+TacticalText="<Bullet/> Firing the primary weapon ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the SMG's tactical effectiveness. \n<Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage and suffer accuracy penalties at long range."
+; End Translation
+AbilityDescName="SMG"
+
+[SMG_CV_2 X2WeaponTemplate]
+FriendlyName="Improved SMG"
+FriendlyNamePlural="SMGs"
+BriefSummary="Submachine guns offer a lighter, more concealable alternative to the standard assault rifle, although they lack the same punch and are less accurate at long range."
+; LWOTC Needs Translation
+TacticalText="<Bullet/> Firing the primary weapon ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the SMG's tactical effectiveness. \n<Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage and suffer accuracy penalties at long range."
+; End Translation
+AbilityDescName="SMG"
+
+[SMG_CV_3 X2WeaponTemplate]
+FriendlyName="Superior SMG"
+FriendlyNamePlural="SMGs"
+BriefSummary="Submachine guns offer a lighter, more concealable alternative to the standard assault rifle, although they lack the same punch and are less accurate at long range."
+; LWOTC Needs Translation
+TacticalText="<Bullet/> Firing the primary weapon ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the SMG's tactical effectiveness. \n<Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage and suffer accuracy penalties at long range."
+; End Translation
+AbilityDescName="SMG"
+
+[SMG_LS_2 X2WeaponTemplate]
+FriendlyName="Laser Stengun"
+FriendlyNamePlural="Laser Stenguns"
+BriefSummary="A lightweight version of the Laser Rifle, this fills a similar role to the SMG, trading power, ammo and accuracy at range for increased soldier mobility and concealment."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Stengun's tactical effectiveness. \n<Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage and suffer accuracy penalties at long range.\n<Bullet/> Laser weapons receive bonus aim."
+AbilityDescName="SMG"
+
+[SMG_LS_3 X2WeaponTemplate]
+FriendlyName="Improved Laser Stengun"
+FriendlyNamePlural="Laser Stenguns"
+BriefSummary="A lightweight version of the Laser Rifle, this fills a similar role to the SMG, trading power, ammo and accuracy at range for increased soldier mobility and concealment."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Stengun's tactical effectiveness. \n<Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage and suffer accuracy penalties at long range.\n<Bullet/> Laser weapons receive bonus aim."
+AbilityDescName="SMG"
+
+[SMG_LS_4 X2WeaponTemplate]
+FriendlyName="Superior Laser Stengun"
+FriendlyNamePlural="Laser Stenguns"
+BriefSummary="A lightweight version of the Laser Rifle, this fills a similar role to the SMG, trading power, ammo and accuracy at range for increased soldier mobility and concealment."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Stengun's tactical effectiveness. \n<Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage and suffer accuracy penalties at long range.\n<Bullet/> Laser weapons receive bonus aim."
+AbilityDescName="SMG"
+
+[SMG_LS_5 X2WeaponTemplate]
+FriendlyName="Elite Laser Stengun"
+FriendlyNamePlural="Laser Stenguns"
+BriefSummary="A lightweight version of the Laser Rifle, this fills a similar role to the SMG, trading power, ammo and accuracy at range for increased soldier mobility and concealment."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Stengun's tactical effectiveness. \n<Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage and suffer accuracy penalties at long range.\n<Bullet/> Laser weapons receive bonus aim."
+AbilityDescName="SMG"
+
+[SMG_MG_2 X2WeaponTemplate]
+FriendlyName="Stuttermag"
+FriendlyNamePlural="Stuttermags"
+BriefSummary="The Stuttermag is a lightweight version of the Magnetic Rifle and fills a similar role to the SMG, trading power, ammo and accuracy at range for increased soldier mobility and concealment."
+; LWOTC Needs Translation
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Stuttermag's tactical effectiveness. \n<Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage and suffer accuracy penalties at long range."
+; End Translation
+AbilityDescName="SMG"
+
+[SMG_MG_3 X2WeaponTemplate]
+FriendlyName="Improved Stuttermag"
+FriendlyNamePlural="Stuttermags"
+BriefSummary="The Stuttermag is a lightweight version of the Magnetic Rifle and fills a similar role to the SMG, trading power, ammo and accuracy at range for increased soldier mobility and concealment."
+; LWOTC Needs Translation
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Stuttermag's tactical effectiveness. \n<Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage and suffer accuracy penalties at long range."
+; End Translation
+AbilityDescName="SMG"
+
+[SMG_MG_4 X2WeaponTemplate]
+FriendlyName="Superior Stuttermag"
+FriendlyNamePlural="Superior Stuttermags"
+BriefSummary="The Stuttermag is a lightweight version of the Magnetic Rifle and fills a similar role to the SMG, trading power, ammo and accuracy at range for increased soldier mobility and concealment."
+; LWOTC Needs Translation
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Stuttermag's tactical effectiveness. \n<Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage and suffer accuracy penalties at long range."
+; End Translation
+AbilityDescName="SMG"
+
+[SMG_MG_5 X2WeaponTemplate]
+FriendlyName="Elite Stuttermag"
+FriendlyNamePlural="Elite Stuttermags"
+BriefSummary="The Stuttermag is a lightweight version of the Magnetic Rifle and fills a similar role to the SMG, trading power, ammo and accuracy at range for increased soldier mobility and concealment."
+; LWOTC Needs Translation
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Stuttermag's tactical effectiveness. \n<Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage and suffer accuracy penalties at long range."
+; End Translation
+AbilityDescName="SMG"
+
+[SMG_CG_3 X2WeaponTemplate]
+FriendlyName="Subcoiler"
+FriendlyNamePlural="Subcoiler"
+BriefSummary="A lightweight version of the coil rifle that fires a smaller round but grants its user more mobility on the battlefield."
+; LWOTC Needs Translation
+TacticalText="<Bullet/> Coil weapons Gain 10 crit.<br/><Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage and suffer accuracy penalties at long range.<br/>"
+; End Translation
+AbilityDescName="SMG"
+
+[SMG_CG_4 X2WeaponTemplate]
+FriendlyName="Improved Subcoiler"
+FriendlyNamePlural="Subcoiler"
+BriefSummary="A lightweight version of the coil rifle that fires a smaller round but grants its user more mobility on the battlefield."
+; LWOTC Needs Translation
+TacticalText="<Bullet/> Coil weapons Gain 10 crit.<br/><Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage and suffer accuracy penalties at long range.<br/>"
+; End Translation
+AbilityDescName="SMG"
+
+[SMG_CG_5 X2WeaponTemplate]
+FriendlyName="Superior Subcoiler"
+FriendlyNamePlural="Subcoiler"
+BriefSummary="A lightweight version of the coil rifle that fires a smaller round but grants its user more mobility on the battlefield."
+; LWOTC Needs Translation
+TacticalText="<Bullet/> Coil weapons Gain 10 crit.<br/><Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage and suffer accuracy penalties at long range.<br/>"
+; End Translation
+AbilityDescName="SMG"
+
+[SMG_BM_3 X2WeaponTemplate]
+FriendlyName="Scramgun"
+FriendlyNamePlural="Scramguns"
+BriefSummary="The Scramgun, like the SMG and Stuttermag, is a smaller primary weapon that grants mobility and concealment bonuses, but does less damage and suffers accuracy penalties at longer ranges. Still, it is a personal weapon of significant power."
+; LWOTC Needs Translation
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Scramgun's tactical effectiveness. \n<Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage and suffer accuracy penalties at long range.<br/><Bullet/> Plasma weapons also cause targets to take 1 additional damage on future hits."
+; End Translation
+AbilityDescName="SMG"
+
+[SMG_BM_4 X2WeaponTemplate]
+FriendlyName="Improved Scramgun"
+FriendlyNamePlural="Scramguns"
+BriefSummary="The Scramgun, like the SMG and Stuttermag, is a smaller primary weapon that grants mobility and concealment bonuses, but does less damage and suffers accuracy penalties at longer ranges. Still, it is a personal weapon of significant power."
+; LWOTC Needs Translation
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Scramgun's tactical effectiveness. \n<Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage and suffer accuracy penalties at long range.<br/><Bullet/> Plasma weapons also cause targets to take 1 additional damage on future hits."
+; End Translation
+AbilityDescName="SMG"
+
+[SMG_BM_5 X2WeaponTemplate]
+FriendlyName="Superior Scramgun"
+FriendlyNamePlural="Scramguns"
+BriefSummary="The Scramgun, like the SMG and Stuttermag, is a smaller primary weapon that grants mobility and concealment bonuses, but does less damage and suffers accuracy penalties at longer ranges. Still, it is a personal weapon of significant power."
+; LWOTC Needs Translation
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Scramgun's tactical effectiveness. \n<Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage and suffer accuracy penalties at long range.<br/><Bullet/> Plasma weapons also cause targets to take 1 additional damage on future hits."
+; End Translation
+AbilityDescName="SMG"
+
+[SniperRifle_CV_1 X2WeaponTemplate]
+FriendlyName="Sniper Rifle"
+FriendlyNamePlural="Sniper Rifles"
+BriefSummary="We've managed to salvage a variety of standard infantry small arms; this is a specialized weapon for medium to long range engagement. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText="<Bullet/> The sniper rifle always takes two actions to fire.\n<Bullet/> The sniper rifle suffers a penalty to hit at close range.\n<Bullet/> Use upgrades looted from enemies to improve the Sniper Rifle's tactical effectiveness."
+AbilityDescName="sniper rifle"
+
+[SniperRifle_CV_2 X2WeaponTemplate]
+FriendlyName="Improved Sniper Rifle"
+FriendlyNamePlural="Sniper Rifles"
+BriefSummary="We've managed to salvage a variety of standard infantry small arms; this is a specialized weapon for medium to long range engagement. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText="<Bullet/> The sniper rifle always takes two actions to fire.\n<Bullet/> The sniper rifle suffers a penalty to hit at close range.\n<Bullet/> Use upgrades looted from enemies to improve the Sniper Rifle's tactical effectiveness."
+AbilityDescName="sniper rifle"
+
+[SniperRifle_CV_3 X2WeaponTemplate]
+FriendlyName="Superior Sniper Rifle"
+FriendlyNamePlural="Sniper Rifles"
+BriefSummary="We've managed to salvage a variety of standard infantry small arms; this is a specialized weapon for medium to long range engagement. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText="<Bullet/> The sniper rifle always takes two actions to fire.\n<Bullet/> The sniper rifle suffers a penalty to hit at close range.\n<Bullet/> Use upgrades looted from enemies to improve the Sniper Rifle's tactical effectiveness."
+AbilityDescName="sniper rifle"
+
+[SniperRifle_LS_2 X2WeaponTemplate]
+FriendlyName="Laser Lance"
+FriendlyNamePlural="Laser Lances"
+BriefSummary="A long rifle version of the Laser Rifle, the Laser Lance incorporates extremely high-energy flash capacitors, resulting in a high-precision long-range laser weapon."
+TacticalText="Sniper rifles always require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Laser Lance's tactical effectiveness.\n<Bullet/> Laser weapons receive bonus aim."
+AbilityDescName="sniper rifle"
+
+[SniperRifle_LS_3 X2WeaponTemplate]
+FriendlyName="Improved Laser Lance"
+FriendlyNamePlural="Laser Lances"
+BriefSummary="A long rifle version of the Laser Rifle, the Laser Lance incorporates extremely high-energy flash capacitors, resulting in a high-precision long-range laser weapon."
+TacticalText="Sniper rifles always require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Laser Lance's tactical effectiveness.\n<Bullet/> Laser weapons receive bonus aim."
+AbilityDescName="sniper rifle"
+
+[SniperRifle_LS_4 X2WeaponTemplate]
+FriendlyName="Superior Laser Lance"
+FriendlyNamePlural="Laser Lances"
+BriefSummary="A long rifle version of the Laser Rifle, the Laser Lance incorporates extremely high-energy flash capacitors, resulting in a high-precision long-range laser weapon."
+TacticalText="Sniper rifles always require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Laser Lance's tactical effectiveness.\n<Bullet/> Laser weapons receive bonus aim."
+AbilityDescName="sniper rifle"
+
+[SniperRifle_LS_5 X2WeaponTemplate]
+FriendlyName="Elite Laser Lance"
+FriendlyNamePlural="Laser Lances"
+BriefSummary="A long rifle version of the Laser Rifle, the Laser Lance incorporates extremely high-energy flash capacitors, resulting in a high-precision long-range laser weapon."
+TacticalText="Sniper rifles always require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Laser Lance's tactical effectiveness.\n<Bullet/> Laser weapons receive bonus aim."
+AbilityDescName="sniper rifle"
+
+[SniperRifle_MG_2 X2WeaponTemplate]
+FriendlyName="Mag Long Rifle"
+FriendlyNamePlural="Mag Long Rifles"
+BriefSummary="Magnetic weapons technology has particular utility for precision slow-fire weapons like sniper rifles. The Mag Long Rifle will enable our Sharpshooters to cause greater damage at extended range."
+TacticalText="<Bullet/> Sniper rifles typically require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Long Rifle's tactical effectiveness."
+
+[SniperRifle_MG_3 X2WeaponTemplate]
+FriendlyName="Improved Mag Long Rifle"
+FriendlyNamePlural="Mag Long Rifles"
+BriefSummary="Magnetic weapons technology has particular utility for precision slow-fire weapons like sniper rifles. The Mag Long Rifle will enable our Sharpshooters to cause greater damage at extended range."
+TacticalText="<Bullet/> Sniper rifles typically require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Long Rifle's tactical effectiveness."
+
+[SniperRifle_MG_4 X2WeaponTemplate]
+FriendlyName="Elite Mag Long Rifle"
+FriendlyNamePlural="Mag Long Rifles"
+BriefSummary="Magnetic weapons technology has particular utility for precision slow-fire weapons like sniper rifles. The Mag Long Rifle will enable our Sharpshooters to cause greater damage at extended range."
+TacticalText="<Bullet/> Sniper rifles typically require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Long Rifle's tactical effectiveness."
+
+[SniperRifle_MG_5 X2WeaponTemplate]
+FriendlyName="Superior Mag Long Rifle"
+FriendlyNamePlural="Mag Long Rifles"
+BriefSummary="Magnetic weapons technology has particular utility for precision slow-fire weapons like sniper rifles. The Mag Long Rifle will enable our Sharpshooters to cause greater damage at extended range."
+TacticalText="<Bullet/> Sniper rifles typically require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Long Rifle's tactical effectiveness."
+
+[SniperRifle_CG_3 X2WeaponTemplate]
+FriendlyName="Gauss Long Rifle"
+FriendlyNamePlural="Gauss Long Rifles"
+BriefSummary="An extended coil rifle that may be employed by our Sharpshooters."
+TacticalText="<Bullet/> Coil weapons Gain 10 crit.<br/><Bullet/> Sniper rifles typically require both actions to fire without special training.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Gauss Long Rifle's tactical effectiveness."
+AbilityDescName="sniper rifle"
+
+[SniperRifle_CG_4 X2WeaponTemplate]
+FriendlyName="Improved Gauss Long Rifle"
+FriendlyNamePlural="Gauss Long Rifles"
+BriefSummary="An extended coil rifle that may be employed by our Sharpshooters."
+TacticalText="<Bullet/> Coil weapons Gain 10 crit.<br/><Bullet/> Sniper rifles typically require both actions to fire without special training.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Gauss Long Rifle's tactical effectiveness."
+AbilityDescName="sniper rifle"
+
+[SniperRifle_CG_5 X2WeaponTemplate]
+FriendlyName="Superior Gauss Long Rifle"
+FriendlyNamePlural="Gauss Long Rifles"
+BriefSummary="An extended coil rifle that may be employed by our Sharpshooters."
+TacticalText="<Bullet/> Coil weapons Gain 10 crit.<br/><Bullet/> Sniper rifles typically require both actions to fire without special training.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Gauss Long Rifle's tactical effectiveness."
+AbilityDescName="sniper rifle"
+
+[SniperRifle_BM_3 X2WeaponTemplate]
+FriendlyName="Plasma Lance"
+FriendlyNamePlural="Plasma Lances"
+BriefSummary="The aliens' focused beam technology has obvious applications for improving sniper rifles. The Plasma Lance is an unmatched sniper rifle."
+TacticalText="<Bullet/> This is the apex of sniper rifle technology.\n<Bullet/> Sniper rifles always require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the plasma sniper rifle's tactical effectiveness."
+AbilityDescName="sniper rifle"
+
+[SniperRifle_BM_4 X2WeaponTemplate]
+FriendlyName="Improved Plasma Lance"
+FriendlyNamePlural="Plasma Lances"
+BriefSummary="The aliens' focused beam technology has obvious applications for improving sniper rifles. The Plasma Lance is an unmatched sniper rifle."
+TacticalText="<Bullet/> This is the apex of sniper rifle technology.\n<Bullet/> Sniper rifles always require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the plasma sniper rifle's tactical effectiveness."
+AbilityDescName="sniper rifle"
+
+[SniperRifle_BM_5 X2WeaponTemplate]
+FriendlyName="Elite Plasma Lance"
+FriendlyNamePlural="Plasma Lances"
+BriefSummary="The aliens' focused beam technology has obvious applications for improving sniper rifles. The Plasma Lance is an unmatched sniper rifle."
+TacticalText="<Bullet/> This is the apex of sniper rifle technology.\n<Bullet/> Sniper rifles always require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the plasma sniper rifle's tactical effectiveness."
+AbilityDescName="sniper rifle"
+
+[SniperRifle_BM_5 X2WeaponTemplate]
+FriendlyName="Elite Plasma Lance"
+FriendlyNamePlural="Plasma Lances"
+BriefSummary="The aliens' focused beam technology has obvious applications for improving sniper rifles. The Plasma Lance is an unmatched sniper rifle."
+TacticalText="<Bullet/> This is the apex of sniper rifle technology.\n<Bullet/> Sniper rifles always require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the plasma sniper rifle's tactical effectiveness."
+AbilityDescName="sniper rifle"
+
+[TLE_SniperRifle_CV_1 X2WeaponTemplate]
+FriendlyName="Marksman's Rifle"
+FriendlyNamePlural="Marksman's Rifles"
+BriefSummary="We've managed to salvage a variety of standard infantry small arms; this is a specialized weapon for medium to long range engagement. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText="<Bullet/> The sniper rifle always takes two actions to fire.\n<Bullet/> The sniper rifle suffers a penalty to hit at close range.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Marksman's Rifle"
+
+[TLE_SniperRifle_CV_2 X2WeaponTemplate]
+FriendlyName="Improved Marksman's Rifle"
+FriendlyNamePlural="Marksman's Rifles"
+BriefSummary="We've managed to salvage a variety of standard infantry small arms; this is a specialized weapon for medium to long range engagement. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText="<Bullet/> The sniper rifle always takes two actions to fire.\n<Bullet/> The sniper rifle suffers a penalty to hit at close range.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Marksman's Rifle"
+
+[TLE_SniperRifle_CV_3 X2WeaponTemplate]
+FriendlyName="Elite Marksman's Rifle"
+FriendlyNamePlural="Marksman's Rifles"
+BriefSummary="We've managed to salvage a variety of standard infantry small arms; this is a specialized weapon for medium to long range engagement. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText="<Bullet/> The sniper rifle always takes two actions to fire.\n<Bullet/> The sniper rifle suffers a penalty to hit at close range.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Marksman's Rifle"
+
+[TLE_SniperRifle_MG_2 X2WeaponTemplate]
+FriendlyName="Pulse Sniper Rifle"
+FriendlyNamePlural="Anti-Materiel Rifles"
+BriefSummary="Magnetic weapons technology has particular utility for precision slow-fire weapons like sniper rifles. The Gauss Rifle will enable our Sharpshooters to cause greater damage at extended range."
+TacticalText="<Bullet/> Sniper rifles always require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Anti-Materiel Rifle"
+
+[TLE_SniperRifle_MG_3 X2WeaponTemplate]
+FriendlyName="Improved Pulse Sniper Rifle"
+FriendlyNamePlural="Anti-Materiel Rifles"
+BriefSummary="Magnetic weapons technology has particular utility for precision slow-fire weapons like sniper rifles. The Gauss Rifle will enable our Sharpshooters to cause greater damage at extended range."
+TacticalText="<Bullet/> Sniper rifles always require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Anti-Materiel Rifle"
+
+[TLE_SniperRifle_MG_4 X2WeaponTemplate]
+FriendlyName="Superior Pulse Sniper Rifle"
+FriendlyNamePlural="Anti-Materiel Rifles"
+BriefSummary="Magnetic weapons technology has particular utility for precision slow-fire weapons like sniper rifles. The Gauss Rifle will enable our Sharpshooters to cause greater damage at extended range."
+TacticalText="<Bullet/> Sniper rifles always require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Anti-Materiel Rifle"
+
+[TLE_SniperRifle_MG_5 X2WeaponTemplate]
+FriendlyName="Elite Pulse Sniper Rifle"
+FriendlyNamePlural="Anti-Materiel Rifles"
+BriefSummary="Magnetic weapons technology has particular utility for precision slow-fire weapons like sniper rifles. The Gauss Rifle will enable our Sharpshooters to cause greater damage at extended range."
+TacticalText="<Bullet/> Sniper rifles always require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Anti-Materiel Rifle"
+
+[TLE_SniperRifle_BM_3 X2WeaponTemplate]
+FriendlyName="Energy AMR"
+FriendlyNamePlural="Energy AMRs"
+BriefSummary="The aliens' focused beam technology has obvious applications for improving sniper rifles. The Plasma Lance is an unmatched sniper rifle."
+TacticalText="<Bullet/> This is the apex of sniper rifle technology.\n<Bullet/> Sniper rifles always require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Energy AMR"
+
+[TLE_SniperRifle_BM_4 X2WeaponTemplate]
+FriendlyName="Improved Energy AMR"
+FriendlyNamePlural="Energy AMRs"
+BriefSummary="The aliens' focused beam technology has obvious applications for improving sniper rifles. The Plasma Lance is an unmatched sniper rifle."
+TacticalText="<Bullet/> This is the apex of sniper rifle technology.\n<Bullet/> Sniper rifles always require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Energy AMR"
+
+[TLE_SniperRifle_BM_5 X2WeaponTemplate]
+FriendlyName="Elite Energy AMR"
+FriendlyNamePlural="Energy AMRs"
+BriefSummary="The aliens' focused beam technology has obvious applications for improving sniper rifles. The Plasma Lance is an unmatched sniper rifle."
+TacticalText="<Bullet/> This is the apex of sniper rifle technology.\n<Bullet/> Sniper rifles always require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Modern upgrades are unavailable due to the weapon's age."
+AbilityDescName="Energy AMR"
+
+[ShardGauntlet_CV_1 X2PairedWeaponTemplate]
+FriendlyName="Shard Gauntlets"
+FriendlyNamePlural="Shard Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their shard even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="shard"
+
+[ShardGauntlet_CV_2 X2PairedWeaponTemplate]
+FriendlyName="Improved Shard Gauntlets"
+FriendlyNamePlural="Shard Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their shard even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="shard"
+
+[ShardGauntlet_CV_3 X2PairedWeaponTemplate]
+FriendlyName="Superior Shard Gauntlets"
+FriendlyNamePlural="Shard Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their shard even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="shard"
+
+[ShardGauntlet_CV_4 X2PairedWeaponTemplate]
+FriendlyName="Elite Shard Gauntlets"
+FriendlyNamePlural="Shard Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their shard even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="shard"
+
+[ShardGauntlet_CV_5 X2PairedWeaponTemplate]
+FriendlyName="Perfected Shard Gauntlets"
+FriendlyNamePlural="Shard Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their shard even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="shard"
+
+[CasterGauntlet_CV_1 X2PairedWeaponTemplate]
+FriendlyName="Caster Gauntlets"
+FriendlyNamePlural="Caster Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Caster even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Caster"
+
+[CasterGauntlet_CV_2 X2PairedWeaponTemplate]
+FriendlyName=" Caster Gauntlets"
+FriendlyNamePlural="Caster Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Caster even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Caster"
+
+[CasterGauntlet_CV_3 X2PairedWeaponTemplate]
+FriendlyName="Improved Caster Gauntlets"
+FriendlyNamePlural="Caster Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Caster even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Caster"
+
+[CasterGauntlet_CV_4 X2PairedWeaponTemplate]
+FriendlyName="Superior Caster Gauntlets"
+FriendlyNamePlural="Caster Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Caster even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Caster"
+
+[CasterGauntlet_CV_5 X2PairedWeaponTemplate]
+FriendlyName="Elite Caster Gauntlets"
+FriendlyNamePlural="Caster Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Caster even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Caster"
+
+[BlademasterGauntlet_CV_2 X2PairedWeaponTemplate]
+FriendlyName="Blademaster Gauntlets"
+FriendlyNamePlural="Blademaster Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Blademaster even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Blademaster"
+
+[BlademasterGauntlet_CV_3 X2PairedWeaponTemplate]
+FriendlyName="Improved Blademaster Gauntlets"
+FriendlyNamePlural="Blademaster Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Blademaster even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Blademaster"
+
+[BlademasterGauntlet_CV_4 X2PairedWeaponTemplate]
+FriendlyName="Superior Blademaster Gauntlets"
+FriendlyNamePlural="Blademaster Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Blademaster even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Blademaster"
+
+[BlademasterGauntlet_CV_5 X2PairedWeaponTemplate]
+FriendlyName="Elite Blademaster Gauntlets"
+FriendlyNamePlural="Blademaster Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Blademaster even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Blademaster"
+
+
+[CasterGauntlet_CV_2 X2PairedWeaponTemplate]
+FriendlyName=" Caster Gauntlets"
+FriendlyNamePlural="Caster Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Caster even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Caster"
+
+[CasterGauntlet_CV_3 X2PairedWeaponTemplate]
+FriendlyName="Improved Caster Gauntlets"
+FriendlyNamePlural="Caster Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Caster even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Caster"
+
+[CasterGauntlet_CV_4 X2PairedWeaponTemplate]
+FriendlyName="Superior Caster Gauntlets"
+FriendlyNamePlural="Caster Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Caster even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Caster"
+
+[CasterGauntlet_CV_5 X2PairedWeaponTemplate]
+FriendlyName="Elite Caster Gauntlets"
+FriendlyNamePlural="Caster Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Caster even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Caster"
+
+[TacticianGauntlet_CV_2 X2PairedWeaponTemplate]
+FriendlyName=" Tactician Gauntlets"
+FriendlyNamePlural="Tactician Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Tactician even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Tactician"
+
+[TacticianGauntlet_CV_3 X2PairedWeaponTemplate]
+FriendlyName="Improved Tactician Gauntlets"
+FriendlyNamePlural="Tactician Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Tactician even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Tactician"
+
+[TacticianGauntlet_CV_4 X2PairedWeaponTemplate]
+FriendlyName="Superior Tactician Gauntlets"
+FriendlyNamePlural="Tactician Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Tactician even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Tactician"
+
+[TacticianGauntlet_CV_5 X2PairedWeaponTemplate]
+FriendlyName="Elite Tactician Gauntlets"
+FriendlyNamePlural="Tactician Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Tactician even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Tactician"
+
+
+[PowerGauntlet_CV_3 X2PairedWeaponTemplate]
+FriendlyName="Power Gauntlets"
+FriendlyNamePlural="Power Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Power even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Power"
+
+[PowerGauntlet_CV_4 X2PairedWeaponTemplate]
+FriendlyName="Improved Power Gauntlets"
+FriendlyNamePlural="Power Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Power even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Power"
+
+[PowerGauntlet_CV_5 X2PairedWeaponTemplate]
+FriendlyName="Superior Power Gauntlets"
+FriendlyNamePlural="Power Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent power and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Power even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Power"
+
+[ReplicatorGauntlet_CV_3 X2PairedWeaponTemplate]
+FriendlyName="Replicator Gauntlets"
+FriendlyNamePlural="Replicator Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent Replicator and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Replicator even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Replicator"
+
+[ReplicatorGauntlet_CV_4 X2PairedWeaponTemplate]
+FriendlyName="Improved Replicator Gauntlets"
+FriendlyNamePlural="Replicator Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent Replicator and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Replicator even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Replicator"
+
+[ReplicatorGauntlet_CV_5 X2PairedWeaponTemplate]
+FriendlyName="Superior Replicator Gauntlets"
+FriendlyNamePlural="Replicator Gauntlets"
+BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent Replicator and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
+TacticalText="<Bullet/> Templars can attack adjacent enemies with their Replicator even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Replicator"

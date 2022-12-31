@@ -25,13 +25,48 @@ var config int LMG_TLE_BEAM_AIM;
 var config int LMG_TLE_BEAM_CRITCHANCE;
 var config int LMG_TLE_BEAM_ICLIPSIZE;
 
+var config int SHOTGUN_TLE_CONVENTIONAL_AIM;
+var config int SHOTGUN_TLE_CONVENTIONAL_CRITCHANCE;
+var config int SHOTGUN_TLE_CONVENTIONAL_ICLIPSIZE;
+
+var config int SHOTGUN_TLE_MAGNETIC_AIM;
+var config int SHOTGUN_TLE_MAGNETIC_CRITCHANCE;
+var config int SHOTGUN_TLE_MAGNETIC_ICLIPSIZE;
+
+var config int SHOTGUN_TLE_BEAM_AIM;
+var config int SHOTGUN_TLE_BEAM_CRITCHANCE;
+var config int SHOTGUN_TLE_BEAM_ICLIPSIZE;
+
+var config int SNIPERRIFLE_TLE_CONVENTIONAL_AIM;
+var config int SNIPERRIFLE_TLE_CONVENTIONAL_CRITCHANCE;
+var config int SNIPERRIFLE_TLE_CONVENTIONAL_ICLIPSIZE;
+
+var config int SNIPERRIFLE_TLE_MAGNETIC_AIM;
+var config int SNIPERRIFLE_TLE_MAGNETIC_CRITCHANCE;
+var config int SNIPERRIFLE_TLE_MAGNETIC_ICLIPSIZE;
+
+var config int SNIPERRIFLE_TLE_BEAM_AIM;
+var config int SNIPERRIFLE_TLE_BEAM_CRITCHANCE;
+var config int SNIPERRIFLE_TLE_BEAM_ICLIPSIZE;
+
+struct GauntletExtraDamage{
+	var name Tag;
+	var float DamageMod;
+	var float CritDamageMod;
+	var float BonusSpread;
+	var bool FlatDamage;
+
+	structdefaultproperties{
+		CritDamageMod=0.5f
+	}
+};
+var config array<GauntletExtraDamage> SHARDGAUNTLET_EXTRADAMAGE_TAGS;
+
 static function array<X2DataTemplate> CreateTemplates(name TemplateName, int Tier)
 {
 	local array<X2DataTemplate> Weapons;
 
-	Weapons.AddItem(CreateTLE1AssaultRifle('TLE_AssaultRifle_CV',1));
-
-    
+	Weapons.AddItem(CreateTLE1AssaultRifle('TLE_AssaultRifle_CV_1',1));    
 
 	Weapons.AddItem(CreateTemplate_AssaultRifle_Conventional('AssaultRifle_CV_1',1));
 	Weapons.AddItem(CreateTemplate_AssaultRifle_Conventional('AssaultRifle_CV_2',2));
@@ -102,6 +137,164 @@ static function array<X2DataTemplate> CreateTemplates(name TemplateName, int Tie
 	Weapons.AddItem(CreateTLE3Cannon('TLE_Cannon_BM_3',4));
 	Weapons.AddItem(CreateTLE3Cannon('TLE_Cannon_BM_4',5));
 
+	Weapons.AddItem(CreateTemplate_VektorRifle_Conventional('VektorRifle_CV_1',1));
+	Weapons.AddItem(CreateTemplate_VektorRifle_Conventional('VektorRifle_CV_2',2));
+	Weapons.AddItem(CreateTemplate_VektorRifle_Conventional('VektorRifle_CV_3',3));
+
+	Weapons.AddItem(CreateVektor_Laser('VektorRifle_LS_2',2));
+	Weapons.AddItem(CreateVektor_Laser('VektorRifle_LS_3',3));
+	Weapons.AddItem(CreateVektor_Laser('VektorRifle_LS_4',4));
+	Weapons.AddItem(CreateVektor_Laser('VektorRifle_LS_5',5));
+
+	Weapons.AddItem(CreateTemplate_VektorRifle_Magnetic('VektorRifle_MG_2',2));
+	Weapons.AddItem(CreateTemplate_VektorRifle_Magnetic('VektorRifle_MG_3',3));
+	Weapons.AddItem(CreateTemplate_VektorRifle_Magnetic('VektorRifle_MG_4',4));
+	Weapons.AddItem(CreateTemplate_VektorRifle_Magnetic('VektorRifle_MG_5',5));
+
+	Weapons.AddItem(CreateVektor_Coil('VektorRifle_CG_3',3));
+	Weapons.AddItem(CreateVektor_Coil('VektorRifle_CG_4',4));
+	Weapons.AddItem(CreateVektor_Coil('VektorRifle_CG_5',5));
+
+	Weapons.AddItem(CreateTemplate_VektorRifle_Beam('VektorRifle_BM_3',3));
+	Weapons.AddItem(CreateTemplate_VektorRifle_Beam('VektorRifle_BM_4',4));
+	Weapons.AddItem(CreateTemplate_VektorRifle_Beam('VektorRifle_BM_5',5));
+
+	Weapons.AddItem(CreateTemplate_Bullpup_Conventional('Bullpup_CV_1',1));
+	Weapons.AddItem(CreateTemplate_Bullpup_Conventional('Bullpup_CV_2',2));
+	Weapons.AddItem(CreateTemplate_Bullpup_Conventional('Bullpup_CV_3',3));
+
+	Weapons.AddItem(CreateTemplate_Bullpup_Laser('Bullpup_LS_2',2));
+	Weapons.AddItem(CreateTemplate_Bullpup_Laser('Bullpup_LS_3',3));
+	Weapons.AddItem(CreateTemplate_Bullpup_Laser('Bullpup_LS_4',4));
+	Weapons.AddItem(CreateTemplate_Bullpup_Laser('Bullpup_LS_5',5));
+
+	Weapons.AddItem(CreateTemplate_Bullpup_Magnetic('Bullpup_MG_2',2));
+	Weapons.AddItem(CreateTemplate_Bullpup_Magnetic('Bullpup_MG_3',3));
+	Weapons.AddItem(CreateTemplate_Bullpup_Magnetic('Bullpup_MG_4',4));
+	Weapons.AddItem(CreateTemplate_Bullpup_Magnetic('Bullpup_MG_5',5));
+
+	Weapons.AddItem(CreateBullpup_Coil_Template('Bullpup_CG_3',3));
+	Weapons.AddItem(CreateBullpup_Coil_Template('Bullpup_CG_4',4));
+	Weapons.AddItem(CreateBullpup_Coil_Template('Bullpup_CG_5',5));
+
+	Weapons.AddItem(CreateTemplate_Bullpup_Beam('Bullpup_BM_3',3));
+	Weapons.AddItem(CreateTemplate_Bullpup_Beam('Bullpup_BM_4',4));
+	Weapons.AddItem(CreateTemplate_Bullpup_Beam('Bullpup_BM_5',5));
+
+
+	Weapons.AddItem(CreateTemplate_Cannon_Conventional('Cannon_CV_1',1));
+	Weapons.AddItem(CreateTemplate_Cannon_Conventional('Cannon_CV_2',2));
+	Weapons.AddItem(CreateTemplate_Cannon_Conventional('Cannon_CV_3',3));
+
+	Weapons.AddItem(CreateTemplate_Cannon_Laser('Cannon_LS_2',2));
+	Weapons.AddItem(CreateTemplate_Cannon_Laser('Cannon_LS_3',3));
+	Weapons.AddItem(CreateTemplate_Cannon_Laser('Cannon_LS_4',4));
+	Weapons.AddItem(CreateTemplate_Cannon_Laser('Cannon_LS_5',5));
+
+	Weapons.AddItem(CreateTemplate_Cannon_Magnetic('Cannon_MG_2',2));
+	Weapons.AddItem(CreateTemplate_Cannon_Magnetic('Cannon_MG_3',3));
+	Weapons.AddItem(CreateTemplate_Cannon_Magnetic('Cannon_MG_4',4));
+	Weapons.AddItem(CreateTemplate_Cannon_Magnetic('Cannon_MG_5',5));
+
+	Weapons.AddItem(CreateCannon_Coil_Template('Cannon_CG_3',3));
+	Weapons.AddItem(CreateCannon_Coil_Template('Cannon_CG_4',4));
+	Weapons.AddItem(CreateCannon_Coil_Template('Cannon_CG_5',5));
+
+	Weapons.AddItem(CreateTemplate_Cannon_Beam('Cannon_BM_3',3));
+	Weapons.AddItem(CreateTemplate_Cannon_Beam('Cannon_BM_4',4));
+	Weapons.AddItem(CreateTemplate_Cannon_Beam('Cannon_BM_5',5));
+
+	Weapons.AddItem(CreateTemplate_SMG_Conventional('SMG_CV_1',1));
+	Weapons.AddItem(CreateTemplate_SMG_Conventional('SMG_CV_2',2));
+	Weapons.AddItem(CreateTemplate_SMG_Conventional('SMG_CV_3',3));
+
+	Weapons.AddItem(CreateTemplate_SMG_Laser('SMG_LS_2',2));
+	Weapons.AddItem(CreateTemplate_SMG_Laser('SMG_LS_3',3));
+	Weapons.AddItem(CreateTemplate_SMG_Laser('SMG_LS_4',4));
+	Weapons.AddItem(CreateTemplate_SMG_Laser('SMG_LS_5',5));
+
+	Weapons.AddItem(CreateTemplate_SMG_Magnetic('SMG_MG_2',2));
+	Weapons.AddItem(CreateTemplate_SMG_Magnetic('SMG_MG_3',3));
+	Weapons.AddItem(CreateTemplate_SMG_Magnetic('SMG_MG_4',4));
+	Weapons.AddItem(CreateTemplate_SMG_Magnetic('SMG_MG_5',5));
+
+	Weapons.AddItem(CreateSMG_Coil_Template('SMG_CG_3',3));
+	Weapons.AddItem(CreateSMG_Coil_Template('SMG_CG_4',4));
+	Weapons.AddItem(CreateSMG_Coil_Template('SMG_CG_5',5));
+
+	Weapons.AddItem(CreateTemplate_SMG_Beam('SMG_BM_3',3));
+	Weapons.AddItem(CreateTemplate_SMG_Beam('SMG_BM_4',4));
+	Weapons.AddItem(CreateTemplate_SMG_Beam('SMG_BM_5',5));
+
+	Weapons.AddItem(CreateTemplate_SniperRifle_Conventional('SniperRifle_CV_1',1));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Conventional('SniperRifle_CV_2',2));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Conventional('SniperRifle_CV_3',3));
+
+	Weapons.AddItem(CreateTemplate_SniperRifle_Laser('SniperRifle_LS_2',2));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Laser('SniperRifle_LS_3',3));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Laser('SniperRifle_LS_4',4));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Laser('SniperRifle_LS_5',5));
+
+	Weapons.AddItem(CreateTemplate_SniperRifle_Magnetic('SniperRifle_MG_2',2));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Magnetic('SniperRifle_MG_3',3));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Magnetic('SniperRifle_MG_4',4));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Magnetic('SniperRifle_MG_5',5));
+
+	Weapons.AddItem(CreateSniperRifle_Coil_Template('SniperRifle_CG_3',3));
+	Weapons.AddItem(CreateSniperRifle_Coil_Template('SniperRifle_CG_4',4));
+	Weapons.AddItem(CreateSniperRifle_Coil_Template('SniperRifle_CG_5',5));
+
+	Weapons.AddItem(CreateTemplate_SniperRifle_Beam('SniperRifle_BM_3',3));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Beam('SniperRifle_BM_4',4));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Beam('SniperRifle_BM_5',5));
+
+	Weapons.AddItem(CreateTLE1SniperRifle('TLE_SniperRifle_CV_1',1));
+	Weapons.AddItem(CreateTLE1SniperRifle('TLE_SniperRifle_CV_2',2));
+	Weapons.AddItem(CreateTLE1SniperRifle('TLE_SniperRifle_CV_3',3));
+
+	Weapons.AddItem(CreateTLE2SniperRifle('TLE_SniperRifle_MG_2',2));
+	Weapons.AddItem(CreateTLE2SniperRifle('TLE_SniperRifle_MG_3',3));
+	Weapons.AddItem(CreateTLE2SniperRifle('TLE_SniperRifle_MG_4',4));
+	Weapons.AddItem(CreateTLE2SniperRifle('TLE_SniperRifle_MG_5',5));
+
+	Weapons.AddItem(CreateTLE3SniperRifle('TLE_SniperRifle_BM_2',3));
+	Weapons.AddItem(CreateTLE3SniperRifle('TLE_SniperRifle_BM_3',4));
+	Weapons.AddItem(CreateTLE3SniperRifle('TLE_SniperRifle_BM_4',5));
+
+	Weapons.AddItem(CreateTemplate_ShardGauntlet('ShardGauntlet_CV_1',1));
+	Weapons.AddItem(CreateTemplate_ShardGauntlet('ShardGauntlet_CV_2',2));
+	Weapons.AddItem(CreateTemplate_ShardGauntlet('ShardGauntlet_CV_3',3));
+	Weapons.AddItem(CreateTemplate_ShardGauntlet('ShardGauntlet_CV_4',4));
+	Weapons.AddItem(CreateTemplate_ShardGauntlet('ShardGauntlet_CV_5',5));
+
+	//Weapons.AddItem(CreateTemplate_CasterGauntlet('CasterGauntlet_CV_1',1));
+	Weapons.AddItem(CreateTemplate_CasterGauntlet('CasterGauntlet_CV_2',2));
+	Weapons.AddItem(CreateTemplate_CasterGauntlet('CasterGauntlet_CV_3',3));
+	Weapons.AddItem(CreateTemplate_CasterGauntlet('CasterGauntlet_CV_4',4));
+	Weapons.AddItem(CreateTemplate_CasterGauntlet('CasterGauntlet_CV_5',5));
+
+	Weapons.AddItem(CreateTemplate_BladeMasterGauntlet('BladeMasterGauntlet_CV_2',2));
+	Weapons.AddItem(CreateTemplate_BladeMasterGauntlet('BladeMasterGauntlet_CV_3',3));
+	Weapons.AddItem(CreateTemplate_BladeMasterGauntlet('BladeMasterGauntlet_CV_4',4));
+	Weapons.AddItem(CreateTemplate_BladeMasterGauntlet('BladeMasterGauntlet_CV_5',5));
+
+	Weapons.AddItem(CreateTemplate_TacticianGauntlet('TacticianGauntlet_CV_2',2));
+	Weapons.AddItem(CreateTemplate_TacticianGauntlet('TacticianGauntlet_CV_3',3));
+	Weapons.AddItem(CreateTemplate_TacticianGauntlet('TacticianGauntlet_CV_4',4));
+	Weapons.AddItem(CreateTemplate_TacticianGauntlet('TacticianGauntlet_CV_5',5));
+
+	//Weapons.AddItem(CreateTemplate_PowerGauntlet('PowerGauntlet_CV_5',5));
+	Weapons.AddItem(CreateTemplate_PowerGauntlet('PowerGauntlet_CV_2',2));
+	Weapons.AddItem(CreateTemplate_PowerGauntlet('PowerGauntlet_CV_3',3));
+	Weapons.AddItem(CreateTemplate_PowerGauntlet('PowerGauntlet_CV_4',4));
+	Weapons.AddItem(CreateTemplate_PowerGauntlet('PowerGauntlet_CV_5',5));
+
+	Weapons.AddItem(CreateTemplate_ReplicatorGauntlet('ReplicatorGauntlet_CV_2',2));
+	Weapons.AddItem(CreateTemplate_ReplicatorGauntlet('ReplicatorGauntlet_CV_3',3));
+	Weapons.AddItem(CreateTemplate_ReplicatorGauntlet('ReplicatorGauntlet_CV_4',4));
+	Weapons.AddItem(CreateTemplate_ReplicatorGauntlet('ReplicatorGauntlet_CV_5',5));
+
+	
 	//Grenades.AddItem(CreateTemplate_AssaultRifle_Conventional('AssaultRifle_CV_1',1));
 
 	return Weapons;
@@ -113,19 +306,45 @@ static function WeaponDamageValue GetWeaponDamage(int WeaponTier, optional float
     local float FloatBaseDamage;
     local int IntBaseDamage;
 
-    FloatBaseDamage = (4 + WeaponTier-1) * DamagePCT;
-    IntBaseDamage = int(TypicalWeaponDamage);
+    FloatBaseDamage = WeaponTier * DamagePCT;
+    IntBaseDamage = int(WeaponTier);
     
 
     WeaponDamage.Damage = IntBaseDamage;
-    WeaponDamage.Spread = Max(1 + int(FloatBaseDamage / 5) + BonusSpread,0)
+    WeaponDamage.Spread = Max(1 + int(FloatBaseDamage / 5) + BonusSpread,0);
     WeaponDamage.PlusOne = int((FloatBaseDamage - IntBaseDamage) * 100);
     WeaponDamage.Crit = int(FloatBaseDamage * CritDamagePCT);
     WeaponDamage.Pierce = BonusPierce;
     WeaponDamage.Pierce = BonusPierce;
     WeaponDamage.Rupture = BonusRupture;
+	WeaponDamage.DamageType = 'Projectile_MagXCom';
 
     return WeaponDamage;
+}
+
+static function array<WeaponDamageValue> GetGauntletsExtraWeaponDamage(int WeaponTier){
+    local WeaponDamageValue WeaponDamage;
+    local float FloatBaseDamage;
+    local int IntBaseDamage;
+	local array<WeaponDamageValue> ExtraDamages;
+	local GauntletExtraDamage TagValue;
+
+	foreach SHARDGAUNTLET_EXTRADAMAGE_TAGS(TagValue){
+		FloatBaseDamage = WeaponTier  * TagValue.DamageMod;
+		IntBaseDamage = int(WeaponTier);
+		
+		WeaponDamage.Tag = TagValue.Tag;
+		WeaponDamage.Damage = IntBaseDamage;
+		WeaponDamage.Spread = Max(1 + int(FloatBaseDamage / 5) + TagValue.BonusSpread,0);
+		WeaponDamage.PlusOne = int((FloatBaseDamage - IntBaseDamage) * 100);
+		WeaponDamage.Crit = int(FloatBaseDamage * TagValue.CritDamageMod);
+		WeaponDamage.DamageType = 'Psi';
+		ExtraDamages.AddItem(WeaponDamage);
+
+	}
+
+
+    return ExtraDamages;
 }
 
 static function name GetWeaponTech(int Tier){
@@ -165,9 +384,9 @@ static function X2DataTemplate CreateTLE1AssaultRifle(name TemplateName, int Tie
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.MEDIUM_CONVENTIONAL_RANGE;
 	Template.BaseDamage = GetWeaponDamage(Tier);
-	Template.Aim = ASSAULTRIFLE_TLE_CONVENTIONAL_AIM;
-	Template.CritChance = ASSAULTRIFLE_TLE_CONVENTIONAL_CRITCHANCE;
-	Template.iClipSize = ASSAULTRIFLE_TLE_CONVENTIONAL_ICLIPSIZE;
+	Template.Aim = default.ASSAULTRIFLE_TLE_CONVENTIONAL_AIM;
+	Template.CritChance = default.ASSAULTRIFLE_TLE_CONVENTIONAL_CRITCHANCE;
+	Template.iClipSize = default.ASSAULTRIFLE_TLE_CONVENTIONAL_ICLIPSIZE;
 	Template.iSoundRange =class'X2Item_DefaultWeapons'. default.ASSAULTRIFLE_CONVENTIONAL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_CONVENTIONAL_IENVIRONMENTDAMAGE;
 
@@ -177,6 +396,8 @@ static function X2DataTemplate CreateTLE1AssaultRifle(name TemplateName, int Tie
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+
+	Template.Abilities.AddItem('LightEmUp');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "TLE1AssaultRifle.WP_TLE1AssaultRifle";
@@ -231,7 +452,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Conventional(name Tem
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
 
-	Template.Abilities.AddItem('SkirmisherStrike');
+	Template.Abilities.AddItem('Lightemup');
 	Template.Abilities.AddItem('Executioner_LW');
 	Template.Abilities.AddItem('WalkFire');
 
@@ -271,12 +492,12 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Laser(name TemplateNa
 	Template.WeaponCat = 'rifle';
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///" $ default.AssaultRifle_Laser_ImagePath; 
+	Template.strImage = "img:///" $ class'X2Item_LaserWeapons'.default.AssaultRifle_Laser_ImagePath; 
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = Tier;
 
-	Template.RangeAccuracy = class'LWTemplateMods'.default.MEDIUM_ALL_RANGE;
+	Template.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MEDIUM_ALL_RANGE;
 	Template.BaseDamage = GetWeaponDamage(Tier);
 	Template.Aim = class'X2Item_LaserWeapons'.default.ASSAULTRIFLE_LASER_AIM;
 	Template.CritChance =class'X2Item_LaserWeapons'.default.ASSAULTRIFLE_LASER_CRITCHANCE;
@@ -293,7 +514,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Laser(name TemplateNa
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
 
-    Template.Abilities.AddItem('SkirmisherStrike');
+    Template.Abilities.AddItem('Lightemup');
     Template.Abilities.AddItem('LockedOn');
 
 	
@@ -326,7 +547,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Magnetic(name Templat
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'AssaultRifle_MG');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_MagneticRifle";                       // used by the UI. Probably determines iconview of the weapon.
 
 	Template.WeaponCat = 'rifle';
@@ -336,7 +557,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Magnetic(name Templat
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = Tier;
 
-	Template.RangeAccuracy = class'LWTemplateMods'.default.MIDSHORT_ALL_RANGE;
+	Template.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MIDSHORT_ALL_RANGE;
 	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
 	Template.Aim = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_AIM;
 	Template.CritChance = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_CRITCHANCE;
@@ -354,7 +575,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Magnetic(name Templat
 	Template.Abilities.AddItem('HotLoadAmmo');
 
 
-	Template.Abilities.AddItem('SkirmisherStrike');
+	Template.Abilities.AddItem('Lightemup');
 	Template.Abilities.AddItem('ReaperMode');
 
 	
@@ -380,7 +601,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Magnetic(name Templat
 	return Template;
 }
 
-static function X2DataTemplate CreateAssaultRifle_Coil_Template(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_AssaultRifle_Coil(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
@@ -389,12 +610,12 @@ static function X2DataTemplate CreateAssaultRifle_Coil_Template(name TemplateNam
 	Template.WeaponCat = 'rifle';
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.ItemCat = 'weapon';
-	Template.strImage ="img:///" $ default.AssaultRifle_Coil_ImagePath;
+	Template.strImage ="img:///" $ class'X2Item_Coilguns'.default.AssaultRifle_Coil_ImagePath;
 	Template.WeaponPanelImage = "";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = Tier;
 
-	Template.RangeAccuracy = class'LWTemplateMods'.default.MEDIUM_ALL_RANGE;
+	Template.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MEDIUM_ALL_RANGE;
 	Template.BaseDamage = GetWeaponDamage(Tier);
 	Template.Aim = class'X2Item_Coilguns'.default.ASSAULTRIFLE_COIL_AIM;
 	Template.CritChance = class'X2Item_Coilguns'.default.ASSAULTRIFLE_COIL_CRITCHANCE;
@@ -417,7 +638,8 @@ static function X2DataTemplate CreateAssaultRifle_Coil_Template(name TemplateNam
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('SkirmisherStrike');
+	Template.Abilities.AddItem('Lightemup');
+	Template.Abilities.AddItem('TeslaCoil');
 	// Template.Abilities.AddItem('CoilgunBonusShredAbility');
 
 	Template.CreatorTemplateName = 'GeneralWeapons_CG_Schematic'; // The schematic which creates this item
@@ -436,7 +658,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Beam(name TemplateNam
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'AssaultRifle_BM');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 
 	Template.WeaponCat = 'rifle';
@@ -444,10 +666,10 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Beam(name TemplateNam
 	Template.ItemCat = 'weapon';
 	Template.strImage = "img:///UILibrary_Common.UI_BeamAssaultRifle.BeamAssaultRifle_Base";
 	Template.EquipSound = "Beam_Weapon_Equip";
-	Template.Tier = 4;
+	Template.Tier = Tier;
 
-	Template.RangeAccuracy = class'LWTemplateMods'.default.MEDIUM_ALL_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
+	Template.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MEDIUM_ALL_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier);
 	Template.Aim = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_BEAM_AIM;
 	Template.CritChance = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_BEAM_CRITCHANCE;
 	Template.iClipSize = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_BEAM_ICLIPSIZE;
@@ -463,8 +685,9 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Beam(name TemplateNam
 	//Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
 
-	Template.Abilities.AddItem('SkirmisherStrike');
+	Template.Abilities.AddItem('Lightemup');
 	Template.Abilities.AddItem('PlasmaReload');
+	Template.Abilities.AddItem('LockAndLoad');
 
 	Template.GameArchetype = "WP_AssaultRifle_BM.WP_AssaultRifle_BM";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
@@ -499,10 +722,10 @@ static function X2DataTemplate CreateTLE2AssaultRifle(name TemplateName, int Tie
 	Template.ItemCat = 'weapon';
 	Template.strImage = "img:///UILibrary_TLE_Common.TLE_AR_Laser_Base";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
-	Template.Tier = 2;
+	Template.Tier = Tier;
 	//Template.OnAcquiredFn = OnTLE2AssaultRifleAcquired;
 
-	Template.RangeAccuracy = class'LWTemplateMods'.default.MEDIUM_ALL_RANGE;
+	Template.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MEDIUM_ALL_RANGE;
 	Template.BaseDamage = GetWeaponDamage(Tier,,0.75f);
 	Template.Aim = default.ASSAULTRIFLE_TLE_MAGNETIC_AIM;
 	Template.CritChance = default.ASSAULTRIFLE_TLE_MAGNETIC_CRITCHANCE;
@@ -519,7 +742,7 @@ static function X2DataTemplate CreateTLE2AssaultRifle(name TemplateName, int Tie
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
 
-	Template.Abilities.AddItem('SkirmisherStrike');
+	Template.Abilities.AddItem('Lightemup');
 	Template.Abilities.AddItem('Predator_LW');
 
 	// This all the resources; sounds, animations, models, physics, the works.
@@ -551,10 +774,10 @@ static function X2DataTemplate CreateTLE3AssaultRifle(name TemplateName, int Tie
 	Template.ItemCat = 'weapon';
 	Template.strImage = "img:///UILibrary_TLE_Common.TLE_AR_Plasma_Base";
 	Template.EquipSound = "Beam_Weapon_Equip";
-	Template.Tier = 4;
+	Template.Tier = Tier;
 	//Template.OnAcquiredFn = OnTLE3AssaultRifleAcquired;
 
-	Template.RangeAccuracy = class'LWTemplateMods'.default.MEDIUM_ALL_RANGE;
+	Template.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MEDIUM_ALL_RANGE;
 	Template.BaseDamage = GetWeaponDamage(Tier);
 	Template.Aim = default.ASSAULTRIFLE_TLE_BEAM_AIM;
 	Template.CritChance = default.ASSAULTRIFLE_TLE_BEAM_CRITCHANCE;
@@ -569,7 +792,7 @@ static function X2DataTemplate CreateTLE3AssaultRifle(name TemplateName, int Tie
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
 
-	Template.Abilities.AddItem('SkirmisherStrike');
+	Template.Abilities.AddItem('Lightemup');
 	//Template.Abilities.AddItem('HighVolumeFire');
 	Template.Abilities.AddItem('FondFarewell');
 
@@ -612,7 +835,7 @@ static function X2DataTemplate CreateTemplate_Immolator_T0(name TemplateName, in
 	Template.iClipSize = class'X2Weapon_Immolator'.default.FLAMETHROWER_ICLIPSIZE;
 	Template.iRange = class'X2Weapon_Immolator'.default.FLAMETHROWER_RANGE;
 	Template.iRadius = class'X2Weapon_Immolator'.default.FLAMETHROWER_RADIUS;
-	Template.fCoverage = dclass'X2Weapon_Immolator'.default.FlameTHROWER_TILE_COVERAGE_PERCENT;
+	Template.fCoverage = class'X2Weapon_Immolator'.default.FlameTHROWER_TILE_COVERAGE_PERCENT;
 	Template.BaseDamage.DamageType = 'Fire';
 	
 	Template.InfiniteAmmo = false;
@@ -641,10 +864,10 @@ static function X2DataTemplate CreateTemplate_Immolator_T0(name TemplateName, in
 
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Cannon';
 
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.RangeLabel, , default.FLAMETHROWER_RANGE);
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.RadiusLabel, , default.FLAMETHROWER_RADIUS);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.RangeLabel, , class'X2Weapon_Immolator'.default.FLAMETHROWER_RANGE);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.RadiusLabel, , class'X2Weapon_Immolator'.default.FLAMETHROWER_RADIUS);
 
-	Template.BonusWeaponEffects.AddItem(class'X2StatusEffects'.static.CreateBurningStatusEffect(default.Burn_Dmg_CV, default.Burn_Spread_CV));
+	Template.BonusWeaponEffects.AddItem(class'X2StatusEffects'.static.CreateBurningStatusEffect(class'X2Weapon_Immolator'.default.Burn_Dmg_CV, class'X2Weapon_Immolator'.default.Burn_Spread_CV));
 
 	return Template;
 }
@@ -703,10 +926,10 @@ static function X2DataTemplate CreateTemplate_Immolator_CV(name TemplateName, in
 	Template.CreatorTemplateName = 'Immolator_CV_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'LWImmolator_T0'; // Which item this will be upgraded from
 
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.RangeLabel, , default.FLAMETHROWER_RANGE);
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.RadiusLabel, , default.FLAMETHROWER_RADIUS);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.RangeLabel, , class'X2Weapon_Immolator'.default.FLAMETHROWER_RANGE);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.RadiusLabel, , class'X2Weapon_Immolator'.default.FLAMETHROWER_RADIUS);
 
-	Template.BonusWeaponEffects.AddItem(class'X2StatusEffects'.static.CreateBurningStatusEffect(default.Burn_Dmg_CV, default.Burn_Spread_CV));
+	Template.BonusWeaponEffects.AddItem(class'X2StatusEffects'.static.CreateBurningStatusEffect(class'X2Weapon_Immolator'.default.Burn_Dmg_CV, class'X2Weapon_Immolator'.default.Burn_Spread_CV));
 
 	return Template;
 }
@@ -763,10 +986,10 @@ static function X2DataTemplate CreateTemplate_Immolator_MG(name TemplateName, in
 	Template.CreatorTemplateName = 'Immolator_MG_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'LWImmolator_CV'; // Which item this will be upgraded from
 
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.RangeLabel, , default.FLAMETHROWER_RANGE);
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.RadiusLabel, , default.FLAMETHROWER_RADIUS);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.RangeLabel, , class'X2Weapon_Immolator'.default.FLAMETHROWER_RANGE);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.RadiusLabel, , class'X2Weapon_Immolator'.default.FLAMETHROWER_RADIUS);
 
-	Template.BonusWeaponEffects.AddItem(class'X2StatusEffects'.static.CreateBurningStatusEffect(default.Burn_Dmg_MG, default.Burn_Spread_MG));
+	Template.BonusWeaponEffects.AddItem(class'X2StatusEffects'.static.CreateBurningStatusEffect(class'X2Weapon_Immolator'.default.Burn_Dmg_MG, class'X2Weapon_Immolator'.default.Burn_Spread_MG));
 
 	return Template;
 }
@@ -775,7 +998,7 @@ static function X2DataTemplate CreateTemplate_Immolator_BM(name TemplateName, in
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'LWImmolator_BM');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'lwchemthrower';
@@ -823,10 +1046,10 @@ static function X2DataTemplate CreateTemplate_Immolator_BM(name TemplateName, in
 	Template.CreatorTemplateName = 'Immolator_BM_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'LWImmolator_MG'; // Which item this will be upgraded from
 
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.RangeLabel, , default.FLAMETHROWER_RANGE);
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.RadiusLabel, , default.FLAMETHROWER_RADIUS);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.RangeLabel, , class'X2Weapon_Immolator'.default.FLAMETHROWER_RANGE);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.RadiusLabel, , class'X2Weapon_Immolator'.default.FLAMETHROWER_RADIUS);
 
-	Template.BonusWeaponEffects.AddItem(class'X2StatusEffects'.static.CreateBurningStatusEffect(default.Burn_Dmg_BM, default.Burn_Spread_BM));
+	Template.BonusWeaponEffects.AddItem(class'X2StatusEffects'.static.CreateBurningStatusEffect(class'X2Weapon_Immolator'.default.Burn_Dmg_BM, class'X2Weapon_Immolator'.default.Burn_Spread_BM));
 
 	return Template;
 }
@@ -847,7 +1070,7 @@ static function X2DataTemplate CreateTLE1Cannon(name TemplateName, int Tier)
 	//Template.OnAcquiredFn = OnTLE1CannonAcquired;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.MEDIUM_CONVENTIONAL_RANGE;
-	Template.BaseDamage = GetWeaponDamage(1.25f,0.5f,Tier,,,1);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f,,,1);
 	Template.Aim = default.LMG_TLE_CONVENTIONAL_AIM;
 	Template.CritChance = default.LMG_TLE_CONVENTIONAL_CRITCHANCE;
 	Template.iClipSize = default.LMG_TLE_CONVENTIONAL_ICLIPSIZE;
@@ -896,7 +1119,7 @@ static function X2DataTemplate CreateTLE2Cannon(name TemplateName, int Tier)
 	//Template.OnAcquiredFn = OnTLE2CannonAcquired;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.MEDIUM_MAGNETIC_RANGE;
-	Template.BaseDamage = GetWeaponDamage(1.25f,0.5f,Tier,,,1);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f,,,1);
 	Template.Aim = default.LMG_TLE_MAGNETIC_AIM;
 	Template.CritChance = default.LMG_TLE_MAGNETIC_CRITCHANCE;
 	Template.iClipSize = default.LMG_TLE_MAGNETIC_ICLIPSIZE;
@@ -912,6 +1135,7 @@ static function X2DataTemplate CreateTLE2Cannon(name TemplateName, int Tier)
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('CyclicFire');
 	//Template.Abilities.AddItem('HeavyWeaponsMobPenalty');
+	Template.Abilities.AddItem('Suppression');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "TLE2Cannon.WP_TLE2Cannon";
@@ -945,8 +1169,8 @@ static function X2DataTemplate CreateTLE3Cannon(name TemplateName, int Tier)
 	Template.Tier = Tier;
 	//Template.OnAcquiredFn = OnTLE3CannonAcquired;
 
-	Template.RangeAccuracy = class'LWTemplateMods'.default.LMG_ALL_RANGE;
-	Template.BaseDamage = GetWeaponDamage(1.25f,0.5f,Tier,,,1);
+	Template.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.LMG_ALL_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f,,,1);
 	Template.Aim = default.LMG_TLE_BEAM_AIM;
 	Template.CritChance = default.LMG_TLE_BEAM_CRITCHANCE;
 	Template.iClipSize = default.LMG_TLE_BEAM_ICLIPSIZE;
@@ -961,6 +1185,8 @@ static function X2DataTemplate CreateTLE3Cannon(name TemplateName, int Tier)
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('SaturationFire');
+	Template.Abilities.AddItem('Suppression');
+
 	//Template.Abilities.AddItem('HeavyWeaponsMobPenalty');
 
 	// This all the resources; sounds, animations, models, physics, the works.
@@ -993,13 +1219,13 @@ static function X2DataTemplate CreateTemplate_VektorRifle_Conventional(name Temp
 	Template.EquipSound = "Conventional_Weapon_Equip";
 	Template.Tier = Tier;
 
-	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.default.VEKTOR_CONVENTIONAL_RANGE;
+	Template.RangeAccuracy = class'X2Item_XPackWeapons'.default.VEKTOR_CONVENTIONAL_RANGE;
 	Template.BaseDamage = GetWeaponDamage(Tier);
-	Template.Aim = class'X2Item_DefaultWeapons'.default.default.VEKTORRIFLE_CONVENTIONAL_AIM;
-	Template.CritChance = class'X2Item_DefaultWeapons'.default.default.VEKTORRIFLE_CONVENTIONAL_CRITCHANCE;
-	Template.iClipSize = class'X2Item_DefaultWeapons'.default.default.VEKTORRIFLE_CONVENTIONAL_ICLIPSIZE;
-	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.default.VEKTORRIFLE_CONVENTIONAL_ISOUNDRANGE;
-	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.default.VEKTORRIFLE_CONVENTIONAL_IENVIRONMENTDAMAGE;
+	Template.Aim = class'X2Item_XPackWeapons'.default.VEKTORRIFLE_CONVENTIONAL_AIM;
+	Template.CritChance = class'X2Item_XPackWeapons'.default.VEKTORRIFLE_CONVENTIONAL_CRITCHANCE;
+	Template.iClipSize = class'X2Item_XPackWeapons'.default.VEKTORRIFLE_CONVENTIONAL_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_XPackWeapons'.default.VEKTORRIFLE_CONVENTIONAL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_XPackWeapons'.default.VEKTORRIFLE_CONVENTIONAL_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = 1;
 	Template.iTypicalActionCost = 1;
 		
@@ -1009,6 +1235,9 @@ static function X2DataTemplate CreateTemplate_VektorRifle_Conventional(name Temp
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+
+	Template.Abilities.AddItem('InTheZone_LW');
+	Template.Abilities.AddItem('Stock_LW_Bsc_Ability');
 	
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_ReaperRifle.WP_ReaperRifle";
@@ -1038,23 +1267,23 @@ static function X2DataTemplate CreateTemplate_VektorRifle_Conventional(name Temp
 static function X2DataTemplate CreateVektor_Laser(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'VektorRifle_LS');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 
 	Template.WeaponCat = 'vektor_rifle';
 	Template.WeaponTech = GetWeaponTech(); 
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///" $ default.Vektor_Laser_ImagePath; 
+	Template.strImage = "img:///" $ class'X2Item_FactionWeapons'.default.Vektor_Laser_ImagePath; 
 	Template.WeaponPanelImage = "_BeamSniperRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = Tier;
 
-	Template.RangeAccuracy = class'X2Item_LaserWeapons'.default.VEKTOR_LASER_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier)
-	Template.Aim = class'X2Item_LaserWeapons'.default.VEKTOR_LASER_AIM;
-	Template.CritChance = class'X2Item_LaserWeapons'.default.VEKTOR_LASER_CRITCHANCE;
-	Template.iClipSize = class'X2Item_LaserWeapons'.default.VEKTOR_LASER_ICLIPSIZE;
-	Template.iSoundRange = class'X2Item_LaserWeapons'.default.VEKTOR_LASER_ISOUNDRANGE;
-	Template.iEnvironmentDamage = class'X2Item_LaserWeapons'.default.VEKTOR_LASER_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_FactionWeapons'.default.VEKTOR_LASER_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.Aim = class'X2Item_FactionWeapons'.default.VEKTOR_LASER_AIM;
+	Template.CritChance = class'X2Item_FactionWeapons'.default.VEKTOR_LASER_CRITCHANCE;
+	Template.iClipSize = class'X2Item_FactionWeapons'.default.VEKTOR_LASER_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_FactionWeapons'.default.VEKTOR_LASER_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_FactionWeapons'.default.VEKTOR_LASER_IENVIRONMENTDAMAGE;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
@@ -1062,6 +1291,8 @@ static function X2DataTemplate CreateVektor_Laser(name TemplateName, int Tier)
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+
+	Template.Abilities.AddItem('HitAndRun');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LW_StrikeRifle.Archetypes.WP_DMR_LS";
@@ -1093,23 +1324,27 @@ static function X2DataTemplate CreateTemplate_VektorRifle_Magnetic(name Template
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = Tier;
 
-	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.default.VEKTOR_CONVENTIONAL_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier);
-	Template.Aim = class'X2Item_DefaultWeapons'.default.VEKTORRIFLE_MAGNETIC_AIM;
-	Template.CritChance = class'X2Item_DefaultWeapons'.default.VEKTORRIFLE_MAGNETIC_CRITCHANCE;
-	Template.iClipSize = class'X2Item_DefaultWeapons'.default.VEKTORRIFLE_MAGNETIC_ICLIPSIZE;
-	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.VEKTORRIFLE_MAGNETIC_ISOUNDRANGE;
-	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.VEKTORRIFLE_MAGNETIC_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_XPackWeapons'.default.VEKTOR_CONVENTIONAL_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
+	Template.Aim = class'X2Item_XPackWeapons'.default.VEKTORRIFLE_MAGNETIC_AIM;
+	Template.CritChance = class'X2Item_XPackWeapons'.default.VEKTORRIFLE_MAGNETIC_CRITCHANCE;
+	Template.iClipSize = class'X2Item_XPackWeapons'.default.VEKTORRIFLE_MAGNETIC_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_XPackWeapons'.default.VEKTORRIFLE_MAGNETIC_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_XPackWeapons'.default.VEKTORRIFLE_MAGNETIC_IENVIRONMENTDAMAGE;
 
 	Template.NumUpgradeSlots = 2;
+	Template.iTypicalActionCost = 2;
 	
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('SniperStandardFire');
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
 	
+	Template.Abilities.AddItem('InTheZone_LW');
+	Template.Abilities.AddItem('Stock_LW_Bsc_Ability');
+
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_ReaperRifle_MG.WP_ReaperRifle_MG";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Sniper';
@@ -1138,23 +1373,23 @@ static function X2DataTemplate CreateTemplate_VektorRifle_Magnetic(name Template
 static function X2DataTemplate CreateVektor_Coil(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'VektorRifle_CG');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 
 	Template.WeaponCat = 'vektor_rifle';
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.ItemCat = 'weapon';
-	Template.strImage ="img:///" $ default.Vektor_Coil_ImagePath;
+	Template.strImage ="img:///" $ class'X2Item_FactionWeapons'.default.Vektor_Coil_ImagePath;
 	Template.WeaponPanelImage = "_MagneticSniperRifle";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = Tier;
 
-	Template.RangeAccuracy = class'X2Item_Coilguns'.default.VEKTOR_COIL_RANGE;
+	Template.RangeAccuracy = class'X2Item_FactionWeapons'.default.VEKTOR_COIL_RANGE;
 	Template.BaseDamage = GetWeaponDamage(Tier);
-	Template.Aim = class'X2Item_Coilguns'.default.VEKTOR_COIL_AIM;
-	Template.CritChance = class'X2Item_Coilguns'.default.VEKTOR_COIL_CRITCHANCE;
-	Template.iClipSize = class'X2Item_Coilguns'.default.VEKTOR_COIL_ICLIPSIZE;
-	Template.iSoundRange = class'X2Item_Coilguns'.default.VEKTOR_COIL_ISOUNDRANGE;
-	Template.iEnvironmentDamage = class'X2Item_Coilguns'.default.VEKTOR_COIL_IENVIRONMENTDAMAGE;
+	Template.Aim = class'X2Item_FactionWeapons'.default.VEKTOR_COIL_AIM;
+	Template.CritChance = class'X2Item_FactionWeapons'.default.VEKTOR_COIL_CRITCHANCE;
+	Template.iClipSize = class'X2Item_FactionWeapons'.default.VEKTOR_COIL_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_FactionWeapons'.default.VEKTOR_COIL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_FactionWeapons'.default.VEKTOR_COIL_IENVIRONMENTDAMAGE;
 
 	Template.NumUpgradeSlots = 3;
 
@@ -1172,6 +1407,10 @@ static function X2DataTemplate CreateVektor_Coil(name TemplateName, int Tier)
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+
+	Template.Abilities.AddItem('InTheZone_LW');
+	Template.Abilities.AddItem('Stock_LW_Bsc_Ability');
+
 	// Template.Abilities.AddItem('CoilgunBonusShredAbility');
 
 	Template.CreatorTemplateName = 'PrecisionWeapons_CG_Schematic'; // The schematic which creates this item
@@ -1192,7 +1431,7 @@ static function X2DataTemplate CreateTemplate_VektorRifle_Beam(name TemplateName
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'VektorRifle_BM');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_BeamSniperRifle";                       // used by the UI. Probably determines iconview of the weapon.
 
 	Template.WeaponCat = 'vektor_rifle';
@@ -1200,15 +1439,15 @@ static function X2DataTemplate CreateTemplate_VektorRifle_Beam(name TemplateName
 	Template.ItemCat = 'weapon';
 	Template.strImage = "img:///UILibrary_XPACK_Common.BeamVektor_Base";
 	Template.EquipSound = "Beam_Weapon_Equip";
-	Template.Tier = 5;
+	Template.Tier = Tier;
 
-	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.VEKTOR_CONVENTIONAL_RANGE;
+	Template.RangeAccuracy = class'X2Item_XPackWeapons'.default.VEKTOR_CONVENTIONAL_RANGE;
 	Template.BaseDamage = GetWeaponDamage(Tier);
-	Template.Aim = class'X2Item_DefaultWeapons'.default.VEKTORRIFLE_BEAM_AIM;
-	Template.CritChance = class'X2Item_DefaultWeapons'.default.VEKTORRIFLE_BEAM_CRITCHANCE;
-	Template.iClipSize = class'X2Item_DefaultWeapons'.default.VEKTORRIFLE_BEAM_ICLIPSIZE;
-	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.VEKTORRIFLE_BEAM_ISOUNDRANGE;
-	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.VEKTORRIFLE_BEAM_IENVIRONMENTDAMAGE;
+	Template.Aim = class'X2Item_XPackWeapons'.default.VEKTORRIFLE_BEAM_AIM;
+	Template.CritChance = class'X2Item_XPackWeapons'.default.VEKTORRIFLE_BEAM_CRITCHANCE;
+	Template.iClipSize = class'X2Item_XPackWeapons'.default.VEKTORRIFLE_BEAM_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_XPackWeapons'.default.VEKTORRIFLE_BEAM_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_XPackWeapons'.default.VEKTORRIFLE_BEAM_IENVIRONMENTDAMAGE;
 
 	Template.NumUpgradeSlots = 2;
 	
@@ -1216,9 +1455,11 @@ static function X2DataTemplate CreateTemplate_VektorRifle_Beam(name TemplateName
 	Template.Abilities.AddItem('StandardShot');
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
-	Template.Abilities.AddItem('Reload');
+	//Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	
+	Template.Abilities.AddItem('HitAndRun');
+	Template.Abilities.AddItem('PlasmaReload');
+
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_ReaperRifle_BM.WP_ReaperRifle_BM";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Sniper';
@@ -1247,7 +1488,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Conventional(name Template
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Bullpup_CV');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_ConventionalShotgun";
 
 	Template.ItemCat = 'weapon';
@@ -1255,15 +1496,15 @@ static function X2DataTemplate CreateTemplate_Bullpup_Conventional(name Template
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_XPACK_Common.ConvSMG_Base";
 	Template.EquipSound = "Conventional_Weapon_Equip";
-	Template.Tier = 0;
+	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.SHORT_CONVENTIONAL_RANGE;
 	Template.BaseDamage = GetWeaponDamage(Tier);
-	Template.Aim = class'X2Item_DefaultWeapons'.default.BULLPUP_CONVENTIONAL_AIM;
-	Template.CritChance = class'X2Item_DefaultWeapons'.default.BULLPUP_CONVENTIONAL_CRITCHANCE;
-	Template.iClipSize = class'X2Item_DefaultWeapons'.default.BULLPUP_CONVENTIONAL_ICLIPSIZE;
-	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.BULLPUP_CONVENTIONAL_ISOUNDRANGE;
-	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.BULLPUP_CONVENTIONAL_IENVIRONMENTDAMAGE;
+	Template.Aim = class'X2Item_XPackWeapons'.default.BULLPUP_CONVENTIONAL_AIM;
+	Template.CritChance = class'X2Item_XPackWeapons'.default.BULLPUP_CONVENTIONAL_CRITCHANCE;
+	Template.iClipSize = class'X2Item_XPackWeapons'.default.BULLPUP_CONVENTIONAL_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_XPackWeapons'.default.BULLPUP_CONVENTIONAL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_XPackWeapons'.default.BULLPUP_CONVENTIONAL_IENVIRONMENTDAMAGE;
 
 	Template.NumUpgradeSlots = 1;
 
@@ -1274,6 +1515,9 @@ static function X2DataTemplate CreateTemplate_Bullpup_Conventional(name Template
 	Template.Abilities.AddItem('PistolReturnFire');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+
+	Template.Abilities.AddItem('ReadyForAnything');
+	Template.Abilities.AddItem('CoolUnderPressure');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_SkirmisherSMG.WP_SkirmisherSMG";
@@ -1301,15 +1545,15 @@ static function X2DataTemplate CreateTemplate_Bullpup_Conventional(name Template
 static function X2DataTemplate CreateTemplate_Bullpup_Laser(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Bullpup_LS');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 
 	Template.WeaponCat = 'bullpup';
 	Template.WeaponTech = GetWeaponTech(Tier); 
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///" $ default.Bullpup_Laser_ImagePath; 
+	Template.strImage = "img:///" $ class'X2Item_FactionWeapons'.default.Bullpup_Laser_ImagePath; 
 	Template.WeaponPanelImage = "_BeamShotgun";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
-	Template.Tier = 3;
+	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_FactionWeapons'.default.SKIRMISHER_SMG_RANGE;
 	Template.BaseDamage = GetWeaponDamage(Tier);
@@ -1327,6 +1571,10 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser(name TemplateName, i
 	Template.Abilities.AddItem('PistolReturnFire');
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('Bullpup_CV_StatBonus');
+
+	Template.Abilities.AddItem('EverVigilant');
+	Template.Abilities.AddItem('Sentinel_LW');
+	Template.Abilities.AddItem('CoolUnderPressure');
 	Template.SetUIStatMarkup("Mobility", eStat_Mobility, class'X2Ability_FactionWeaponAbilities'.default.BULLPUP_CONVENTIONAL_MOBILITY_BONUS);
 
 	// This all the resources; sounds, animations, models, physics, the works.
@@ -1352,7 +1600,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Magnetic(name TemplateName
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Bullpup_MG');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_MagneticShotgun";
 
 	Template.ItemCat = 'weapon';
@@ -1360,15 +1608,15 @@ static function X2DataTemplate CreateTemplate_Bullpup_Magnetic(name TemplateName
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_XPACK_Common.MagSMG_Base";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
-	Template.Tier = 3;
+	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.SHORT_MAGNETIC_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier);
-	Template.Aim = default.BULLPUP_MAGNETIC_AIM;
-	Template.CritChance = default.BULLPUP_MAGNETIC_CRITCHANCE;
-	Template.iClipSize = default.BULLPUP_MAGNETIC_ICLIPSIZE;
-	Template.iSoundRange = default.BULLPUP_MAGNETIC_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.BULLPUP_MAGNETIC_IENVIRONMENTDAMAGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
+	Template.Aim = class'X2Item_XPackWeapons'.default.BULLPUP_MAGNETIC_AIM;
+	Template.CritChance = class'X2Item_XPackWeapons'.default.BULLPUP_MAGNETIC_CRITCHANCE;
+	Template.iClipSize = class'X2Item_XPackWeapons'.default.BULLPUP_MAGNETIC_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_XPackWeapons'.default.BULLPUP_MAGNETIC_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_XPackWeapons'.default.BULLPUP_MAGNETIC_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = 2;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -1378,6 +1626,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Magnetic(name TemplateName
 	Template.Abilities.AddItem('PistolReturnFire');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('WatchThemRun_LW');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_SkirmisherSMG_MG.WP_SkirmisherSMG_MG";
@@ -1408,12 +1657,12 @@ static function X2DataTemplate CreateTemplate_Bullpup_Magnetic(name TemplateName
 static function X2DataTemplate CreateBullpup_Coil_Template(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;	
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Bullpup_CG');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 
 	Template.WeaponCat = 'bullpup';
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.ItemCat = 'weapon';
-	Template.strImage ="img:///" $ default.BullPup_Coil_ImagePath;
+	Template.strImage ="img:///" $ class'X2Item_FactionWeapons'.default.BullPup_Coil_ImagePath;
 	Template.WeaponPanelImage = "";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = Tier;
@@ -1446,6 +1695,9 @@ static function X2DataTemplate CreateBullpup_Coil_Template(name TemplateName, in
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('PistolReturnFire');
+	Template.Abilities.AddItem('Sentinel');
+	Template.Abilities.AddItem('PrimaryReturnFire');
+	Template.Abilities.AddItem('CoveringFire');
 	// Template.Abilities.AddItem('CoilgunBonusShredAbility');
 	Template.Requirements.RequiredTechs.AddItem('Coilguns');
 
@@ -1466,7 +1718,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Beam(name TemplateName, in
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Bullpup_BM');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_BeamShotgun";
 
 	Template.ItemCat = 'weapon';
@@ -1474,15 +1726,15 @@ static function X2DataTemplate CreateTemplate_Bullpup_Beam(name TemplateName, in
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_XPACK_Common.BeamSMG_Base";
 	Template.EquipSound = "Beam_Weapon_Equip";
-	Template.Tier = 5;
+	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.SHORT_BEAM_RANGE;
-	Template.BaseDamage = default.BULLPUP_BEAM_BASEDAMAGE;
-	Template.Aim = default.BULLPUP_BEAM_AIM;
-	Template.CritChance = default.BULLPUP_BEAM_CRITCHANCE;
-	Template.iClipSize = default.BULLPUP_BEAM_ICLIPSIZE;
-	Template.iSoundRange = default.BULLPUP_BEAM_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.BULLPUP_BEAM_IENVIRONMENTDAMAGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
+	Template.Aim = class'X2Item_XPackWeapons'.default.BULLPUP_BEAM_AIM;
+	Template.CritChance = class'X2Item_XPackWeapons'.default.BULLPUP_BEAM_CRITCHANCE;
+	Template.iClipSize = class'X2Item_XPackWeapons'.default.BULLPUP_BEAM_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_XPackWeapons'.default.BULLPUP_BEAM_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_XPackWeapons'.default.BULLPUP_BEAM_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = 2;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -1490,8 +1742,12 @@ static function X2DataTemplate CreateTemplate_Bullpup_Beam(name TemplateName, in
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('PistolReturnFire');
-	Template.Abilities.AddItem('Reload');
+	//Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+
+	Template.Abilities.AddItem('WayLay');
+	Template.Abilities.AddItem('CoolUnderPressure');
+	Template.Abilities.AddItem('PlasmaReload');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_SkirmisherSMG_BM.WP_SkirmisherSMG_BM";
@@ -1523,7 +1779,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Conventional(name TemplateN
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Cannon_CV');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_ConventionalCannon";
 
 	Template.ItemCat = 'weapon';
@@ -1531,15 +1787,15 @@ static function X2DataTemplate CreateTemplate_Cannon_Conventional(name TemplateN
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_Common.ConvCannon.ConvCannon_Base";
 	Template.EquipSound = "Conventional_Weapon_Equip";
-	Template.Tier = 0;
+	Template.Tier = Tier;
 
-	Template.RangeAccuracy = default.MEDIUM_CONVENTIONAL_RANGE;
-	Template.BaseDamage = default.LMG_CONVENTIONAL_BASEDAMAGE;
-	Template.Aim = default.LMG_CONVENTIONAL_AIM;
-	Template.CritChance = default.LMG_CONVENTIONAL_CRITCHANCE;
-	Template.iClipSize = default.LMG_CONVENTIONAL_ICLIPSIZE;
-	Template.iSoundRange = default.LMG_CONVENTIONAL_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.LMG_CONVENTIONAL_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.MEDIUM_CONVENTIONAL_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.5f,,,1);
+	Template.Aim = class'X2Item_DefaultWeapons'.default.LMG_CONVENTIONAL_AIM;
+	Template.CritChance = class'X2Item_DefaultWeapons'.default.LMG_CONVENTIONAL_CRITCHANCE;
+	Template.iClipSize = class'X2Item_DefaultWeapons'.default.LMG_CONVENTIONAL_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.LMG_CONVENTIONAL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.LMG_CONVENTIONAL_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = 1;
 	Template.bIsLargeWeapon = true;
 
@@ -1549,6 +1805,8 @@ static function X2DataTemplate CreateTemplate_Cannon_Conventional(name TemplateN
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('BulletWizard');
+	Template.Abilities.AddItem('WalkFire');
 	
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_Cannon_CV.WP_Cannon_CV";
@@ -1576,25 +1834,25 @@ static function X2DataTemplate CreateTemplate_Cannon_Laser(name TemplateName, in
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Cannon_LS');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 
 	Template.WeaponCat = 'cannon';
 	Template.WeaponTech = GetWeaponTech(Tier); 
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///" $ default.Cannon_Laser_ImagePath;
+	Template.strImage = "img:///" $ class'X2Item_LaserWeapons'.default.Cannon_Laser_ImagePath;
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
-	Template.Tier = 4;
+	Template.Tier = Tier;
 
-	Template.RangeAccuracy = default.MEDIUM_LASER_RANGE;
-	Template.BaseDamage = default.LMG_LASER_BASEDAMAGE;
-	Template.Aim = default.LMG_LASER_AIM;
-	Template.CritChance = default.LMG_LASER_CRITCHANCE;
-	Template.iClipSize = default.LMG_LASER_ICLIPSIZE;
-	Template.iSoundRange = default.LMG_LASER_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.LMG_LASER_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_LaserWeapons'.default.MEDIUM_LASER_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f,1.0f,,1);
+	Template.Aim = class'X2Item_LaserWeapons'.default.LMG_LASER_AIM;
+	Template.CritChance = class'X2Item_LaserWeapons'.default.LMG_LASER_CRITCHANCE;
+	Template.iClipSize = class'X2Item_LaserWeapons'.default.LMG_LASER_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_LaserWeapons'.default.LMG_LASER_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_LaserWeapons'.default.LMG_LASER_IENVIRONMENTDAMAGE;
 
-	Template.NumUpgradeSlots = default.LMG_LASER_UPGRADESLOTS; 
+	Template.NumUpgradeSlots = class'X2Item_LaserWeapons'.default.LMG_LASER_UPGRADESLOTS; 
 	
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
@@ -1602,6 +1860,10 @@ static function X2DataTemplate CreateTemplate_Cannon_Laser(name TemplateName, in
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('SuppressiveFire_LW');
+	Template.Abilities.AddItem('Suppression');
+	Template.Abilities.AddItem('SteadFast');
+	Template.Abilities.AddItem('CoolUnderPressure');
 	
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWCannon_LS.Archetype.WP_Cannon_LS";
@@ -1629,7 +1891,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Magnetic(name TemplateName,
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Cannon_MG');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_MagneticCannon";
 
 	Template.ItemCat = 'weapon';
@@ -1637,15 +1899,15 @@ static function X2DataTemplate CreateTemplate_Cannon_Magnetic(name TemplateName,
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_Common.UI_MagCannon.MagCannon_Base";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
-	Template.Tier = 3;
+	Template.Tier = Tier;
 
-	Template.RangeAccuracy = default.MEDIUM_MAGNETIC_RANGE;
-	Template.BaseDamage = default.LMG_MAGNETIC_BASEDAMAGE;
-	Template.Aim = default.LMG_MAGNETIC_AIM;
-	Template.CritChance = default.LMG_MAGNETIC_CRITCHANCE;
-	Template.iClipSize = default.LMG_MAGNETIC_ICLIPSIZE;
-	Template.iSoundRange = default.LMG_MAGNETIC_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.LMG_MAGNETIC_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.MEDIUM_MAGNETIC_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.75f,,,1);
+	Template.Aim = class'X2Item_DefaultWeapons'.default.LMG_MAGNETIC_AIM;
+	Template.CritChance = class'X2Item_DefaultWeapons'.default.LMG_MAGNETIC_CRITCHANCE;
+	Template.iClipSize = class'X2Item_DefaultWeapons'.default.LMG_MAGNETIC_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.LMG_MAGNETIC_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.LMG_MAGNETIC_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = 2;
 	Template.bIsLargeWeapon = true;
 
@@ -1655,7 +1917,8 @@ static function X2DataTemplate CreateTemplate_Cannon_Magnetic(name TemplateName,
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	
+	Template.Abilities.AddItem('BulletWizard');
+
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_Cannon_MG.WP_Cannon_MG";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Cannon';
@@ -1682,18 +1945,18 @@ static function X2DataTemplate CreateCannon_Coil_Template(name TemplateName, int
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Cannon_CG');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 
 	Template.WeaponCat = 'cannon';
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.ItemCat = 'weapon';
-	Template.strImage ="img:///" $ default.Cannon_Coil_ImagePath;
+	Template.strImage ="img:///" $ class'X2Item_Coilguns'.default.Cannon_Coil_ImagePath;
 	Template.WeaponPanelImage = "";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_Coilguns'.default.MEDIUM_COIL_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.5f,,,1);
 	Template.Aim = class'X2Item_Coilguns'.default.CANNON_COIL_AIM;
 	Template.CritChance = class'X2Item_Coilguns'.default.CANNON_COIL_CRITCHANCE;
 	Template.iClipSize = class'X2Item_Coilguns'.default.CANNON_COIL_ICLIPSIZE;
@@ -1716,6 +1979,7 @@ static function X2DataTemplate CreateCannon_Coil_Template(name TemplateName, int
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('BulletWizard');
 	// Template.Abilities.AddItem('CoilgunBonusShredAbility');
 
 	Template.CreatorTemplateName = 'HeavyWeapons_CG_Schematic'; // The schematic which creates this item
@@ -1734,7 +1998,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Beam(name TemplateName, int
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Cannon_BM');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_BeamCannon";
 
 	Template.ItemCat = 'weapon';
@@ -1742,17 +2006,18 @@ static function X2DataTemplate CreateTemplate_Cannon_Beam(name TemplateName, int
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_Common.UI_BeamCannon.BeamCannon_Base";
 	Template.EquipSound = "Beam_Weapon_Equip";
-	Template.Tier = 5;
+	Template.Tier = Tier;
 
-	Template.RangeAccuracy = default.MEDIUM_BEAM_RANGE;
-	Template.BaseDamage = default.LMG_BEAM_BASEDAMAGE;
-	Template.Aim = default.LMG_BEAM_AIM;
-	Template.CritChance = default.LMG_BEAM_CRITCHANCE;
-	Template.iClipSize = default.LMG_BEAM_ICLIPSIZE;
-	Template.iSoundRange = default.LMG_BEAM_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.LMG_BEAM_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.MEDIUM_BEAM_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.5f,,,1);
+	Template.Aim = class'X2Item_DefaultWeapons'.default.LMG_BEAM_AIM;
+	Template.CritChance = class'X2Item_DefaultWeapons'.default.LMG_BEAM_CRITCHANCE;
+	Template.iClipSize = class'X2Item_DefaultWeapons'.default.LMG_BEAM_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.LMG_BEAM_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.LMG_BEAM_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = 2;
 	Template.bIsLargeWeapon = true;
+	Template.InfiniteAmmo = true;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
@@ -1760,7 +2025,11 @@ static function X2DataTemplate CreateTemplate_Cannon_Beam(name TemplateName, int
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	
+	Template.Abilities.AddItem('SuppressiveFire_LW');
+	Template.Abilities.AddItem('Suppression');
+	Template.Abilities.AddItem('HighVolumeFire_LW');
+	//Template.Abilities.AddItem('PlasmaReload');
+
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_Cannon_BM.WP_Cannon_BM";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Cannon';
@@ -1788,7 +2057,7 @@ static function X2DataTemplate CreateTemplate_SMG_Conventional(name TemplateName
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SMG_CV');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.EquipSound = "Conventional_Weapon_Equip";
 
 	Template.ItemCat = 'weapon';
@@ -1796,20 +2065,20 @@ static function X2DataTemplate CreateTemplate_SMG_Conventional(name TemplateName
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_SMG.conventional.LWConvSMG_Base";
 	Template.WeaponPanelImage = "_ConventionalRifle";                       // used by the UI. Probably determines iconview of the weapon.
-	Template.Tier = 0;
+	Template.Tier = Tier;
 
 	Template.Abilities.AddItem('SMG_CV_StatBonus');
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_SMGAbilities'.default.SMG_CONVENTIONAL_MOBILITY_BONUS);
 
-	Template.RangeAccuracy = default.MIDSHORT_CONVENTIONAL_RANGE;
-	Template.BaseDamage = default.SMG_CONVENTIONAL_BASEDAMAGE;
-	Template.Aim = default.SMG_CONVENTIONAL_AIM;
-	Template.CritChance = default.SMG_CONVENTIONAL_CRITCHANCE;
-	Template.iClipSize = default.SMG_CONVENTIONAL_ICLIPSIZE;
-	Template.iSoundRange = default.SMG_CONVENTIONAL_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.SMG_CONVENTIONAL_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.MEDIUM_CONVENTIONAL_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,1.0f);
+	Template.Aim = class'X2Item_SMGWeapon'.default.SMG_CONVENTIONAL_AIM;
+	Template.CritChance = class'X2Item_SMGWeapon'.default.SMG_CONVENTIONAL_CRITCHANCE;
+	Template.iClipSize = class'X2Item_SMGWeapon'.default.SMG_CONVENTIONAL_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_SMGWeapon'.default.SMG_CONVENTIONAL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_SMGWeapon'.default.SMG_CONVENTIONAL_IENVIRONMENTDAMAGE;
 
-	Template.NumUpgradeSlots = default.SMG_CONVENTIONAL_UPGRADESLOTS;
+	Template.NumUpgradeSlots = class'X2Item_SMGWeapon'.default.SMG_CONVENTIONAL_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
@@ -1817,6 +2086,8 @@ static function X2DataTemplate CreateTemplate_SMG_Conventional(name TemplateName
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('RapidFire');
+	Template.Abilities.AddItem('Implacable');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWSMG_CV.WP_SMG_CV";
@@ -1850,28 +2121,28 @@ static function X2DataTemplate CreateTemplate_SMG_Laser(name TemplateName, int T
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SMG_LS');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 
 	Template.WeaponCat = 'smg';
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///" $ default.SMG_Laser_ImagePath; 
+	Template.strImage = "img:///" $ class'X2Item_LaserWeapons'.default.SMG_Laser_ImagePath; 
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
-	Template.Tier = 4;
+	Template.Tier = Tier;
 
 	Template.Abilities.AddItem('SMG_LS_StatBonus');
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LaserSMGAbilities'.default.SMG_LASER_MOBILITY_BONUS);
 
-	Template.RangeAccuracy = default.MIDSHORT_LASER_RANGE;
-	Template.BaseDamage = default.SMG_LASER_BASEDAMAGE;
-	Template.Aim = default.SMG_LASER_AIM;
-	Template.CritChance = default.SMG_LASER_CRITCHANCE;
-	Template.iClipSize = default.SMG_LASER_ICLIPSIZE;
-	Template.iSoundRange = default.SMG_LASER_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.SMG_LASER_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_LaserWeapons'.default.MIDSHORT_LASER_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,1.0f);
+		Template.Aim = class'X2Item_LaserWeapons'.default.SMG_LASER_AIM;
+	Template.CritChance = class'X2Item_LaserWeapons'.default.SMG_LASER_CRITCHANCE;
+	Template.iClipSize = class'X2Item_LaserWeapons'.default.SMG_LASER_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_LaserWeapons'.default.SMG_LASER_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_LaserWeapons'.default.SMG_LASER_IENVIRONMENTDAMAGE;
 
-	Template.NumUpgradeSlots = default.SMG_LASER_UPGRADESLOTS; 
+	Template.NumUpgradeSlots = class'X2Item_LaserWeapons'.default.SMG_LASER_UPGRADESLOTS; 
 	
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
@@ -1879,6 +2150,7 @@ static function X2DataTemplate CreateTemplate_SMG_Laser(name TemplateName, int T
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('HipFire_LW');
 	
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWSMG_LS.Archetype.WP_SMG_LS";
@@ -1907,7 +2179,7 @@ static function X2DataTemplate CreateTemplate_SMG_Magnetic(name TemplateName, in
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SMG_MG');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 
 	Template.WeaponCat = 'smg';
 	Template.WeaponTech = GetWeaponTech(Tier);
@@ -1915,20 +2187,20 @@ static function X2DataTemplate CreateTemplate_SMG_Magnetic(name TemplateName, in
 	Template.strImage = "img:///UILibrary_SMG.magnetic.LWMagSMG_Base";
 	Template.WeaponPanelImage = "_MagneticRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Magnetic_Weapon_Equip";
-	Template.Tier = 2;
+	Template.Tier = Tier;
 
 	Template.Abilities.AddItem('SMG_MG_StatBonus');
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_SMGAbilities'.default.SMG_MAGNETIC_MOBILITY_BONUS);
 
-	Template.RangeAccuracy = default.MIDSHORT_MAGNETIC_RANGE;
-	Template.BaseDamage = default.SMG_MAGNETIC_BASEDAMAGE;
-	Template.Aim = default.SMG_MAGNETIC_AIM;
-	Template.CritChance = default.SMG_MAGNETIC_CRITCHANCE;
-	Template.iClipSize = default.SMG_MAGNETIC_ICLIPSIZE;
-	Template.iSoundRange = default.SMG_MAGNETIC_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.SMG_MAGNETIC_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_SMGWeapon'.default.MIDSHORT_MAGNETIC_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,1.25f);
+	Template.Aim = class'X2Item_SMGWeapon'.default.SMG_MAGNETIC_AIM;
+	Template.CritChance = class'X2Item_SMGWeapon'.default.SMG_MAGNETIC_CRITCHANCE;
+	Template.iClipSize = class'X2Item_SMGWeapon'.default.SMG_MAGNETIC_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_SMGWeapon'.default.SMG_MAGNETIC_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_SMGWeapon'.default.SMG_MAGNETIC_IENVIRONMENTDAMAGE;
 
-	Template.NumUpgradeSlots = default.SMG_MAGNETIC_UPGRADESLOTS;
+	Template.NumUpgradeSlots = class'X2Item_SMGWeapon'.default.SMG_MAGNETIC_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
@@ -1936,6 +2208,8 @@ static function X2DataTemplate CreateTemplate_SMG_Magnetic(name TemplateName, in
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('RapidFire');
+	Template.Abilities.AddItem('Untouchable');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWSMG_MG.WP_SMG_MG";
@@ -1969,12 +2243,12 @@ static function X2DataTemplate CreateSMG_Coil_Template(name TemplateName, int Ti
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SMG_CG');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 
 	Template.WeaponCat = 'smg';
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.ItemCat = 'weapon';
-	Template.strImage ="img:///" $ default.SMG_Coil_ImagePath;
+	Template.strImage ="img:///" $ class'X2Item_Coilguns'.default.SMG_Coil_ImagePath;
 	Template.WeaponPanelImage = "";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = Tier;
@@ -1982,7 +2256,7 @@ static function X2DataTemplate CreateSMG_Coil_Template(name TemplateName, int Ti
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_SMGAbilities'.default.SMG_COIL_MOBILITY_BONUS);
 
 	Template.RangeAccuracy = class'X2Item_Coilguns'.default.MIDSHORT_COIL_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,1.0f);
 	Template.Aim = class'X2Item_Coilguns'.default.SMG_COIL_AIM;
 	Template.CritChance = class'X2Item_Coilguns'.default.SMG_COIL_CRITCHANCE;
 	Template.iClipSize = class'X2Item_Coilguns'.default.SMG_COIL_ICLIPSIZE;
@@ -2004,6 +2278,9 @@ static function X2DataTemplate CreateSMG_Coil_Template(name TemplateName, int Ti
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('RapidFire');
+	Template.Abilities.AddItem('RunAndGun');
+
 	// Template.Abilities.AddItem('CoilgunBonusShredAbility');
 
 	Template.iPhysicsImpulse = 5;
@@ -2022,7 +2299,7 @@ static function X2DataTemplate CreateTemplate_SMG_Beam(name TemplateName, int Ti
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SMG_BM');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 
 	Template.WeaponCat = 'smg';
 	Template.WeaponTech = GetWeaponTech(Tier);
@@ -2030,27 +2307,29 @@ static function X2DataTemplate CreateTemplate_SMG_Beam(name TemplateName, int Ti
 	Template.strImage = "img:///UILibrary_SMG.Beam.LWBeamSMG_Base";
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
-	Template.Tier = 4;
+	Template.Tier = Tier;
 
 	Template.Abilities.AddItem('SMG_BM_StatBonus');
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_SMGAbilities'.default.SMG_BEAM_MOBILITY_BONUS);
 
-	Template.RangeAccuracy = default.MIDSHORT_BEAM_RANGE;
-	Template.BaseDamage = default.SMG_BEAM_BASEDAMAGE;
-	Template.Aim = default.SMG_BEAM_AIM;
-	Template.CritChance = default.SMG_BEAM_CRITCHANCE;
-	Template.iClipSize = default.SMG_BEAM_ICLIPSIZE;
-	Template.iSoundRange = default.SMG_BEAM_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.SMG_BEAM_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_SMGWeapon'.default.MIDSHORT_BEAM_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,1.0f);
+	Template.Aim = class'X2Item_SMGWeapon'.default.SMG_BEAM_AIM;
+	Template.CritChance = class'X2Item_SMGWeapon'.default.SMG_BEAM_CRITCHANCE;
+	Template.iClipSize = class'X2Item_SMGWeapon'.default.SMG_BEAM_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_SMGWeapon'.default.SMG_BEAM_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_SMGWeapon'.default.SMG_BEAM_IENVIRONMENTDAMAGE;
 
-	Template.NumUpgradeSlots = default.SMG_BEAM_UPGRADESLOTS;
+	Template.NumUpgradeSlots = class'X2Item_SMGWeapon'.default.SMG_BEAM_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
-	Template.Abilities.AddItem('Reload');
+	//Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('HipFire_LW');
+	Template.Abilities.AddItem('PlasmaReload');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWSMG_BM.WP_SMG_BM";
@@ -2079,7 +2358,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Conventional(name Template
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Shotgun_CV');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_ConventionalShotgun";
 
 	Template.ItemCat = 'weapon';
@@ -2087,15 +2366,15 @@ static function X2DataTemplate CreateTemplate_Shotgun_Conventional(name Template
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_Common.ConvShotgun.ConvShotgun_Base";
 	Template.EquipSound = "Conventional_Weapon_Equip";
-	Template.Tier = 0;
+	Template.Tier = Tier;
 
-	Template.RangeAccuracy = default.SHORT_CONVENTIONAL_RANGE;
-	Template.BaseDamage = default.SHOTGUN_CONVENTIONAL_BASEDAMAGE;
-	Template.Aim = default.SHOTGUN_CONVENTIONAL_AIM;
-	Template.CritChance = default.SHOTGUN_CONVENTIONAL_CRITCHANCE;
-	Template.iClipSize = default.SHOTGUN_CONVENTIONAL_ICLIPSIZE;
-	Template.iSoundRange = default.SHOTGUN_CONVENTIONAL_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.SHOTGUN_CONVENTIONAL_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.SHORT_CONVENTIONAL_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
+	Template.Aim = class'X2Item_DefaultWeapons'.default.SHOTGUN_CONVENTIONAL_AIM;
+	Template.CritChance = class'X2Item_DefaultWeapons'.default.SHOTGUN_CONVENTIONAL_CRITCHANCE;
+	Template.iClipSize = class'X2Item_DefaultWeapons'.default.SHOTGUN_CONVENTIONAL_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.SHOTGUN_CONVENTIONAL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.SHOTGUN_CONVENTIONAL_IENVIRONMENTDAMAGE;
 
 	Template.NumUpgradeSlots = 1;
 	
@@ -2105,6 +2384,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Conventional(name Template
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('CloseCombatSpecialist');
 	
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_Shotgun_CV.WP_Shotgun_CV";
@@ -2134,25 +2414,25 @@ static function X2DataTemplate CreateTemplate_Shotgun_Laser(name TemplateName, i
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Shotgun_LS');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 
 	Template.WeaponCat = 'shotgun';
 	Template.WeaponTech = GetWeaponTech(Tier); 
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///" $ default.Shotgun_Laser_ImagePath;
+	Template.strImage = "img:///" $ class'X2Item_LaserWeapons'.default.Shotgun_Laser_ImagePath;
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
-	Template.Tier = 4;
+	Template.Tier = Tier;
 
-	Template.RangeAccuracy = default.SHORT_LASER_RANGE;
-	Template.BaseDamage = default.SHOTGUN_LASER_BASEDAMAGE;
-	Template.Aim = default.SHOTGUN_LASER_AIM;
-	Template.CritChance = default.SHOTGUN_LASER_CRITCHANCE;
-	Template.iClipSize = default.SHOTGUN_LASER_ICLIPSIZE;
-	Template.iSoundRange = default.SHOTGUN_LASER_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.SHOTGUN_LASER_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_LaserWeapons'.default.SHORT_LASER_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
+	Template.Aim = class'X2Item_LaserWeapons'.default.SHOTGUN_LASER_AIM;
+	Template.CritChance = class'X2Item_LaserWeapons'.default.SHOTGUN_LASER_CRITCHANCE;
+	Template.iClipSize = class'X2Item_LaserWeapons'.default.SHOTGUN_LASER_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_LaserWeapons'.default.SHOTGUN_LASER_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_LaserWeapons'.default.SHOTGUN_LASER_IENVIRONMENTDAMAGE;
 
-	Template.NumUpgradeSlots = default.SHOTGUN_LASER_UPGRADESLOTS; 
+	Template.NumUpgradeSlots = class'X2Item_LaserWeapons'.default.SHOTGUN_LASER_UPGRADESLOTS; 
 	
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
@@ -2160,7 +2440,10 @@ static function X2DataTemplate CreateTemplate_Shotgun_Laser(name TemplateName, i
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	
+
+	Template.Abilities.AddItem('CloseCombatSpecialist');
+	Template.Abilities.AddItem('CoolUnderPressure');
+
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWShotgun_LS.Archetype.WP_Shotgun_LS";
 
@@ -2188,7 +2471,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Magnetic(name TemplateName
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Shotgun_MG');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_MagneticShotgun";
 
 	Template.ItemCat = 'weapon';
@@ -2196,23 +2479,25 @@ static function X2DataTemplate CreateTemplate_Shotgun_Magnetic(name TemplateName
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_Common.UI_MagShotgun.MagShotgun_Base";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
-	Template.Tier = 3;
+	Template.Tier = Tier;
 
-	Template.RangeAccuracy = default.SHORT_MAGNETIC_RANGE;
-	Template.BaseDamage = default.SHOTGUN_MAGNETIC_BASEDAMAGE;
-	Template.Aim = default.SHOTGUN_MAGNETIC_AIM;
-	Template.CritChance = default.SHOTGUN_MAGNETIC_CRITCHANCE;
-	Template.iClipSize = default.SHOTGUN_MAGNETIC_ICLIPSIZE;
-	Template.iSoundRange = default.SHOTGUN_MAGNETIC_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.SHOTGUN_MAGNETIC_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.default.SHORT_MAGNETIC_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.75f);
+	Template.Aim = class'X2Item_DefaultWeapons'.default.default.SHOTGUN_MAGNETIC_AIM;
+	Template.CritChance = class'X2Item_DefaultWeapons'.default.default.SHOTGUN_MAGNETIC_CRITCHANCE;
+	Template.iClipSize =class'X2Item_DefaultWeapons'.default. default.SHOTGUN_MAGNETIC_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.default.SHOTGUN_MAGNETIC_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.default.SHOTGUN_MAGNETIC_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = 2;
 	
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');
+	//Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('ShardShot');
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('CloseEncounters');
 	
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_Shotgun_MG.WP_Shotgun_MG";
@@ -2244,18 +2529,18 @@ static function X2DataTemplate CreateShotgun_Coil_Template(name TemplateName, in
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Shotgun_CG');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 
 	Template.WeaponCat = 'shotgun';
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.ItemCat = 'weapon';
-	Template.strImage ="img:///" $ default.Shotgun_Coil_ImagePath;
+	Template.strImage ="img:///" $ class'X2Item_CoilGuns'.default.Shotgun_Coil_ImagePath;
 	Template.WeaponPanelImage = "";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_Coilguns'.default.SHORT_COIL_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
 	Template.Aim = class'X2Item_Coilguns'.default.SHOTGUN_COIL_AIM;
 	Template.CritChance = class'X2Item_Coilguns'.default.SHOTGUN_COIL_CRITCHANCE;
 	Template.iClipSize = class'X2Item_Coilguns'.default.SHOTGUN_COIL_ICLIPSIZE;
@@ -2276,6 +2561,9 @@ static function X2DataTemplate CreateShotgun_Coil_Template(name TemplateName, in
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('CloseEncounters');
+	Template.Abilities.AddItem('SlugShot');
+
 	// Template.Abilities.AddItem('CoilgunBonusShredAbility');
 
 	Template.iPhysicsImpulse = 5;
@@ -2293,7 +2581,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Beam(name TemplateName, in
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Shotgun_BM');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_BeamShotgun";
 
 	Template.ItemCat = 'weapon';
@@ -2301,15 +2589,15 @@ static function X2DataTemplate CreateTemplate_Shotgun_Beam(name TemplateName, in
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_Common.UI_BeamShotgun.BeamShotgun_Base";
 	Template.EquipSound = "Beam_Weapon_Equip";
-	Template.Tier = 5;
+	Template.Tier = Tier;
 
-	Template.RangeAccuracy = default.SHORT_BEAM_RANGE;
-	Template.BaseDamage = default.SHOTGUN_BEAM_BASEDAMAGE;
-	Template.Aim = default.SHOTGUN_BEAM_AIM;
-	Template.CritChance = default.SHOTGUN_BEAM_CRITCHANCE;
-	Template.iClipSize = default.SHOTGUN_BEAM_ICLIPSIZE;
-	Template.iSoundRange = default.SHOTGUN_BEAM_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.SHOTGUN_BEAM_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.SHORT_BEAM_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
+	Template.Aim = class'X2Item_DefaultWeapons'.default.SHOTGUN_BEAM_AIM;
+	Template.CritChance = class'X2Item_DefaultWeapons'.default.SHOTGUN_BEAM_CRITCHANCE;
+	Template.iClipSize = class'X2Item_DefaultWeapons'.default.SHOTGUN_BEAM_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.SHOTGUN_BEAM_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.SHOTGUN_BEAM_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = 2;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -2318,7 +2606,9 @@ static function X2DataTemplate CreateTemplate_Shotgun_Beam(name TemplateName, in
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	
+
+	Template.Abilities.AddItem('CloseCombatSpecialist');
+
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_Shotgun_BM.WP_Shotgun_BM";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Shotgun';
@@ -2350,7 +2640,7 @@ static function X2DataTemplate CreateTLE1Shotgun(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'TLE_Shotgun_CV');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_ConventionalShotgun";
 
 	Template.ItemCat = 'weapon';
@@ -2358,11 +2648,10 @@ static function X2DataTemplate CreateTLE1Shotgun(name TemplateName, int Tier)
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_TLE_Common.TLE_Shotgun_Base";
 	Template.EquipSound = "Conventional_Weapon_Equip";
-	Template.Tier = 0;
-	Template.OnAcquiredFn = OnTLE1ShotgunAcquired;
+	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.SHORT_CONVENTIONAL_RANGE;
-	Template.BaseDamage = class'X2Item_DefaultWeapons'.default.SHOTGUN_CONVENTIONAL_BASEDAMAGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
 	Template.Aim = class'X2Item_DefaultWeapons'.default.SHOTGUN_CONVENTIONAL_AIM;
 	Template.CritChance = class'X2Item_DefaultWeapons'.default.SHOTGUN_CONVENTIONAL_CRITCHANCE;
 	Template.iClipSize = class'X2Item_DefaultWeapons'.default.SHOTGUN_CONVENTIONAL_ICLIPSIZE;
@@ -2375,6 +2664,8 @@ static function X2DataTemplate CreateTLE1Shotgun(name TemplateName, int Tier)
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+
+	Template.Abilities.AddItem('CloseCombatSpecialist');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "TLE1Shotgun.WP_TLE1Shotgun";
@@ -2397,7 +2688,7 @@ static function X2DataTemplate CreateTLE2Shotgun(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'TLE_Shotgun_MG');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_MagneticShotgun";
 
 	Template.ItemCat = 'weapon';
@@ -2405,11 +2696,10 @@ static function X2DataTemplate CreateTLE2Shotgun(name TemplateName, int Tier)
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_TLE_Common.TLE_Shotgun_Laser_Base";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
-	Template.Tier = 3;
-	Template.OnAcquiredFn = OnTLE2ShotgunAcquired;
+	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.SHORT_MAGNETIC_RANGE;
-	Template.BaseDamage = class'X2Item_DefaultWeapons'.default.SHOTGUN_MAGNETIC_BASEDAMAGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
 	Template.Aim = class'X2Item_DefaultWeapons'.default.SHOTGUN_MAGNETIC_AIM;
 	Template.CritChance = class'X2Item_DefaultWeapons'.default.SHOTGUN_MAGNETIC_CRITCHANCE;
 	Template.iClipSize = class'X2Item_DefaultWeapons'.default.SHOTGUN_MAGNETIC_ICLIPSIZE;
@@ -2422,6 +2712,8 @@ static function X2DataTemplate CreateTLE2Shotgun(name TemplateName, int Tier)
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('RapidDeployment');
+	Template.Abilities.AddItem('CheapShot');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "TLE2Shotgun.WP_TLE2Shotgun";
@@ -2446,7 +2738,7 @@ static function X2DataTemplate CreateTLE3Shotgun(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'TLE_Shotgun_BM');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_BeamShotgun";
 
 	Template.ItemCat = 'weapon';
@@ -2454,11 +2746,10 @@ static function X2DataTemplate CreateTLE3Shotgun(name TemplateName, int Tier)
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_TLE_Common.TLE_Shotgun_Plasma_Base";
 	Template.EquipSound = "Beam_Weapon_Equip";
-	Template.Tier = 5;
-	Template.OnAcquiredFn = OnTLE3ShotgunAcquired;
+	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.SHORT_BEAM_RANGE;
-	Template.BaseDamage = class'X2Item_DefaultWeapons'.default.SHOTGUN_BEAM_BASEDAMAGE;
+	Template.BaseDamage = GetWeaponDamage(Tier);
 	Template.Aim = class'X2Item_DefaultWeapons'.default.SHOTGUN_BEAM_AIM;
 	Template.CritChance = class'X2Item_DefaultWeapons'.default.SHOTGUN_BEAM_CRITCHANCE;
 	Template.iClipSize = class'X2Item_DefaultWeapons'.default.SHOTGUN_BEAM_ICLIPSIZE;
@@ -2469,8 +2760,11 @@ static function X2DataTemplate CreateTLE3Shotgun(name TemplateName, int Tier)
 	Template.Abilities.AddItem('StandardShot');
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
-	Template.Abilities.AddItem('Reload');
+	//Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+
+	Template.Abilities.AddItem('Brawler2');
+	Template.Abilities.AddItem('TrenchGun');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "TLE3Shotgun.WP_TLE3Shotgun";
@@ -2495,7 +2789,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Conventional(name Temp
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SniperRifle_CV');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_ConventionalSniperRifle";
 
 	Template.ItemCat = 'weapon';
@@ -2503,15 +2797,15 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Conventional(name Temp
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_Common.ConvSniper.ConvSniper_Base";
 	Template.EquipSound = "Conventional_Weapon_Equip";
-	Template.Tier = 0;
+	Template.Tier = Tier;
 
-	Template.RangeAccuracy = default.LONG_CONVENTIONAL_RANGE;
-	Template.BaseDamage = default.SNIPERRIFLE_CONVENTIONAL_BASEDAMAGE;
-	Template.Aim = default.SNIPERRIFLE_CONVENTIONAL_AIM;
-	Template.CritChance = default.SNIPERRIFLE_CONVENTIONAL_CRITCHANCE;
-	Template.iClipSize = default.SNIPERRIFLE_CONVENTIONAL_ICLIPSIZE;
-	Template.iSoundRange = default.SNIPERRIFLE_CONVENTIONAL_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.SNIPERRIFLE_CONVENTIONAL_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.LONG_CONVENTIONAL_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
+	Template.Aim = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_CONVENTIONAL_AIM;
+	Template.CritChance = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_CONVENTIONAL_CRITCHANCE;
+	Template.iClipSize = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_CONVENTIONAL_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_CONVENTIONAL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_CONVENTIONAL_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = 1;
 	Template.iTypicalActionCost = 2;
 
@@ -2523,6 +2817,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Conventional(name Temp
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('Disabler');
 	
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_SniperRifle_CV.WP_SniperRifle_CV";
@@ -2551,25 +2846,25 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Laser(name TemplateNam
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SniperRifle_LS');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 
 	Template.WeaponCat = 'sniper_rifle';
 	Template.WeaponTech = GetWeaponTech(Tier); 
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///" $ default.SniperRifle_Laser_ImagePath;
+	Template.strImage = "img:///" $ class'X2Item_LaserWeapons'.default.SniperRifle_Laser_ImagePath;
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
-	Template.Tier = 4;
+	Template.Tier = Tier;
 
-	Template.RangeAccuracy = default.LONG_LASER_RANGE;
-	Template.BaseDamage = default.SNIPERRIFLE_LASER_BASEDAMAGE;
-	Template.Aim = default.SNIPERRIFLE_LASER_AIM;
-	Template.CritChance = default.SNIPERRIFLE_LASER_CRITCHANCE;
-	Template.iClipSize = default.SNIPERRIFLE_LASER_ICLIPSIZE;
-	Template.iSoundRange = default.SNIPERRIFLE_LASER_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.SNIPERRIFLE_LASER_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_LaserWeapons'.default.LONG_LASER_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
+	Template.Aim = class'X2Item_LaserWeapons'.default.SNIPERRIFLE_LASER_AIM;
+	Template.CritChance = class'X2Item_LaserWeapons'.default.SNIPERRIFLE_LASER_CRITCHANCE;
+	Template.iClipSize = class'X2Item_LaserWeapons'.default.SNIPERRIFLE_LASER_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_LaserWeapons'.default.SNIPERRIFLE_LASER_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_LaserWeapons'.default.SNIPERRIFLE_LASER_IENVIRONMENTDAMAGE;
 
-	Template.NumUpgradeSlots = default.SNIPERRIFLE_LASER_UPGRADESLOTS; 
+	Template.NumUpgradeSlots = class'X2Item_LaserWeapons'.default.SNIPERRIFLE_LASER_UPGRADESLOTS; 
 	Template.iTypicalActionCost = 2;
 	
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -2578,6 +2873,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Laser(name TemplateNam
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('PrecisionShot');
 	
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWSniperRifle_LS.Archetype.WP_SniperRifle_LS";
@@ -2605,7 +2901,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Magnetic(name Template
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SniperRifle_MG');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_MagneticSniperRifle";
 
 	Template.ItemCat = 'weapon';
@@ -2613,15 +2909,15 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Magnetic(name Template
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_Common.UI_MagSniper.MagSniper_Base";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
-	Template.Tier = 3;
+	Template.Tier = Tier;
 
-	Template.RangeAccuracy = default.LONG_MAGNETIC_RANGE;
-	Template.BaseDamage = default.SNIPERRIFLE_MAGNETIC_BASEDAMAGE;
-	Template.Aim = default.SNIPERRIFLE_MAGNETIC_AIM;
-	Template.CritChance = default.SNIPERRIFLE_MAGNETIC_CRITCHANCE;
-	Template.iClipSize = default.SNIPERRIFLE_MAGNETIC_ICLIPSIZE;
-	Template.iSoundRange = default.SNIPERRIFLE_MAGNETIC_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.SNIPERRIFLE_MAGNETIC_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.LONG_MAGNETIC_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.75f);
+	Template.Aim = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_MAGNETIC_AIM;
+	Template.CritChance = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_MAGNETIC_CRITCHANCE;
+	Template.iClipSize = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_MAGNETIC_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_MAGNETIC_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_MAGNETIC_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = 2;
 	Template.iTypicalActionCost = 2;
 
@@ -2633,7 +2929,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Magnetic(name Template
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	
+	Template.Abilities.AddItem('Deadeye');
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_SniperRifle_MG.WP_SniperRifle_MG";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Sniper';
@@ -2662,24 +2958,24 @@ static function X2DataTemplate CreateSniperRifle_Coil_Template(name TemplateName
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SniperRifle_CG');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 
 	Template.WeaponCat = 'sniper_rifle';
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.ItemCat = 'weapon';
-	Template.strImage ="img:///" $ default.SniperRifle_Coil_ImagePath;
+	Template.strImage ="img:///" $ class'X2Item_CoilGuns'.default.SniperRifle_Coil_ImagePath;
 	Template.WeaponPanelImage = "";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
-	Template.Tier = 4;
+	Template.Tier = Tier;
 	Template.iTypicalActionCost = 2;
 
-	Template.RangeAccuracy = default.LONG_COIL_RANGE;
-	Template.BaseDamage = default.SNIPERRIFLE_COIL_BASEDAMAGE;
-	Template.Aim = default.SNIPERRIFLE_COIL_AIM;
-	Template.CritChance = default.SNIPERRIFLE_COIL_CRITCHANCE;
-	Template.iClipSize = default.SNIPERRIFLE_COIL_ICLIPSIZE;
-	Template.iSoundRange = default.SNIPERRIFLE_COIL_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.SNIPERRIFLE_COIL_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_CoilGuns'.default.LONG_COIL_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.75f);
+	Template.Aim = class'X2Item_CoilGuns'.default.SNIPERRIFLE_COIL_AIM;
+	Template.CritChance = class'X2Item_CoilGuns'.default.SNIPERRIFLE_COIL_CRITCHANCE;
+	Template.iClipSize = class'X2Item_CoilGuns'.default.SNIPERRIFLE_COIL_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_CoilGuns'.default.SNIPERRIFLE_COIL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_CoilGuns'.default.SNIPERRIFLE_COIL_IENVIRONMENTDAMAGE;
 
 	Template.NumUpgradeSlots = 3;
 
@@ -2714,7 +3010,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Beam(name TemplateName
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SniperRifle_BM');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_BeamSniperRifle";
 
 	Template.ItemCat = 'weapon';
@@ -2722,17 +3018,18 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Beam(name TemplateName
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_Common.UI_BeamSniper.BeamSniper_Base";
 	Template.EquipSound = "Beam_Weapon_Equip";
-	Template.Tier = 5;
+	Template.Tier = Tier;
 
-	Template.RangeAccuracy = default.LONG_BEAM_RANGE;
-	Template.BaseDamage = default.SNIPERRIFLE_BEAM_BASEDAMAGE;
-	Template.Aim = default.SNIPERRIFLE_BEAM_AIM;
-	Template.CritChance = default.SNIPERRIFLE_BEAM_CRITCHANCE;
-	Template.iClipSize = default.SNIPERRIFLE_BEAM_ICLIPSIZE;
-	Template.iSoundRange = default.SNIPERRIFLE_BEAM_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.SNIPERRIFLE_BEAM_IENVIRONMENTDAMAGE;
+	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.LONG_BEAM_RANGE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
+	Template.Aim = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_BEAM_AIM;
+	Template.CritChance = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_BEAM_CRITCHANCE;
+	Template.iClipSize = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_BEAM_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_BEAM_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_BEAM_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = 2;
 	Template.iTypicalActionCost = 2;
+	Template.InfiniteAmmo = true;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('SniperStandardFire');
@@ -2768,7 +3065,7 @@ static function X2DataTemplate CreateTLE1SniperRifle(name TemplateName, int Tier
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'TLE_SniperRifle_CV');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_ConventionalSniperRifle";
 
 	Template.ItemCat = 'weapon';
@@ -2776,14 +3073,13 @@ static function X2DataTemplate CreateTLE1SniperRifle(name TemplateName, int Tier
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_TLE_Common.TLE_Sniper_Base";
 	Template.EquipSound = "Conventional_Weapon_Equip";
-	Template.Tier = 0;
-	Template.OnAcquiredFn = OnTLE1SniperRifleAcquired;
+	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.LONG_CONVENTIONAL_RANGE;
-	Template.BaseDamage = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_CONVENTIONAL_BASEDAMAGE;
-	Template.Aim = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_CONVENTIONAL_AIM;
-	Template.CritChance = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_CONVENTIONAL_CRITCHANCE;
-	Template.iClipSize = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_CONVENTIONAL_ICLIPSIZE;
+	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.Aim = default.SNIPERRIFLE_TLE_CONVENTIONAL_AIM;
+	Template.CritChance = default.SNIPERRIFLE_TLE_CONVENTIONAL_CRITCHANCE;
+	Template.iClipSize = default.SNIPERRIFLE_TLE_CONVENTIONAL_ICLIPSIZE;
 	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_CONVENTIONAL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_CONVENTIONAL_IENVIRONMENTDAMAGE;
 	Template.iTypicalActionCost = 2;
@@ -2814,7 +3110,7 @@ static function X2DataTemplate CreateTLE1SniperRifle(name TemplateName, int Tier
 static function X2DataTemplate CreateTLE2SniperRifle(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'TLE_SniperRifle_MG');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_MagneticSniperRifle";
 
 	Template.ItemCat = 'weapon';
@@ -2822,14 +3118,13 @@ static function X2DataTemplate CreateTLE2SniperRifle(name TemplateName, int Tier
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_TLE_Common.TLE_Sniper_Laser_Base";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
-	Template.Tier = 3;
-	Template.OnAcquiredFn = OnTLE2SniperRifleAcquired;
+	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.LONG_MAGNETIC_RANGE;
-	Template.BaseDamage = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_MAGNETIC_BASEDAMAGE;
-	Template.Aim = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_MAGNETIC_AIM;
-	Template.CritChance = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_MAGNETIC_CRITCHANCE;
-	Template.iClipSize = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_MAGNETIC_ICLIPSIZE;
+	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.Aim = default.SNIPERRIFLE_TLE_MAGNETIC_AIM;
+	Template.CritChance = default.SNIPERRIFLE_TLE_MAGNETIC_CRITCHANCE;
+	Template.iClipSize = default.SNIPERRIFLE_TLE_MAGNETIC_ICLIPSIZE;
 	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_MAGNETIC_ISOUNDRANGE;
 	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_MAGNETIC_IENVIRONMENTDAMAGE;
 	Template.iTypicalActionCost = 2;
@@ -2863,7 +3158,7 @@ static function X2DataTemplate CreateTLE3SniperRifle(name TemplateName, int Tier
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'TLE_SniperRifle_BM');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_BeamSniperRifle";
 
 	Template.ItemCat = 'weapon';
@@ -2871,14 +3166,13 @@ static function X2DataTemplate CreateTLE3SniperRifle(name TemplateName, int Tier
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_TLE_Common.TLE_Sniper_Plasma_Base";
 	Template.EquipSound = "Beam_Weapon_Equip";
-	Template.Tier = 5;
-	Template.OnAcquiredFn = OnTLE3SniperRifleAcquired;
+	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.LONG_BEAM_RANGE;
-	Template.BaseDamage = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_BEAM_BASEDAMAGE;
-	Template.Aim = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_BEAM_AIM;
-	Template.CritChance = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_BEAM_CRITCHANCE;
-	Template.iClipSize = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_BEAM_ICLIPSIZE;
+	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.Aim = default.SNIPERRIFLE_TLE_BEAM_AIM;
+	Template.CritChance = default.SNIPERRIFLE_TLE_BEAM_CRITCHANCE;
+	Template.iClipSize = default.SNIPERRIFLE_TLE_BEAM_ICLIPSIZE;
 	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_BEAM_ISOUNDRANGE;
 	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_BEAM_IENVIRONMENTDAMAGE;
 	Template.iTypicalActionCost = 2;
@@ -2902,6 +3196,322 @@ static function X2DataTemplate CreateTLE3SniperRifle(name TemplateName, int Tier
 	Template.CanBeBuilt = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';
+
+	return Template;
+}
+
+
+static function X2DataTemplate CreateTemplate_ShardGauntlet(name TemplateName, int Tier)
+{
+	local X2PairedWeaponTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2PairedWeaponTemplate', Template, TemplateName);
+	Template.WeaponPanelImage = "_Sword";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.PairedSlot = eInvSlot_TertiaryWeapon;
+	Template.PairedTemplateName = 'ShardGauntletLeft_CV';
+
+	Template.ItemCat = 'weapon';
+	Template.WeaponCat = 'gauntlet';
+	Template.WeaponTech = 'conventional';
+	Template.strImage = "img:///UILibrary_XPACK_StrategyImages.Inv_ConvTGauntlet";
+	Template.EquipSound = "Sword_Equip_Conventional";
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	//Template.StowedLocation = eSlot_RightBack;
+	// This all the resources; sounds, animations, models, physics, the works.
+	Template.GameArchetype = "WP_TemplarGauntlet.WP_TemplarGauntlet";
+	Template.AltGameArchetype = "WP_TemplarGauntlet.WP_TemplarGauntlet_F";
+	Template.GenderForAltArchetype = eGender_Female;
+	Template.Tier = Tier;
+	Template.bUseArmorAppearance = true;
+
+	Template.iRadius = 1;
+	Template.NumUpgradeSlots = 0;
+	Template.InfiniteAmmo = true;
+	Template.iPhysicsImpulse = 5;
+
+	Template.iRange = 0;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
+	Template.ExtraDamage = GetGauntletsExtraWeaponDamage(Tier);
+	Template.Aim = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_CONVENTIONAL_AIM;
+	Template.CritChance = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_CONVENTIONAL_CRITCHANCE;
+	Template.iSoundRange = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_CONVENTIONAL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_CONVENTIONAL_IENVIRONMENTDAMAGE;
+	Template.BaseDamage.DamageType = 'Psi';
+
+	Template.Abilities.AddItem('Rend');
+	Template.Abilities.AddItem('IRI_TemplarShield');
+	Template.Abilities.AddItem('VoidConduit');
+	Template.Abilities.AddItem('DeepFocus');
+
+	Template.StartingItem = false;
+	Template.CanBeBuilt = false;
+	Template.bInfiniteItem = true;
+
+	Template.DamageTypeTemplateName = 'Psi';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_CasterGauntlet(name TemplateName, int Tier)
+{
+	local X2PairedWeaponTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2PairedWeaponTemplate', Template, TemplateName);
+	Template.WeaponPanelImage = "_Sword";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.PairedSlot = eInvSlot_TertiaryWeapon;
+	Template.PairedTemplateName = 'ShardGauntletLeft_MG';
+
+	Template.ItemCat = 'weapon';
+	Template.WeaponCat = 'gauntlet';
+	Template.WeaponTech = 'magnetic';
+	Template.strImage = "img:///UILibrary_XPACK_StrategyImages.Inv_MagTGauntlet";
+	Template.EquipSound = "Sword_Equip_Magnetic";
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	//Template.StowedLocation = eSlot_RightBack;
+	// This all the resources; sounds, animations, models, physics, the works.
+	Template.GameArchetype = "WP_TemplarGauntlet.WP_TemplarGauntlet_MG";
+	Template.AltGameArchetype = "WP_TemplarGauntlet.WP_TemplarGauntlet_F_MG";
+	Template.GenderForAltArchetype = eGender_Female;
+	Template.Tier = Tier;
+	Template.bUseArmorAppearance = true;
+
+	Template.iRadius = 1;
+	Template.NumUpgradeSlots = 0;
+	Template.InfiniteAmmo = true;
+	Template.iPhysicsImpulse = 5;
+
+	Template.iRange = 0;
+	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.ExtraDamage = GetGauntletsExtraWeaponDamage(Tier);
+	Template.Aim = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_MAGNETIC_AIM;
+	Template.CritChance = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_MAGNETIC_CRITCHANCE;
+	Template.iSoundRange = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_MAGNETIC_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_MAGNETIC_IENVIRONMENTDAMAGE;
+	Template.BaseDamage.DamageType = 'Psi';
+
+	Template.Abilities.AddItem('IRI_SoulShot');
+	Template.Abilities.AddItem('IonicStorm');
+	Template.Abilities.AddItem('Volt');
+	Template.Abilities.AddItem('DeepFocus');
+	Template.Abilities.AddItem('SupremeFocus');
+
+	Template.CreatorTemplateName = 'ShardGauntlet_MG_Schematic'; // The schematic which creates this item
+	Template.BaseItem = 'ShardGauntlet_CV'; // Which item this will be upgraded from
+
+	Template.CanBeBuilt = false;
+	Template.bInfiniteItem = true;
+
+	Template.DamageTypeTemplateName = 'Psi';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_BladeMasterGauntlet(name TemplateName, int Tier)
+{
+	local X2PairedWeaponTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2PairedWeaponTemplate', Template, TemplateName);
+	Template.WeaponPanelImage = "_Sword";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.PairedSlot = eInvSlot_TertiaryWeapon;
+	Template.PairedTemplateName = 'ShardGauntletLeft_BM';
+
+	Template.ItemCat = 'weapon';
+	Template.WeaponCat = 'gauntlet';
+	Template.WeaponTech = 'beam';
+	Template.strImage = "img:///UILibrary_XPACK_StrategyImages.Inv_BeamTGauntlet";
+	Template.EquipSound = "Sword_Equip_Beam";
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	//Template.StowedLocation = eSlot_RightBack;
+	// This all the resources; sounds, animations, models, physics, the works.
+	Template.GameArchetype = "WP_TemplarGauntlet.WP_TemplarGauntlet_BM";
+	Template.AltGameArchetype = "WP_TemplarGauntlet.WP_TemplarGauntlet_F_BM";
+	Template.GenderForAltArchetype = eGender_Female;
+	Template.Tier = Tier;
+	Template.bUseArmorAppearance = true;
+
+	Template.iRadius = 1;
+	Template.NumUpgradeSlots = 0;
+	Template.InfiniteAmmo = true;
+	Template.iPhysicsImpulse = 5;
+
+	Template.iRange = 0;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.5f);
+	Template.ExtraDamage = GetGauntletsExtraWeaponDamage(Tier);
+	Template.Aim = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_BEAM_AIM;
+	Template.CritChance = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_BEAM_CRITCHANCE;
+	Template.iSoundRange = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_BEAM_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_BEAM_IENVIRONMENTDAMAGE;
+	Template.BaseDamage.DamageType = 'Psi';
+
+	Template.Abilities.AddItem('Rend');
+	Template.Abilities.AddItem('TemplarBladestorm');
+	Template.Abilities.AddItem('Amplify');
+
+	Template.CreatorTemplateName = 'ShardGauntlet_BM_Schematic'; // The schematic which creates this item
+	Template.BaseItem = 'ShardGauntlet_MG'; // Which item this will be upgraded from
+
+	Template.CanBeBuilt = false;
+	Template.bInfiniteItem = true;
+
+	Template.DamageTypeTemplateName = 'Psi';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_TacticianGauntlet(name TemplateName, int Tier)
+{
+	local X2PairedWeaponTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2PairedWeaponTemplate', Template, TemplateName);
+	Template.WeaponPanelImage = "_Sword";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.PairedSlot = eInvSlot_TertiaryWeapon;
+	Template.PairedTemplateName = 'ShardGauntletLeft_MG';
+
+	Template.ItemCat = 'weapon';
+	Template.WeaponCat = 'gauntlet';
+	Template.WeaponTech = 'magnetic';
+	Template.strImage = "img:///UILibrary_XPACK_StrategyImages.Inv_MagTGauntlet";
+	Template.EquipSound = "Sword_Equip_Magnetic";
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	//Template.StowedLocation = eSlot_RightBack;
+	// This all the resources; sounds, animations, models, physics, the works.
+	Template.GameArchetype = "WP_TemplarGauntlet.WP_TemplarGauntlet_MG";
+	Template.AltGameArchetype = "WP_TemplarGauntlet.WP_TemplarGauntlet_F_MG";
+	Template.GenderForAltArchetype = eGender_Female;
+	Template.Tier = Tier;
+	Template.bUseArmorAppearance = true;
+
+	Template.iRadius = 1;
+	Template.NumUpgradeSlots = 0;
+	Template.InfiniteAmmo = true;
+	Template.iPhysicsImpulse = 5;
+
+	Template.iRange = 0;
+	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.ExtraDamage = GetGauntletsExtraWeaponDamage(Tier);
+	Template.Aim = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_MAGNETIC_AIM;
+	Template.CritChance = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_MAGNETIC_CRITCHANCE;
+	Template.iSoundRange = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_MAGNETIC_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_MAGNETIC_IENVIRONMENTDAMAGE;
+	Template.BaseDamage.DamageType = 'Psi';
+
+	Template.Abilities.AddItem('IRI_SoulShot');
+	Template.Abilities.AddItem('Invert');
+	Template.Abilities.AddItem('StunStrike');
+	Template.Abilities.AddItem('DeepFocus');
+	Template.Abilities.AddItem('SupremeFocus');
+
+	Template.CreatorTemplateName = 'ShardGauntlet_MG_Schematic'; // The schematic which creates this item
+	Template.BaseItem = 'ShardGauntlet_CV'; // Which item this will be upgraded from
+
+	Template.CanBeBuilt = false;
+	Template.bInfiniteItem = true;
+
+	Template.DamageTypeTemplateName = 'Psi';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_PowerGauntlet(name TemplateName, int Tier)
+{
+	local X2PairedWeaponTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2PairedWeaponTemplate', Template, TemplateName);
+	Template.WeaponPanelImage = "_Sword";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.PairedSlot = eInvSlot_TertiaryWeapon;
+	Template.PairedTemplateName = 'ShardGauntletLeft_BM';
+
+	Template.ItemCat = 'weapon';
+	Template.WeaponCat = 'gauntlet';
+	Template.WeaponTech = 'beam';
+	Template.strImage = "img:///UILibrary_XPACK_StrategyImages.Inv_BeamTGauntlet";
+	Template.EquipSound = "Sword_Equip_Beam";
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	//Template.StowedLocation = eSlot_RightBack;
+	// This all the resources; sounds, animations, models, physics, the works.
+	Template.GameArchetype = "WP_TemplarGauntlet.WP_TemplarGauntlet_BM";
+	Template.AltGameArchetype = "WP_TemplarGauntlet.WP_TemplarGauntlet_F_BM";
+	Template.GenderForAltArchetype = eGender_Female;
+	Template.Tier = Tier;
+	Template.bUseArmorAppearance = true;
+
+	Template.iRadius = 1;
+	Template.NumUpgradeSlots = 0;
+	Template.InfiniteAmmo = true;
+	Template.iPhysicsImpulse = 5;
+
+	Template.iRange = 0;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.5f);
+	Template.ExtraDamage = GetGauntletsExtraWeaponDamage(Tier);
+	Template.Aim = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_BEAM_AIM;
+	Template.CritChance = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_BEAM_CRITCHANCE;
+	Template.iSoundRange = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_BEAM_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_BEAM_IENVIRONMENTDAMAGE;
+	Template.BaseDamage.DamageType = 'Psi';
+
+	Template.Abilities.AddItem('Rend');
+	Template.Abilities.AddItem('ArcWave');
+	Template.Abilities.AddItem('Apotheosis');
+	Template.Abilities.AddItem('DeepFocus');
+
+	Template.CreatorTemplateName = 'ShardGauntlet_BM_Schematic'; // The schematic which creates this item
+	Template.BaseItem = 'ShardGauntlet_MG'; // Which item this will be upgraded from
+
+	Template.CanBeBuilt = false;
+	Template.bInfiniteItem = true;
+
+	Template.DamageTypeTemplateName = 'Psi';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_ReplicatorGauntlet(name TemplateName, int Tier)
+{
+	local X2PairedWeaponTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2PairedWeaponTemplate', Template, TemplateName);
+	Template.WeaponPanelImage = "_Sword";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.PairedSlot = eInvSlot_TertiaryWeapon;
+	Template.PairedTemplateName = 'ShardGauntletLeft_CV';
+
+	Template.ItemCat = 'weapon';
+	Template.WeaponCat = 'gauntlet';
+	Template.WeaponTech = 'conventional';
+	Template.strImage = "img:///UILibrary_XPACK_StrategyImages.Inv_ConvTGauntlet";
+	Template.EquipSound = "Sword_Equip_Conventional";
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	//Template.StowedLocation = eSlot_RightBack;
+	// This all the resources; sounds, animations, models, physics, the works.
+	Template.GameArchetype = "WP_TemplarGauntlet.WP_TemplarGauntlet";
+	Template.AltGameArchetype = "WP_TemplarGauntlet.WP_TemplarGauntlet_F";
+	Template.GenderForAltArchetype = eGender_Female;
+	Template.Tier = Tier;
+	Template.bUseArmorAppearance = true;
+
+	Template.iRadius = 1;
+	Template.NumUpgradeSlots = 0;
+	Template.InfiniteAmmo = true;
+	Template.iPhysicsImpulse = 5;
+
+	Template.iRange = 0;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
+	Template.ExtraDamage = GetGauntletsExtraWeaponDamage(Tier);
+	Template.Aim = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_CONVENTIONAL_AIM;
+	Template.CritChance = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_CONVENTIONAL_CRITCHANCE;
+	Template.iSoundRange = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_CONVENTIONAL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_XpackWeapons'.default.SHARDGAUNTLET_CONVENTIONAL_IENVIRONMENTDAMAGE;
+	Template.BaseDamage.DamageType = 'Psi';
+
+	Template.Abilities.AddItem('Rend');
+	Template.Abilities.AddItem('Ghost');
+	Template.Abilities.AddItem('Volt');
+	Template.Abilities.AddItem('DeepFocus');
+
+	Template.StartingItem = false;
+	Template.CanBeBuilt = false;
+	Template.bInfiniteItem = true;
+
+	Template.DamageTypeTemplateName = 'Psi';
 
 	return Template;
 }

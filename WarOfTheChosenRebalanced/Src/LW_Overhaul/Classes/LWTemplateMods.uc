@@ -2286,7 +2286,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 			//Template.ImmuneTypes.AddItem(class'X2Item_DefaultDamageTypes'.default.ParthenogenicPoisonType);
 			Template.ImmuneTypes.AddItem('Fire');
 			Template.Abilities.AddItem('Mindshield');
-			Template.Abilities.AddItem('AbsorptionFields');
+			Template.Abilities.AddItem('HunkerDownNoAnim');
 			Template.bWeakAgainstTechLikeRobot = false;
 
 			break;
@@ -2321,7 +2321,6 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		case 'Berserker':
 		case 'Berserker_Leader':
 			Template.DefaultLoadout='Berserker_Loadout';
-			Template.Abilities.AddItem('AbsorptionFields');
 			Template.Abilities.AddItem('BerserkerBladestorm');
 		break;
 		case 'AdvPurifier_Leader':

@@ -476,7 +476,8 @@ static function X2AbilityTemplate AddHunkerDownAbilityNoAnim(name TemplateName =
 	local X2AbilityTrigger_PlayerInput      InputTrigger;
 	local array<name>                       SkipExclusions;
 	local X2Effect_RemoveEffects			RemoveEffects;
-	
+	local X2Effect_CosmeticPanic CosmeticPanicEffect;
+
 	`CREATE_X2ABILITY_TEMPLATE(Template, TemplateName);
 	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_takecover";
 	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.HUNKER_DOWN_PRIORITY;
@@ -518,14 +519,21 @@ static function X2AbilityTemplate AddHunkerDownAbilityNoAnim(name TemplateName =
 	PersistentStatChangeEffect.DuplicateResponse = eDupe_Refresh;
 	Template.AddTargetEffect(PersistentStatChangeEffect);
 
+	CosmeticPanicEffect = new class'X2Effect_CosmeticPanic';
+	CosmeticPanicEffect.BuildPersistentEffect(1 /* Turns */,,,,eGameRule_PlayerTurnBegin);
+	CosmeticPanicEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, false);
+	CosmeticPanicEffect.bRemoveWhenSourceDies=true;
+	Template.AddTargetEffect(CosmeticPanicEffect);
+
+
 	Template.AddTargetEffect(class'X2Ability_SharpshooterAbilitySet'.static.SharpshooterAimEffect());
 
 	RemoveEffects = new class'X2Effect_RemoveEffects';
 	RemoveEffects.EffectNamesToRemove.AddItem(class'X2StatusEffects'.default.BurningName);
 	Template.AddTargetEffect(RemoveEffects);
 
-	Template.CustomFireAnim = 'HL_Idle';
-	Template.CustomSelfFireAnim = 'HL_Idle';
+	//Template.CustomFireAnim = 'HL_Idle';
+	//Template.CustomSelfFireAnim = 'HL_Idle';
 
 	Template.ChosenActivationIncreasePerUse = class'X2AbilityTemplateManager'.default.NonAggressiveChosenActivationIncreasePerUse;
 

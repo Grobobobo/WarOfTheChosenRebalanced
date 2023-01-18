@@ -540,7 +540,7 @@ static function X2AbilityTemplate AddDisarmingStrike()
 
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
 	ActionPointCost.iNumPoints = 1;
-	ActionPointCost.bConsumeAllPoints = true;
+	ActionPointCost.bConsumeAllPoints = false;
 	Template.AbilityCosts.AddItem(ActionPointCost);
 	
 	StandardMelee = new class'X2AbilityToHitCalc_StandardMelee';

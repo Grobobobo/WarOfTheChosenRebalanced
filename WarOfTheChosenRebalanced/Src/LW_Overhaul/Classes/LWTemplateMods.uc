@@ -3469,16 +3469,13 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		{
 			case 'Pistol_MG':
 				X2WeaponTemplate(EquipmentTemplate).CreatorTemplateName = 'Sidearms_MG_Schematic';
-				X2WeaponTemplate(EquipmentTemplate).InventorySlot = eInvSlot_Pistol;
 				X2WeaponTemplate(EquipmentTemplate).Abilities.RemoveItem('PistolOverwatch');
 			//	X2WeaponTemplate(EquipmentTemplate).Abilities.AddItem('TakeThis');
 				
 				break;
 			case 'Pistol_BM':
 				X2WeaponTemplate(EquipmentTemplate).CreatorTemplateName = 'Sidearms_BM_Schematic';
-				X2WeaponTemplate(EquipmentTemplate).InventorySlot = eInvSlot_Pistol;
 				X2WeaponTemplate(EquipmentTemplate).Abilities.RemoveItem('PistolOverwatch');
-				//X2WeaponTemplate(EquipmentTemplate).Abilities.AddItem('TakeThis');
 
 				break;
 			case 'Pistol_CV':
@@ -3490,7 +3487,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			case 'AlienHunterPistol_CV':
 			case 'AlienHunterPistol_MG':
 			case 'AlienHunterPistol_BM':
-				X2WeaponTemplate(EquipmentTemplate).InventorySlot = eInvSlot_Pistol;
+				//X2WeaponTemplate(EquipmentTemplate).InventorySlot = eInvSlot_Pistol;
 			case 'LWPistol_LS':
 			case 'LWPistol_CG':
 				X2WeaponTemplate(EquipmentTemplate).Abilities.RemoveItem('PistolOverwatch');

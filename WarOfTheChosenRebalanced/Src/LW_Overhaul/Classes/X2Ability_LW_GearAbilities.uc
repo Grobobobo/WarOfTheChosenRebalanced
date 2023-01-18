@@ -38,6 +38,14 @@ var config int KEVLAR_PLATING_HP;
 var config int PREDATOR_PLATING_HP;
 var config int WARDEN_PLATING_HP;
 
+var config int CARPACE_MEDIUM_PLATING_HP;
+var config int CARPACE_MEDIUM_HP;
+var config int CARPACE_MEDIUM_ARMOR;
+
+var config int TITAN_MEDIUM_PLATING_HP;
+var config int TITAN_MEDIUM_HP;
+var config int TITAN_MEDIUM_ARMOR;
+
 var config int NANOFIBER_CRITDEF_BONUS;
 var config int NANOFIBER_ABLATIVE_BONUS;
 

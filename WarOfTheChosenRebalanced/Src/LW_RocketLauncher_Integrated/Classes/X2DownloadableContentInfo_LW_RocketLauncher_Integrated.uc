@@ -434,10 +434,10 @@ static event OnPostTemplatesCreated()
 	{
 		CharTemplate = X2CharacterTemplate(DataTemplate);
 
-		if (!CharTemplate.bIsRobotic && class'X2Rocket_Napalm'.default.CREATE_ROCKET)
-		{	
-			CharTemplate.Abilities.AddItem('IRI_Napalm_FireTrail');
-		}
+		// if (!CharTemplate.bIsRobotic && class'X2Rocket_Napalm'.default.CREATE_ROCKET)
+		// {	
+		// 	CharTemplate.Abilities.AddItem('IRI_Napalm_FireTrail');
+		// }
 	
 		//	Allows Nukes to disintegrate corpses in epicenter radius
 		CharTemplate.AdditionalAnimSets.AddItem(AnimSet(`CONTENT.RequestGameArchetype("IRI_RocketNuke.Anims.AS_SpecialDeath")));

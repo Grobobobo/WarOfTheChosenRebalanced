@@ -510,17 +510,17 @@ static function X2AbilityTemplate AddPassSidearm()
 
 	TargetWeaponCondition = new class 'X2Condition_UnitInventory';
 	TargetWeaponCondition.ExcludeWeaponCategory = 'pistol';
-	TargetWeaponCondition.RelevantSlot = eInvSlot_Pistol;
+	TargetWeaponCondition.RelevantSlot = eInvSlot_SecondaryWeapon;
 	Template.AbilityTargetConditions.AddItem (TargetWeaponCondition);
 	
 	TargetWeaponCondition = new class 'X2Condition_UnitInventory';
 	TargetWeaponCondition.ExcludeWeaponCategory = 'sidearm';
-	TargetWeaponCondition.RelevantSlot = eInvSlot_Pistol;
+	TargetWeaponCondition.RelevantSlot = eInvSlot_SecondaryWeapon;
 	Template.AbilityTargetConditions.AddItem (TargetWeaponCondition);
 
 	TargetWeaponCondition = new class 'X2Condition_UnitInventory';
 	TargetWeaponCondition.ExcludeWeaponCategory = 'sawedoffshotgun';
-	TargetWeaponCondition.RelevantSlot = eInvSlot_Pistol;
+	TargetWeaponCondition.RelevantSlot = eInvSlot_SecondaryWeapon;
 	Template.AbilityTargetConditions.AddItem (TargetWeaponCondition);
 
 	TemporaryItemEffect = new class'X2Effect_TakeThis';

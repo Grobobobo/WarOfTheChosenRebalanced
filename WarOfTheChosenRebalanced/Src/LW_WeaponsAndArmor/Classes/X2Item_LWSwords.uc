@@ -36,12 +36,12 @@ static function X2DataTemplate CreateTemplate_Sword_Laser()
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'sword';
 	Template.WeaponTech = 'laser_lw';
-	Template.strImage = "img:///UILibrary_Common.BeamSecondaryWeapons.BeamSword";
+	Template.strImage = "img:///IRI_Sword_LS.UI.Inv_Laser_Sword";
 	Template.EquipSound = "Sword_Equip_Beam";
 	Template.InventorySlot = eInvSlot_SecondaryWeapon;
 	Template.StowedLocation = eSlot_RightBack;
 	// This all the resources; sounds, animations, models, physics, the works.
-	Template.GameArchetype = "WP_Sword_BM.WP_Sword_BM";
+	Template.GameArchetype = "IRI_Sword_LS.Archetypes.WP_Sword_LS";
 	Template.Tier = 4;
 
 

@@ -1,5 +1,5 @@
 // This is an Unreal Script
-class X2Item_ResOpWeapons extends X2Item config(GameData_WeaponData);
+class X2Item_ResOpPrimaryWeapons extends X2Item_DefaultWeapons config(GameData_WeaponData);
 
 var config int ASSAULTRIFLE_TLE_CONVENTIONAL_AIM;
 var config int ASSAULTRIFLE_TLE_CONVENTIONAL_CRITCHANCE;
@@ -1270,7 +1270,7 @@ static function X2DataTemplate CreateVektor_Laser(name TemplateName, int Tier)
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 
 	Template.WeaponCat = 'vektor_rifle';
-	Template.WeaponTech = GetWeaponTech(); 
+	Template.WeaponTech = GetWeaponTech(Tier); 
 	Template.ItemCat = 'weapon';
 	Template.strImage = "img:///" $ class'X2Item_FactionWeapons'.default.Vektor_Laser_ImagePath; 
 	Template.WeaponPanelImage = "_BeamSniperRifle";                       // used by the UI. Probably determines iconview of the weapon.

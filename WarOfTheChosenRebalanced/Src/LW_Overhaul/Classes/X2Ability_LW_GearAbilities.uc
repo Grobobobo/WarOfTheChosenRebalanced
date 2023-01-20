@@ -151,6 +151,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(HisVengeance());
 	Templates.AddItem(HisWill());
 
+	Templates.AddItem(MediumCarapaceArmorStats());
+	Templates.AddItem(MediumTitanArmorStats());
+
 	
 	return Templates;
 }
@@ -1931,3 +1934,81 @@ static function Detonation_BuildVisualization(XComGameState VisualizeGameState)
 // 	DelayAction = X2Action_Delay(class'X2Action_Delay'.static.AddToVisualizationTree(ActionMetadata, AbilityContext));
 // 	DelayAction.Duration = 0.5;
 // }
+
+
+static function X2AbilityTemplate MediumCarapaceArmorStats()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2AbilityTrigger					Trigger;
+	local X2AbilityTarget_Self				TargetStyle;
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'MediumCarapaceArmorStats');
+	// Template.IconImage  -- no icon needed for armor stats
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.bDisplayInUITacticalText = false;
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	
+	TargetStyle = new class'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Template.AbilityTriggers.AddItem(Trigger);
+	
+	// giving health here; medium plated doesn't have mitigation
+	//
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, default.CARPACE_MEDIUM_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.CARPACE_MEDIUM_PLATING_HP);
+	//PersistentStatChangeEffect.AddPersistentStatChange(eStat_ArmorMitigation, default.CARPACE_MEDIUM_ARMOR);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;	
+}
+
+
+static function X2AbilityTemplate MediumTitanArmorStats()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2AbilityTrigger					Trigger;
+	local X2AbilityTarget_Self				TargetStyle;
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'MediumTitanArmorStats');
+	// Template.IconImage  -- no icon needed for armor stats
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.bDisplayInUITacticalText = false;
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	
+	TargetStyle = new class'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Template.AbilityTriggers.AddItem(Trigger);
+	
+	// giving health here; medium plated doesn't have mitigation
+	//
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, default.TITAN_MEDIUM_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.TITAN_MEDIUM_PLATING_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ArmorMitigation, default.TITAN_MEDIUM_ARMOR);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;	
+}

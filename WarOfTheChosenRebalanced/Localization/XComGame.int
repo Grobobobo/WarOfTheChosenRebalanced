@@ -9708,3 +9708,15 @@ LocFriendlyName="Commander's Vengeance"
 LocLongDescription="The Commander's explosive power lives on, even in death."
 LocHelpText="The Commander's explosive power lives on, even in death."
 LocFlyOverText="Commander's Vengeance"
+
+[PlasmaReload X2AbilityTemplate]
+LocFriendlyName="Energy Circuits"
+LocLongDescription="This weapon reloads 1 ammo at the start of the turn, but cannot conventionally reload."
+LocHelpText="This weapon reloads 1 ammo at the start of the turn, but cannot conventionally reload."
+LocFlyOverText="Energy Circuits"
+
+[PlasmaReloadPassive X2AbilityTemplate]
+LocFriendlyName="Energy Circuits"
+LocLongDescription="This weapon reloads 1 ammo at the start of the turn, but cannot conventionally reload."
+LocHelpText="This weapon reloads 1 ammo at the start of the turn, but cannot conventionally reload."
+LocFlyOverText="Energy Circuits"

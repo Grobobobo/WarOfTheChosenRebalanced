@@ -194,6 +194,7 @@ var config int SPIDER_GRAPPLE_COOLDOWN;
 var config int WRAITH_GRAPPLE_COOLDOWN;
 var config int RAPIDFIRE_COOLDOWN;
 var config int MEDIUM_PLATED_MITIGATION_AMOUNT;
+var config int MEDIUM_TITAN_MITIGATION_AMOUNT;
 var config int SHIELDWALL_MITIGATION_AMOUNT;
 var config int SHIELDWALL_DEFENSE_AMOUNT;
 var config int HAIL_OF_BULLETS_AMMO_COST;
@@ -3338,7 +3339,28 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 					ArmorTemplate.Abilities.AddItem('Warden_Plating_Ability');
 					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.WARDEN_PLATING_HP);
 					break;
-				
+
+				case 'RangerPlatedArmor':
+					ArmorTemplate.Tier = 2;
+					ArmorTemplate.Abilities.RemoveItem('MediumPlatedArmorStats');
+					ArmorTemplate.Abilities.AddItem('MediumCarapaceArmorStats');
+
+					//ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
+					// ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.MEDIUM_PLATED_MITIGATION_AMOUNT);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_LW_GearAbilities'.default.CARPACE_MEDIUM_HP);
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.CARPACE_MEDIUM_PLATING_HP);
+					break;
+
+					case 'RangerPoweredArmor':
+					ArmorTemplate.Tier = 4;
+					ArmorTemplate.Abilities.RemoveItem('MediumTitanArmorStats');
+					//ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
+					// ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.MEDIUM_PLATED_MITIGATION_AMOUNT);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_LW_GearAbilities'.default.TITAN_MEDIUM_HP);
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.TITAN_MEDIUM_PLATING_HP);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.MEDIUM_TITAN_MITIGATION_AMOUNT);
+					break;
+
 				case 'PlatedReaperArmor':
 				case 'PlatedSkirmisherArmor':
 				case 'PlatedTemplarArmor':

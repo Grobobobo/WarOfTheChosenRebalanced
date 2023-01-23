@@ -90,6 +90,7 @@ struct TechUpgrade
 	var EUpgradeCategory Category;
 	var array<name> RequiredMods;         // This is an OR. At least one mod in the list must be enabled for this upgrade to exist
 	var array<name> IgnoreIfModsEnabled;  // This is an OR. If any mod in this list is enabled, then this upgrade will not exist
+	var name RequiredClass;
 };
 
 struct ClassWeight

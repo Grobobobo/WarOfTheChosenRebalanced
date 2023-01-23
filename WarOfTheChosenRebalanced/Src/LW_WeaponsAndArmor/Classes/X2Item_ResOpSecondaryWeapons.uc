@@ -24,7 +24,7 @@ var config int SWORD_TLE_BEAM_AIM;
 var config int SWORD_TLE_BEAM_CRITCHANCE;
 var config int SWORD_TLE_BEAM_ICLIPSIZE;
 
-static function array<X2DataTemplate> CreateTemplates(name TemplateName, int Tier)
+static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Weapons;
 
@@ -183,9 +183,9 @@ static function array<X2DataTemplate> CreateTemplates(name TemplateName, int Tie
 	Weapons.AddItem(CreateTemplate_PsiAmp_Meteoric('Psiamp_Meteoric_4',4));
 	Weapons.AddItem(CreateTemplate_PsiAmp_Meteoric('Psiamp_Meteoric_5',5));
 
-	Weapons.AddItem(CreateTemplate_PsiAmp_Madman('Psiamp_Meteoric_3',3));
-	Weapons.AddItem(CreateTemplate_PsiAmp_Madman('Psiamp_Meteoric_4',4));
-	Weapons.AddItem(CreateTemplate_PsiAmp_Madman('Psiamp_Meteoric_5',5));
+	Weapons.AddItem(CreateTemplate_PsiAmp_Madman('Psiamp_Madman_3',3));
+	Weapons.AddItem(CreateTemplate_PsiAmp_Madman('Psiamp_Madman_4',4));
+	Weapons.AddItem(CreateTemplate_PsiAmp_Madman('Psiamp_Madman_5',5));
 
 	Weapons.AddItem(CreateTemplate_PsiAmp_Puppeteer('Psiamp_Puppeteer_5',5));
 
@@ -201,6 +201,7 @@ static function array<X2DataTemplate> CreateTemplates(name TemplateName, int Tie
 	//Weapons.AddItem(Create_IRI_RocketLauncher_Shredder('IRI_RocketLauncher_Shredder_5',5));
 	Weapons.AddItem(Create_IRI_RocketLauncher_Ejector('IRI_RocketLauncher_Ejector_3',3));
 	Weapons.AddItem(Create_IRI_RocketLauncher_Ejector('IRI_RocketLauncher_Ejector_4',4));
+	Weapons.AddItem(Create_IRI_RocketLauncher_Ejector('IRI_RocketLauncher_Ejector_5',5));
 
 
 	Weapons.AddItem(CreateTemplate_Wristblade_Laser('Wristblade_LS_2',2));

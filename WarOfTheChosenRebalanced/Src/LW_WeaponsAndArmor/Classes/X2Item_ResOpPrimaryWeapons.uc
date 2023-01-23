@@ -62,7 +62,7 @@ struct GauntletExtraDamage{
 };
 var config array<GauntletExtraDamage> SHARDGAUNTLET_EXTRADAMAGE_TAGS;
 
-static function array<X2DataTemplate> CreateTemplates(name TemplateName, int Tier)
+static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Weapons;
 
@@ -260,6 +260,43 @@ static function array<X2DataTemplate> CreateTemplates(name TemplateName, int Tie
 	Weapons.AddItem(CreateTLE3SniperRifle('TLE_SniperRifle_BM_2',3));
 	Weapons.AddItem(CreateTLE3SniperRifle('TLE_SniperRifle_BM_3',4));
 	Weapons.AddItem(CreateTLE3SniperRifle('TLE_SniperRifle_BM_4',5));
+
+
+	Weapons.AddItem(CreateTemplate_Shotgun_Conventional('Shotgun_CV_1',1));
+	Weapons.AddItem(CreateTemplate_Shotgun_Conventional('Shotgun_CV_2',2));
+	Weapons.AddItem(CreateTemplate_Shotgun_Conventional('Shotgun_CV_3',3));
+
+	Weapons.AddItem(CreateTemplate_Shotgun_Laser('Shotgun_LS_2',2));
+	Weapons.AddItem(CreateTemplate_Shotgun_Laser('Shotgun_LS_3',3));
+	Weapons.AddItem(CreateTemplate_Shotgun_Laser('Shotgun_LS_4',4));
+	Weapons.AddItem(CreateTemplate_Shotgun_Laser('Shotgun_LS_5',5));
+
+	Weapons.AddItem(CreateTemplate_Shotgun_Magnetic('Shotgun_MG_2',2));
+	Weapons.AddItem(CreateTemplate_Shotgun_Magnetic('Shotgun_MG_3',3));
+	Weapons.AddItem(CreateTemplate_Shotgun_Magnetic('Shotgun_MG_4',4));
+	Weapons.AddItem(CreateTemplate_Shotgun_Magnetic('Shotgun_MG_5',5));
+
+	Weapons.AddItem(CreateShotgun_Coil_Template('Shotgun_CG_3',3));
+	Weapons.AddItem(CreateShotgun_Coil_Template('Shotgun_CG_4',4));
+	Weapons.AddItem(CreateShotgun_Coil_Template('Shotgun_CG_5',5));
+
+	Weapons.AddItem(CreateTemplate_Shotgun_Beam('Shotgun_BM_3',3));
+	Weapons.AddItem(CreateTemplate_Shotgun_Beam('Shotgun_BM_4',4));
+	Weapons.AddItem(CreateTemplate_Shotgun_Beam('Shotgun_BM_5',5));
+
+	Weapons.AddItem(CreateTLE1Shotgun('TLE_Shotgun_CV_1',1));
+	Weapons.AddItem(CreateTLE1Shotgun('TLE_Shotgun_CV_2',2));
+	Weapons.AddItem(CreateTLE1Shotgun('TLE_Shotgun_CV_3',3));
+
+	Weapons.AddItem(CreateTLE2Shotgun('TLE_Shotgun_MG_2',2));
+	Weapons.AddItem(CreateTLE2Shotgun('TLE_Shotgun_MG_3',3));
+	Weapons.AddItem(CreateTLE2Shotgun('TLE_Shotgun_MG_4',4));
+	Weapons.AddItem(CreateTLE2Shotgun('TLE_Shotgun_MG_5',5));
+
+	Weapons.AddItem(CreateTLE3Shotgun('TLE_Shotgun_BM_2',3));
+	Weapons.AddItem(CreateTLE3Shotgun('TLE_Shotgun_BM_3',4));
+	Weapons.AddItem(CreateTLE3Shotgun('TLE_Shotgun_BM_4',5));
+
 
 	Weapons.AddItem(CreateTemplate_ShardGauntlet('ShardGauntlet_CV_1',1));
 	Weapons.AddItem(CreateTemplate_ShardGauntlet('ShardGauntlet_CV_2',2));
@@ -472,7 +509,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Conventional(name Tem
 
 	Template.StartingItem = true;
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 	
 	Template.fKnockbackDamageAmount = 5.0f;
 	Template.fKnockbackDamageRadius = 0.0f;
@@ -534,7 +571,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Laser(name TemplateNa
 	Template.iPhysicsImpulse = 5;
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  
 
@@ -594,7 +631,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Magnetic(name Templat
 	Template.BaseItem = 'AssaultRifle_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
@@ -700,7 +737,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Beam(name TemplateNam
 	Template.iPhysicsImpulse = 5;
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.CreatorTemplateName = 'AssaultRifle_BM_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'AssaultRifle_MG'; // Which item this will be upgraded from
@@ -859,7 +896,7 @@ static function X2DataTemplate CreateTemplate_Immolator_T0(name TemplateName, in
 	Template.Abilities.AddItem('MZSmokeCanister');
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 	Template.StartingItem = true;
 
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Cannon';
@@ -918,7 +955,7 @@ static function X2DataTemplate CreateTemplate_Immolator_CV(name TemplateName, in
 	Template.Abilities.AddItem('MZBlastCanister');
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 	Template.StartingItem = true;
 
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Cannon';
@@ -979,7 +1016,7 @@ static function X2DataTemplate CreateTemplate_Immolator_MG(name TemplateName, in
 	Template.Abilities.AddItem('MZBluescreenCanister');
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Cannon';
 
@@ -1039,7 +1076,7 @@ static function X2DataTemplate CreateTemplate_Immolator_BM(name TemplateName, in
 	Template.Abilities.AddItem('MZPoisonCanister');
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Cannon';
 
@@ -1254,7 +1291,7 @@ static function X2DataTemplate CreateTemplate_VektorRifle_Conventional(name Temp
 
 	Template.StartingItem = false;
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 	
 	Template.fKnockbackDamageAmount = 5.0f;
 	Template.fKnockbackDamageRadius = 0.0f;
@@ -1362,7 +1399,7 @@ static function X2DataTemplate CreateTemplate_VektorRifle_Magnetic(name Template
 	Template.BaseItem = 'VektorRifle_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
@@ -1474,7 +1511,7 @@ static function X2DataTemplate CreateTemplate_VektorRifle_Beam(name TemplateName
 	Template.iPhysicsImpulse = 5;
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.CreatorTemplateName = 'VektorRifle_BM_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'VektorRifle_MG'; // Which item this will be upgraded from
@@ -1535,7 +1572,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Conventional(name Template
 
 	Template.StartingItem = false;
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_Conventional';
 
@@ -1647,7 +1684,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Magnetic(name TemplateName
 	Template.BaseItem = 'Bullpup_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
@@ -1686,7 +1723,7 @@ static function X2DataTemplate CreateBullpup_Coil_Template(name TemplateName, in
 	Template.iPhysicsImpulse = 5;
 	Template.StartingItem = true;
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
@@ -1768,7 +1805,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Beam(name TemplateName, in
 	Template.BaseItem = 'Bullpup_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';
 
@@ -1823,7 +1860,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Conventional(name TemplateN
 
 	Template.StartingItem = true;
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_Conventional';
 
@@ -1876,7 +1913,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Laser(name TemplateName, in
 	Template.iPhysicsImpulse = 5;
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.CreatorTemplateName = 'HeavyWeapons_LS_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'Cannon_MG'; // Which item this will be upgraded from
@@ -1934,7 +1971,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Magnetic(name TemplateName,
 	Template.BaseItem = 'Cannon_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
@@ -2046,7 +2083,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Beam(name TemplateName, int
 	Template.BaseItem = 'Cannon_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';
 
@@ -2104,7 +2141,7 @@ static function X2DataTemplate CreateTemplate_SMG_Conventional(name TemplateName
 	Template.iPhysicsImpulse = 5;
 
 	Template.StartingItem = true;
-	Template.bInfiniteItem = true;  // post-AlienHunters, Starting items are no longer assumed to be infinite
+	Template.bInfiniteItem = false;  // post-AlienHunters, Starting items are no longer assumed to be infinite
 	Template.CanBeBuilt = false;
 
 	//Template.UpgradeItem = 'SMG_MG';
@@ -2165,7 +2202,7 @@ static function X2DataTemplate CreateTemplate_SMG_Laser(name TemplateName, int T
 	Template.iPhysicsImpulse = 5;
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.CreatorTemplateName = 'LightWeapons_LS_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'SMG_CV'; // Which item this will be upgraded from
@@ -2232,7 +2269,7 @@ static function X2DataTemplate CreateTemplate_SMG_Magnetic(name TemplateName, in
 	Template.BaseItem = 'SMG_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
@@ -2347,7 +2384,7 @@ static function X2DataTemplate CreateTemplate_SMG_Beam(name TemplateName, int Ti
 	Template.CreatorTemplateName = 'LightWeapons_BM_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'SMG_MG'; // Which item this will be upgraded from
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';
 
@@ -2403,7 +2440,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Conventional(name Template
 
 	Template.StartingItem = true;
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_Conventional';
 
@@ -2456,7 +2493,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Laser(name TemplateName, i
 	Template.iPhysicsImpulse = 5;
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.CreatorTemplateName = 'HeavyWeapons_LS_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'Shotgun_MG'; // Which item this will be upgraded from
@@ -2518,7 +2555,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Magnetic(name TemplateName
 	Template.BaseItem = 'Shotgun_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
@@ -2629,7 +2666,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Beam(name TemplateName, in
 	Template.BaseItem = 'Shotgun_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';
 
@@ -2834,7 +2871,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Conventional(name Temp
 
 	Template.StartingItem = true;
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_Conventional';
 
@@ -2887,7 +2924,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Laser(name TemplateNam
 	Template.iPhysicsImpulse = 5;
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.CreatorTemplateName = 'PrecisionWeapons_LS_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'SniperRifle_MG'; // Which item this will be upgraded from
@@ -2947,7 +2984,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Magnetic(name Template
 	Template.BaseItem = 'SniperRifle_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
@@ -3054,7 +3091,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Beam(name TemplateName
 	Template.BaseItem = 'SniperRifle_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';
 
@@ -3245,7 +3282,7 @@ static function X2DataTemplate CreateTemplate_ShardGauntlet(name TemplateName, i
 
 	Template.StartingItem = false;
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Psi';
 
@@ -3299,7 +3336,7 @@ static function X2DataTemplate CreateTemplate_CasterGauntlet(name TemplateName, 
 	Template.BaseItem = 'ShardGauntlet_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Psi';
 
@@ -3351,7 +3388,7 @@ static function X2DataTemplate CreateTemplate_BladeMasterGauntlet(name TemplateN
 	Template.BaseItem = 'ShardGauntlet_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Psi';
 
@@ -3405,7 +3442,7 @@ static function X2DataTemplate CreateTemplate_TacticianGauntlet(name TemplateNam
 	Template.BaseItem = 'ShardGauntlet_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Psi';
 
@@ -3458,7 +3495,7 @@ static function X2DataTemplate CreateTemplate_PowerGauntlet(name TemplateName, i
 	Template.BaseItem = 'ShardGauntlet_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Psi';
 
@@ -3509,7 +3546,7 @@ static function X2DataTemplate CreateTemplate_ReplicatorGauntlet(name TemplateNa
 
 	Template.StartingItem = false;
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Psi';
 

@@ -3349,6 +3349,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 					// ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.MEDIUM_PLATED_MITIGATION_AMOUNT);
 					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_LW_GearAbilities'.default.CARPACE_MEDIUM_HP);
 					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.CARPACE_MEDIUM_PLATING_HP);
+					ArmorTemplate.bAddsUtilitySlot = true;
 					break;
 
 					case 'RangerPoweredArmor':
@@ -3359,6 +3360,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_LW_GearAbilities'.default.TITAN_MEDIUM_HP);
 					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.TITAN_MEDIUM_PLATING_HP);
 					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.MEDIUM_TITAN_MITIGATION_AMOUNT);
+					ArmorTemplate.bAddsUtilitySlot = true;
 					break;
 
 				case 'PlatedReaperArmor':

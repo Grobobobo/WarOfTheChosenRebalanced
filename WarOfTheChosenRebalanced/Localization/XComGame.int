@@ -1582,7 +1582,7 @@ TacticalText="<Bullet/> Grants 5 ablative armor points.<br/><Bullet/> These hit 
 [StilettoRounds X2AmmoTemplate]
 FriendlyName="Stiletto Rounds"
 FriendlyNamePlural="Stiletto Rounds"
-BriefSummary="Does +1 damage to conventional tier weapons."
+BriefSummary="Does +2 damage to conventional tier weapons."
 TacticalText="<Bullet/> The bonus only applies when using a conventional tier weapon.<br/><Bullet/> Only one ammo enhancement may be equipped at a time."
 
 [FlechetteRounds X2AmmoTemplate]
@@ -1602,8 +1602,8 @@ TacticalText="<Bullet/> Lowers enemy hack defense by <Ability:REDSCREEN_EFFECT_L
 [NeedleRounds X2AmmoTemplate]
 FriendlyName="Needle Rounds"
 FriendlyNamePlural="Needle Rounds"
-BriefSummary="Breaks enemy overwatch, at the cost of -<Ability:SHREDDER_ROUNDS_DMG_PENALTY/>% damage penalty."
-TacticalText="<Bullet/> Breaks enemy overwatch, at the cost of -<Ability:SHREDDER_ROUNDS_DMG_PENALTY/>% damage penalty.<br/><Bullet/> Only one ammo enhancement may be equipped at a time."
+BriefSummary="Shots will break enemy overwatch."
+TacticalText="<Bullet/> Only one ammo enhancement may be equipped at a time."
 
 [FalconRounds X2AmmoTemplate]
 FriendlyName="Shredder Rounds"

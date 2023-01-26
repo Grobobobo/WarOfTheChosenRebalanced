@@ -3618,3 +3618,52 @@ FriendlyNamePlural="Plasma Throwing Knives"
 BriefSummary="A throwing knife with a plasma edge that cuts through armor like butter."
 TacticalText="<Bullet/> Throwing a knife will not break Shadow.<br/><Bullet/> Has a <Ability:THROWING_KNIFE_BM_BLEED_CHANCE/>% chance to cause bleeding, which deals <Ability:THROWING_KNIFE_BM_BLEED_DAMAGE/> damage each turn for <Ability:THROWING_KNIFE_BM_BLEED_DURATION/> turn(s)."
 AbilityDescName="throwing knife"
+
+[Gremlin_MG_2 X2GremlinTemplate]
+FriendlyName="GREMLIN: Protector"
+FriendlyNamePlural="GREMLIN: Protectors"
+BriefSummary="The Mark II GREMLIN is an improved version of the standard GREMLIN Drone. Not only will it greatly increase the hacking stat of our Specialists, but many Specialist abilities improve their effectiveness when the GREMLIN becomes more advanced."
+TacticalText="<Bullet/> The GREMLIN Drone allows Specialists to execute a variety of battlefield tasks from safer distances.\n<Bullet/> The GREMLIN accompanies the Specialist, and can be issued protocols which aid allies, hack electronic targets, or damage enemies.\n<Bullet/> The GREMLIN generally goes unnoticed by enemies, and cannot take damage or be destroyed. It will shut down if its owner is incapacitated or killed."
+AbilityDescName="GREMLIN"
+
+[Gremlin_MG_3 X2GremlinTemplate]
+FriendlyName="Improved GREMLIN: Protector"
+FriendlyNamePlural="GREMLIN: Protectors"
+BriefSummary="The Mark II GREMLIN is an improved version of the standard GREMLIN Drone. Not only will it greatly increase the hacking stat of our Specialists, but many Specialist abilities improve their effectiveness when the GREMLIN becomes more advanced."
+TacticalText="<Bullet/> The GREMLIN Drone allows Specialists to execute a variety of battlefield tasks from safer distances.\n<Bullet/> The GREMLIN accompanies the Specialist, and can be issued protocols which aid allies, hack electronic targets, or damage enemies.\n<Bullet/> The GREMLIN generally goes unnoticed by enemies, and cannot take damage or be destroyed. It will shut down if its owner is incapacitated or killed."
+AbilityDescName="GREMLIN"
+
+[Gremlin_MG_4 X2GremlinTemplate]
+FriendlyName="Superior GREMLIN: Protector"
+FriendlyNamePlural="GREMLIN: Protectors"
+BriefSummary="The Mark II GREMLIN is an improved version of the standard GREMLIN Drone. Not only will it greatly increase the hacking stat of our Specialists, but many Specialist abilities improve their effectiveness when the GREMLIN becomes more advanced."
+TacticalText="<Bullet/> The GREMLIN Drone allows Specialists to execute a variety of battlefield tasks from safer distances.\n<Bullet/> The GREMLIN accompanies the Specialist, and can be issued protocols which aid allies, hack electronic targets, or damage enemies.\n<Bullet/> The GREMLIN generally goes unnoticed by enemies, and cannot take damage or be destroyed. It will shut down if its owner is incapacitated or killed."
+AbilityDescName="GREMLIN"
+
+[Gremlin_MG_5 X2GremlinTemplate]
+FriendlyName="Elite GREMLIN: Protector"
+FriendlyNamePlural="GREMLIN: Protectors"
+BriefSummary="The Mark II GREMLIN is an improved version of the standard GREMLIN Drone. Not only will it greatly increase the hacking stat of our Specialists, but many Specialist abilities improve their effectiveness when the GREMLIN becomes more advanced."
+TacticalText="<Bullet/> The GREMLIN Drone allows Specialists to execute a variety of battlefield tasks from safer distances.\n<Bullet/> The GREMLIN accompanies the Specialist, and can be issued protocols which aid allies, hack electronic targets, or damage enemies.\n<Bullet/> The GREMLIN generally goes unnoticed by enemies, and cannot take damage or be destroyed. It will shut down if its owner is incapacitated or killed."
+AbilityDescName="GREMLIN"
+
+[Gremlin_BM_3 X2GremlinTemplate]
+FriendlyName="Gremlin: Zapper"
+FriendlyNamePlural="Gremlin: Zappers"
+BriefSummary="The Mark III GREMLIN is the most advanced version of the GREMLIN Drone, significantly increasing the hacking stat of all Specialists. The Specialist's abilities are also substantially improved when he or she is accompanied by this support robot."
+TacticalText="<Bullet/> The GREMLIN Drone allows Specialists to execute a variety of battlefield tasks from safer distances.\n<Bullet/> The GREMLIN accompanies the Specialist, and can be issued protocols which aid allies, hack electronic targets, or damage enemies.\n<Bullet/> The GREMLIN generally goes unnoticed by enemies, and cannot take damage or be destroyed. It will shut down if its owner is incapacitated or killed."
+AbilityDescName="GREMLIN"
+
+[Gremlin_BM_4 X2GremlinTemplate]
+FriendlyName="Improved Gremlin: Zapper"
+FriendlyNamePlural="Gremlin: Zappers"
+BriefSummary="The Mark III GREMLIN is the most advanced version of the GREMLIN Drone, significantly increasing the hacking stat of all Specialists. The Specialist's abilities are also substantially improved when he or she is accompanied by this support robot."
+TacticalText="<Bullet/> The GREMLIN Drone allows Specialists to execute a variety of battlefield tasks from safer distances.\n<Bullet/> The GREMLIN accompanies the Specialist, and can be issued protocols which aid allies, hack electronic targets, or damage enemies.\n<Bullet/> The GREMLIN generally goes unnoticed by enemies, and cannot take damage or be destroyed. It will shut down if its owner is incapacitated or killed."
+AbilityDescName="GREMLIN"
+
+[Gremlin_BM_5 X2GremlinTemplate]
+FriendlyName="Superior Gremlin: Zapper"
+FriendlyNamePlural="Gremlin: Zappers"
+BriefSummary="The Mark III GREMLIN is the most advanced version of the GREMLIN Drone, significantly increasing the hacking stat of all Specialists. The Specialist's abilities are also substantially improved when he or she is accompanied by this support robot."
+TacticalText="<Bullet/> The GREMLIN Drone allows Specialists to execute a variety of battlefield tasks from safer distances.\n<Bullet/> The GREMLIN accompanies the Specialist, and can be issued protocols which aid allies, hack electronic targets, or damage enemies.\n<Bullet/> The GREMLIN generally goes unnoticed by enemies, and cannot take damage or be destroyed. It will shut down if its owner is incapacitated or killed."
+AbilityDescName="GREMLIN"

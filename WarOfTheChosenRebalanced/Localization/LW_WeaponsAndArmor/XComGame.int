@@ -9,8 +9,8 @@ LocPromotionPopupText="<Bullet/> Throwing a knife will not break Shadow or attra
 [KnifeJuggler_LW X2AbilityTemplate]
 LocFriendlyName="Knife Juggler"
 LocFlyOverText="Knife Juggler"
-LocLongDescription="Adds +<Ability:KnifeJugglerBonusDamage/> bonus damage your weapons. Each kill with a primary weapon grants a knife charge."
-LocHelpText="Adds +<Ability:KnifeJugglerBonusDamage/> bonus damage your weapons. Each kill with a primary weapon grants a knife charge."
+LocLongDescription="Every kill with a primary weapon grants a knife charge."
+LocHelpText="Every kill with a primary weapon grants a knife charge."
 LocPromotionPopupText="The damage applies to the primary, secondary and sidearm weapons."
 
 [Hailstorm_LW X2AbilityTemplate]

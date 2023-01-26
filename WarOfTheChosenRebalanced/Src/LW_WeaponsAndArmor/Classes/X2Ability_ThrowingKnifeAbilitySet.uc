@@ -411,7 +411,7 @@ static function X2AbilityTemplate AddKnifeJuggler()
 {
 	local X2AbilityTemplate Template;
 	local X2Effect_AddAmmo AddAmmoEffect;
-	local X2Effect_PrimaryHitBonusDamage DamageEffect;
+	//local X2Effect_PrimaryHitBonusDamage DamageEffect;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'KnifeJuggler_LW');
 	Template.IconImage = "img:///MusashiCombatKnifeMod_LW.UIPerk_throwknife";
@@ -428,15 +428,15 @@ static function X2AbilityTemplate AddKnifeJuggler()
 	AddAmmoEffect.ExtraAmmoAmount = default.KNIFE_JUGGLER_EXTRA_AMMO;
 	Template.AddTargetEffect(AddAmmoEffect);
 
-	DamageEffect = new class'X2Effect_PrimaryHitBonusDamage';
-	DamageEffect.BonusDmg = default.KNIFE_JUGGLER_BONUS_DAMAGE;
-	DamageEffect.includepistols = true;
-	DamageEffect.includesos = true;
-	DamageEffect.includeknives = true;
-	DamageEffect.BuildPersistentEffect(1, true, false, false);
-	DamageEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
-	DamageEffect.DuplicateResponse = eDupe_Ignore;
-	Template.AddTargetEffect(DamageEffect);
+	// DamageEffect = new class'X2Effect_PrimaryHitBonusDamage';
+	// DamageEffect.BonusDmg = default.KNIFE_JUGGLER_BONUS_DAMAGE;
+	// DamageEffect.includepistols = true;
+	// DamageEffect.includesos = true;
+	// DamageEffect.includeknives = true;
+	// DamageEffect.BuildPersistentEffect(1, true, false, false);
+	// DamageEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
+	// DamageEffect.DuplicateResponse = eDupe_Ignore;
+	// Template.AddTargetEffect(DamageEffect);
 
 	Template.AdditionalAbilities.AddItem('KnifeJugglerTrigger_LW');
 

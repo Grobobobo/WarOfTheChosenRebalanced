@@ -168,6 +168,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'TemplarBladestormAttack':
 			MakeBladestormNotTriggerOnItsTurn(Template);
 			Template.PostActivationEvents.AddItem('BladestormActivated');
+			Template.PostActivationEvents.AddItem('KnifePerk');
 //			Template.AdditionalAbilities.AddItem('CoolUnderPressure');
 			break;
 
@@ -1828,7 +1829,10 @@ static function UpdateCombatProtocol(X2AbilityTemplate Template)
 {
 	local X2AbilityCooldown_ABCProtocol 	Cooldown;
 	local X2AbilityCost_ActionPoints ActionPointCost;
-
+	local X2Effect_ApplyScaledWeaponDamage RobotDamage;
+	local X2Effect_ApplyWeaponDamage DamageEffect;
+	local X2Condition_UnitProperty	RobotProperty;
+	local X2Condition_UnitProperty	DamageCondition;
 
 	Cooldown = new class'X2AbilityCooldown_ABCProtocol';
 	Template.AbilityCooldown = Cooldown;
@@ -1840,6 +1844,25 @@ static function UpdateCombatProtocol(X2AbilityTemplate Template)
 	ActionPointCost.iNumPoints = 1;
 	ActionPointCost.bConsumeAllPoints = false;
 	Template.AbilityCosts.AddItem(ActionPointCost);
+
+	Template.AbilityTargetEffects.Length = 0;
+	DamageEffect = new class'X2Effect_ApplyWeaponDamage';
+	// DamageEffect.bIgnoreBaseDamage = true;
+	// DamageEffect.DamageTag = 'MZVoltaicArc';
+	DamageEffect.bIgnoreArmor = true;
+	DamageCondition = new class'X2Condition_UnitProperty';
+	DamageCondition.ExcludeRobotic = true;
+	DamageCondition.ExcludeFriendlyToSource = true;
+	DamageCondition.ExcludeHostileToSource = false;
+	DamageEffect.TargetConditions.AddItem(DamageCondition);
+	Template.AddTargetEffect(DamageEffect);
+	
+	RobotDamage = new class'X2Effect_ApplyScaledWeaponDamage';
+	RobotDamage.Scalar=1.5f;
+	RobotProperty = new class'X2Condition_UnitProperty';
+	RobotProperty.ExcludeOrganic = true;
+	RobotDamage.TargetConditions.AddItem(RobotProperty);
+	Template.AddTargetEffect(RobotDamage);
 }
 
 

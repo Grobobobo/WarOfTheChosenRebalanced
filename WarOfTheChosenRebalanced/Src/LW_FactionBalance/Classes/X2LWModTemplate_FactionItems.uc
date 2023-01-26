@@ -67,6 +67,8 @@ static function UpdateWeapons(X2WeaponTemplate WeaponTemplate, int Difficulty)
 		break;
 	case 'Wristblade_CV':
 		WeaponTemplate.ExtraDamage = default.WHIPLASH_CONVENTIONAL_DAMAGE;
+		WeaponTemplate.Abilities.AddItem('Justice');
+		WeaponTemplate.Abilities.AddItem('Reckoning_LW');
 		break;
 	case 'Wristblade_LS':
 		WeaponTemplate.ExtraDamage = default.WHIPLASH_LASER_DAMAGE;

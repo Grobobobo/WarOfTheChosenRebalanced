@@ -3445,7 +3445,7 @@ static function X2AbilityTemplate Serpentine()
 	Effect.AbilityTargetConditions.AddItem(AbilityNameCondition);
 
 	// Create the template using a helper function
-	return Passive('Serpentine', "img:///UILibrary_MZChimeraIcons.Ability_BindRelease", false, Effect);
+	return Passive('Serpentine', "img:///UILibrary_MZChimeraIcons_LW.Ability_BindRelease", false, Effect);
 }
 
 static function X2AbilityTemplate Entwine()

@@ -2098,7 +2098,7 @@ static function X2AbilityTemplate SprayAndPray()
 	DodgeModifier.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
 	Template.AddTargetEffect(DodgeModifier);
 
-	Template.DefaultSourceItemSlot = eInvSlot_Pistol;
+	Template.DefaultSourceItemSlot = eInvSlot_SecondaryWeapon;
 
 	Template.bCrossClassEligible = false;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
@@ -2172,8 +2172,8 @@ static function X2AbilityTemplate CreateAdvancedRobotics()
 	Template.bDisplayInUITooltip = true;
 	Template.bDisplayInUITacticalText = true;
 
-	Template.AdditionalAbilities.AddItem('ThreatAssessment');
-	Template.AdditionalAbilities.AddItem('ChainingJolt_LW');
+	//Template.AdditionalAbilities.AddItem('ThreatAssessment');
+	//Template.AdditionalAbilities.AddItem('ChainingJolt_LW');
 
 	return Template;
 }
@@ -2240,7 +2240,7 @@ static function X2AbilityTemplate ChainingJolt()
 {
 	local X2AbilityTemplate                     Template;
 	local X2AbilityCost_ActionPoints            ActionPointCost;
-	local X2Effect_ApplyWeaponDamage            RobotDamage;
+	local X2Effect_ApplyScaledWeaponDamage            RobotDamage;
 	local X2AbilityCooldown_ABCProtocol         Cooldown;
 	local X2Condition_Visibility                VisCondition;
 	local X2Condition_AbilityProperty			ShockTherapyCondition;
@@ -2251,9 +2251,11 @@ static function X2AbilityTemplate ChainingJolt()
 	local X2Effect_DisableWeapon				DisableEffect;
 	local X2Condition_AbilityProperty			AbilityCondition;
 	local X2Condition_UnitProperty RobotProperty;
+	local X2Effect_ApplyWeaponDamage DamageEffect;
+	local X2Condition_UnitProperty DamageCondition;
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'ChainingJolt_LW');
 
-	Template.IconImage = "img:///UILibrary_MZChimeraIcons.Ability_ChainingJolt";
+	Template.IconImage = "img:///UILibrary_MZChimeraIcons_LW.Ability_ChainingJolt";
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
 	Template.Hostility = eHostility_Offensive;
 	Template.DisplayTargetHitChance = false;
@@ -2285,12 +2287,26 @@ static function X2AbilityTemplate ChainingJolt()
 	VisCondition.bActAsSquadsight = true;
 	Template.AbilityTargetConditions.AddItem(VisCondition);
 
-	Template.AddTargetEffect(new class'X2Effect_ApplyWeaponDamage');
-	Template.AddMultiTargetEffect(new class'X2Effect_ApplyWeaponDamage');
+	// Template.AddTargetEffect(new class'X2Effect_ApplyWeaponDamage');
+	// Template.AddMultiTargetEffect(new class'X2Effect_ApplyWeaponDamage');
 	
-	RobotDamage = new class'X2Effect_ApplyWeaponDamage';
-	RobotDamage.bIgnoreBaseDamage = true;
-	RobotDamage.DamageTag = 'CombatProtocol_Robotic';
+	DamageEffect = new class'X2Effect_ApplyWeaponDamage';
+	// DamageEffect.bIgnoreBaseDamage = true;
+	// DamageEffect.DamageTag = 'MZVoltaicArc';
+	DamageEffect.bIgnoreArmor = true;
+	DamageCondition = new class'X2Condition_UnitProperty';
+	DamageCondition.ExcludeRobotic = true;
+	DamageCondition.ExcludeFriendlyToSource = true;
+	DamageCondition.ExcludeHostileToSource = false;
+	DamageEffect.TargetConditions.AddItem(DamageCondition);
+	Template.AddTargetEffect(DamageEffect);
+	Template.AddMultiTargetEffect(DamageEffect);
+
+
+	RobotDamage = new class'X2Effect_ApplyScaledWeaponDamage';
+	RobotDamage.Scalar=1.5f;
+	//RobotDamage.bIgnoreBaseDamage = true;
+	//RobotDamage.DamageTag = 'CombatProtocol_Robotic';
 	RobotProperty = new class'X2Condition_UnitProperty';
 	RobotProperty.ExcludeOrganic = true;
 	RobotDamage.TargetConditions.AddItem(RobotProperty);
@@ -2363,6 +2379,360 @@ static function X2AbilityTemplate ChainingJolt()
 	//Template.ActivationSpeech = 'AbilCombatProtocol';
 
 	return Template;
+}
+
+static function X2AbilityTemplate VoltaicArc()
+{
+	local X2AbilityTemplate Template;
+
+	Template = PurePassive('VoltaicArc_LW', "img:///UILibrary_MZChimeraIcons_LW.Ability_VoltaicArc", false, 'eAbilitySource_Perk');
+	Template.AdditionalAbilities.AddItem('VoltaicArcAttack_LW');
+
+	return Template;
+}
+static function X2AbilityTemplate VoltaicArcAttack()
+{
+	local X2AbilityTemplate Template;
+	local X2AbilityToHitCalc_StandardAim			ToHitCalc;
+	local X2AbilityTrigger_EventListener			Trigger;
+	local X2Condition_Visibility					TargetVisibilityCondition;
+	local X2Effect_Persistent						VoltaicArcTargetEffect;
+	local X2Condition_UnitEffectsWithAbilitySource	VoltaicArcTargetCondition;
+	local X2Effect_ApplyWeaponDamage    DamageEffect;
+	local X2Condition_UnitProperty      DamageCondition;
+	local X2Condition_AbilityProperty				ShockTherapyCondition;
+	local X2Effect_Persistent						DisorientedEffect;
+	local X2Effect_Stunned							StunnedEffect;
+	local X2Condition_UnitProperty					UnitPropertyCondition;
+	local X2Effect_SetUnitValue						UnitValueEffect;
+	local X2Condition_UnitValue						UnitValueCondition;
+	local X2Condition_VariableRange				RangeCondition;
+	local X2Effect_ApplyScaledWeaponDamage ScaledDamageEffect;
+	// Ability boilerplate
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'VoltaicArcAttack_LW');
+
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
+	Template.IconImage = "img:///UILibrary_MZChimeraIcons_LW.Ability_VoltaicArc";
+	Template.bShowActivation = true;
+	Template.bFrameEvenWhenUnitIsHidden = true;
+	Template.bStationaryWeapon = true;
+	Template.bDontDisplayInAbilitySummary = true;
+
+	// Basically a melee attack
+	ToHitCalc = new class'X2AbilityToHitCalc_StandardAim';
+	ToHitCalc.bReactionFire = true;
+	ToHitCalc.bGuaranteedHit = true;
+	Template.AbilityToHitCalc = ToHitCalc;
+	Template.AbilityTargetStyle = default.SimpleSingleTarget;
+
+	//  trigger on movement
+	Trigger = new class'X2AbilityTrigger_EventListener';
+	Trigger.ListenerData.EventID = 'ObjectMoved';
+	Trigger.ListenerData.Deferral = ELD_OnStateSubmitted;
+	Trigger.ListenerData.Filter = eFilter_None;
+	Trigger.ListenerData.EventFn = class'XComGameState_Ability'.static.TypicalOverwatchListener;
+	Template.AbilityTriggers.AddItem(Trigger);
+
+	// Trigger on operator movement end
+	Trigger = new class'X2AbilityTrigger_EventListener';
+	Trigger.ListenerData.EventID = 'UnitMoveFinished';
+	Trigger.ListenerData.Deferral = ELD_OnStateSubmitted;
+	Trigger.ListenerData.Filter = eFilter_Unit;
+	Trigger.ListenerData.EventFn = TakeInitiativeListener;
+	Template.AbilityTriggers.AddItem(Trigger);
+
+	// Target conditions for overwatch
+	UnitPropertyCondition = new class'X2Condition_UnitProperty';
+	UnitPropertyCondition.ExcludeAlive = false;
+	UnitPropertyCondition.ExcludeDead = true;
+	UnitPropertyCondition.ExcludeFriendlyToSource = true;
+	UnitPropertyCondition.ExcludeHostileToSource = false;
+	UnitPropertyCondition.TreatMindControlledSquadmateAsHostile = false;
+	UnitPropertyCondition.FailOnNonUnits = true;
+	UnitPropertyCondition.ExcludeCivilian = true;
+	Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);
+
+	TargetVisibilityCondition = new class'X2Condition_Visibility';
+	TargetVisibilityCondition.bRequireGameplayVisible = true;
+	TargetVisibilityCondition.bRequireBasicVisibility = true;
+	TargetVisibilityCondition.bDisablePeeksOnMovement = true; //Don't use peek tiles for over watch shots	
+	Template.AbilityTargetConditions.AddItem(TargetVisibilityCondition);
+	Template.AbilityTargetConditions.AddItem(class'X2Ability_DefaultAbilitySet'.static.OverwatchTargetEffectsCondition());
+
+	//here's to prevent cross-map zappage
+	RangeCondition = new class'X2Condition_VariableRange';
+	RangeCondition.Range = 2;
+	//RangeCondition.AddBonusRange('MZStormGenerator', default.StormGenerator_ReactionRangeBonus);
+	Template.AbilityTargetConditions.AddItem(RangeCondition);
+
+	// Be alive to do this
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	Template.AddShooterEffectExclusions();
+
+	// Apply the damage to the triggering enemy, and subsequent ones
+	DamageEffect = new class'X2Effect_ApplyWeaponDamage';
+	// DamageEffect.bIgnoreBaseDamage = true;
+	// DamageEffect.DamageTag = 'MZVoltaicArc';
+	DamageEffect.bIgnoreArmor = true;
+	DamageCondition = new class'X2Condition_UnitProperty';
+	DamageCondition.ExcludeRobotic = true;
+	DamageCondition.ExcludeFriendlyToSource = true;
+	DamageCondition.ExcludeHostileToSource = false;
+	DamageEffect.TargetConditions.AddItem(DamageCondition);
+	Template.AddTargetEffect(DamageEffect);
+	Template.AddMultiTargetEffect(DamageEffect);
+
+	ScaledDamageEffect = new class'X2Effect_ApplyScaledWeaponDamage';
+	ScaledDamageEffect.Scalar=1.5f;
+	// DamageEffect.bIgnoreBaseDamage = true;
+	// DamageEffect.DamageTag = 'MZVoltaicArc_Robo';
+	ScaledDamageEffect.bIgnoreArmor = true;
+	DamageCondition = new class'X2Condition_UnitProperty';
+	DamageCondition.ExcludeOrganic = true;
+	DamageCondition.ExcludeFriendlyToSource = true;
+	DamageCondition.ExcludeHostileToSource = false;
+	ScaledDamageEffect.TargetConditions.AddItem(DamageCondition);
+	Template.AddTargetEffect(ScaledDamageEffect);
+	Template.AddMultiTargetEffect(ScaledDamageEffect);
+
+	// ShockTherapyCondition = new class'X2Condition_AbilityProperty';
+	// ShockTherapyCondition.OwnerHasSoldierAbilities.AddItem('MZShockTherapy');
+
+	// // Stun effect
+	// UnitValueEffect = new class'X2Effect_SetUnitValue';
+	// UnitValueEffect.NewValueToSet = 1;
+	// UnitValueEffect.UnitName = 'MZShockTherapyStunResult';
+	// UnitValueEffect.CleanupType = eCleanup_BeginTurn;
+	// UnitValueEffect.ApplyChanceFn = Stun_ApplyChanceCheck;
+	// Template.AddTargetEffect(UnitValueEffect);
+	// Template.AddMultiTargetEffect(UnitValueEffect);
+
+	// UnitValueCondition = new class'X2Condition_UnitValue';
+	// UnitValueCondition.AddCheckValue('MZShockTherapyStunResult', 1);
+
+	// StunnedEffect = class'X2StatusEffects'.static.CreateStunnedStatusEffect(default.SHOCKTHERAPY_STUN_LEVEL, 100, false);
+	// StunnedEffect.bRemoveWhenSourceDies = false;
+	// StunnedEffect.TargetConditions.AddItem(ShockTherapyCondition);
+	// StunnedEffect.TargetConditions.AddItem(UnitValueCondition);
+	// Template.AddTargetEffect(StunnedEffect);
+	// Template.AddMultiTargetEffect(StunnedEffect);
+
+	// Disorient effect
+	// UnitValueCondition = new class'X2Condition_UnitValue';
+	// UnitValueCondition.AddCheckValue('MZShockTherapyStunResult', 0);
+
+	// DisorientedEffect = class'X2StatusEffects'.static.CreateDisorientedStatusEffect(, , false);
+	// DisorientedEffect.bRemoveWhenSourceDies = false;
+	// DisorientedEffect.TargetConditions.AddItem(ShockTherapyCondition);
+	// DisorientedEffect.TargetConditions.AddItem(UnitValueCondition);
+	// Template.AddTargetEffect(DisorientedEffect);
+	// Template.AddMultiTargetEffect(DisorientedEffect);
+	
+	// // remove the result value, so other Shock Therapy abilities will roll correctly.
+	// UnitValueEffect = new class'X2Effect_SetUnitValue';
+	// UnitValueEffect.NewValueToSet = 0;
+	// UnitValueEffect.UnitName = 'MZShockTherapyStunResult';
+	// UnitValueEffect.CleanupType = eCleanup_BeginTurn;
+	// Template.AddTargetEffect(UnitValueEffect);
+	
+	Template.AbilityMultiTargetStyle = new class'X2AbilityMultiTarget_Volt';
+	Template.TargetingMethod = class'X2TargetingMethod_Volt';
+
+	Template.BuildNewGameStateFn = class'X2Ability_SpecialistAbilitySet'.static.AttachGremlinToTarget_BuildGameState;
+	Template.BuildVisualizationFn = VoltaicArc_BuildVisualization;
+	
+	// Dont firestart/proc turn, just do it during the fire
+	Template.bSkipExitCoverWhenFiring = true;
+
+	Template.SuperConcealmentLoss = class'X2AbilityTemplateManager'.default.SuperConcealmentStandardShotLoss;
+	Template.ChosenActivationIncreasePerUse = class'X2AbilityTemplateManager'.default.StandardShotChosenActivationIncreasePerUse;
+	Template.LostSpawnIncreasePerUse = class'X2AbilityTemplateManager'.default.MeleeLostSpawnIncreasePerUse;
+
+	//Prevent repeatedly hammering on a unit with Voltaic Arc triggers.
+	//(This effect does nothing, but enables many-to-many marking of which Bladestorm attacks have already occurred each turn.)
+	VoltaicArcTargetEffect = new class'X2Effect_Persistent';
+	VoltaicArcTargetEffect.BuildPersistentEffect(1, false, true, true, eGameRule_PlayerTurnEnd);
+	VoltaicArcTargetEffect.EffectName = 'MZVoltaicArcTarget';
+	VoltaicArcTargetEffect.bApplyOnMiss = true; //Only one chance, even if you miss (prevents crazy flailing counter-attack chains with a Muton, for example)
+	Template.AddTargetEffect(VoltaicArcTargetEffect);
+	
+	VoltaicArcTargetCondition = new class'X2Condition_UnitEffectsWithAbilitySource';
+	VoltaicArcTargetCondition.AddExcludeEffect('MZVoltaicArcTarget', 'AA_DuplicateEffectIgnored');
+	Template.AbilityTargetConditions.AddItem(VoltaicArcTargetCondition);
+	
+	Template.PostActivationEvents.AddItem('ItemRecalled');
+
+	Template.DefaultSourceItemSlot = eInvSlot_SecondaryWeapon;
+
+	return Template;
+}
+
+static function EventListenerReturn TakeInitiativeListener(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
+{
+	local XComGameStateContext_Ability AbilityContext;
+	local XComGameState_Unit SourceUnit;
+	local int i;
+	local XComGameState_Ability AbilityState;
+	local GameRulesCache_Unit UnitCache;
+
+	//lifted from Iridar's akimbo class. you can tell because of the function name.
+	//thanks to Robojumper for figuring out how to get this working
+
+	AbilityContext = XComGameStateContext_Ability(GameState.GetContext());
+	AbilityState = XComGameState_Ability(CallbackData);	//this is how we get the Ability State for the ability we want to re-trigger. If we used EventData, we would get the ability that cause this ability to trigger instead.
+	//if(default.ENABLE_LOGGING) `Log("IRIDAR Trying to retrigger ability: " @ AbilityState.GetMyTemplateName(),, 'AkimboClass');
+	
+	if (AbilityContext != none && AbilityContext.InterruptionStatus != eInterruptionStatus_Interrupt)
+	{
+		SourceUnit = XComGameState_Unit(GameState.GetGameStateForObjectID(AbilityContext.InputContext.SourceObject.ObjectID));
+
+		if (`TACTICALRULES.GetGameRulesCache_Unit(SourceUnit.GetReference(), UnitCache))	//we get UnitCache for the soldier that triggered this ability
+		{
+			for (i = 0; i < UnitCache.AvailableActions.Length; ++i)	//then in all actions available to him
+			{
+
+				if (UnitCache.AvailableActions[i].AbilityObjectRef.ObjectID == AbilityState.ObjectID)	//we find our ability
+				{
+					if (UnitCache.AvailableActions[i].AvailableCode == 'AA_Success')	//and trigger it on the first available target
+					{
+						class'XComGameStateContext_Ability'.static.ActivateAbility(UnitCache.AvailableActions[i], `SYNC_RAND_STATIC(UnitCache.AvailableActions[i].AvailableTargets.Length));
+						break;
+					}
+					break;
+				}
+			}
+		}
+	}
+	return ELR_NoInterrupt;
+}
+
+simulated function VoltaicArc_BuildVisualization(XComGameState VisualizeGameState)
+{
+	local XComGameStateHistory			History;
+	local XComGameStateContext_Ability  Context;
+	local X2AbilityTemplate             AbilityTemplate;
+	local XComGameState_Item			GremlinItem;
+	local XComGameState_Unit			GremlinUnitState;
+	local StateObjectReference          InteractingUnitRef;
+	local VisualizationActionMetadata   EmptyTrack;
+	local VisualizationActionMetadata   ActionMetadata;
+	local Actor							TargetVisualizer;
+	local XComGameState_Unit			AttachedUnitState;
+	local XComGameState_Unit			TargetUnitState;
+	local X2Action_CameraLookAt			TargetCameraAction;
+	local X2Action_AbilityPerkStart		PerkStartAction;
+	local int							i, j;
+	local X2VisualizerInterface			TargetVisualizerInterface;
+	local X2Action_WaitForAbilityEffect DelayAction;
+	local int EffectIndex;
+	//local MZ_Action_ChainJolt ChainingJoltAction;
+
+	History = `XCOMHISTORY;
+
+		Context = XComGameStateContext_Ability(VisualizeGameState.GetContext());
+	AbilityTemplate = class'XComGameState_Ability'.static.GetMyTemplateManager().FindAbilityTemplate(Context.InputContext.AbilityTemplateName);
+
+	TargetUnitState = XComGameState_Unit(VisualizeGameState.GetGameStateForObjectID(Context.InputContext.PrimaryTarget.ObjectID));
+
+	GremlinItem = XComGameState_Item(History.GetGameStateForObjectID(Context.InputContext.ItemObject.ObjectID, eReturnType_Reference, VisualizeGameState.HistoryIndex - 1));
+	GremlinUnitState = XComGameState_Unit(History.GetGameStateForObjectID(GremlinItem.CosmeticUnitRef.ObjectID));
+	AttachedUnitState = XComGameState_Unit(History.GetGameStateForObjectID(GremlinItem.AttachedUnitRef.ObjectID));
+
+	if (GremlinUnitState == none)
+	{
+		`RedScreen("Attempting GremlinSingleTarget_BuildVisualization with a GremlinUnitState of none");
+		return;
+	}
+
+	//Configure the visualization track for the gremlin
+	//****************************************************************************************
+
+	InteractingUnitRef = GremlinUnitState.GetReference();
+
+	ActionMetadata = EmptyTrack;
+	History.GetCurrentAndPreviousGameStatesForObjectID(GremlinUnitState.ObjectID, ActionMetadata.StateObject_OldState, ActionMetadata.StateObject_NewState, , VisualizeGameState.HistoryIndex);
+	ActionMetadata.VisualizeActor = GremlinUnitState.GetVisualizer();
+	TargetVisualizer = History.GetVisualizer(Context.InputContext.PrimaryTarget.ObjectID);
+
+	class'X2Action_WaitForAbilityEffect'.static.AddToVisualizationTree(ActionMetadata, Context, false, ActionMetadata.LastActionAdded);
+
+	if (AttachedUnitState.TileLocation != TargetUnitState.TileLocation)
+	{
+		if (TargetVisualizer != none)
+		{
+			TargetCameraAction = X2Action_CameraLookAt(class'X2Action_CameraLookAt'.static.AddToVisualizationTree(ActionMetadata, Context, false, ActionMetadata.LastActionAdded));
+			TargetCameraAction.LookAtActor = TargetVisualizer;
+			TargetCameraAction.BlockUntilActorOnScreen = true;
+			TargetCameraAction.LookAtDuration = 10.0f;		// longer than we need - camera will be removed by tag below
+			TargetCameraAction.CameraTag = 'TargetFocusCamera';
+			TargetCameraAction.bRemoveTaggedCamera = false;
+		}
+	}
+
+	PerkStartAction = X2Action_AbilityPerkStart(class'X2Action_AbilityPerkStart'.static.AddToVisualizationTree(ActionMetadata, Context, false, ActionMetadata.LastActionAdded));
+	PerkStartAction.NotifyTargetTracks = true;
+
+	//ChainingJoltAction = MZ_Action_ChainJolt(class'MZ_Action_ChainJolt'.static.AddToVisualizationTree(ActionMetadata, Context, false, ActionMetadata.LastActionAdded));
+	//ChainingJoltAction.AnimName = 'NO_VoltaicArc';
+	class'MZ_Action_ChainJolt'.static.AddToVisualizationTree(ActionMetadata, Context, false, ActionMetadata.LastActionAdded);
+
+	class'X2Action_AbilityPerkEnd'.static.AddToVisualizationTree(ActionMetadata, Context);
+
+	//****************************************************************************************
+
+	//Configure the visualization track for the target(s)
+	//****************************************************************************************
+	InteractingUnitRef = Context.InputContext.PrimaryTarget;
+	ActionMetadata = EmptyTrack;
+	ActionMetadata.StateObject_OldState = History.GetGameStateForObjectID(InteractingUnitRef.ObjectID, eReturnType_Reference, VisualizeGameState.HistoryIndex - 1);
+	ActionMetadata.StateObject_NewState = VisualizeGameState.GetGameStateForObjectID(InteractingUnitRef.ObjectID);
+	ActionMetadata.VisualizeActor = TargetVisualizer;
+
+	DelayAction = X2Action_WaitForAbilityEffect(class'X2Action_WaitForAbilityEffect'.static.AddToVisualizationTree(ActionMetadata, Context));
+	DelayAction.ChangeTimeoutLength(class'X2Ability_SpecialistAbilitySet'.default.GREMLIN_ARRIVAL_TIMEOUT);       //  give the gremlin plenty of time to show up
+
+	for (EffectIndex = 0; EffectIndex < AbilityTemplate.AbilityTargetEffects.Length; ++EffectIndex)
+	{
+		AbilityTemplate.AbilityTargetEffects[EffectIndex].AddX2ActionsForVisualization(VisualizeGameState, ActionMetadata, Context.FindTargetEffectApplyResult(AbilityTemplate.AbilityTargetEffects[EffectIndex]));
+	}
+
+	TargetVisualizerInterface = X2VisualizerInterface(ActionMetadata.VisualizeActor);
+	if (TargetVisualizerInterface != none)
+	{
+		//Allow the visualizer to do any custom processing based on the new game state. For example, units will create a death action when they reach 0 HP.
+		TargetVisualizerInterface.BuildAbilityEffectsVisualization(VisualizeGameState, ActionMetadata);
+	}
+
+	for (i = 0; i < Context.InputContext.MultiTargets.Length; ++i)
+	{
+		InteractingUnitRef = Context.InputContext.MultiTargets[i];
+		ActionMetadata = EmptyTrack;
+		ActionMetadata.StateObject_OldState = History.GetGameStateForObjectID(InteractingUnitRef.ObjectID, eReturnType_Reference, VisualizeGameState.HistoryIndex - 1);
+		ActionMetadata.StateObject_NewState = VisualizeGameState.GetGameStateForObjectID(InteractingUnitRef.ObjectID);
+		ActionMetadata.VisualizeActor = History.GetVisualizer(InteractingUnitRef.ObjectID);
+
+		class'X2Action_WaitForAbilityEffect'.static.AddToVisualizationTree(ActionMetadata, Context);
+
+		for (j = 0; j < Context.ResultContext.MultiTargetEffectResults[i].Effects.Length; ++j)
+		{
+			Context.ResultContext.MultiTargetEffectResults[i].Effects[j].AddX2ActionsForVisualization(VisualizeGameState, ActionMetadata, Context.ResultContext.MultiTargetEffectResults[i].ApplyResults[j]);
+		}
+
+		TargetVisualizerInterface = X2VisualizerInterface(ActionMetadata.VisualizeActor);
+		if (TargetVisualizerInterface != none)
+		{
+			//Allow the visualizer to do any custom processing based on the new game state. For example, units will create a death action when they reach 0 HP.
+			TargetVisualizerInterface.BuildAbilityEffectsVisualization(VisualizeGameState, ActionMetadata);
+		}
+	}
+
+	if (TargetCameraAction != none)
+	{
+		TargetCameraAction = X2Action_CameraLookAt(class'X2Action_CameraLookAt'.static.AddToVisualizationTree(ActionMetadata, Context, false, ActionMetadata.LastActionAdded));
+		TargetCameraAction.CameraTag = 'TargetFocusCamera';
+		TargetCameraAction.bRemoveTaggedCamera = true;
+	}
 }
 
 simulated function ChainingJolt_BuildVisualization(XComGameState VisualizeGameState)
@@ -2825,7 +3195,7 @@ static function X2AbilityTemplate FondFarewell() {
 	// Icon Properties
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'FondFarewell_LW');
 
-	Template.IconImage = "img:///UILibrary_MZChimeraIcons.Ability_FondFarewell";
+	Template.IconImage = "img:///UILibrary_MZChimeraIcons_LW.Ability_FondFarewell";
 	Template.AbilitySourceName = 'eAbilitySource_Passive';
 	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
 	Template.Hostility = eHostility_Neutral;

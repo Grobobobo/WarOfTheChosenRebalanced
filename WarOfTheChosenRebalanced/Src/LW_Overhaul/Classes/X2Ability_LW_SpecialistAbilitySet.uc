@@ -452,8 +452,9 @@ static function X2AbilityTemplate AddRescueProtocol()
 {
 	local X2AbilityTemplate					Template;
 	local X2AbilityCost_ActionPoints		ActionPointCost;
-	local X2AbilityCost_Charges				ChargeCost;
-	local X2AbilityCharges_RescueProtocol	Charges;
+	//local X2AbilityCost_Charges				ChargeCost;
+	//local X2AbilityCharges_RescueProtocol	Charges;
+	local X2AbilityCooldown_ABCProtocol	Cooldown;
 	local X2Condition_UnitEffects			CommandRestriction;
 	local X2Effect_GrantActionPoints		ActionPointEffect;
 	local X2Effect_Persistent				ActionPointPersistEffect;
@@ -475,15 +476,18 @@ static function X2AbilityTemplate AddRescueProtocol()
 	Template.bSkipPerkActivationActions = true;
 	Template.bCrossClassEligible = false;
 
-	Charges = new class 'X2AbilityCharges_RescueProtocol';
-	Charges.CV_Charges = default.RESCUE_CV_CHARGES;
-	Charges.MG_Charges = default.RESCUE_MG_CHARGES;
-	Charges.BM_Charges = default.RESCUE_BM_CHARGES;
-	Template.AbilityCharges = Charges;
+	Cooldown = new class'X2AbilityCooldown_ABCProtocol';
+	Template.AbilityCooldown = Cooldown;
 
-	ChargeCost = new class'X2AbilityCost_Charges';
-	ChargeCost.NumCharges = 1;
-	Template.AbilityCosts.AddItem(ChargeCost);
+	// Charges = new class 'X2AbilityCharges_RescueProtocol';
+	// Charges.CV_Charges = default.RESCUE_CV_CHARGES;
+	// Charges.MG_Charges = default.RESCUE_MG_CHARGES;
+	// Charges.BM_Charges = default.RESCUE_BM_CHARGES;
+	// Template.AbilityCharges = Charges;
+
+	// ChargeCost = new class'X2AbilityCost_Charges';
+	// ChargeCost.NumCharges = 1;
+	// Template.AbilityCosts.AddItem(ChargeCost);
 
 	Template.AbilityToHitCalc = default.DeadEye;
 	Template.AbilityTargetStyle = default.SingleTargetWithSelf;

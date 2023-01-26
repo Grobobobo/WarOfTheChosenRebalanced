@@ -78,6 +78,8 @@ static function X2DataTemplate CreateTemplate_ThrowingKnife_CV_Secondary()
 	BleedingEffect.ApplyChance = default.THROWING_KNIFE_CV_BLEED_CHANCE;
 	Template.BonusWeaponEffects.AddItem(BleedingEffect);
 
+	Template.Abilities.AddItem('RendTheMarked');
+	
 	return Template;
 }
 

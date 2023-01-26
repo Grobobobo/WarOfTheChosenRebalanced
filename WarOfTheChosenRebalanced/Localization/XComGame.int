@@ -489,6 +489,13 @@ LocHelpText="Knife Attack"
 LocFlyOverText="Knife Fighter"
 LocPromotionPopupText="<Bullet/> Knife attacks use one action and do not end your turn.<br/>"
 
+[SlashAndDashRS_LW X2AbilityTemplate]
+LocFriendlyName="Run And Slice"
+LocLongDescription="Move & Slice a target. Uses one action and doesn't end the turn. Has a <Ability:SelfCooldown_LW/> turn cooldown. Every other knife attack resets the cooldown of this ability."
+LocHelpText="Move & Slice a target. Uses one action and doesn't end the turn. Has a <Ability:SelfCooldown_LW/> turn cooldown."
+LocFlyOverText="Run And Slice"
+LocPromotionPopupText="<Bullet/>Move & Slice a target. Uses one action but can only be used once per turn.<br/><Bullet/>The abilities that are able to reset the cooldown are: Disarming Strike, Lacerate, Shadowmelt and Hamstring."
+
 [Combatives X2AbilityTemplate]
 LocFriendlyName="Combatives"
 LocLongDescription="You may sometimes parry melee attacks and counterattack with your melee weapon. Also your melee attack gain <Ability:CUTTHROAT_BONUS_CRIT_CHANCE/> bonus critical chance."
@@ -1018,24 +1025,24 @@ TacticalText="<Bullet/> Does no damage but stuns targets for two turns if it hit
 AbilityDescName="arcthrower"
 
 [Holotargeter_CV X2WeaponTemplate]
-FriendlyName="Holotargeter"
+FriendlyName="Holo Scanner"
 FriendlyNamePlural="Holotargeters"
 BriefSummary="Allows targeting enemy units to provide aim bonuses to any members of the squad targeting this unit."
-TacticalText="<Bullet/> Grants 10 bonus aim to any unit attacking the Holotargeted unit."
+TacticalText="<Bullet/> Grants 15 bonus aim to any unit attacking the Holotargeted unit."
 AbilityDescName="holotargeter"
 
 [Holotargeter_MG X2WeaponTemplate]
-FriendlyName="Holotargeter Mark II"
-FriendlyNamePlural="Holotargeter Mark IIs"
+FriendlyName="Holo Scouter"
+FriendlyNamePlural="Holo Scouters"
 BriefSummary="Allows targeting enemy units to provide aim bonuses to any members of the squad targeting this unit."
 TacticalText="<Bullet/> Grants 15 bonus aim to any unit attacking the Holotargeted unit."
 AbilityDescName="holotargeter"
 
 [Holotargeter_BM X2WeaponTemplate]
-FriendlyName="Holotargeter Mark III"
+FriendlyName="Holo Analyzer"
 FriendlyNamePlural="Holotargeters Mark IIIs"
 BriefSummary="Allows targeting enemy units to provide aim bonuses to any members of the squad targeting this unit."
-TacticalText="<Bullet/> Grants 20 bonus aim to any unit attacking the Holotargeted unit."
+TacticalText="<Bullet/> Grants 15 bonus aim to any unit attacking the Holotargeted unit."
 AbilityDescName="holotargeter"
 
 [CombatKnife_CV X2WeaponTemplate]
@@ -6472,7 +6479,7 @@ LocPromotionPopupText="<Bullet/> Each shot in Fan Fire rolls a separate chance t
 
 ; LWOTC Needs Translation (2)
 [SoulSteal X2AbilityTemplate]
-LocLongDescription="Soulfire transfers the damage done back to the Psi Operative as health and grants an ablative HP for 3 turns, but increases the cooldown of soulfire by 1."
+LocLongDescription="Soulfire transfers the damage done back to the Psi Operative as health and grants an ablative HP for 3 turns"
 LocHelpText="Soulfire heals a wounded operative and grants ablative HP, but increases soulfire cooldown by 1"
 LocPromotionPopupText="<Bullet/> Soul Steal will replenish lost health for a wounded operative and provide 3/4/6 ablative hit point for 3 turns.<br/><Bullet/> An operative may increase to no more than 15 ablative HP when using Soul Steal."
 ; End Translation (2)
@@ -9118,7 +9125,7 @@ LocPromotionPopupText=""
 
 [DisarmingStrike_LW X2AbilityTemplate]
 LocFriendlyName="Disarming Strike"
-LocLongDescription="Attack any enemy within movement range with your knife, dealing damage and disabling their weapon. Has a <Ability:SelfCooldown_LW/> Turn Cooldown."
+LocLongDescription="Attack any enemy within movement range with your knife, dealing damage and disabling their weapon. Has a <Ability:SelfCooldown_LW/> Turn Cooldown. Does not end the turn."
 LocHelpText="Attack and disarm an enemy."
 LocFlyOverText="Disarm"
 LocPromotionPopupText="<Bullet/> Can Dash, but Ends Turn. <Bullet/> The enemy's primary weapon will need to be reloaded before it can be used again.<br/>"
@@ -9159,9 +9166,15 @@ LocLongDescription="Cooldown Of ABC Protocols is reduced by 1."
 LocHelpText="Cooldown Of ABC Protocols is reduced by 1."
 LocPromotionPopupText=""
 
+;[AdvancedRobotics_LW X2AbilityTemplate]
+;LocFriendlyName="Advanced Robotics"
+;LocLongDescription="Upgrades ABC protocols by granting Threat Assessment, Shock Therapy and Chaining Jolt."
+;LocHelpText="Upgrades ABC protocols by granting Threat Assessment, Shock Therapy and Chaining Jolt."
+;LocPromotionPopupText="<Bullet/> Threat assessment makes Aid protocol target go on overwatch.<br/><Bullet/> Shock therapy makes Blinding protocol have a 50% chance to stun the targets.<br/><Bullet/> Chaining Jolt causes combat protocol to jump to up to 3 targets.<br/>"
+
 [AdvancedRobotics_LW X2AbilityTemplate]
-LocFriendlyName="Advanced Robotics"
-LocLongDescription="Upgrades ABC protocols by granting Threat Assessment, Shock Therapy and Chaining Jolt."
+LocFriendlyName="Shock Therapy"
+LocLongDescription="Blinding Protocol has a 50% chance to stun enemies instead of disorienting them."
 LocHelpText="Upgrades ABC protocols by granting Threat Assessment, Shock Therapy and Chaining Jolt."
 LocPromotionPopupText="<Bullet/> Threat assessment makes Aid protocol target go on overwatch.<br/><Bullet/> Shock therapy makes Blinding protocol have a 50% chance to stun the targets.<br/><Bullet/> Chaining Jolt causes combat protocol to jump to up to 3 targets.<br/>"
 
@@ -9172,6 +9185,11 @@ LocLongDescription="The <Ability:ClassName/> sends the GREMLIN to an enemy to jo
 LocFlyOverText="Chaining Jolt"
 LocPromotionPopupText="<Bullet/> Deals electrical damage that pierces armour.<br/><Bullet/> Can only chain to units friendly to the targeted unit.<br/><Bullet/> Has a <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
 
+[VoltaicArc_LW X2AbilityTemplate]
+LocFriendlyName="Voltaic Arc"
+LocHelpText="The GREMLIN shocks enemies if they move too close to the Soldier or if theSoldier moves close to them. This attack chains to nearby enemies."
+LocLongDescription="The GREMLIN shocks enemies if they move too close to the Soldier or if the Soldier moves close to them. This attack chains to nearby enemies."
+LocPromotionPopupText="<Bullet/> Deals electrical damage that pierces armour.<br/><Bullet/> Can only chain to units friendly to the targeted unit.<br/>"
 
 [TenaciousDefense X2AbilityTemplate]
 LocFriendlyName="Tenacious Defense"

@@ -106,6 +106,9 @@ static function X2DataTemplate CreateTemplate_Holotargeter_Conventional()
 	
 	Template.bHideClipSizeStat = true;
 
+	Template.Abilities.AddItem('Holotarget');
+	Template.Abilities.AddItem('VitalPointTargeting');
+
 	return Template;
 }
 
@@ -149,6 +152,9 @@ static function X2DataTemplate CreateTemplate_Holotargeter_Magnetic()
 
 	Template.CanBeBuilt = false;
 	Template.bInfiniteItem = true;
+
+	Template.Abilities.AddItem('Holotarget');
+	Template.Abilities.AddItem('RapidTargeting');
 
 	Template.DamageTypeTemplateName = 'Electrical';
 
@@ -195,7 +201,9 @@ static function X2DataTemplate CreateTemplate_Holotargeter_Beam()
 
 	Template.CanBeBuilt = false;
 	Template.bInfiniteItem = true;
-	
+	Template.Abilities.AddItem('Holotarget');
+	Template.Abilities.AddItem('MultiTargeting');
+
 	//Template.Abilities.AddItem('HDHolo');
 	//Template.Abilities.AddItem('VitalPointTargeting');
 	Template.DamageTypeTemplateName = 'Electrical';

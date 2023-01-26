@@ -233,8 +233,59 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateTemplate_ThrowingKnife_Beam('ThrowingKnife_BM_4',4));
 	Weapons.AddItem(CreateTemplate_ThrowingKnife_Beam('ThrowingKnife_BM_5',5));
 
+	Weapons.AddItem(CreateTemplate_GremlinDrone_Magnetic_RO('Gremlin_MG_2',2));
+	Weapons.AddItem(CreateTemplate_GremlinDrone_Magnetic_RO('Gremlin_MG_3',3));
+	Weapons.AddItem(CreateTemplate_GremlinDrone_Magnetic_RO('Gremlin_MG_4',4));
+	Weapons.AddItem(CreateTemplate_GremlinDrone_Magnetic_RO('Gremlin_MG_5',5));
+
+	//Weapons.AddItem(CreateTemplate_GremlinDrone_Beam_RO('Gremlin_BM_2',2));
+	Weapons.AddItem(CreateTemplate_GremlinDrone_Beam_RO('Gremlin_BM_3',3));
+	Weapons.AddItem(CreateTemplate_GremlinDrone_Beam_RO('Gremlin_BM_4',4));
+	Weapons.AddItem(CreateTemplate_GremlinDrone_Beam_RO('Gremlin_BM_5',5));
+
+
 	return Weapons;
 }
+
+struct PsiAmpExtraDamage{
+	var name Tag;
+	var float DamageMod;
+	var float CritDamageMod;
+	var float BonusSpread;
+	var bool FlatDamage;
+
+	structdefaultproperties{
+		CritDamageMod=0.5f
+	}
+};
+var config array<GauntletExtraDamage> PSIAMP_EXTRADAMAGE_TAGS;
+
+
+static function array<WeaponDamageValue> GetPsiAmpWeaponDamage(int WeaponTier){
+    local WeaponDamageValue WeaponDamage;
+    local float FloatBaseDamage;
+    local int IntBaseDamage;
+	local array<WeaponDamageValue> ExtraDamages;
+	local GauntletExtraDamage TagValue;
+
+	foreach default.PSIAMP_EXTRADAMAGE_TAGS(TagValue){
+		FloatBaseDamage = WeaponTier  * TagValue.DamageMod;
+		IntBaseDamage = int(FloatBaseDamage);
+		
+		WeaponDamage.Tag = TagValue.Tag;
+		WeaponDamage.Damage = IntBaseDamage;
+		WeaponDamage.Spread = Max(1 + int(FloatBaseDamage / 5) + TagValue.BonusSpread,0);
+		WeaponDamage.PlusOne = int((FloatBaseDamage - IntBaseDamage) * 100);
+		WeaponDamage.Crit = int(FloatBaseDamage * TagValue.CritDamageMod);
+		WeaponDamage.DamageType = 'Psi';
+		ExtraDamages.AddItem(WeaponDamage);
+
+	}
+
+
+    return ExtraDamages;
+}
+
 
 static function X2DataTemplate CreateTLE1Pistol(name TemplateName, int Tier)
 {
@@ -335,7 +386,7 @@ static function X2DataTemplate CreateTemplate_Pistol_Conventional_RO(name Templa
 	
 	Template.StartingItem = true;
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_Conventional';
 
@@ -390,7 +441,7 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser(name TemplateName, in
 	Template.BaseItem = 'Pistol_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  
 
@@ -447,7 +498,7 @@ static function X2DataTemplate CreateTemplate_Pistol_Magnetic_RO(name TemplateNa
 	Template.BaseItem = 'Pistol_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
@@ -486,8 +537,8 @@ static function X2DataTemplate CreateTemplate_Pistol_Coil(name TemplateName, int
 	Template.InventorySlot = eInvSlot_SecondaryWeapon;
 	// PistolStandardShot is added by LWTemplateMods
 	Template.Abilities.AddItem('PistolStandardShot');
-	Template.Abilities.AddItem('PistolOverwatch');
-	Template.Abilities.AddItem('PistolOverwatchShot');
+	//Template.Abilities.AddItem('PistolOverwatch');
+	//Template.Abilities.AddItem('PistolOverwatchShot');
 	Template.Abilities.AddItem('PistolReturnFire');
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('Reload');
@@ -506,7 +557,7 @@ static function X2DataTemplate CreateTemplate_Pistol_Coil(name TemplateName, int
 	Template.BaseItem = 'Pistol_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';  
 
@@ -561,7 +612,7 @@ static function X2DataTemplate CreateTemplate_Pistol_Beam_RO(name TemplateName, 
 	Template.BaseItem = 'Pistol_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 	
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';
 
@@ -712,6 +763,7 @@ static function X2DataTemplate CreateTemplate_Sidearm_Conventional(name Template
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('FanFire');
+	Template.Abilities.AddItem('SprayAndPray');
 
 	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotConvA');
 
@@ -722,7 +774,7 @@ static function X2DataTemplate CreateTemplate_Sidearm_Conventional(name Template
 
 	Template.StartingItem = false;
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_Conventional';
 
@@ -770,6 +822,7 @@ static function X2DataTemplate CreateTemplate_Sidearm_Laser(name TemplateName, i
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('LightningHands');
+	Template.Abilities.AddItem('SprayAndPray');
 
 	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotBeam');
 
@@ -782,7 +835,7 @@ static function X2DataTemplate CreateTemplate_Sidearm_Laser(name TemplateName, i
 	Template.BaseItem = 'Sidearm_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';
 
@@ -829,6 +882,7 @@ static function X2DataTemplate CreateTemplate_Sidearm_Magnetic(name TemplateName
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('FanFire');
+	Template.Abilities.AddItem('SprayAndPray');
 
 	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotMagA');
 
@@ -841,7 +895,7 @@ static function X2DataTemplate CreateTemplate_Sidearm_Magnetic(name TemplateName
 	Template.BaseItem = 'Sidearm_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
@@ -888,6 +942,7 @@ static function X2DataTemplate CreateTemplate_Sidearm_Coil(name TemplateName, in
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('FanFire');
+	Template.Abilities.AddItem('SprayAndPray');
 
 	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotMag');
 
@@ -900,7 +955,7 @@ static function X2DataTemplate CreateTemplate_Sidearm_Coil(name TemplateName, in
 	Template.BaseItem = 'Sidearm_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
@@ -927,7 +982,7 @@ static function X2DataTemplate CreateTemplate_Sidearm_Beam(name TemplateName, in
 	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.SHORT_BEAM_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier,0.5f,1.0f);
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,1.0f);
 	Template.Aim = class'X2Item_XpackWeapons'.default.SIDEARM_BEAM_AIM;
 	Template.CritChance = class'X2Item_XpackWeapons'.default.SIDEARM_BEAM_CRITCHANCE;
 	Template.iClipSize = class'X2Item_XpackWeapons'.default.SIDEARM_BEAM_ICLIPSIZE;
@@ -947,6 +1002,7 @@ static function X2DataTemplate CreateTemplate_Sidearm_Beam(name TemplateName, in
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('LightningHands');
+	Template.Abilities.AddItem('SprayAndPray');
 
 	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotBeamA');
 
@@ -959,7 +1015,7 @@ static function X2DataTemplate CreateTemplate_Sidearm_Beam(name TemplateName, in
 	Template.BaseItem = 'Sidearm_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';
 
@@ -1094,7 +1150,7 @@ static function X2DataTemplate CreateTemplate_SawedOffShotgun_Magnetic(name Temp
 	Template.BaseItem = 'SawedoffShotgun_LS'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.Abilities.AddItem('PointBlank');
 	Template.Abilities.AddItem('SawedOffReload');
@@ -1141,7 +1197,7 @@ static function X2DataTemplate CreateTemplate_SawedOffShotgun_Coil(name Template
 	Template.BaseItem = 'SawedoffShotgun_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 	
 	Template.Abilities.AddItem('PointBlank');
 	Template.Abilities.AddItem('SawedOffReload');
@@ -1188,10 +1244,11 @@ static function X2DataTemplate CreateTemplate_SawedOffShotgun_Beam(name Template
 	Template.BaseItem = 'SawedoffShotgun_CG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
+	Template.InfiniteAmmo = true;
 
 	Template.Abilities.AddItem('PointBlank');
-	Template.Abilities.AddItem('SawedOffReload');
+	//Template.Abilities.AddItem('SawedOffReload');
 	Template.Abilities.AddItem('HotLoadAmmo');
 
 	Template.DamageTypeTemplateName = 'Electrical';
@@ -1242,8 +1299,8 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Conventional(name Temp
 	Template.DamageTypeTemplateName = 'Melee';
 
 	Template.Abilities.AddItem('KnifeFighter');
-	Template.Abilities.AddItem('RunAndSlice');
-	Template.Abilities.AddItem('Bladestorm');
+	Template.Abilities.AddItem('SlashAndDashRs_LW');
+	//Template.Abilities.AddItem('Bladestorm');
 
 	
 	return Template;
@@ -1288,7 +1345,7 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Laser(name TemplateNam
 	Template.BaseItem = 'CombatKnife_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Melee';
 
@@ -1345,7 +1402,7 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Magnetic(name Template
 	Template.Abilities.AddItem('Combatives');
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Melee';
 
@@ -1390,7 +1447,9 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Coil(name TemplateName
 	Template.BaseItem = 'CombatKnife_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
+	Template.Abilities.AddItem('KnifeFighter');
+	Template.Abilities.AddItem('SlashAndDashRs_LW');
 
 	Template.DamageTypeTemplateName = 'Melee';
 
@@ -1421,7 +1480,7 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Beam(name TemplateName
 	Template.iPhysicsImpulse = 5;
 
 	Template.iRange = 0;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f);
 	Template.Aim = class'X2Item_LWCombatKnife'.default.CombatKnife_BEAM_AIM;
 	Template.CritChance = class'X2Item_LWCombatKnife'.default.CombatKnife_BEAM_CRITCHANCE;
 	Template.iClipSize = class'X2Item_LWCombatKnife'.default.CombatKnife_BEAM_ICLIPSIZE;
@@ -1430,14 +1489,16 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Beam(name TemplateName
 	Template.bHideClipSizeStat = true;
 	Template.InfiniteAmmo = true;
 	
-	
+	Template.Abilities.AddItem('SlashAndDashRs_LW');
+	Template.Abilities.AddItem('Bladestorm');
+
 	Template.GameArchetype = "LW_CombatKnifeLWOTC.Archetypes.WP_CombatKnife_CV";
 
 	Template.CreatorTemplateName = 'CombatKnife_BM_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'CombatKnife_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Melee';
 
@@ -1479,7 +1540,7 @@ static function X2DataTemplate CreateTemplate_Sword_Conventional_RO(name Templat
 	
 	Template.StartingItem = true;
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Melee';
 
@@ -1522,7 +1583,7 @@ static function X2DataTemplate CreateTemplate_Sword_Laser(name TemplateName, int
 
 	
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Melee';
 	
@@ -1568,7 +1629,7 @@ static function X2DataTemplate CreateTemplate_Sword_Magnetic_RO(name TemplateNam
 	Template.BaseItem = 'Sword_CV'; // Which item this will be upgraded from
 	
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Melee';
 
@@ -1612,7 +1673,7 @@ static function X2DataTemplate CreateTemplate_Sword_Coil(name TemplateName, int 
 	Template.CreatorTemplateName = 'Sword_CG_Schematic';
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Melee';
 	
@@ -1658,7 +1719,7 @@ static function X2DataTemplate CreateTemplate_Sword_Beam_RO(name TemplateName, i
 	Template.BaseItem = 'Sword_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Melee';
 	
@@ -1814,12 +1875,15 @@ static function X2DataTemplate CreateTemplate_PsiAmp_Frayer(name TemplateName, i
 	Template.GameArchetype = "WP_PsiAmp_CV.WP_PsiAmp_CV";
 
 	Template.Abilities.AddItem('PsiAmpCV_BonusStats');
+	Template.Abilities.AddItem('SoulFire');
+	Template.Abilities.AddItem('MindMerge');
+	Template.Abilities.AddItem('SoulSteal');
 	
-	Template.ExtraDamage = default.PSIAMPT1_ABILITYDAMAGE;
+	Template.ExtraDamage = GetPsiAmpWeaponDamage(Tier);
 
 	Template.StartingItem = true;
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	// Show In Armory Requirements
 	Template.ArmoryDisplayRequirements.RequiredTechs.AddItem('Psionics');
@@ -1854,13 +1918,13 @@ static function X2DataTemplate CreateTemplate_PsiAmp_Meteoric(name TemplateName,
 	Template.Abilities.AddItem('LW_Phasewalk');
 	Template.Abilities.AddItem('LW_SoulStorm');
 
-	Template.ExtraDamage = default.PSIAMPT2_ABILITYDAMAGE;
+	Template.ExtraDamage = GetPsiAmpWeaponDamage(Tier);
 
 	Template.CreatorTemplateName = 'PsiAmp_MG_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'PsiAmp_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 	
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.PsiOffenseBonusLabel, eStat_PsiOffense, class'X2Ability_ItemGrantedAbilitySet'.default.PSIAMP_MG_STATBONUS);
 
@@ -1892,13 +1956,13 @@ static function X2DataTemplate CreateTemplate_PsiAmp_Madman(name TemplateName, i
 	Template.Abilities.AddItem('Insanity');
 	Template.Abilities.AddItem('VoidRift');
 
-	Template.ExtraDamage = default.PSIAMPT3_ABILITYDAMAGE;
+	Template.ExtraDamage = GetPsiAmpWeaponDamage(Tier);
 
 	Template.CreatorTemplateName = 'PsiAmp_BM_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'PsiAmp_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.PsiOffenseBonusLabel, eStat_PsiOffense, class'X2Ability_ItemGrantedAbilitySet'.default.PSIAMP_BM_STATBONUS);
 
@@ -1927,13 +1991,15 @@ static function X2DataTemplate CreateTemplate_PsiAmp_Puppeteer(name TemplateName
 
 	Template.Abilities.AddItem('PsiAmpBM_BonusStats');
 
-	Template.ExtraDamage = default.PSIAMPT3_ABILITYDAMAGE;
+	Template.Abilities.AddItem('PsiMindControl');
+
+	Template.ExtraDamage = GetPsiAmpWeaponDamage(Tier);
 
 	Template.CreatorTemplateName = 'PsiAmp_BM_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'PsiAmp_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.PsiOffenseBonusLabel, eStat_PsiOffense, class'X2Ability_ItemGrantedAbilitySet'.default.PSIAMP_BM_STATBONUS);
 
@@ -1964,7 +2030,7 @@ static function X2GrenadeLauncherTemplate Create_IRI_RocketLauncher_Standard(nam
 
 	Template.CanBeBuilt = false;
 	Template.StartingItem = true;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.bSoundOriginatesFromOwnerLocation = false;
 	Template.bMergeAmmo = true;
@@ -1979,7 +2045,7 @@ static function X2GrenadeLauncherTemplate Create_IRI_RocketLauncher_Standard(nam
 	Template.iClipSize = class'X2Item_IRI_RocketLaunchers'.default.RL_CV_CLIPSIZE;
 	Template.iSoundRange = class'X2Item_IRI_RocketLaunchers'.default.RL_CV_SOUNDRANGE;
 	Template.iEnvironmentDamage = class'X2Item_IRI_RocketLaunchers'.default.RL_CV_ENVIRONMENTAL_DAMAGE;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.75f);
 	Template.DamageTypeTemplateName = class'X2Item_IRI_RocketLaunchers'.default.RL_CV_BASEDAMAGE.DamageType;	
 
 	Template.Abilities.AddItem('IRI_FireRocketLauncher');
@@ -2020,14 +2086,14 @@ static function X2GrenadeLauncherTemplate Create_IRI_RocketLauncher_Shredder(nam
 
 	Template.CanBeBuilt = false;
 	Template.StartingItem = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.iRange = class'X2Item_IRI_RocketLaunchers'.default.RL_MG_RANGE;
 	Template.iRadius = class'X2Item_IRI_RocketLaunchers'.default.RL_MG_RADIUS;
 	Template.iClipSize = class'X2Item_IRI_RocketLaunchers'.default.RL_MG_CLIPSIZE;
 	Template.iSoundRange = class'X2Item_IRI_RocketLaunchers'.default.RL_MG_SOUNDRANGE;
 	Template.iEnvironmentDamage = class'X2Item_IRI_RocketLaunchers'.default.RL_MG_ENVIRONMENTAL_DAMAGE;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.75f,,3,2);
 	Template.DamageTypeTemplateName = class'X2Item_IRI_RocketLaunchers'.default.RL_MG_BASEDAMAGE.DamageType;	
 
 	Template.Abilities.AddItem('IRI_FireRocketLauncher');
@@ -2068,7 +2134,7 @@ static function X2GrenadeLauncherTemplate Create_IRI_RocketLauncher_Ejector(name
 
 	Template.CanBeBuilt = false;
 	Template.StartingItem = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.iRange = class'X2Item_IRI_RocketLaunchers'.default.RL_BM_RANGE;
 	Template.iRadius = class'X2Item_IRI_RocketLaunchers'.default.RL_BM_RADIUS;
@@ -2128,18 +2194,22 @@ static function X2DataTemplate CreateTemplate_WristBlade_Laser(name TemplateName
 	Template.iPhysicsImpulse = 5;
 
 	Template.iRange = 0;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
 	Template.Aim = class'X2Item_FactionWeapons'.default.WRISTBLADE_LASER_AIM;
 	Template.CritChance = class'X2Item_FactionWeapons'.default.WRISTBLADE_LASER_CRITCHANCE;
 	Template.iSoundRange = class'X2Item_FactionWeapons'.default.WRISTBLADE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = class'X2Item_FactionWeapons'.default.WRISTBLADE_LASER_IENVIRONMENTDAMAGE;
 	Template.BaseDamage.DamageType = 'Melee';
 
+	Template.Abilities.AddItem('SkirmisherVengeance');
+	Template.Abilities.AddItem('Reckoning_LW');
+	Template.Abilities.AddItem('RipAndTear_LW');
+
 	Template.CreatorTemplateName = 'WristBlade_LS_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'WristBlade_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Melee';
 
@@ -2188,12 +2258,16 @@ static function X2DataTemplate CreateTemplate_WristBlade_Magnetic(name TemplateN
 	Template.iPhysicsImpulse = 5;
 
 	Template.iRange = 0;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
 	Template.Aim = class'X2Item_XpackWeapons'.default.WRISTBLADE_MAGNETIC_AIM;
 	Template.CritChance = class'X2Item_XpackWeapons'.default.WRISTBLADE_MAGNETIC_CRITCHANCE;
 	Template.iSoundRange = class'X2Item_XpackWeapons'.default.WRISTBLADE_MAGNETIC_ISOUNDRANGE;
 	Template.iEnvironmentDamage = class'X2Item_XpackWeapons'.default.WRISTBLADE_MAGNETIC_IENVIRONMENTDAMAGE;
 	Template.BaseDamage.DamageType = 'Melee';
+
+	Template.Abilities.AddItem('Justice');
+	Template.Abilities.AddItem('SkirmisherVengeance');
+	Template.Abilities.AddItem('ManualOverride_LW');
 
 	Template.BonusWeaponEffects.AddItem(class'X2StatusEffects'.static.CreateStunnedStatusEffect(2, class'X2Item_XpackWeapons'.default.WRISTBLADE_MAGNETIC_STUNCHANCE, false));
 
@@ -2201,7 +2275,7 @@ static function X2DataTemplate CreateTemplate_WristBlade_Magnetic(name TemplateN
 	Template.BaseItem = 'WristBlade_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Melee';
 
@@ -2263,8 +2337,12 @@ static function X2DataTemplate CreateTemplate_WristBlade_Coil(name TemplateName,
 	Template.CreatorTemplateName = 'WristBlade_CG_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'WristBlade_MG'; // Which item this will be upgraded from
 
+	Template.Abilities.AddItem('Justice');
+	Template.Abilities.AddItem('Battlelord');
+	Template.Abilities.AddItem('CombatPresence');
+
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Melee';
 
@@ -2327,10 +2405,13 @@ static function X2DataTemplate CreateTemplate_WristBlade_Beam(name TemplateName,
 	Template.BaseItem = 'WristBlade_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
-	Template.bInfiniteItem = true;
+	Template.bInfiniteItem = false;
 
 	Template.DamageTypeTemplateName = 'Melee';
 
+	Template.Abilities.AddItem('Reckoning_LW');
+	Template.Abilities.AddItem('Whiplash');
+	Template.Abilities.AddItem('Ignite_LW');
 
 	return Template;
 }
@@ -2355,12 +2436,15 @@ static function X2DataTemplate CreateTemplate_ThrowingKnife_Magnetic(name Templa
 	Template.BaseItem = 'ThrowingKnife_LS_Secondary'; // Which item this will be upgraded from
 	Template.CreatorTemplateName = 'ThrowingKnife_MG_Schematic'; // The schematic which creates this item
 
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,0.75f);
+	Template.Abilities.AddItem('RendTheMarked');
+	Template.Abilities.AddItem('ImpersonalEdge');
+	//Template.Abilities.AddItem('ImpersonalEdge_LW');
 
 	// Add chance to inflict bleeding
 	BleedingEffect = class'X2StatusEffects'.static.CreateBleedingStatusEffect(
 		class'X2Item_SecondaryThrowingKnives'.default.THROWING_KNIFE_MG_BLEED_DURATION,
-		class'X2Item_SecondaryThrowingKnives'.default.THROWING_KNIFE_MG_BLEED_DAMAGE);
+		Tier/2);
 	BleedingEffect.ApplyChance = class'X2Item_SecondaryThrowingKnives'.default.THROWING_KNIFE_MG_BLEED_CHANCE;
 	Template.BonusWeaponEffects.AddItem(BleedingEffect);
 
@@ -2375,6 +2459,7 @@ static function X2DataTemplate CreateTemplate_ThrowingKnife_Beam(name TemplateNa
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 
 	class'X2Item_SecondaryThrowingKnives'.static.InitializeThrowingKnifeTemplate(Template);
+	Template.iClipSize=1;
 	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///MusashiCombatKnifeMod_LW.UI.UI_Kunai_BM";
 	// This all the resources; sounds, animations, models, physics, the works.
@@ -2389,12 +2474,112 @@ static function X2DataTemplate CreateTemplate_ThrowingKnife_Beam(name TemplateNa
 
 	Template.BaseDamage = GetWeaponDamage(Tier);
 
+	Template.Abilities.AddItem('KnifeJuggler_LW');
+	Template.Abilities.AddItem('KnifeEncounters');
+
 	// Add chance to inflict bleeding
 	BleedingEffect = class'X2StatusEffects'.static.CreateBleedingStatusEffect(
 		class'X2Item_SecondaryThrowingKnives'.default.THROWING_KNIFE_BM_BLEED_DURATION,
-		class'X2Item_SecondaryThrowingKnives'.default.THROWING_KNIFE_BM_BLEED_DAMAGE);
+		Tier/2);
 	BleedingEffect.ApplyChance = class'X2Item_SecondaryThrowingKnives'.default.THROWING_KNIFE_BM_BLEED_CHANCE;
 	Template.BonusWeaponEffects.AddItem(BleedingEffect);
+
+	return Template;
+}
+
+
+static function X2DataTemplate CreateTemplate_GremlinDrone_Magnetic_RO(name TemplateName, int Tier)
+{
+	local X2GremlinTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2GremlinTemplate', Template, TemplateName);
+	Template.WeaponPanelImage = "_Gremlin";                       // used by the UI. Probably determines iconview of the weapon.
+
+	Template.WeaponTech = 'magnetic';
+	Template.strImage = "img:///UILibrary_Common.MagSecondaryWeapons.MagGremlin";
+	Template.EquipSound = "Gremlin_Equip";
+
+	Template.CosmeticUnitTemplate = "GremlinMk2";
+	Template.Tier = 2;
+
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,,99);
+	Template.HackingAttemptBonus = default.GREMLINMK2_HACKBONUS;
+	Template.AidProtocolBonus = 5;
+	Template.HealingBonus = 1;
+	//Template.BaseDamage.Damage = 4;     //  combat protocol
+	//Template.BaseDamage.Pierce = 1000;  //  ignore armor
+	Template.Abilities.AddItem('RescueProtocol');
+	Template.Abilities.AddItem('BlindingProtocol_LW');
+	Template.Abilities.AddItem('AdvancedRobotics_LW');
+	Template.Abilities.AddItem('CombatProtocol');
+	Template.Abilities.AddItem('RevivalProtocol');
+
+	Template.iRange = 2;
+	Template.iRadius = 40;              //  only for scanning protocol
+	Template.NumUpgradeSlots = 2;
+	Template.InfiniteAmmo = true;
+	Template.iPhysicsImpulse = 5;
+
+
+
+	Template.CreatorTemplateName = 'Gremlin_MG_Schematic'; // The schematic which creates this item
+	Template.BaseItem = 'Gremlin_CV'; // Which item this will be upgraded from
+
+	Template.CanBeBuilt = false;
+	Template.bInfiniteItem = true;
+
+	Template.DamageTypeTemplateName = 'Electrical';
+
+	Template.bHideDamageStat = false;
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.TechBonusLabel, eStat_Hacking, default.GREMLINMK2_HACKBONUS);
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_GremlinDrone_Beam_RO(name TemplateName, int Tier)
+{
+	local X2GremlinTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2GremlinTemplate', Template, TemplateName);
+	Template.WeaponPanelImage = "_Gremlin";                       // used by the UI. Probably determines iconview of the weapon.
+
+	Template.WeaponTech = GetWeaponTech(Tier);
+	Template.strImage = "img:///UILibrary_Common.BeamSecondaryWeapons.BeamGremlin";
+	Template.EquipSound = "Gremlin_Equip";
+
+	Template.CosmeticUnitTemplate = "GremlinMk3";
+	Template.Tier = Tier;
+
+	//Template.ExtraDamage = default.GREMLINMK3_ABILITYDAMAGE;
+	Template.HackingAttemptBonus = default.GREMLINMK3_HACKBONUS;
+	Template.AidProtocolBonus = 5;
+	Template.HealingBonus = 2;
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,,99);
+
+	Template.RevivalChargesBonus = 1;
+	Template.ScanningChargesBonus = 1;
+
+	Template.iRange = 2;
+	Template.iRadius = 40;              //  only for scanning protocol
+	Template.NumUpgradeSlots = 2;
+	Template.InfiniteAmmo = true;
+	Template.iPhysicsImpulse = 5;
+
+	Template.CreatorTemplateName = 'Gremlin_BM_Schematic'; // The schematic which creates this item
+	Template.BaseItem = 'Gremlin_MG'; // Which item this will be upgraded from
+	
+	Template.CanBeBuilt = false;
+	Template.bInfiniteItem = true;
+	Template.Abilities.AddItem('RescueProtocol');
+	Template.Abilities.AddItem('BlindingProtocol_LW');
+	Template.Abilities.AddItem('ChainingJolt_LW');
+	Template.Abilities.AddItem('HayWireProtocol');
+	Template.Abilities.AddItem('VoltaicArc_LW');
+
+	Template.DamageTypeTemplateName = 'Electrical';
+	
+	Template.bHideDamageStat = false;
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.TechBonusLabel, eStat_Hacking, default.GREMLINMK3_HACKBONUS);
 
 	return Template;
 }

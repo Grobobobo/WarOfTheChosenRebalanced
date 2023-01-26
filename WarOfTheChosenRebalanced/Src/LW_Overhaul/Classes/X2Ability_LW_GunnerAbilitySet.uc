@@ -22,6 +22,7 @@ var config int COMBATIVES_DODGE;
 
 var config int DISARMING_STRIKE_COOLDOWN;
 var config int KNIFE_FIGHTER_TILE_RANGE;
+var config int SLASHANDDASHRS_COOLDOWN;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -36,6 +37,10 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddFlushAbility());
 	Templates.AddItem(FlushDamage());
 	Templates.AddItem(AddDisarmingStrike());
+	Templates.AddItem(SlashAndDashRS());
+	Templates.AddItem(AddResetKnifeAbility());
+
+	
 	//Templates.AddItem(AddHeavyReloadAbility());
 	return Templates;
 }
@@ -313,6 +318,7 @@ static function X2AbilityTemplate AddKnifeFighter()
 	WeaponDamageEffect = new class'X2Effect_ApplyWeaponDamage';
 	Template.AddTargetEffect(WeaponDamageEffect);
 	Template.bAllowBonusWeaponEffects = true;
+	Template.PostActivationEvents.AddItem('Knifeperk');
 
 	// VGamepliz matters
 	Template.SourceMissSpeech = 'SwordMiss';
@@ -329,7 +335,113 @@ static function X2AbilityTemplate AddKnifeFighter()
 
 	return Template;
 }
+static function X2AbilityTemplate SlashAndDashRS()
+{
+	local X2AbilityTemplate                 Template;
+	local X2AbilityCost_ActionPoints        ActionPointCost;
+	local X2AbilityToHitCalc_StandardMelee  StandardMelee;
+	local X2Effect_ApplyWeaponDamage        WeaponDamageEffect;
+	local array<name>                       SkipExclusions;
+	local X2AbilityCooldown                 Cooldown;
 
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'SlashAndDashRS_LW');
+
+	Template.AbilitySourceName = 'eAbilitySource_Standard';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_AlwaysShow;
+	Template.BuildNewGameStateFn = TypicalMoveEndAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	Template.BuildInterruptGameStateFn = TypicalMoveEndAbility_BuildInterruptGameState;	
+	Template.CinescriptCameraType = "Ranger_Reaper";
+	Template.IconImage = "img:///UILibrary_XPACK_Common.PerkIcons.UIPerk_bendingreed";
+	Template.bHideOnClassUnlock = false;
+	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_SQUADDIE_PRIORITY;
+	Template.AbilityConfirmSound = "TacticalUI_SwordConfirm";
+
+	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.iNumPoints = 1;
+	ActionPointCost.bConsumeAllPoints = false;
+	Template.AbilityCosts.AddItem(ActionPointCost);
+	
+	Cooldown = new class'X2AbilityCooldown';
+	Cooldown.iNumTurns = default.SLASHANDDASHRS_COOLDOWN;
+	Template.AbilityCooldown = Cooldown;
+	
+	Template.AdditionalAbilities.AddItem('ResetKnife');
+
+	//Replace SwordSlice
+	//Template.OverrideAbilities.AddItem('Slash_RS');
+	
+	StandardMelee = new class'X2AbilityToHitCalc_StandardMelee';
+	Template.AbilityToHitCalc = StandardMelee;
+
+	Template.AbilityTargetStyle = new class'X2AbilityTarget_MovingMelee';
+	Template.TargetingMethod = class'X2TargetingMethod_MeleePath';
+
+	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
+	Template.AbilityTriggers.AddItem(new class'X2AbilityTrigger_EndOfMove');
+
+	// Target Conditions
+	//
+	Template.AbilityTargetConditions.AddItem(default.LivingHostileTargetProperty);
+	Template.AbilityTargetConditions.AddItem(default.MeleeVisibilityCondition);
+
+	// Shooter Conditions
+	//
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	SkipExclusions.AddItem(class'X2StatusEffects'.default.BurningName);
+	Template.AddShooterEffectExclusions(SkipExclusions);
+
+	// Damage Effect
+	//
+	WeaponDamageEffect = new class'X2Effect_ApplyWeaponDamage';
+	Template.AddTargetEffect(WeaponDamageEffect);
+
+	Template.bAllowBonusWeaponEffects = true;
+	Template.bSkipMoveStop = true;
+	
+	// Voice events
+	//
+	Template.SourceMissSpeech = 'SwordMiss';
+
+	return Template;
+}
+
+static function X2AbilityTemplate AddResetKnifeAbility()
+{
+	local X2AbilityTemplate					Template;
+	local X2AbilityTrigger_EventListener	EventListener;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'ResetKnife');
+
+	Template.IconImage = "img:///UILibrary_XPACK_Common.PerkIcons.UIPerk_ManualOverride";
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+
+	EventListener = new class'X2AbilityTrigger_EventListener';
+	EventListener.ListenerData.Deferral = ELD_OnStateSubmitted;
+	EventListener.ListenerData.EventID = 'Knifeperk';
+	EventListener.ListenerData.EventFn = class'XComGameState_Ability'.static.AbilityTriggerEventListener_Self;
+	EventListener.ListenerData.Filter = eFilter_Unit;
+	Template.AbilityTriggers.AddItem(EventListener);
+
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	Template.AddShooterEffectExclusions();	
+
+	Template.AddTargetEffect(new class'X2Effect_ResetKnifeCooldown');
+
+	Template.bSkipFireAction = true;
+	Template.bShowActivation = false;
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	//Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	//Template.AbilityConfirmSound = "Manual_Override_Activate";
+//
+
+	return Template;
+}
 static function X2AbilityTemplate AddFlushAbility()
 {
 	local X2AbilityTemplate					Template;

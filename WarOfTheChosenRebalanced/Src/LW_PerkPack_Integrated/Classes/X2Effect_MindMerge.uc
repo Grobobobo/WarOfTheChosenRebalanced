@@ -6,14 +6,26 @@ var float MindMergeWillDivisor;
 var float MindMergeShieldHPDivisor;
 var float SoulMergeWillDivisor;
 var float SoulMergeShieldHPDivisor;
+
+var float AmpLSWillBonus;
+var float AmpLSShieldHPBonus;
+var float AmpLSCritBonus;
+
 var float AmpMGWillBonus;
 var float AmpMGShieldHPBonus;
+var float AmpMGCritBonus;
+
+var float AmpCGWillBonus;
+var float AmpCGShieldHPBonus;
+var float AMpCGCritBonus;
+
 var float AmpBMWillBonus;
 var float AmpBMShieldHPBonus;
-var float MindMergeCritDivisor;
-var float SoulMergeCritDivisor;
-var float AmpMGCritBonus;
 var float AMpBMCritBonus;
+
+var float MindMergeCritDivisor;
+
+var float SoulMergeCritDivisor;
 
 protected simulated function OnEffectAdded(const out EffectAppliedData ApplyEffectParameters, XComGameState_BaseObject kNewTargetState, XComGameState NewGameState, XComGameState_Effect NewEffectState)
 {
@@ -23,6 +35,7 @@ protected simulated function OnEffectAdded(const out EffectAppliedData ApplyEffe
 	local XComGameState_Unit	Caster, Target;
 	local XComGameState_Item	SourceItem;
 	local StateObjectReference	SoulMergeRef;
+	local X2WeaponTemplate WeaponTemplate;
 	//local UnitValue				MindMergeShieldHP;
 
 	WillChange.StatType = eStat_Will;
@@ -68,7 +81,18 @@ protected simulated function OnEffectAdded(const out EffectAppliedData ApplyEffe
 			CritChange.StatAmount = 0;
 		}
 	}
-	if (SourceItem.GetMyTemplateName() == 'PsiAmp_MG')
+	X2WeaponTemplate = X2WeaponTemplate(SourceItem.GetMyTemplate());
+
+	if (WeaponTemplate.WeaponTech == 'laser_LW')
+	{
+		WillChange.StatAmount += AmpLSWillBonus;
+		ShieldHPChange.StatAmount += AmpLSShieldHPBonus;
+		if ((SoulMergeRef.ObjectID == 0 && MindMergeCritDivisor > 0) || (SoulMergeRef.ObjectID != 0 && SoulMergeCritDivisor > 0))
+		{
+			CritChange.StatAmount += AmpLSCritBonus;
+		}
+	}
+	if (WeaponTemplate.WeaponTech == 'magnetic')
 	{
 		WillChange.StatAmount += AmpMGWillBonus;
 		ShieldHPChange.StatAmount += AmpMGShieldHPBonus;
@@ -77,7 +101,16 @@ protected simulated function OnEffectAdded(const out EffectAppliedData ApplyEffe
 			CritChange.StatAmount += AmpMGCritBonus;
 		}
 	}
-	if (SourceItem.GetMyTemplateName() == 'PsiAmp_BM')
+	if (WeaponTemplate.WeaponTech == 'coilgun_LW')
+	{
+		WillChange.StatAmount += AmpCGWillBonus;
+		ShieldHPChange.StatAmount += AmpCGShieldHPBonus;
+		if ((SoulMergeRef.ObjectID == 0 && MindMergeCritDivisor > 0) || (SoulMergeRef.ObjectID != 0 && SoulMergeCritDivisor > 0))
+		{
+			CritChange.StatAmount += AmpCGritBonus;
+		}
+	}
+	if (WeaponTemplate.WeaponTech == 'beam')
 	{
 		WillChange.StatAmount += AmpBMWillBonus;
 		ShieldHPChange.StatAmount += AmpBMShieldHPBonus;

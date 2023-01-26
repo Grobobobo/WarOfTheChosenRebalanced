@@ -10,6 +10,7 @@ var config int JUSTICE_IENVIRONMENT_DAMAGE;
 var config int WRATH_COOLDOWN;	
 var config int WHIPLASH_COOLDOWN;
 var config int WHIPLASH_ACTION_POINT_COST;
+var config float WHIPLASH_ROBOTIC_DAMAGE_BONUS;
 var config int FULL_THROTTLE_DURATION;
 var config int BATTLELORD_ACTION_POINT_COST;
 var config int BATTLELORD_COOLDOWN;
@@ -22,7 +23,6 @@ var config int TOTAL_COMBAT_SHRED;
 
 var config int SALVO_MOBILITY;
 var config int SALVO_BONUS_RANGE;
-
 static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 {
 	switch (Template.DataName)
@@ -221,7 +221,7 @@ static function ModifyWhiplash(X2AbilityTemplate Template)
 	// Give Whiplash same aim bonus as Justice and Wrath. Also disable crit
 	// like with those two abilities.
 	ToHitCalc = X2AbilityToHitCalc_StandardAim(Template.AbilityToHitCalc);
-	ToHitCalc.bAllowCrit = false;
+	ToHitCalc.bAllowCrit = true;
 
 	// Use weapon damage and aim bonus from secondary weapon (unless the ability
 	// is explicitly bound to a different inventory slot).
@@ -239,8 +239,8 @@ static function ModifyWhiplash(X2AbilityTemplate Template)
 	// Configure the damage for non-robotic targets.
 	WeaponDamageEffect = new class'X2Effect_ApplyWeaponDamage';
 	WeaponDamageEffect.bIgnoreArmor = true;
-	WeaponDamageEffect.bIgnoreBaseDamage = true;
-	WeaponDamageEffect.DamageTag = 'Whiplash';
+	//WeaponDamageEffect.bIgnoreBaseDamage = true;
+	//WeaponDamageEffect.DamageTag = 'Whiplash';
 	UnitPropertyCondition = new class'X2Condition_UnitProperty';
 	UnitPropertyCondition.ExcludeRobotic = true;
 	UnitPropertyCondition.ExcludeOrganic = false;
@@ -248,10 +248,11 @@ static function ModifyWhiplash(X2AbilityTemplate Template)
 	Template.AddTargetEffect(WeaponDamageEffect);
 
 	// Configure the damage for robotic targets (higher damage than for organics).
-	WeaponDamageEffect = new class'X2Effect_ApplyWeaponDamage';
-	WeaponDamageEffect.bIgnoreArmor = true;
-	WeaponDamageEffect.bIgnoreBaseDamage = true;
-	WeaponDamageEffect.DamageTag = 'Whiplash_Robotic';
+	WeaponDamageEffect = new class'X2Effect_ApplyScaledWeaponDamage';
+	WeaponDamageEffect.scalar = default.WHIPLASH_ROBOTIC_DAMAGE_BONUS;
+	//WeaponDamageEffect.bIgnoreArmor = true;
+	//WeaponDamageEffect.bIgnoreBaseDamage = true;
+	//WeaponDamageEffect.DamageTag = 'Whiplash_Robotic';
 	UnitPropertyCondition = new class'X2Condition_UnitProperty';
 	UnitPropertyCondition.ExcludeRobotic = false;
 	UnitPropertyCondition.ExcludeOrganic = true;

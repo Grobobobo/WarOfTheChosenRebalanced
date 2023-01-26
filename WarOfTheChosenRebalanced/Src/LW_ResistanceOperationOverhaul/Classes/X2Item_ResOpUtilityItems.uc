@@ -7,11 +7,11 @@ static function array<X2DataTemplate> CreateTemplates()
 	local array<X2DataTemplate> Weapons;
 
 
-	Weapons.AddItem(CreateFragGrenade('FragGrenade_1',1));
-	Weapons.AddItem(CreateFragGrenade('FragGrenade_2',2));
-	Weapons.AddItem(CreateFragGrenade('FragGrenade_3',3));
-	Weapons.AddItem(CreateFragGrenade('FragGrenade_4',4));
-	Weapons.AddItem(CreateFragGrenade('FragGrenade_5',4));
+	Weapons.AddItem(CreateFragGrenade_RO('FragGrenade_1',1));
+	Weapons.AddItem(CreateFragGrenade_RO('FragGrenade_2',2));
+	Weapons.AddItem(CreateFragGrenade_RO('FragGrenade_3',3));
+	Weapons.AddItem(CreateFragGrenade_RO('FragGrenade_4',4));
+	Weapons.AddItem(CreateFragGrenade_RO('FragGrenade_5',4));
 
 	//Weapons.AddItem(CreateMagGrenade('MagGrenade_1',1));
 	Weapons.AddItem(CreateMagGrenade('MagGrenade_2',2));
@@ -19,15 +19,15 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateMagGrenade('MagGrenade_4',4));
 	Weapons.AddItem(CreateMagGrenade('MagGrenade_5',4));
     
-	//Weapons.AddItem(CreateAlienGrenade('AlienGrenade_1',1));
-	//Weapons.AddItem(CreateAlienGrenade('AlienGrenade_2',2));
-	Weapons.AddItem(CreateAlienGrenade('AlienGrenade_3',3));
-	Weapons.AddItem(CreateAlienGrenade('AlienGrenade_4',4));
-	Weapons.AddItem(CreateAlienGrenade('AlienGrenade_5',4));
+	//Weapons.AddItem(CreateAlienGrenade_RO('AlienGrenade_1',1));
+	//Weapons.AddItem(CreateAlienGrenade_RO('AlienGrenade_2',2));
+	Weapons.AddItem(CreateAlienGrenade_RO('AlienGrenade_3',3));
+	Weapons.AddItem(CreateAlienGrenade_RO('AlienGrenade_4',4));
+	Weapons.AddItem(CreateAlienGrenade_RO('AlienGrenade_5',4));
 
-	Weapons.AddItem(CreateAlienGrenade('ProximityMine_3',3));
-	Weapons.AddItem(CreateAlienGrenade('ProximityMine_4',4));
-	Weapons.AddItem(CreateAlienGrenade('ProximityMine_5',5));
+	Weapons.AddItem(ProximityMine_RO('ProximityMine_3',3));
+	Weapons.AddItem(ProximityMine_RO('ProximityMine_4',4));
+	Weapons.AddItem(ProximityMine_RO('ProximityMine_5',5));
 
 
     return Weapons;
@@ -39,7 +39,7 @@ static function WeaponDamageValue GetWeaponDamage(int WeaponTier, optional float
     local int IntBaseDamage;
 
     FloatBaseDamage = WeaponTier * DamagePCT;
-    IntBaseDamage = int(WeaponTier);
+    IntBaseDamage = int(FloatBaseDamage);
     
 
     WeaponDamage.Damage = IntBaseDamage;
@@ -53,7 +53,7 @@ static function WeaponDamageValue GetWeaponDamage(int WeaponTier, optional float
 
     return WeaponDamage;
 }
-static function X2DataTemplate CreateFragGrenade(name TemplateName, int Tier)
+static function X2DataTemplate CreateFragGrenade_RO(name TemplateName, int Tier)
 {
 	local X2GrenadeTemplate Template;
 	local X2Effect_ApplyWeaponDamage WeaponDamageEffect;
@@ -159,7 +159,7 @@ static function X2DataTemplate CreateMagGrenade(name TemplateName, int Tier)
 }
 
 
-static function X2DataTemplate CreateAlienGrenade(name TemplateName, int Tier)
+static function X2DataTemplate CreateAlienGrenade_RO(name TemplateName, int Tier)
 {
 	local X2GrenadeTemplate Template;
 	local X2Effect_ApplyWeaponDamage WeaponDamageEffect;
@@ -211,7 +211,7 @@ static function X2DataTemplate CreateAlienGrenade(name TemplateName, int Tier)
 	return Template;
 }
 
-static function X2GrenadeTemplate ProximityMine(name TemplateName, int Tier)
+static function X2GrenadeTemplate ProximityMine_RO(name TemplateName, int Tier)
 {
 	local X2GrenadeTemplate Template;
 	local ArtifactCost Resources;

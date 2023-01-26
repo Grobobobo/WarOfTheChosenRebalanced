@@ -6,7 +6,6 @@ enum EUpgradeCategory
 	eUpCat_Secondary,
 	eUpCat_Armor,
 	eUpCat_Utility,
-	eUpCat_MAX,
 	eUpCat_Attachment,
 	eUpCat_PCS,
 	eUpCat_Grenade,
@@ -14,7 +13,7 @@ enum EUpgradeCategory
 	eUpCat_Vest,
 	eUpCat_Misc,
 	eUpCat_Heavy,
-
+	eUpCat_MAX,
 };
 
 struct MissionOption

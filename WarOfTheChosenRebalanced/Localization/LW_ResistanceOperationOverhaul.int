@@ -1516,21 +1516,21 @@ AbilityDescName="assault rifle"
 FriendlyName="Coil Rifle"
 FriendlyNamePlural="Coil Rifles"
 BriefSummary="A powerful, mid-range, armor-piercing coilgun that fills the assault rifle role."
-TacticalText="Coil Weapons tend to have slightly increased magazine capacity."
+TacticalText=""
 AbilityDescName="assault rifle"
 
 [AssaultRifle_CG_4 X2WeaponTemplate]
 FriendlyName="Improved Coil Rifle"
 FriendlyNamePlural="Coil Rifles"
 BriefSummary="A powerful, mid-range, armor-piercing coilgun that fills the assault rifle role."
-TacticalText="Coil Weapons tend to have slightly increased magazine capacity."
+TacticalText=""
 AbilityDescName="assault rifle"
 
 [AssaultRifle_CG_5 X2WeaponTemplate]
 FriendlyName="Superior Coil Rifle"
 FriendlyNamePlural="Coil Rifles"
 BriefSummary="A powerful, mid-range, armor-piercing coilgun that fills the assault rifle role."
-TacticalText="Coil Weapons tend to have slightly increased magazine capacity."
+TacticalText=""
 AbilityDescName="assault rifle"
 
 [AssaultRifle_BM_3 X2WeaponTemplate]
@@ -2702,3 +2702,919 @@ FriendlyNamePlural="Replicator Gauntlets"
 BriefSummary="The Templars developed these unique gauntlets to boost the Psionic potential of any user regardless of their natural talents. By tapping directly into the body, the gauntlets capture the users' latent Replicator and amplify it to the point that it can be focused and released on command, unleashing a deadly blade of pure Psionic energy."
 TacticalText="<Bullet/> Templars can attack adjacent enemies with their Replicator even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
 AbilityDescName="Replicator"
+
+[TLE_Pistol_CV_1 X2WeaponTemplate]
+FriendlyName="Traditional Handgun"
+FriendlyNamePlural="Traditional Handguns"
+BriefSummary="XCOM Sharpshooters carry high-caliber pistols in addition to their sniper rifles. With the proper training, Sharpshooters can pose an enormous threat at close range."
+TacticalText="<Bullet/> Pistols can be much more than a sidearm in the hands of a trained Sharpshooter.\n<Bullet/> Unlike the sniper rifle, pistols can be fired with a single action.\n<Bullet/> Sharpshooters can train several abilities that dramatically enhance their use of pistols."
+AbilityDescName="Traditional Handgun"
+
+[Pistol_CV_1 X2WeaponTemplate]
+FriendlyName="Revolver"
+FriendlyNamePlural="Revolvers"
+BriefSummary="XCOM Sharpshooters carry high-caliber pistols in addition to their sniper rifles. With the proper training, Sharpshooters can pose an enormous threat at close range."
+TacticalText="<Bullet/> Pistols can be much more than a sidearm in the hands of a trained Sharpshooter.\n<Bullet/> Unlike the sniper rifle, pistols can be fired with a single action.\n<Bullet/> Sharpshooters can train several abilities that dramatically enhance their use of pistols."
+AbilityDescName="pistol"
+
+[Pistol_LS_2 X2WeaponTemplate]
+FriendlyName="Laser Pistol"
+FriendlyNamePlural="Laser Pistols"
+UnknownUtilityCategory="Pistol"
+BriefSummary="Based on the advances in beam weapons tech we've achieved, this new pistol boasts a substantial improvement in power over our conventional pistol."
+TacticalText="<Bullet/> Laser weapons receive bonus aim.\n<Bullet/> Laser pistols are substantially more effective and accurate than their conventional precursors.\n<Bullet/> Pistols can be fired with a single action.\n<Bullet/> Soldiers can train several abilities that dramatically enhance their use of pistols.\n<Bullet/> Pistols lose accuracy at long ranges."
+
+[Pistol_LS_3 X2WeaponTemplate]
+FriendlyName="Improved Laser Pistol"
+FriendlyNamePlural="Laser Pistols"
+UnknownUtilityCategory="Pistol"
+BriefSummary="Based on the advances in beam weapons tech we've achieved, this new pistol boasts a substantial improvement in power over our conventional pistol."
+TacticalText="<Bullet/> Laser weapons receive bonus aim.\n<Bullet/> Laser pistols are substantially more effective and accurate than their conventional precursors.\n<Bullet/> Pistols can be fired with a single action.\n<Bullet/> Soldiers can train several abilities that dramatically enhance their use of pistols.\n<Bullet/> Pistols lose accuracy at long ranges."
+
+[Pistol_LS_4 X2WeaponTemplate]
+FriendlyName="Superior Laser Pistol"
+FriendlyNamePlural="Laser Pistols"
+UnknownUtilityCategory="Pistol"
+BriefSummary="Based on the advances in beam weapons tech we've achieved, this new pistol boasts a substantial improvement in power over our conventional pistol."
+TacticalText="<Bullet/> Laser weapons receive bonus aim.\n<Bullet/> Laser pistols are substantially more effective and accurate than their conventional precursors.\n<Bullet/> Pistols can be fired with a single action.\n<Bullet/> Soldiers can train several abilities that dramatically enhance their use of pistols.\n<Bullet/> Pistols lose accuracy at long ranges."
+
+[Pistol_LS_5 X2WeaponTemplate]
+FriendlyName="Elite Laser Pistol"
+FriendlyNamePlural="Laser Pistols"
+UnknownUtilityCategory="Pistol"
+BriefSummary="Based on the advances in beam weapons tech we've achieved, this new pistol boasts a substantial improvement in power over our conventional pistol."
+TacticalText="<Bullet/> Laser weapons receive bonus aim.\n<Bullet/> Laser pistols are substantially more effective and accurate than their conventional precursors.\n<Bullet/> Pistols can be fired with a single action.\n<Bullet/> Soldiers can train several abilities that dramatically enhance their use of pistols.\n<Bullet/> Pistols lose accuracy at long ranges."
+
+[Pistol_MG_2 X2WeaponTemplate]
+FriendlyName="Mag Pistol"
+FriendlyNamePlural="Mag Pistols"
+BriefSummary="Based on the advances in magnetic weapons tech we've achieved, this new pistol boasts a substantial improvement in power over our conventional pistol."
+TacticalText="<Bullet/> Magnetic pistols are substantially more effective than their conventional precursors.\n<Bullet/> Unlike the sniper rifle, pistols can be fired with a single action."
+AbilityDescName="pistol"
+
+[Pistol_MG_3 X2WeaponTemplate]
+FriendlyName="Improved Mag Pistol"
+FriendlyNamePlural="Mag Pistols"
+BriefSummary="Based on the advances in magnetic weapons tech we've achieved, this new pistol boasts a substantial improvement in power over our conventional pistol."
+TacticalText="<Bullet/> Magnetic pistols are substantially more effective than their conventional precursors.\n<Bullet/> Unlike the sniper rifle, pistols can be fired with a single action."
+AbilityDescName="pistol"
+
+[Pistol_MG_4 X2WeaponTemplate]
+FriendlyName="Superior Mag Pistol"
+FriendlyNamePlural="Mag Pistols"
+BriefSummary="Based on the advances in magnetic weapons tech we've achieved, this new pistol boasts a substantial improvement in power over our conventional pistol."
+TacticalText="<Bullet/> Magnetic pistols are substantially more effective than their conventional precursors.\n<Bullet/> Unlike the sniper rifle, pistols can be fired with a single action."
+AbilityDescName="pistol"
+
+[Pistol_MG_5 X2WeaponTemplate]
+FriendlyName="Elite Mag Pistol"
+FriendlyNamePlural="Mag Pistols"
+BriefSummary="Based on the advances in magnetic weapons tech we've achieved, this new pistol boasts a substantial improvement in power over our conventional pistol."
+TacticalText="<Bullet/> Magnetic pistols are substantially more effective than their conventional precursors.\n<Bullet/> Unlike the sniper rifle, pistols can be fired with a single action."
+AbilityDescName="pistol"
+
+[Pistol_CG_3 X2WeaponTemplate]
+FriendlyName="Gauss Pistol"
+FriendlyNamePlural="Gauss Pistols"
+UnknownUtilityCategory="Pistol"
+BriefSummary="A powerful, coil-tech sidearm that can punch through enemy armor."
+TacticalText="<Bullet/> Coil weapons Gain 10 crit.\n<Bullet/> Pistols can be fired with a single action.\n<Bullet/> Soldiers can train several abilities that dramatically enhance their use of pistols.\n<Bullet/> Pistols lose accuracy at long ranges."
+AbilityDescName="pistol"
+
+[Pistol_CG_4 X2WeaponTemplate]
+FriendlyName="Improved Gauss Pistol"
+FriendlyNamePlural="Gauss Pistols"
+UnknownUtilityCategory="Pistol"
+BriefSummary="A powerful, coil-tech sidearm that can punch through enemy armor."
+TacticalText="<Bullet/> Coil weapons Gain 10 crit.\n<Bullet/> Pistols can be fired with a single action.\n<Bullet/> Soldiers can train several abilities that dramatically enhance their use of pistols.\n<Bullet/> Pistols lose accuracy at long ranges."
+AbilityDescName="pistol"
+
+[Pistol_CG_5 X2WeaponTemplate]
+FriendlyName="Elite Gauss Pistol"
+FriendlyNamePlural="Gauss Pistols"
+UnknownUtilityCategory="Pistol"
+BriefSummary="A powerful, coil-tech sidearm that can punch through enemy armor."
+TacticalText="<Bullet/> Coil weapons Gain 10 crit.\n<Bullet/> Pistols can be fired with a single action.\n<Bullet/> Soldiers can train several abilities that dramatically enhance their use of pistols.\n<Bullet/> Pistols lose accuracy at long ranges."
+AbilityDescName="pistol"
+
+[Pistol_BM_3 X2WeaponTemplate]
+FriendlyName="Beam Pistol"
+FriendlyNamePlural="Beam Pistols"
+BriefSummary="The ultimate sidearm, this pistol integrates the aliens' beam weapons technology to powerful effect."
+TacticalText="<Bullet/> Beam pistols are the most powerful handguns on Earth.\n<Bullet/> Pistols can be fired with a single action."
+
+[Pistol_BM_4 X2WeaponTemplate]
+FriendlyName="Improved Beam Pistol"
+FriendlyNamePlural="Beam Pistols"
+BriefSummary="The ultimate sidearm, this pistol integrates the aliens' beam weapons technology to powerful effect."
+TacticalText="<Bullet/> Beam pistols are the most powerful handguns on Earth.\n<Bullet/> Pistols can be fired with a single action."
+
+[Pistol_BM_5 X2WeaponTemplate]
+FriendlyName="Elite Beam Pistol"
+FriendlyNamePlural="Beam Pistols"
+BriefSummary="The ultimate sidearm, this pistol integrates the aliens' beam weapons technology to powerful effect."
+TacticalText="<Bullet/> Beam pistols are the most powerful handguns on Earth.\n<Bullet/> Pistols can be fired with a single action."
+
+[TLE_Pistol_MG_2 X2WeaponTemplate]
+FriendlyName="Rail Pistol"
+FriendlyNamePlural="Rail Pistols"
+BriefSummary="Based on the advances in magnetic weapons tech we've achieved, this new pistol boasts a substantial improvement in power over our conventional pistol."
+TacticalText="<Bullet/> Rail pistols are substantially more effective than their conventional precursors.\n<Bullet/> Unlike the Marksman's rifle, pistols can be fired with a single action."
+AbilityDescName="Rail Pistol"
+
+[TLE_Pistol_MG_3 X2WeaponTemplate]
+FriendlyName="Improved Rail Pistol"
+FriendlyNamePlural="Rail Pistols"
+BriefSummary="Based on the advances in magnetic weapons tech we've achieved, this new pistol boasts a substantial improvement in power over our conventional pistol."
+TacticalText="<Bullet/> Rail pistols are substantially more effective than their conventional precursors.\n<Bullet/> Unlike the Marksman's rifle, pistols can be fired with a single action."
+AbilityDescName="Rail Pistol"
+
+[TLE_Pistol_MG_4 X2WeaponTemplate]
+FriendlyName="Superior Rail Pistol"
+FriendlyNamePlural="Rail Pistols"
+BriefSummary="Based on the advances in magnetic weapons tech we've achieved, this new pistol boasts a substantial improvement in power over our conventional pistol."
+TacticalText="<Bullet/> Rail pistols are substantially more effective than their conventional precursors.\n<Bullet/> Unlike the Marksman's rifle, pistols can be fired with a single action."
+AbilityDescName="Rail Pistol"
+
+[TLE_Pistol_MG_5 X2WeaponTemplate]
+FriendlyName="Elite Rail Pistol"
+FriendlyNamePlural="Rail Pistols"
+BriefSummary="Based on the advances in magnetic weapons tech we've achieved, this new pistol boasts a substantial improvement in power over our conventional pistol."
+TacticalText="<Bullet/> Rail pistols are substantially more effective than their conventional precursors.\n<Bullet/> Unlike the Marksman's rifle, pistols can be fired with a single action."
+AbilityDescName="Rail Pistol"
+
+[TLE_Pistol_BM_3 X2WeaponTemplate]
+FriendlyName="Energy Pistol"
+FriendlyNamePlural="Energy Pistols"
+BriefSummary="The ultimate sidearm, this pistol integrates the aliens' beam weapons technology to powerful effect."
+TacticalText="<Bullet/> Energy pistols are the most powerful handguns on Earth.\n<Bullet/> Unlike the Marksman's rifle, pistols can be fired with a single action."
+AbilityDescName="Energy pistol"
+
+[TLE_Pistol_BM_4 X2WeaponTemplate]
+FriendlyName="Improved Energy Pistol"
+FriendlyNamePlural="Energy Pistols"
+BriefSummary="The ultimate sidearm, this pistol integrates the aliens' beam weapons technology to powerful effect."
+TacticalText="<Bullet/> Energy pistols are the most powerful handguns on Earth.\n<Bullet/> Unlike the Marksman's rifle, pistols can be fired with a single action."
+AbilityDescName="Energy pistol"
+
+[TLE_Pistol_BM_5 X2WeaponTemplate]
+FriendlyName="Elite Energy Pistol"
+FriendlyNamePlural="Energy Pistols"
+BriefSummary="The ultimate sidearm, this pistol integrates the aliens' beam weapons technology to powerful effect."
+TacticalText="<Bullet/> Energy pistols are the most powerful handguns on Earth.\n<Bullet/> Unlike the Marksman's rifle, pistols can be fired with a single action."
+AbilityDescName="Energy pistol"
+
+[Sidearm_CV_1 X2WeaponTemplate]
+FriendlyName="Autopistol"
+FriendlyNamePlural="Autopistol"
+BriefSummary="Should their power fail them for some reason, our Soldiers can rely on a relatively conventional pistol arrangement that has been modified to specifically enhance its rate of fire and overall handling. This straightforward design contributes to the weapon's reliability in spite of the inconsistent material quality found in its construction."
+TacticalText="<Bullet/> The autopistol has a significantly shorter range than the pistol, lower base damage, but higher crit damage and a massive crit bonus."
+AbilityDescName="autopistol"
+
+[Sidearm_LS_2 X2WeaponTemplate]
+FriendlyName="Heater"
+FriendlyNamePlural="Heaters"
+BriefSummary="Continuous laser beam of this Autopistol variant effortlessly burns holes in plain and armored targets alike. Variable power output and spacious battery allow this weapon to double as a compact source of heat in cold climate. This unintended, but welcome side effect has earned this weapon its nickname, which has stuck to the point where even Shen can't remember what it was supposed to be called before that."
+TacticalText="Continuous laser beam of this Autopistol variant effortlessly burns holes in plain and armored targets alike. Variable power output and spacious battery allow this weapon to double as a compact source of heat in cold climate. This unintended, but welcome side effect has earned this weapon its nickname, which has stuck to the point where even Shen can't remember what it was supposed to be called before that.<br/><Bullet/> Autopistols can be fired with a single action."
+AbilityDescName="autopistol"
+
+[Sidearm_LS_3 X2WeaponTemplate]
+FriendlyName="Improved Heater"
+FriendlyNamePlural="Heaters"
+BriefSummary="Continuous laser beam of this Autopistol variant effortlessly burns holes in plain and armored targets alike. Variable power output and spacious battery allow this weapon to double as a compact source of heat in cold climate. This unintended, but welcome side effect has earned this weapon its nickname, which has stuck to the point where even Shen can't remember what it was supposed to be called before that."
+TacticalText="Continuous laser beam of this Autopistol variant effortlessly burns holes in plain and armored targets alike. Variable power output and spacious battery allow this weapon to double as a compact source of heat in cold climate. This unintended, but welcome side effect has earned this weapon its nickname, which has stuck to the point where even Shen can't remember what it was supposed to be called before that.<br/><Bullet/> Autopistols can be fired with a single action."
+AbilityDescName="autopistol"
+
+[Sidearm_LS_4 X2WeaponTemplate]
+FriendlyName="Superior Heater"
+FriendlyNamePlural="Heaters"
+BriefSummary="Continuous laser beam of this Autopistol variant effortlessly burns holes in plain and armored targets alike. Variable power output and spacious battery allow this weapon to double as a compact source of heat in cold climate. This unintended, but welcome side effect has earned this weapon its nickname, which has stuck to the point where even Shen can't remember what it was supposed to be called before that."
+TacticalText="Continuous laser beam of this Autopistol variant effortlessly burns holes in plain and armored targets alike. Variable power output and spacious battery allow this weapon to double as a compact source of heat in cold climate. This unintended, but welcome side effect has earned this weapon its nickname, which has stuck to the point where even Shen can't remember what it was supposed to be called before that.<br/><Bullet/> Autopistols can be fired with a single action."
+AbilityDescName="autopistol"
+
+[Sidearm_LS_5 X2WeaponTemplate]
+FriendlyName="Elite Heater"
+FriendlyNamePlural="Heaters"
+BriefSummary="Continuous laser beam of this Autopistol variant effortlessly burns holes in plain and armored targets alike. Variable power output and spacious battery allow this weapon to double as a compact source of heat in cold climate. This unintended, but welcome side effect has earned this weapon its nickname, which has stuck to the point where even Shen can't remember what it was supposed to be called before that."
+TacticalText="Continuous laser beam of this Autopistol variant effortlessly burns holes in plain and armored targets alike. Variable power output and spacious battery allow this weapon to double as a compact source of heat in cold climate. This unintended, but welcome side effect has earned this weapon its nickname, which has stuck to the point where even Shen can't remember what it was supposed to be called before that.<br/><Bullet/> Autopistols can be fired with a single action."
+AbilityDescName="autopistol"
+
+[Sidearm_MG_2 X2WeaponTemplate]
+FriendlyName="Mag Autopistol"
+FriendlyNamePlural="Mag Autopistols"
+BriefSummary="The introduction of a magnetic projectile accelerator into the automatic pistol wielded by our Soldiers would seem to be at odds with the weapon's original design. Still, we have made it work somehow. Indoor trials of this weapon are currently prohibited."
+TacticalText="<Bullet/> Magnetic autopistols are substantially more effective than their conventional precursors.\n<<Bullet/> The autopistol has a significantly shorter range than the pistol, lower base damage, but higher crit damage and a massive crit bonus."
+AbilityDescName="autopistol"
+
+[Sidearm_MG_3 X2WeaponTemplate]
+FriendlyName="Improved Mag Autopistol"
+FriendlyNamePlural="Mag Autopistols"
+BriefSummary="The introduction of a magnetic projectile accelerator into the automatic pistol wielded by our Soldiers would seem to be at odds with the weapon's original design. Still, we have made it work somehow. Indoor trials of this weapon are currently prohibited."
+TacticalText="<Bullet/> Magnetic autopistols are substantially more effective than their conventional precursors.\n<<Bullet/> The autopistol has a significantly shorter range than the pistol, lower base damage, but higher crit damage and a massive crit bonus."
+AbilityDescName="autopistol"
+
+[Sidearm_MG_4 X2WeaponTemplate]
+FriendlyName="Superior Mag Autopistol"
+FriendlyNamePlural="Mag Autopistols"
+BriefSummary="The introduction of a magnetic projectile accelerator into the automatic pistol wielded by our Soldiers would seem to be at odds with the weapon's original design. Still, we have made it work somehow. Indoor trials of this weapon are currently prohibited."
+TacticalText="<Bullet/> Magnetic autopistols are substantially more effective than their conventional precursors.\n<<Bullet/> The autopistol has a significantly shorter range than the pistol, lower base damage, but higher crit damage and a massive crit bonus."
+AbilityDescName="autopistol"
+
+[Sidearm_MG_5 X2WeaponTemplate]
+FriendlyName="Elite Mag Autopistol"
+FriendlyNamePlural="Mag Autopistols"
+BriefSummary="The introduction of a magnetic projectile accelerator into the automatic pistol wielded by our Soldiers would seem to be at odds with the weapon's original design. Still, we have made it work somehow. Indoor trials of this weapon are currently prohibited."
+TacticalText="<Bullet/> Magnetic autopistols are substantially more effective than their conventional precursors.\n<<Bullet/> The autopistol has a significantly shorter range than the pistol, lower base damage, but higher crit damage and a massive crit bonus."
+AbilityDescName="autopistol"
+
+[Sidearm_CG_3 X2WeaponTemplate]
+FriendlyName="Cycler"
+FriendlyNamePlural="Cycler"
+BriefSummary="Cycler was designed from the get-go with two key features in mind: ultracompact dimensions and volume of fire. Switching to caseless ammunition allowed us to achieve both of these goals without significant compromises to accuracy and damage."
+TacticalText="Cycler was designed from the get-go with two key features in mind: ultracompact dimensions and volume of fire. Switching to caseless ammunition allowed us to achieve both of these goals without significant compromises to accuracy and damage.<br/><Bullet/> Autopistols can be fired with a single action."
+AbilityDescName="autopistol"
+
+[Sidearm_CG_4 X2WeaponTemplate]
+FriendlyName="Improved Cycler"
+FriendlyNamePlural="Cycler"
+BriefSummary="Cycler was designed from the get-go with two key features in mind: ultracompact dimensions and volume of fire. Switching to caseless ammunition allowed us to achieve both of these goals without significant compromises to accuracy and damage."
+TacticalText="Cycler was designed from the get-go with two key features in mind: ultracompact dimensions and volume of fire. Switching to caseless ammunition allowed us to achieve both of these goals without significant compromises to accuracy and damage.<br/><Bullet/> Autopistols can be fired with a single action."
+AbilityDescName="autopistol"
+
+[Sidearm_CG_5 X2WeaponTemplate]
+FriendlyName="Elite Cycler"
+FriendlyNamePlural="Cycler"
+BriefSummary="Cycler was designed from the get-go with two key features in mind: ultracompact dimensions and volume of fire. Switching to caseless ammunition allowed us to achieve both of these goals without significant compromises to accuracy and damage."
+TacticalText="Cycler was designed from the get-go with two key features in mind: ultracompact dimensions and volume of fire. Switching to caseless ammunition allowed us to achieve both of these goals without significant compromises to accuracy and damage.<br/><Bullet/> Autopistols can be fired with a single action."
+AbilityDescName="autopistol"
+
+[Sidearm_BM_3 X2WeaponTemplate]
+FriendlyName="Beam Autopistol"
+FriendlyNamePlural="Beam Autopistols"
+BriefSummary="This variant of the autopistol is one of the more impressive feats in our joint effort to reduce the size of portable Elerium cells. Now fully-powered, the weapon delivers focused pulses of energy capable of inflicting severe damage to all but the most heavily armored targets."
+TacticalText="<Bullet/> The Beam Autopistol is the most powerful handgun available to our soldiers.\n<Bullet/> The autopistol has a significantly shorter range than the pistol, lower base damage, but higher crit damage and a massive crit bonus."
+AbilityDescName="autopistol"
+
+[Sidearm_BM_4 X2WeaponTemplate]
+FriendlyName="Improved Beam Autopistol"
+FriendlyNamePlural="Beam Autopistols"
+BriefSummary="This variant of the autopistol is one of the more impressive feats in our joint effort to reduce the size of portable Elerium cells. Now fully-powered, the weapon delivers focused pulses of energy capable of inflicting severe damage to all but the most heavily armored targets."
+TacticalText="<Bullet/> The Beam Autopistol is the most powerful handgun available to our soldiers.\n<Bullet/> The autopistol has a significantly shorter range than the pistol, lower base damage, but higher crit damage and a massive crit bonus."
+AbilityDescName="autopistol"
+
+[Sidearm_BM_5 X2WeaponTemplate]
+FriendlyName="Superior Beam Autopistol"
+FriendlyNamePlural="Beam Autopistols"
+BriefSummary="This variant of the autopistol is one of the more impressive feats in our joint effort to reduce the size of portable Elerium cells. Now fully-powered, the weapon delivers focused pulses of energy capable of inflicting severe damage to all but the most heavily armored targets."
+TacticalText="<Bullet/> The Beam Autopistol is the most powerful handgun available to our soldiers.\n<Bullet/> The autopistol has a significantly shorter range than the pistol, lower base damage, but higher crit damage and a massive crit bonus."
+AbilityDescName="autopistol"
+
+[SawedOffShotgun_CV_1 X2WeaponTemplate]
+FriendlyName="Sawed-Off Shotgun"
+FriendlyNamePlural="Sawed-Off Shotguns"
+BriefSummary="A powerful, if short-ranged, secondary weapon."
+TacticalText="<Bullet/> Adaptation of concealable pre-invasion weaponry.<br/>"
+
+[SawedOffShotgun_LS_2 X2WeaponTemplate]
+FriendlyName="Blazer"
+FriendlyNamePlural="Blazer"
+BriefSummary="Officially designated as Binary Laser, this compact, close range pulse laser weapon has two firing chambers that are loaded with high-impulse disposable power cells. It was immediately dubbed \"Blazer\" by one of our operatives once they saw it fire.<br/>"
+TacticalText="Officially designated as Binary Laser, this compact, close range pulse laser weapon has two firing chambers that are loaded with high-impulse disposable power cells. It was immediately dubbed \"Blazer\" by one of our operatives once they saw it fire.<br/>"
+AbilityDescName="sawed off shotgun"
+
+[SawedOffShotgun_LS_3 X2WeaponTemplate]
+FriendlyName="Improved Blazer"
+FriendlyNamePlural="Blazer"
+BriefSummary="Officially designated as Binary Laser, this compact, close range pulse laser weapon has two firing chambers that are loaded with high-impulse disposable power cells. It was immediately dubbed \"Blazer\" by one of our operatives once they saw it fire.<br/>"
+TacticalText="Officially designated as Binary Laser, this compact, close range pulse laser weapon has two firing chambers that are loaded with high-impulse disposable power cells. It was immediately dubbed \"Blazer\" by one of our operatives once they saw it fire.<br/>"
+AbilityDescName="sawed off shotgun"
+
+[SawedOffShotgun_LS_4 X2WeaponTemplate]
+FriendlyName="Superior Blazer"
+FriendlyNamePlural="Blazer"
+BriefSummary="Officially designated as Binary Laser, this compact, close range pulse laser weapon has two firing chambers that are loaded with high-impulse disposable power cells. It was immediately dubbed \"Blazer\" by one of our operatives once they saw it fire.<br/>"
+TacticalText="Officially designated as Binary Laser, this compact, close range pulse laser weapon has two firing chambers that are loaded with high-impulse disposable power cells. It was immediately dubbed \"Blazer\" by one of our operatives once they saw it fire.<br/>"
+AbilityDescName="sawed off shotgun"
+
+[SawedOffShotgun_LS_5 X2WeaponTemplate]
+FriendlyName="Elite Blazer"
+FriendlyNamePlural="Blazer"
+BriefSummary="Officially designated as Binary Laser, this compact, close range pulse laser weapon has two firing chambers that are loaded with high-impulse disposable power cells. It was immediately dubbed \"Blazer\" by one of our operatives once they saw it fire.<br/>"
+TacticalText="Officially designated as Binary Laser, this compact, close range pulse laser weapon has two firing chambers that are loaded with high-impulse disposable power cells. It was immediately dubbed \"Blazer\" by one of our operatives once they saw it fire.<br/>"
+AbilityDescName="sawed off shotgun"
+
+[SawedOffShotgun_MG_2 X2WeaponTemplate]
+FriendlyName="Mag Shorty"
+FriendlyNamePlural="Mag Shorties"
+BriefSummary="An upgraded version of the sawed-off shotgun that incorporates magnetic accelerator technologies to boost its damage."
+TacticalText="<Bullet/> An upgraded version of the sawed-off shotgun that incorporates magnetic accelerator technologies to boost its damage.<br/>"
+
+[SawedOffShotgun_MG_3 X2WeaponTemplate]
+FriendlyName="Improved Mag Shorty"
+FriendlyNamePlural="Mag Shorties"
+BriefSummary="An upgraded version of the sawed-off shotgun that incorporates magnetic accelerator technologies to boost its damage."
+TacticalText="<Bullet/> An upgraded version of the sawed-off shotgun that incorporates magnetic accelerator technologies to boost its damage.<br/>"
+
+[SawedOffShotgun_MG_4 X2WeaponTemplate]
+FriendlyName="Superior Mag Shorty"
+FriendlyNamePlural="Mag Shorties"
+BriefSummary="An upgraded version of the sawed-off shotgun that incorporates magnetic accelerator technologies to boost its damage."
+TacticalText="<Bullet/> An upgraded version of the sawed-off shotgun that incorporates magnetic accelerator technologies to boost its damage.<br/>"
+
+[SawedOffShotgun_MG_5 X2WeaponTemplate]
+FriendlyName="Elite Mag Shorty"
+FriendlyNamePlural="Mag Shorties"
+BriefSummary="An upgraded version of the sawed-off shotgun that incorporates magnetic accelerator technologies to boost its damage."
+TacticalText="<Bullet/> An upgraded version of the sawed-off shotgun that incorporates magnetic accelerator technologies to boost its damage.<br/>"
+
+[SawedOffShotgun_CG_3 X2WeaponTemplate]
+FriendlyName="Coil Shorty"
+FriendlyNamePlural="Coil Shorties"
+BriefSummary="Combine age-old simple design with latest advances in projectile acceleration technology and you'll get a frighteningly effective weapon that will make any foe regret getting too close."
+TacticalText="Combine age-old simple design with latest advances in projectile acceleration technology and you'll get a frighteningly effective weapon that will make any foe regret getting too close.<br/>"
+AbilityDescName="sawed off shotgun"
+
+[SawedOffShotgun_CG_4 X2WeaponTemplate]
+FriendlyName="Improved Coil Shorty"
+FriendlyNamePlural="Coil Shorties"
+BriefSummary="Combine age-old simple design with latest advances in projectile acceleration technology and you'll get a frighteningly effective weapon that will make any foe regret getting too close."
+TacticalText="Combine age-old simple design with latest advances in projectile acceleration technology and you'll get a frighteningly effective weapon that will make any foe regret getting too close.<br/>"
+AbilityDescName="sawed off shotgun"
+
+[SawedOffShotgun_CG_5 X2WeaponTemplate]
+FriendlyName="Superior Coil Shorty"
+FriendlyNamePlural="Coil Shorties"
+BriefSummary="Combine age-old simple design with latest advances in projectile acceleration technology and you'll get a frighteningly effective weapon that will make any foe regret getting too close."
+TacticalText="Combine age-old simple design with latest advances in projectile acceleration technology and you'll get a frighteningly effective weapon that will make any foe regret getting too close.<br/>"
+AbilityDescName="sawed off shotgun"
+
+[SawedOffShotgun_BM_3 X2WeaponTemplate]
+FriendlyName="Plasma Shorty"
+FriendlyNamePlural="Plasma Shorties"
+BriefSummary="An advanced version of the sawed-off shotgun that incorporates plasma heating elements to boost its damage."
+TacticalText="<Bullet/> An advanced version of the sawed-off shotgun that incorporates plasma heating elements to boost its damage.<br/>"
+
+[SawedOffShotgun_BM_4 X2WeaponTemplate]
+FriendlyName="Improved Plasma Shorty"
+FriendlyNamePlural="Plasma Shorties"
+BriefSummary="An advanced version of the sawed-off shotgun that incorporates plasma heating elements to boost its damage."
+TacticalText="<Bullet/> An advanced version of the sawed-off shotgun that incorporates plasma heating elements to boost its damage.<br/>"
+
+[SawedOffShotgun_BM_5 X2WeaponTemplate]
+FriendlyName="Superior Plasma Shorty"
+FriendlyNamePlural="Plasma Shorties"
+BriefSummary="An advanced version of the sawed-off shotgun that incorporates plasma heating elements to boost its damage."
+TacticalText="<Bullet/> An advanced version of the sawed-off shotgun that incorporates plasma heating elements to boost its damage.<br/>"
+
+[CombatKnife_CV_1 X2WeaponTemplate]
+FriendlyName="Combat Knife"
+FriendlyNamePlural="Combat Knives"
+BriefSummary="Melee weapon for personal defense in close quarters."
+TacticalText="<Bullet/> Lightweight secondary weapon for Gunners who may have trouble bringing their cannon to bear on a nearby target.<br/><Bullet/> A knife attack requires one action and does not end your turn.<br/>"
+AbilityDescName="combat knife"
+
+[CombatKnife_LS_2 X2WeaponTemplate]
+FriendlyName="Laser Cutlass"
+FriendlyNamePlural="Laser Cutlasses"
+BriefSummary="Laser Cutlass is an advanced melee weapon for personal defense in close quarters. It uses a modified pulse emitter that projects lightwaves with rapidly modulated frequency and wavelength to generate a nearly solid blade that can effortlessly cut through most materials."
+TacticalText="Laser Cutlass is an advanced melee weapon for personal defense in close quarters. It uses a modified pulse emitter that projects lightwaves with rapidly modulated frequency and wavelength to generate a nearly solid blade that can effortlessly cut through most materials.<br/><Bullet/> Lightweight secondary weapon - A knife attack requires one action and does not end your turn.<br/><Bullet/> Attacks with the Combat Knife have a <Ability:WOTCLW2SW_COLOR_2_OPEN/>+<ABILITY:COMBATKNIFE_CV_AIM/>%<Ability:WOTCLW2SW_COLOR_CLOSE/> chance to hit."AbilityDescName="combat knife"
+
+[CombatKnife_LS_3 X2WeaponTemplate]
+FriendlyName="Improved Laser Cutlass"
+FriendlyNamePlural="Laser Cutlasses"
+BriefSummary="Laser Cutlass is an advanced melee weapon for personal defense in close quarters. It uses a modified pulse emitter that projects lightwaves with rapidly modulated frequency and wavelength to generate a nearly solid blade that can effortlessly cut through most materials."
+TacticalText="Laser Cutlass is an advanced melee weapon for personal defense in close quarters. It uses a modified pulse emitter that projects lightwaves with rapidly modulated frequency and wavelength to generate a nearly solid blade that can effortlessly cut through most materials.<br/><Bullet/> Lightweight secondary weapon - A knife attack requires one action and does not end your turn.<br/><Bullet/> Attacks with the Combat Knife have a <Ability:WOTCLW2SW_COLOR_2_OPEN/>+<ABILITY:COMBATKNIFE_CV_AIM/>%<Ability:WOTCLW2SW_COLOR_CLOSE/> chance to hit."AbilityDescName="combat knife"
+
+[CombatKnife_LS_4 X2WeaponTemplate]
+FriendlyName="Superior Laser Cutlass"
+FriendlyNamePlural="Laser Cutlasses"
+BriefSummary="Laser Cutlass is an advanced melee weapon for personal defense in close quarters. It uses a modified pulse emitter that projects lightwaves with rapidly modulated frequency and wavelength to generate a nearly solid blade that can effortlessly cut through most materials."
+TacticalText="Laser Cutlass is an advanced melee weapon for personal defense in close quarters. It uses a modified pulse emitter that projects lightwaves with rapidly modulated frequency and wavelength to generate a nearly solid blade that can effortlessly cut through most materials.<br/><Bullet/> Lightweight secondary weapon - A knife attack requires one action and does not end your turn.<br/><Bullet/> Attacks with the Combat Knife have a <Ability:WOTCLW2SW_COLOR_2_OPEN/>+<ABILITY:COMBATKNIFE_CV_AIM/>%<Ability:WOTCLW2SW_COLOR_CLOSE/> chance to hit."AbilityDescName="combat knife"
+
+[CombatKnife_LS_5 X2WeaponTemplate]
+FriendlyName="Elite Laser Cutlass"
+FriendlyNamePlural="Laser Cutlasses"
+BriefSummary="Laser Cutlass is an advanced melee weapon for personal defense in close quarters. It uses a modified pulse emitter that projects lightwaves with rapidly modulated frequency and wavelength to generate a nearly solid blade that can effortlessly cut through most materials."
+TacticalText="Laser Cutlass is an advanced melee weapon for personal defense in close quarters. It uses a modified pulse emitter that projects lightwaves with rapidly modulated frequency and wavelength to generate a nearly solid blade that can effortlessly cut through most materials.<br/><Bullet/> Lightweight secondary weapon - A knife attack requires one action and does not end your turn.<br/><Bullet/> Attacks with the Combat Knife have a <Ability:WOTCLW2SW_COLOR_2_OPEN/>+<ABILITY:COMBATKNIFE_CV_AIM/>%<Ability:WOTCLW2SW_COLOR_CLOSE/> chance to hit."AbilityDescName="combat knife"
+
+[CombatKnife_MG_2 X2WeaponTemplate]
+FriendlyName="Vibroblade"
+FriendlyNamePlural="Vibroblades"
+BriefSummary="Dangerous melee weapon for personal defense in close quarters."
+TacticalText="<Bullet/> A knife attack requires one action and does not end your turn.<br/>"
+AbilityDescName="combat knife"
+
+[CombatKnife_MG_3 X2WeaponTemplate]
+FriendlyName="Improved Vibroblade"
+FriendlyNamePlural="Vibroblades"
+BriefSummary="Dangerous melee weapon for personal defense in close quarters."
+TacticalText="<Bullet/> A knife attack requires one action and does not end your turn.<br/>"
+AbilityDescName="combat knife"
+
+[CombatKnife_MG_4 X2WeaponTemplate]
+FriendlyName="Superior Vibroblade"
+FriendlyNamePlural="Vibroblades"
+BriefSummary="Dangerous melee weapon for personal defense in close quarters."
+TacticalText="<Bullet/> A knife attack requires one action and does not end your turn.<br/>"
+AbilityDescName="combat knife"
+
+[CombatKnife_MG_5 X2WeaponTemplate]
+FriendlyName="Elite Vibroblade"
+FriendlyNamePlural="Vibroblades"
+BriefSummary="Dangerous melee weapon for personal defense in close quarters."
+TacticalText="<Bullet/> A knife attack requires one action and does not end your turn.<br/>"
+AbilityDescName="combat knife"
+
+[CombatKnife_CG_3 X2WeaponTemplate]
+FriendlyName="Progressive Knife"
+FriendlyNamePlural="Progressive Knives"
+BriefSummary="Despite its utilitarian appearance, Progressive Knife is a deadly melee weapon. The word \"sharp\" does not even begin to describe its monomolecular cutting edge. The blade is thin and easily broken, so we have set up an automatic replacement system in the knife's hilt."
+TacticalText="Despite its utilitarian appearance, Progressive Knife is a deadly melee weapon. The word \"sharp\" does not even begin to describe its monomolecular cutting edge. The blade is thin and easily broken, so we have set up an automatic replacement system in the knife's hilt.<br/><Bullet/> Lightweight secondary weapon - A knife attack requires one action and does not end your turn.<br/><Bullet/> Attacks with the Combat Knife have a <Ability:WOTCLW2SW_COLOR_2_OPEN/>+<ABILITY:COMBATKNIFE_CV_AIM/>%<Ability:WOTCLW2SW_COLOR_CLOSE/> chance to hit."AbilityDescName="combat knife"
+
+[CombatKnife_CG_4 X2WeaponTemplate]
+FriendlyName="Improved Progressive Knife"
+FriendlyNamePlural="Progressive Knives"
+BriefSummary="Despite its utilitarian appearance, Progressive Knife is a deadly melee weapon. The word \"sharp\" does not even begin to describe its monomolecular cutting edge. The blade is thin and easily broken, so we have set up an automatic replacement system in the knife's hilt."
+TacticalText="Despite its utilitarian appearance, Progressive Knife is a deadly melee weapon. The word \"sharp\" does not even begin to describe its monomolecular cutting edge. The blade is thin and easily broken, so we have set up an automatic replacement system in the knife's hilt.<br/><Bullet/> Lightweight secondary weapon - A knife attack requires one action and does not end your turn.<br/><Bullet/> Attacks with the Combat Knife have a <Ability:WOTCLW2SW_COLOR_2_OPEN/>+<ABILITY:COMBATKNIFE_CV_AIM/>%<Ability:WOTCLW2SW_COLOR_CLOSE/> chance to hit."AbilityDescName="combat knife"
+
+[CombatKnife_CG_5 X2WeaponTemplate]
+FriendlyName="Elite Progressive Knife"
+FriendlyNamePlural="Progressive Knives"
+BriefSummary="Despite its utilitarian appearance, Progressive Knife is a deadly melee weapon. The word \"sharp\" does not even begin to describe its monomolecular cutting edge. The blade is thin and easily broken, so we have set up an automatic replacement system in the knife's hilt."
+TacticalText="Despite its utilitarian appearance, Progressive Knife is a deadly melee weapon. The word \"sharp\" does not even begin to describe its monomolecular cutting edge. The blade is thin and easily broken, so we have set up an automatic replacement system in the knife's hilt.<br/><Bullet/> Lightweight secondary weapon - A knife attack requires one action and does not end your turn.<br/><Bullet/> Attacks with the Combat Knife have a <Ability:WOTCLW2SW_COLOR_2_OPEN/>+<ABILITY:COMBATKNIFE_CV_AIM/>%<Ability:WOTCLW2SW_COLOR_CLOSE/> chance to hit."AbilityDescName="combat knife"
+
+[CombatKnife_BM_3 X2WeaponTemplate]
+FriendlyName="Fusion Knife"
+FriendlyNamePlural="Fusion Knives"
+BriefSummary="Dangerous melee weapon for personal defense in close quarters. The Advanced Vibroblade has been enhanced to be sharper, stronger, and more precise."
+TacticalText="<Bullet/> A knife attack requires one action and does not end your turn.<br/>"
+AbilityDescName="combat knife"
+
+[CombatKnife_BM_4 X2WeaponTemplate]
+FriendlyName="Improved Fusion Knife"
+FriendlyNamePlural="Fusion Knives"
+BriefSummary="Dangerous melee weapon for personal defense in close quarters. The Advanced Vibroblade has been enhanced to be sharper, stronger, and more precise."
+TacticalText="<Bullet/> A knife attack requires one action and does not end your turn.<br/>"
+AbilityDescName="combat knife"
+
+[CombatKnife_BM_5 X2WeaponTemplate]
+FriendlyName="Superior Fusion Knife"
+FriendlyNamePlural="Fusion Knives"
+BriefSummary="Dangerous melee weapon for personal defense in close quarters. The Advanced Vibroblade has been enhanced to be sharper, stronger, and more precise."
+TacticalText="<Bullet/> A knife attack requires one action and does not end your turn.<br/>"
+AbilityDescName="combat knife"
+
+[Sword_CV_1 X2WeaponTemplate]
+FriendlyName="Sword"
+FriendlyNamePlural="Swords"
+BriefSummary="Some of our soldiers train in the use of edged weapons, enabling them to take out enemies in close combat."
+TacticalText="<Bullet/> Sword-equipped soldiers can attack adjacent enemies even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="sword"
+
+[Sword_LS_2 X2WeaponTemplate]
+FriendlyName="Laser Kriegsmesser"
+FriendlyNamePlural="Laser Kriegsmessers"
+BriefSummary="The laser \"war knife\" is the result of our best effort in the field of projected blade technology. Modulated pulse emitters generate a nearly-solid cutting edge. Shape of the blade is optimized for both slashing and thrusting strikes, and the well-developed cross-guard both protects the user from their own blade and allows to deflect enemy melee attacks with greater effectiveness. A portable battery pack integrated into the sheath ensures sufficient autonomy in the field."
+TacticalText="The laser \"war knife\" is the result of our best effort in the field of projected blade technology. Modulated pulse emitters generate a nearly-solid cutting edge. Shape of the blade is optimized for both slashing and thrusting strikes, and the well-developed cross-guard both protects the user from their own blade and allows to deflect enemy melee attacks with greater effectiveness. A portable battery pack integrated into the sheath ensures sufficient autonomy in the field.
+AbilityDescName="sword"
+
+[Sword_LS_3 X2WeaponTemplate]
+FriendlyName="Improved Laser Kriegsmesser"
+FriendlyNamePlural="Laser Kriegsmessers"
+BriefSummary="The laser \"war knife\" is the result of our best effort in the field of projected blade technology. Modulated pulse emitters generate a nearly-solid cutting edge. Shape of the blade is optimized for both slashing and thrusting strikes, and the well-developed cross-guard both protects the user from their own blade and allows to deflect enemy melee attacks with greater effectiveness. A portable battery pack integrated into the sheath ensures sufficient autonomy in the field."
+TacticalText="The laser \"war knife\" is the result of our best effort in the field of projected blade technology. Modulated pulse emitters generate a nearly-solid cutting edge. Shape of the blade is optimized for both slashing and thrusting strikes, and the well-developed cross-guard both protects the user from their own blade and allows to deflect enemy melee attacks with greater effectiveness. A portable battery pack integrated into the sheath ensures sufficient autonomy in the field.
+AbilityDescName="sword"
+
+[Sword_LS_4 X2WeaponTemplate]
+FriendlyName="Superior Laser Kriegsmesser"
+FriendlyNamePlural="Laser Kriegsmessers"
+BriefSummary="The laser \"war knife\" is the result of our best effort in the field of projected blade technology. Modulated pulse emitters generate a nearly-solid cutting edge. Shape of the blade is optimized for both slashing and thrusting strikes, and the well-developed cross-guard both protects the user from their own blade and allows to deflect enemy melee attacks with greater effectiveness. A portable battery pack integrated into the sheath ensures sufficient autonomy in the field."
+TacticalText="The laser \"war knife\" is the result of our best effort in the field of projected blade technology. Modulated pulse emitters generate a nearly-solid cutting edge. Shape of the blade is optimized for both slashing and thrusting strikes, and the well-developed cross-guard both protects the user from their own blade and allows to deflect enemy melee attacks with greater effectiveness. A portable battery pack integrated into the sheath ensures sufficient autonomy in the field.
+AbilityDescName="sword"
+
+[Sword_LS_5 X2WeaponTemplate]
+FriendlyName="Elite Laser Kriegsmesser"
+FriendlyNamePlural="Laser Kriegsmessers"
+BriefSummary="The laser \"war knife\" is the result of our best effort in the field of projected blade technology. Modulated pulse emitters generate a nearly-solid cutting edge. Shape of the blade is optimized for both slashing and thrusting strikes, and the well-developed cross-guard both protects the user from their own blade and allows to deflect enemy melee attacks with greater effectiveness. A portable battery pack integrated into the sheath ensures sufficient autonomy in the field."
+TacticalText="The laser \"war knife\" is the result of our best effort in the field of projected blade technology. Modulated pulse emitters generate a nearly-solid cutting edge. Shape of the blade is optimized for both slashing and thrusting strikes, and the well-developed cross-guard both protects the user from their own blade and allows to deflect enemy melee attacks with greater effectiveness. A portable battery pack integrated into the sheath ensures sufficient autonomy in the field.
+AbilityDescName="sword"
+
+[Sword_MG_2 X2WeaponTemplate]
+FriendlyName="Arc Blade"
+FriendlyNamePlural="Arc Blades"
+BriefSummary="When pure kinetic energy is no longer sufficient in the field, the Arc Blade may prove necessary. It boosts the standard Sword's combat effectiveness with the addition of an electric field, capable of stunning enemies that are not killed outright."
+TacticalText="<Bullet/> The Arc Blade adds a powerful electric burst to the sword's kinetic impact, improving its damage and adding a chance to stun enemy targets."
+AbilityDescName="sword"
+
+[Sword_MG_3 X2WeaponTemplate]
+FriendlyName="Improved Arc Blade"
+FriendlyNamePlural="Arc Blades"
+BriefSummary="When pure kinetic energy is no longer sufficient in the field, the Arc Blade may prove necessary. It boosts the standard Sword's combat effectiveness with the addition of an electric field, capable of stunning enemies that are not killed outright."
+TacticalText="<Bullet/> The Arc Blade adds a powerful electric burst to the sword's kinetic impact, improving its damage and adding a chance to stun enemy targets."
+AbilityDescName="sword"
+
+[Sword_MG_4 X2WeaponTemplate]
+FriendlyName="Superior Arc Blade"
+FriendlyNamePlural="Arc Blades"
+BriefSummary="When pure kinetic energy is no longer sufficient in the field, the Arc Blade may prove necessary. It boosts the standard Sword's combat effectiveness with the addition of an electric field, capable of stunning enemies that are not killed outright."
+TacticalText="<Bullet/> The Arc Blade adds a powerful electric burst to the sword's kinetic impact, improving its damage and adding a chance to stun enemy targets."
+AbilityDescName="sword"
+
+[Sword_MG_5 X2WeaponTemplate]
+FriendlyName="Elite Arc Blade"
+FriendlyNamePlural="Arc Blades"
+BriefSummary="When pure kinetic energy is no longer sufficient in the field, the Arc Blade may prove necessary. It boosts the standard Sword's combat effectiveness with the addition of an electric field, capable of stunning enemies that are not killed outright."
+TacticalText="<Bullet/> The Arc Blade adds a powerful electric burst to the sword's kinetic impact, improving its damage and adding a chance to stun enemy targets."
+AbilityDescName="sword"
+
+[Sword_CG_2 X2WeaponTemplate]
+FriendlyName="Coil Sword"
+FriendlyNamePlural="Coil Swords"
+BriefSummary="Breakthrough advances in alien materials have allowed us to manufacture alloy blades with monomolecular edges. An electromagnetic sharpening system maintains the cutting edge thickness of just one atom, allowing it to cut through most objects without having to apply much force to the swing. We took advantage of that by adding a secondary \"whip\" attack mode with greater reach. AI-controlled gyro-stabilization system guarantees user safety even in the absence of special training this unusual type of weapon would normally require."
+TacticalText="Breakthrough advances in alien materials have allowed us to manufacture alloy blades with monomolecular edges. An electromagnetic sharpening system maintains the cutting edge thickness of just one atom, allowing it to cut through most objects without having to apply much force to the swing. We took advantage of that by adding a secondary \"whip\" attack mode with greater reach. AI-controlled gyro-stabilization system guarantees user safety even in the absence of special training this unusual type of weapon would normally require."
+AbilityDescName="sword"
+
+[Sword_CG_3 X2WeaponTemplate]
+FriendlyName="Improved Coil Sword"
+FriendlyNamePlural="Coil Swords"
+BriefSummary="Breakthrough advances in alien materials have allowed us to manufacture alloy blades with monomolecular edges. An electromagnetic sharpening system maintains the cutting edge thickness of just one atom, allowing it to cut through most objects without having to apply much force to the swing. We took advantage of that by adding a secondary \"whip\" attack mode with greater reach. AI-controlled gyro-stabilization system guarantees user safety even in the absence of special training this unusual type of weapon would normally require."
+TacticalText="Breakthrough advances in alien materials have allowed us to manufacture alloy blades with monomolecular edges. An electromagnetic sharpening system maintains the cutting edge thickness of just one atom, allowing it to cut through most objects without having to apply much force to the swing. We took advantage of that by adding a secondary \"whip\" attack mode with greater reach. AI-controlled gyro-stabilization system guarantees user safety even in the absence of special training this unusual type of weapon would normally require."
+AbilityDescName="sword"
+
+[Sword_BM_3 X2WeaponTemplate]
+FriendlyName="Fusion Blade"
+FriendlyNamePlural="Fusion Blades"
+BriefSummary="The Fusion Blade encases a plasma-heated metallic core in a micro-thin magnetic field, enabling devastating melee attacks that are capable of setting enemies aflame."
+TacticalText="<Bullet/> This is the most advanced version of the sword, dealing maximum damage with a chance to burn enemy targets."
+AbilityDescName="sword"
+
+[Sword_BM_4 X2WeaponTemplate]
+FriendlyName="Improved Fusion Blade"
+FriendlyNamePlural="Fusion Blades"
+BriefSummary="The Fusion Blade encases a plasma-heated metallic core in a micro-thin magnetic field, enabling devastating melee attacks that are capable of setting enemies aflame."
+TacticalText="<Bullet/> This is the most advanced version of the sword, dealing maximum damage with a chance to burn enemy targets."
+AbilityDescName="sword"
+
+[Sword_BM_5 X2WeaponTemplate]
+FriendlyName="Superior Fusion Blade"
+FriendlyNamePlural="Fusion Blades"
+BriefSummary="The Fusion Blade encases a plasma-heated metallic core in a micro-thin magnetic field, enabling devastating melee attacks that are capable of setting enemies aflame."
+TacticalText="<Bullet/> This is the most advanced version of the sword, dealing maximum damage with a chance to burn enemy targets."
+AbilityDescName="sword"
+
+[TLE_Sword_CV_1 X2WeaponTemplate]
+FriendlyName="Traditional Sword"
+FriendlyNamePlural="Traditional Swords"
+BriefSummary="XCOM Rangers train in the use of edged weapons, enabling them to take out enemies in close combat."
+TacticalText="<Bullet/> Rangers can attack adjacent enemies with their sword even after using both actions to move or dash to the extent of their movement range.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="Traditional Sword"
+
+[TLE_Sword_MG_2 X2WeaponTemplate]
+FriendlyName="Experimental Blade"
+FriendlyNamePlural="Experimental Blades"
+BriefSummary="When pure kinetic energy is no longer sufficient in the field, the Arc Blade may prove necessary. It boosts the standard Sword's combat effectiveness with the addition of an electric field, capable of stunning enemies that are not killed outright."
+TacticalText="<Bullet/> The Experimental Blade adds a powerful electric burst to the sword's kinetic impact, improving its damage and adding a chance to stun enemy targets."
+AbilityDescName="Experimental Blade"
+
+[TLE_Sword_MG_3 X2WeaponTemplate]
+FriendlyName="Improved Experimental Blade"
+FriendlyNamePlural="Experimental Blades"
+BriefSummary="When pure kinetic energy is no longer sufficient in the field, the Arc Blade may prove necessary. It boosts the standard Sword's combat effectiveness with the addition of an electric field, capable of stunning enemies that are not killed outright."
+TacticalText="<Bullet/> The Experimental Blade adds a powerful electric burst to the sword's kinetic impact, improving its damage and adding a chance to stun enemy targets."
+AbilityDescName="Experimental Blade"
+
+[TLE_Sword_MG_4 X2WeaponTemplate]
+FriendlyName="Superior Experimental Blade"
+FriendlyNamePlural="Experimental Blades"
+BriefSummary="When pure kinetic energy is no longer sufficient in the field, the Arc Blade may prove necessary. It boosts the standard Sword's combat effectiveness with the addition of an electric field, capable of stunning enemies that are not killed outright."
+TacticalText="<Bullet/> The Experimental Blade adds a powerful electric burst to the sword's kinetic impact, improving its damage and adding a chance to stun enemy targets."
+AbilityDescName="Experimental Blade"
+
+[TLE_Sword_MG_5 X2WeaponTemplate]
+FriendlyName="Elite Experimental Blade"
+FriendlyNamePlural="Experimental Blades"
+BriefSummary="When pure kinetic energy is no longer sufficient in the field, the Arc Blade may prove necessary. It boosts the standard Sword's combat effectiveness with the addition of an electric field, capable of stunning enemies that are not killed outright."
+TacticalText="<Bullet/> The Experimental Blade adds a powerful electric burst to the sword's kinetic impact, improving its damage and adding a chance to stun enemy targets."
+AbilityDescName="Experimental Blade"
+
+[TLE_Sword_BM_3 X2WeaponTemplate]
+FriendlyName="Advanced Blade"
+FriendlyNamePlural="Advanced Blades"
+BriefSummary="The Advanced Blade encases a plasma-heated metallic core in a micro-thin magnetic field, enabling devastating melee attacks that are capable of setting enemies aflame."
+TacticalText="<Bullet/> This is the most advanced version of the Ranger's sword, dealing maximum damage with a chance to burn enemy targets."
+AbilityDescName="Advanced Blade"
+
+[TLE_Sword_BM_4 X2WeaponTemplate]
+FriendlyName="Improved Advanced Blade"
+FriendlyNamePlural="Advanced Blades"
+BriefSummary="The Advanced Blade encases a plasma-heated metallic core in a micro-thin magnetic field, enabling devastating melee attacks that are capable of setting enemies aflame."
+TacticalText="<Bullet/> This is the most advanced version of the Ranger's sword, dealing maximum damage with a chance to burn enemy targets."
+AbilityDescName="Advanced Blade"
+
+[TLE_Sword_BM_5 X2WeaponTemplate]
+FriendlyName="Superior Advanced Blade"
+FriendlyNamePlural="Advanced Blades"
+BriefSummary="The Advanced Blade encases a plasma-heated metallic core in a micro-thin magnetic field, enabling devastating melee attacks that are capable of setting enemies aflame."
+TacticalText="<Bullet/> This is the most advanced version of the Ranger's sword, dealing maximum damage with a chance to burn enemy targets."
+AbilityDescName="Advanced Blade"
+
+[PsiAmp_Frayer_2 X2WeaponTemplate]
+FriendlyName="Psi Amp: Frayer"
+FriendlyNamePlural="Psi Amps"
+BriefSummary=""
+TacticalText="<Bullet/> A Psi Amp allows Psi Operatives to perform their Psionic abilities.\n<Bullet/> More advanced Psi Amps can increase the Operative's Psionic strength, and the effectiveness of their abilities."
+AbilityDescName="psi amp"
+
+[PsiAmp_Frayer_3 X2WeaponTemplate]
+FriendlyName="Imroved Psi Amp: Frayer"
+FriendlyNamePlural="Psi Amps"
+BriefSummary=""
+TacticalText="<Bullet/> A Psi Amp allows Psi Operatives to perform their Psionic abilities.\n<Bullet/> More advanced Psi Amps can increase the Operative's Psionic strength, and the effectiveness of their abilities."
+AbilityDescName="psi amp"
+
+[PsiAmp_Frayer_4 X2WeaponTemplate]
+FriendlyName="Superior Psi Amp: Frayer"
+FriendlyNamePlural="Psi Amps"
+BriefSummary=""
+TacticalText="<Bullet/> A Psi Amp allows Psi Operatives to perform their Psionic abilities.\n<Bullet/> More advanced Psi Amps can increase the Operative's Psionic strength, and the effectiveness of their abilities."
+AbilityDescName="psi amp"
+
+[PsiAmp_Frayer_5 X2WeaponTemplate]
+FriendlyName="Elite Psi Amp: Frayer"
+FriendlyNamePlural="Psi Amps"
+BriefSummary=""
+TacticalText="<Bullet/> A Psi Amp allows Psi Operatives to perform their Psionic abilities.\n<Bullet/> More advanced Psi Amps can increase the Operative's Psionic strength, and the effectiveness of their abilities."
+AbilityDescName="psi amp"
+
+[PsiAmp_Meteoric_3 X2WeaponTemplate]
+FriendlyName="Psi Amp: Meteoric"
+FriendlyNamePlural="Advanced Psi Amps"
+BriefSummary="This evolved version of the Psi Amp channels the user's Psionic energy far more clearly, enabling greater Psionic strength in our operatives. Psi Offense and Psionic attack damage of some abilities is improved when carrying this advanced amplifier."
+TacticalText="<Bullet/> The Advanced Psi Amp increases a Psi Operative's Psionic strength by +20.\n<Bullet/> Psi Strength determines the potency of many of your psychic abilities.\n<Bullet/> The Advanced Psi Amp also increases the damage done by many Psionic attacks.\n"
+AbilityDescName="psi amp"
+
+[PsiAmp_Meteoric_4 X2WeaponTemplate]
+FriendlyName="Improved Psi Amp: Meteoric"
+FriendlyNamePlural="Advanced Psi Amps"
+BriefSummary="This evolved version of the Psi Amp channels the user's Psionic energy far more clearly, enabling greater Psionic strength in our operatives. Psi Offense and Psionic attack damage of some abilities is improved when carrying this advanced amplifier."
+TacticalText="<Bullet/> The Advanced Psi Amp increases a Psi Operative's Psionic strength by +20.\n<Bullet/> Psi Strength determines the potency of many of your psychic abilities.\n<Bullet/> The Advanced Psi Amp also increases the damage done by many Psionic attacks.\n"
+AbilityDescName="psi amp"
+
+[PsiAmp_Meteoric_5 X2WeaponTemplate]
+FriendlyName="Superior Psi Amp: Meteoric"
+FriendlyNamePlural="Advanced Psi Amps"
+BriefSummary="This evolved version of the Psi Amp channels the user's Psionic energy far more clearly, enabling greater Psionic strength in our operatives. Psi Offense and Psionic attack damage of some abilities is improved when carrying this advanced amplifier."
+TacticalText="<Bullet/> The Advanced Psi Amp increases a Psi Operative's Psionic strength by +20.\n<Bullet/> Psi Strength determines the potency of many of your psychic abilities.\n<Bullet/> The Advanced Psi Amp also increases the damage done by many Psionic attacks.\n"
+AbilityDescName="psi amp"
+
+[PsiAmp_Madman_3 X2WeaponTemplate]
+FriendlyName="Psi Amp: Madman"
+FriendlyNamePlural="Advanced Psi Amps"
+BriefSummary="This evolved version of the Psi Amp channels the user's Psionic energy far more clearly, enabling greater Psionic strength in our operatives. Psi Offense and Psionic attack damage of some abilities is improved when carrying this advanced amplifier."
+TacticalText="<Bullet/> The Advanced Psi Amp increases a Psi Operative's Psionic strength by +20.\n<Bullet/> Psi Strength determines the potency of many of your psychic abilities.\n<Bullet/> The Advanced Psi Amp also increases the damage done by many Psionic attacks.\n"
+AbilityDescName="psi amp"
+
+[PsiAmp_Madman_4 X2WeaponTemplate]
+FriendlyName="Improved Psi Amp: Madman"
+FriendlyNamePlural="Advanced Psi Amps"
+BriefSummary="This evolved version of the Psi Amp channels the user's Psionic energy far more clearly, enabling greater Psionic strength in our operatives. Psi Offense and Psionic attack damage of some abilities is improved when carrying this advanced amplifier."
+TacticalText="<Bullet/> The Advanced Psi Amp increases a Psi Operative's Psionic strength by +20.\n<Bullet/> Psi Strength determines the potency of many of your psychic abilities.\n<Bullet/> The Advanced Psi Amp also increases the damage done by many Psionic attacks.\n"
+AbilityDescName="psi amp"
+
+[PsiAmp_Madman_5 X2WeaponTemplate]
+FriendlyName="Superior Psi Amp: Madman"
+FriendlyNamePlural="Advanced Psi Amps"
+BriefSummary="This evolved version of the Psi Amp channels the user's Psionic energy far more clearly, enabling greater Psionic strength in our operatives. Psi Offense and Psionic attack damage of some abilities is improved when carrying this advanced amplifier."
+TacticalText="<Bullet/> The Advanced Psi Amp increases a Psi Operative's Psionic strength by +20.\n<Bullet/> Psi Strength determines the potency of many of your psychic abilities.\n<Bullet/> The Advanced Psi Amp also increases the damage done by many Psionic attacks.\n"
+AbilityDescName="psi amp"
+
+[Psiamp_Puppeteer_5 X2WeaponTemplate]
+FriendlyName="Psi Amp: Puppeteer"
+FriendlyNamePlural="Advanced Psi Amps"
+BriefSummary="This evolved version of the Psi Amp channels the user's Psionic energy far more clearly, enabling greater Psionic strength in our operatives. Psi Offense and Psionic attack damage of some abilities is improved when carrying this advanced amplifier."
+TacticalText="<Bullet/> The Advanced Psi Amp increases a Psi Operative's Psionic strength by +20.\n<Bullet/> Psi Strength determines the potency of many of your psychic abilities.\n<Bullet/> The Advanced Psi Amp also increases the damage done by many Psionic attacks.\n"
+AbilityDescName="psi amp"
+
+[IRI_RocketLauncher_Standard_2 X2GrenadeLauncherTemplate]
+FriendlyName="Rocket Launcher"
+FriendlyNamePlural="Rocket Launchers"
+BriefSummary="A standard-issue XCOM rocket launcher, left over from the original alien invasion. This is a versatile heavy weapon, capable of using a variety of ammunition."
+TacticalText="A standard-issue XCOM rocket launcher, left over from the original alien invasion. This is a versatile heavy weapon, capable of using a variety of ammunition. <br/><Bullet/> This rocket launcher fires rockets carried by the soldier in their Utility Slots.\n."
+AbilityDescName="rocket launcher"
+
+[IRI_RocketLauncher_Standard_3 X2GrenadeLauncherTemplate]
+FriendlyName="Improved Rocket Launcher"
+FriendlyNamePlural="Rocket Launchers"
+BriefSummary="A standard-issue XCOM rocket launcher, left over from the original alien invasion. This is a versatile heavy weapon, capable of using a variety of ammunition."
+TacticalText="A standard-issue XCOM rocket launcher, left over from the original alien invasion. This is a versatile heavy weapon, capable of using a variety of ammunition. <br/><Bullet/> This rocket launcher fires rockets carried by the soldier in their Utility Slots.\n."
+AbilityDescName="rocket launcher"
+
+[IRI_RocketLauncher_Standard_4 X2GrenadeLauncherTemplate]
+FriendlyName="Superior Rocket Launcher"
+FriendlyNamePlural="Rocket Launchers"
+BriefSummary="A standard-issue XCOM rocket launcher, left over from the original alien invasion. This is a versatile heavy weapon, capable of using a variety of ammunition."
+TacticalText="A standard-issue XCOM rocket launcher, left over from the original alien invasion. This is a versatile heavy weapon, capable of using a variety of ammunition. <br/><Bullet/> This rocket launcher fires rockets carried by the soldier in their Utility Slots.\n."
+AbilityDescName="rocket launcher"
+
+[IRI_RocketLauncher_Standard_5 X2GrenadeLauncherTemplate]
+FriendlyName="Elite Rocket Launcher"
+FriendlyNamePlural="Rocket Launchers"
+BriefSummary="A standard-issue XCOM rocket launcher, left over from the original alien invasion. This is a versatile heavy weapon, capable of using a variety of ammunition."
+TacticalText="A standard-issue XCOM rocket launcher, left over from the original alien invasion. This is a versatile heavy weapon, capable of using a variety of ammunition. <br/><Bullet/> This rocket launcher fires rockets carried by the soldier in their Utility Slots.\n."
+AbilityDescName="rocket launcher"
+
+[IRI_RocketLauncher_Shredder_2 X2GrenadeLauncherTemplate]
+FriendlyName="Rocket Launcher: Shredder"
+FriendlyNamePlural="Advanced Rocket Launchers"
+BriefSummary="The advanced version of our rocket launcher uses magnetic coils to boost the rockets' effective range. Alloy frame allows to fire Experimental Rockets."
+TacticalText="The advanced version of our rocket launcher uses magnetic coils to boost the rockets' effective range. Alloy frame allows to fire Experimental Rockets. <br/><Bullet/> This rocket launcher fires rockets carried by the soldier in their Utility Slots.\n."
+AbilityDescName="rocket launcher"
+
+[IRI_RocketLauncher_Shredder_3 X2GrenadeLauncherTemplate]
+FriendlyName="Improved Rocket Launcher: Shredder"
+FriendlyNamePlural="Advanced Rocket Launchers"
+BriefSummary="The advanced version of our rocket launcher uses magnetic coils to boost the rockets' effective range. Alloy frame allows to fire Experimental Rockets."
+TacticalText="The advanced version of our rocket launcher uses magnetic coils to boost the rockets' effective range. Alloy frame allows to fire Experimental Rockets. <br/><Bullet/> This rocket launcher fires rockets carried by the soldier in their Utility Slots.\n."
+AbilityDescName="rocket launcher"
+
+[IRI_RocketLauncher_Shredder_4 X2GrenadeLauncherTemplate]
+FriendlyName="Superior Rocket Launcher: Shredder"
+FriendlyNamePlural="Advanced Rocket Launchers"
+BriefSummary="The advanced version of our rocket launcher uses magnetic coils to boost the rockets' effective range. Alloy frame allows to fire Experimental Rockets."
+TacticalText="The advanced version of our rocket launcher uses magnetic coils to boost the rockets' effective range. Alloy frame allows to fire Experimental Rockets. <br/><Bullet/> This rocket launcher fires rockets carried by the soldier in their Utility Slots.\n."
+AbilityDescName="rocket launcher"
+
+[IRI_RocketLauncher_Shredder_5 X2GrenadeLauncherTemplate]
+FriendlyName="Elite Rocket Launcher: Shredder"
+FriendlyNamePlural="Advanced Rocket Launchers"
+BriefSummary="The advanced version of our rocket launcher uses magnetic coils to boost the rockets' effective range. Alloy frame allows to fire Experimental Rockets."
+TacticalText="The advanced version of our rocket launcher uses magnetic coils to boost the rockets' effective range. Alloy frame allows to fire Experimental Rockets. <br/><Bullet/> This rocket launcher fires rockets carried by the soldier in their Utility Slots.\n."
+AbilityDescName="rocket launcher"
+
+[IRI_RocketLauncher_Ejector_3 X2GrenadeLauncherTemplate]
+FriendlyName="Plasma Ejector"
+FriendlyNamePlural="Plasma Ejectors"
+BriefSummary="The pinnacle of heavy weapon technology, the Elerium launcher uses a controlled burnout method to safely accelerate our heavy ordnance to velocities that seem to violate laws of physics as we understand them, boosting its effective range and accuracy. Structural integrity of the launcher is augmented by Elerium-powered fields, which allows firing Powered Rockets."
+TacticalText="The pinnacle of heavy weapon technology, the Elerium launcher uses a controlled burnout method to safely accelerate our heavy ordnance to velocities that seem to violate laws of physics as we understand them, boosting its effective range and accuracy. Structural integrity of the launcher is augmented by Elerium-powered fields, which allows firing Powered Rockets.<br/><Bullet/> This rocket launcher fires rockets carried by the soldier in their Utility Slots.\n."
+AbilityDescName="rocket launcher"
+
+[IRI_RocketLauncher_Ejector_4 X2GrenadeLauncherTemplate]
+FriendlyName="Improved Plasma Ejector"
+FriendlyNamePlural="Plasma Ejectors"
+BriefSummary="The pinnacle of heavy weapon technology, the Elerium launcher uses a controlled burnout method to safely accelerate our heavy ordnance to velocities that seem to violate laws of physics as we understand them, boosting its effective range and accuracy. Structural integrity of the launcher is augmented by Elerium-powered fields, which allows firing Powered Rockets."
+TacticalText="The pinnacle of heavy weapon technology, the Elerium launcher uses a controlled burnout method to safely accelerate our heavy ordnance to velocities that seem to violate laws of physics as we understand them, boosting its effective range and accuracy. Structural integrity of the launcher is augmented by Elerium-powered fields, which allows firing Powered Rockets.<br/><Bullet/> This rocket launcher fires rockets carried by the soldier in their Utility Slots.\n."
+AbilityDescName="rocket launcher"
+
+[IRI_RocketLauncher_Ejector_5 X2GrenadeLauncherTemplate]
+FriendlyName="Superior Plasma Ejector"
+FriendlyNamePlural="Plasma Ejectors"
+BriefSummary="The pinnacle of heavy weapon technology, the Elerium launcher uses a controlled burnout method to safely accelerate our heavy ordnance to velocities that seem to violate laws of physics as we understand them, boosting its effective range and accuracy. Structural integrity of the launcher is augmented by Elerium-powered fields, which allows firing Powered Rockets."
+TacticalText="The pinnacle of heavy weapon technology, the Elerium launcher uses a controlled burnout method to safely accelerate our heavy ordnance to velocities that seem to violate laws of physics as we understand them, boosting its effective range and accuracy. Structural integrity of the launcher is augmented by Elerium-powered fields, which allows firing Powered Rockets.<br/><Bullet/> This rocket launcher fires rockets carried by the soldier in their Utility Slots.\n."
+AbilityDescName="rocket launcher"
+
+[WristBlade_LS_2 X2PairedWeaponTemplate]
+FriendlyName="Pulse Ripjack"
+FriendlyNamePlural="Pulse Ripjacks"
+BriefSummary="We have augmented the standard ripjack claw with pulse-projected blade emitters that generate a pair of sharp red talons. Initial field testing has shown that the new claw tends to overheat during prolonged use, but we have received no complaints from Skirmishers."
+TacticalText="We have augmented the standard ripjack claw with pulse-projected blade emitters that generate a pair of sharp red talons. Initial field testing has shown that the new claw tends to overheat during prolonged use, but we have received no complaints from Skirmishers.<Bullet/> Skirmishers can utilize their ripjacks in conjunction with their grapple to become a terror all over the battlefield.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="ripjack"
+
+[WristBlade_LS_3 X2PairedWeaponTemplate]
+FriendlyName="Improved Pulse Ripjack"
+FriendlyNamePlural="Pulse Ripjacks"
+BriefSummary="We have augmented the standard ripjack claw with pulse-projected blade emitters that generate a pair of sharp red talons. Initial field testing has shown that the new claw tends to overheat during prolonged use, but we have received no complaints from Skirmishers."
+TacticalText="We have augmented the standard ripjack claw with pulse-projected blade emitters that generate a pair of sharp red talons. Initial field testing has shown that the new claw tends to overheat during prolonged use, but we have received no complaints from Skirmishers.<Bullet/> Skirmishers can utilize their ripjacks in conjunction with their grapple to become a terror all over the battlefield.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="ripjack"
+
+[WristBlade_LS_4 X2PairedWeaponTemplate]
+FriendlyName="Superior Pulse Ripjack"
+FriendlyNamePlural="Pulse Ripjacks"
+BriefSummary="We have augmented the standard ripjack claw with pulse-projected blade emitters that generate a pair of sharp red talons. Initial field testing has shown that the new claw tends to overheat during prolonged use, but we have received no complaints from Skirmishers."
+TacticalText="We have augmented the standard ripjack claw with pulse-projected blade emitters that generate a pair of sharp red talons. Initial field testing has shown that the new claw tends to overheat during prolonged use, but we have received no complaints from Skirmishers.<Bullet/> Skirmishers can utilize their ripjacks in conjunction with their grapple to become a terror all over the battlefield.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="ripjack"
+
+[WristBlade_LS_5 X2PairedWeaponTemplate]
+FriendlyName="Elite Pulse Ripjack"
+FriendlyNamePlural="Pulse Ripjacks"
+BriefSummary="We have augmented the standard ripjack claw with pulse-projected blade emitters that generate a pair of sharp red talons. Initial field testing has shown that the new claw tends to overheat during prolonged use, but we have received no complaints from Skirmishers."
+TacticalText="We have augmented the standard ripjack claw with pulse-projected blade emitters that generate a pair of sharp red talons. Initial field testing has shown that the new claw tends to overheat during prolonged use, but we have received no complaints from Skirmishers.<Bullet/> Skirmishers can utilize their ripjacks in conjunction with their grapple to become a terror all over the battlefield.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="ripjack"
+
+[WristBlade_MG_2 X2PairedWeaponTemplate]
+FriendlyName="Ionic Ripjack"
+FriendlyNamePlural="Ionic Ripjacks"
+BriefSummary="A raw electrical current jumps between the blades of this modified Skirmisher claw. Although the mechanism seems reasonably well crafted, inconsistencies in the Skirmisher manufacturing process leave questions as to whether this was an intentionally designed upgrade or an accidental discovery."
+TacticalText="<Bullet/> Skirmishers can utilize their ripjacks in conjunction with their grapple to become a terror all over the battlefield.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="ripjack"
+
+[WristBlade_MG_3 X2PairedWeaponTemplate]
+FriendlyName="Improved Ionic Ripjack"
+FriendlyNamePlural="Ionic Ripjacks"
+BriefSummary="A raw electrical current jumps between the blades of this modified Skirmisher claw. Although the mechanism seems reasonably well crafted, inconsistencies in the Skirmisher manufacturing process leave questions as to whether this was an intentionally designed upgrade or an accidental discovery."
+TacticalText="<Bullet/> Skirmishers can utilize their ripjacks in conjunction with their grapple to become a terror all over the battlefield.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="ripjack"
+
+[WristBlade_MG_4 X2PairedWeaponTemplate]
+FriendlyName="Superior Ionic Ripjack"
+FriendlyNamePlural="Ionic Ripjacks"
+BriefSummary="A raw electrical current jumps between the blades of this modified Skirmisher claw. Although the mechanism seems reasonably well crafted, inconsistencies in the Skirmisher manufacturing process leave questions as to whether this was an intentionally designed upgrade or an accidental discovery."
+TacticalText="<Bullet/> Skirmishers can utilize their ripjacks in conjunction with their grapple to become a terror all over the battlefield.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="ripjack"
+
+[WristBlade_MG_5 X2PairedWeaponTemplate]
+FriendlyName="Elite Ionic Ripjack"
+FriendlyNamePlural="Ionic Ripjacks"
+BriefSummary="A raw electrical current jumps between the blades of this modified Skirmisher claw. Although the mechanism seems reasonably well crafted, inconsistencies in the Skirmisher manufacturing process leave questions as to whether this was an intentionally designed upgrade or an accidental discovery."
+TacticalText="<Bullet/> Skirmishers can utilize their ripjacks in conjunction with their grapple to become a terror all over the battlefield.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="ripjack"
+
+[WristBlade_CG_3 X2PairedWeaponTemplate]
+FriendlyName="Nanotech Ripjack"
+FriendlyNamePlural="Nanotech Ripjacks"
+BriefSummary="The initial prototype of the Nanotech Claw employed monomolecular blades for superior cutting, but field testing by Skirmishers has quickly proven them to be too fragile, so we had to fall back on nanometer-wide cutting edges."
+TacticalText="The initial prototype of the Nanotech Claw employed monomolecular blades for superior cutting, but field testing by Skirmishers has quickly proven them to be too fragile, so we had to fall back on nanometer-wide cutting edges.<Bullet/> Skirmishers can utilize their ripjacks in conjunction with their grapple to become a terror all over the battlefield.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="ripjack"
+
+[WristBlade_CG_4 X2PairedWeaponTemplate]
+FriendlyName="Improved Nanotech Ripjack"
+FriendlyNamePlural="Nanotech Ripjacks"
+BriefSummary="The initial prototype of the Nanotech Claw employed monomolecular blades for superior cutting, but field testing by Skirmishers has quickly proven them to be too fragile, so we had to fall back on nanometer-wide cutting edges."
+TacticalText="The initial prototype of the Nanotech Claw employed monomolecular blades for superior cutting, but field testing by Skirmishers has quickly proven them to be too fragile, so we had to fall back on nanometer-wide cutting edges.<Bullet/> Skirmishers can utilize their ripjacks in conjunction with their grapple to become a terror all over the battlefield.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="ripjack"
+
+[WristBlade_CG_5 X2PairedWeaponTemplate]
+FriendlyName="Superior Nanotech Ripjack"
+FriendlyNamePlural="Nanotech Ripjacks"
+BriefSummary="The initial prototype of the Nanotech Claw employed monomolecular blades for superior cutting, but field testing by Skirmishers has quickly proven them to be too fragile, so we had to fall back on nanometer-wide cutting edges."
+TacticalText="The initial prototype of the Nanotech Claw employed monomolecular blades for superior cutting, but field testing by Skirmishers has quickly proven them to be too fragile, so we had to fall back on nanometer-wide cutting edges.<Bullet/> Skirmishers can utilize their ripjacks in conjunction with their grapple to become a terror all over the battlefield.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n<Bullet/> Keep an eye out for opportunities to improve our edged weapon effectiveness - the enemy may have access to much better technology."
+AbilityDescName="ripjack"
+
+[WristBlade_BM_3 X2PairedWeaponTemplate]
+FriendlyName="Fusion Ripjack"
+FriendlyNamePlural="Fusion Ripjacks"
+BriefSummary="No longer reliant on physical blades to produce the desired effect, the energized variant of the Skirmisher claws uses a magnetic field to guide charged plasma along a set of narrow ceramic plates. Although this design could potentially expose the user to extreme heat, the Skirmisher warriors who wield these claws don't seem to mind."
+TacticalText="<Bullet/> Skirmishers can utilize their ripjacks in conjunction with their grapple to become a terror all over the battlefield.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n"
+AbilityDescName="ripjack"
+
+[WristBlade_BM_4 X2PairedWeaponTemplate]
+FriendlyName="Improved Fusion Ripjack"
+FriendlyNamePlural="Fusion Ripjacks"
+BriefSummary="No longer reliant on physical blades to produce the desired effect, the energized variant of the Skirmisher claws uses a magnetic field to guide charged plasma along a set of narrow ceramic plates. Although this design could potentially expose the user to extreme heat, the Skirmisher warriors who wield these claws don't seem to mind."
+TacticalText="<Bullet/> Skirmishers can utilize their ripjacks in conjunction with their grapple to become a terror all over the battlefield.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n"
+AbilityDescName="ripjack"
+
+[WristBlade_BM_5 X2PairedWeaponTemplate]
+FriendlyName="Superior Fusion Ripjack"
+FriendlyNamePlural="Fusion Ripjacks"
+BriefSummary="No longer reliant on physical blades to produce the desired effect, the energized variant of the Skirmisher claws uses a magnetic field to guide charged plasma along a set of narrow ceramic plates. Although this design could potentially expose the user to extreme heat, the Skirmisher warriors who wield these claws don't seem to mind."
+TacticalText="<Bullet/> Skirmishers can utilize their ripjacks in conjunction with their grapple to become a terror all over the battlefield.\n<Bullet/> The decision to engage the enemy in melee combat can be a decisive one; exercise caution.\n"
+AbilityDescName="ripjack"
+
+[ThrowingKnife_MG_2 X2WeaponTemplate]
+FriendlyName="Alloy Throwing Knife"
+FriendlyNamePlural="Alloy Throwing Knives"
+BriefSummary="A throwing knife made of alien alloys."
+TacticalText="<Bullet/> Throwing a knife will not break Shadow.<br/><Bullet/> Has a <Ability:THROWING_KNIFE_MG_BLEED_CHANCE/>% chance to cause bleeding, which deals <Ability:THROWING_KNIFE_MG_BLEED_DAMAGE/> damage each turn for <Ability:THROWING_KNIFE_MG_BLEED_DURATION/> turn(s)."
+AbilityDescName="throwing knife"
+
+[ThrowingKnife_MG_3 X2WeaponTemplate]
+FriendlyName="Improved Alloy Throwing Knife"
+FriendlyNamePlural="Alloy Throwing Knives"
+BriefSummary="A throwing knife made of alien alloys."
+TacticalText="<Bullet/> Throwing a knife will not break Shadow.<br/><Bullet/> Has a <Ability:THROWING_KNIFE_MG_BLEED_CHANCE/>% chance to cause bleeding, which deals <Ability:THROWING_KNIFE_MG_BLEED_DAMAGE/> damage each turn for <Ability:THROWING_KNIFE_MG_BLEED_DURATION/> turn(s)."
+AbilityDescName="throwing knife"
+
+[ThrowingKnife_MG_4 X2WeaponTemplate]
+FriendlyName="Superior Alloy Throwing Knife"
+FriendlyNamePlural="Alloy Throwing Knives"
+BriefSummary="A throwing knife made of alien alloys."
+TacticalText="<Bullet/> Throwing a knife will not break Shadow.<br/><Bullet/> Has a <Ability:THROWING_KNIFE_MG_BLEED_CHANCE/>% chance to cause bleeding, which deals <Ability:THROWING_KNIFE_MG_BLEED_DAMAGE/> damage each turn for <Ability:THROWING_KNIFE_MG_BLEED_DURATION/> turn(s)."
+AbilityDescName="throwing knife"
+
+[ThrowingKnife_MG_5 X2WeaponTemplate]
+FriendlyName="Elite Alloy Throwing Knife"
+FriendlyNamePlural="Alloy Throwing Knives"
+BriefSummary="A throwing knife made of alien alloys."
+TacticalText="<Bullet/> Throwing a knife will not break Shadow.<br/><Bullet/> Has a <Ability:THROWING_KNIFE_MG_BLEED_CHANCE/>% chance to cause bleeding, which deals <Ability:THROWING_KNIFE_MG_BLEED_DAMAGE/> damage each turn for <Ability:THROWING_KNIFE_MG_BLEED_DURATION/> turn(s)."
+AbilityDescName="throwing knife"
+
+[ThrowingKnife_BM_3 X2WeaponTemplate]
+FriendlyName="Plasma Throwing Knife"
+FriendlyNamePlural="Plasma Throwing Knives"
+BriefSummary="A throwing knife with a plasma edge that cuts through armor like butter."
+TacticalText="<Bullet/> Throwing a knife will not break Shadow.<br/><Bullet/> Has a <Ability:THROWING_KNIFE_BM_BLEED_CHANCE/>% chance to cause bleeding, which deals <Ability:THROWING_KNIFE_BM_BLEED_DAMAGE/> damage each turn for <Ability:THROWING_KNIFE_BM_BLEED_DURATION/> turn(s)."
+AbilityDescName="throwing knife"
+
+[ThrowingKnife_BM_4 X2WeaponTemplate]
+FriendlyName="Improved Plasma Throwing Knife"
+FriendlyNamePlural="Plasma Throwing Knives"
+BriefSummary="A throwing knife with a plasma edge that cuts through armor like butter."
+TacticalText="<Bullet/> Throwing a knife will not break Shadow.<br/><Bullet/> Has a <Ability:THROWING_KNIFE_BM_BLEED_CHANCE/>% chance to cause bleeding, which deals <Ability:THROWING_KNIFE_BM_BLEED_DAMAGE/> damage each turn for <Ability:THROWING_KNIFE_BM_BLEED_DURATION/> turn(s)."
+AbilityDescName="throwing knife"
+
+[ThrowingKnife_BM_5 X2WeaponTemplate]
+FriendlyName="Superior Plasma Throwing Knife"
+FriendlyNamePlural="Plasma Throwing Knives"
+BriefSummary="A throwing knife with a plasma edge that cuts through armor like butter."
+TacticalText="<Bullet/> Throwing a knife will not break Shadow.<br/><Bullet/> Has a <Ability:THROWING_KNIFE_BM_BLEED_CHANCE/>% chance to cause bleeding, which deals <Ability:THROWING_KNIFE_BM_BLEED_DAMAGE/> damage each turn for <Ability:THROWING_KNIFE_BM_BLEED_DURATION/> turn(s)."
+AbilityDescName="throwing knife"

@@ -1243,8 +1243,8 @@ simulated function RefreshShopStock(){
 	local name TemplateName;
 	local int Category;
 	local ValidTechUpgrades ValidTechUpgrade;
-	local UpgradeList UpgradeList;
-	local array<ValidTechUpgrades>  ValidTechUpgrades;
+	local UpgradeList UpgradeLists;
+	local array<ValidTechUpgrades>  TechUpgrades;
 	local int i,j;
 
 	Pools.Length = 0;
@@ -1256,11 +1256,11 @@ simulated function RefreshShopStock(){
 	CurrentTierItems = default.ITEMS_PER_CATEGORY - HigherTierItems;
 
 
-	for (i=0; i<eUpCat_MAX; i++){
-		Pools.AddItem(UpgradeList);
-		CurrentShopUpgrades.AddItem(UpgradeList);
+	for (i=0; i<eUpCat_Attachment; i++){
+		Pools.AddItem(UpgradeLists);
+		CurrentShopUpgrades.AddItem(UpgradeLists);
 
-		ValidTechUpgrades.AddItem(ValidTechUpgrade);
+		TechUpgrades.AddItem(ValidTechUpgrade);
 	}
 
 	UpgradeManger = class'X2ResistanceTechUpgradeTemplateManager'.static.GetTemplateManager();
@@ -1281,18 +1281,18 @@ simulated function RefreshShopStock(){
 		foreach Pools[i].List(UpgradeTemplate)
 		{
 			if(UpgradeTemplate.RequiredScience == BaselineTier){
-				ValidTechUpgrades[UpgradeTemplate.Category].ValidCurrentTierUpgrades.AddItem(UpgradeTemplate);
+				TechUpgrades[UpgradeTemplate.Category].ValidCurrentTierUpgrades.AddItem(UpgradeTemplate);
 			}
 			else if(UpgradeTemplate.RequiredScience == BaselineTier +1){
-				ValidTechUpgrades[UpgradeTemplate.Category].ValidNextTierUpgrades.AddItem(UpgradeTemplate);
+				TechUpgrades[UpgradeTemplate.Category].ValidNextTierUpgrades.AddItem(UpgradeTemplate);
 			}
 		}
 		//Allow Repeat Upgrades
 		for(j=HigherTierItems; j > 0; j--){
-			CurrentShopUpgrades[i].List.AddItem(ValidTechUpgrades[i].ValidNextTierUpgrades[`SYNC_RAND(ValidTechUpgrades[i].ValidNextTierUpgrades.Length)]);
+			CurrentShopUpgrades[i].List.AddItem(TechUpgrades[i].ValidNextTierUpgrades[`SYNC_RAND(TechUpgrades[i].ValidNextTierUpgrades.Length)]);
 		}
 		for(j=CurrentTierItems; j > 0; j--){
-			CurrentShopUpgrades[i].List.AddItem(ValidTechUpgrades[i].ValidCurrentTierUpgrades[`SYNC_RAND(ValidTechUpgrades[i].ValidCurrentTierUpgrades.Length)]);
+			CurrentShopUpgrades[i].List.AddItem(TechUpgrades[i].ValidCurrentTierUpgrades[`SYNC_RAND(TechUpgrades[i].ValidCurrentTierUpgrades.Length)]);
 		}
 
 	}
@@ -1300,12 +1300,12 @@ simulated function RefreshShopStock(){
 
 	//Assign random options to random categories
 	for(i=HigherTierItems; i > 0; i--){
-		Category = `SYNC_RAND(eUpCat_Max);
-		CurrentShopUpgrades[Category].List.AddItem(ValidTechUpgrades[Category].ValidNextTierUpgrades[`SYNC_RAND(ValidTechUpgrades[Category].ValidNextTierUpgrades.Length)]);
+		Category = `SYNC_RAND(eUpCat_Attachment);
+		CurrentShopUpgrades[Category].List.AddItem(TechUpgrades[Category].ValidNextTierUpgrades[`SYNC_RAND(TechUpgrades[Category].ValidNextTierUpgrades.Length)]);
 
 	}
 	for(i=CurrentTierItems; i > 0; i--){
-		Category = `SYNC_RAND(eUpCat_Max);
-		CurrentShopUpgrades[Category].List.AddItem(ValidTechUpgrades[Category].ValidCurrentTierUpgrades[`SYNC_RAND(ValidTechUpgrades[Category].ValidCurrentTierUpgrades.Length)]);
+		Category = `SYNC_RAND(eUpCat_Attachment);
+		CurrentShopUpgrades[Category].List.AddItem(TechUpgrades[Category].ValidCurrentTierUpgrades[`SYNC_RAND(TechUpgrades[Category].ValidCurrentTierUpgrades.Length)]);
 	}
 }

@@ -244,6 +244,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddIronCurtainAbility());
 	Templates.AddItem(IronCurtainShot()); //Additional Ability
 	Templates.AddItem(AddSlash_LWAbility());
+	Templates.AddItem(AddQuickSlash());
 	Templates.AddItem(AddAbsorptionFieldsAbility());
 	Templates.AddItem(AddBodyShieldAbility());
 	Templates.AddItem(AddEmergencyLifeSupportAbility());
@@ -261,6 +262,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(BulletWizardDamage());
 	Templates.AddItem(AddSuppressorBonusAbility());
 	Templates.AddItem(RemoveSuppressorBonus());
+	Templates.AddItem(AddHipfire2());
 	
 	
 	return Templates;
@@ -1048,6 +1050,36 @@ static function X2AbilityTemplate AddCloseEncountersAbility()
 	return Template;
 }
 
+
+static function X2AbilityTemplate AddHipfire2()
+{
+	local X2AbilityTemplate							Template;
+	local X2Effect_HipFire					ActionEffect;
+	
+	`CREATE_X2ABILITY_TEMPLATE (Template, 'HipFire2');
+	Template.IconImage = "img:///UILibrary_XPerkIconPack_LW.UIPerk_shot_move";
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
+	//Template.bIsPassive = true;  // needs to be off to allow perks
+	ActionEffect = new class 'X2Effect_HipFire';
+	ActionEffect.SetDisplayInfo (ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
+	ActionEffect.BuildPersistentEffect(1, true, false);
+	ActionEffect.MaxUsesPerTurn = default.CE_USES_PER_TURN;
+	//ActionEffect.MaxTiles = default.CE_MAX_TILES;
+	ActionEffect.ApplicableAbilities = default.CE_ABILITYNAMES;
+	Template.AddTargetEffect(ActionEffect);
+	Template.bCrossClassEligible = false;
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	// Visualization handled in Effect
+	return Template;
+}
+
+
+
 static function X2AbilityTemplate AddLoneWolfAbility()
 {
 	local X2AbilityTemplate					Template;
@@ -1374,7 +1406,7 @@ static function X2AbilityTemplate AddWalkFireAbility()
 
 	ActionPointCost = new class 'X2AbilityCost_ActionPoints';
 	ActionPointCost.iNumPoints = default.WALK_FIRE_MIN_ACTION_REQ;
-	ActionPointCost.bConsumeAllPoints = true;
+	ActionPointCost.bConsumeAllPoints = false;
 	Template.AbilityCosts.AddItem(ActionPointCost);
 
 	Cooldown = new class'X2AbilityCooldown';
@@ -2574,6 +2606,7 @@ static function X2AbilityTemplate AddBulletWizardAbility()
 	local X2Condition_UnitEffects						SuppressedCondition;
 	local X2AbilityToHitCalc_StandardAim 				StandardAim;
 	local X2Effect_TriggerEvent PostAbilitySuppression;
+
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'BulletWizard');
 	Template.IconImage = "img:///UILibrary_WOTC_APA_Class_Pack_LW.perk_WitheringBarrage";
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
@@ -2581,7 +2614,6 @@ static function X2AbilityTemplate AddBulletWizardAbility()
 	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_LIEUTENANT_PRIORITY;
 	Template.Hostility = eHostility_Offensive;
 	Template.bDisplayInUITooltip = false;
-
 	Template.bShowActivation = true;
 
 	StandardAim = new class'X2AbilityToHitCalc_StandardAim';
@@ -2620,6 +2652,7 @@ static function X2AbilityTemplate AddBulletWizardAbility()
 	Template.AbilityCosts.AddItem(AmmoCost);
 
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.bAddWeaponTypicalCost = true;
 	ActionPointCost.bConsumeAllPoints = true;   //  this will guarantee the unit has at least 1 action point
 	ActionPointCost.bFreeCost = false;           //  ReserveActionPoints effect will take all action points away
 	Template.AbilityCosts.AddItem(ActionPointCost);
@@ -4645,6 +4678,84 @@ static function X2AbilityTemplate AddSlash_LWAbility()
 
 	return Template;
 }
+
+static function X2AbilityTemplate AddQuickSlash()
+{
+	local X2AbilityTemplate                 Template;
+	local X2AbilityCost_ActionPoints        ActionPointCost;
+	local X2AbilityToHitCalc_StandardMelee  StandardMelee;
+	local X2Effect_ApplyWeaponDamage        WeaponDamageEffect;
+	local array<name>                       SkipExclusions;
+	local X2Condition_UnitProperty			AdjacencyCondition;	
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'QuickSlash_LW');
+
+	Template.AbilitySourceName = 'eAbilitySource_Standard';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_AlwaysShow;
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_swordSlash";
+	Template.bHideOnClassUnlock = false;
+	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_SQUADDIE_PRIORITY;
+	Template.AbilityConfirmSound = "TacticalUI_SwordConfirm";
+	Template.bCrossClassEligible = false;
+	Template.bDisplayInUITooltip = true;
+    Template.bDisplayInUITacticalText = true;
+    Template.DisplayTargetHitChance = true;
+	Template.bShowActivation = true;
+	Template.bSkipFireAction = false;
+
+	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.iNumPoints = 1;
+	ActionPointCost.bFreeCost = true;
+	ActionPointCost.bConsumeAllPoints = false;
+	Template.AbilityCosts.AddItem(ActionPointCost);
+	
+	StandardMelee = new class'X2AbilityToHitCalc_StandardMelee';
+	Template.AbilityToHitCalc = StandardMelee;
+
+    Template.AbilityTargetStyle = default.SimpleSingleMeleeTarget;
+	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
+
+	// Target Conditions
+	Template.AbilityTargetConditions.AddItem(default.LivingHostileTargetProperty);
+	Template.AbilityTargetConditions.AddItem(default.MeleeVisibilityCondition);
+	AdjacencyCondition = new class'X2Condition_UnitProperty';
+	AdjacencyCondition.RequireWithinRange = true;
+	AdjacencyCondition.WithinRange = 144; //1.5 tiles in Unreal units, allows attacks on the diag
+	AdjacencyCondition.TreatMindControlledSquadmateAsHostile = true;
+	Template.AbilityTargetConditions.AddItem(AdjacencyCondition);
+
+	// Shooter Conditions
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	
+	if (!default.NO_MELEE_ATTACKS_WHEN_ON_FIRE)
+	{
+		SkipExclusions.AddItem(class'X2StatusEffects'.default.BurningName);
+	}
+
+	SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.DisorientedName); //okay when disoriented
+	Template.AddShooterEffectExclusions(SkipExclusions);
+	
+	// Damage Effect
+	WeaponDamageEffect = new class'X2Effect_ApplyWeaponDamage';
+	Template.AddTargetEffect(WeaponDamageEffect);
+	Template.bAllowBonusWeaponEffects = true;
+	
+	// VGamepliz matters
+	Template.SourceMissSpeech = 'SwordMiss';
+	Template.bSkipMoveStop = true;
+
+	Template.CinescriptCameraType = "Ranger_Reaper";
+    Template.BuildNewGameStateFn = TypicalMoveEndAbility_BuildGameState;
+	Template.BuildInterruptGameStateFn = TypicalMoveEndAbility_BuildInterruptGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+
+	Template.SuperConcealmentLoss = class'X2AbilityTemplateManager'.default.SuperConcealmentStandardShotLoss;
+	Template.ChosenActivationIncreasePerUse = class'X2AbilityTemplateManager'.default.StandardShotChosenActivationIncreasePerUse;
+	Template.LostSpawnIncreasePerUse = class'X2AbilityTemplateManager'.default.MeleeLostSpawnIncreasePerUse;
+
+	return Template;
+}
+
 
 static function X2AbilityTemplate AddAbsorptionFieldsAbility()
 {

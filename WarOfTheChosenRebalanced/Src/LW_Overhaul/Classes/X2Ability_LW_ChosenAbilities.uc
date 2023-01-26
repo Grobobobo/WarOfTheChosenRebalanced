@@ -2359,6 +2359,62 @@ static function X2AbilityTemplate CreateExoskeletonServos()
   	return Template;
 }
 
+static function X2AbilityTemplate CreateExoskeletonServos2()
+{
+	local X2AbilityTemplate						Template;	
+	local X2Effect_PersistentStatChange 					PersistentStatChangeEffect;
+	local X2Condition_AbilityProperty AbilityCondition;
+	local X2Effect_ExoskeletonServos2 ServosEffect;
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'ExoskeletonServos2');
+	Template.IconImage = "img:///UILibrary_XPerkIconPack_LW.UIPerk_move_blaze";
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.Hostility = eHostility_Neutral;
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.bShowActivation = false;
+	Template.bSkipFireAction = true;
+	//Template.bIsPassive = true;
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
+	AbilityCondition = new class'X2Condition_AbilityProperty';
+	AbilityCondition.OwnerHasSoldierAbilities.AddItem('HeavyWeaponsMobPenalty');
+	Template.AbilityShooterConditions.AddItem(AbilityCondition);
+
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, -class'X2Ability_LW_GearAbilities'.default.HEAVY_WEAPONS_MOB_PENALTY);
+	PersistentStatChangeEffect.TargetConditions.AddItem(AbilityCondition);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	AbilityCondition = new class'X2Condition_AbilityProperty';
+	AbilityCondition.OwnerHasSoldierAbilities.AddItem('HeavySecondaryWeaponsMobPenalty');
+	Template.AbilityShooterConditions.AddItem(AbilityCondition);
+
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, -class'X2Ability_LW_GearAbilities'.default.HEAVY_WEAPONS_MOB_PENALTY);
+	PersistentStatChangeEffect.TargetConditions.AddItem(AbilityCondition);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	ServosEffect = new class'X2Effect_ExoskeletonServos2';
+	ServosEffect.BuildPersistentEffect(1, true, false, false);
+	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
+	Template.AddTargetEffect(ServosEffect);
+
+	
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	//Template.BuildInterruptGameStateFn = TypicalAbility_BuildInterruptGameState;
+
+	//Template.AdditionalAbilities.AddItem('UnstoppablePassive_LW');
+  	return Template;
+}
 
 static function X2AbilityTemplate ArterialStrike()
 {

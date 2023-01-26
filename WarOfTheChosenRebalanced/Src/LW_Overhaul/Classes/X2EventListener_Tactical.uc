@@ -301,10 +301,10 @@ static function EventListenerReturn OnCleanupTacticalMission(Object EventData, O
 	local bool AwardWrecks;
 	local XComGameState_MissionSite MissionState;
 //	local int AggressionDelta;
-	local XComGameState_AlienAggression AggressionState;
+//	local XComGameState_AlienAggression AggressionState;
 	local X2MissionSourceTemplate MissionSource;
 	//local int  DelayValueHours;
-	local XComGameState_HeadquartersAlien AlienHq;
+//	local XComGameState_HeadquartersAlien AlienHq;
 	local X2ItemTemplateManager ItemTemplateManager;
 	local int NumTotalMilitia, NumDeadMilitia, NumSavedMilitia;
 	local XComGameState_Item ItemState;
@@ -925,7 +925,7 @@ static protected function EventListenerReturn DynamicallyApplyLoadouts(
 	local XComGameState_Item Item;
 	local UnitValue DynamicallyAppliedLoadout;
 	local string LoadoutStr;
-	local int iRand;
+//	local int iRand;
 	UnitState = XComGameState_Unit(EventSource);
 
 	Tuple = XComLWTuple(EventData);

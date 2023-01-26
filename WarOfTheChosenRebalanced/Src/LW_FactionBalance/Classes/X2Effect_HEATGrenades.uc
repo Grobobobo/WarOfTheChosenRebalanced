@@ -32,7 +32,7 @@ function int GetExtraArmorPiercing(XComGameState_Effect EffectState, XComGameSta
 function int GetExtraShredValue(XComGameState_Effect EffectState, XComGameState_Unit Attacker, Damageable TargetDamageable, XComGameState_Ability AbilityState, const out EffectAppliedData AppliedData)
 {
 	local XComGameState_Item SourceWeapon;
-	local X2WeaponTemplate WeaponTemplate,SourceWeaponAmmoTemplate;
+	local X2WeaponTemplate WeaponTemplate;
 
 	SourceWeapon = AbilityState.GetSourceWeapon();
 	WeaponTemplate = X2WeaponTemplate(SourceWeapon.GetMyTemplate());

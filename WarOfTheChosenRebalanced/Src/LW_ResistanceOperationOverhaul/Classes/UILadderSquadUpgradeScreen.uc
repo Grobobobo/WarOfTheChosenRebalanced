@@ -2491,10 +2491,10 @@ simulated function OnClickResearchCategory(UIMechaListItem MechaItem)
 
 simulated function UpdateDataResearchCategory()
 {
-	local X2ResistanceTechUpgradeTemplateManager TemplateManager;
+	//local X2ResistanceTechUpgradeTemplateManager TemplateManager;
 	local int Index;
 	local X2ResistanceTechUpgradeTemplate Template;
-	local array<name> TemplateNames;
+	//local array<name> TemplateNames;
 	local name TemplateName;
 	local int CreditsValue;
 	local string CostString;
@@ -2502,7 +2502,7 @@ simulated function UpdateDataResearchCategory()
 	local string CreditsString;
 
 	Index = 0;
-	TemplateManager = class'X2ResistanceTechUpgradeTemplateManager'.static.GetTemplateManager();
+	//TemplateManager = class'X2ResistanceTechUpgradeTemplateManager'.static.GetTemplateManager();
 
 	foreach LadderData.CurrentShopUpgrades[SelectedUpgradeCategory].List(Template)
 	{

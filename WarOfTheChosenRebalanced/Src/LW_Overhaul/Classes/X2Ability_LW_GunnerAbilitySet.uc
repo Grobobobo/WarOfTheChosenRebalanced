@@ -592,3 +592,4 @@ static function X2AbilityTemplate AddDisarmingStrike()
 
 	return Template;
 }
+

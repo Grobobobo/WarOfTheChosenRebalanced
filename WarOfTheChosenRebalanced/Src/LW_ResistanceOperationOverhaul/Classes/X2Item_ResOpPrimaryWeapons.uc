@@ -68,19 +68,19 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	Weapons.AddItem(CreateTLE1AssaultRifle('TLE_AssaultRifle_CV_1',1));    
 
-	Weapons.AddItem(CreateTemplate_AssaultRifle_Conventional('AssaultRifle_CV_1',1));
-	Weapons.AddItem(CreateTemplate_AssaultRifle_Conventional('AssaultRifle_CV_2',2));
-	Weapons.AddItem(CreateTemplate_AssaultRifle_Conventional('AssaultRifle_CV_3',3));
+	Weapons.AddItem(CreateTemplate_AssaultRifle_Conventional_RO('AssaultRifle_CV_1',1));
+	Weapons.AddItem(CreateTemplate_AssaultRifle_Conventional_RO('AssaultRifle_CV_2',2));
+	Weapons.AddItem(CreateTemplate_AssaultRifle_Conventional_RO('AssaultRifle_CV_3',3));
 	
 	Weapons.AddItem(CreateTemplate_AssaultRifle_Laser('AssaultRifle_LS_2',2));
 	Weapons.AddItem(CreateTemplate_AssaultRifle_Laser('AssaultRifle_LS_3',3));
 	Weapons.AddItem(CreateTemplate_AssaultRifle_Laser('AssaultRifle_LS_4',4));
 	Weapons.AddItem(CreateTemplate_AssaultRifle_Laser('AssaultRifle_LS_5',5));
 
-	Weapons.AddItem(CreateTemplate_AssaultRifle_Magnetic('AssaultRifle_MG_2',2));
-	Weapons.AddItem(CreateTemplate_AssaultRifle_Magnetic('AssaultRifle_MG_3',3));
-	Weapons.AddItem(CreateTemplate_AssaultRifle_Magnetic('AssaultRifle_MG_4',4));
-	Weapons.AddItem(CreateTemplate_AssaultRifle_Magnetic('AssaultRifle_MG_5',5));
+	Weapons.AddItem(CreateTemplate_AssaultRifle_Magnetic_RO('AssaultRifle_MG_2',2));
+	Weapons.AddItem(CreateTemplate_AssaultRifle_Magnetic_RO('AssaultRifle_MG_3',3));
+	Weapons.AddItem(CreateTemplate_AssaultRifle_Magnetic_RO('AssaultRifle_MG_4',4));
+	Weapons.AddItem(CreateTemplate_AssaultRifle_Magnetic_RO('AssaultRifle_MG_5',5));
 
 	//Weapons.AddItem(CreateTemplate_AssaultRifle_Coil('AssaultRifle_CG_2',2));
 	Weapons.AddItem(CreateTemplate_AssaultRifle_Coil('AssaultRifle_CG_3',3));
@@ -88,9 +88,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateTemplate_AssaultRifle_Coil('AssaultRifle_CG_5',5));
 
 	//Weapons.AddItem(CreateTemplate_AssaultRifle_Coil('AssaultRifle_CG_2',2));
-	Weapons.AddItem(CreateTemplate_AssaultRifle_Beam('AssaultRifle_BM_3',3));
-	Weapons.AddItem(CreateTemplate_AssaultRifle_Beam('AssaultRifle_BM_4',4));
-	Weapons.AddItem(CreateTemplate_AssaultRifle_Beam('AssaultRifle_BM_5',5));
+	Weapons.AddItem(CreateTemplate_AssaultRifle_Beam_RO('AssaultRifle_BM_3',3));
+	Weapons.AddItem(CreateTemplate_AssaultRifle_Beam_RO('AssaultRifle_BM_4',4));
+	Weapons.AddItem(CreateTemplate_AssaultRifle_Beam_RO('AssaultRifle_BM_5',5));
 
 
 	Weapons.AddItem(CreateTLE2AssaultRifle('TLE_AssaultRifle_MG_2',2));
@@ -182,27 +182,27 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateTemplate_Bullpup_Beam('Bullpup_BM_5',5));
 
 
-	Weapons.AddItem(CreateTemplate_Cannon_Conventional('Cannon_CV_1',1));
-	Weapons.AddItem(CreateTemplate_Cannon_Conventional('Cannon_CV_2',2));
-	Weapons.AddItem(CreateTemplate_Cannon_Conventional('Cannon_CV_3',3));
+	Weapons.AddItem(CreateTemplate_Cannon_Conventional_RO('Cannon_CV_1',1));
+	Weapons.AddItem(CreateTemplate_Cannon_Conventional_RO('Cannon_CV_2',2));
+	Weapons.AddItem(CreateTemplate_Cannon_Conventional_RO('Cannon_CV_3',3));
 
 	Weapons.AddItem(CreateTemplate_Cannon_Laser('Cannon_LS_2',2));
 	Weapons.AddItem(CreateTemplate_Cannon_Laser('Cannon_LS_3',3));
 	Weapons.AddItem(CreateTemplate_Cannon_Laser('Cannon_LS_4',4));
 	Weapons.AddItem(CreateTemplate_Cannon_Laser('Cannon_LS_5',5));
 
-	Weapons.AddItem(CreateTemplate_Cannon_Magnetic('Cannon_MG_2',2));
-	Weapons.AddItem(CreateTemplate_Cannon_Magnetic('Cannon_MG_3',3));
-	Weapons.AddItem(CreateTemplate_Cannon_Magnetic('Cannon_MG_4',4));
-	Weapons.AddItem(CreateTemplate_Cannon_Magnetic('Cannon_MG_5',5));
+	Weapons.AddItem(CreateTemplate_Cannon_Magnetic_RO('Cannon_MG_2',2));
+	Weapons.AddItem(CreateTemplate_Cannon_Magnetic_RO('Cannon_MG_3',3));
+	Weapons.AddItem(CreateTemplate_Cannon_Magnetic_RO('Cannon_MG_4',4));
+	Weapons.AddItem(CreateTemplate_Cannon_Magnetic_RO('Cannon_MG_5',5));
 
 	Weapons.AddItem(CreateCannon_Coil_Template('Cannon_CG_3',3));
 	Weapons.AddItem(CreateCannon_Coil_Template('Cannon_CG_4',4));
 	Weapons.AddItem(CreateCannon_Coil_Template('Cannon_CG_5',5));
 
-	Weapons.AddItem(CreateTemplate_Cannon_Beam('Cannon_BM_3',3));
-	Weapons.AddItem(CreateTemplate_Cannon_Beam('Cannon_BM_4',4));
-	Weapons.AddItem(CreateTemplate_Cannon_Beam('Cannon_BM_5',5));
+	Weapons.AddItem(CreateTemplate_Cannon_Beam_RO('Cannon_BM_3',3));
+	Weapons.AddItem(CreateTemplate_Cannon_Beam_RO('Cannon_BM_4',4));
+	Weapons.AddItem(CreateTemplate_Cannon_Beam_RO('Cannon_BM_5',5));
 
 	Weapons.AddItem(CreateTemplate_SMG_Conventional('SMG_CV_1',1));
 	Weapons.AddItem(CreateTemplate_SMG_Conventional('SMG_CV_2',2));
@@ -226,27 +226,27 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateTemplate_SMG_Beam('SMG_BM_4',4));
 	Weapons.AddItem(CreateTemplate_SMG_Beam('SMG_BM_5',5));
 
-	Weapons.AddItem(CreateTemplate_SniperRifle_Conventional('SniperRifle_CV_1',1));
-	Weapons.AddItem(CreateTemplate_SniperRifle_Conventional('SniperRifle_CV_2',2));
-	Weapons.AddItem(CreateTemplate_SniperRifle_Conventional('SniperRifle_CV_3',3));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Conventional_RO('SniperRifle_CV_1',1));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Conventional_RO('SniperRifle_CV_2',2));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Conventional_RO('SniperRifle_CV_3',3));
 
 	Weapons.AddItem(CreateTemplate_SniperRifle_Laser('SniperRifle_LS_2',2));
 	Weapons.AddItem(CreateTemplate_SniperRifle_Laser('SniperRifle_LS_3',3));
 	Weapons.AddItem(CreateTemplate_SniperRifle_Laser('SniperRifle_LS_4',4));
 	Weapons.AddItem(CreateTemplate_SniperRifle_Laser('SniperRifle_LS_5',5));
 
-	Weapons.AddItem(CreateTemplate_SniperRifle_Magnetic('SniperRifle_MG_2',2));
-	Weapons.AddItem(CreateTemplate_SniperRifle_Magnetic('SniperRifle_MG_3',3));
-	Weapons.AddItem(CreateTemplate_SniperRifle_Magnetic('SniperRifle_MG_4',4));
-	Weapons.AddItem(CreateTemplate_SniperRifle_Magnetic('SniperRifle_MG_5',5));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Magnetic_RO('SniperRifle_MG_2',2));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Magnetic_RO('SniperRifle_MG_3',3));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Magnetic_RO('SniperRifle_MG_4',4));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Magnetic_RO('SniperRifle_MG_5',5));
 
 	Weapons.AddItem(CreateSniperRifle_Coil_Template('SniperRifle_CG_3',3));
 	Weapons.AddItem(CreateSniperRifle_Coil_Template('SniperRifle_CG_4',4));
 	Weapons.AddItem(CreateSniperRifle_Coil_Template('SniperRifle_CG_5',5));
 
-	Weapons.AddItem(CreateTemplate_SniperRifle_Beam('SniperRifle_BM_3',3));
-	Weapons.AddItem(CreateTemplate_SniperRifle_Beam('SniperRifle_BM_4',4));
-	Weapons.AddItem(CreateTemplate_SniperRifle_Beam('SniperRifle_BM_5',5));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Beam_RO('SniperRifle_BM_3',3));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Beam_RO('SniperRifle_BM_4',4));
+	Weapons.AddItem(CreateTemplate_SniperRifle_Beam_RO('SniperRifle_BM_5',5));
 
 	Weapons.AddItem(CreateTLE1SniperRifle('TLE_SniperRifle_CV_1',1));
 	Weapons.AddItem(CreateTLE1SniperRifle('TLE_SniperRifle_CV_2',2));
@@ -262,27 +262,27 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateTLE3SniperRifle('TLE_SniperRifle_BM_4',5));
 
 
-	Weapons.AddItem(CreateTemplate_Shotgun_Conventional('Shotgun_CV_1',1));
-	Weapons.AddItem(CreateTemplate_Shotgun_Conventional('Shotgun_CV_2',2));
-	Weapons.AddItem(CreateTemplate_Shotgun_Conventional('Shotgun_CV_3',3));
+	Weapons.AddItem(CreateTemplate_Shotgun_Conventional_RO('Shotgun_CV_1',1));
+	Weapons.AddItem(CreateTemplate_Shotgun_Conventional_RO('Shotgun_CV_2',2));
+	Weapons.AddItem(CreateTemplate_Shotgun_Conventional_RO('Shotgun_CV_3',3));
 
 	Weapons.AddItem(CreateTemplate_Shotgun_Laser('Shotgun_LS_2',2));
 	Weapons.AddItem(CreateTemplate_Shotgun_Laser('Shotgun_LS_3',3));
 	Weapons.AddItem(CreateTemplate_Shotgun_Laser('Shotgun_LS_4',4));
 	Weapons.AddItem(CreateTemplate_Shotgun_Laser('Shotgun_LS_5',5));
 
-	Weapons.AddItem(CreateTemplate_Shotgun_Magnetic('Shotgun_MG_2',2));
-	Weapons.AddItem(CreateTemplate_Shotgun_Magnetic('Shotgun_MG_3',3));
-	Weapons.AddItem(CreateTemplate_Shotgun_Magnetic('Shotgun_MG_4',4));
-	Weapons.AddItem(CreateTemplate_Shotgun_Magnetic('Shotgun_MG_5',5));
+	Weapons.AddItem(CreateTemplate_Shotgun_Magnetic_RO('Shotgun_MG_2',2));
+	Weapons.AddItem(CreateTemplate_Shotgun_Magnetic_RO('Shotgun_MG_3',3));
+	Weapons.AddItem(CreateTemplate_Shotgun_Magnetic_RO('Shotgun_MG_4',4));
+	Weapons.AddItem(CreateTemplate_Shotgun_Magnetic_RO('Shotgun_MG_5',5));
 
 	Weapons.AddItem(CreateShotgun_Coil_Template('Shotgun_CG_3',3));
 	Weapons.AddItem(CreateShotgun_Coil_Template('Shotgun_CG_4',4));
 	Weapons.AddItem(CreateShotgun_Coil_Template('Shotgun_CG_5',5));
 
-	Weapons.AddItem(CreateTemplate_Shotgun_Beam('Shotgun_BM_3',3));
-	Weapons.AddItem(CreateTemplate_Shotgun_Beam('Shotgun_BM_4',4));
-	Weapons.AddItem(CreateTemplate_Shotgun_Beam('Shotgun_BM_5',5));
+	Weapons.AddItem(CreateTemplate_Shotgun_Beam_RO('Shotgun_BM_3',3));
+	Weapons.AddItem(CreateTemplate_Shotgun_Beam_RO('Shotgun_BM_4',4));
+	Weapons.AddItem(CreateTemplate_Shotgun_Beam_RO('Shotgun_BM_5',5));
 
 	Weapons.AddItem(CreateTLE1Shotgun('TLE_Shotgun_CV_1',1));
 	Weapons.AddItem(CreateTLE1Shotgun('TLE_Shotgun_CV_2',2));
@@ -332,7 +332,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateTemplate_ReplicatorGauntlet('ReplicatorGauntlet_CV_5',5));
 
 	
-	//Grenades.AddItem(CreateTemplate_AssaultRifle_Conventional('AssaultRifle_CV_1',1));
+	//Grenades.AddItem(CreateTemplate_AssaultRifle_Conventional_RO('AssaultRifle_CV_1',1));
 
 	return Weapons;
 }
@@ -344,7 +344,7 @@ static function WeaponDamageValue GetWeaponDamage(int WeaponTier, optional float
     local int IntBaseDamage;
 
     FloatBaseDamage = WeaponTier * DamagePCT;
-    IntBaseDamage = int(WeaponTier);
+    IntBaseDamage = int(FloatBaseDamage);
     
 
     WeaponDamage.Damage = IntBaseDamage;
@@ -366,9 +366,9 @@ static function array<WeaponDamageValue> GetGauntletsExtraWeaponDamage(int Weapo
 	local array<WeaponDamageValue> ExtraDamages;
 	local GauntletExtraDamage TagValue;
 
-	foreach SHARDGAUNTLET_EXTRADAMAGE_TAGS(TagValue){
+	foreach default.SHARDGAUNTLET_EXTRADAMAGE_TAGS(TagValue){
 		FloatBaseDamage = WeaponTier  * TagValue.DamageMod;
-		IntBaseDamage = int(WeaponTier);
+		IntBaseDamage = int(FloatBaseDamage);
 		
 		WeaponDamage.Tag = TagValue.Tag;
 		WeaponDamage.Damage = IntBaseDamage;
@@ -456,11 +456,11 @@ static function X2DataTemplate CreateTLE1AssaultRifle(name TemplateName, int Tie
 
 
 
-static function X2DataTemplate CreateTemplate_AssaultRifle_Conventional(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_AssaultRifle_Conventional_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
-    local String WeaponId;
+//    local String WeaponId;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_ConventionalRifle";                       // used by the UI. Probably determines iconview of the weapon.
@@ -580,7 +580,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Laser(name TemplateNa
 
 
 
-static function X2DataTemplate CreateTemplate_AssaultRifle_Magnetic(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_AssaultRifle_Magnetic_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
@@ -613,7 +613,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Magnetic(name Templat
 
 
 	Template.Abilities.AddItem('Lightemup');
-	Template.Abilities.AddItem('ReaperMode');
+	Template.Abilities.AddItem('ReaperRoundsPassive');
 
 	
 	Template.GameArchetype = "WP_AssaultRifle_MG.WP_AssaultRifle_MG";
@@ -653,7 +653,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Coil(name TemplateNam
 	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MEDIUM_ALL_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,,1);
 	Template.Aim = class'X2Item_Coilguns'.default.ASSAULTRIFLE_COIL_AIM;
 	Template.CritChance = class'X2Item_Coilguns'.default.ASSAULTRIFLE_COIL_CRITCHANCE;
 	Template.iClipSize = class'X2Item_Coilguns'.default.ASSAULTRIFLE_COIL_ICLIPSIZE;
@@ -676,7 +676,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Coil(name TemplateNam
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('Lightemup');
-	Template.Abilities.AddItem('TeslaCoil');
+	Template.Abilities.AddItem('RapidFire');
 	// Template.Abilities.AddItem('CoilgunBonusShredAbility');
 
 	Template.CreatorTemplateName = 'GeneralWeapons_CG_Schematic'; // The schematic which creates this item
@@ -691,7 +691,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Coil(name TemplateNam
 	return Template;
 }
 
-static function X2DataTemplate CreateTemplate_AssaultRifle_Beam(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_AssaultRifle_Beam_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
@@ -1812,7 +1812,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Beam(name TemplateName, in
 	return Template;
 }
 
-static function X2DataTemplate CreateTemplate_Cannon_Conventional(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_Cannon_Conventional_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
@@ -1825,6 +1825,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Conventional(name TemplateN
 	Template.strImage = "img:///UILibrary_Common.ConvCannon.ConvCannon_Base";
 	Template.EquipSound = "Conventional_Weapon_Equip";
 	Template.Tier = Tier;
+	Template.iTypicalActionCost = 2;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.MEDIUM_CONVENTIONAL_RANGE;
 	Template.BaseDamage = GetWeaponDamage(Tier,1.5f,,,1);
@@ -1837,13 +1838,13 @@ static function X2DataTemplate CreateTemplate_Cannon_Conventional(name TemplateN
 	Template.bIsLargeWeapon = true;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('HeavyStandardShot');
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('BulletWizard');
-	Template.Abilities.AddItem('WalkFire');
+	//Template.Abilities.AddItem('WalkFire');
 	
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_Cannon_CV.WP_Cannon_CV";
@@ -1924,7 +1925,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Laser(name TemplateName, in
 }
 
 
-static function X2DataTemplate CreateTemplate_Cannon_Magnetic(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_Cannon_Magnetic_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
@@ -1939,7 +1940,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Magnetic(name TemplateName,
 	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.MEDIUM_MAGNETIC_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier,1.75f,,,1);
+	Template.BaseDamage = GetWeaponDamage(Tier,2.0f,,,1);
 	Template.Aim = class'X2Item_DefaultWeapons'.default.LMG_MAGNETIC_AIM;
 	Template.CritChance = class'X2Item_DefaultWeapons'.default.LMG_MAGNETIC_CRITCHANCE;
 	Template.iClipSize = class'X2Item_DefaultWeapons'.default.LMG_MAGNETIC_ICLIPSIZE;
@@ -1949,7 +1950,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Magnetic(name TemplateName,
 	Template.bIsLargeWeapon = true;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('HeavyStandardShot');
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
@@ -1993,7 +1994,7 @@ static function X2DataTemplate CreateCannon_Coil_Template(name TemplateName, int
 	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_Coilguns'.default.MEDIUM_COIL_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier,1.5f,,,1);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.75f,,,1);
 	Template.Aim = class'X2Item_Coilguns'.default.CANNON_COIL_AIM;
 	Template.CritChance = class'X2Item_Coilguns'.default.CANNON_COIL_CRITCHANCE;
 	Template.iClipSize = class'X2Item_Coilguns'.default.CANNON_COIL_ICLIPSIZE;
@@ -2011,12 +2012,13 @@ static function X2DataTemplate CreateCannon_Coil_Template(name TemplateName, int
 	Template.AddDefaultAttachment('Light', "BeamAttachments.Meshes.BeamFlashLight"); //, , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_LightA");  // re-use common conventional flashlight
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('HeavyStandardShot');
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('BulletWizard');
+	Template.Abilities.AddItem('WalkFire');
 	// Template.Abilities.AddItem('CoilgunBonusShredAbility');
 
 	Template.CreatorTemplateName = 'HeavyWeapons_CG_Schematic'; // The schematic which creates this item
@@ -2031,7 +2033,7 @@ static function X2DataTemplate CreateCannon_Coil_Template(name TemplateName, int
 	return Template;
 }
 
-static function X2DataTemplate CreateTemplate_Cannon_Beam(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_Cannon_Beam_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
@@ -2187,7 +2189,7 @@ static function X2DataTemplate CreateTemplate_SMG_Laser(name TemplateName, int T
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('HipFire_LW');
+	Template.Abilities.AddItem('HipFire2');
 	
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWSMG_LS.Archetype.WP_SMG_LS";
@@ -2365,7 +2367,7 @@ static function X2DataTemplate CreateTemplate_SMG_Beam(name TemplateName, int Ti
 	Template.Abilities.AddItem('OverwatchShot');
 	//Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('HipFire_LW');
+	Template.Abilities.AddItem('HipFire2');
 	Template.Abilities.AddItem('PlasmaReload');
 
 	// This all the resources; sounds, animations, models, physics, the works.
@@ -2391,7 +2393,7 @@ static function X2DataTemplate CreateTemplate_SMG_Beam(name TemplateName, int Ti
 	return Template;
 }
 
-static function X2DataTemplate CreateTemplate_Shotgun_Conventional(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_Shotgun_Conventional_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
@@ -2421,7 +2423,8 @@ static function X2DataTemplate CreateTemplate_Shotgun_Conventional(name Template
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('CloseCombatSpecialist');
+	Template.Abilities.AddItem('CloseEncounters');
+	Template.Abilities.AddItem('SlugShot');
 	
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_Shotgun_CV.WP_Shotgun_CV";
@@ -2504,7 +2507,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Laser(name TemplateName, i
 }
 
 
-static function X2DataTemplate CreateTemplate_Shotgun_Magnetic(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_Shotgun_Magnetic_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
@@ -2518,18 +2521,18 @@ static function X2DataTemplate CreateTemplate_Shotgun_Magnetic(name TemplateName
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = Tier;
 
-	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.default.SHORT_MAGNETIC_RANGE;
+	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.SHORT_MAGNETIC_RANGE;
 	Template.BaseDamage = GetWeaponDamage(Tier,1.75f);
-	Template.Aim = class'X2Item_DefaultWeapons'.default.default.SHOTGUN_MAGNETIC_AIM;
-	Template.CritChance = class'X2Item_DefaultWeapons'.default.default.SHOTGUN_MAGNETIC_CRITCHANCE;
-	Template.iClipSize =class'X2Item_DefaultWeapons'.default. default.SHOTGUN_MAGNETIC_ICLIPSIZE;
-	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.default.SHOTGUN_MAGNETIC_ISOUNDRANGE;
-	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.default.SHOTGUN_MAGNETIC_IENVIRONMENTDAMAGE;
+	Template.Aim = class'X2Item_DefaultWeapons'.default.SHOTGUN_MAGNETIC_AIM;
+	Template.CritChance = class'X2Item_DefaultWeapons'.default.SHOTGUN_MAGNETIC_CRITCHANCE;
+	Template.iClipSize =class'X2Item_DefaultWeapons'.default.SHOTGUN_MAGNETIC_ICLIPSIZE;
+	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.SHOTGUN_MAGNETIC_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.SHOTGUN_MAGNETIC_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = 2;
 	
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	//Template.Abilities.AddItem('StandardShot');
-	Template.Abilities.AddItem('ShardShot');
+	Template.Abilities.AddItem('StandardShot');
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
@@ -2614,7 +2617,7 @@ static function X2DataTemplate CreateShotgun_Coil_Template(name TemplateName, in
 	return Template;
 }
 
-static function X2DataTemplate CreateTemplate_Shotgun_Beam(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_Shotgun_Beam_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
@@ -2822,7 +2825,7 @@ static function X2DataTemplate CreateTLE3Shotgun(name TemplateName, int Tier)
 	return Template;
 }
 
-static function X2DataTemplate CreateTemplate_SniperRifle_Conventional(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_SniperRifle_Conventional_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
@@ -2934,7 +2937,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Laser(name TemplateNam
 	return Template;
 }
 
-static function X2DataTemplate CreateTemplate_SniperRifle_Magnetic(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_SniperRifle_Magnetic_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
@@ -3043,7 +3046,7 @@ static function X2DataTemplate CreateSniperRifle_Coil_Template(name TemplateName
 	return Template;
 }
 
-static function X2DataTemplate CreateTemplate_SniperRifle_Beam(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_SniperRifle_Beam_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
@@ -3174,6 +3177,7 @@ static function X2DataTemplate CreateTLE2SniperRifle(name TemplateName, int Tier
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('Obliteration_LW');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "TLE2Sniper.WP_TLE2Sniper";

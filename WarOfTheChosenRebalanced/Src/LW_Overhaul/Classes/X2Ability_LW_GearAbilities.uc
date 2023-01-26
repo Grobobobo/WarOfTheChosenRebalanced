@@ -1373,7 +1373,7 @@ static function Detonation_BuildVisualization(XComGameState VisualizeGameState)
 
 	local X2Action_PlayEffect					EffectAction;
 	local VisualizationActionMetadata			ActionMetadata;
-	local X2Action_Delay						DelayAction;
+	//local X2Action_Delay						DelayAction;
 	local X2Action_StartStopSound				SoundAction;
 	local XComGameState_Unit					UnitState;
 

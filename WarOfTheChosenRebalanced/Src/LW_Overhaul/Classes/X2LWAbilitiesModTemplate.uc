@@ -244,6 +244,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		// case 'LightningHands':
 		// case 'FaceOff':
 		case 'SniperStandardFire':
+			Template.AdditionalAbilities.AddItem('HeavyStandardShotPassive');
 		case 'StandardShot':
 		case 'PistolStandardShot':
 		case 'GunslingerShot':
@@ -307,6 +308,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'Suppression':
 		case 'AreaSuppression':
 		case 'BulletWizard':
+		case 'SuppressiveFire_LW':
 			AddSharedSuppressionCooldown(Template);
 			break;
 

@@ -6570,17 +6570,25 @@ LocPromotionPopupText="<Bullet/> Learn officer abilities in half the time."
 ; End Translation
 
 [DoubleTap2 X2AbilityTemplate]
-LocFriendlyName="HipFire"
-LocFlyOverText="HipFire"
+LocFriendlyName="Double Tap"
+LocFlyOverText="Double Tap"
 LocLongDescription="Activate to fire a standard shot and gain a second standard action."
 LocHelpText="Fire a standard shot and gain a bonus action."
 ; LWOTC Needs Translation
 LocPromotionPopupText="<Bullet/> Activate to fire a standard shot and gain a second action restricted to several different shooting abilities or overwatch.<br/><Bullet/> Double Tap has a <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
 ; End Translation
 
+[Hipfire2 X2AbilityTemplate]
+LocFriendlyName="Hipfire"
+LocFlyOverText="Hipfire"
+LocLongDescription="Your first primary weapon shot this turn is a free action."
+; LWOTC Needs Translation
+LocPromotionPopupText="<Bullet/> Activate to fire a standard shot and gain a second action restricted to several different shooting abilities or overwatch.<br/><Bullet/> Double Tap has a <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
+; End Translation
+
 [DoubleTap2Bonus X2AbilityTemplate]
-LocFriendlyName="HipFire"
-LocFlyOverText="HipFire"
+LocFriendlyName="Double Tap"
+LocFlyOverText="Double Tap"
 
 ; LWOTC Needs Translation (3)
 [RescueProtocol X2AbilityTemplate]
@@ -7636,10 +7644,16 @@ LocPromotionPopupText="<Bullet/> Avenger will not activate if this unit is shot 
 LocFriendlyName="Predator"
 LocFlyOverText="Predator"
 ; LWOTC Needs Translation (2)
-LocLongDescription="Your ranged attacks gain <Ability:PREDATOR_AIM_BONUS/> bonus aim and <Ability:PREDATOR_CRIT_BONUS/> bonus critical chance against enemies that are flanked or out of cover."
-LocHelpText="Your ranged attacks gain <Ability:PREDATOR_AIM_BONUS/> bonus aim and <Ability:PREDATOR_CRIT_BONUS/> bonus critical chance against enemies that are flanked or out of cover."
+LocLongDescription="This weapon gains <Ability:PREDATOR_AIM_BONUS/> bonus aim and <Ability:PREDATOR_CRIT_BONUS/> bonus critical chance against enemies that are flanked or out of cover."
+LocHelpText="This weapon gains  <Ability:PREDATOR_AIM_BONUS/> bonus aim and <Ability:PREDATOR_CRIT_BONUS/> bonus critical chance against enemies that are flanked or out of cover."
 LocPromotionPopupText="<Bullet/> Your ranged attacks gain <Ability:PREDATOR_AIM_BONUS/> bonus aim and <Ability:PREDATOR_CRIT_BONUS/> bonus critical chance against enemies that are flanked or out of cover.<br/>"
 ; End Translation (2)
+
+[Obliteration_LW X2AbilityTemplate]
+LocFriendlyName="Obliteration"
+LocFlyOverText="Obliteration"
+; LWOTC Needs Translation (2)
+LocLongDescription="This weapon deals <Ability:OBLITERATION_PCT_DAMAGE_BONUS/> more damage against enemies that are flanked or out of cover."
 
 [Stiletto_LW X2AbilityTemplate]
 LocFriendlyName="Stiletto"
@@ -8937,6 +8951,11 @@ LocLongDescription="This Unit's mobility cannot go below <Ability:EXO_SERVOS_MOB
 LocHelpText="This Unit's mobility cannot go below <Ability:EXO_SERVOS_MOB>."
 LocFlyOverText="Exoskeleton Servos"
 
+[ExoskeletonServos2 X2AbilityTemplate]
+LocFriendlyName="Exoskeleton Servos"
+LocLongDescription="Negates the Aim, Mobility and Scatter Penalties of Heavy Weapons."
+LocHelpText="Negates the Aim, Mobility and Scatter Penalties of Heavy Weapons."
+LocFlyOverText="Exoskeleton Servos"
 
 [UnstoppablePassive_LW X2AbilityTemplate]
 LocFriendlyName="Unstoppable"
@@ -9023,6 +9042,27 @@ LocFriendlyName="Impact"
 LocLongDescription="Your Attacks can now remove enemy overwatch on hit."
 LocHelpText="Your Attacks can now remove enemy overwatch on hit."
 LocPromotionPopupText=""
+
+[FondFarewell_LW X2AbilityTemplate]
+LocFriendlyName="Fond Farewell"
+LocLongDescription="This weapon's last shot in the clip will deal <Ability:FOND_FAREWELL_DMG_BONUS/>% more damage."
+LocPromotionPopupText=""
+
+[ReaperRoundsPassive X2AbilityTemplate]
+LocFriendlyName="Reaper Rounds"
+LocLongDescription="This weapon deals increased damage, and is more accurate at close range, but loses a lot more accuracy at medium and longer ranges."
+LocHelpText=""
+LocPromotionPopupText=""
+
+[HeavyStandardShot X2AbilityTemplate]
+LocFriendlyName="Fire Weapon"
+LocHelpText="Fire a shot at a target. Costs 2 actions. <Ability:CANNOTBEDODGED/>"
+LocLongDescription="Firing the primary weapon always ends a unit's turn."
+
+[HeavyStandardShotPassive X2AbilityTemplate]
+LocFriendlyName="Heavy Weapon"
+LocHelpText="Firing with this weapon costs 2 actions."
+LocLongDescription="Firing the primary weapon always ends a unit's turn."
 
 [BoltCasterPassive X2AbilityTemplate]
 LocFriendlyName="Bolt Caster"

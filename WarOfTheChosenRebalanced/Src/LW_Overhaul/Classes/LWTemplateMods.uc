@@ -1046,7 +1046,7 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 	local X2AbilityCost_Charges             ChargeCost;
 	//local X2Effect_SoulSteal_LW           StealEffect;
 	local X2Effect_Guardian_LW              GuardianEffect;
-	local X2Effect_BonusClipSize			PrimaryAmmoEffect;
+	//local X2Effect_BonusClipSize			PrimaryAmmoEffect;
 	local X2Effect                          ShotEffect;
 	local X2Effect_MaybeApplyDirectionalWorldDamage WorldDamage;
 	local X2Effect_DeathFromAbove_LW        DeathEffect;
@@ -1780,11 +1780,11 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 		GuardianEffect.ProcChance = class'X2Ability_SpecialistAbilitySet'.default.GUARDIAN_PROC;
 		Template.AddTargetEffect(GuardianEffect);
 
-		PrimaryAmmoEffect = new class'X2Effect_BonusClipSize';
-		PrimaryAmmoEffect.iClipSizeModifier = default.GUARDIAN_BONUS_AMMO;
-		PrimaryAmmoEffect.BuildPersistentEffect(1, true, false, false);
-		PrimaryAmmoEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
-		Template.AddTargetEffect(PrimaryAmmoEffect);
+		// PrimaryAmmoEffect = new class'X2Effect_BonusClipSize';
+		// PrimaryAmmoEffect.iClipSizeModifier = default.GUARDIAN_BONUS_AMMO;
+		// PrimaryAmmoEffect.BuildPersistentEffect(1, true, false, false);
+		// PrimaryAmmoEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
+		// Template.AddTargetEffect(PrimaryAmmoEffect);
 
 	}
 		
@@ -2659,7 +2659,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		}
 		if (WeaponTemplate.WeaponCat == 'Bullpup')
 		{
-			WeaponTemplate.Abilities.AddItem('SMG_LS_StatBonus');
+			//WeaponTemplate.Abilities.AddItem('SMG_LS_StatBonus');
 		}
 		if(WeaponTemplate.WeaponCat == 'sawedoffshotgun' || WeaponTemplate.WeaponCat == 'pistol' || WeaponTemplate.WeaponCat == 'sidearm')
 		{
@@ -2669,7 +2669,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		{
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MID_LONG_ALL_RANGE;
 		}
-		if (WeaponTemplate.WeaponCat == 'rifle' || WeaponTemplate.WeaponCat == 'bullpup'
+		if (WeaponTemplate.WeaponCat == 'rifle' && InStr(Template.DataName, "AssaultRifle_MG") != 0 || WeaponTemplate.WeaponCat == 'bullpup'
 		)
 		{
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MEDIUM_ALL_RANGE;
@@ -3265,7 +3265,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				ArmorTemplate.CreatorTemplateName = 'HeavyPlatedArmor_Schematic';
 				ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
 				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.PREDATOR_PLATING_HP);
-				ArmorTemplate.Abilities.AddItem('ExoskeletonServos');
+				ArmorTemplate.Abilities.AddItem('ExoskeletonServos2');
 				ArmorTemplate.bHeavyWeapon = false;
 				break;
 
@@ -3273,7 +3273,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				ArmorTemplate.Abilities.RemoveItem('RagePanic');
 				ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
 				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.PREDATOR_PLATING_HP);
-				ArmorTemplate.Abilities.AddItem('ExoskeletonServos');
+				ArmorTemplate.Abilities.AddItem('ExoskeletonServos2');
 				ArmorTemplate.bHeavyWeapon = false;
 				break;
 
@@ -3281,7 +3281,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				ArmorTemplate.CreatorTemplateName = 'HeavyPoweredArmor_Schematic';
 				ArmorTemplate.Abilities.AddItem('Warden_Plating_Ability');
 				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.WARDEN_PLATING_HP);
-				ArmorTemplate.Abilities.AddItem('ExoskeletonServos');
+				ArmorTemplate.Abilities.AddItem('ExoskeletonServos2');
 				ArmorTemplate.bHeavyWeapon = false;
 				break;
 
@@ -3289,7 +3289,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				ArmorTemplate.Abilities.RemoveItem('RagePanic');
 				ArmorTemplate.Abilities.AddItem('Warden_Plating_Ability');
 				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.WARDEN_PLATING_HP);
-				ArmorTemplate.Abilities.AddItem('ExoskeletonServos');
+				ArmorTemplate.Abilities.AddItem('ExoskeletonServos2');
 				ArmorTemplate.bHeavyWeapon = false;
 				break;
 

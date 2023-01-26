@@ -37,6 +37,7 @@ var config float BRAWLER2_WOUND_REDUCTION;
 
 var config float SAA_DR_PER_TILE;
 var config float SAA_MAX_DR;
+var config float FOND_FAREWELL_DMG_BONUS;
 const DAMAGED_COUNT_NAME = 'DamagedCountThisTurn';
 
 var localized string PhantomExpiredFlyover;
@@ -102,6 +103,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddShockAbsorbentArmor());
 	Templates.AddItem(CreateIronWill());
 	Templates.AddItem(RefractionFieldPhantom());
+	Templates.AddItem(FondFarewell());
+	Templates.AddItem(CreateHeavyStandardShot());
+	Templates.AddItem(CreateHeavyStandardShotPassive());
 	
 	//Passives for dictating AI behaviors out of LOS
 	return Templates;
@@ -1520,6 +1524,31 @@ static function X2AbilityTemplate CreateImpact()
 
 	return Template;
 }
+static function X2AbilityTemplate CreateHeavyStandardShot()
+{
+	local X2AbilityTemplate					Template;
+	
+	// Create a triggered ability that will activate whenever the unit takes an action
+	Template = class'X2Ability_WeaponCommon'.static.Add_SniperStandardFire('HeavyStandardShot');
+	Template.IconImage = "img:///UILibrary_XPerkIconPack.UIPerk_shot_chevron_x2";
+	//Template.bDisplayInUITooltip = true;
+	//Template.bDisplayInUITacticalText = true;
+
+	return Template;
+}
+
+static function X2AbilityTemplate CreateHeavyStandardShotPassive()
+{
+	local X2AbilityTemplate		Template;
+
+	Template = PurePassive('HeavyStandardShotPassive', "img:///UILibrary_XPerkIconPack_LW.UIPerk_shot_chevron_x2", , 'eAbilitySource_Perk');
+
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+
+	return Template;
+}
+
 
 static function X2AbilityTemplate CreateAmmoImpact()
 {
@@ -1618,6 +1647,19 @@ static function X2AbilityTemplate CreateUnstoppableGunfire()
 
 	return Template;
 }
+
+static function X2AbilityTemplate CreateReaperRoundsPassive()
+{
+	local X2AbilityTemplate		Template;
+
+	Template = PurePassive('ReaperRoundsPassive', "img:///UILibrary_XPerkIconPack_LW.UIPerk_ammo_crit", , 'eAbilitySource_Perk');
+
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+
+	return Template;
+}
+
 
 static function X2AbilityTemplate CreateSilentAssassin()
 {
@@ -2773,5 +2815,38 @@ static function X2AbilityTemplate AddShockAbsorbentArmor()
 	Template.bCrossClassEligible = false;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	//  No visualization
+	return Template;
+}
+
+static function X2AbilityTemplate FondFarewell() {
+	local X2AbilityTemplate						Template;
+	local X2Effect_FondFarewell				DamageEffect;
+
+	// Icon Properties
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'FondFarewell_LW');
+
+	Template.IconImage = "img:///UILibrary_MZChimeraIcons.Ability_FondFarewell";
+	Template.AbilitySourceName = 'eAbilitySource_Passive';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
+
+	DamageEffect = new class'X2Effect_FondFarewell';
+	DamageEffect.PCT_DAMAGE_BONUS = default.FOND_FAREWELL_DMG_BONUS;
+	DamageEffect.BuildPersistentEffect(1, true, false, false);
+	DamageEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, true, , Template.AbilitySourceName);
+	//DamageEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
+	DamageEffect.EffectName = 'FondFarewell_LW';
+	DamageEffect.DuplicateResponse = eDupe_Ignore;
+	Template.AddTargetEffect(DamageEffect);
+
+	Template.bUniqueSource = true;
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	//  NOTE: No visualization on purpose!
+
 	return Template;
 }

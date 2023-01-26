@@ -156,6 +156,8 @@ var config int ROOKIE_COMBAT_AIM_BONUS;
 
 var config int SECTICIDE_WILL_REDUCTION;
 var config int SECTICIDE_PSIOFFENSE_REDUCTION;
+
+var config int OBLITERATION_PCT_DAMAGE_BONUS;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -190,6 +192,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(WatchThemRun());
     Templates.AddItem(Avenger());
 	Templates.AddItem(Predator());
+	Templates.AddItem(Obliteration());
 	Templates.AddItem(Stiletto());
     Templates.AddItem(OpenFire());
 	Templates.AddItem(Impulse());
@@ -281,6 +284,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(PermaRookieHpBuff());
 	Templates.AddItem(PermaRookieAimBuff());
 	Templates.AddItem(AddSecticide());
+	Templates.AddItem(SuppressingFire());
+	Templates.AddItem(SuppressingFireAddActions());
 
 	
 	
@@ -1776,11 +1781,31 @@ static function X2AbilityTemplate Predator()
 
 	// The bonus only applies while flanking
 	Effect.AbilityTargetConditions.AddItem(default.FlankedCondition);
-	Effect.AbilityTargetConditions.AddItem(default.RangedCondition);
+	Effect.AbilityTargetConditions.AddItem(default.MatchingWeaponCondition);
 
 	// Create the template using a helper function
 	return Passive('Predator_LW', "img:///UILibrary_FavidsPerkPack_LW.Perk_Ph_Predator", true, Effect);
 }
+
+static function X2AbilityTemplate Obliteration()
+{
+	local XMBEffect_ConditionalBonus Effect;
+
+	// Create a conditional bonus
+	Effect = new class'XMBEffect_ConditionalBonus';
+
+	Effect.AddPercentDamageModifier(default.OBLITERATION_PCT_DAMAGE_BONUS, eHit_Success);
+	Effect.AddPercentDamageModifier(default.OBLITERATION_PCT_DAMAGE_BONUS, eHit_Graze);
+	Effect.AddPercentDamageModifier(default.OBLITERATION_PCT_DAMAGE_BONUS, eHit_Crit);
+
+	// The bonus only applies while flanking
+	Effect.AbilityTargetConditions.AddItem(default.FlankedCondition);
+	Effect.AbilityTargetConditions.AddItem(default.MatchingWeaponCondition);
+
+	// Create the template using a helper function
+	return Passive('Obliteration_LW', "img:///UILibrary_XPerkIconPack_LW.UIPerk_sniper_crit2", true, Effect);
+}
+
 
 static function X2AbilityTemplate Stiletto()
 {
@@ -2285,7 +2310,6 @@ static function X2AbilityTemplate PrimaryReturnFireShot()
 	local X2AbilityTarget_Single            SingleTarget;
 	local X2AbilityTrigger_EventListener	Trigger;
 	local X2Effect_Knockback				KnockbackEffect;
-	local array<name>                       SkipExclusions;
 	local X2Condition_Visibility            TargetVisibilityCondition;
 	local X2AbilityCost_Ammo				AmmoCost;
 	local X2Condition_UnitEffects	EffectsCondition;
@@ -2330,7 +2354,7 @@ static function X2AbilityTemplate PrimaryReturnFireShot()
 	Template.AbilityShooterConditions.AddItem(ShooterCondition);
 
 	//SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.DisorientedName);
-	Template.AddShooterEffectExclusions(SkipExclusions);
+	//Template.AddShooterEffectExclusions(SkipExclusions);
 	
 	SingleTarget = new class'X2AbilityTarget_Single';
 	SingleTarget.OnlyIncludeTargetsInsideWeaponRange = true;
@@ -4089,6 +4113,68 @@ static function X2AbilityTemplate AddSecticide()
 
 	return Template;
 }
+
+static function X2AbilityTemplate SuppressingFire()
+{
+	local X2AbilityTemplate					Template;
+	local X2AbilityCost_Ammo				AmmoCost;
+
+	// Start with basic attack template
+	Template = Attack('SuppressingFire_LW', "img:///UILibrary_XPerkIconPack.UIPerk_suppression_shot_2", false, none, , eCost_WeaponConsumeAll, 0);
+	
+	// Require 3 ammo to be present so that the shot and suppression can be used
+	AmmoCost = new class'X2AbilityCost_Ammo';
+	AmmoCost.iAmmo = 2;
+	AmmoCost.bFreeCost = true;
+	Template.AbilityCosts.AddItem(AmmoCost);
+
+	// // Actually charge 1 ammo for this shot. Follow-up shots will charge the extra ammo if necessary
+	// AmmoCost = new class'X2AbilityCost_Ammo';
+	// AmmoCost.iAmmo = 1;
+	// Template.AbilityCosts.AddItem(AmmoCost);
+
+	// Now set the ability up for triggering the follow-up suppression
+	Template.PostActivationEvents.AddItem('Suppressing');
+	
+	// Add an ability that will add an action point if the target is not killed, so that suppression can actually be used
+	Template.AdditionalAbilities.AddItem('SuppressingFire_AddActions_LW');
+
+	// If this ability is set up as a cross class ability, but it's not directly assigned to any classes, this is the weapon slot it will use
+	Template.DefaultSourceItemSlot = eInvSlot_PrimaryWeapon;
+
+	return Template;
+}
+
+static function X2AbilityTemplate SuppressingFireAddActions()
+{
+	local X2AbilityTemplate					Template;
+	local X2Effect_GrantActionPoints Effect;
+	local XMBCondition_AbilityName NameCondition;
+	
+	// Effect adds a Run and Gun action point
+	Effect = new class'X2Effect_GrantActionPoints';
+	Effect.NumActionPoints = 1;
+	Effect.PointType = class'X2CharacterTemplateManager'.default.RunAndGunActionPoint;
+	
+	// Create a triggered ability that will activate whenever the unit takes an action
+	Template = SelfTargetTrigger('SuppressingFire_AddActions_LW', "img:///UILibrary_XPerkIconPack.UIPerk_suppression_shot_2", false, Effect, 'AbilityActivated', eFilter_Unit);
+	
+	// Only when Suppressing Fire is used
+	NameCondition = new class'XMBCondition_AbilityName';
+	NameCondition.IncludeAbilityNames.AddItem('SuppressingFire_LW');
+	AddTriggerTargetCondition(Template, NameCondition);
+
+	// Only if the target is still alive
+	AddTriggerTargetCondition(Template, default.LivingHostileUnitDisallowMindControlProperty);
+	
+	// Only if the target is still visible
+	AddTriggerTargetCondition(Template, default.GameplayVisibilityCondition);
+
+	Template.BuildVisualizationFn = none;
+
+	return Template;
+}
+
 
 defaultproperties
 {

@@ -1409,7 +1409,7 @@ static function X2AbilityTemplate PlasmaReload()
 	Template.bShowActivation = true;
 
 	Template.BuildNewGameStateFn = AutoloaderAbility_BuildGameState;
-	Template.BuildVisualizationFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
 
 	Template.Hostility = eHostility_Neutral;
 

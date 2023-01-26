@@ -30,29 +30,29 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	Weapons.AddItem(CreateTLE1Pistol('TLE_Pistol_CV_1',1));
 
-	Weapons.AddItem(CreateTemplate_Pistol_Conventional('Pistol_CV_1',1));
-	Weapons.AddItem(CreateTemplate_Pistol_Conventional('Pistol_CV_2',2));
-	Weapons.AddItem(CreateTemplate_Pistol_Conventional('Pistol_CV_3',3));
+	Weapons.AddItem(CreateTemplate_Pistol_Conventional_RO('Pistol_CV_1',1));
+	Weapons.AddItem(CreateTemplate_Pistol_Conventional_RO('Pistol_CV_2',2));
+	Weapons.AddItem(CreateTemplate_Pistol_Conventional_RO('Pistol_CV_3',3));
 
 	Weapons.AddItem(CreateTemplate_Pistol_Laser('Pistol_LS_2',2));
 	Weapons.AddItem(CreateTemplate_Pistol_Laser('Pistol_LS_3',3));
 	Weapons.AddItem(CreateTemplate_Pistol_Laser('Pistol_LS_4',4));
 	Weapons.AddItem(CreateTemplate_Pistol_Laser('Pistol_LS_5',5));
 
-	Weapons.AddItem(CreateTemplate_Pistol_Magnetic('Pistol_MG_2',2));
-	Weapons.AddItem(CreateTemplate_Pistol_Magnetic('Pistol_MG_3',3));
-	Weapons.AddItem(CreateTemplate_Pistol_Magnetic('Pistol_MG_4',4));
-	Weapons.AddItem(CreateTemplate_Pistol_Magnetic('Pistol_MG_5',5));
+	Weapons.AddItem(CreateTemplate_Pistol_Magnetic_RO('Pistol_MG_2',2));
+	Weapons.AddItem(CreateTemplate_Pistol_Magnetic_RO('Pistol_MG_3',3));
+	Weapons.AddItem(CreateTemplate_Pistol_Magnetic_RO('Pistol_MG_4',4));
+	Weapons.AddItem(CreateTemplate_Pistol_Magnetic_RO('Pistol_MG_5',5));
 
 	//Weapons.AddItem(CreateTemplate_Pistol_Coil('Pistol_CG_2',2));
 	Weapons.AddItem(CreateTemplate_Pistol_Coil('Pistol_CG_3',3));
 	Weapons.AddItem(CreateTemplate_Pistol_Coil('Pistol_CG_4',4));
 	Weapons.AddItem(CreateTemplate_Pistol_Coil('Pistol_CG_5',5));
 
-	//Weapons.AddItem(CreateTemplate_Pistol_Beam('Pistol_BM_2',2));
-	Weapons.AddItem(CreateTemplate_Pistol_Beam('Pistol_BM_3',3));
-	Weapons.AddItem(CreateTemplate_Pistol_Beam('Pistol_BM_4',4));
-	Weapons.AddItem(CreateTemplate_Pistol_Beam('Pistol_BM_5',5));
+	//Weapons.AddItem(CreateTemplate_Pistol_Beam_RO('Pistol_BM_2',2));
+	Weapons.AddItem(CreateTemplate_Pistol_Beam_RO('Pistol_BM_3',3));
+	Weapons.AddItem(CreateTemplate_Pistol_Beam_RO('Pistol_BM_4',4));
+	Weapons.AddItem(CreateTemplate_Pistol_Beam_RO('Pistol_BM_5',5));
 
 	Weapons.AddItem(CreateTLE2Pistol('TLE_Pistol_MG_2',2));
 	Weapons.AddItem(CreateTLE2Pistol('TLE_Pistol_MG_3',3));
@@ -135,29 +135,29 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateTemplate_CombatKnife_Beam('CombatKnife_BM_4',4));
 	Weapons.AddItem(CreateTemplate_CombatKnife_Beam('CombatKnife_BM_5',5));
 
-	Weapons.AddItem(CreateTemplate_Sword_Conventional('Sword_CV_1',1));
-	Weapons.AddItem(CreateTemplate_Sword_Conventional('Sword_CV_2',2));
-	Weapons.AddItem(CreateTemplate_Sword_Conventional('Sword_CV_3',3));
+	Weapons.AddItem(CreateTemplate_Sword_Conventional_RO('Sword_CV_1',1));
+	Weapons.AddItem(CreateTemplate_Sword_Conventional_RO('Sword_CV_2',2));
+	Weapons.AddItem(CreateTemplate_Sword_Conventional_RO('Sword_CV_3',3));
 
 	Weapons.AddItem(CreateTemplate_Sword_Laser('Sword_LS_2',2));
 	Weapons.AddItem(CreateTemplate_Sword_Laser('Sword_LS_3',3));
 	Weapons.AddItem(CreateTemplate_Sword_Laser('Sword_LS_4',4));
 	Weapons.AddItem(CreateTemplate_Sword_Laser('Sword_LS_5',5));
 
-	Weapons.AddItem(CreateTemplate_Sword_Magnetic('Sword_MG_2',2));
-	Weapons.AddItem(CreateTemplate_Sword_Magnetic('Sword_MG_3',3));
-	Weapons.AddItem(CreateTemplate_Sword_Magnetic('Sword_MG_4',4));
-	Weapons.AddItem(CreateTemplate_Sword_Magnetic('Sword_MG_5',5));
+	Weapons.AddItem(CreateTemplate_Sword_Magnetic_RO('Sword_MG_2',2));
+	Weapons.AddItem(CreateTemplate_Sword_Magnetic_RO('Sword_MG_3',3));
+	Weapons.AddItem(CreateTemplate_Sword_Magnetic_RO('Sword_MG_4',4));
+	Weapons.AddItem(CreateTemplate_Sword_Magnetic_RO('Sword_MG_5',5));
 
 	//Weapons.AddItem(CreateTemplate_Sword_Coil('Sword_CG_2',2));
 	Weapons.AddItem(CreateTemplate_Sword_Coil('Sword_CG_3',3));
 	Weapons.AddItem(CreateTemplate_Sword_Coil('Sword_CG_4',4));
 	Weapons.AddItem(CreateTemplate_Sword_Coil('Sword_CG_5',5));
 
-	//Weapons.AddItem(CreateTemplate_Sword_Beam('Sword_BM_2',2));
-	Weapons.AddItem(CreateTemplate_Sword_Beam('Sword_BM_3',3));
-	Weapons.AddItem(CreateTemplate_Sword_Beam('Sword_BM_4',4));
-	Weapons.AddItem(CreateTemplate_Sword_Beam('Sword_BM_5',5));
+	//Weapons.AddItem(CreateTemplate_Sword_Beam_RO('Sword_BM_2',2));
+	Weapons.AddItem(CreateTemplate_Sword_Beam_RO('Sword_BM_3',3));
+	Weapons.AddItem(CreateTemplate_Sword_Beam_RO('Sword_BM_4',4));
+	Weapons.AddItem(CreateTemplate_Sword_Beam_RO('Sword_BM_5',5));
 
 	Weapons.AddItem(CreateTLE1Sword('TLE_Sword_CV_1',1));
 
@@ -286,7 +286,7 @@ static function X2DataTemplate CreateTLE1Pistol(name TemplateName, int Tier)
 	return Template;
 }
 
-static function X2DataTemplate CreateTemplate_Pistol_Conventional(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_Pistol_Conventional_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
@@ -359,7 +359,7 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser(name TemplateName, in
 	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_LaserWeapons'.default.MIDSHORT_LASER_RANGE;
-	Template.BaseDamage = GetWeaponDamage(0,75f,Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f);
 	Template.Aim = class'X2Item_LWPistol'.default.LWPistol_LASER_AIM;
 	Template.CritChance = class'X2Item_LWPistol'.default.LWPistol_LASER_CRITCHANCE;
 	Template.iClipSize = class'X2Item_LWPistol'.default.LWPistol_LASER_ICLIPSIZE;
@@ -399,7 +399,7 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser(name TemplateName, in
 	return Template;
 }
 
-static function X2DataTemplate CreateTemplate_Pistol_Magnetic(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_Pistol_Magnetic_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
@@ -515,7 +515,7 @@ static function X2DataTemplate CreateTemplate_Pistol_Coil(name TemplateName, int
 	return Template;
 }
 
-static function X2DataTemplate CreateTemplate_Pistol_Beam(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_Pistol_Beam_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
@@ -1341,7 +1341,7 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Magnetic(name Template
 	Template.BaseItem = 'CombatKnife_CV'; // Which item this will be upgraded from
 
 	Template.Abilities.AddItem('KnifeFighter');
-	Template.Abilities.AddItem('QuickSlash');
+	Template.Abilities.AddItem('QuickSlash_LW');
 	Template.Abilities.AddItem('Combatives');
 
 	Template.CanBeBuilt = false;
@@ -1445,7 +1445,7 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Beam(name TemplateName
 }
 
 
-static function X2DataTemplate CreateTemplate_Sword_Conventional(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_Sword_Conventional_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
@@ -1531,7 +1531,7 @@ static function X2DataTemplate CreateTemplate_Sword_Laser(name TemplateName, int
 
 
 
-static function X2DataTemplate CreateTemplate_Sword_Magnetic(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_Sword_Magnetic_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 
@@ -1620,7 +1620,7 @@ static function X2DataTemplate CreateTemplate_Sword_Coil(name TemplateName, int 
 }
 
 
-static function X2DataTemplate CreateTemplate_Sword_Beam(name TemplateName, int Tier)
+static function X2DataTemplate CreateTemplate_Sword_Beam_RO(name TemplateName, int Tier)
 {
 	local X2WeaponTemplate Template;
 

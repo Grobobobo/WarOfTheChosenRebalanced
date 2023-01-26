@@ -206,6 +206,9 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 		case 'BRAWLER2_WOUND_REDUCTION':
 			Outstring = string(int(class'X2Ability_PerkPackAbilitySet2'.default.BRAWLER2_WOUND_REDUCTION * 100));
 			return true;
+		case 'FOND_FAREWELL_DMG_BONUS':
+		Outstring = string(int(class'X2Ability_PerkPackAbilitySet2'.default.FOND_FAREWELL_DMG_BONUS * 100));
+			return true;
 		case 'FORTIFIED_CRITDEF_BONUS':
 			Outstring = string(class'X2Ability_PerkPackAbilitySet'.default.FORTIFIED_CRITDEF_BONUS);
 			return true;

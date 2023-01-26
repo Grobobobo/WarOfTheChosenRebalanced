@@ -5,7 +5,7 @@ var() int DodgeReductionBonus;
 function GetToHitModifiers(XComGameState_Effect EffectState, XComGameState_Unit Attacker, XComGameState_Unit Target, XComGameState_Ability AbilityState, class<X2AbilityToHitCalc> ToHitType, bool bMelee, bool bFlanking, bool bIndirectFire, out array<ShotModifierInfo> ShotModifiers)
 {
 	local ShotModifierInfo ShotInfo;
-	local int DodgeReduction;
+	//local int DodgeReduction;
 
 	if (AbilityState.SourceWeapon == EffectState.ApplyEffectParameters.ItemStateObjectRef)
 	{
@@ -13,7 +13,7 @@ function GetToHitModifiers(XComGameState_Effect EffectState, XComGameState_Unit 
 
 		ShotInfo.ModType = eHit_Graze;
 		ShotInfo.Reason = FriendlyName;
-		ShotInfo.Value = -1 * DodgeReduction;
+		ShotInfo.Value = -1 * DodgeReductionBonus;
 		ShotModifiers.AddItem(ShotInfo);
 	}
 }

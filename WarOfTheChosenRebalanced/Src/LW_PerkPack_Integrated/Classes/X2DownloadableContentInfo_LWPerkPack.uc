@@ -263,6 +263,9 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 		case 'CRUSADER_WOUND_HP_REDUCTION':
 			OutString = string(int(class'X2Ability_XMBPerkAbilitySet'.default.CRUSADER_WOUND_HP_REDUCTION * 100));
 			return true;
+		case 'ADRENALINE_SHIELD':
+			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.ADRENALINE_SHIELD);
+			return true;
 		case 'OVERBEARING_SUPERIORITY_CRIT':
 			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.OVERBEARING_SUPERIORITY_CRIT);
 			return true;
@@ -440,6 +443,11 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 		case 'SHARPSHOOTERAIM_CRITBONUS':
 			OutString = string(class'X2Ability_PerkPackAbilitySet'.default.SHARPSHOOTERAIM_CRITBONUS);
 			return true;
+		case 'OVEREXERTION_MAXHPDAMAGE':
+			OutString = string(int(class'X2Ability_PerkPackAbilitySet'.default.OVEREXERTION_MAXHPDAMAGE * 100));
+			return true;
+
+			
 		case 'PRECISION_SHOT_CRIT_BONUS':
 			OutString = string(class'X2Ability_PerkPackAbilitySet'.default.PRECISION_SHOT_CRIT_BONUS);
 			return true;

@@ -139,7 +139,7 @@ var config int BOMBARD_BONUS_RANGE_TILES;
 var config int SHARPSHOOTERAIM_CRITBONUS;
 
 var config int Overexertion_COOLDOWN;
-
+var config float OVEREXERTION_MAXHPDAMAGE;
 var config int CE_USES_PER_TURN;
 var config int CE_MAX_TILES;
 var config array<name> CE_ABILITYNAMES;
@@ -874,7 +874,7 @@ static function X2AbilityTemplate AddWilltoSurviveAbility()
 	//local X2Effect_PersistentStatChange			WillBonus;
 	//local X2Effect_GreaterPadding				GreaterPaddingEffect;
 	//local X2Effect_DamageImmunity	ImmunityEffect;
-	local X2Effect_ReturnFire FireEffect;
+	//local X2Effect_ReturnFire FireEffect;
 	`CREATE_X2ABILITY_TEMPLATE (Template, 'WilltoSurvive');
 	Template.IconImage = "img:///UILibrary_LW_PerkPack.LW_AbilityWilltoSurvive";
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
@@ -890,16 +890,16 @@ static function X2AbilityTemplate AddWilltoSurviveAbility()
 	ArmorBonus.BuildPersistentEffect(1, true, false);
 	Template.AddTargetEffect(ArmorBonus);
 
-	FireEffect = new class'X2Effect_ReturnFire';
-	FireEffect.BuildPersistentEffect(1, true, false, false, eGameRule_PlayerTurnBegin);
-	FireEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage,false,,Template.AbilitySourceName);
-	FireEffect.EffectName = 'PrimaryReturnFireShot';
-	FireEffect.AbilityToActivate = 'PrimaryReturnFireShot';
-	FireEffect.bDirectAttackOnly = true;
-	FireEffect.bOnlyWhenAttackMisses = false;
-	Template.AddTargetEffect(FireEffect);
+	// FireEffect = new class'X2Effect_ReturnFire';
+	// FireEffect.BuildPersistentEffect(1, true, false, false, eGameRule_PlayerTurnBegin);
+	// FireEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage,false,,Template.AbilitySourceName);
+	// FireEffect.EffectName = 'PrimaryReturnFireShot';
+	// FireEffect.AbilityToActivate = 'PrimaryReturnFireShot';
+	// FireEffect.bDirectAttackOnly = true;
+	// FireEffect.bOnlyWhenAttackMisses = false;
+	// Template.AddTargetEffect(FireEffect);
 
-	Template.AdditionalAbilities.AddItem('PrimaryReturnFireShot');
+	// Template.AdditionalAbilities.AddItem('PrimaryReturnFireShot');
 
 	Template.bCrossClassEligible = true;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
@@ -2514,6 +2514,7 @@ static function X2AbilityTemplate AddOverexertion()
 	local X2Effect_GrantActionPoints		ActionPointEffect;
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Condition_UnitValue				CECondition;
+	local X2Effect_StockStrikeDamage	DamageEffect;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'Overexertion');
 
@@ -2547,6 +2548,10 @@ static function X2AbilityTemplate AddOverexertion()
 	ActionPointEffect.NumActionPoints = 1;
 	ActionPointEffect.PointType = class'X2CharacterTemplateManager'.default.StandardActionPoint;
 	Template.AddTargetEffect(ActionPointEffect);
+
+	DamageEffect = new class'X2Effect_StockStrikeDamage';
+	DamageEffect.Stockstrike_MaxHpDamage = default.OVEREXERTION_MAXHPDAMAGE;
+	Template.AddTargetEffect(DamageEffect);
 
 	Template.AbilityTargetStyle = default.SelfTarget;	
 	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);

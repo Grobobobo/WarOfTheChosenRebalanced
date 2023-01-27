@@ -3,7 +3,7 @@ class ResistanceOverhaulHelpers extends Object config(LadderOptions);
 var config bool bUseWeightedClassSelection;
 var config int DEFAULT_CLASS_WEIGHT;
 var config array<ClassWeight> ClassWeights;
-
+var array<name> OperatorBaseLoadouts;
 static function XComGameState_Unit CreateSoldier(XComGameState GameState, XComGameState_Player XComPlayerState, SoldierOption Option, array<name> AllowedClasses, array<name> UsedClasses, array<string> UsedCharacters, bool AllowDuplicateClasses)
 {
 	local XComGameState_Unit Soldier;
@@ -44,7 +44,13 @@ static function XComGameState_Unit CreateSoldier(XComGameState GameState, XComGa
 		Soldier.RankUpSoldier(GameState, ChosenClass);
 	}
 
-	Soldier.ApplySquaddieLoadout(GameState);
+	if (!Option.bRandomClass)
+	{
+		Soldier.ApplyInventoryLoadout(GameState, default.OperatorBaseLoadouts[`SYNC_RAND_STATIC(default.OperatorBaseLoadouts.Length)]);
+	}
+	else{
+		Soldier.ApplySquaddieLoadout(GameState);
+	}
 	Soldier.ApplyBestGearLoadout(GameState);
 
 	return Soldier;	
@@ -300,4 +306,16 @@ static function bool IsModInstalled(name X2DCIName)
 		}
 	}
 	return false;
+}
+
+
+defaultproperties
+{
+    OperatorBaseLoadouts.Empty
+    OperatorBaseLoadouts(0)="LWS_Operator_RiflePistol"
+    OperatorBaseLoadouts(1)="LWS_Operator_RifleGremlin"
+    OperatorBaseLoadouts(2)="LWS_Operator_ShotgunKnife"
+    OperatorBaseLoadouts(3)="LWS_Operator_ShotgunSword"
+    OperatorBaseLoadouts(4)="LWS_Operator_LMGGrenadeLauncher"
+    OperatorBaseLoadouts(5)="LWS_Operator_SniperSawedOff"
 }

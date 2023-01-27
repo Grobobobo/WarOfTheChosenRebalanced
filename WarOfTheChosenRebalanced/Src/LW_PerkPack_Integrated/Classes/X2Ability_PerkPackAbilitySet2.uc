@@ -72,7 +72,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreatePlatformStability());
 	Templates.AddItem(CreateImpact());
 	Templates.AddItem(CreateAmmoImpact());
-	
+	Templates.AddItem(WellProtected());
 	Templates.AddItem(CreateSteadFast());
 	Templates.AddItem(CreateNewConceal());
 	Templates.AddItem(InTheZone());
@@ -106,6 +106,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(FondFarewell());
 	Templates.AddItem(CreateHeavyStandardShot());
 	Templates.AddItem(CreateHeavyStandardShotPassive());
+	Templates.AddItem(CreateVersatile());
+	Templates.AddItem(AtAnyCost());
 	
 	//Passives for dictating AI behaviors out of LOS
 	return Templates;
@@ -1524,6 +1526,32 @@ static function X2AbilityTemplate CreateImpact()
 
 	return Template;
 }
+
+static function X2AbilityTemplate WellProtected()
+{
+	// Create the template using a helper function - XComVestSlot.ini sets this perk as unlocking the vest pocket
+	return Passive('WellProtected_LW', "img:///UILibrary_FavidsPerkPack_LW.Perk_Ph_WellProtected", false, none);
+}
+
+static function X2AbilityTemplate AmmoPocket_LW()
+{
+	// Create the template using a helper function - XComVestSlot.ini sets this perk as unlocking the vest pocket
+	return Passive('AmmoPocket_LW', "img:///UILibrary_XPerkIconPack_LW.UIPerk_rifle_bullet_x3", false, none);
+}
+
+static function X2AbilityTemplate CreateVersatile()
+{
+	local X2AbilityTemplate		Template;
+
+	Template = PurePassive('Versatile_LW', "img:///UILibrary_XPerkIconPack_LW.UIPerk_command_plus", , 'eAbilitySource_Perk',false);
+
+	// Template.bDisplayInUITooltip = false;
+	// Template.bDisplayInUITacticalText = false;
+
+	return Template;
+}
+
+
 static function X2AbilityTemplate CreateHeavyStandardShot()
 {
 	local X2AbilityTemplate					Template;
@@ -1647,6 +1675,19 @@ static function X2AbilityTemplate CreateUnstoppableGunfire()
 
 	return Template;
 }
+
+static function X2AbilityTemplate AtAnyCost()
+{
+	local X2AbilityTemplate		Template;
+
+	Template = PurePassive('AtAnyCost_LW', "img:///UILibrary_XPerkIconPack_LW.UIPerk_stealth_x2", , 'eAbilitySource_Perk');
+
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+
+	return Template;
+}
+
 
 static function X2AbilityTemplate CreateReaperRoundsPassive()
 {

@@ -159,6 +159,7 @@ var config int SECTICIDE_PSIOFFENSE_REDUCTION;
 
 var config int OBLITERATION_PCT_DAMAGE_BONUS;
 var config int TAC_DEF_BONUS;
+var config int ADRENALINE_SHIELD;
 
 static function array<X2DataTemplate> CreateTemplates()
 {
@@ -4207,6 +4208,52 @@ static function X2AbilityTemplate TacticalDefesnse()
 
 	return Template;
 }
+
+
+static function X2AbilityTemplate Adrenaline()
+{
+	local X2AbilityTemplate Template;
+	local X2Effect_PersistentStatChange Effect;
+	local X2Condition_UnitType UnitTypeCondition;
+//	local X2Condition_UnitValue ValueCondition;
+	//local X2Effect_IncrementUnitValue IncrementEffect;
+    
+	// Create a persistent stat change effect that grants a mobility bonus
+	Effect = new class'X2Effect_PersistentStatChange';
+	Effect.EffectName = 'Adrenaline_LW';
+	Effect.AddPersistentStatChange(eStat_ShieldHP, default.ADRENALINE_SHIELD);
+	Effect.DuplicateResponse = eDupe_Allow;
+	Effect.BuildPersistentEffect(1, true, true, false);
+
+	// Create a triggered ability that activates whenever the unit gets a kill
+	Template = SelfTargetTrigger('Adrenaline_LW', "img:///UILibrary_XPerkIconPack.UIPerk_shield_plus", false, Effect, 'KillMail');
+
+	// Does not trigger when killing Lost
+	UnitTypeCondition = new class'X2Condition_UnitType';
+	UnitTypeCondition.ExcludeTypes.AddItem('TheLost');
+	AddTriggerTargetCondition(Template, UnitTypeCondition);
+    
+	// // Limit activations
+	// ValueCondition = new class'X2Condition_UnitValue';
+	// ValueCondition.AddCheckValue('F_Adrenaline_Activations', default.ADRENALINE_ACTIVATIONS_PER_MISSION, eCheck_LessThan);
+	// Template.AbilityTargetConditions.AddItem(ValueCondition);
+
+    // // Create an effect that will increment the unit value
+	// IncrementEffect = new class'X2Effect_IncrementUnitValue';
+	// IncrementEffect.UnitName = 'F_Adrenaline_Activations';
+	// IncrementEffect.NewValueToSet = 1; // This means increment by one -- stupid property name
+	// IncrementEffect.CleanupType = eCleanup_BeginTactical;
+    // Template.AddTargetEffect(IncrementEffect);
+
+	// Trigger abilities don't appear as passives. Add a passive ability icon.
+	AddIconPassive(Template);
+
+	// Show a flyover when activated
+	Template.bShowActivation = true;
+
+	return Template;
+}
+
 defaultproperties
 {
 	LeadTheTargetReserveActionName = "leadthetarget"

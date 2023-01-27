@@ -195,10 +195,10 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateBluescreenRoundsDisorient());
 	//Templates.AddItem(CreateConsumeWhenActivatedAbility ('ConsumeShapedCharge', 'ShapedChargeUsed'));
 
-	Templates.AddItem(CreateMediumJackalStats());
-	Templates.AddItem(CreateLightJackalStats());
-	Templates.AddItem(CreateHeavyJackalStats());
-	Templates.AddItem(CreateTacticalJackalStats());
+	Templates.AddItem(MediumJackalArmorStats());
+	Templates.AddItem(LightJackalArmorStats());
+	Templates.AddItem(HeavyJackalArmorStats());
+	Templates.AddItem(TacticalJackalArmorStats());
 	Templates.AddItem(HeavyArmorMobPenalty());
 	Templates.AddItem(HeavyWeaponsMobPenalty());
 	Templates.AddItem(HeavySecondaryWeaponsMobPenalty());

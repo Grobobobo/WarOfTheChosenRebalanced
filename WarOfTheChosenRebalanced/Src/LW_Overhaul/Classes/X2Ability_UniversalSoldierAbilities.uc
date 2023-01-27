@@ -21,7 +21,7 @@ var config int TURRETFALL_EXTRA_CHARGES;
 var config int AXE_RULER_AIM_BONUS;
 var config int REINFORCED_UNDERLAY_1_ABLATIVE;
 var config int REINFORCED_UNDERLAY_2_ABLATIVE;
-
+var config float AT_ANY_COST_VENGEANCE_BONUS;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -1055,6 +1055,7 @@ static function X2AbilityTemplate Vengeance_LW()
 	Template.AbilityMultiTargetStyle = new class'X2AbilityMultiTarget_AllAllies';
 
 	VengeanceEffect = new class'X2Effect_Vengeance_LW';
+	VengeanceEffect.AtAnyCostBonus = default.AT_ANY_COST_VENGEANCE_BONUS;
 	VengeanceEffect.BuildPersistentEffect(class'X2Ability_OfficerTrainingSchool'.default.VENGEANCE_DURATION, false, false, false, eGameRule_PlayerTurnEnd);
 	VengeanceEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage);
 	Template.AddMultiTargetEffect(VengeanceEffect);

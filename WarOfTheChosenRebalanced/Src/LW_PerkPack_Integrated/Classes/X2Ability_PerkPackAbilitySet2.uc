@@ -2400,12 +2400,12 @@ static function X2AbilityTemplate VoltaicArcAttack()
 	local X2Condition_UnitEffectsWithAbilitySource	VoltaicArcTargetCondition;
 	local X2Effect_ApplyWeaponDamage    DamageEffect;
 	local X2Condition_UnitProperty      DamageCondition;
-	local X2Condition_AbilityProperty				ShockTherapyCondition;
-	local X2Effect_Persistent						DisorientedEffect;
-	local X2Effect_Stunned							StunnedEffect;
+	// local X2Condition_AbilityProperty				ShockTherapyCondition;
+	// local X2Effect_Persistent						DisorientedEffect;
+	// local X2Effect_Stunned							StunnedEffect;
 	local X2Condition_UnitProperty					UnitPropertyCondition;
-	local X2Effect_SetUnitValue						UnitValueEffect;
-	local X2Condition_UnitValue						UnitValueCondition;
+	// local X2Effect_SetUnitValue						UnitValueEffect;
+	// local X2Condition_UnitValue						UnitValueCondition;
 	local X2Condition_VariableRange				RangeCondition;
 	local X2Effect_ApplyScaledWeaponDamage ScaledDamageEffect;
 	// Ability boilerplate

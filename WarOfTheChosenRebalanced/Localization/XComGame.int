@@ -7662,6 +7662,13 @@ LocFlyOverText="Obliteration"
 ; LWOTC Needs Translation (2)
 LocLongDescription="This weapon deals <Ability:OBLITERATION_PCT_DAMAGE_BONUS/> more damage against enemies that are flanked or out of cover."
 
+[TacticalDefense_LW X2AbilityTemplate]
+LocFriendlyName="Tactical Defense"
+LocFlyOverText="Tactical Defense"
+LocLongDescription="Gain +<Ability:TAC_DEF_BONUS/> defense when protected by cover."
+LocHelpText="Gain +<Ability:TAC_DEF_BONUS/> defense when protected by cover."
+LocPromotionPopupText="<Bullet/> Gain +15 defense when protected by cover.<br/>"
+
 [Stiletto_LW X2AbilityTemplate]
 LocFriendlyName="Stiletto"
 LocFlyOverText="Stiletto"

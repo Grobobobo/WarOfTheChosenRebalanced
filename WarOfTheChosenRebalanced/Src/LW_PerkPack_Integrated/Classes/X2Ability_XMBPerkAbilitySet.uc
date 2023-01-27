@@ -158,6 +158,8 @@ var config int SECTICIDE_WILL_REDUCTION;
 var config int SECTICIDE_PSIOFFENSE_REDUCTION;
 
 var config int OBLITERATION_PCT_DAMAGE_BONUS;
+var config int TAC_DEF_BONUS;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -4175,7 +4177,36 @@ static function X2AbilityTemplate SuppressingFireAddActions()
 	return Template;
 }
 
+static function X2AbilityTemplate TacticalDefesnse()
+{
+	local XMBEffect_ConditionalBonus ShootingEffect;
+	local X2AbilityTemplate Template;
+	local XMBCondition_CoverType CoverCondition;
 
+	ShootingEffect = new class'XMBEffect_ConditionalBonus';
+	ShootingEffect.EffectName = 'Tacdef';
+
+	ShootingEffect.AddToHitAsTargetModifier(-1 * default.TAC_DEF_BONUS, eHit_Success);
+
+	
+	CoverCondition = new class'XMBCondition_CoverType';
+	CoverCondition.ExcludedCoverTypes.AddItem(CT_None);
+
+	ShootingEffect.AbilityTargetConditionsAsTarget.AddItem(CoverCondition);
+
+	// Prevent the effect from applying to a unit more than once
+	ShootingEffect.DuplicateResponse = eDupe_Refresh;
+
+	// The effect lasts forever
+	ShootingEffect.BuildPersistentEffect(1, true, false, false);
+	
+	// Activated ability that targets user
+	Template = Passive('TacticalDefense_LW', "img:///UILibrary_XPerkIconPack.UIPerk_shot_box", true, ShootingEffect);
+
+	// If this ability is set up as a cross class ability, but it's not directly assigned to any classes, this is the weapon slot it will use
+
+	return Template;
+}
 defaultproperties
 {
 	LeadTheTargetReserveActionName = "leadthetarget"

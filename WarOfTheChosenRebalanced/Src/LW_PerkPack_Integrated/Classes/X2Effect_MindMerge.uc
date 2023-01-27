@@ -81,7 +81,7 @@ protected simulated function OnEffectAdded(const out EffectAppliedData ApplyEffe
 			CritChange.StatAmount = 0;
 		}
 	}
-	X2WeaponTemplate = X2WeaponTemplate(SourceItem.GetMyTemplate());
+	WeaponTemplate = X2WeaponTemplate(SourceItem.GetMyTemplate());
 
 	if (WeaponTemplate.WeaponTech == 'laser_LW')
 	{
@@ -107,7 +107,7 @@ protected simulated function OnEffectAdded(const out EffectAppliedData ApplyEffe
 		ShieldHPChange.StatAmount += AmpCGShieldHPBonus;
 		if ((SoulMergeRef.ObjectID == 0 && MindMergeCritDivisor > 0) || (SoulMergeRef.ObjectID != 0 && SoulMergeCritDivisor > 0))
 		{
-			CritChange.StatAmount += AmpCGritBonus;
+			CritChange.StatAmount += AmpCGCritBonus;
 		}
 	}
 	if (WeaponTemplate.WeaponTech == 'beam')

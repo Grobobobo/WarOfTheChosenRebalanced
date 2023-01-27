@@ -38,13 +38,65 @@ var config int KEVLAR_PLATING_HP;
 var config int PREDATOR_PLATING_HP;
 var config int WARDEN_PLATING_HP;
 
-var config int CARPACE_MEDIUM_PLATING_HP;
-var config int CARPACE_MEDIUM_HP;
-var config int CARPACE_MEDIUM_ARMOR;
+var config int JACKAL_MEDIUM_PLATING_HP;
+var config int JACKAL_MEDIUM_HP;
+var config int JACKAL_MEDIUM_ARMOR;
+
+var config int JACKAL_HEAVY_PLATING_HP;
+var config int JACKAL_HEAVY_HP;
+var config int JACKAL_HEAVY_ARMOR;
+var config int JACKAL_HEAVY_MOBILITY;
+
+var config int JACKAL_LIGHT_PLATING_HP;
+var config int JACKAL_LIGHT_HP;
+var config int JACKAL_LIGHT_ARMOR;
+var config int JACKAL_LIGHT_MOBILITY;
+
+var config int JACKAL_TACTICAL_PLATING_HP;
+var config int JACKAL_TACTICAL_HP;
+var config int JACKAL_TACTICAL_ARMOR;
+var config int JACKAL_TACTICAL_MOBILITY;
+var config int JACKAL_TACTICAL_AIM;
+
+var config int CARAPACE_MEDIUM_PLATING_HP;
+var config int CARAPACE_MEDIUM_HP;
+var config int CARAPACE_MEDIUM_ARMOR;
 
 var config int TITAN_MEDIUM_PLATING_HP;
 var config int TITAN_MEDIUM_HP;
 var config int TITAN_MEDIUM_ARMOR;
+
+var config int CARAPACE_HEAVY_PLATING_HP;
+var config int CARAPACE_HEAVY_HP;
+var config int CARAPACE_HEAVY_ARMOR;
+var config int CARAPACE_HEAVY_MOBILITY;
+
+var config int CARAPACE_LIGHT_PLATING_HP;
+var config int CARAPACE_LIGHT_HP;
+var config int CARAPACE_LIGHT_ARMOR;
+var config int CARAPACE_LIGHT_MOBILITY;
+
+var config int CARAPACE_TACTICAL_PLATING_HP;
+var config int CARAPACE_TACTICAL_HP;
+var config int CARAPACE_TACTICAL_ARMOR;
+var config int CARAPACE_TACTICAL_MOBILITY;
+var config int CARAPACE_TACTICAL_AIM;
+
+var config int TITAN_HEAVY_PLATING_HP;
+var config int TITAN_HEAVY_HP;
+var config int TITAN_HEAVY_ARMOR;
+var config int TITAN_HEAVY_MOBILITY;
+
+var config int TITAN_LIGHT_PLATING_HP;
+var config int TITAN_LIGHT_HP;
+var config int TITAN_LIGHT_ARMOR;
+var config int TITAN_LIGHT_MOBILITY;
+
+var config int TITAN_TACTICAL_PLATING_HP;
+var config int TITAN_TACTICAL_HP;
+var config int TITAN_TACTICAL_ARMOR;
+var config int TITAN_TACTICAL_MOBILITY;
+var config int TITAN_TACTICAL_AIM;
 
 var config int NANOFIBER_CRITDEF_BONUS;
 var config int NANOFIBER_ABLATIVE_BONUS;
@@ -143,7 +195,10 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateBluescreenRoundsDisorient());
 	//Templates.AddItem(CreateConsumeWhenActivatedAbility ('ConsumeShapedCharge', 'ShapedChargeUsed'));
 
-	Templates.AddItem(CreateLightKevlarAbility());
+	Templates.AddItem(CreateMediumJackalStats());
+	Templates.AddItem(CreateLightJackalStats());
+	Templates.AddItem(CreateHeavyJackalStats());
+	Templates.AddItem(CreateTacticalJackalStats());
 	Templates.AddItem(HeavyArmorMobPenalty());
 	Templates.AddItem(HeavyWeaponsMobPenalty());
 	Templates.AddItem(HeavySecondaryWeaponsMobPenalty());
@@ -157,7 +212,15 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(HisWill());
 
 	Templates.AddItem(MediumCarapaceArmorStats());
+	Templates.AddItem(HeavyCarapaceArmorStats());
+	Templates.AddItem(LightCarapaceArmorStats());
+	Templates.AddItem(TacticalCarapaceArmorStats());
+
+
 	Templates.AddItem(MediumTitanArmorStats());
+	Templates.AddItem(HeavyTitanArmorStats());
+	Templates.AddItem(LightTitanArmorStats());
+	Templates.AddItem(TacticalTitanArmorStats());
 
 	
 	return Templates;
@@ -831,14 +894,14 @@ static function X2AbilityTemplate CreateBluescreenRoundsDisorient()
 	return Template;
 }
 	
-static function X2AbilityTemplate CreateLightKevlarAbility()
+static function X2AbilityTemplate MediumJackalArmorStats()
 {
 	local X2AbilityTemplate                 Template;	
 	local X2AbilityTrigger					Trigger;
 	local X2AbilityTarget_Self				TargetStyle;
 	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
 
-	`CREATE_X2ABILITY_TEMPLATE(Template, 'LightKevlarArmorStats');
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'MediumJackalArmorStats');
 	// Template.IconImage  -- no icon needed for armor stats
 
 	Template.AbilitySourceName = 'eAbilitySource_Item';
@@ -854,12 +917,132 @@ static function X2AbilityTemplate CreateLightKevlarAbility()
 	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
 	Template.AbilityTriggers.AddItem(Trigger);
 	
-	// light armor has dodge and mobility as well as health
+	// giving health here; medium plated doesn't have mitigation
 	//
 	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
 	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
 	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
-	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.LIGHT_KEVLAR_MOBILITY_BONUS);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, default.JACKAL_MEDIUM_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.JACKAL_MEDIUM_PLATING_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ArmorMitigation, default.JACKAL_MEDIUM_ARMOR);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;	
+}
+
+static function X2AbilityTemplate HeavyJackalArmorStats()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2AbilityTrigger					Trigger;
+	local X2AbilityTarget_Self				TargetStyle;
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'HeavyJackalArmorStats');
+	// Template.IconImage  -- no icon needed for armor stats
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.bDisplayInUITacticalText = false;
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	
+	TargetStyle = new class'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Template.AbilityTriggers.AddItem(Trigger);
+	
+	// giving health here; medium plated doesn't have mitigation
+	//
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, default.JACKAL_HEAVY_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.JACKAL_HEAVY_PLATING_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ArmorMitigation, default.JACKAL_HEAVY_ARMOR);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.JACKAL_HEAVY_MOBILITY);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;	
+}
+
+static function X2AbilityTemplate LightJackalArmorStats()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2AbilityTrigger					Trigger;
+	local X2AbilityTarget_Self				TargetStyle;
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'LightJackalArmorStats');
+	// Template.IconImage  -- no icon needed for armor stats
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.bDisplayInUITacticalText = false;
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	
+	TargetStyle = new class'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Template.AbilityTriggers.AddItem(Trigger);
+	
+	// giving health here; medium plated doesn't have mitigation
+	//
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, default.JACKAL_LIGHT_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.JACKAL_LIGHT_PLATING_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ArmorMitigation, default.JACKAL_LIGHT_ARMOR);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.JACKAL_LIGHT_MOBILITY);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;	
+}
+
+static function X2AbilityTemplate TacticalJackalArmorStats()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2AbilityTrigger					Trigger;
+	local X2AbilityTarget_Self				TargetStyle;
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'TacticalJackalArmorStats');
+	// Template.IconImage  -- no icon needed for armor stats
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.bDisplayInUITacticalText = false;
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	
+	TargetStyle = new class'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Template.AbilityTriggers.AddItem(Trigger);
+	
+	// giving health here; medium plated doesn't have mitigation
+	//
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, default.JACKAL_TACTICAL_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.JACKAL_TACTICAL_PLATING_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ArmorMitigation, default.JACKAL_TACTICAL_ARMOR);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.JACKAL_TACTICAL_MOBILITY);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.JACKAL_TACTICAL_AIM);
 	Template.AddTargetEffect(PersistentStatChangeEffect);
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
@@ -1012,41 +1195,6 @@ static function X2AbilityTemplate LightSecondaryWeaponsMobBonus()
 	return Template;	
 }
 
-static function X2AbilityTemplate HeavyWeaponsMobPenalty()
-{
-	local X2AbilityTemplate                 Template;	
-	local X2AbilityTrigger					Trigger;
-	local X2AbilityTarget_Self				TargetStyle;
-	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
-
-	`CREATE_X2ABILITY_TEMPLATE(Template, 'HeavySecondaryWeaponsMobPenalty');
-	// Template.IconImage  -- no icon needed for armor stats
-
-	Template.AbilitySourceName = 'eAbilitySource_Item';
-	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
-	Template.Hostility = eHostility_Neutral;
-	Template.bDisplayInUITacticalText = false;
-	
-	Template.AbilityToHitCalc = default.DeadEye;
-	
-	TargetStyle = new class'X2AbilityTarget_Self';
-	Template.AbilityTargetStyle = TargetStyle;
-
-	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
-	Template.AbilityTriggers.AddItem(Trigger);
-	
-	// light armor has dodge and mobility as well as health
-	//
-	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
-	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
-	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
-	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.HEAVY_WEAPONS_MOB_PENALTY);
-	Template.AddTargetEffect(PersistentStatChangeEffect);
-
-	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
-
-	return Template;	
-}
 
 
 static function X2AbilityTemplate ExpandedMagMobPenalty()
@@ -2078,9 +2226,127 @@ static function X2AbilityTemplate MediumCarapaceArmorStats()
 	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
 	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
 	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
-	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, default.CARPACE_MEDIUM_HP);
-	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.CARPACE_MEDIUM_PLATING_HP);
-	//PersistentStatChangeEffect.AddPersistentStatChange(eStat_ArmorMitigation, default.CARPACE_MEDIUM_ARMOR);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, default.CARAPACE_MEDIUM_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.CARAPACE_MEDIUM_PLATING_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ArmorMitigation, default.CARAPACE_MEDIUM_ARMOR);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;	
+}
+
+static function X2AbilityTemplate HeavyCarapaceArmorStats()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2AbilityTrigger					Trigger;
+	local X2AbilityTarget_Self				TargetStyle;
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'HeavyCarapaceArmorStats');
+	// Template.IconImage  -- no icon needed for armor stats
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.bDisplayInUITacticalText = false;
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	
+	TargetStyle = new class'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Template.AbilityTriggers.AddItem(Trigger);
+	
+	// giving health here; medium plated doesn't have mitigation
+	//
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, default.CARAPACE_HEAVY_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.CARAPACE_HEAVY_PLATING_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ArmorMitigation, default.CARAPACE_HEAVY_ARMOR);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.CARAPACE_HEAVY_MOBILITY);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;	
+}
+
+static function X2AbilityTemplate LightCarapaceArmorStats()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2AbilityTrigger					Trigger;
+	local X2AbilityTarget_Self				TargetStyle;
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'LightCarapaceArmorStats');
+	// Template.IconImage  -- no icon needed for armor stats
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.bDisplayInUITacticalText = false;
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	
+	TargetStyle = new class'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Template.AbilityTriggers.AddItem(Trigger);
+	
+	// giving health here; medium plated doesn't have mitigation
+	//
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, default.CARAPACE_LIGHT_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.CARAPACE_LIGHT_PLATING_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ArmorMitigation, default.CARAPACE_LIGHT_ARMOR);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.CARAPACE_LIGHT_MOBILITY);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;	
+}
+
+static function X2AbilityTemplate TacticalCarapaceArmorStats()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2AbilityTrigger					Trigger;
+	local X2AbilityTarget_Self				TargetStyle;
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'TacticalCarapaceArmorStats');
+	// Template.IconImage  -- no icon needed for armor stats
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.bDisplayInUITacticalText = false;
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	
+	TargetStyle = new class'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Template.AbilityTriggers.AddItem(Trigger);
+	
+	// giving health here; medium plated doesn't have mitigation
+	//
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, default.CARAPACE_TACTICAL_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.CARAPACE_TACTICAL_PLATING_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ArmorMitigation, default.CARAPACE_TACTICAL_ARMOR);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.CARAPACE_TACTICAL_MOBILITY);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.CARAPACE_TACTICAL_AIM);
 	Template.AddTargetEffect(PersistentStatChangeEffect);
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
@@ -2120,6 +2386,124 @@ static function X2AbilityTemplate MediumTitanArmorStats()
 	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, default.TITAN_MEDIUM_HP);
 	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.TITAN_MEDIUM_PLATING_HP);
 	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ArmorMitigation, default.TITAN_MEDIUM_ARMOR);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;	
+}
+
+static function X2AbilityTemplate HeavyTitanArmorStats()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2AbilityTrigger					Trigger;
+	local X2AbilityTarget_Self				TargetStyle;
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'HeavyTitanArmorStats');
+	// Template.IconImage  -- no icon needed for armor stats
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.bDisplayInUITacticalText = false;
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	
+	TargetStyle = new class'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Template.AbilityTriggers.AddItem(Trigger);
+	
+	// giving health here; medium plated doesn't have mitigation
+	//
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, default.TITAN_HEAVY_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.TITAN_HEAVY_PLATING_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ArmorMitigation, default.TITAN_HEAVY_ARMOR);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.TITAN_HEAVY_MOBILITY);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;	
+}
+
+static function X2AbilityTemplate LightTitanArmorStats()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2AbilityTrigger					Trigger;
+	local X2AbilityTarget_Self				TargetStyle;
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'LightTitanArmorStats');
+	// Template.IconImage  -- no icon needed for armor stats
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.bDisplayInUITacticalText = false;
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	
+	TargetStyle = new class'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Template.AbilityTriggers.AddItem(Trigger);
+	
+	// giving health here; medium plated doesn't have mitigation
+	//
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, default.TITAN_LIGHT_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.TITAN_LIGHT_PLATING_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ArmorMitigation, default.TITAN_LIGHT_ARMOR);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.TITAN_LIGHT_MOBILITY);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;	
+}
+
+static function X2AbilityTemplate TacticalTitanArmorStats()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2AbilityTrigger					Trigger;
+	local X2AbilityTarget_Self				TargetStyle;
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'TacticalTitanArmorStats');
+	// Template.IconImage  -- no icon needed for armor stats
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.bDisplayInUITacticalText = false;
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	
+	TargetStyle = new class'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Template.AbilityTriggers.AddItem(Trigger);
+	
+	// giving health here; medium plated doesn't have mitigation
+	//
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	// PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, default.MediumPlatedHealthBonusName, default.MediumPlatedHealthBonusDesc, Template.IconImage);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, default.TITAN_TACTICAL_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.TITAN_TACTICAL_PLATING_HP);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ArmorMitigation, default.TITAN_TACTICAL_ARMOR);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.TITAN_TACTICAL_MOBILITY);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Offense, default.TITAN_TACTICAL_AIM);
 	Template.AddTargetEffect(PersistentStatChangeEffect);
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;

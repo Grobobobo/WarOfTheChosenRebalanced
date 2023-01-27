@@ -197,6 +197,7 @@ static function ModifyWhiplash(X2AbilityTemplate Template)
 {
 	local X2AbilityToHitCalc_StandardAim	ToHitCalc;
 	local X2Effect_ApplyWeaponDamage		WeaponDamageEffect;
+	local X2Effect_ApplyScaledWeaponDamage	ScaledDamageEffect;
 	local X2Condition_UnitProperty			UnitPropertyCondition;
 	local X2AbilityCost_ActionPoints        ActionPointCost;
 	local X2AbilityCooldown					Cooldown;
@@ -248,16 +249,16 @@ static function ModifyWhiplash(X2AbilityTemplate Template)
 	Template.AddTargetEffect(WeaponDamageEffect);
 
 	// Configure the damage for robotic targets (higher damage than for organics).
-	WeaponDamageEffect = new class'X2Effect_ApplyScaledWeaponDamage';
-	WeaponDamageEffect.scalar = default.WHIPLASH_ROBOTIC_DAMAGE_BONUS;
+	ScaledDamageEffect = new class'X2Effect_ApplyScaledWeaponDamage';
+	ScaledDamageEffect.scalar = default.WHIPLASH_ROBOTIC_DAMAGE_BONUS;
 	//WeaponDamageEffect.bIgnoreArmor = true;
 	//WeaponDamageEffect.bIgnoreBaseDamage = true;
 	//WeaponDamageEffect.DamageTag = 'Whiplash_Robotic';
 	UnitPropertyCondition = new class'X2Condition_UnitProperty';
 	UnitPropertyCondition.ExcludeRobotic = false;
 	UnitPropertyCondition.ExcludeOrganic = true;
-	WeaponDamageEffect.TargetConditions.AddItem(UnitPropertyCondition);
-	Template.AddTargetEffect(WeaponDamageEffect);
+	ScaledDamageEffect.TargetConditions.AddItem(UnitPropertyCondition);
+	Template.AddTargetEffect(ScaledDamageEffect);
 }
 
 static function AddParkourSupportToGrapple(X2AbilityTemplate Template)

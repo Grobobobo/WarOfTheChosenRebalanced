@@ -23,6 +23,19 @@ var config int SWORD_TLE_MAGNETIC_ICLIPSIZE;
 var config int SWORD_TLE_BEAM_AIM;
 var config int SWORD_TLE_BEAM_CRITCHANCE;
 var config int SWORD_TLE_BEAM_ICLIPSIZE;
+var config array<GauntletExtraDamage> PSIAMP_EXTRADAMAGE_TAGS;
+
+struct PsiAmpExtraDamage{
+	var name Tag;
+	var float DamageMod;
+	var float CritDamageMod;
+	var float BonusSpread;
+	var bool FlatDamage;
+
+	structdefaultproperties{
+		CritDamageMod=0.5f
+	}
+};
 
 static function array<X2DataTemplate> CreateTemplates()
 {
@@ -247,18 +260,6 @@ static function array<X2DataTemplate> CreateTemplates()
 	return Weapons;
 }
 
-struct PsiAmpExtraDamage{
-	var name Tag;
-	var float DamageMod;
-	var float CritDamageMod;
-	var float BonusSpread;
-	var bool FlatDamage;
-
-	structdefaultproperties{
-		CritDamageMod=0.5f
-	}
-};
-var config array<GauntletExtraDamage> PSIAMP_EXTRADAMAGE_TAGS;
 
 
 static function array<WeaponDamageValue> GetPsiAmpWeaponDamage(int WeaponTier){

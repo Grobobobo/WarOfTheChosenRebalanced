@@ -3667,3 +3667,75 @@ FriendlyNamePlural="Gremlin: Zappers"
 BriefSummary="The Mark III GREMLIN is the most advanced version of the GREMLIN Drone, significantly increasing the hacking stat of all Specialists. The Specialist's abilities are also substantially improved when he or she is accompanied by this support robot."
 TacticalText="<Bullet/> The GREMLIN Drone allows Specialists to execute a variety of battlefield tasks from safer distances.\n<Bullet/> The GREMLIN accompanies the Specialist, and can be issued protocols which aid allies, hack electronic targets, or damage enemies.\n<Bullet/> The GREMLIN generally goes unnoticed by enemies, and cannot take damage or be destroyed. It will shut down if its owner is incapacitated or killed."
 AbilityDescName="GREMLIN"
+
+[RangerKevlarArmor X2ArmorTemplate]
+FriendlyName="Jackal Armor"
+FriendlyNamePlural="Jackal Armor"
+BriefSummary="This basic armor consists of improvised protection cobbled together from salvage and Resistance arms caches. It provides minimal protection against ADVENT and alien weaponry."
+TacticalText=""
+
+[GrenadierKevlarArmor X2ArmorTemplate]
+FriendlyName="Heavy Jackal Armor"
+FriendlyNamePlural="Heavy Jackal ArmorArmor"
+BriefSummary="This basic armor consists of improvised protection cobbled together from salvage and Resistance arms caches. It provides minimal protection against ADVENT and alien weaponry."
+TacticalText=""
+
+[SpecialistKevlarArmor X2ArmorTemplate]
+FriendlyName="Light Jackal Armor"
+FriendlyNamePlural="Improvised Specialist Field Armor"
+BriefSummary="This basic armor consists of improvised protection cobbled together from salvage and Resistance arms caches. It provides minimal protection against ADVENT and alien weaponry."
+TacticalText=""
+
+[SharpshooterKevlarArmor X2ArmorTemplate]
+FriendlyName="Tactical Jackal Armor"
+FriendlyNamePlural="Improvised Sharpshooter Field Armor"
+BriefSummary="This basic armor consists of improvised protection cobbled together from salvage and Resistance arms caches. It provides minimal protection against ADVENT and alien weaponry."
+TacticalText="<Bullet/>This variant of light armor has great defense at the cost of a utility slot."
+
+[RangerPlatedArmor X2ArmorTemplate]
+FriendlyName="Carapace Armor"
+FriendlyNamePlural="Enhanced Ranger Field Plate"
+BriefSummary="Using scavenged plates of ADVENT armor, this suit provides increased protection and additional inventory capacity for our soldiers."
+TacticalText=""
+
+[GrenadierPlatedArmor X2ArmorTemplate]
+FriendlyName="Heavy Carapace Armor"
+FriendlyNamePlural="Enhanced Grenadier Field Plate"
+BriefSummary="Using scavenged plates of ADVENT armor, this suit provides increased protection and additional inventory capacity for our soldiers."
+TacticalText=""
+
+[SpecialistPlatedArmor X2ArmorTemplate]
+FriendlyName="Light Carapace Armor"
+FriendlyNamePlural="Enhanced Specialist Field Plate"
+BriefSummary="Using scavenged plates of ADVENT armor, this suit provides increased protection and additional inventory capacity for our soldiers."
+TacticalText=""
+
+[SharpshooterPlatedArmor X2ArmorTemplate]
+FriendlyName="Tactical Carapace Armor"
+FriendlyNamePlural="Enhanced Sharpshooter Field Plate"
+BriefSummary="Using scavenged plates of ADVENT armor, this suit provides increased protection and additional inventory capacity for our soldiers."
+TacticalText="<Bullet/>This variant of light armor has great defense at the cost of a utility slot."
+
+[RangerPoweredArmor X2ArmorTemplate]
+FriendlyName="Titan Armor"
+FriendlyNamePlural="Experimental Ranger Power Armor"
+BriefSummary="Our new mastery of the alien's Elerium technology has lead us to the ultimate in battle armor: the Warden Armor. Elerium powered armor provides unprecedented survivability and versatility in the battle against increasingly powerful alien enemies."
+TacticalText=""
+
+[GrenadierPoweredArmor X2ArmorTemplate]
+FriendlyName="Heavy Titan Armor"
+FriendlyNamePlural="Experimental Grenadier Power Armor"
+BriefSummary="Our new mastery of the alien's Elerium technology has lead us to the ultimate in battle armor: the Warden Armor. Elerium powered armor provides unprecedented survivability and versatility in the battle against increasingly powerful alien enemies."
+TacticalText=""
+
+[SpecialistPoweredArmor X2ArmorTemplate]
+FriendlyName="Light Titan Armor"
+FriendlyNamePlural="Experimental Specialist Power Armor"
+BriefSummary="Our new mastery of the alien's Elerium technology has lead us to the ultimate in battle armor: the Warden Armor. Elerium powered armor provides unprecedented survivability and versatility in the battle against increasingly powerful alien enemies."
+TacticalText=""
+
+[SharpshooterPoweredArmor X2ArmorTemplate]
+FriendlyName="Tactical Titan Armor"
+FriendlyNamePlural="Experimental Sharpshooter Power Armor"
+BriefSummary="Our new mastery of the alien's Elerium technology has lead us to the ultimate in battle armor: the Warden Armor. Elerium powered armor provides unprecedented survivability and versatility in the battle against increasingly powerful alien enemies."
+TacticalText="<Bullet/>This variant of light armor has great defense at the cost of a utility slot."

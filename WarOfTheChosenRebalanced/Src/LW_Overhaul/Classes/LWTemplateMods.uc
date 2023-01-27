@@ -3366,21 +3366,36 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.WARDEN_PLATING_HP);
 					break;
 
+				case 'RangerKevlarArmor':
+					ArmorTemplate.Tier = 1;
+					ArmorTemplate.Abilities.RemoveItem('MediumKevlarArmorStats');
+					ArmorTemplate.Abilities.AddItem('MediumJackalArmorStats');
+
+					//ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
+					// ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.MEDIUM_PLATED_MITIGATION_AMOUNT);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_LW_GearAbilities'.default.JACKAL_MEDIUM_HP);
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.JACKAL_MEDIUM_PLATING_HP);
+					ArmorTemplate.bAddsUtilitySlot = true;
+					break;
+
 				case 'RangerPlatedArmor':
 					ArmorTemplate.Tier = 2;
+					ArmorTemplate.bInfiniteItem=false;
 					ArmorTemplate.Abilities.RemoveItem('MediumPlatedArmorStats');
 					ArmorTemplate.Abilities.AddItem('MediumCarapaceArmorStats');
 
 					//ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
 					// ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.MEDIUM_PLATED_MITIGATION_AMOUNT);
-					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_LW_GearAbilities'.default.CARPACE_MEDIUM_HP);
-					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.CARPACE_MEDIUM_PLATING_HP);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_LW_GearAbilities'.default.CARAPACE_MEDIUM_HP);
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.CARAPACE_MEDIUM_PLATING_HP);
 					ArmorTemplate.bAddsUtilitySlot = true;
 					break;
 
 					case 'RangerPoweredArmor':
 					ArmorTemplate.Tier = 4;
-					ArmorTemplate.Abilities.RemoveItem('MediumTitanArmorStats');
+					ArmorTemplate.bInfiniteItem=false;					
+					ArmorTemplate.Abilities.RemoveItem('MediumPoweredArmorStats');
+					ArmorTemplate.Abilities.AddItem('MediumTitanArmorStats');
 					//ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
 					// ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.MEDIUM_PLATED_MITIGATION_AMOUNT);
 					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_LW_GearAbilities'.default.TITAN_MEDIUM_HP);
@@ -3388,6 +3403,142 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.MEDIUM_TITAN_MITIGATION_AMOUNT);
 					ArmorTemplate.bAddsUtilitySlot = true;
 					break;
+
+				case 'GrenadierKevlarArmor':
+					ArmorTemplate.Tier = 1;
+					ArmorTemplate.Abilities.RemoveItem('MediumKevlarArmorStats');
+					ArmorTemplate.Abilities.AddItem('HeavyJackalArmorStats');
+					ArmorTemplate.bInfiniteItem=false;
+
+					//ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
+					// ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.HEAVY_PLATED_MITIGATION_AMOUNT);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_LW_GearAbilities'.default.JACKAL_HEAVY_HP);
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.JACKAL_HEAVY_PLATING_HP);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LW_GearAbilities'.default.JACKAL_HEAVY_ARMOR);
+
+					ArmorTemplate.bAddsUtilitySlot = true;
+					break;
+
+				case 'GrenadierPlatedArmor':
+					ArmorTemplate.Tier = 2;
+					ArmorTemplate.Abilities.RemoveItem('MediumPlatedArmorStats');
+					ArmorTemplate.Abilities.AddItem('HeavyCarapaceArmorStats');
+					ArmorTemplate.bInfiniteItem=false;
+
+					//ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
+					// ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.HEAVY_PLATED_MITIGATION_AMOUNT);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_LW_GearAbilities'.default.CARAPACE_HEAVY_HP);
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.CARAPACE_HEAVY_PLATING_HP);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LW_GearAbilities'.default.CARAPACE_HEAVY_MOBILITY);
+					ArmorTemplate.bAddsUtilitySlot = true;
+					break;
+
+				case 'GrenadierPoweredArmor':
+					ArmorTemplate.Tier = 4;
+					ArmorTemplate.bInfiniteItem=false;
+					ArmorTemplate.Abilities.RemoveItem('MediumPoweredArmorStats');
+					ArmorTemplate.Abilities.AddItem('HeavyTitanArmorStats');
+					//ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
+					// ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.HEAVY_PLATED_MITIGATION_AMOUNT);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_LW_GearAbilities'.default.TITAN_HEAVY_HP);
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.TITAN_HEAVY_PLATING_HP);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, class'X2Ability_LW_GearAbilities'.default.TITAN_HEAVY_ARMOR);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LW_GearAbilities'.default.TITAN_HEAVY_MOBILITY);
+					ArmorTemplate.bAddsUtilitySlot = true;
+					break;
+				case 'SpecialistKevlarArmor':
+					ArmorTemplate.Tier = 1;
+					ArmorTemplate.Abilities.RemoveItem('MediumKevlarArmorStats');
+					ArmorTemplate.bInfiniteItem=false;
+					ArmorTemplate.Abilities.AddItem('LightJackalArmorStats');
+
+					//ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
+					// ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.LIGHT_PLATED_MITIGATION_AMOUNT);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_LW_GearAbilities'.default.JACKAL_LIGHT_HP);
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.JACKAL_LIGHT_PLATING_HP);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LW_GearAbilities'.default.JACKAL_LIGHT_ARMOR);
+
+					ArmorTemplate.bAddsUtilitySlot = true;
+					break;
+
+				case 'SpecialistPlatedArmor':
+					ArmorTemplate.bInfiniteItem=false;
+					ArmorTemplate.Tier = 2;
+					ArmorTemplate.Abilities.RemoveItem('MediumPlatedArmorStats');
+					ArmorTemplate.Abilities.AddItem('LightCarapaceArmorStats');
+
+					//ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
+					// ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.LIGHT_PLATED_MITIGATION_AMOUNT);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_LW_GearAbilities'.default.CARAPACE_LIGHT_HP);
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.CARAPACE_LIGHT_PLATING_HP);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LW_GearAbilities'.default.CARAPACE_LIGHT_MOBILITY);
+					ArmorTemplate.bAddsUtilitySlot = true;
+					break;
+
+				case 'SpecialistPoweredArmor':
+					ArmorTemplate.bInfiniteItem=false;
+					ArmorTemplate.Tier = 4;
+					ArmorTemplate.Abilities.RemoveItem('MediumPoweredArmorStats');
+					ArmorTemplate.Abilities.AddItem('LightTitanArmorStats');
+					//ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
+					// ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.LIGHT_PLATED_MITIGATION_AMOUNT);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_LW_GearAbilities'.default.TITAN_LIGHT_HP);
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.TITAN_LIGHT_PLATING_HP);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, class'X2Ability_LW_GearAbilities'.default.TITAN_LIGHT_ARMOR);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LW_GearAbilities'.default.TITAN_LIGHT_MOBILITY);
+					ArmorTemplate.bAddsUtilitySlot = true;
+					break;
+
+				case 'SharpshooterKevlarArmor':
+					ArmorTemplate.Tier = 1;
+					ArmorTemplate.bInfiniteItem=false;
+					ArmorTemplate.Abilities.RemoveItem('MediumKevlarArmorStats');
+					ArmorTemplate.Abilities.AddItem('TacticalJackalArmorStats');
+					ArmorTemplate.Abilities.AddItem('TacticalDefense_LW');
+
+					//ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
+					// ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.TACTICAL_PLATED_MITIGATION_AMOUNT);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_LW_GearAbilities'.default.JACKAL_TACTICAL_HP);
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.JACKAL_TACTICAL_PLATING_HP);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LW_GearAbilities'.default.JACKAL_TACTICAL_ARMOR);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LW_GearAbilities'.default.JACKAL_TACTICAL_AIM);
+
+					ArmorTemplate.bAddsUtilitySlot = false;
+					break;
+
+				case 'SharpshooterPlatedArmor':
+					ArmorTemplate.Tier = 2;
+					ArmorTemplate.bInfiniteItem=false;
+					ArmorTemplate.Abilities.RemoveItem('MediumPlatedArmorStats');
+					ArmorTemplate.Abilities.AddItem('TacticalCarapaceArmorStats');
+					ArmorTemplate.Abilities.AddItem('TacticalDefense_LW');
+
+					//ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
+					// ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.TACTICAL_PLATED_MITIGATION_AMOUNT);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_LW_GearAbilities'.default.CARAPACE_TACTICAL_HP);
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.CARAPACE_TACTICAL_PLATING_HP);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LW_GearAbilities'.default.CARAPACE_TACTICAL_MOBILITY);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Offense, class'X2Ability_LW_GearAbilities'.default.CARAPACE_TACTICAL_AIM);
+					ArmorTemplate.bAddsUtilitySlot = false;
+					break;
+
+				case 'SharpshooterPoweredArmor':
+					ArmorTemplate.Tier = 4;
+					ArmorTemplate.bInfiniteItem=false;
+					ArmorTemplate.Abilities.RemoveItem('MediumPoweredArmorStats');
+					ArmorTemplate.Abilities.AddItem('TacticalTitanArmorStats');
+					ArmorTemplate.Abilities.AddItem('TacticalDefense_LW');
+
+					//ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
+					// ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.TACTICAL_PLATED_MITIGATION_AMOUNT);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_LW_GearAbilities'.default.TITAN_TACTICAL_HP);
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.TITAN_TACTICAL_PLATING_HP);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, class'X2Ability_LW_GearAbilities'.default.TITAN_TACTICAL_ARMOR);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LW_GearAbilities'.default.TITAN_TACTICAL_MOBILITY);
+					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Offense, class'X2Ability_LW_GearAbilities'.default.TITAN_TACTICAL_AIM);
+					ArmorTemplate.bAddsUtilitySlot = false;
+					break;
+
 
 				case 'PlatedReaperArmor':
 				case 'PlatedSkirmisherArmor':

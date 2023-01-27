@@ -653,7 +653,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Coil(name TemplateNam
 	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MEDIUM_ALL_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,,1);
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,0.75f,1);
 	Template.Aim = class'X2Item_Coilguns'.default.ASSAULTRIFLE_COIL_AIM;
 	Template.CritChance = class'X2Item_Coilguns'.default.ASSAULTRIFLE_COIL_CRITCHANCE;
 	Template.iClipSize = class'X2Item_Coilguns'.default.ASSAULTRIFLE_COIL_ICLIPSIZE;

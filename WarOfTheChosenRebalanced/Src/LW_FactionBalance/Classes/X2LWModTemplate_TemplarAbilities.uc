@@ -17,6 +17,8 @@ var config int VOLT_DANGER_ZONE_BONUS_RADIUS;
 var config int ARCWAVE_T1_DAMAGE;
 var config int ARCWAVE_T2_DAMAGE;
 var config int ARCWAVE_T3_DAMAGE;
+var config int ARCWAVE_T4_DAMAGE;
+var config int ARCWAVE_T5_DAMAGE;
 
 var config int GHOST_COOLDOWN;
 static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
@@ -353,6 +355,8 @@ static function UpdateArcWave(X2AbilityTemplate Template)
 	Effect.T1Damage = default.ARCWAVE_T1_DAMAGE;
 	Effect.T2Damage = default.ARCWAVE_T2_DAMAGE;
 	Effect.T3Damage = default.ARCWAVE_T3_DAMAGE;
+	Effect.T4Damage = default.ARCWAVE_T4_DAMAGE;
+	Effect.T5Damage = default.ARCWAVE_T5_DAMAGE;
 
 	Template.AddMultiTargetEffect(Effect);
 

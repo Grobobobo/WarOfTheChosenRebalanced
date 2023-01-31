@@ -462,6 +462,7 @@ static function X2DataTemplate CreateDeadMansVest()
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'DeadMansVest');
 	Template.ItemCat = 'defense';
+	Template.WeaponCat = 'vest';
 	Template.InventorySlot = eInvSlot_Utility;
 	Template.strImage = "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_Hazmat_Vest";
 	Template.EquipSound = "StrategyUI_Vest_Equip";

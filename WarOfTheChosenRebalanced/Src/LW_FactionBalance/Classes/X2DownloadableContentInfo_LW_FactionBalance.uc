@@ -347,7 +347,7 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 		}
 	}
     if (UnitState == none)
-		return false;
+		return true;
 
 	OutString = "<font color='#a622fa'>" $ class'X2Effect_TemplarShield'.static.GetShieldStrength(UnitState, GameState) $ "</font>";
     return true;

@@ -270,7 +270,7 @@ static function array<WeaponDamageValue> GetPsiAmpWeaponDamage(int WeaponTier){
 	local GauntletExtraDamage TagValue;
 
 	foreach default.PSIAMP_EXTRADAMAGE_TAGS(TagValue){
-		FloatBaseDamage = WeaponTier  * TagValue.DamageMod;
+		FloatBaseDamage = (3+WeaponTier)  * TagValue.DamageMod;
 		IntBaseDamage = int(FloatBaseDamage);
 		
 		WeaponDamage.Tag = TagValue.Tag;
@@ -315,6 +315,8 @@ static function X2DataTemplate CreateTLE1Pistol(name TemplateName, int Tier)
 
 	Template.InventorySlot = eInvSlot_SecondaryWeapon;
 		Template.Abilities.AddItem('PistolStandardShot');
+		Template.Abilities.AddItem('Fatality_LW');
+		Template.Abilities.AddItem('Quickdraw');
 	// Template.Abilities.AddItem('PistolOverwatch');
 	// Template.Abilities.AddItem('PistolOverwatchShot');
 	Template.Abilities.AddItem('PistolReturnFire');
@@ -428,7 +430,6 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser(name TemplateName, in
 	Template.Abilities.AddItem('TakeThis');
 	Template.Abilities.AddItem('PistolReturnFire');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('Fatality_LW');
 
 	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotMagA');
@@ -582,7 +583,7 @@ static function X2DataTemplate CreateTemplate_Pistol_Beam_RO(name TemplateName, 
 	Template.Tier = Tier;
 
 	Template.RangeAccuracy = default.SHORT_BEAM_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier,0.75f);
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,,,,1);
 	Template.Aim = default.PISTOL_BEAM_AIM;
 	Template.CritChance = default.PISTOL_BEAM_CRITCHANCE;
 	Template.iClipSize = default.PISTOL_BEAM_ICLIPSIZE;
@@ -595,7 +596,8 @@ static function X2DataTemplate CreateTemplate_Pistol_Beam_RO(name TemplateName, 
 	Template.InfiniteAmmo = true;
 	
 	Template.InventorySlot = eInvSlot_SecondaryWeapon;
-	Template.Abilities.AddItem('PlasmaPistolShot');
+	//Template.Abilities.AddItem('PlasmaPistolShot');
+	Template.Abilities.AddItem('PistolStandardShot');
 	Template.Abilities.AddItem('PistolOverwatch');
 	Template.Abilities.AddItem('PistolOverwatchShot');
 	Template.Abilities.AddItem('PistolReturnFire');
@@ -1490,7 +1492,7 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Beam(name TemplateName
 	Template.bHideClipSizeStat = true;
 	Template.InfiniteAmmo = true;
 	
-	Template.Abilities.AddItem('SlashAndDashRs_LW');
+	Template.Abilities.AddItem('SlashAndDashRS_LW');
 	Template.Abilities.AddItem('Bladestorm');
 
 	Template.GameArchetype = "LW_CombatKnifeLWOTC.Archetypes.WP_CombatKnife_CV";
@@ -1532,7 +1534,7 @@ static function X2DataTemplate CreateTemplate_Sword_Conventional_RO(name Templat
 	Template.iPhysicsImpulse = 5;
 
 	Template.iRange = 0;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.5f);
 	Template.Aim = default.RANGERSWORD_CONVENTIONAL_AIM;
 	Template.CritChance = default.RANGERSWORD_CONVENTIONAL_CRITCHANCE;
 	Template.iSoundRange = default.RANGERSWORD_CONVENTIONAL_ISOUNDRANGE;
@@ -1542,6 +1544,8 @@ static function X2DataTemplate CreateTemplate_Sword_Conventional_RO(name Templat
 	Template.StartingItem = true;
 	Template.CanBeBuilt = false;
 	Template.bInfiniteItem = false;
+	Template.Abilities.AddItem('Slash_LW');
+	Template.Abilities.AddItem('Whirlwind2');
 
 	Template.DamageTypeTemplateName = 'Melee';
 
@@ -1575,12 +1579,16 @@ static function X2DataTemplate CreateTemplate_Sword_Laser(name TemplateName, int
 	Template.iPhysicsImpulse = 5;
 
 	Template.iRange = 0;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.5f);
 	Template.Aim = class'X2Item_LWSwords'.default.RANGERSWORD_LASER_AIM;
 	Template.CritChance = class'X2Item_LWSwords'.default.RANGERSWORD_LASER_CRITCHANCE;
 	Template.iSoundRange = class'X2Item_LWSwords'.default.RANGERSWORD_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = class'X2Item_LWSwords'.default.RANGERSWORD_LASER_IENVIRONMENTDAMAGE;
 	Template.BaseDamage.DamageType='Melee';
+	Template.Abilities.AddItem('Slash_LW');
+	Template.Abilities.AddItem('Whirlwind2');
+	Template.Abilities.AddItem('Phantom_LW');
+	Template.Abilities.AddItem('SilentAssassin');
 
 	
 	Template.CanBeBuilt = false;
@@ -1618,13 +1626,15 @@ static function X2DataTemplate CreateTemplate_Sword_Magnetic_RO(name TemplateNam
 	Template.iPhysicsImpulse = 5;
 
 	Template.iRange = 0;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
 	Template.Aim = default.RANGERSWORD_MAGNETIC_AIM;
 	Template.CritChance = default.RANGERSWORD_MAGNETIC_CRITCHANCE;
 	Template.iSoundRange = default.RANGERSWORD_MAGNETIC_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.RANGERSWORD_MAGNETIC_IENVIRONMENTDAMAGE;
 	Template.BaseDamage.DamageType='Melee';
-
+	
+	Template.Abilities.AddItem('Slash_LW');
+	Template.Abilities.AddItem('Bladestorm');
 
 	Template.CreatorTemplateName = 'Sword_MG_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'Sword_CV'; // Which item this will be upgraded from
@@ -1664,7 +1674,7 @@ static function X2DataTemplate CreateTemplate_Sword_Coil(name TemplateName, int 
 	Template.iPhysicsImpulse = 5;
 
 	Template.iRange = 0;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.5f);
 	Template.Aim = class'X2Item_LWSwords'.default.RANGERSWORD_COIL_AIM;
 	Template.CritChance = class'X2Item_LWSwords'.default.RANGERSWORD_COIL_CRITCHANCE;
 	Template.iSoundRange = class'X2Item_LWSwords'.default.RANGERSWORD_COIL_ISOUNDRANGE;
@@ -1672,6 +1682,10 @@ static function X2DataTemplate CreateTemplate_Sword_Coil(name TemplateName, int 
 	Template.BaseDamage.DamageType='Melee';
 
 	Template.CreatorTemplateName = 'Sword_CG_Schematic';
+
+	Template.Abilities.AddItem('Slash_LW');
+	Template.Abilities.AddItem('Whirlwind2');
+	Template.Abilities.AddItem('Reaper');
 
 	Template.CanBeBuilt = false;
 	Template.bInfiniteItem = false;
@@ -1707,12 +1721,17 @@ static function X2DataTemplate CreateTemplate_Sword_Beam_RO(name TemplateName, i
 	Template.iPhysicsImpulse = 5;
 
 	Template.iRange = 0;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.5f);
 	Template.Aim = default.RANGERSWORD_BEAM_AIM;
 	Template.CritChance = default.RANGERSWORD_BEAM_CRITCHANCE;
 	Template.iSoundRange = default.RANGERSWORD_BEAM_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.RANGERSWORD_BEAM_IENVIRONMENTDAMAGE;
 	Template.BaseDamage.DamageType='Melee';
+
+	Template.Abilities.AddItem('Slash_LW');
+	Template.Abilities.AddItem('Whirlwind2');
+	Template.Abilities.AddItem('SwordSlice_LW');
+	Template.Abilities.AddItem('CoupDeGrace2');
 
 	Template.BonusWeaponEffects.AddItem(class'X2StatusEffects'.static.CreateBurningStatusEffect(2, 0));
 	
@@ -1758,6 +1777,8 @@ static function X2DataTemplate CreateTLE1Sword(name TemplateName, int Tier)
 	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.RANGERSWORD_CONVENTIONAL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.RANGERSWORD_CONVENTIONAL_IENVIRONMENTDAMAGE;
 	Template.BaseDamage.DamageType = 'Melee';
+	Template.Abilities.AddItem('Slash_LW');
+	Template.Abilities.AddItem('Whirlwind2');
 
 	Template.StartingItem = true;
 	Template.CanBeBuilt = false;
@@ -1791,7 +1812,7 @@ static function X2DataTemplate CreateTLE2Sword(name TemplateName, int Tier)
 	Template.iPhysicsImpulse = 5;
 
 	Template.iRange = 0;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.5f);
 	Template.Aim = class'X2Item_DefaultWeapons'.default.RANGERSWORD_MAGNETIC_AIM;
 	Template.CritChance = class'X2Item_DefaultWeapons'.default.RANGERSWORD_MAGNETIC_CRITCHANCE;
 	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.RANGERSWORD_MAGNETIC_ISOUNDRANGE;
@@ -1804,6 +1825,9 @@ static function X2DataTemplate CreateTLE2Sword(name TemplateName, int Tier)
 	Template.BaseItem = 'TLE_Sword_CV'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
+	Template.Abilities.AddItem('Slash_LW');
+	Template.Abilities.AddItem('Whirlwind2');
+	Template.Abilities.AddItem('LightningSlash_LW');
 
 	Template.DamageTypeTemplateName = 'Melee';
 
@@ -1842,6 +1866,10 @@ static function X2DataTemplate CreateTLE3Sword(name TemplateName, int Tier)
 	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.RANGERSWORD_BEAM_ISOUNDRANGE;
 	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.RANGERSWORD_BEAM_IENVIRONMENTDAMAGE;
 	Template.BaseDamage.DamageType='Melee';
+
+	Template.Abilities.AddItem('Slash_LW');
+	Template.Abilities.AddItem('Whirlwind2');
+	Template.Abilities.AddItem('LetHerRip_LW');
 
 	Template.BonusWeaponEffects.AddItem(class'X2StatusEffects'.static.CreateBurningStatusEffect(2, 0));
 
@@ -2094,7 +2122,7 @@ static function X2GrenadeLauncherTemplate Create_IRI_RocketLauncher_Shredder(nam
 	Template.iClipSize = class'X2Item_IRI_RocketLaunchers'.default.RL_MG_CLIPSIZE;
 	Template.iSoundRange = class'X2Item_IRI_RocketLaunchers'.default.RL_MG_SOUNDRANGE;
 	Template.iEnvironmentDamage = class'X2Item_IRI_RocketLaunchers'.default.RL_MG_ENVIRONMENTAL_DAMAGE;
-	Template.BaseDamage = GetWeaponDamage(Tier,1.75f,,3,2);
+	Template.BaseDamage = GetWeaponDamage(Tier,2.0f,,3,2);
 	Template.DamageTypeTemplateName = class'X2Item_IRI_RocketLaunchers'.default.RL_MG_BASEDAMAGE.DamageType;	
 
 	Template.Abilities.AddItem('IRI_FireRocketLauncher');
@@ -2142,7 +2170,7 @@ static function X2GrenadeLauncherTemplate Create_IRI_RocketLauncher_Ejector(name
 	Template.iClipSize = class'X2Item_IRI_RocketLaunchers'.default.RL_BM_CLIPSIZE;
 	Template.iSoundRange = class'X2Item_IRI_RocketLaunchers'.default.RL_BM_SOUNDRANGE;
 	Template.iEnvironmentDamage = class'X2Item_IRI_RocketLaunchers'.default.RL_BM_ENVIRONMENTAL_DAMAGE;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,2.0f);
 	Template.DamageTypeTemplateName = class'X2Item_IRI_RocketLaunchers'.default.RL_BM_BASEDAMAGE.DamageType;	
 
 	//Template.Abilities.AddItem('IRI_FireRocketLauncher');

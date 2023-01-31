@@ -89,6 +89,11 @@ static function UpdateWeapons(X2WeaponTemplate WeaponTemplate, int Difficulty)
 		WeaponTemplate.Abilities.RemoveItem('PistolOverwatch');
 		//WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeapons'.default.SHORT_CONVENTIONAL_RANGE;
 		break;
+	case 'GrenadeLauncher_CV':
+	    WeaponTemplate.Abilities.AddItem('LaunchGrenade');
+	    WeaponTemplate.Abilities.AddItem('Salvo');
+	    WeaponTemplate.Abilities.AddItem('FullKit');
+		break;
 
 	case 'Sidearm_MG':
 		WeaponTemplate.BaseItem = 'Sidearm_LS';

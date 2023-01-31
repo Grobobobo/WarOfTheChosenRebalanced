@@ -114,7 +114,10 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	Templates.AddItem(HighVolumeFire());
 	Templates.AddItem(HighVolumeFirePassive());	
-	Templates.AddItem(CreateExoskeletonServos());	
+	Templates.AddItem(CreateExoskeletonServos());
+	Templates.AddItem(CreateExoskeletonServos2());
+
+	
 	Templates.AddItem(ArterialStrike());
 	Templates.AddItem(ArterialStrikePassive());
 

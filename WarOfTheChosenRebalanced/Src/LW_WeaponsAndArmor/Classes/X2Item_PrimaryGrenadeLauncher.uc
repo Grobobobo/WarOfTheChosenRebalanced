@@ -31,9 +31,9 @@ static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Grenades;
 
-	Grenades.AddItem(CreatePrimaryGrenadeLauncher_CV());
-	Grenades.AddItem(CreatePrimaryGrenadeLauncher_MG());
-	Grenades.AddItem(CreatePrimaryGrenadeLauncher_BM());
+	// Grenades.AddItem(CreatePrimaryGrenadeLauncher_CV());
+	// Grenades.AddItem(CreatePrimaryGrenadeLauncher_MG());
+	// Grenades.AddItem(CreatePrimaryGrenadeLauncher_BM());
 
 	return Grenades;
 }

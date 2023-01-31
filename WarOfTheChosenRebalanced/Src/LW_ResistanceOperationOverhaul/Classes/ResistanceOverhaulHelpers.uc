@@ -128,7 +128,7 @@ private static function name GetWeightedRandomClass(array<name> ClassOptions)
 	}
 }
 
-private static function string RandomlyChooseCharacter(name ClassName, array<string> DisallowedCharacters)
+static function string RandomlyChooseCharacter(name ClassName, array<string> DisallowedCharacters)
 {
 	local CharacterPoolManager CharacterPoolMgr;
 	local XComGameState_Unit Character;

@@ -18,7 +18,7 @@ static function UpdateResistanceOrders(X2StrategyElementTemplate Template, int D
 	if (CardTemplate == none)
 		return;
 	//HardCode the Resistance orders, make sure none of them are initially assigned as continent bonuses
-	CardTemplate.bContinentBonus = false;
+	//CardTemplate.bContinentBonus = false;
 
 	if(default.ENABLED_RESISTANCE_ORDERS.Find(CardTemplate.DataName) == INDEX_NONE)
 	{

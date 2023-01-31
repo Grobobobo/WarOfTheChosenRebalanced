@@ -166,7 +166,7 @@ static event InstallNewCampaign(XComGameState StartState)
 	// class'X2StrategyElement_DefaultResistanceModes'.static.OnXCOMLeavesMedicalMode(StartState, StartingFactionState.GetReference());
 	// class'X2StrategyElement_DefaultResistanceModes'.static.OnXCOMLeavesBuildMode(StartState, StartingFactionState.GetReference());
 	
-	SetupContinentBonuses(StartState);
+	//SetupContinentBonuses(StartState);
 
 }
 
@@ -3242,6 +3242,14 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 		case 'SPRINTER_MOBILITY_LW':
 			Outstring = string(class'X2Ability_LW_RangerAbilitySet'.default.SPRINTER_MOBILITY);
 			return true;
+		case 'EXTRA_CONDITIONING_HP':
+			Outstring = string(class'X2Ability_LW_RangerAbilitySet'.default.EXTRA_CONDITIONING_HP);
+			return true;
+			break;
+		case 'EXTRA_CONDITIONING_TRIGGER_CHANCE':
+			Outstring = string(class'X2Ability_LW_RangerAbilitySet'.default.EXTRA_CONDITIONING_TRIGGER_CHANCE);
+			return true;
+			break;
 		case 'TD_SHIELD_HP':
 			Outstring = string(class'X2Ability_LW_RangerAbilitySet'.default.TD_SHIELD_HP);
 			return true;

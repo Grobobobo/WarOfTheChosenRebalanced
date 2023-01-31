@@ -38,9 +38,16 @@ var config float BRAWLER2_WOUND_REDUCTION;
 var config float SAA_DR_PER_TILE;
 var config float SAA_MAX_DR;
 var config float FOND_FAREWELL_DMG_BONUS;
+
+var config int LET_HER_RIP_COOLDOWN;
+var config int LET_HER_RIP_DURATION;
+var config float LET_HER_RIP_MELEE_DMG_BUFF;
+var config int LET_HER_RIP_RANGED_ACCURACY_PENALTY;
+
 const DAMAGED_COUNT_NAME = 'DamagedCountThisTurn';
 
 var localized string PhantomExpiredFlyover;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -108,7 +115,12 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateHeavyStandardShotPassive());
 	Templates.AddItem(CreateVersatile());
 	Templates.AddItem(AtAnyCost());
+	Templates.AddItem(CreateReaperRoundsPassive());
+	Templates.AddItem(VoltaicArc());
+	Templates.AddItem(VoltaicArcAttack());
 	
+	
+	Templates.AddItem(LetHerrip());
 	//Passives for dictating AI behaviors out of LOS
 	return Templates;
 }
@@ -3258,6 +3270,61 @@ static function X2AbilityTemplate FondFarewell() {
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	//  NOTE: No visualization on purpose!
+
+	return Template;
+}
+
+
+static function X2AbilityTemplate LetHerrip()
+{
+	local X2AbilityTemplate				Template;
+	local X2AbilityCooldown				Cooldown;
+	local X2Effect_LetHerRip        	LetHerRipEffect;
+	local X2AbilityCost_ActionPoints    ActionPointCost;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'LetHerRip_LW');
+
+	// Icon Properties
+	Template.DisplayTargetHitChance = false;
+	Template.AbilitySourceName = 'eAbilitySource_Perk';                                       // color of the icon
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_reaper";
+	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_COLONEL_PRIORITY;
+	Template.Hostility = eHostility_Neutral;
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;
+	Template.AbilityConfirmSound = "TacticalUI_ActivateAbility";
+
+	Cooldown = new class'X2AbilityCooldown';
+	Cooldown.iNumTurns = default.LET_HER_RIP_COOLDOWN;
+	Template.AbilityCooldown = Cooldown;
+
+	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.iNumPoints = 1;
+	ActionPointCost.bFreeCost = true;
+	Template.AbilityCosts.AddItem(ActionPointCost);
+
+	Template.AbilityToHitCalc = default.DeadEye;
+
+	//SuperKillRestrictions(Template, 'Reaper_SuperKillCheck');
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	Template.AddShooterEffectExclusions();
+
+	LetHerRipEffect = new class'X2Effect_LetHerRip';
+	LetHerRipEffect.BuildPersistentEffect(default.LET_HER_RIP_DURATION, false, true, false, eGameRule_PlayerTurnEnd);
+	LetHerRipEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, true, , Template.AbilitySourceName);
+	LetHerRipEffect.DMGBuff = default.LET_HER_RIP_MELEE_DMG_BUFF;
+	LetHerRipEffect.RangedAccPenalty = default.LET_HER_RIP_RANGED_ACCURACY_PENALTY;
+	Template.AddTargetEffect(LetHerRipEffect);
+
+	Template.AbilityTargetStyle = default.SelfTarget;	
+	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
+	
+	Template.bShowActivation = true;
+	Template.bSkipFireAction = true;
+
+	Template.ActivationSpeech = 'Reaper';
+		
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
 
 	return Template;
 }

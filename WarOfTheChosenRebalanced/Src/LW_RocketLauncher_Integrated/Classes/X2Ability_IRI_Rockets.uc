@@ -463,10 +463,10 @@ static function X2AbilityTemplate EjectPlasma(optional name TemplateName = 'IRI_
 {
 	local X2AbilityTemplate                 Template;	
 	local X2AbilityTarget_Cursor            CursorTarget;
-	local X2AbilityToHitCalc_StandardAim    StandardAim;
+	//local X2AbilityToHitCalc_StandardAim    StandardAim;
 	local X2AbilityCost_Ammo                AmmoCost;
 	local X2Condition_RocketArmedCheck		RocketArmedCheck;
-	//local X2AbilityMultiTarget_Line         LineMultiTarget;
+	local X2AbilityMultiTarget_Line         LineMultiTarget;
 
 	Template = class'X2Ability_HeavyWeapons'.static.PlasmaBlaster(TemplateName);
 
@@ -486,10 +486,10 @@ static function X2AbilityTemplate EjectPlasma(optional name TemplateName = 'IRI_
 	CursorTarget.bRestrictToWeaponRange = true;
 	Template.AbilityTargetStyle = CursorTarget;
 
-	StandardAim = new class'X2AbilityToHitCalc_StandardAim';
-	StandardAim.bIndirectFire = true;
-	StandardAim.bAllowCrit = false;
-	Template.AbilityToHitCalc = StandardAim;
+	// StandardAim = new class'X2AbilityToHitCalc_StandardAim';
+	// StandardAim.bIndirectFire = true;
+	// StandardAim.bAllowCrit = false;
+	// Template.AbilityToHitCalc = StandardAim;
 
 	//	Ability Costs
 	Template.AbilityCosts.Length = 0;
@@ -501,10 +501,10 @@ static function X2AbilityTemplate EjectPlasma(optional name TemplateName = 'IRI_
 
 	//Template.TargetingMethod = class'X2TargetingMethod_PlasmaEjector';
 
-	/*
+	
 	LineMultiTarget = new class'X2AbilityMultiTarget_Line';
 	LineMultiTarget.TileWidthExtension = 1;
-	Template.AbilityMultiTargetStyle = LineMultiTarget;*/
+	Template.AbilityMultiTargetStyle = LineMultiTarget;
 
 	//X2AbilityToHitCalc_StandardAim(Template.AbilityToHitCalc).bGuaranteedHit = class'X2Rocket_Plasma_Ejector'.default.PLASMA_EJECTOR_ALWAYS_HITS;
 	

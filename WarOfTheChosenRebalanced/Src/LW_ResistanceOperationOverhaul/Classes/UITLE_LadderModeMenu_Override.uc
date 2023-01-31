@@ -1339,7 +1339,7 @@ simulated function CreateNewLadder(int LadderDifficulty, bool NarrativesOn)
 	LadderData.PopulateStartingUpgradeTemplates();
 	LadderData.PopulateUpgradeProgression( );
 
-	MissionType = class'XComGameState_LadderProgress_Override'.default.AllowedMissionTypes[ `SYNC_RAND_STATIC( class'XComGameState_LadderProgress_Override'.default.AllowedMissionTypes.Length ) ];
+	MissionType = class'XComGameState_LadderProgress_Override'.default.AllowedFirstMissionTypes[ `SYNC_RAND_STATIC( class'XComGameState_LadderProgress_Override'.default.AllowedFirstMissionTypes.Length ) ];
 	BattleDataState.m_iMissionType = TacticalMissionManager.arrMissions.Find( 'sType', MissionType );
 
 	if(!TacticalMissionManager.GetMissionDefinitionForType(MissionType, MissionDef))
@@ -1547,7 +1547,6 @@ private function InitSquad(XComGameState TacticalStartState, XComGameState_Playe
 //		soldierIndex++;
 	}
 }
-
 simulated function OnLadderAbandoned( UIList ContainerList, int ItemIndex )
 {
 	local int LadderIndex;

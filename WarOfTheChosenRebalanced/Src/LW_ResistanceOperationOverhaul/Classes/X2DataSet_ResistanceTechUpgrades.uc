@@ -68,6 +68,8 @@ private static function X2DataTemplate CreateTemplate(TechUpgrade Upgrade)
 	Template.RequiredTechUpgrades = Upgrade.RequiredTechUpgrades;
 	Template.bStarting = Upgrade.bStarting;
 	Template.Category = Upgrade.Category;
+	Template.RequiredClass = Upgrade.RequiredClass;
+	Template.Weight = Upgrade.Weight;
 	return Template;
 }
 

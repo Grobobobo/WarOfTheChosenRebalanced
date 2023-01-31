@@ -448,8 +448,8 @@ LocPromotionPopupText="<Bullet/> Run and Gun cooldown is reduced by one turn.<br
 [ExtraConditioning_LW X2AbilityTemplate]
 LocFriendlyName="Extra Conditioning"
 LocFlyOverText="Extra Conditioning"
-LocLongDescription="Gain <Ability:EXTRA_CONDITIONING_HP> HP. Every action has a 10% chance to have its action point cost refunded."
-LocHelpText="Gain <Ability:EXTRA_CONDITIONING_HP> HP. Every action has a 10% chance to have its action point cost refunded."
+LocLongDescription="Gain <Ability:EXTRA_CONDITIONING_HP> HP. Every action has a <Ability:EXTRA_CONDITIONING_TRIGGER_CHANCE>% chance to have its action point cost refunded."
+LocHelpText="Gain <Ability:EXTRA_CONDITIONING_HP> HP. Every action has a <Ability:EXTRA_CONDITIONING_TRIGGER_CHANCE>% chance to have its action point cost refunded."
 
 [RunAndGun_LW X2AbilityTemplate]
 LocFriendlyName="Run And Gun"
@@ -952,7 +952,7 @@ LocPromotionPopupText="<Bullet/> Explosives mean all grenades and rockets."
 [XComGame.Salvo X2AbilityTemplate]
 [Salvo X2AbilityTemplate]
 LocFriendlyName="Salvo"
-LocLongDescription="Throwing or Launching Grenades and Rockets no longer ends turn. Your Grenades and items in utility slot gain +1 charge. You can throw grenades <Ability:SALVO_BONUS_RANGE/> tiles further."
+LocLongDescription="Throwing or Launching Grenades and Rockets no longer ends turn."
 LocHelpText=""
 LocFlyOverText="Salvo"
 LocPromotionPopupText="<Bullet/> Items like BattleScanners count as grenades.<br/>"

@@ -20,6 +20,8 @@ var MissionOption ChosenMissionOption; // set this when the player chooses a map
 var array<MissionTypeOption> LadderMissionTypeOptions;
 var array<name> SaleOptions;
 
+var config array<string> AllowedFirstMissionTypes;
+
 var UILadderRewards RewardsScreen;
 var UILadderSquadUpgradeScreen UpgradeScreen;
 var UILadderChooseNextMission MissionScreen;
@@ -37,6 +39,23 @@ struct ValidTechUpgrades{
 
 var Array<UpgradeList> Pools;
 var Array<UpgradeList> CurrentShopUpgrades;
+
+event OnCreation( optional X2DataTemplate InitTemplate )
+{
+	// local X2EventManager EventManager;
+	// local Object ThisObj;
+
+	// EventManager = `XEVENTMGR;
+	// ThisObj = self;
+
+	// EventManager.RegisterForEvent( ThisObj, 'KillMail', OnKillMail, ELD_OnStateSubmitted, , , true ); // unit died messages
+	// EventManager.RegisterForEvent( ThisObj, 'KillMail', OnUnitKilled, ELD_OnStateSubmitted, , , true ); // unit died messages
+	// EventManager.RegisterForEvent( ThisObj, 'KnockSelfoutUnconscious', OnUnitUnconscious, ELD_OnStateSubmitted, , , true ); // unit goes unconscious instead of killed messages
+	// EventManager.RegisterForEvent( ThisObj, 'CivilianRescued', OnCivilianRescued, ELD_OnStateSubmitted, , , true ); // civilian rescued
+	// EventManager.RegisterForEvent( ThisObj, 'MissionObjectiveMarkedCompleted', OnMissionObjectiveComplete, ELD_OnStateSubmitted, , , true ); // mission objective complete
+	// EventManager.RegisterForEvent( ThisObj, 'UnitTakeEffectDamage', OnUnitDamage, ELD_OnStateSubmitted, , , true ); // unit damaged messages
+	// EventManager.RegisterForEvent( ThisObj, 'ChallengeModeScoreChange', OnChallengeModeScore, ELD_OnStateSubmitted, , , true );
+}
 
 
 static function ProceedToNextRung( )
@@ -1234,8 +1253,27 @@ simulated function bool IsUpgradeOnSaleInCategory(EUpgradeCategory Category)
 	return false;
 }
 
-simulated function RefreshShopStock(){
-	
+simulated function bool IsClassInSquad(name ClassName)
+{
+	local XComGameState_HeadquartersXCom XComHQ;
+	local XComGameStateHistory History;
+	local StateObjectReference UnitStateRef;
+	local XComGamestate_Unit UnitState;
+
+	History = `XCOMHISTORY;
+	XComHQ = XComGameState_HeadquartersXCom(History.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersXCom'));
+
+	foreach XComHQ.Squad(UnitStateRef)
+	{
+		UnitState = XComGameState_Unit(History.GetGameStateForObjectID( UnitStateRef.ObjectID));
+		if(UnitState.GetSoldierClassTemplateName() == ClassName){
+			return true;
+		}
+	}
+	return false;
+}
+simulated function RefreshShopStock()
+{
 	local int BaselineTier,HigherTierItems, CurrentTierItems;
 	local X2ResistanceTechUpgradeTemplateManager UpgradeManger;
 	local X2ResistanceTechUpgradeTemplate UpgradeTemplate;
@@ -1245,7 +1283,8 @@ simulated function RefreshShopStock(){
 	local ValidTechUpgrades ValidTechUpgrade;
 	local UpgradeList UpgradeLists;
 	local array<ValidTechUpgrades>  TechUpgrades;
-	local int i,j;
+	local int i,j,k;
+	local float TotalCurrentTierWeight, TotalNextTierWeight, WeightSelection, WeightFinder;
 
 	Pools.Length = 0;
 	CurrentShopUpgrades.Length =0;
@@ -1271,41 +1310,93 @@ simulated function RefreshShopStock(){
 	{
 		UpgradeTemplate = UpgradeManger.FindTemplate(TemplateName);
 		if(UpgradeTemplate != none){
-			Pools[UpgradeTemplate.Category].List.AddItem(UpgradeTemplate);
-
+			if(UpgradeTemplate.RequiredClass == '' || IsClassInSquad(UpgradeTemplate.RequiredClass))
+			{
+				Pools[UpgradeTemplate.Category].List.AddItem(UpgradeTemplate);
+			}
 		}
 	}
 
 	for(i=0;i<Pools.length;i++)
-	{
+	{	
+		TotalCurrentTierWeight = 0.0f;
+		TotalNextTierWeight = 0.0f;
 		foreach Pools[i].List(UpgradeTemplate)
 		{
 			if(UpgradeTemplate.RequiredScience == BaselineTier){
+				TotalCurrentTierWeight += UpgradeTemplate.Weight;
 				TechUpgrades[UpgradeTemplate.Category].ValidCurrentTierUpgrades.AddItem(UpgradeTemplate);
 			}
 			else if(UpgradeTemplate.RequiredScience == BaselineTier +1){
 				TechUpgrades[UpgradeTemplate.Category].ValidNextTierUpgrades.AddItem(UpgradeTemplate);
+				TotalNextTierWeight += UpgradeTemplate.Weight;
 			}
 		}
 		//Allow Repeat Upgrades
-		for(j=HigherTierItems; j > 0; j--){
-			CurrentShopUpgrades[i].List.AddItem(TechUpgrades[i].ValidNextTierUpgrades[`SYNC_RAND(TechUpgrades[i].ValidNextTierUpgrades.Length)]);
-		}
-		for(j=CurrentTierItems; j > 0; j--){
-			CurrentShopUpgrades[i].List.AddItem(TechUpgrades[i].ValidCurrentTierUpgrades[`SYNC_RAND(TechUpgrades[i].ValidCurrentTierUpgrades.Length)]);
+		for(j=HigherTierItems; j > 0; j--)
+		{
+			WeightSelection = `SYNC_FRAND * TotalNextTierWeight;
+			WeightFinder = 0.0f;
+			for(k=0; k< TechUpgrades[i].ValidNextTierUpgrades.Length; k++)
+			{
+				WeightFinder += TechUpgrades[i].ValidNextTierUpgrades[k].Weight;
+				if(WeightFinder > WeightSelection)
+				{
+					CurrentShopUpgrades[i].List.AddItem(TechUpgrades[i].ValidNextTierUpgrades[k]);
+					break;
+				}
+			}
 		}
 
+		for(j=CurrentTierItems; j > 0; j--)
+		{
+			WeightSelection = `SYNC_FRAND * TotalCurrentTierWeight;
+			WeightFinder = 0.0f;
+			for(k=0; k< TechUpgrades[i].ValidCurrentTierUpgrades.Length; k++)
+			{
+				WeightFinder += TechUpgrades[i].ValidCurrentTierUpgrades[k].Weight;
+				if(WeightFinder > WeightSelection)
+				{
+					CurrentShopUpgrades[i].List.AddItem(TechUpgrades[i].ValidCurrentTierUpgrades[k]);
+					break;
+				}
+			}
+		}
 	}
 
 
 	//Assign random options to random categories
-	for(i=HigherTierItems; i > 0; i--){
+	for(i=HigherTierItems; i > 0; i--)
+	{
 		Category = `SYNC_RAND(eUpCat_Attachment);
-		CurrentShopUpgrades[Category].List.AddItem(TechUpgrades[Category].ValidNextTierUpgrades[`SYNC_RAND(TechUpgrades[Category].ValidNextTierUpgrades.Length)]);
+		WeightSelection = `SYNC_FRAND * TotalNextTierWeight;
+		WeightFinder = 0.0f;
+		for(k=0; k< TechUpgrades[Category].ValidNextTierUpgrades.Length; k++)
+		{
+			WeightFinder += TechUpgrades[Category].ValidNextTierUpgrades[k].Weight;
+			if(WeightFinder > WeightSelection)
+			{
+				CurrentShopUpgrades[Category].List.AddItem(TechUpgrades[Category].ValidNextTierUpgrades[k]);
+				break;
+			}
+		}
+
+		//CurrentShopUpgrades[Category].List.AddItem(TechUpgrades[Category].ValidNextTierUpgrades[`SYNC_RAND(TechUpgrades[Category].ValidNextTierUpgrades.Length)]);
 
 	}
-	for(i=CurrentTierItems; i > 0; i--){
+	for(i=CurrentTierItems; i > 0; i--)
+	{
 		Category = `SYNC_RAND(eUpCat_Attachment);
-		CurrentShopUpgrades[Category].List.AddItem(TechUpgrades[Category].ValidCurrentTierUpgrades[`SYNC_RAND(TechUpgrades[Category].ValidCurrentTierUpgrades.Length)]);
+		WeightSelection = `SYNC_FRAND * TotalCurrentTierWeight;
+		WeightFinder = 0.0f;
+		for(k=0; k< TechUpgrades[Category].ValidCurrentTierUpgrades.Length; k++)
+		{
+			WeightFinder += TechUpgrades[Category].ValidCurrentTierUpgrades[k].Weight;
+			if(WeightFinder > WeightSelection)
+			{
+				CurrentShopUpgrades[Category].List.AddItem(TechUpgrades[Category].ValidCurrentTierUpgrades[k]);
+				break;
+			}
+		}
 	}
 }

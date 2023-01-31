@@ -3276,16 +3276,15 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		{
 			switch (ArmorTemplate.DataName)
 			{
-				case 'KevlarArmor_DLC_Day0':
-				ArmorTemplate.bAddsUtilitySlot = true;
-				ArmorTemplate.ItemCat = 'armor';
-				ArmorTemplate.Abilities.AddItem('LightKevlarArmorStats');
-				ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LW_GearAbilities'.default.LIGHT_KEVLAR_MOBILITY_BONUS);
-				ArmorTemplate.strImage = "img:///UILibrary_HeavyAndLightKevlarArmors.LightArmor";
-				ArmorTemplate.Abilities.AddItem('Light_Kevlar_Plating_Ability');
-				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.LIGHT_KEVLAR_PLATING_HP);
-
-				break;
+				// case 'KevlarArmor_DLC_Day0':
+				// ArmorTemplate.bAddsUtilitySlot = true;
+				// ArmorTemplate.ItemCat = 'armor';
+				// ArmorTemplate.Abilities.AddItem('LightKevlarArmorStats');
+				// ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LW_GearAbilities'.default.LIGHT_KEVLAR_MOBILITY_BONUS);
+				// ArmorTemplate.strImage = "img:///UILibrary_HeavyAndLightKevlarArmors.LightArmor";
+				// ArmorTemplate.Abilities.AddItem('Light_Kevlar_Plating_Ability');
+				// ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, class'X2Ability_LW_GearAbilities'.default.LIGHT_KEVLAR_PLATING_HP);
+				//break;
 
 				case 'HeavyPlatedArmor':
 				ArmorTemplate.CreatorTemplateName = 'HeavyPlatedArmor_Schematic';

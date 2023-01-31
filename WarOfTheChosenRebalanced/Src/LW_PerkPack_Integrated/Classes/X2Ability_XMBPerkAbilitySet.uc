@@ -190,6 +190,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(TrenchWarfare());
 	Templates.AddItem(Dedication());
 	Templates.AddItem(Dedication_Suit());
+	Templates.AddItem(TacticalDefense());
 
 	
 	Templates.AddItem(WatchThemRun());
@@ -289,6 +290,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddSecticide());
 	Templates.AddItem(SuppressingFire());
 	Templates.AddItem(SuppressingFireAddActions());
+	Templates.AddItem(Adrenaline());
 
 	
 	
@@ -4178,7 +4180,7 @@ static function X2AbilityTemplate SuppressingFireAddActions()
 	return Template;
 }
 
-static function X2AbilityTemplate TacticalDefesnse()
+static function X2AbilityTemplate TacticalDefense()
 {
 	local XMBEffect_ConditionalBonus ShootingEffect;
 	local X2AbilityTemplate Template;

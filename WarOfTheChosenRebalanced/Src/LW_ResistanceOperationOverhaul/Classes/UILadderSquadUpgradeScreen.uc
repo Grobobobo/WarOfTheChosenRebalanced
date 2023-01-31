@@ -130,7 +130,9 @@ var config int WEAPON_IMAGE_Y_POSITION;
 var config int WEAPON_TOOLTIP_X_POSITON;
 var config int WEAPON_TOOLTIP_Y_POSIITON;
 
-
+var config array<int> PROMOTIONS_ON_MISSIONS;
+var config int DEATH_RANK_DOWN_PENALTY;
+var config bool TEST_REFRESH_SHOP_STOCK_CONSTANTLY;
 delegate OnSelectorClickDelegate(UIMechaListItem MechaItem);
 
 simulated function OnInit()
@@ -179,7 +181,8 @@ simulated function InitScreen(XComPlayerController InitController, UIMovie InitM
 	local X2ResistanceTechUpgradeTemplate NewUpgradeTemplate;
 	local array<XComGameState_Item> UtilityItems;
 	local XComGameState_Item UtilityItem;
-
+	local int NumPromotions, NewRank;
+	local name OldClass;
 	`LOG("InitScreen", class'XComGameState_LadderProgress_Override'.default.ENABLE_LOG, class'XComGameState_LadderProgress_Override'.default.LOG_PREFIX);
 
 	LadderData = XComGameState_LadderProgress_Override(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_LadderProgress_Override'));
@@ -224,7 +227,22 @@ simulated function InitScreen(XComPlayerController InitController, UIMovie InitM
 			
 			if (!Soldier.IsAlive())
 			{
-				UpdateCustomizationForDeadSoldier(Soldier);
+				//ChosenCharacter = RandomlyChooseCharacter(ChosenClass, UsedCharacters);
+
+				//Reset a soldier with a new one and De-Promote him by 2 ranks
+				Soldier.bIgnoreItemEquipRestrictions = true;
+				OldClass = Soldier.GetSoldierClassTemplateName();
+				UpdateCustomizationForDeadSoldier(Soldier, UsedCharacters, OldClass);
+				NewRank = Max(Soldier.GetSoldierRank() - default.DEATH_RANK_DOWN_PENALTY,1);
+				Soldier.ResetRankToRookie();
+				Soldier.RankUpSoldier(NewGameState,OldClass);
+
+				for (RankIndex = 1; RankIndex < NewRank && RankIndex < NewSoldier.GetSoldierClassTemplate().GetMaxConfiguredRank(); RankIndex++)
+				{
+					Soldier.RankUpSoldier(NewGameState);
+				}
+				Soldier.bIgnoreItemEquipRestrictions = false;
+
 			}
 			
 			IsNew.AddItem(false);
@@ -248,8 +266,18 @@ simulated function InitScreen(XComPlayerController InitController, UIMovie InitM
 			{
 				UsedCharacters.AddItem(NewSoldier.GetFullName());
 			}
-			
-			for (RankIndex = 1; RankIndex < LadderData.LadderRung && RankIndex < NewSoldier.GetSoldierClassTemplate().GetMaxConfiguredRank(); RankIndex++)
+			NumPromotions = 0;
+			for(RankIndex = 0; RankIndex<default.PROMOTIONS_ON_MISSIONS.Length; RankIndex++){
+
+				if(LadderData.LadderRung +1 >= PROMOTIONS_ON_MISSIONS[RankIndex]){
+					numPromotions++;
+				}else{
+					break;
+				}
+			}
+
+
+			for (RankIndex = 0; RankIndex < NumPromotions && RankIndex < NewSoldier.GetSoldierClassTemplate().GetMaxConfiguredRank(); RankIndex++)
 			{
 				`LOG("Ranking them up", class'XComGameState_LadderProgress_Override'.default.ENABLE_LOG, class'XComGameState_LadderProgress_Override'.default.LOG_PREFIX);
 				NewSoldier.RankUpSoldier(NewGameState);
@@ -289,7 +317,7 @@ simulated function InitScreen(XComPlayerController InitController, UIMovie InitM
 	// Rank up all soldiers
 	foreach Squad(Soldier)
 	{
-		if (Soldier.GetSoldierRank() < Soldier.GetSoldierClassTemplate().GetMaxConfiguredRank())
+		if (Soldier.GetSoldierRank() < Soldier.GetSoldierClassTemplate().GetMaxConfiguredRank() && default.PROMOTIONS_ON_MISSIONS.Find(LadderData.LadderRung + 1) != INDEX_NONE )
 		{
 			// Remove all effects before ranking up, to avoid stat errors
 			
@@ -337,7 +365,8 @@ simulated function InitScreen(XComPlayerController InitController, UIMovie InitM
 
 	LadderData.AddMissionCompletedRewards();
 	LadderData.InitSaleOptions();
-	
+	LadderData.RefreshShopStock();
+
 	// Prepare to take headshots
 	m_kTacticalLocation = new class'X2Photobooth_TacticalLocationController';
 	m_kTacticalLocation.Init(OnStudioLoaded);
@@ -455,18 +484,36 @@ simulated function InitScreen(XComPlayerController InitController, UIMovie InitM
 	UpdateNavHelp();
 }
 
-simulated function UpdateCustomizationForDeadSoldier(XComGameState_Unit Soldier)
+simulated function UpdateCustomizationForDeadSoldier(XComGameState_Unit Soldier, out Array<String> UsedCharacters, name OldClass)
 {
 	local XGCharacterGenerator CharacterGenerator;
 	local TSoldier GeneratedSoldier;
+	local string ChosenCharacter;
+	local XComGameState_Unit CharacterUnit;
+	local X2SoldierClassTemplate ClassTemplate;
 	
-	CharacterGenerator = `XCOMGRI.Spawn(Soldier.GetMyTemplate().CharacterGeneratorClass);
-	GeneratedSoldier = CharacterGenerator.CreateTSoldier( Soldier.GetMyTemplateName() );
-	GeneratedSoldier.strNickName = Soldier.GenerateNickname( );
-	
-	Soldier.SetTAppearance(GeneratedSoldier.kAppearance);
-	Soldier.SetCharacterName(GeneratedSoldier.strFirstName, GeneratedSoldier.strLastName, GeneratedSoldier.strNickName);
-	Soldier.SetCountry(GeneratedSoldier.nmCountry);
+	ChosenCharacter = class'ResistanceOverhaulHelpers'.static.RandomlyChooseCharacter(OldClass,UsedCharacters);
+	CharacterUnit = `CHARACTERPOOLMGR.GetCharacter(ChosenCharacter);
+	ClassTemplate = class'X2SoldierClassTemplateManager'.static.GetSoldierClassTemplateManager().FindSoldierClassTemplate(OldClass);
+
+	//Set Soldier Appearance to the generated character
+	if(CharacterUnit != none && class'ResistanceOverhaulHelpers'.static.CharacterIsValid(CharacterUnit,ClassTemplate)){
+		UsedCharacters.AddItem(ChosenCharacter);
+		Soldier.SetTAppearance(CharacterUnit.kAppearance);
+		Soldier.SetCharacterName(CharacterUnit.GetFirstName(), CharacterUnit.GetLastName(), CharacterUnit.GetNickName());
+		Soldier.SetCountry(CharacterUnit.GetCountry());
+	}
+	else{
+		CharacterGenerator = `XCOMGRI.Spawn(Soldier.GetMyTemplate().CharacterGeneratorClass);
+		GeneratedSoldier = CharacterGenerator.CreateTSoldier( Soldier.GetMyTemplateName() );
+		GeneratedSoldier.strNickName = Soldier.GenerateNickname( );
+
+		Soldier.SetTAppearance(GeneratedSoldier.kAppearance);
+		Soldier.SetCharacterName(GeneratedSoldier.strFirstName, GeneratedSoldier.strLastName, GeneratedSoldier.strNickName);
+		Soldier.SetCountry(GeneratedSoldier.nmCountry);
+	}
+
+
 }
 
 simulated function UINavigationHelp GetNavHelp()
@@ -1067,6 +1114,10 @@ simulated function UpdateData()
 		break;
 	case eUIScreenState_Research:
 		Subtitle = m_ScreenSubtitles_eUIScreenState_Research;
+		if(default.TEST_REFRESH_SHOP_STOCK_CONSTANTLY)
+		{
+			LadderData.RefreshShopStock();
+		}
 		UpdateDataResearch();
 		break;
 	case eUIScreenState_ResearchCategory:
@@ -2424,51 +2475,53 @@ simulated function UpdateDataResearch()
 	GetListItem(Index).metadataInt = eUpCat_Secondary;
 	GetListItem(Index).EnableNavigation();
 	Index++;
-	
-	GetListItem(Index).UpdateDataValue(GetResearchCategoryText(m_HeavyWeaponCat, eUpCat_Heavy), "", , , OnClickResearchCategory);
-	GetListItem(Index).metadataInt = eUpCat_Heavy;
-	GetListItem(Index).EnableNavigation();
-	Index++;
-	
+
 	GetListItem(Index).UpdateDataValue(GetResearchCategoryText(m_ArmorCat, eUpCat_Armor), "", , , OnClickResearchCategory);
 	GetListItem(Index).metadataInt = eUpCat_Armor;
 	GetListItem(Index).EnableNavigation();
 	Index++;
-	
-	GetListItem(Index).UpdateDataValue(GetResearchCategoryText(m_GrenadeCat, eUpCat_Grenade), "", , , OnClickResearchCategory);
-	GetListItem(Index).metadataInt = eUpCat_Grenade;
-	GetListItem(Index).EnableNavigation();
-	Index++;
-	
-	GetListItem(Index).UpdateDataValue(GetResearchCategoryText(m_AmmoCat, eUpCat_Ammo), "", , , OnClickResearchCategory);
-	GetListItem(Index).metadataInt = eUpCat_Ammo;
-	GetListItem(Index).EnableNavigation();
-	Index++;
-	
-	GetListItem(Index).UpdateDataValue(GetResearchCategoryText(m_VestCat, eUpCat_Vest), "", , , OnClickResearchCategory);
-	GetListItem(Index).metadataInt = eUpCat_Vest;
-	GetListItem(Index).EnableNavigation();
-	Index++;
-	
+
 	GetListItem(Index).UpdateDataValue(GetResearchCategoryText(m_UtilityItemCat, eUpCat_Utility), "", , , OnClickResearchCategory);
 	GetListItem(Index).metadataInt = eUpCat_Utility;
 	GetListItem(Index).EnableNavigation();
 	Index++;
 	
-	GetListItem(Index).UpdateDataValue(GetResearchCategoryText(m_WeaponAttachmentCat, eUpCat_Attachment), "", , , OnClickResearchCategory);
-	GetListItem(Index).metadataInt = eUpCat_Attachment;
-	GetListItem(Index).EnableNavigation();
-	Index++;
+	// GetListItem(Index).UpdateDataValue(GetResearchCategoryText(m_HeavyWeaponCat, eUpCat_Heavy), "", , , OnClickResearchCategory);
+	// GetListItem(Index).metadataInt = eUpCat_Heavy;
+	// GetListItem(Index).EnableNavigation();
+	// Index++;
 	
-	GetListItem(Index).UpdateDataValue(GetResearchCategoryText(m_PCSCat, eUpCat_PCS), "", , , OnClickResearchCategory);
-	GetListItem(Index).metadataInt = eUpCat_PCS;
-	GetListItem(Index).EnableNavigation();
-	Index++;
+	// GetListItem(Index).UpdateDataValue(GetResearchCategoryText(m_GrenadeCat, eUpCat_Grenade), "", , , OnClickResearchCategory);
+	// GetListItem(Index).metadataInt = eUpCat_Grenade;
+	// GetListItem(Index).EnableNavigation();
+	// Index++;
 	
-	GetListItem(Index).UpdateDataValue(GetResearchCategoryText(m_MiscCat, eUpCat_Misc), "", , , OnClickResearchCategory);
-	GetListItem(Index).metadataInt = eUpCat_Misc;
-	GetListItem(Index).EnableNavigation();
-	Index++;
+	// GetListItem(Index).UpdateDataValue(GetResearchCategoryText(m_AmmoCat, eUpCat_Ammo), "", , , OnClickResearchCategory);
+	// GetListItem(Index).metadataInt = eUpCat_Ammo;
+	// GetListItem(Index).EnableNavigation();
+	// Index++;
+	
+	// GetListItem(Index).UpdateDataValue(GetResearchCategoryText(m_VestCat, eUpCat_Vest), "", , , OnClickResearchCategory);
+	// GetListItem(Index).metadataInt = eUpCat_Vest;
+	// GetListItem(Index).EnableNavigation();
+	// Index++;
+	
+
+	
+	// GetListItem(Index).UpdateDataValue(GetResearchCategoryText(m_WeaponAttachmentCat, eUpCat_Attachment), "", , , OnClickResearchCategory);
+	// GetListItem(Index).metadataInt = eUpCat_Attachment;
+	// GetListItem(Index).EnableNavigation();
+	// Index++;
+	
+	// GetListItem(Index).UpdateDataValue(GetResearchCategoryText(m_PCSCat, eUpCat_PCS), "", , , OnClickResearchCategory);
+	// GetListItem(Index).metadataInt = eUpCat_PCS;
+	// GetListItem(Index).EnableNavigation();
+	// Index++;
+	
+	// GetListItem(Index).UpdateDataValue(GetResearchCategoryText(m_MiscCat, eUpCat_Misc), "", , , OnClickResearchCategory);
+	// GetListItem(Index).metadataInt = eUpCat_Misc;
+	// GetListItem(Index).EnableNavigation();
+	// Index++;
 }
 
 simulated function string GetResearchCategoryText(string Text, EUpgradeCategory Category)

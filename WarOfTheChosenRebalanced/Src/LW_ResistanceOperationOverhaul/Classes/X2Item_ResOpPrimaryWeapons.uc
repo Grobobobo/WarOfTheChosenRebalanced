@@ -343,16 +343,16 @@ static function WeaponDamageValue GetWeaponDamage(int WeaponTier, optional float
     local float FloatBaseDamage;
     local int IntBaseDamage;
 
-    FloatBaseDamage = WeaponTier * DamagePCT;
+    FloatBaseDamage = (3 + WeaponTier) * DamagePCT;
     IntBaseDamage = int(FloatBaseDamage);
     
 
     WeaponDamage.Damage = IntBaseDamage;
-    WeaponDamage.Spread = Max(1 + int(FloatBaseDamage / 5) + BonusSpread,0);
+    WeaponDamage.Spread = Max(1 + int(FloatBaseDamage / 10) + BonusSpread,0);
     WeaponDamage.PlusOne = int((FloatBaseDamage - IntBaseDamage) * 100);
     WeaponDamage.Crit = int(FloatBaseDamage * CritDamagePCT);
     WeaponDamage.Pierce = BonusPierce;
-    WeaponDamage.Pierce = BonusPierce;
+    WeaponDamage.Shred = BonusShred;
     WeaponDamage.Rupture = BonusRupture;
 	WeaponDamage.DamageType = 'Projectile_MagXCom';
 
@@ -367,7 +367,7 @@ static function array<WeaponDamageValue> GetGauntletsExtraWeaponDamage(int Weapo
 	local GauntletExtraDamage TagValue;
 
 	foreach default.SHARDGAUNTLET_EXTRADAMAGE_TAGS(TagValue){
-		FloatBaseDamage = WeaponTier  * TagValue.DamageMod;
+		FloatBaseDamage = (3+WeaponTier)  * TagValue.DamageMod;
 		IntBaseDamage = int(FloatBaseDamage);
 		
 		WeaponDamage.Tag = TagValue.Tag;
@@ -724,7 +724,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Beam_RO(name Template
 
 	Template.Abilities.AddItem('Lightemup');
 	Template.Abilities.AddItem('PlasmaReload');
-	Template.Abilities.AddItem('LockAndLoad');
+	Template.Abilities.AddItem('LocknLoad_LW');
 
 	Template.GameArchetype = "WP_AssaultRifle_BM.WP_AssaultRifle_BM";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
@@ -831,7 +831,7 @@ static function X2DataTemplate CreateTLE3AssaultRifle(name TemplateName, int Tie
 
 	Template.Abilities.AddItem('Lightemup');
 	//Template.Abilities.AddItem('HighVolumeFire');
-	Template.Abilities.AddItem('FondFarewell');
+	Template.Abilities.AddItem('FondFarewell_LW');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "TLE3AssaultRifle.WP_TLE3AssaultRifle";
@@ -1107,7 +1107,7 @@ static function X2DataTemplate CreateTLE1Cannon(name TemplateName, int Tier)
 	//Template.OnAcquiredFn = OnTLE1CannonAcquired;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.MEDIUM_CONVENTIONAL_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier,1.25f,,,1);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f,,,,1);
 	Template.Aim = default.LMG_TLE_CONVENTIONAL_AIM;
 	Template.CritChance = default.LMG_TLE_CONVENTIONAL_CRITCHANCE;
 	Template.iClipSize = default.LMG_TLE_CONVENTIONAL_ICLIPSIZE;
@@ -1156,7 +1156,7 @@ static function X2DataTemplate CreateTLE2Cannon(name TemplateName, int Tier)
 	//Template.OnAcquiredFn = OnTLE2CannonAcquired;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.MEDIUM_MAGNETIC_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier,1.25f,,,1);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f,,,,1);
 	Template.Aim = default.LMG_TLE_MAGNETIC_AIM;
 	Template.CritChance = default.LMG_TLE_MAGNETIC_CRITCHANCE;
 	Template.iClipSize = default.LMG_TLE_MAGNETIC_ICLIPSIZE;
@@ -1207,7 +1207,7 @@ static function X2DataTemplate CreateTLE3Cannon(name TemplateName, int Tier)
 	//Template.OnAcquiredFn = OnTLE3CannonAcquired;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.LMG_ALL_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier,1.25f,,,1);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f,,,,1);
 	Template.Aim = default.LMG_TLE_BEAM_AIM;
 	Template.CritChance = default.LMG_TLE_BEAM_CRITCHANCE;
 	Template.iClipSize = default.LMG_TLE_BEAM_ICLIPSIZE;
@@ -1782,7 +1782,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Beam(name TemplateName, in
 	//Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
 
-	Template.Abilities.AddItem('WayLay');
+	Template.Abilities.AddItem('SkirmisherAmbush');
 	Template.Abilities.AddItem('CoolUnderPressure');
 	Template.Abilities.AddItem('PlasmaReload');
 
@@ -1828,7 +1828,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Conventional_RO(name Templa
 	Template.iTypicalActionCost = 2;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.MEDIUM_CONVENTIONAL_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier,1.5f,,,1);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.75f,,,,1);
 	Template.Aim = class'X2Item_DefaultWeapons'.default.LMG_CONVENTIONAL_AIM;
 	Template.CritChance = class'X2Item_DefaultWeapons'.default.LMG_CONVENTIONAL_CRITCHANCE;
 	Template.iClipSize = class'X2Item_DefaultWeapons'.default.LMG_CONVENTIONAL_ICLIPSIZE;
@@ -1883,7 +1883,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Laser(name TemplateName, in
 	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_LaserWeapons'.default.MEDIUM_LASER_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier,1.25f,1.0f,,1);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.5f,0.75,,,1);
 	Template.Aim = class'X2Item_LaserWeapons'.default.LMG_LASER_AIM;
 	Template.CritChance = class'X2Item_LaserWeapons'.default.LMG_LASER_CRITCHANCE;
 	Template.iClipSize = class'X2Item_LaserWeapons'.default.LMG_LASER_ICLIPSIZE;
@@ -1898,7 +1898,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Laser(name TemplateName, in
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('SuppressiveFire_LW');
+	Template.Abilities.AddItem('SuppressingFire_LW');
 	Template.Abilities.AddItem('Suppression');
 	Template.Abilities.AddItem('SteadFast');
 	Template.Abilities.AddItem('CoolUnderPressure');
@@ -1940,7 +1940,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Magnetic_RO(name TemplateNa
 	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.MEDIUM_MAGNETIC_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier,2.0f,,,1);
+	Template.BaseDamage = GetWeaponDamage(Tier,2.0f,,,,1);
 	Template.Aim = class'X2Item_DefaultWeapons'.default.LMG_MAGNETIC_AIM;
 	Template.CritChance = class'X2Item_DefaultWeapons'.default.LMG_MAGNETIC_CRITCHANCE;
 	Template.iClipSize = class'X2Item_DefaultWeapons'.default.LMG_MAGNETIC_ICLIPSIZE;
@@ -1994,7 +1994,7 @@ static function X2DataTemplate CreateCannon_Coil_Template(name TemplateName, int
 	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_Coilguns'.default.MEDIUM_COIL_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier,1.75f,,,1);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.75f,,,,1);
 	Template.Aim = class'X2Item_Coilguns'.default.CANNON_COIL_AIM;
 	Template.CritChance = class'X2Item_Coilguns'.default.CANNON_COIL_CRITCHANCE;
 	Template.iClipSize = class'X2Item_Coilguns'.default.CANNON_COIL_ICLIPSIZE;
@@ -2048,7 +2048,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Beam_RO(name TemplateName, 
 	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.MEDIUM_BEAM_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier,1.5f,,,1);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.5f,,,,1);
 	Template.Aim = class'X2Item_DefaultWeapons'.default.LMG_BEAM_AIM;
 	Template.CritChance = class'X2Item_DefaultWeapons'.default.LMG_BEAM_CRITCHANCE;
 	Template.iClipSize = class'X2Item_DefaultWeapons'.default.LMG_BEAM_ICLIPSIZE;
@@ -2064,9 +2064,9 @@ static function X2DataTemplate CreateTemplate_Cannon_Beam_RO(name TemplateName, 
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('SuppressiveFire_LW');
+	Template.Abilities.AddItem('SuppressingFire_LW');
 	Template.Abilities.AddItem('Suppression');
-	Template.Abilities.AddItem('HighVolumeFire_LW');
+	Template.Abilities.AddItem('HighVolumeFire');
 	//Template.Abilities.AddItem('PlasmaReload');
 
 	// This all the resources; sounds, animations, models, physics, the works.
@@ -2108,7 +2108,6 @@ static function X2DataTemplate CreateTemplate_SMG_Conventional(name TemplateName
 
 	Template.Abilities.AddItem('SMG_CV_StatBonus');
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_SMGAbilities'.default.SMG_CONVENTIONAL_MOBILITY_BONUS);
-
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.MEDIUM_CONVENTIONAL_RANGE;
 	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,1.0f);
 	Template.Aim = class'X2Item_SMGWeapon'.default.SMG_CONVENTIONAL_AIM;
@@ -2705,7 +2704,8 @@ static function X2DataTemplate CreateTLE1Shotgun(name TemplateName, int Tier)
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
 
-	Template.Abilities.AddItem('CloseCombatSpecialist');
+	Template.Abilities.AddItem('CloseEncounters');
+	Template.Abilities.AddItem('SlugShot');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "TLE1Shotgun.WP_TLE1Shotgun";
@@ -2804,7 +2804,7 @@ static function X2DataTemplate CreateTLE3Shotgun(name TemplateName, int Tier)
 	Template.Abilities.AddItem('HotLoadAmmo');
 
 	Template.Abilities.AddItem('Brawler2');
-	Template.Abilities.AddItem('TrenchGun');
+	Template.Abilities.AddItem('StreetSweeper');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "TLE3Shotgun.WP_TLE3Shotgun";
@@ -3437,7 +3437,7 @@ static function X2DataTemplate CreateTemplate_TacticianGauntlet(name TemplateNam
 	Template.BaseDamage.DamageType = 'Psi';
 
 	Template.Abilities.AddItem('IRI_SoulShot');
-	Template.Abilities.AddItem('Invert');
+	Template.Abilities.AddItem('TemplarInvert');
 	Template.Abilities.AddItem('StunStrike');
 	Template.Abilities.AddItem('DeepFocus');
 	Template.Abilities.AddItem('SupremeFocus');

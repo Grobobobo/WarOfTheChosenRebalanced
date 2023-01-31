@@ -207,7 +207,16 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 			Outstring = string(int(class'X2Ability_PerkPackAbilitySet2'.default.BRAWLER2_WOUND_REDUCTION * 100));
 			return true;
 		case 'FOND_FAREWELL_DMG_BONUS':
-		Outstring = string(int(class'X2Ability_PerkPackAbilitySet2'.default.FOND_FAREWELL_DMG_BONUS * 100));
+			Outstring = string(int(class'X2Ability_PerkPackAbilitySet2'.default.FOND_FAREWELL_DMG_BONUS * 100));
+			return true;
+		case 'LET_HER_RIP_MELEE_DMG_BUFF':
+			Outstring = string(int(class'X2Ability_PerkPackAbilitySet2'.default.LET_HER_RIP_MELEE_DMG_BUFF * 100));
+			return true;
+		case 'LET_HER_RIP_RANGED_ACCURACY_PENALTY':
+			Outstring = string(class'X2Ability_PerkPackAbilitySet2'.default.LET_HER_RIP_RANGED_ACCURACY_PENALTY);
+			return true;
+		case 'LET_HER_RIP_DURATION':
+			Outstring = string(class'X2Ability_PerkPackAbilitySet2'.default.LET_HER_RIP_DURATION);
 			return true;
 		case 'FORTIFIED_CRITDEF_BONUS':
 			Outstring = string(class'X2Ability_PerkPackAbilitySet'.default.FORTIFIED_CRITDEF_BONUS);

@@ -7,6 +7,8 @@ var name AssociatedTech;
 var array<InventoryUpgrade> InventoryUpgrades;
 var array<name> RequiredTechUpgrades;
 var bool bStarting;
+var name RequiredClass;
+var float Weight;
 var EUpgradeCategory Category;
 
 var localized string DisplayName;

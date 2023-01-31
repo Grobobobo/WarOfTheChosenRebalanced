@@ -37,6 +37,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddSprinter());
 	Templates.AddItem(AddPassSidearm());
 	Templates.AddItem(AddTenaciousDefense());
+	Templates.AddItem(AddExtraConditioning_LW());
+	
 	return Templates;
 }
 

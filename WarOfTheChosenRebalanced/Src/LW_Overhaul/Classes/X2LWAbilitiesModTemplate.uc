@@ -309,7 +309,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'Suppression':
 		case 'AreaSuppression':
 		case 'BulletWizard':
-		case 'SuppressiveFire_LW':
+		case 'SuppressingFire_LW':
 			AddSharedSuppressionCooldown(Template);
 			break;
 

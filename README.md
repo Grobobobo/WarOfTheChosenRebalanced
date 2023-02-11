@@ -30,16 +30,16 @@ Strategy Layer
 
 # Features
 
-##Strategy Layer
+## Strategy Layer
 Instead of a normal strategy layer campaign, The mod is based around heavily modified Resistance operation overhaul, fighting a semi-randomized string of missions and upgrading your squad between them
 The basic campaign length is 20 missions, starting at FL 1 and ending at FL 20.
 There are 2 main resources the player gains on missions - Supplies and Research.
 ### Equipment
-*All equipment now has Action economy perks assigned to them, which varies by weapon class and weapon tech.
+* All equipment now has Action economy perks assigned to them, which varies by weapon class and weapon tech.
 For example all assault rifles have Light em up, most SMGs have rapid fire, LMG’s and cannons have suppression, etc
 Beam Rifle plays completely different from laser rifle - In a way each weapon is its own ability set.
 
-*Reworked the tier system
+* Reworked the tier system
 5 tiers in total, base damage of each Tier is 4/5/6/7/8
 Conventional weapons are tier 1
 Laser, magnetic and pulse weapons are tier 2 base
@@ -51,18 +51,20 @@ Tier 2 and 3 weapons have higher tier versions with following prefixes:
 +4 tiers: Perfected
 For example Improved Plasma rifle is tier 4, while Elite Laser Rifle is tier 5.
 
-###Shop and research
+* **ALL DETAILS REGARDING EQUIPMENT CHANGES CAN BE FOUND [HERE](https://docs.google.com/spreadsheets/d/14W3V1V3A9Hbyi1Kb667taacAhDOU6x4r/edit?usp=sharing&ouid=101693235569137515434&rtpof=true&sd=true).**
+
+### Shop and research
 After each mission, the shop offers a small, random assortment of equipment, whose quality depends on Research acquired. Each Single item costs supplies.
 
 ### Squad
 * There is now only 1 Basic soldier class - The operator
 It can equip almost every primary and secondary weapon in the game, and its perk tree is randomized.
 
-*Each Squad will now consist of 5 Operators and 1 “Hero” Unit Randomly Chosen (Reaper, Skirmisher, Templar and not yet implemented spark)
+* Each Squad will now consist of 5 Operators and 1 “Hero” Unit Randomly Chosen (Reaper, Skirmisher, Templar and not yet implemented spark)
 
-*Reworked Skirmisher - Uses Heatsink similar to the proficiency rework. 
-*Reworked Reaper  - 
-*Reworked Templar - Focus no longer increases rend damage, and all psi perks have far superior action economy. Gains meditation as a base perk, all other perks are granted by the gauntlet type.
+* Reworked Skirmisher - Uses Heatsink similar to the proficiency rework. 
+* Reworked Reaper  - 
+* Reworked Templar - Focus no longer increases rend damage, and all psi perks have far superior action economy. Gains meditation as a base perk, all other perks are granted by the gauntlet type.
 
 * Soldier base stats have been rescaled like this:
 8 base HP
@@ -74,7 +76,7 @@ It can equip almost every primary and secondary weapon in the game, and its perk
 
 
 
-##Tactical
+## Tactical
 
 Here's a headline list of features of this mod
 
@@ -141,7 +143,7 @@ These changes make suppression far more effective at locking down units, and far
 * Enemies no longer have tiers, instead they gain stats based on Force level.
 * Incorporated over 100 new permament dark events as new and unpredictable enemy scaling
 
-More detailed enemy changes can be found [Here]([https://docs.google.com/document/d/1NQ52aOqW9bp9_9SxR-L5bFT3OggpIEgcvE1TJTrv2co/edit](https://docs.google.com/document/d/1e5toqREdla1HAwP09LcdcJ7cviJVCrNbk3SPPAYg9X4/edit?usp=sharing), I'll just present some more important changes here
+More detailed enemy changes can be found [Here](https://docs.google.com/document/d/1NQ52aOqW9bp9_9SxR-L5bFT3OggpIEgcvE1TJTrv2co/edit?usp=sharing), I'll just present some more important changes here
 
 #### The Leader System
 
@@ -159,7 +161,8 @@ Shotguns and Autopistols use short
 Cannons and LMG use LMG
 Vektors use Midlong
 Sniper Rifles use Long
-Here are new Weapon Ranges: ```
+Here are new Weapon Ranges: 
+```
 LMG_ALL_RANGE[0] = -15
 LMG_ALL_RANGE[1] = -15
 LMG_ALL_RANGE[2] = -10

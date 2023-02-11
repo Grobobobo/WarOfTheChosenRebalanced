@@ -63,7 +63,7 @@ It can equip almost every primary and secondary weapon in the game, and its perk
 * Each Squad will now consist of 5 Operators and 1 “Hero” Unit Randomly Chosen (Reaper, Skirmisher, Templar and not yet implemented spark)
 
 * Reworked Skirmisher - Uses Heatsink similar to the proficiency rework. 
-* Reworked Reaper  - 
+* Reworked Reaper  - Uses the temporary concealment on cooldown and throwing knifes from LWOTC.
 * Reworked Templar - Focus no longer increases rend damage, and all psi perks have far superior action economy. Gains meditation as a base perk, all other perks are granted by the gauntlet type.
 
 * Soldier base stats have been rescaled like this:

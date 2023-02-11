@@ -1,35 +1,86 @@
 # Grobo's Tactical Overhaul (GTO)
 
-This is a massive MegaOverhaul of XCOM 2 War of the Chosen, meant to be a pretty much complete package with the following design goals:
+This is meant to be a massive megaoverhaul of XCOM 2’s both tactical and strategic layers, mosty focued on the depth and variety of tactical combat.
 
-1.  Significantly lower the reliance on alpha striking (more 3-4 + turn engagements than 1-2 turn ones)
-2.  Eliminate the need to manage pod activations
-3.  A wide variety of distinct tools for the player, and a wide range of distinct challenges to deal with, such as:
-- Much more distinct enemy design
-- Significantly more nuanced perk trees and equipment 
-4. More even pacing and difficulty of the campaign
-5. Repurpose stealth from an ambush and combat avoidance tool to a scouting and defensive one.
+# Installing and playing the mod
+
+Just Extract and paste One of the releases in your local mod folder.
+
+How to play (after installing):
+1. Go to Legacy tab
+2. Select “Legacy Operations
+3. Click create custom legacy operation
+4. Click “Enable Grobo's Tactical Overhaul”
+5. (Optional) Configure the op to your liking
+6. Click Start
+
+Goals:
+
+Tactical Layer
+
+1.  Significantly lower the reliance on alpha striking (more big 3-4+ turn firefights than 1-2 turn ones)
+2. Eliminate the need to manage pod activations
+3. Make each enemy far more distinct from one another
+4. Repurpose stealth from an ambush and combat avoidance tool to a scouting and defensive one.
+
+Strategy Layer
+1. “Distill” and streamline the management aspect to allow for the bigger focus on tactical combat
+2. Allow for an extremely wide variety of possible tools for the player (around 50 unique primary weapons, and 50 secondary weapons!) without making all of them available at all times, encouraging the player to adapt.
+3. Shorten the campaign to lower the commitment needed and increase replayability.
+
+# Features
+
+##Strategy Layer
+Instead of a normal strategy layer campaign, The mod is based around heavily modified Resistance operation overhaul, fighting a semi-randomized string of missions and upgrading your squad between them
+The basic campaign length is 20 missions, starting at FL 1 and ending at FL 20.
+There are 2 main resources the player gains on missions - Supplies and Research.
+### Equipment
+*All equipment now has Action economy perks assigned to them, which varies by weapon class and weapon tech.
+For example all assault rifles have Light em up, most SMGs have rapid fire, LMG’s and cannons have suppression, etc
+Beam Rifle plays completely different from laser rifle - In a way each weapon is its own ability set.
+
+*Reworked the tier system
+5 tiers in total, base damage of each Tier is 4/5/6/7/8
+Conventional weapons are tier 1
+Laser, magnetic and pulse weapons are tier 2 base
+Coil, Beam and Plasma weapons are tier 3 base
+Tier 2 and 3 weapons have higher tier versions with following prefixes:
++1 tier: Improved
++2 tiers: Superior
++3 tiers: Elite
++4 tiers: Perfected
+For example Improved Plasma rifle is tier 4, while Elite Laser Rifle is tier 5.
+
+###Shop and research
+After each mission, the shop offers a small, random assortment of equipment, whose quality depends on Research acquired. Each Single item costs supplies.
+
+### Squad
+* There is now only 1 Basic soldier class - The operator
+It can equip almost every primary and secondary weapon in the game, and its perk tree is randomized.
+
+*Each Squad will now consist of 5 Operators and 1 “Hero” Unit Randomly Chosen (Reaper, Skirmisher, Templar and not yet implemented spark)
+
+*Reworked Skirmisher - Uses Heatsink similar to the proficiency rework. 
+*Reworked Reaper  - 
+*Reworked Templar - Focus no longer increases rend damage, and all psi perks have far superior action economy. Gains meditation as a base perk, all other perks are granted by the gauntlet type.
+
+* Soldier base stats have been rescaled like this:
+8 base HP
+80 base aim
+15 base mobility
+40 base will
+
+* Soldier HP, Aim and Will growths have been completely removed - Makes sure cover is just as important early game as it is late
 
 
-## Current State
-Currently the Mod is in beta, in a playable but feature incomplete, unbalanced and unpolished state.
 
-Particularly, the not-implemented features (In this case: Not rebalanced/redesigned yet) so far include:
-* Psi ops
-* MECS (instead of sparks)
-* Compatibility with Covert Infiltration
-* Resistance Orders
-* Negative Traits
-* Alien Hunters DLC
-
-Also, Gotcha again overwatch indicators are unreliable for now. I plan on creating a version that matches the new OW behavior.
-
-## Features
+##Tactical
 
 Here's a headline list of features of this mod
 
 ### Podless
 * As soon as you are spotted, every enemy in the map activates. Enemy count, XCOM HP and injury recovery times, and defensive tools are all redesigned with this in mind. 
+* AI Aggression depends on a mission type. Some missions will be one big map-wide firefight where the enemy hunts you down, but some missions enemies will try to stall you out until reinforcements arrive, and you’ll have to engage them more aggressively.
 
 ### Revamped concealment
 * With some exceptions, shared concealment now breaks at the start of the 2nd turn.
@@ -51,12 +102,9 @@ Here's a headline list of features of this mod
 
 ### Ammo management
 * Reload is now turn ending
-* Pistols and autopistols no longer carry any mobility penalty
-* Sawed-off can now be equipped in a pistol slot
 
 ### Attachments
-* Attachments now only have 1 tier, and supply is infinite as soon as you research Modular Weapons (do so early)
-* All weapons now start with only 1 attachment slot, and can gain 2 more slots by researching proving ground projects
+Attachments are not implemented yet, I'm currently trying to figure out how to fit them better with the shop system, as you'll often change weapons, so constantly equipping and unequipping tyem will be tedious. Still, I've got a rough outline already:
 
 Attachments have been rebalanced to:
 * Scope - Gain 5 aim, and reduce the long range non-squadsight penalties for weapons by 67%
@@ -65,10 +113,11 @@ Attachments have been rebalanced to:
 * Hair trigger - After a miss, gain +25 aim and crit
 * Stock - Missed attacks have a 35% chance to become a graze. Your attacks ignore up to 10 dodge
 
-* Expended magazine - Gain +1 weapon capacity
-* Auto-loader - Grants quick reload - Reloads up to 2 ammo, non-turn ending
+* Expended magazine, Auto-loader - removed, as they often would remove the gimmicks for a lot of weapons.
 
 * Suppressor - Gain 5 defense. Your first shot in a mission has +25/25 aim and crit.
+
+*Will add support for underbarrel launchers and bayonets.
 
 ### Overwatch and suppression
 Overwatch has been overhauled:
@@ -85,107 +134,6 @@ Similar to LWR overwatch rules, except it doesn't have covering fire by default.
 
 These changes make suppression far more effective at locking down units, and far less effective at killing them.
 
-### Injury and Fatigue
-
-* Significantly Decreased the recovery time for light and medium soldier wounds
-
-* Will will no longer drop on enemy sightings - Instead, it drops a set amount per turn
-
-* Significantly Increased the recovery Time for shaken soldiers
-
-* Injury and Fatigue times are now seperate - In vanilla recovering from injuries made you remove fatigue instantly, which made fatigue irrelevant with lower wound times.
-
-### Barracks
-
-* Rookie promotion now happens on the basis of super classes: there are 3
-
-Assault - Specialist
-
-Sharpshooter - Shinobi
-
-Gunner - Technical
-
-* Reduced the amount of starting soldiers to 16 from 22 - compensates for the average soldier being far more useful, reduces overall mission density and soldier management, makes recruiting worth more
-
-* Injury recovery is faster
-
-* All Soldiers Autopromote every 24 hours to squaddies
-
-* Removed GTS train rookies slots (not needed anymore)
-* Introduced Xcom Training Program Unlocks:
-
-XTP1: All Soldiers Autopromote to Lance Corporals (unlocked with first lieutenant)
-
-XTP2: All Soldiers Autopromote to Corporals (unlocked with Major)
-
-XTP3: All Soldiers Autopromote to Sergeants (unlocked with Colonel)
-
-
-* Most GTS Unlocks have been moved to proving ground projects
-
-Vengeance: Unlocked with Trooper autopsy
-
-Wet Work: Unlocked with Sectoid autopsy
-
-Integrated warfare: Unlocked with Priest Autopsy
-
-Lightning Strike: Unlocked with Spectre Autopsy
-
-Stay with me: Unlocked with Chryssalid Autopsy
-
-Vulture: Unlocked with Alien Encryption research
-
-
-#### Soldiers
-
-* All soldiers now start as squaddies - Eliminates the boring rookie phase where your toolset was severely limited
-
-* All soldier trees have been redesigned to have their role defining tools/power spikes happen earlier in the tree than later - Makes the builds go online a lot sooner, and decreases the impact of losing higher ranked soldiers, and increases the ability to more easily replace them
-
-* Soldier base stats have been rescaled like this:
-8 base HP
-80 base aim
-15 base mobility
-40 base will
-
-* Soldier HP, Aim and Will growths have been completely removed - Makes sure cover is just as important early game as it is late
-
-* All soldier classes (except templars) now have access to the following "Universal" primary weapon categories: Assault rifle, Shotgun, SMG, Bullpup, Vektor, Grenade launcher
-
-
-
-##### Classes
-
-* The Ranger and Grenadier classes have been removed - their "niches" have been incorporated into the builds of other classes,
-sawed-offs are now universal sidearm slot weapons, grenade launchers are now universal primary weapons.
-
-###### Gunner Class
-* New Squaddie set of perks - Suppression, flush, bladestorm knife fighter
-
-###### Technical Class
-* No longer has gauntlet, instead the technical has a rocket launcher secondary weapon, and is the only class that can equip a primary flamethrower called an immolator
-
-* Can Equip several new rocket types, detailed in the weapons section
-* Immolator allows to equip special canisters in the sidearm slot, detailed in the weapons section
-
-
-###### Shinobi Class
-* New Squaddie set of perks - Phantom, Slash, Whirlwind
-* Phantom has been reworked to: Temporarily conceal yourself for 1 turn with no detection radius. Standard Slash attack does not reveal you. 3 charges
-
-###### Assault Class
-* New Squaddie set of perks - Close encounters, Arc thrower stun
-
-
-###### Sharpshooter Class
-* Same Squaddie set of perks - Squadsight, Holotarget, except:
-* Holotargeting is now a free action, on a 3 turn cooldown
-
-
-###### Specialist Class
-* New Squaddie set of perks - Aid Protocol, Blinding Protocol, Combat Protocol
-
-You can find new class trees [here.](https://docs.google.com/spreadsheets/d/1Sdk8q8FWuxaaPSpgdK1BOIwQZYgUXXFv/edit?usp=sharing&ouid=101693235569137515434&rtpof=true&sd=true)
 
 ### Enemies
 
@@ -193,294 +141,25 @@ You can find new class trees [here.](https://docs.google.com/spreadsheets/d/1Sdk
 * Enemies no longer have tiers, instead they gain stats based on Force level.
 * Incorporated over 100 new permament dark events as new and unpredictable enemy scaling
 
-More detailed enemy changes can be found here, I'll just present some more important changes here
+More detailed enemy changes can be found [Here]([https://docs.google.com/document/d/1NQ52aOqW9bp9_9SxR-L5bFT3OggpIEgcvE1TJTrv2co/edit](https://docs.google.com/document/d/1e5toqREdla1HAwP09LcdcJ7cviJVCrNbk3SPPAYg9X4/edit?usp=sharing), I'll just present some more important changes here
 
 #### The Leader System
 
 * Most pods now have a leader, which is now a significantly more powerful version of a standard unit (eg trooper leader becomes advent vanguard, priest leader is a modified purge priest).
 
-#### Troopers
-* Gains Marauder (standard shots are no longer turn ending)
-
-#### Officers
-* Gains Defilade (All allies in sight of the officer gain 30 crit resistance)
-* Mark target is now a free action
-
-#### Sectoids
-* Reworked Mind Spin: Is now a free action, Cannot mind control by default, but will always mind control targets that are disoriented, stunned, or panicked
-* Reduced Psi Offense by a lot so mindspin can now fail sometimes
-* Sectoid Commanders lose Mass Mindspin because it wasn't very effective/working correctly.
-
-#### Drones
-* Repair is now a free action
-* Stunner to 3 actions from 4
-
-#### Stun lancers
-* Stun Lance is no longer a dash attack, deals a lot more damage, and will now always stun for 1 action (instead of a random effect including unconscious)
-* Gains Whirlwind
-
-#### Priests
-* No longer have Mind Control by default
-* No longer have sustain
-
-#### Vipers
-* Enemies can no longer shoot bound units
-* Bind damage severely increased
-* Damaging the viper no longer breaks the bind
-* Tongue grab aim decreased by 10
-
-#### Sidewinders
-* Have Hit and Slither by default
-
-#### Mutons
-* Gains First In Line
-
-#### Mecs
-* Gains Damage Control by default
-
-#### Spectres
-* Shadowbind is no longer a dash move
-
-#### Andromedons
-* Primary Weapon now has short range
-* Acid Blob cooldown to 1, but it has severely reduced radius and can now scatter
-
-#### Sectopods
-* Significantly less initial armor and HP
-* Gains Protective Servos - gain stackable 2 armor for each damage you take this turn
-* It can wrath cannon only as a last action, and will always wrath cannon as a last action
-* Wrath Cannon cooldown to 1, and damage to 20
-
-#### Gatekeeper
-* Significantly Less initial armor and HP
-* Will no longer attack allies for no reason
-
-#### Archons
-* Gains a lot more defense and dodge
-* Has Close Combat Specialist by default
-
-
-
-
 ### PRIMARY WEAPONS
-
-* Tweaked Weapon Damage Scaling:
-
-Base Damage is 4/5/6/7/8 depending on weapon tier (from 4/5.5/7/8.5/10)
 
 * Significantly decreased the amount of shred in the game - makes armor actually important
 * Critical Damage is now +50% of a weapon's base damage (Ex. Assault rifle with base damage of 4 will have +2 critical damage)
-* Rebalanced Primary weapons the following way
-
-#### AR
-* 100% weapon damage
-* 4 ammo capacity
-* Medium range
-
-#### SMG
-* 75% base damage
-* 30 base crit
-* 3 ammo capacity
-* 100% crit damage (from 50)
-* +1 mobility
-* MidShort Range
-
-#### Bullpup
-* 100% base damage
-* 15 base aim
-* 3 ammo capacity
-* -40 base crit (note this is negative)
-* +1 mobility
-* MidShort Range
-
-#### Strike Rifle (Vektor)
-* 100% base damage
-* 10 base aim
-* 3 ammo capacity
-* 30 base crit
-* Mid long range
-* no more bonus crit damage
-
-#### Shotgun
-* 125% base damae
-* 20 base crit
-* 4 ammo capacity
-* Short Range
-
-#### Sniper Rifle
-* 125% base damage
-* 20 base aim
-* 10 base crit
-* 3 ammo capacity
-* Long Range
-
-#### Cannon
-* 150% base damage
-* -15 base aim
-* -1 mobility
-* 6 ammo capacity
-* mid long range
-
-
-#### Immolator (technical only)
-* Primary Flamethrower, uses lw2 targeting
-* 100% base damage, has 100% chance to set someone on fire
-* 7 tile long, 5 tile wide
-* infinite ammo, but 2 only ammo capacity, in addition flamethrower has 2 turns cooldown.
-* T0 is availible at game start
-* T1 Is unlocked with Purifier autopsy
-* T2 is unlocked with Berserker autopsy
-* T3 is unlocked with Sectopod autopsy
-* Allows to equip canisters in the pistol slot
-
-* Immolator Attachments:
-
-Wide Angle Nozzle - +2 cone width
-
-High Velocity Nozzle - +1 cone length
-
-Expanded Fuel Tank - +2 ammo capacity
-
-Heat Resistant Tank - -2 cooldown on flamethrower
-
-Fuel Line - +1 canister charge
-
-Light Frame - reduced infiltration time
-
-Outrider Frame - +1 weapon mobility, at the cost of -35% weapon damage
-
-#### Blast canister:
-* 150% base weapon damage, very short range, knocks enemies back
-* Available instantly
-
-#### Smoke canister
-* 0% weapon damage, smoke, wide radius
-* available instantly
-
-#### Gas Canister:
-* 50% weapon damage, longer range, inflicts poison
-* unlocked with Viper autopsy
-
-#### Acid Canister:
-* 50% weapon damage, inflicts acid
-* unlocked with Spectre autopsy
-
-#### Bluescreen Canister
-* 150% weapon damage, armor piercing, stuns for 1 action and only affects mechanicals
-* unlocked with Bluescreen Protocol
-
-
-#### Medical canister
-* 0% weapon damage, smoke, +2 weapon range, regeneration
-* unlocked with Chryssalid autopsy
-
-
-#### GRENADE LAUNCHER
-* +2/3/3 grenade throw range depending on tier
-* +10/15/20 grenade accuracy
-* Plasma grenade launcher grants blaster launcher targeting
-
-### Secondary weapons
-* Sword
-* 150% base weapon damage
-* 40 aim
-* 30 crit
-
-#### Arc thrower
-* Arc thrower is no longer turn ending by default, Has the electroshock effect by default
-* Advanced arc thrower grants 10 aim 
-* Superior arc thrower grants +1 stun action 
-
-#### Holotargeter
-* Holotargeting aim stays at 15
-* Holotargeting is now a free action with a 3 turn cooldown
-* Rapid targeting reduces the cooldown of holo by 1
-
-* Advanced holotargeter grants hidef holo
-* Elite holotargeter grants Vital point targeting
-
-#### Knife:
-* 100% weapon damage
-* 35 aim
-* 20 crit
-
-#### Rocket launcher (technical)
-* Has 2 standard rockets by default
-* Firing a rocket has a 3 turn cooldown
-
-Rocket types:
-#### Standard:
-* 150% weapon damage
-* 6 radius
-* 0 shred
-* 0 pierce
-
-#### Shredder
-* 175% weapon damage
-* 4 radius
-* 2/2/2 shred
-* 2/3/4 pierce
-
-#### lockon
-* 200% weapon damage
-* single target
-* 4/6 pierce
-* can only be fired at holo’d targets
-
-#### flechette
-* 200% weapon damage
-* 6 radius
-* Damage is reduced a lot against cover
-
-#### Plasma Ejector:
-* 150% weapon damage in a line - replaces plasma blaster
-
-### Sidearms
-
-#### Pistol
-* 75% base damage
-* 20 base crit
-* infinite ammo capacity
-* midshort range
-
-#### Autopistol
-* 75% base damage
-* 20 base crit
-* ignores up to 30 dodge
-* short range
-
-#### Sawed off 
-* 125% base damage
-* 20 base crit
-* sawed-off range
-* does not work with any of the pistol skills
-* 2 Ammo, after that can be reloaded
-* doesn't have both barrels anymore
-
-### Grenades
-
-#### Frag Grenade
-* 4-6 weapon damage
-* 4 radius
-* 0 shred
-
-#### Magnetic Grenade
-* New Tier 2 Frag grenade upgrade
-* 6-9 damage
-* 4 radius
-* 0 shred
-
-#### Plasma Grenade
-* Now acts as a tier 3 grenade
-* 8-12 damage
-* 4 radius
-* 0 shred
-
 
 ### Weapon Ranges
-
-Here are new Weapon Ranges:
-```
+Assault Rifles and Bullpups use mid range
+SMG’s and Pistols use midshort
+Shotguns and Autopistols use short
+Cannons and LMG use LMG
+Vektors use Midlong
+Sniper Rifles use Long
+Here are new Weapon Ranges: ```
 LMG_ALL_RANGE[0] = -15
 LMG_ALL_RANGE[1] = -15
 LMG_ALL_RANGE[2] = -10
@@ -688,89 +367,22 @@ LONG_ALL_RANGE[41] = -44
 * Notice mid range being much better at longer ranges, and midlong and long ranges having very harsh close range penalties
 
 
-### Armor
-
-* Removed all ablative plating equipment from the game. Instead armor gives plating and there are PG projects to further increase plating
-
-#### Kevlar
-
-##### Light Kevlar
-
-* 0 hp, 1 ablative, 2 mobility
-
-##### Kevlar:
-
-* 0 hp, 3 ablative, 0 mobility
-
-#### Plated:
-
-##### Spider suit
-
-* 2 hp, 2 ablative, 2 mobility, grapple
-
-##### Predator armor
-
-* 1 HP, 1 armor, 4 ablative
-
-##### EXO
-
-* 1 HP, 1 armor, 4 ablative,
-* No longer grants a heavy weapon slot
-* Exoskeleton Servos: This Unit's mobility cannot go below 13
-* -1 Equipment Slot
-
-#### Powered
-
-##### Wraith suit
-
-* 5 hp, 3 ablative, 2 mobility, grapple, wraith properties
-
-
-##### Warden armor:
-
-* 5hp, 2 armor, 5 ablative
-
-##### WAR Suit
-
-* 5hp, 2 armor, 5 ablative,
-
-* Exoskeleton Servos: This Unit's mobility cannot go below 13
-
-* -1 equipment slot
-
-* ShieldWall
-
-
-
 ### DOT EFFECTS CHANGES
 
 * Disorient: more or less the same, slighty lower aim penalty and no longer kills zombies 
 
 * Poison: does not block any abilities, but has much more severe stat penalties than disorient and deals damage 
 
-* Burn now blocks only standard shot, overwatch, and throw/launch grenade, everything else works
-
 * Acid burn: One of the few sources of shred, the game is getting changed so armor is overall rarer but shred is much, MUCH less common and harder to do 
 
-### Officers
-* Air Controller skyranger turn reduction to 1 (from 2)
-* New ability: Fall Back (Give a free but uncontrolled action to a unit that has spent their action points that causes it to retreat)
-* New ability: Resupply - make all allies within command range that have spent their action points reload.
+## Current State
+Currently the Mod is in beta, in a playable but feature incomplete, unbalanced and unpolished state.
 
-#### NEW OFFICER TREE
-* Oscar mike vs Focus fire
-* Incoming vs Get Some
-* Air Controller vs Jammer
-* Fall Back vs Collector
-* Fire Discipline vs Defilade
-* Resupply vs Scavenger
-* Combined Arms vs Infiltrator
+It already has a large arsenal of equipment to choose from, and a wide variety of enemies to go against, but more could be added, and I plan on adding a lot more UX features, like better squad editing, tutorial popups for new mechanics, and clearer start game navigation.
 
-### Golden Path
-* Golden path missions now spawn much closer to contacted regions and offer significantly better rewards - Encourages the player to do them earlier
-* Blacksite and forge EVAC zone has been reverted to vanilla placement - There isn't any more risk to stealthing missions 
 
 ## Acknowledgements and Credits
+
 
 ### LWOTC Credits:
 
@@ -799,8 +411,7 @@ LONG_ALL_RANGE[41] = -44
  * The folks on XCOM 2 Modders Discord, who have been incredibly helpful at all stages of this project
  * All the folks that have been testing the development builds and providing feedback and issue reports
 
-
-### LWOTC-R specific Credits:
+### GTO specific Credits:
 
 * Iridar for his [Rocket Launchers](https://steamcommunity.com/sharedfiles/filedetails/?id=1775963384&searchtext=rocket+launcher)
 * Iridar and claus for [Immolator Models](https://steamcommunity.com/sharedfiles/filedetails/?id=2237137501&searchtext=immolator+overhaul)
@@ -809,41 +420,9 @@ LONG_ALL_RANGE[41] = -44
 * NeIVIeSiS for various 2D icons (Like the light kevlar one)
 * Iridar for [Grenade scatter mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2025928724&searchtext=grenade+scatter)
 * Claus for [Magnetic Grenade](https://steamcommunity.com/sharedfiles/filedetails/?id=2552974509&searchtext=assault)
-* Grimy for [Primary nade launcher](https://steamcommunity.com/sharedfiles/filedetails/?id=1673431726&searchtext=grenade+launcher)
 * Hnefi for [Some of the podless code](https://steamcommunity.com/sharedfiles/filedetails/?id=1302278158&searchtext=podless+wotc)
 * Xylth for [Rookie's choice GTS code](https://steamcommunity.com/sharedfiles/filedetails/?id=1302278158&searchtext=podless+wotc)
 
-#### Ability Changelog
-The actual list is too long, but here are the few important ones
-* Will To survive Decreases defense by 15, Grants 2 ablative hp, 35% cover damage reduction, and 20% wound time reduction
-* Serial and reaper are now passives
-* Lethal is now 30% damage, and also applies to grenades
-* Chain lightning now replaces normal arc thrower shots, chained attacks disorient rather than stun, and only hits up to 3 targets
-* Fleche no longer grants any bonus damage, and has a 3 turn cooldown
-* Sentinel, Guardian and RR can now work against the same target
-
-### New Abilities
-
-Similarly, only the important ones
-
-* Bullet Wizard: Grants Area suppression. Suppression and Area suppression deal small amount of damage to the targets.
-* Merciless: Once per turn, taking a standard shot with your primary weapon on a disoriented, panicked, or stunned enemy will refund your actions.
-* Impact: Your Attacks can now remove enemy overwatch on hit.
-* Advanced Robotics: Upgrades ABC protocols by granting Threat Assessment, Shock Therapy and Chaining Jolt.
-
-Threat assessment makes Aid protocol target go on overwatch
-
-Shock therapy makes Blinding protocol have a 50% chance to stun the targets.
-
-Chaining Jolt causes combat protocol to jump to up to 3 additional targets.
-
-## Installing and playing the mod
-
-Installing the mod works exactly the same as normal lwotc, except you download it from here. You can find general instructions on LWOTC's [wiki page.](https://github.com/long-war-2/lwotc/wiki/Installing-Long-War-of-the-Chosen)
-
-You can grab a release from either the discord sercver, or release section in this repository (experimental ones get posted on discord, more stable ones here)
-
-If you have some kind of trouble or Want to give feedback you can join [LWOTC-R discord server](https://discord.gg/bNcp2V79FG), Or raise an issue in github
 
 ## Contributing translations
 

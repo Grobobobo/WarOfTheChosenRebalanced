@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------------------
-//  FILE:    UILadderModeScoringDialog_GTO.uc
+//  FILE:    UILadderModeScoringDialog_Override.uc
 //  AUTHORS: Grobobobo
 //
 //  PURPOSE: Removes the unneeded score screens
@@ -53,4 +53,6 @@ defaultproperties
 {
 	MCName = "";
 	Package = "";
+	bHideOnLoseFocus = true;
+
 }

@@ -444,6 +444,7 @@ static function X2DataTemplate CreateTLE1AssaultRifle(name TemplateName, int Tie
 	Template.iPhysicsImpulse = 5;
 
 	Template.StartingItem = true;
+	Template.bInfiniteItem = true;
 	Template.CanBeBuilt = false;
 
 	Template.fKnockbackDamageAmount = 5.0f;

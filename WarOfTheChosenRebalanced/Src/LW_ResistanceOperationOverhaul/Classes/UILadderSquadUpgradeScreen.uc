@@ -2553,11 +2553,16 @@ simulated function UpdateDataResearchCategory()
 	local string CostString;
 	local string NameString;
 	local string CreditsString;
+	local X2ItemTemplateManager ItemTemplateManager;
+	local X2ItemTemplate ItemTemplate;
+	local array<X2ResistanceTechUpgradeTemplate> ListOfTemplates;
+	ItemTemplateManager = class'X2ItemTemplateManager'.static.GetItemTemplateManager();
 
 	Index = 0;
 	//TemplateManager = class'X2ResistanceTechUpgradeTemplateManager'.static.GetTemplateManager();
+	ListOfTemplates = LadderData.CurrentShopUpgrades[SelectedUpgradeCategory].List;
 
-	foreach LadderData.CurrentShopUpgrades[SelectedUpgradeCategory].List(Template)
+	foreach ListOfTemplates(Template)
 	{
 		TemplateName = Template.DataName;
 		if (!LadderData.HasPurchasedTechUpgrade(TemplateName))
@@ -2577,10 +2582,18 @@ simulated function UpdateDataResearchCategory()
 					{
 						CreditsValue = Template.Cost;
 						CreditsString = string(CreditsValue);
-						NameString = Template.DisplayName;
+						if(Template.DisplayName != "")
+						{
+							NameString = Template.DisplayName;
+						}
+						else
+						{
+							ItemTemplate = ItemTemplateManager.FindItemTemplate(Template.InventoryUpgrades[0].TemplateName);
+							NameString = ItemTemplate.GetItemFriendlyName();
+						}
 					}
 
-					// CostString = "";
+					CostString = "";
 					// if (Template.RequiredScience > 0)
 					// {
 					// 	CostString = CostString $ string(Template.RequiredScience/4) $ " " $ class'UIUtilities_Text'.static.InjectImage(ScienceIcon, 20, 20, 0) $ "  ";
@@ -2635,7 +2648,12 @@ simulated function ConfirmUpgradeSelection()
 	local TDialogueBoxData DialogData;
 	local X2ResistanceTechUpgradeTemplateManager TemplateManager;
 	local X2ResistanceTechUpgradeTemplate Template;
+	local X2ItemTemplateManager ItemTemplateManager;
+	local X2ItemTemplate ItemTemplate;
+	local array<X2ResistanceTechUpgradeTemplate> ListOfTemplates;
 	
+	ItemTemplateManager = class'X2ItemTemplateManager'.static.GetItemTemplateManager();
+
 	Movie.Pres.PlayUISound(eSUISound_MenuSelect);
 
 	DialogData.eType = eDialog_Alert;
@@ -2649,7 +2667,17 @@ simulated function ConfirmUpgradeSelection()
 	Template = TemplateManager.FindTemplate(PendingUpgradeName);
 
 	LocTag = XGParamTag(`XEXPANDCONTEXT.FindTag("XGParam"));
-	LocTag.StrValue0 = Template.DisplayName;
+
+	if(Template.DisplayName != "")
+	{
+		LocTag.StrValue0 = Template.DisplayName;
+	}
+	else
+	{
+		ItemTemplate = ItemTemplateManager.FindItemTemplate(Template.InventoryUpgrades[0].TemplateName);
+		LocTag.StrValue0 = ItemTemplate.GetItemFriendlyName();
+	}
+
 	
 	LocTag.IntValue0 = Template.Cost;
 	if (LadderData.IsUpgradeOnSale(Template.DataName))

@@ -376,10 +376,6 @@ static function X2DataTemplate CreateTemplate_Pistol_Conventional_RO(name Templa
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('Reload');
 
-	Template.Abilities.AddItem('Fatality_LW');
-	Template.Abilities.AddItem('QuickDraw');
-	Template.Abilities.AddItem('Takethis');
-
 	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotConvA');	
 	
 	// This all the resources; sounds, animations, models, physics, the works.
@@ -486,7 +482,6 @@ static function X2DataTemplate CreateTemplate_Pistol_Magnetic_RO(name TemplateNa
 	Template.Abilities.AddItem('PistolReturnFire');
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('Reload');
-	Template.Abilities.AddItem('Takethis');
 	Template.Abilities.AddItem('quickdraw');
 
 	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotMagA');
@@ -544,7 +539,6 @@ static function X2DataTemplate CreateTemplate_Pistol_Coil(name TemplateName, int
 	Template.Abilities.AddItem('PistolReturnFire');
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('Reload');
-	Template.Abilities.AddItem('TakeThis');
 	Template.Abilities.AddItem('Fatality_LW');
 	Template.Abilities.AddItem('Quickdraw');
 

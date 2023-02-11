@@ -11,7 +11,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateFragGrenade_RO('FragGrenade_2',2));
 	Weapons.AddItem(CreateFragGrenade_RO('FragGrenade_3',3));
 	Weapons.AddItem(CreateFragGrenade_RO('FragGrenade_4',4));
-	Weapons.AddItem(CreateFragGrenade_RO('FragGrenade_5',4));
+	Weapons.AddItem(CreateFragGrenade_RO('FragGrenade_5',5));
 
 	//Weapons.AddItem(CreateMagGrenade('MagGrenade_1',1));
 	Weapons.AddItem(CreateMagGrenade('MagGrenade_2',2));
@@ -38,16 +38,16 @@ static function WeaponDamageValue GetWeaponDamage(int WeaponTier, optional float
     local float FloatBaseDamage;
     local int IntBaseDamage;
 
-    FloatBaseDamage = WeaponTier * DamagePCT;
+    FloatBaseDamage = (3 + WeaponTier) * DamagePCT;
     IntBaseDamage = int(FloatBaseDamage);
     
 
     WeaponDamage.Damage = IntBaseDamage;
-    WeaponDamage.Spread = Max(1 + int(FloatBaseDamage / 5) + BonusSpread,0);
+    WeaponDamage.Spread = Max(1 + int(FloatBaseDamage / 10) + BonusSpread,0);
     WeaponDamage.PlusOne = int((FloatBaseDamage - IntBaseDamage) * 100);
     WeaponDamage.Crit = int(FloatBaseDamage * CritDamagePCT);
     WeaponDamage.Pierce = BonusPierce;
-    WeaponDamage.Pierce = BonusPierce;
+    WeaponDamage.Shred = BonusShred;
     WeaponDamage.Rupture = BonusRupture;
 	WeaponDamage.DamageType = 'Explosion';
 

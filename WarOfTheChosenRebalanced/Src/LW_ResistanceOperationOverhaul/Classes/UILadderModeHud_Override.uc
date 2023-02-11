@@ -51,4 +51,6 @@ defaultproperties
 	SetScoreDirectFunction=""
 	SetScoreFunction=""
 	TriggerBannerFunction=""
+	bHideOnLoseFocus = true;
+
 }

@@ -8440,8 +8440,8 @@ LocFlyOverText="Mark For Death"
 [Fatality_LW X2AbilityTemplate]
 LocFriendlyName="Fatality"
 ;LWOTC Needs translation(2)
-LocLongDescription="Gain +100 aim and crit against units at <Ability:FATALITY_THRESHOLD>% hp or lower with your <Ability:BOUND_WEAPON_NAME/>."
-LocHelpText="Gain +100 aim and crit against units at <Ability:FATALITY_THRESHOLD>% hp or lower with your<Ability:BOUND_WEAPON_NAME/>."
+LocLongDescription="Gain +100 aim and crit against units at <Ability:FATALITY_THRESHOLD>% hp or lower with your pistol."
+LocHelpText="Gain +100 aim and crit against units at <Ability:FATALITY_THRESHOLD>% hp or lower with your pistol."
 ;End Translation(2)
 LocFlyOverText="Fatality"
 
@@ -9936,21 +9936,21 @@ AbilityDescName="Old-world Assault Rifle"
 FriendlyName="Modern Assault Rifle"
 FriendlyNamePlural="Assault Rifles"
 BriefSummary="We've managed to salvage a variety of standard infantry small arms; this is the most common variety, similar to the rifle used twenty years before. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
-TacticalText=""
+TacticalText=" "
 AbilityDescName="assault rifle"
 
 [AssaultRifle_CV_2 X2WeaponTemplate]
 FriendlyName="Improved Modern Assault Rifle"
 FriendlyNamePlural="Assault Rifles"
 BriefSummary="We've managed to salvage a variety of standard infantry small arms; this is the most common variety, similar to the rifle used twenty years before. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
-TacticalText=""
+TacticalText=" "
 AbilityDescName="assault rifle"
 
 [AssaultRifle_CV_3 X2WeaponTemplate]
 FriendlyName="Superior Modern Assault Rifle"
 FriendlyNamePlural="Assault Rifles"
 BriefSummary="We've managed to salvage a variety of standard infantry small arms; this is the most common variety, similar to the rifle used twenty years before. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
-TacticalText=""
+TacticalText=" "
 AbilityDescName="assault rifle"
 
 [AssaultRifle_LS_2 X2WeaponTemplate]
@@ -10013,21 +10013,21 @@ AbilityDescName="assault rifle"
 FriendlyName="Coil Rifle"
 FriendlyNamePlural="Coil Rifles"
 BriefSummary="A powerful, mid-range, armor-piercing coilgun that fills the assault rifle role."
-TacticalText=""
+TacticalText=" "
 AbilityDescName="assault rifle"
 
 [AssaultRifle_CG_4 X2WeaponTemplate]
 FriendlyName="Improved Coil Rifle"
 FriendlyNamePlural="Coil Rifles"
 BriefSummary="A powerful, mid-range, armor-piercing coilgun that fills the assault rifle role."
-TacticalText=""
+TacticalText=" "
 AbilityDescName="assault rifle"
 
 [AssaultRifle_CG_5 X2WeaponTemplate]
 FriendlyName="Superior Coil Rifle"
 FriendlyNamePlural="Coil Rifles"
 BriefSummary="A powerful, mid-range, armor-piercing coilgun that fills the assault rifle role."
-TacticalText=""
+TacticalText=" "
 AbilityDescName="assault rifle"
 
 [AssaultRifle_BM_3 X2WeaponTemplate]
@@ -10055,28 +10055,28 @@ AbilityDescName="assault rifle"
 FriendlyName="Pulse Rifle"
 FriendlyNamePlural="Pulse Rifles"
 BriefSummary="Magnetized projectile tech has enabled us to create rifle-style slugthrowers. They represent a substantial improvement in power relative to conventional assault rifles."
-TacticalText=""
+TacticalText=" "
 AbilityDescName="Pulse Rifle"
 
 [TLE_AssaultRifle_MG_3 X2WeaponTemplate]
 FriendlyName="Improved Pulse Rifle"
 FriendlyNamePlural="Pulse Rifles"
 BriefSummary="Magnetized projectile tech has enabled us to create rifle-style slugthrowers. They represent a substantial improvement in power relative to conventional assault rifles."
-TacticalText=""
+TacticalText=" "
 AbilityDescName="Pulse Rifle"
 
 [TLE_AssaultRifle_MG_4 X2WeaponTemplate]
 FriendlyName="Superior Pulse Rifle"
 FriendlyNamePlural="Pulse Rifles"
 BriefSummary="Magnetized projectile tech has enabled us to create rifle-style slugthrowers. They represent a substantial improvement in power relative to conventional assault rifles."
-TacticalText=""
+TacticalText=" "
 AbilityDescName="Pulse Rifle"
 
 [TLE_AssaultRifle_MG_5 X2WeaponTemplate]
 FriendlyName="Elite Pulse Rifle"
 FriendlyNamePlural="Pulse Rifles"
 BriefSummary="Magnetized projectile tech has enabled us to create rifle-style slugthrowers. They represent a substantial improvement in power relative to conventional assault rifles."
-TacticalText=""
+TacticalText=" "
 AbilityDescName="Pulse Rifle"
 
 [TLE_AssaultRifle_BM_3 X2WeaponTemplate]
@@ -11528,6 +11528,126 @@ BriefSummary="Should their power fail them for some reason, our Soldiers can rel
 TacticalText="<Bullet/> The autopistol has a significantly shorter range than the pistol, lower base damage, but higher crit damage and a massive crit bonus."
 AbilityDescName="autopistol"
 
+[FragGrenade_1 X2GrenadeTemplate]
+FriendlyName="Frag Grenade"
+FriendlyNamePlural="Frag Grenades"
+BriefSummary="A standard concussive grenade that blasts enemies with shrapnel in a small area of effect. Effective at removing enemy armor."
+TacticalText="<Bullet/> Frag grenades are useful for removing, or \"shredding\" enemy armor.<br><Bullet/> Frag grenades are effective at damaging low-level ADVENT foes, but tougher enemies will shrug them off.<br><Bullet/> Grenades can destroy targets' equipment, so relying on grenades too much will reduce our salvage opportunities."
+ThrownAbilityName="Throw Frag Grenade"
+ThrownAbilityHelpText="Throw a frag grenade at target area."
+LaunchedAbilityname="Launch Frag Grenade"
+LaunchedAbilityHelpText="Launch a frag grenade at target area."
+
+[FragGrenade_2 X2GrenadeTemplate]
+FriendlyName="Improved Frag Grenade"
+FriendlyNamePlural="Frag Grenades"
+BriefSummary="A standard concussive grenade that blasts enemies with shrapnel in a small area of effect. Effective at removing enemy armor."
+TacticalText="<Bullet/> Frag grenades are useful for removing, or \"shredding\" enemy armor.<br><Bullet/> Frag grenades are effective at damaging low-level ADVENT foes, but tougher enemies will shrug them off.<br><Bullet/> Grenades can destroy targets' equipment, so relying on grenades too much will reduce our salvage opportunities."
+ThrownAbilityName="Throw Frag Grenade"
+ThrownAbilityHelpText="Throw a frag grenade at target area."
+LaunchedAbilityname="Launch Frag Grenade"
+LaunchedAbilityHelpText="Launch a frag grenade at target area."
+
+[FragGrenade_3 X2GrenadeTemplate]
+FriendlyName="Superior Frag Grenade"
+FriendlyNamePlural="Frag Grenades"
+BriefSummary="A standard concussive grenade that blasts enemies with shrapnel in a small area of effect. Effective at removing enemy armor."
+TacticalText="<Bullet/> Frag grenades are useful for removing, or \"shredding\" enemy armor.<br><Bullet/> Frag grenades are effective at damaging low-level ADVENT foes, but tougher enemies will shrug them off.<br><Bullet/> Grenades can destroy targets' equipment, so relying on grenades too much will reduce our salvage opportunities."
+ThrownAbilityName="Throw Frag Grenade"
+ThrownAbilityHelpText="Throw a frag grenade at target area."
+LaunchedAbilityname="Launch Frag Grenade"
+LaunchedAbilityHelpText="Launch a frag grenade at target area."
+
+[FragGrenade_4 X2GrenadeTemplate]
+FriendlyName="Elite Frag Grenade"
+FriendlyNamePlural="Frag Grenades"
+BriefSummary="A standard concussive grenade that blasts enemies with shrapnel in a small area of effect. Effective at removing enemy armor."
+TacticalText="<Bullet/> Frag grenades are useful for removing, or \"shredding\" enemy armor.<br><Bullet/> Frag grenades are effective at damaging low-level ADVENT foes, but tougher enemies will shrug them off.<br><Bullet/> Grenades can destroy targets' equipment, so relying on grenades too much will reduce our salvage opportunities."
+ThrownAbilityName="Throw Frag Grenade"
+ThrownAbilityHelpText="Throw a frag grenade at target area."
+LaunchedAbilityname="Launch Frag Grenade"
+LaunchedAbilityHelpText="Launch a frag grenade at target area."
+
+[FragGrenade_5 X2GrenadeTemplate]
+FriendlyName="Perfected Frag Grenade"
+FriendlyNamePlural="Frag Grenades"
+BriefSummary="A standard concussive grenade that blasts enemies with shrapnel in a small area of effect. Effective at removing enemy armor."
+TacticalText="<Bullet/> Frag grenades are useful for removing, or \"shredding\" enemy armor.<br><Bullet/> Frag grenades are effective at damaging low-level ADVENT foes, but tougher enemies will shrug them off.<br><Bullet/> Grenades can destroy targets' equipment, so relying on grenades too much will reduce our salvage opportunities."
+ThrownAbilityName="Throw Frag Grenade"
+ThrownAbilityHelpText="Throw a frag grenade at target area."
+LaunchedAbilityname="Launch Frag Grenade"
+LaunchedAbilityHelpText="Launch a frag grenade at target area."
+
+[MagGrenade_2 X2GrenadeTemplate]
+FriendlyName="Magnetic Grenade"
+FriendlyNamePlural="Magnetic Grenades"
+BriefSummary="A concussive grenade augmented by magnetic technology, the magnetic grenade deals more damage than a Frag grenade."
+TacticalText="<Bullet/> Magnetic grenades will damage all units in the blast radius."
+ThrownAbilityName="Throw Magnetic Grenade"
+ThrownAbilityHelpText="Damages units in the target area."
+LaunchedAbilityname="Launch Magnetic Grenade"
+LaunchedAbilityHelpText="Damages units in the target area."
+
+[MagGrenade_3 X2GrenadeTemplate]
+FriendlyName="Improved Magnetic Grenade"
+FriendlyNamePlural="Magnetic Grenades"
+BriefSummary="A concussive grenade augmented by magnetic technology, the magnetic grenade deals more damage than a Frag grenade."
+TacticalText="<Bullet/> Magnetic grenades will damage all units in the blast radius."
+ThrownAbilityName="Throw Magnetic Grenade"
+ThrownAbilityHelpText="Damages units in the target area."
+LaunchedAbilityname="Launch Magnetic Grenade"
+LaunchedAbilityHelpText="Damages units in the target area."
+
+[MagGrenade_4 X2GrenadeTemplate]
+FriendlyName="Superior Magnetic Grenade"
+FriendlyNamePlural="Magnetic Grenades"
+BriefSummary="A concussive grenade augmented by magnetic technology, the magnetic grenade deals more damage than a Frag grenade."
+TacticalText="<Bullet/> Magnetic grenades will damage all units in the blast radius."
+ThrownAbilityName="Throw Magnetic Grenade"
+ThrownAbilityHelpText="Damages units in the target area."
+LaunchedAbilityname="Launch Magnetic Grenade"
+LaunchedAbilityHelpText="Damages units in the target area."
+
+[MagGrenade_5 X2GrenadeTemplate]
+FriendlyName="Elite Magnetic Grenade"
+FriendlyNamePlural="Magnetic Grenades"
+BriefSummary="A concussive grenade augmented by magnetic technology, the magnetic grenade deals more damage than a Frag grenade."
+TacticalText="<Bullet/> Magnetic grenades will damage all units in the blast radius."
+ThrownAbilityName="Throw Magnetic Grenade"
+ThrownAbilityHelpText="Damages units in the target area."
+LaunchedAbilityname="Launch Magnetic Grenade"
+LaunchedAbilityHelpText="Damages units in the target area."
+
+[AlienGrenade_3 X2GrenadeTemplate]
+FriendlyName="Plasma Grenade"
+FriendlyNamePlural="Plasma Grenades"
+BriefSummary="A concussive grenade augmented by alien energy pulse tech, the Plasma Grenade does more damage than the standard Frag Grenade, and is more effective at shredding enemy armor."
+TacticalText="<Bullet/> Plasma grenades improve on the frag grenade's damage and armor shredding capabilities."
+ThrownAbilityName="Throw Plasma Grenade"
+ThrownAbilityHelpText="Throw a plasma grenade at target area. Shreds armor."
+LaunchedAbilityname="Launch Plasma Grenade"
+LaunchedAbilityHelpText="Launch a plasma grenade at target area. Shreds armor."
+
+[AlienGrenade_4 X2GrenadeTemplate]
+FriendlyName="Improved Plasma Grenade"
+FriendlyNamePlural="Plasma Grenades"
+BriefSummary="A concussive grenade augmented by alien energy pulse tech, the Plasma Grenade does more damage than the standard Frag Grenade, and is more effective at shredding enemy armor."
+TacticalText="<Bullet/> Plasma grenades improve on the frag grenade's damage and armor shredding capabilities."
+ThrownAbilityName="Throw Plasma Grenade"
+ThrownAbilityHelpText="Throw a plasma grenade at target area. Shreds armor."
+LaunchedAbilityname="Launch Plasma Grenade"
+LaunchedAbilityHelpText="Launch a plasma grenade at target area. Shreds armor."
+
+[AlienGrenade_5 X2GrenadeTemplate]
+FriendlyName="Superior Plasma Grenade"
+FriendlyNamePlural="Plasma Grenades"
+BriefSummary="A concussive grenade augmented by alien energy pulse tech, the Plasma Grenade does more damage than the standard Frag Grenade, and is more effective at shredding enemy armor."
+TacticalText="<Bullet/> Plasma grenades improve on the frag grenade's damage and armor shredding capabilities."
+ThrownAbilityName="Throw Plasma Grenade"
+ThrownAbilityHelpText="Throw a plasma grenade at target area. Shreds armor."
+LaunchedAbilityname="Launch Plasma Grenade"
+LaunchedAbilityHelpText="Launch a plasma grenade at target area. Shreds armor."
+
 [Sidearm_LS_2 X2WeaponTemplate]
 FriendlyName="Heater"
 FriendlyNamePlural="Heaters"
@@ -12329,19 +12449,19 @@ AbilityDescName="GREMLIN"
 FriendlyName="Jackal Armor"
 FriendlyNamePlural="Jackal Armor"
 BriefSummary="This basic armor consists of improvised protection cobbled together from salvage and Resistance arms caches. It provides minimal protection against ADVENT and alien weaponry."
-TacticalText=""
+TacticalText=" "
 
 [GrenadierKevlarArmor X2ArmorTemplate]
 FriendlyName="Heavy Jackal Armor"
 FriendlyNamePlural="Heavy Jackal ArmorArmor"
 BriefSummary="This basic armor consists of improvised protection cobbled together from salvage and Resistance arms caches. It provides minimal protection against ADVENT and alien weaponry."
-TacticalText=""
+TacticalText=" "
 
 [SpecialistKevlarArmor X2ArmorTemplate]
 FriendlyName="Light Jackal Armor"
 FriendlyNamePlural="Improvised Specialist Field Armor"
 BriefSummary="This basic armor consists of improvised protection cobbled together from salvage and Resistance arms caches. It provides minimal protection against ADVENT and alien weaponry."
-TacticalText=""
+TacticalText=" "
 
 [SharpshooterKevlarArmor X2ArmorTemplate]
 FriendlyName="Tactical Jackal Armor"
@@ -12353,19 +12473,19 @@ TacticalText="<Bullet/>This variant of light armor has great defense at the cost
 FriendlyName="Carapace Armor"
 FriendlyNamePlural="Enhanced Ranger Field Plate"
 BriefSummary="Using scavenged plates of ADVENT armor, this suit provides increased protection and additional inventory capacity for our soldiers."
-TacticalText=""
+TacticalText=" "
 
 [GrenadierPlatedArmor X2ArmorTemplate]
 FriendlyName="Heavy Carapace Armor"
 FriendlyNamePlural="Enhanced Grenadier Field Plate"
 BriefSummary="Using scavenged plates of ADVENT armor, this suit provides increased protection and additional inventory capacity for our soldiers."
-TacticalText=""
+TacticalText=" "
 
 [SpecialistPlatedArmor X2ArmorTemplate]
 FriendlyName="Light Carapace Armor"
 FriendlyNamePlural="Enhanced Specialist Field Plate"
 BriefSummary="Using scavenged plates of ADVENT armor, this suit provides increased protection and additional inventory capacity for our soldiers."
-TacticalText=""
+TacticalText=" "
 
 [SharpshooterPlatedArmor X2ArmorTemplate]
 FriendlyName="Tactical Carapace Armor"
@@ -12377,19 +12497,19 @@ TacticalText="<Bullet/>This variant of light armor has great defense at the cost
 FriendlyName="Titan Armor"
 FriendlyNamePlural="Experimental Ranger Power Armor"
 BriefSummary="Our new mastery of the alien's Elerium technology has lead us to the ultimate in battle armor: the Warden Armor. Elerium powered armor provides unprecedented survivability and versatility in the battle against increasingly powerful alien enemies."
-TacticalText=""
+TacticalText=" "
 
 [GrenadierPoweredArmor X2ArmorTemplate]
 FriendlyName="Heavy Titan Armor"
 FriendlyNamePlural="Experimental Grenadier Power Armor"
 BriefSummary="Our new mastery of the alien's Elerium technology has lead us to the ultimate in battle armor: the Warden Armor. Elerium powered armor provides unprecedented survivability and versatility in the battle against increasingly powerful alien enemies."
-TacticalText=""
+TacticalText=" "
 
 [SpecialistPoweredArmor X2ArmorTemplate]
 FriendlyName="Light Titan Armor"
 FriendlyNamePlural="Experimental Specialist Power Armor"
 BriefSummary="Our new mastery of the alien's Elerium technology has lead us to the ultimate in battle armor: the Warden Armor. Elerium powered armor provides unprecedented survivability and versatility in the battle against increasingly powerful alien enemies."
-TacticalText=""
+TacticalText=" "
 
 [SharpshooterPoweredArmor X2ArmorTemplate]
 FriendlyName="Tactical Titan Armor"

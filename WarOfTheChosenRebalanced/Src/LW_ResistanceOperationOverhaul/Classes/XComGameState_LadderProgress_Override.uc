@@ -674,7 +674,9 @@ function OnCloseRewardsScreen()
 function PurchaseTechUpgrade(name DataName, XComGameState NewGameState)
 {
 	local X2ResistanceTechUpgradeTemplateManager TemplateManager;
-	local X2ResistanceTechUpgradeTemplate Template;
+	local X2ResistanceTechUpgradeTemplate Template, ShopUpgradeTemplate;
+	local UpgradeList ShopUpgradeList;
+	local int i,j;
 	//local X2StrategyElementTemplateManager TechMgr;
 	//local X2TechTemplate TechTemplate, RequiredTechTemplate;
 	//local XComGameState_Tech TechState, RequiredTechState;
@@ -737,7 +739,18 @@ function PurchaseTechUpgrade(name DataName, XComGameState NewGameState)
 		Credits -= Template.Cost;
 	}
 
-	PurchasedTechUpgrades.AddItem(DataName);
+	// PurchasedTechUpgrades.AddItem(DataName);
+
+	//Lastly, remove one instance of the upgrade in the shop
+	for(i = 0; i < CurrentShopUpgrades.Length; i++)
+	{	
+		for( j = 0; j< CurrentShopUpgrades[i].List.Length;j++){
+			if(CurrentShopUpgrades[i].List[j].DataName == Template.DataName){
+				CurrentShopUpgrades[i].List.Remove(j,1);
+				return;
+			}
+		}
+	}
 }
 
 function bool HasPurchasedTechUpgrade(name UpgradeName)
@@ -1289,10 +1302,10 @@ simulated function RefreshShopStock()
 	Pools.Length = 0;
 	CurrentShopUpgrades.Length =0;
 
-	BaselineTier = Science/4;
+	BaselineTier = (Science-1)/5 +1;
 
 	HigherTierItems = Science - TIER_RESEARCH_THERSHOLDS[BaselineTier];
-	CurrentTierItems = default.ITEMS_PER_CATEGORY - HigherTierItems;
+	CurrentTierItems = Max(default.ITEMS_PER_CATEGORY - HigherTierItems,0);
 
 
 	for (i=0; i<eUpCat_Attachment; i++){
@@ -1310,7 +1323,7 @@ simulated function RefreshShopStock()
 	{
 		UpgradeTemplate = UpgradeManger.FindTemplate(TemplateName);
 		if(UpgradeTemplate != none){
-			if(UpgradeTemplate.RequiredClass == '' || IsClassInSquad(UpgradeTemplate.RequiredClass))
+			if(!UpgradeTemplate.bStarting && (UpgradeTemplate.RequiredClass == '' || IsClassInSquad(UpgradeTemplate.RequiredClass)))
 			{
 				Pools[UpgradeTemplate.Category].List.AddItem(UpgradeTemplate);
 			}

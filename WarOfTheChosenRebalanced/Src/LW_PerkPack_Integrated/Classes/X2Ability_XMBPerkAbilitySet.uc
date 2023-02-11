@@ -4204,7 +4204,7 @@ static function X2AbilityTemplate TacticalDefense()
 	ShootingEffect.BuildPersistentEffect(1, true, false, false);
 	
 	// Activated ability that targets user
-	Template = Passive('TacticalDefense_LW', "img:///UILibrary_XPerkIconPack.UIPerk_shot_box", true, ShootingEffect);
+	Template = Passive('TacticalDefense_LW', "img:///UILibrary_XPerkIconPack_LW.UIPerk_shot_box", true, ShootingEffect);
 
 	// If this ability is set up as a cross class ability, but it's not directly assigned to any classes, this is the weapon slot it will use
 

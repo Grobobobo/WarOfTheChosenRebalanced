@@ -90,7 +90,8 @@ static function UpdateWeapons(X2WeaponTemplate WeaponTemplate, int Difficulty)
 		//WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeapons'.default.SHORT_CONVENTIONAL_RANGE;
 		break;
 	case 'GrenadeLauncher_CV':
-	    WeaponTemplate.Abilities.AddItem('LaunchGrenade');
+	    //WeaponTemplate.Abilities.AddItem('LaunchGrenade');
+	    WeaponTemplate.Abilities.AddItem('AdventGrenadeLauncher');
 	    WeaponTemplate.Abilities.AddItem('Salvo');
 	    WeaponTemplate.Abilities.AddItem('FullKit');
 		break;

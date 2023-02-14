@@ -819,8 +819,8 @@ LocHelpText="Does +1 damage to all targets and +2 damage to nonrobotic ADVENT."
 [Shredder_Rounds_Ability X2AbilityTemplate]
 LocFriendlyName="Shredder Rounds"
 LocFlyOverText="Shredder Rounds"
-LocLongDescription="Shreds 2 enemy armor with every hit."
-LocHelpText="Shreds 2 enemy armor with every hit."
+LocLongDescription="Shreds 1 enemy armor with every hit, at the cost of -25% damage penalty."
+LocHelpText="Shreds 1 enemy armor with every hit, at the cost of -25% damage penalty."
 
 [Flechette_Rounds_Ability X2AbilityTemplate]
 LocFriendlyName="Flechette Rounds"
@@ -1213,7 +1213,7 @@ AbilityDescName="Particle Projection Cannon"
 FriendlyName="Battle Scanner"
 FriendlyNamePlural="Battle Scanners"
 BriefSummary="The Battle Scanner provides extra vision on the battlefield, and reduces the scanned enemy's dodge by <Ability:BATTLESCANNER_DODGE_REDUCTION/>. Soldiers deploy it like a grenade, throwing it to a hidden area of the map that they want to reveal. Any hidden or disguised enemies will be revealed as well."
-TacticalText="<Bullet/> Throwing a Battle Scanner is a free action.\n<Bullet/> Battle Scanners also reveal hidden or disguised enemies."
+TacticalText="<Bullet/> Throwing a Battle Scanner is a free action.\n<Bullet/> Battle Scanners decrease all scanned enemies's dodge by <Ability:BATTLESCANNER_DODGE_REDUCTION/>, and reveal hidden or disguised enemies."
 
 [BattleScanner X2AbilityTemplate]
 LocFriendlyName="Battle Scanner"
@@ -9235,8 +9235,8 @@ LocPromotionPopupText=""
 
 [SteadFast X2AbilityTemplate]
 LocFriendlyName="Mayhem"
-LocLongDescription="Gain <Ability:STEADFAST_SHIELD_HP/> Ablative HP. Removes the damage penalty for Walk fire and Suppression, and your Suppression is no longer removed by receiving damage. Your primary weapon's clip size is increased by 2."
-LocHelpText="Gain <Ability:STEADFAST_SHIELD_HP/> Ablative HP. Removes the damage penalty for Walk fire and Suppression, and your Suppression is no longer removed by receiving damage. Your primary weapon's clip size is increased by 2."
+LocLongDescription="Removes the damage penalty for Walk fire and Suppression, and your Suppression is no longer removed by receiving damage."
+LocHelpText="Removes the damage penalty for Walk fire and Suppression, and your Suppression is no longer removed by receiving damage."
 LocPromotionPopupText="Units with impact will still remove it."
 
 [IronWill X2AbilityTemplate]
@@ -10710,7 +10710,7 @@ AbilityDescName="bullpup"
 FriendlyName="Cannon"
 FriendlyNamePlural="Cannons"
 BriefSummary="The Cannon is an improvised light support weapon, specialized for high volume fire. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
-TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn.\n<Bullet/> Use upgrades looted from enemies to improve the Cannon's tactical effectiveness."
+TacticalText="<Bullet/> Ballistic Cannon Requires 2 actions to fire.\n<Bullet/> Use upgrades looted from enemies to improve the Cannon's tactical effectiveness."
 AbilityDescName="cannon"
 
 [Cannon_CV_2 X2WeaponTemplate]
@@ -10759,49 +10759,49 @@ AbilityDescName="cannon"
 FriendlyName="Mag Cannon"
 FriendlyNamePlural="Mag Cannons"
 BriefSummary="Magnetic weapons tech will let us deploy a rapid-fire version of the cannon. Our Grenadiers will be able to lay down a much deadlier volume of fire."
-TacticalText="<Bullet/> The Mag Cannon is a much more powerful, yet equally deployable, version of the conventional Cannon.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Cannon's tactical effectiveness."
+TacticalText="<Bullet/> Magnetic cannon requires 2 actions to fire.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Cannon's tactical effectiveness."
 AbilityDescName="cannon"
 
 [Cannon_MG_3 X2WeaponTemplate]
 FriendlyName="Improved Mag Cannon"
 FriendlyNamePlural="Mag Cannons"
 BriefSummary="Magnetic weapons tech will let us deploy a rapid-fire version of the cannon. Our Grenadiers will be able to lay down a much deadlier volume of fire."
-TacticalText="<Bullet/> The Mag Cannon is a much more powerful, yet equally deployable, version of the conventional Cannon.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Cannon's tactical effectiveness."
+TacticalText="<Bullet/> Magnetic cannon requires 2 actions to fire.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Cannon's tactical effectiveness."
 AbilityDescName="cannon"
 
 [Cannon_MG_4 X2WeaponTemplate]
 FriendlyName="Superior Mag Cannon"
 FriendlyNamePlural="Mag Cannons"
 BriefSummary="Magnetic weapons tech will let us deploy a rapid-fire version of the cannon. Our Grenadiers will be able to lay down a much deadlier volume of fire."
-TacticalText="<Bullet/> The Mag Cannon is a much more powerful, yet equally deployable, version of the conventional Cannon.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Cannon's tactical effectiveness."
+TacticalText="<Bullet/> Magnetic cannon requires 2 actions to fire.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Cannon's tactical effectiveness."
 AbilityDescName="cannon"
 
 [Cannon_MG_5 X2WeaponTemplate]
 FriendlyName="Elite Mag Cannon"
 FriendlyNamePlural="Mag Cannons"
 BriefSummary="Magnetic weapons tech will let us deploy a rapid-fire version of the cannon. Our Grenadiers will be able to lay down a much deadlier volume of fire."
-TacticalText="<Bullet/> The Mag Cannon is a much more powerful, yet equally deployable, version of the conventional Cannon.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Cannon's tactical effectiveness."
+TacticalText="<Bullet/> Magnetic cannon requires 2 actions to fire.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Cannon's tactical effectiveness."
 AbilityDescName="cannon"
 
 [Cannon_CG_3 X2WeaponTemplate]
 FriendlyName="Gauss Cannon"
 FriendlyNamePlural="Gauss Cannons"
 BriefSummary="A heavy duty, automatic coilgun with a huge rate of fire."
-TacticalText="<Bullet/> Coil weapons Gain 10 crit.<br/><Bullet/> The cannon serves in a squad automatic weapon role, has more ammo and does more damage than its rifle counterpart, but it is cumbersome to carry.<br/><Bullet/> Use upgrades recovered from ADVENT enemies to improve the Gauss Cannon's tactical effectiveness.<br/>"
+TacticalText="<Bullet/> Coil Cannon Requires 2 actions to fire.<br/><Bullet/> The cannon serves in a squad automatic weapon role, has more ammo and does more damage than its rifle counterpart, but it is cumbersome to carry.<br/><Bullet/> Use upgrades recovered from ADVENT enemies to improve the Gauss Cannon's tactical effectiveness.<br/>"
 AbilityDescName="cannon"
 
 [Cannon_CG_4 X2WeaponTemplate]
 FriendlyName="Improved Gauss Cannon"
 FriendlyNamePlural="Gauss Cannons"
 BriefSummary="A heavy duty, automatic coilgun with a huge rate of fire."
-TacticalText="<Bullet/> Coil weapons Gain 10 crit.<br/><Bullet/> The cannon serves in a squad automatic weapon role, has more ammo and does more damage than its rifle counterpart, but it is cumbersome to carry.<br/><Bullet/> Use upgrades recovered from ADVENT enemies to improve the Gauss Cannon's tactical effectiveness.<br/>"
+TacticalText="<Bullet/> Coil Cannon Requires 2 actions to fire.<br/><Bullet/> The cannon serves in a squad automatic weapon role, has more ammo and does more damage than its rifle counterpart, but it is cumbersome to carry.<br/><Bullet/> Use upgrades recovered from ADVENT enemies to improve the Gauss Cannon's tactical effectiveness.<br/>"
 AbilityDescName="cannon"
 
 [Cannon_CG_5 X2WeaponTemplate]
 FriendlyName="Superior Gauss Cannon"
 FriendlyNamePlural="Gauss Cannons"
 BriefSummary="A heavy duty, automatic coilgun with a huge rate of fire."
-TacticalText="<Bullet/> Coil weapons Gain 10 crit.<br/><Bullet/> The cannon serves in a squad automatic weapon role, has more ammo and does more damage than its rifle counterpart, but it is cumbersome to carry.<br/><Bullet/> Use upgrades recovered from ADVENT enemies to improve the Gauss Cannon's tactical effectiveness.<br/>"
+TacticalText="<Bullet/> Coil Cannon Requires 2 actions to fire.<br/><Bullet/> The cannon serves in a squad automatic weapon role, has more ammo and does more damage than its rifle counterpart, but it is cumbersome to carry.<br/><Bullet/> Use upgrades recovered from ADVENT enemies to improve the Gauss Cannon's tactical effectiveness.<br/>"
 AbilityDescName="cannon"
 
 [Cannon_BM_3 X2WeaponTemplate]

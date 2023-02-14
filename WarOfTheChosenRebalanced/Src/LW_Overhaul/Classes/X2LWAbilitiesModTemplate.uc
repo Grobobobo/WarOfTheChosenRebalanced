@@ -240,22 +240,20 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'HunterRifleShot':
 			MakeAbilityWorkWhenBurning(Template);
 			AddAmmoToHunterRifleShot(Template);
-
 		// case 'FanFire':
 		// case 'LightningHands':
 		// case 'FaceOff':
+		case 'OverwatchShot':
 		case 'SniperStandardFire':
-			Template.AdditionalAbilities.AddItem('HeavyStandardShotPassive');
+		case 'LongWatchShot':
+		case 'PrimaryReturnFireShot':
+			Template.AssociatedPassives.AddItem('Disabler');
+			AddDisablingShotEffect(Template);
 		case 'StandardShot':
 		case 'PistolStandardShot':
 		case 'GunslingerShot':
-		case 'OverwatchShot':
 		case 'PistolOverwatchShot':
-		case 'LongWatchShot':
-		case 'PrimaryReturnFireShot':
-			AddDisablingShotEffect(Template);
 			Template.AddTargetEffect(class'X2Ability_Chosen'.static.HoloTargetEffect());
-			Template.AssociatedPassives.AddItem('Disabler');
 			break;
 		case 'MindShield':
 			DisplayMindShieldPassive(Template);
@@ -1700,6 +1698,9 @@ static function MakeBindDamageScale(X2AbilityTemplate Template)
 	PhysicalDamageEffect.TargetConditions.AddItem(BindM5Condition);
 	Template.AddTargetEffect(PhysicalDamageEffect);
 
+	class'Helpers_LW'.static.RemoveAbilityTargetEffects(Template,'X2Effect_ApplyDirectionalWorldDamage');
+
+
 }
 
 static function MakeMeleeBlueMove(X2AbilityTemplate Template)
@@ -2280,7 +2281,7 @@ static function ReworkBattleScanners(X2AbilityTemplate Template)
 	class'Helpers_LW'.static.MakeFreeAction(Template);
 
 	DodgeModifier = new class 'X2Effect_PersistentStatChange';
-	DodgeModifier.AddPersistentStatChange(eStat_Dodge, float(default.BATTLESCANNER_DODGE_REDUCTION));
+	DodgeModifier.AddPersistentStatChange(eStat_Dodge, float(-default.BATTLESCANNER_DODGE_REDUCTION));
 	DodgeModifier.TargetConditions.AddItem(default.LivingHostileUnitOnlyProperty);
 	DodgeModifier.BuildPersistentEffect(1, false, false, false, eGameRule_PlayerTurnEnd);
 	DodgeModifier.DuplicateResponse = eDupe_Ignore;

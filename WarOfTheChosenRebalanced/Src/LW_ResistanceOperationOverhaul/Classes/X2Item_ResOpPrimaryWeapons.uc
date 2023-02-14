@@ -492,7 +492,6 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Conventional_RO(name 
 
 	Template.Abilities.AddItem('Lightemup');
 	Template.Abilities.AddItem('Executioner_LW');
-	Template.Abilities.AddItem('WalkFire');
 
 	
 	// This all the resources; sounds, animations, models, physics, the works.
@@ -1275,7 +1274,6 @@ static function X2DataTemplate CreateTemplate_VektorRifle_Conventional(name Temp
 	Template.Abilities.AddItem('HotLoadAmmo');
 
 	Template.Abilities.AddItem('InTheZone_LW');
-	Template.Abilities.AddItem('Stock_LW_Bsc_Ability');
 	
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_ReaperRifle.WP_ReaperRifle";
@@ -1381,7 +1379,6 @@ static function X2DataTemplate CreateTemplate_VektorRifle_Magnetic(name Template
 	Template.Abilities.AddItem('HotLoadAmmo');
 	
 	Template.Abilities.AddItem('InTheZone_LW');
-	Template.Abilities.AddItem('Stock_LW_Bsc_Ability');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_ReaperRifle_MG.WP_ReaperRifle_MG";
@@ -1447,7 +1444,6 @@ static function X2DataTemplate CreateVektor_Coil(name TemplateName, int Tier)
 	Template.Abilities.AddItem('HotLoadAmmo');
 
 	Template.Abilities.AddItem('InTheZone_LW');
-	Template.Abilities.AddItem('Stock_LW_Bsc_Ability');
 
 	// Template.Abilities.AddItem('CoilgunBonusShredAbility');
 
@@ -1839,7 +1835,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Conventional_RO(name Templa
 	Template.bIsLargeWeapon = true;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('HeavyStandardShot');
+	Template.Abilities.AddItem('HeavyStandardShotPassive');
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
@@ -1951,7 +1947,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Magnetic_RO(name TemplateNa
 	Template.bIsLargeWeapon = true;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('HeavyStandardShot');
+	Template.Abilities.AddItem('HeavyStandardShotPassive');
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
@@ -2013,7 +2009,7 @@ static function X2DataTemplate CreateCannon_Coil_Template(name TemplateName, int
 	Template.AddDefaultAttachment('Light', "BeamAttachments.Meshes.BeamFlashLight"); //, , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_LightA");  // re-use common conventional flashlight
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('HeavyStandardShot');
+	Template.Abilities.AddItem('HeavyStandardShotPassive');
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
@@ -2693,8 +2689,8 @@ static function X2DataTemplate CreateTLE1Shotgun(name TemplateName, int Tier)
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.SHORT_CONVENTIONAL_RANGE;
 	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
 	Template.Aim = class'X2Item_DefaultWeapons'.default.SHOTGUN_CONVENTIONAL_AIM;
-	Template.CritChance = class'X2Item_DefaultWeapons'.default.SHOTGUN_CONVENTIONAL_CRITCHANCE;
-	Template.iClipSize = class'X2Item_DefaultWeapons'.default.SHOTGUN_CONVENTIONAL_ICLIPSIZE;
+	Template.CritChance = default.SHOTGUN_TLE_CONVENTIONAL_CRITCHANCE;
+	Template.iClipSize = default.SHOTGUN_TLE_CONVENTIONAL_ICLIPSIZE;
 	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.SHOTGUN_CONVENTIONAL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.SHOTGUN_CONVENTIONAL_IENVIRONMENTDAMAGE;
 
@@ -2841,7 +2837,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Conventional_RO(name T
 	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.LONG_CONVENTIONAL_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.75f);
 	Template.Aim = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_CONVENTIONAL_AIM;
 	Template.CritChance = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_CONVENTIONAL_CRITCHANCE;
 	Template.iClipSize = class'X2Item_DefaultWeapons'.default.SNIPERRIFLE_CONVENTIONAL_ICLIPSIZE;
@@ -2858,7 +2854,6 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Conventional_RO(name T
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('Disabler');
 	
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_SniperRifle_CV.WP_SniperRifle_CV";
@@ -3117,7 +3112,7 @@ static function X2DataTemplate CreateTLE1SniperRifle(name TemplateName, int Tier
 	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.LONG_CONVENTIONAL_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
 	Template.Aim = default.SNIPERRIFLE_TLE_CONVENTIONAL_AIM;
 	Template.CritChance = default.SNIPERRIFLE_TLE_CONVENTIONAL_CRITCHANCE;
 	Template.iClipSize = default.SNIPERRIFLE_TLE_CONVENTIONAL_ICLIPSIZE;
@@ -3133,6 +3128,7 @@ static function X2DataTemplate CreateTLE1SniperRifle(name TemplateName, int Tier
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('Disabler');
 
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "TLE1Sniper.WP_TLE1Sniper";
@@ -3162,7 +3158,7 @@ static function X2DataTemplate CreateTLE2SniperRifle(name TemplateName, int Tier
 	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.LONG_MAGNETIC_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
 	Template.Aim = default.SNIPERRIFLE_TLE_MAGNETIC_AIM;
 	Template.CritChance = default.SNIPERRIFLE_TLE_MAGNETIC_CRITCHANCE;
 	Template.iClipSize = default.SNIPERRIFLE_TLE_MAGNETIC_ICLIPSIZE;
@@ -3211,7 +3207,7 @@ static function X2DataTemplate CreateTLE3SniperRifle(name TemplateName, int Tier
 	Template.Tier = Tier;
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.LONG_BEAM_RANGE;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,1.25f);
 	Template.Aim = default.SNIPERRIFLE_TLE_BEAM_AIM;
 	Template.CritChance = default.SNIPERRIFLE_TLE_BEAM_CRITCHANCE;
 	Template.iClipSize = default.SNIPERRIFLE_TLE_BEAM_ICLIPSIZE;

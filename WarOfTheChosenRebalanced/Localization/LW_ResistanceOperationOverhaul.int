@@ -1116,8 +1116,8 @@ DisplayName="Flechette Rounds"
 Description="Grants one set of Flechette Rounds."
 
 [TU_NeedleRounds X2ResistanceTechUpgradeTemplate]
-DisplayName="Needle Rounds"
-Description="Grants one set of Needle Rounds."
+DisplayName=""
+Description=""
 
 [TU_AcidRounds X2ResistanceTechUpgradeTemplate]
 DisplayName="Acid Rounds"
@@ -1316,7 +1316,7 @@ Description="Grants access to Elerium Jets for all soldiers that can use them."
 ; Strings
 
 [UITLE_LadderModeMenu_Override]
-m_EnableModText="Enable Resistance Operation Overhaul"
+m_EnableModText="Enable Grobo's Tactical Overhaul"
 m_SquadText="Configure Squad"
 m_LadderLengthText="Number of Missions"
 m_SelectAllowedClassesText="Set Allowed Classes"

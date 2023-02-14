@@ -708,9 +708,10 @@ static function X2AbilityTemplate SoulShot()
 	Template.Hostility = eHostility_Offensive;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
-	//Template.PostActivationEvents.AddItem('RendActivated');
-	//Template.OverrideAbilities.AddItem('Rend');
-	
+	Template.PostActivationEvents.AddItem('RendActivated');
+	Template.OverrideAbilities.AddItem('Rend');
+	Template.AdditionalAbilities.AddItem('SingleRendFocus');
+
 	Template.SuperConcealmentLoss = class'X2AbilityTemplateManager'.default.SuperConcealmentStandardShotLoss;
 	Template.ChosenActivationIncreasePerUse = class'X2AbilityTemplateManager'.default.StandardShotChosenActivationIncreasePerUse;
 	Template.LostSpawnIncreasePerUse = class'X2AbilityTemplateManager'.default.StandardShotLostSpawnIncreasePerUse;

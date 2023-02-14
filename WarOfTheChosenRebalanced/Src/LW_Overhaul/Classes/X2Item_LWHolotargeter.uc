@@ -107,7 +107,7 @@ static function X2DataTemplate CreateTemplate_Holotargeter_Conventional()
 	Template.bHideClipSizeStat = true;
 
 	Template.Abilities.AddItem('Holotarget');
-	Template.Abilities.AddItem('VitalPointTargeting');
+	Template.Abilities.AddItem('RapidTargeting');
 
 	return Template;
 }
@@ -154,7 +154,7 @@ static function X2DataTemplate CreateTemplate_Holotargeter_Magnetic()
 	Template.bInfiniteItem = true;
 
 	Template.Abilities.AddItem('Holotarget');
-	Template.Abilities.AddItem('RapidTargeting');
+	Template.Abilities.AddItem('VitalPointTargeting');
 
 	Template.DamageTypeTemplateName = 'Electrical';
 

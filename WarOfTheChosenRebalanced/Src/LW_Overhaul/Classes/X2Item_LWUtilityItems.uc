@@ -312,7 +312,7 @@ static function X2AmmoTemplate CreateNeedleRounds()
 	// Template.AddAmmoDamageModifier(Condition, DamageValue);
 
 	Template.Abilities.AddItem('AmmoImpact');
-	Template.Abilities.AddItem('ShredderRoundsPenalty');
+	// Template.Abilities.AddItem('ShredderRoundsPenalty');
 
 	//Template.GameArchetype = "Ammo_Needle.PJ_Needle"; // present, placeholder FX
 	//FX References

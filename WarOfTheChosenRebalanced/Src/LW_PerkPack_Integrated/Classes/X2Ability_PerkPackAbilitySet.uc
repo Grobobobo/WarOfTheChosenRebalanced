@@ -2550,6 +2550,7 @@ static function X2AbilityTemplate AddOverexertion()
 	Template.AddTargetEffect(ActionPointEffect);
 
 	DamageEffect = new class'X2Effect_StockStrikeDamage';
+	DamageEffect.bIgnoreBaseDamage=true;
 	DamageEffect.Stockstrike_MaxHpDamage = default.OVEREXERTION_MAXHPDAMAGE;
 	Template.AddTargetEffect(DamageEffect);
 

@@ -674,8 +674,7 @@ function OnCloseRewardsScreen()
 function PurchaseTechUpgrade(name DataName, XComGameState NewGameState)
 {
 	local X2ResistanceTechUpgradeTemplateManager TemplateManager;
-	local X2ResistanceTechUpgradeTemplate Template, ShopUpgradeTemplate;
-	local UpgradeList ShopUpgradeList;
+	local X2ResistanceTechUpgradeTemplate Template;
 	local int i,j;
 	//local X2StrategyElementTemplateManager TechMgr;
 	//local X2TechTemplate TechTemplate, RequiredTechTemplate;
@@ -733,13 +732,14 @@ function PurchaseTechUpgrade(name DataName, XComGameState NewGameState)
 	if (IsUpgradeOnSale(DataName))
 	{
 		Credits -= (Template.Cost * default.SALE_CREDITS_MOD);
+		SaleOptions.RemoveItem(DataName);
 	}
 	else
 	{
 		Credits -= Template.Cost;
 	}
 
-	// PurchasedTechUpgrades.AddItem(DataName);
+	PurchasedTechUpgrades.AddItem(DataName);
 
 	//Lastly, remove one instance of the upgrade in the shop
 	for(i = 0; i < CurrentShopUpgrades.Length; i++)
@@ -1253,13 +1253,10 @@ simulated function bool IsUpgradeOnSaleInCategory(EUpgradeCategory Category)
 
 	foreach SaleOptions(TemplateName)
 	{
-		if (!HasPurchasedTechUpgrade(TemplateName))
+		Template = TemplateManager.FindTemplate(TemplateName);
+		if (Template.Category == Category)
 		{
-			Template = TemplateManager.FindTemplate(TemplateName);
-			if (Template.Category == Category)
-			{
-				return true;
-			}
+			return true;
 		}
 	}
 
@@ -1298,7 +1295,8 @@ simulated function RefreshShopStock()
 	local array<ValidTechUpgrades>  TechUpgrades;
 	local int i,j,k;
 	local float TotalCurrentTierWeight, TotalNextTierWeight, WeightSelection, WeightFinder;
-
+	local array<float> TotalNextTierWeightsByCategory;
+	local array<float> TotalCurrentTierWeightsByCategory;
 	Pools.Length = 0;
 	CurrentShopUpgrades.Length =0;
 
@@ -1345,6 +1343,10 @@ simulated function RefreshShopStock()
 				TotalNextTierWeight += UpgradeTemplate.Weight;
 			}
 		}
+
+		TotalNextTierWeightsByCategory.AddItem(TotalNextTierWeight);
+		TotalCurrentTierWeightsByCategory.AddItem(TotalCurrentTierWeight);
+
 		//Allow Repeat Upgrades
 		for(j=HigherTierItems; j > 0; j--)
 		{
@@ -1382,7 +1384,7 @@ simulated function RefreshShopStock()
 	for(i=HigherTierItems; i > 0; i--)
 	{
 		Category = `SYNC_RAND(eUpCat_Attachment);
-		WeightSelection = `SYNC_FRAND * TotalNextTierWeight;
+		WeightSelection = `SYNC_FRAND * TotalNextTierWeightsByCategory[Category];
 		WeightFinder = 0.0f;
 		for(k=0; k< TechUpgrades[Category].ValidNextTierUpgrades.Length; k++)
 		{
@@ -1400,7 +1402,7 @@ simulated function RefreshShopStock()
 	for(i=CurrentTierItems; i > 0; i--)
 	{
 		Category = `SYNC_RAND(eUpCat_Attachment);
-		WeightSelection = `SYNC_FRAND * TotalCurrentTierWeight;
+		WeightSelection = `SYNC_FRAND * TotalCurrentTierWeightsByCategory[Category];
 		WeightFinder = 0.0f;
 		for(k=0; k< TechUpgrades[Category].ValidCurrentTierUpgrades.Length; k++)
 		{

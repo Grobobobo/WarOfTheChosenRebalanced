@@ -29,6 +29,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		UpdateArcWave(Template);
 	case 'Rend':
 		MakeRendNotWorkWhenBurning(Template);
+		Template.AdditionalAbilities.AddItem('SingleRendFocus');
 	case 'TemplarBladestormAttack':
 		// Allow Rend to miss and graze.
 		X2AbilityToHitCalc_StandardMelee(Template.AbilityToHitCalc).bGuaranteedHit = false;
@@ -37,7 +38,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		ModifyVoltTargeting(Template);
 		AddTerrorToVolt(Template);
 		MakeAbilityNonTurnEnding(Template);
-		Template.AdditionalAbilities.AddItem('SingleRendFocus');
+		// Template.AdditionalAbilities.AddItem('SingleRendFocus');
 		break;
 	case 'Deflect':
 		ModifyDeflectEffect(Template);

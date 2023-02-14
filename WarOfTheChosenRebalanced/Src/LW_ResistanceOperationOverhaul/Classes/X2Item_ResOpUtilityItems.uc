@@ -31,8 +31,26 @@ static function array<X2DataTemplate> CreateTemplates()
 
 
     return Weapons;
-    }
+}
 
+static function name GetWeaponTech(int Tier){
+	switch(Tier){
+		case 1:
+		return 'conventional';
+		case 2:
+		return 'laser_lw';
+		case 3:
+		return 'magnetic';
+		case 4: 
+		return 'coilgun_lw';
+		case 5: 
+		return 'beam';
+		case 6: 
+		return 'chosen';
+		default:
+		return 'conventional';
+	}
+}
 static function WeaponDamageValue GetWeaponDamage(int WeaponTier, optional float DamagePCT = 1.0f, float CritDamagePCT = 0.5f , optional int BonusSpread = 0, optional int BonusPierce = 0, optional int BonusShred = 0, optional int BonusRupture = 0){
     local WeaponDamageValue WeaponDamage;
     local float FloatBaseDamage;
@@ -65,6 +83,7 @@ static function X2DataTemplate CreateFragGrenade_RO(name TemplateName, int Tier)
 	Template.EquipSound = "StrategyUI_Grenade_Equip";
 	Template.iRange = default.FRAGGRENADE_RANGE;
 	Template.iRadius = default.FRAGGRENADE_RADIUS;
+	Template.WeaponTech = GetWeaponTech(Tier);
 
 	Template.BaseDamage = GetWeaponDamage(Tier,1.5f);
 	Template.iSoundRange = default.FRAGGRENADE_ISOUNDRANGE;
@@ -72,7 +91,7 @@ static function X2DataTemplate CreateFragGrenade_RO(name TemplateName, int Tier)
 	Template.TradingPostValue = default.FRAGGRENADE_TRADINGPOSTVALUE;
 	Template.iClipSize = default.FRAGGRENADE_ICLIPSIZE;
 	Template.DamageTypeTemplateName = 'Explosion';
-	Template.Tier = 0;
+	Template.Tier = Tier;
 
 	Template.Abilities.AddItem('ThrowGrenade');
 	Template.Abilities.AddItem('GrenadeFuse');
@@ -121,6 +140,7 @@ static function X2DataTemplate CreateMagGrenade(name TemplateName, int Tier)
 	Template.iRange = class'X2Item_LWGrenades'.default.MAG_GRENADE_RANGE;
 	Template.iRadius = class'X2Item_LWGrenades'.default.MAG_GRENADE_RADIUS;
 	//Template.fCoverage = 50;
+	Template.WeaponTech = GetWeaponTech(Tier);
 
 	Template.BaseDamage = GetWeaponDamage(Tier);
 	Template.iSoundRange = class'X2Item_LWGrenades'.default.MAG_GRENADE_ISOUNDRANGE;
@@ -180,6 +200,7 @@ static function X2DataTemplate CreateAlienGrenade_RO(name TemplateName, int Tier
 	Template.iClipSize = default.ALIENGRENADE_ICLIPSIZE;
 	Template.DamageTypeTemplateName = 'Explosion';
 	Template.Tier = Tier;
+	Template.WeaponTech = GetWeaponTech(Tier);
 
 	Template.Abilities.AddItem('ThrowGrenade');
 	Template.Abilities.AddItem('GrenadeFuse');

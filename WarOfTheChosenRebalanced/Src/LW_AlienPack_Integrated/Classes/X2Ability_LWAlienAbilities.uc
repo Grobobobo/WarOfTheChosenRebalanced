@@ -2174,7 +2174,7 @@ static function X2AbilityTemplate CreateHunterMarkAdvent()
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'HunterMarkAdvent');
 
-	Template.IconImage = "img:///LWAdventPathfinderCaptain_UI.Perks.UIPerk_advent_HunterShot";
+	Template.IconImage = "img:///LWAdventPathfinderCaptain_UI.UIPerk_advent_HunterShot";
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
 	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
 	Template.Hostility = eHostility_Neutral;
@@ -2215,7 +2215,7 @@ static function X2Effect_HunterMarkAdvent HunterMarkAdventEffect()
 	AbilityTag = X2AbilityTag(`XEXPANDCONTEXT.FindTag("Ability"));
 	AbilityTag.ParseObj = Effect;
 
-	Effect.SetDisplayInfo(ePerkBuff_Penalty, default.HunterMarkAdventEffectName, `XEXPAND.ExpandString(default.HunterMarkAdventEffectDesc), "img:///LWAdventPathfinderCaptain_UI.Perks.UIPerk_advent_HunterShot", true);
+	Effect.SetDisplayInfo(ePerkBuff_Penalty, default.HunterMarkAdventEffectName, `XEXPAND.ExpandString(default.HunterMarkAdventEffectDesc), "img:///LWAdventPathfinderCaptain_UI.UIPerk_advent_HunterShot", true);
 
 	AbilityCondition = new class'X2Condition_AbilityProperty';
 	AbilityCondition.OwnerHasSoldierAbilities.AddItem('HunterMarkAdvent');

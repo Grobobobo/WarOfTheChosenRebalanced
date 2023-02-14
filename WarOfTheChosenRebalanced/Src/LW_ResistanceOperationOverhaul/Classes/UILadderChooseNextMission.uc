@@ -66,7 +66,11 @@ simulated function PopulateMissionPanel(int Index, MissionOption Option)
 	local int ResearchIndex;
 	local X2ResistanceTechUpgradeTemplateManager UpgradeTemplateManager;
 	local X2ResistanceTechUpgradeTemplate Template;
-	
+	local X2ItemTemplateManager ItemTemplateManager;
+	local X2ItemTemplate ItemTemplate;
+
+	ItemTemplateManager = class'X2ItemTemplateManager'.static.GetItemTemplateManager();
+
 	MissionManager = `TACTICALMISSIONMGR;
 	MissionManager.GetMissionDefinitionForType(Option.MissionType, MissionDef);
 	MissionTemplateManager = class'X2MissionTemplateManager'.static.GetMissionTemplateManager();
@@ -100,13 +104,21 @@ simulated function PopulateMissionPanel(int Index, MissionOption Option)
 	InfoIndex++;
 	
 	UpgradeTemplateManager = class'X2ResistanceTechUpgradeTemplateManager'.static.GetTemplateManager();
-
+	
 	while (InfoIndex < 6)
 	{
 		if (Option.FreeUpgrades.Length > ResearchIndex)
 		{
 			Template = UpgradeTemplateManager.FindTemplate(Option.FreeUpgrades[ResearchIndex]);
-			MC.QueueString(m_FreeResearchText $ Template.DisplayName);
+			if(Template.DisplayName != "")
+			{
+				MC.QueueString(m_FreeResearchText $ Template.DisplayName);
+			}
+			else
+			{
+				ItemTemplate = ItemTemplateManager.FindItemTemplate(Template.InventoryUpgrades[0].TemplateName);
+				MC.QueueString(m_FreeResearchText $ ItemTemplate.GetItemFriendlyName());
+			}
 		}
 		else
 		{

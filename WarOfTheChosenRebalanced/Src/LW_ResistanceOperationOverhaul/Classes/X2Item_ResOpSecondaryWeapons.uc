@@ -1278,7 +1278,7 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Conventional(name Temp
 	Template.iPhysicsImpulse = 5;
 
 	Template.iRange = 0;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f);
 	Template.Aim = class'X2Item_LWCombatKnife'.default.CombatKnife_CONVENTIONAL_AIM;
 	Template.CritChance = class'X2Item_LWCombatKnife'.default.CombatKnife_CONVENTIONAL_CRITCHANCE;
 	Template.iClipSize = class'X2Item_LWCombatKnife'.default.CombatKnife_CONVENTIONAL_ICLIPSIZE;
@@ -1316,6 +1316,8 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Laser(name TemplateNam
 	Template.EquipSound = "Sword_Equip_Beam";
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
+
+	
 	Template.Tier = Tier;
 	Template.InventorySlot = eInvSlot_SecondaryWeapon;
 	Template.StowedLocation = eSlot_RightBack;
@@ -1326,7 +1328,7 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Laser(name TemplateNam
 	Template.iPhysicsImpulse = 5;
 
 	Template.iRange = 0;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f);
 	Template.Aim = class'X2Item_LWCombatKnife'.default.CombatKnife_LASER_AIM;
 	Template.CritChance = class'X2Item_LWCombatKnife'.default.CombatKnife_LASER_CRITCHANCE;
 	Template.iClipSize = class'X2Item_LWCombatKnife'.default.CombatKnife_LASER_ICLIPSIZE;
@@ -1335,8 +1337,8 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Laser(name TemplateNam
 	Template.bHideClipSizeStat = true;
 	Template.InfiniteAmmo = true;
 	
-	
-	Template.GameArchetype = "LW_CombatKnifeLWOTC.Archetypes.WP_CombatKnife_CV";
+	Template.StrImage = "IRI_CombatKnife_LS.Archetypes.WP_CombatKnife_LS";
+	Template.GameArchetype = "IRI_CombatKnife_LS.Archetypes.WP_CombatKnife_LS";
 
 	Template.CreatorTemplateName = 'CombatKnife_LS_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'CombatKnife_MG'; // Which item this will be upgraded from
@@ -1376,7 +1378,7 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Magnetic(name Template
 	Template.iPhysicsImpulse = 5;
 
 	Template.iRange = 0;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f);
 	Template.Aim = class'X2Item_LWCombatKnife'.default.CombatKnife_MAGNETIC_AIM;
 	Template.CritChance = class'X2Item_LWCombatKnife'.default.CombatKnife_MAGNETIC_CRITCHANCE;
 	Template.iClipSize = class'X2Item_LWCombatKnife'.default.CombatKnife_MAGNETIC_ICLIPSIZE;
@@ -1428,7 +1430,7 @@ static function X2DataTemplate CreateTemplate_CombatKnife_Coil(name TemplateName
 	Template.iPhysicsImpulse = 5;
 
 	Template.iRange = 0;
-	Template.BaseDamage = GetWeaponDamage(Tier);
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f);
 	Template.Aim = class'X2Item_LWCombatKnife'.default.CombatKnife_COIL_AIM;
 	Template.CritChance = class'X2Item_LWCombatKnife'.default.CombatKnife_COIL_CRITCHANCE;
 	Template.iClipSize = class'X2Item_LWCombatKnife'.default.CombatKnife_COIL_ICLIPSIZE;
@@ -1765,9 +1767,9 @@ static function X2DataTemplate CreateTLE1Sword(name TemplateName, int Tier)
 	Template.iPhysicsImpulse = 5;
 
 	Template.iRange = 0;
-	Template.BaseDamage = GetWeaponDamage(Tier);
-	Template.Aim = class'X2Item_DefaultWeapons'.default.RANGERSWORD_CONVENTIONAL_AIM;
-	Template.CritChance = class'X2Item_DefaultWeapons'.default.RANGERSWORD_CONVENTIONAL_CRITCHANCE;
+	Template.BaseDamage = GetWeaponDamage(Tier,1.5f);
+	Template.Aim = default.SWORD_TLE_CONVENTIONAL_AIM;
+	Template.CritChance = default.SWORD_TLE_CONVENTIONAL_CRITCHANCE;
 	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.RANGERSWORD_CONVENTIONAL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.RANGERSWORD_CONVENTIONAL_IENVIRONMENTDAMAGE;
 	Template.BaseDamage.DamageType = 'Melee';
@@ -2116,7 +2118,7 @@ static function X2GrenadeLauncherTemplate Create_IRI_RocketLauncher_Shredder(nam
 	Template.iClipSize = class'X2Item_IRI_RocketLaunchers'.default.RL_MG_CLIPSIZE;
 	Template.iSoundRange = class'X2Item_IRI_RocketLaunchers'.default.RL_MG_SOUNDRANGE;
 	Template.iEnvironmentDamage = class'X2Item_IRI_RocketLaunchers'.default.RL_MG_ENVIRONMENTAL_DAMAGE;
-	Template.BaseDamage = GetWeaponDamage(Tier,2.0f,,3,2);
+	Template.BaseDamage = GetWeaponDamage(Tier,2.0f,,,3,2);
 	Template.DamageTypeTemplateName = class'X2Item_IRI_RocketLaunchers'.default.RL_MG_BASEDAMAGE.DamageType;	
 
 	Template.Abilities.AddItem('IRI_FireRocketLauncher');
@@ -2518,14 +2520,14 @@ static function X2DataTemplate CreateTemplate_GremlinDrone_Magnetic_RO(name Temp
 	`CREATE_X2TEMPLATE(class'X2GremlinTemplate', Template, TemplateName);
 	Template.WeaponPanelImage = "_Gremlin";                       // used by the UI. Probably determines iconview of the weapon.
 
-	Template.WeaponTech = 'magnetic';
+	Template.WeaponTech = GetWeaponTech(Tier);
 	Template.strImage = "img:///UILibrary_Common.MagSecondaryWeapons.MagGremlin";
 	Template.EquipSound = "Gremlin_Equip";
 
 	Template.CosmeticUnitTemplate = "GremlinMk2";
-	Template.Tier = 2;
+	Template.Tier = Tier;
 
-	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,,99);
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,,,99);
 	Template.HackingAttemptBonus = default.GREMLINMK2_HACKBONUS;
 	Template.AidProtocolBonus = 5;
 	Template.HealingBonus = 1;
@@ -2577,7 +2579,7 @@ static function X2DataTemplate CreateTemplate_GremlinDrone_Beam_RO(name Template
 	Template.HackingAttemptBonus = default.GREMLINMK3_HACKBONUS;
 	Template.AidProtocolBonus = 5;
 	Template.HealingBonus = 2;
-	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,,99);
+	Template.BaseDamage = GetWeaponDamage(Tier,0.75f,,,99);
 
 	Template.RevivalChargesBonus = 1;
 	Template.ScanningChargesBonus = 1;

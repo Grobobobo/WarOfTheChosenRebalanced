@@ -1570,10 +1570,9 @@ static function X2AbilityTemplate CreateHeavyStandardShot()
 	
 	// Create a triggered ability that will activate whenever the unit takes an action
 	Template = class'X2Ability_WeaponCommon'.static.Add_SniperStandardFire('HeavyStandardShot');
-	Template.IconImage = "img:///UILibrary_XPerkIconPack.UIPerk_shot_chevron_x2";
+	Template.IconImage = "img:///UILibrary_XPerkIconPack_LW.UIPerk_shot_chevron_x2";
 	//Template.bDisplayInUITooltip = true;
 	//Template.bDisplayInUITacticalText = true;
-
 	return Template;
 }
 
@@ -1582,6 +1581,7 @@ static function X2AbilityTemplate CreateHeavyStandardShotPassive()
 	local X2AbilityTemplate		Template;
 
 	Template = PurePassive('HeavyStandardShotPassive', "img:///UILibrary_XPerkIconPack_LW.UIPerk_shot_chevron_x2", , 'eAbilitySource_Perk');
+	Template.AdditionalAbilities.AddItem('HeavyStandardShot');
 
 	Template.bDisplayInUITooltip = true;
 	Template.bDisplayInUITacticalText = true;
@@ -1605,22 +1605,22 @@ static function X2AbilityTemplate CreateAmmoImpact()
 static function X2AbilityTemplate CreateSteadFast()
 {
 	local X2AbilityTemplate		Template;
-	local X2Effect_PersistentStatChange StatEffect;
-	local X2Effect_BonusClipSize	PrimaryAmmoEffect;
+	// local X2Effect_PersistentStatChange StatEffect;
+	// local X2Effect_BonusClipSize	PrimaryAmmoEffect;
 
 	Template = PurePassive('SteadFast', "img:///UILibrary_XPerkIconPack_LW.UIPerk_suppression_defense2", , 'eAbilitySource_Perk');
 
-	StatEffect = new class'X2Effect_PersistentStatChange';
-	StatEffect.AddPersistentStatChange(eStat_ShieldHP, float(default.STEADFAST_SHIELD_HP));
-	StatEffect.BuildPersistentEffect(1, true, false, false);
-	StatEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
-	Template.AddTargetEffect(StatEffect);
+	// StatEffect = new class'X2Effect_PersistentStatChange';
+	// StatEffect.AddPersistentStatChange(eStat_ShieldHP, float(default.STEADFAST_SHIELD_HP));
+	// StatEffect.BuildPersistentEffect(1, true, false, false);
+	// StatEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
+	// Template.AddTargetEffect(StatEffect);
 
-	PrimaryAmmoEffect = new class'X2Effect_BonusClipSize';
-	PrimaryAmmoEffect.iClipSizeModifier = 2;
-	PrimaryAmmoEffect.BuildPersistentEffect(1, true, false, false);
-	PrimaryAmmoEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
-	Template.AddTargetEffect(PrimaryAmmoEffect);
+	// PrimaryAmmoEffect = new class'X2Effect_BonusClipSize';
+	// PrimaryAmmoEffect.iClipSizeModifier = 2;
+	// PrimaryAmmoEffect.BuildPersistentEffect(1, true, false, false);
+	// PrimaryAmmoEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
+	// Template.AddTargetEffect(PrimaryAmmoEffect);
 
 
 	Template.bDisplayInUITooltip = true;

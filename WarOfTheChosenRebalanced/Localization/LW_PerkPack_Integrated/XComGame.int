@@ -153,8 +153,8 @@ LocPromotionPopupText="<Bullet/> Enemy attacks against you suffer a -<ABILITY:RE
 [Fortified X2AbilityTemplate]
 LocFriendlyName="Fortified"
 LocFlyOverText="Fortified"
-LocLongDescription="Gain <ABILITY:FORTIFIED_ABLATIVE/> Ablative HP and <ABILITY:FORTIFIED_MOBILITY>. Enemy attacks against you suffer a -<ABILITY:FORTIFIED_CRITDEF_BONUS/> penalty to critical hit chances."
-LocHelpText="Gain <ABILITY:FORTIFIED_ABLATIVE/> Ablative HP and <ABILITY:FORTIFIED_MOBILITY>. Enemy attacks against you suffer a -<ABILITY:FORTIFIED_CRITDEF_BONUS/> penalty to critical hit chances."
+LocLongDescription="Gain <ABILITY:FORTIFIED_ABLATIVE/> Ablative HP and <ABILITY:FORTIFIED_MOBILITY> Mobility. Enemy attacks against you suffer a -<ABILITY:FORTIFIED_CRITDEF_BONUS/> penalty to critical hit chances."
+LocHelpText="Gain <ABILITY:FORTIFIED_ABLATIVE/> Ablative HP and <ABILITY:FORTIFIED_MOBILITY> Mobility. Enemy attacks against you suffer a -<ABILITY:FORTIFIED_CRITDEF_BONUS/> penalty to critical hit chances."
 LocPromotionPopupText=""
 
 [TacticalSense X2AbilityTemplate]
@@ -316,9 +316,9 @@ LocPromotionPopupText="<Bullet/> Special shot for primary-weapon shotguns only: 
 LocFriendlyName="Slug Shot"
 LocFlyOverText="Slug Shot"
 ; LWOTC Needs Translation (3)
-LocLongDescription="Special shot for primary-weapon shotguns only: Fire a shot that pierces <Ability:SLUG_SHOT_PIERCE/> armor and has no range penalties. Uses <Ability:SelfAmmoCost/> ammo. Has a <Ability:SelfCooldown_LW/> turn cooldown."
-LocHelpText="Armor-piercing special shotgun shot with no range penalties."
-LocPromotionPopupText="<Bullet/> Special shot for primary-weapon shotguns only: Fire a shot with no range penalties.<br/><Bullet/> The shot will pierce <Ability:SLUG_SHOT_PIERCE/> armor point(s).<br/><Bullet/> Slug shot has a <Ability:SelfCooldown_LW/> turn cooldown. <br/><Bullet/> Requires <Ability:SelfAmmoCost/> ammo.<br/>"
+LocLongDescription="Special shot for primary-weapon shotguns only: Fire a shot that has no range penalties."
+LocHelpText="Special shotgun shot with no range penalties."
+LocPromotionPopupText="<Bullet/> Special shot for primary-weapon shotguns only: Fire a shot with no range penalties.<br/><Bullet/> Slug shot has a <Ability:SelfCooldown_LW/> turn cooldown. <br/><Bullet/> Requires <Ability:SelfAmmoCost/> ammo.<br/>"
 ; End Translation (3)
 
 [SlugShotRangeEffect X2AbilityTemplate]

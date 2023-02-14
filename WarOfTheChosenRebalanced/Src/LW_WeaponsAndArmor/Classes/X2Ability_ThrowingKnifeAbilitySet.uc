@@ -655,6 +655,8 @@ static function X2AbilityTemplate ImpersonalEdge()
 	CooldownReductionEffect = new class'X2Effect_ImpersonalEdge';
 	Template.AddTargetEffect(CooldownReductionEffect);
 
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
 
 	Template.bSkipFireAction = true;
 	Template.bShowActivation = true;

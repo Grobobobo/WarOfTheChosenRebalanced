@@ -2548,7 +2548,6 @@ simulated function UpdateDataResearchCategory()
 	local int Index;
 	local X2ResistanceTechUpgradeTemplate Template;
 	//local array<name> TemplateNames;
-	local name TemplateName;
 	local int CreditsValue;
 	local string CostString;
 	local string NameString;
@@ -2564,63 +2563,69 @@ simulated function UpdateDataResearchCategory()
 
 	foreach ListOfTemplates(Template)
 	{
-		TemplateName = Template.DataName;
-		if (!LadderData.HasPurchasedTechUpgrade(TemplateName))
+		if (Template != none)
 		{
-			if (Template != none)
+			if (Template.Category == SelectedUpgradeCategory && Template.AtleastOneInventoryUpgradeExists())
 			{
-				if (Template.Category == SelectedUpgradeCategory && Template.AtleastOneInventoryUpgradeExists())
-				{
 
-					if (LadderData.IsUpgradeOnSale(Template.DataName))
+				if (LadderData.IsUpgradeOnSale(Template.DataName))
+				{
+					CreditsValue = Template.Cost * class'XComGameState_LadderProgress_Override'.default.SALE_CREDITS_MOD;
+					CreditsString = class'UIUtilities_Text'.static.GetColoredText(string(CreditsValue), eUIState_Good);
+					
+					if(Template.DisplayName != "")
 					{
-						CreditsValue = Template.Cost * class'XComGameState_LadderProgress_Override'.default.SALE_CREDITS_MOD;
-						CreditsString = class'UIUtilities_Text'.static.GetColoredText(string(CreditsValue), eUIState_Good);
 						NameString = class'UIUtilities_Text'.static.GetColoredText(Template.DisplayName, eUIState_Good);
 					}
 					else
 					{
-						CreditsValue = Template.Cost;
-						CreditsString = string(CreditsValue);
-						if(Template.DisplayName != "")
-						{
-							NameString = Template.DisplayName;
-						}
-						else
-						{
-							ItemTemplate = ItemTemplateManager.FindItemTemplate(Template.InventoryUpgrades[0].TemplateName);
-							NameString = ItemTemplate.GetItemFriendlyName();
-						}
+						ItemTemplate = ItemTemplateManager.FindItemTemplate(Template.InventoryUpgrades[0].TemplateName);
+						NameString = class'UIUtilities_Text'.static.GetColoredText(ItemTemplate.GetItemFriendlyName(), eUIState_Good);
 					}
 
-					CostString = "";
-					// if (Template.RequiredScience > 0)
-					// {
-					// 	CostString = CostString $ string(Template.RequiredScience/4) $ " " $ class'UIUtilities_Text'.static.InjectImage(ScienceIcon, 20, 20, 0) $ "  ";
-					// }
-
-					CostString = CostString $ CreditsString $ " " $ class'UIUtilities_Text'.static.InjectImage(CreditsIcon, 20, 20, 0);
-
-					GetListItem(Index).UpdateDataValue(NameString, CostString, , , OnClickUpgradeTech);
-					GetListItem(Index).metadataString = string(Template.DataName);
-					GetListItem(Index).metadataInt = CreditsValue;
-					GetListItem(Index).EnableNavigation();
-
-					if (!LadderData.HasRequiredTechs(Template))
-					{
-						GetListItem(Index).SetDisabled(true, Template.GetRequirementsText());
-					}
-					else if (!LadderData.CanAfford(Template))
-					{
-						GetListItem(Index).SetDisabled(true, m_ErrorNotEnoughCredits);
-					}
-					else if (LadderData.IsUpgradeOnSale(Template.DataName))
-					{
-						GetListItem(Index).BG.SetTooltipText(m_SaleTooltip, , , 10, , , , 0.0f);
-					}
-
-					Index++;
 				}
+				else
+				{
+					CreditsValue = Template.Cost;
+					CreditsString = string(CreditsValue);
+					if(Template.DisplayName != "")
+					{
+						NameString = Template.DisplayName;
+					}
+					else
+					{
+						ItemTemplate = ItemTemplateManager.FindItemTemplate(Template.InventoryUpgrades[0].TemplateName);
+						NameString = ItemTemplate.GetItemFriendlyName();
+					}
+				}
+
+				CostString = "";
+				// if (Template.RequiredScience > 0)
+				// {
+				// 	CostString = CostString $ string(Template.RequiredScience/4) $ " " $ class'UIUtilities_Text'.static.InjectImage(ScienceIcon, 20, 20, 0) $ "  ";
+				// }
+
+				CostString = CostString $ CreditsString $ " " $ class'UIUtilities_Text'.static.InjectImage(CreditsIcon, 20, 20, 0);
+
+				GetListItem(Index).UpdateDataValue(NameString, CostString, , , OnClickUpgradeTech);
+				GetListItem(Index).metadataString = string(Template.DataName);
+				GetListItem(Index).metadataInt = CreditsValue;
+				GetListItem(Index).EnableNavigation();
+
+				if (!LadderData.HasRequiredTechs(Template))
+				{
+					GetListItem(Index).SetDisabled(true, Template.GetRequirementsText());
+				}
+				else if (!LadderData.CanAfford(Template))
+				{
+					GetListItem(Index).SetDisabled(true, m_ErrorNotEnoughCredits);
+				}
+				else if (LadderData.IsUpgradeOnSale(Template.DataName))
+				{
+					GetListItem(Index).BG.SetTooltipText(m_SaleTooltip, , , 10, , , , 0.0f);
+				}
+
+				Index++;
 			}
 		}
 	}
@@ -2650,7 +2655,6 @@ simulated function ConfirmUpgradeSelection()
 	local X2ResistanceTechUpgradeTemplate Template;
 	local X2ItemTemplateManager ItemTemplateManager;
 	local X2ItemTemplate ItemTemplate;
-	local array<X2ResistanceTechUpgradeTemplate> ListOfTemplates;
 	
 	ItemTemplateManager = class'X2ItemTemplateManager'.static.GetItemTemplateManager();
 
@@ -2869,6 +2873,10 @@ simulated function UpdateDataCompletedProjects()
 	local X2ResistanceTechUpgradeTemplate Template;
 	local array<name> TemplateNames;
 	local name TemplateName;
+	local X2ItemTemplate ItemTemplate;
+	local X2ItemTemplateManager ItemTemplateManager;
+
+	ItemTemplateManager = class'X2ItemTemplateManager'.static.GetItemTemplateManager();
 
 	Index = 0;
 	TemplateManager = class'X2ResistanceTechUpgradeTemplateManager'.static.GetTemplateManager();
@@ -2879,7 +2887,17 @@ simulated function UpdateDataCompletedProjects()
 		Template = TemplateManager.FindTemplate(TemplateName);
 		if (Template != none && Template.AtleastOneInventoryUpgradeExists())
 		{
-			GetListItem(Index).UpdateDataValue(Template.DisplayName, string(Template.Cost), , , );
+
+			if(Template.DisplayName != "")
+			{
+				GetListItem(Index).UpdateDataValue(Template.DisplayName, string(Template.Cost), , , );
+
+			}
+			else
+			{
+				ItemTemplate = ItemTemplateManager.FindItemTemplate(Template.InventoryUpgrades[0].TemplateName);
+				GetListItem(Index).UpdateDataValue(ItemTemplate.GetItemFriendlyName(), string(Template.Cost), , , );
+			}
 			GetListItem(Index).metadataString = string(Template.DataName);
 			GetListItem(Index).EnableNavigation();
 			Index++;

@@ -2388,7 +2388,7 @@ static function X2DataTemplate CreateTemplate_AdvStunLancer_Leader_WPN(name Temp
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'vektor_rifle';
 	Template.WeaponTech = 'magnetic';
-	Template.strImage = "img:///LWAdventPathfinderCaptain_UI.AdventWeapons.Icon_PathfinderHunterRifle";
+	Template.strImage = "img:///LWAdventPathfinderCaptain_UI.Icon_PathfinderHunterRifle";
 	Template.RemoveTemplateAvailablility(Template.BITFIELD_GAMEAREA_Multiplayer); //invalidates multiplayer availability
 	
 	Template.BaseDamage = Damage;

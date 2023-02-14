@@ -3178,7 +3178,7 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 			Outstring = string(class'X2Ability_PerkPackAbilitySet'.default.RESILIENCE_CRITDEF_BONUS);
 			return true;
 		case 'AT_ANY_COST_VENGEANCE_BONUS':
-			Outstring = string(class'X2Ability_UniversalSoldierAbilities'.default.AT_ANY_COST_VENGEANCE_BONUS);
+			Outstring = string(int(class'X2Ability_UniversalSoldierAbilities'.default.AT_ANY_COST_VENGEANCE_BONUS * 100));
 			return true;
 		case 'ALPHA_MIKE_FOXTROT_DAMAGE_LW':
 			Outstring = string(int(class'X2Ability_LW_SharpshooterAbilitySet'.default.ALPHAMIKEFOXTROT_DAMAGE * 100));

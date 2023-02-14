@@ -27,16 +27,16 @@ var config int BEAMGRENADELAUNCHER_RADIUSBONUS;
 
 var config bool FRAGLAUNCH_BEAMMODEL;
 
-static function array<X2DataTemplate> CreateTemplates()
-{
-	local array<X2DataTemplate> Grenades;
+// static function array<X2DataTemplate> CreateTemplates()
+// {
+// 	local array<X2DataTemplate> Grenades;
 
-	// Grenades.AddItem(CreatePrimaryGrenadeLauncher_CV());
-	// Grenades.AddItem(CreatePrimaryGrenadeLauncher_MG());
-	// Grenades.AddItem(CreatePrimaryGrenadeLauncher_BM());
+// 	// Grenades.AddItem(CreatePrimaryGrenadeLauncher_CV());
+// 	// Grenades.AddItem(CreatePrimaryGrenadeLauncher_MG());
+// 	// Grenades.AddItem(CreatePrimaryGrenadeLauncher_BM());
 
-	return Grenades;
-}
+// 	return Grenades;
+// }
 
 static function X2GrenadeLauncherTemplate CreatePrimaryGrenadeLauncher_CV()
 {

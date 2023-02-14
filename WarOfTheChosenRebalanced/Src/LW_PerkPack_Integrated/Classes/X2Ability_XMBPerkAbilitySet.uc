@@ -4228,7 +4228,7 @@ static function X2AbilityTemplate Adrenaline()
 	Effect.BuildPersistentEffect(1, true, true, false);
 
 	// Create a triggered ability that activates whenever the unit gets a kill
-	Template = SelfTargetTrigger('Adrenaline_LW', "img:///UILibrary_XPerkIconPack.UIPerk_shield_plus", false, Effect, 'KillMail');
+	Template = SelfTargetTrigger('Adrenaline_LW', "img:///UILibrary_XPerkIconPack_LW.UIPerk_shield_plus", false, Effect, 'KillMail');
 
 	// Does not trigger when killing Lost
 	UnitTypeCondition = new class'X2Condition_UnitType';

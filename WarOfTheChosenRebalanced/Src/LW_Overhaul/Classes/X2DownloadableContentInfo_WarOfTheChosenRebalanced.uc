@@ -129,7 +129,7 @@ static event OnLoadedSavedGame()
 static event UpdateDLC()
 {
 
-	LevelUpXTP();
+	//LevelUpXTP();
 
 }
 
@@ -186,8 +186,8 @@ static event OnPostTemplatesCreated()
 	UpdateWeaponAttachmentsForCoilgun();
 	//WOTCR - Not used because we're back to vanilla mission types. might uncomment this later if i want to re-disable tunnels.
 	//AddObjectivesToParcels();
-	UpdateChosenActivities();
-	UpdateChosenSabotages();
+	//UpdateChosenActivities();
+	//UpdateChosenSabotages();
 }
 
 /// <summary>

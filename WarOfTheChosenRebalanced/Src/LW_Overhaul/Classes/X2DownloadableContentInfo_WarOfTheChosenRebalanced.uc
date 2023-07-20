@@ -1424,24 +1424,6 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 		}
 	}
 
-	if (ShouldApplyInfiltrationModifierToCharacter(CharTemplate))
-	{
-		AbilityName = 'InfiltrationTacticalModifier_LW';
-		if (SetupData.Find('TemplateName', AbilityName) == -1)
-		{
-			AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate(AbilityName);
-
-			if(AbilityTemplate != none)
-			{
-				Data = EmptyData;
-				Data.TemplateName = AbilityName;
-				Data.Template = AbilityTemplate;
-				SetupData.AddItem(Data);  // return array -- we don't have to worry about additional abilities for this simple ability
-			}
-			
-		}
-	}
-
 	switch(CharTemplate.DataName)
 	{
 		case 'CivilianMilitia':
@@ -1630,17 +1612,6 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 	*/
 }
 
-static function bool ShouldApplyInfiltrationModifierToCharacter(X2CharacterTemplate CharTemplate)
-{
-	// Specific character types should never have an infiltration modifier applied.
-	if (default.CharacterTypesExceptFromInfiltrationModifiers.Find(CharTemplate.DataName) >= 0)
-	{
-		return false;
-	}
-
-	// Otherwise anything that's alien or advent gets one
-	return CharTemplate.bIsAdvent || CharTemplate.bIsAlien;
-}
 
 static event OnExitPostMissionSequence()
 {

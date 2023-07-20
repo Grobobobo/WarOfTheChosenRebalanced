@@ -24,11 +24,6 @@ static function UpdateCharacters(X2CharacterTemplate Template, int Difficulty)
 	case 'LWDroneM2':
 		Template.SightedEvents.AddItem('DroneSighted');
 		break;
-	case 'AdvGrenadierM1':
-	case 'AdvGrenadierM2':
-	case 'AdvGrenadierM3':
-		Template.SightedEvents.AddItem('EngineerSighted');
-		break;
 	case 'AdvSentryM1':
 	case 'AdvSentryM2':
 	case 'AdvSentryM3':
@@ -38,11 +33,6 @@ static function UpdateCharacters(X2CharacterTemplate Template, int Difficulty)
 	case 'AdvGunnerM2':
 	case 'AdvGunnerM3':
 		Template.SightedEvents.AddItem('GunnerSighted');
-		break;
-	case 'AdvRocketeerM1':
-	case 'AdvRocketeerM2':
-	case 'AdvRocketeerM3':
-		Template.SightedEvents.AddItem('RocketeerSighted');
 		break;
 	case'ChosenAssassin':
 	case'ChosenAssassinM2':

@@ -77,8 +77,8 @@ static function FindFacilityTemplateAllDifficulties(name DataName, out array<X2F
 /// </summary>
 static event OnLoadedSavedGameToStrategy()
 {
-	//UpdateOTSFacility();
-	//TransferLegacyOfficerAbilities();
+	UpdateOTSFacility();
+	TransferLegacyOfficerAbilities();
 }
 
 //transfer any legacy officer abilities from AWCAbilities into officer state
@@ -130,9 +130,9 @@ static function TransferLegacyOfficerAbilities()
 // update OTS Facility data
 static event OnPostMission()
 {
-	//UpdateOTSFacility();
-	//UpdateScavengerRewards();
-	//TransferLegacyOfficerAbilities();
+	UpdateOTSFacility();
+	UpdateScavengerRewards();
+	TransferLegacyOfficerAbilities();
 }
 
 static function ModifyEarnedSoldierAbilities(out array<SoldierClassAbilityType> EarnedAbilities, XComGameState_Unit UnitState)
@@ -200,76 +200,76 @@ static function ModifyEarnedSoldierAbilities(out array<SoldierClassAbilityType> 
 	}
 }
 
-// // Use SLG hook to add officer abilities from officer component
-// static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out array<AbilitySetupData> SetupData, optional XComGameState StartState, optional XComGameState_Player PlayerState, optional bool bMultiplayerDisplay)
-// {
-// 	local array<AbilitySetupData> arrData;
-// 	local array<AbilitySetupData> arrAdditional;
-// 	local X2AbilityTemplate AbilityTemplate;
-// 	local X2AbilityTemplateManager AbilityTemplateMan;
-// 	local XComGameState_Unit_LWOfficer OfficerState;
-// 	local int i;
-// 	local name AbilityName;
-// 	local AbilitySetupData Data, EmptyData;
-// 	local array<SoldierClassAbilityType> EarnedOfficerAbilities;
+// Use SLG hook to add officer abilities from officer component
+static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out array<AbilitySetupData> SetupData, optional XComGameState StartState, optional XComGameState_Player PlayerState, optional bool bMultiplayerDisplay)
+{
+	local array<AbilitySetupData> arrData;
+	local array<AbilitySetupData> arrAdditional;
+	local X2AbilityTemplate AbilityTemplate;
+	local X2AbilityTemplateManager AbilityTemplateMan;
+	local XComGameState_Unit_LWOfficer OfficerState;
+	local int i;
+	local name AbilityName;
+	local AbilitySetupData Data, EmptyData;
+	local array<SoldierClassAbilityType> EarnedOfficerAbilities;
 
-// 	return; // DEPRECATED
+	return; // DEPRECATED
 
-// 	OfficerState = class'LWOfficerUtilities'.static.GetOfficerComponent(UnitState);
-// 	if (OfficerState == none)
-// 		return;
+	OfficerState = class'LWOfficerUtilities'.static.GetOfficerComponent(UnitState);
+	if (OfficerState == none)
+		return;
 
-// 	if (!class'LWOfficerUtilities'.static.IsHighestRankOfficerInSquad(UnitState))  // only add abilities for highest rank officer
-// 		return;
+	if (!class'LWOfficerUtilities'.static.IsHighestRankOfficerInSquad(UnitState))  // only add abilities for highest rank officer
+		return;
 
-// 	AbilityTemplateMan = class'X2AbilityTemplateManager'.static.GetAbilityTemplateManager();
+	AbilityTemplateMan = class'X2AbilityTemplateManager'.static.GetAbilityTemplateManager();
 
-// 	//retrieve the officer abilities from the officer state
-// 	for(i = 0; i < OfficerState.OfficerAbilities.Length; ++i)
-// 	{
-// 		EarnedOfficerAbilities.AddItem(OfficerState.OfficerAbilities[i].AbilityType);
-// 	}
+	//retrieve the officer abilities from the officer state
+	for(i = 0; i < OfficerState.OfficerAbilities.Length; ++i)
+	{
+		EarnedOfficerAbilities.AddItem(OfficerState.OfficerAbilities[i].AbilityType);
+	}
 
-// 	//add the officer abilities
-// 	for (i = 0; i < EarnedOfficerAbilities.Length; ++i)
-// 	{
-// 		AbilityName = EarnedOfficerAbilities[i].AbilityName;
-// 		AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate(AbilityName);
-// 		if (AbilityTemplate != none && !AbilityTemplate.bUniqueSource || arrData.Find('TemplateName', AbilityTemplate.DataName) == INDEX_NONE)
-// 		{
-// 			Data = EmptyData;
-// 			Data.TemplateName = AbilityName;
-// 			Data.Template = AbilityTemplate;
-// 			arrData.AddItem(Data); // array used to check for additional abilities
-// 			SetupData.AddItem(Data);  // return array
-// 		}
-// 	}
+	//add the officer abilities
+	for (i = 0; i < EarnedOfficerAbilities.Length; ++i)
+	{
+		AbilityName = EarnedOfficerAbilities[i].AbilityName;
+		AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate(AbilityName);
+		if (AbilityTemplate != none && !AbilityTemplate.bUniqueSource || arrData.Find('TemplateName', AbilityTemplate.DataName) == INDEX_NONE)
+		{
+			Data = EmptyData;
+			Data.TemplateName = AbilityName;
+			Data.Template = AbilityTemplate;
+			arrData.AddItem(Data); // array used to check for additional abilities
+			SetupData.AddItem(Data);  // return array
+		}
+	}
 
-// 	//  Add any additional abilities
-// 	for (i = 0; i < arrData.Length; ++i)
-// 	{
-// 		foreach arrData[i].Template.AdditionalAbilities(AbilityName)
-// 		{
-// 			AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate(AbilityName);
-// 			if (AbilityTemplate != none && !AbilityTemplate.bUniqueSource || arrData.Find('TemplateName', AbilityTemplate.DataName) == INDEX_NONE)
-// 			{
-// 				Data = EmptyData;
-// 				Data.TemplateName = AbilityName;
-// 				Data.Template = AbilityTemplate;
-// 				Data.SourceWeaponRef = arrData[i].SourceWeaponRef;
-// 				arrAdditional.AddItem(Data);
-// 			}			
-// 		}
-// 	}
-// 	//  Move all of the additional abilities into the return list
-// 	for (i = 0; i < arrAdditional.Length; ++i)
-// 	{
-// 		if( SetupData.Find('TemplateName', arrAdditional[i].TemplateName) == INDEX_NONE )
-// 		{
-// 			SetupData.AddItem(arrAdditional[i]);
-// 		}
-// 	}
-// }
+	//  Add any additional abilities
+	for (i = 0; i < arrData.Length; ++i)
+	{
+		foreach arrData[i].Template.AdditionalAbilities(AbilityName)
+		{
+			AbilityTemplate = AbilityTemplateMan.FindAbilityTemplate(AbilityName);
+			if (AbilityTemplate != none && !AbilityTemplate.bUniqueSource || arrData.Find('TemplateName', AbilityTemplate.DataName) == INDEX_NONE)
+			{
+				Data = EmptyData;
+				Data.TemplateName = AbilityName;
+				Data.Template = AbilityTemplate;
+				Data.SourceWeaponRef = arrData[i].SourceWeaponRef;
+				arrAdditional.AddItem(Data);
+			}			
+		}
+	}
+	//  Move all of the additional abilities into the return list
+	for (i = 0; i < arrAdditional.Length; ++i)
+	{
+		if( SetupData.Find('TemplateName', arrAdditional[i].TemplateName) == INDEX_NONE )
+		{
+			SetupData.AddItem(arrAdditional[i]);
+		}
+	}
+}
 
 // update mission rewards for scavenger ability
 static function UpdateScavengerRewards()
